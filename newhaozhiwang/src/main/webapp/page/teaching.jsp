@@ -4,6 +4,7 @@
 <html class="">
 
 	<head>
+	<base href="/newhaozhiwang/">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
 		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
@@ -18,19 +19,14 @@
 
 		<link href="http://f1.howzhi.com/system/2016/03-31/113613d6a857327741.ico" rel="shortcut icon">
 
-		<link href="../css/bootstrap.css" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="../css/howzhi.css">
+		<link href="css/bootstrap.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/howzhi.css">
 		
-		<script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
-		<script type="text/javascript" src="../js/bootstrap.js"></script>
-		<script type="text/javascript" src="../js/show.js"></script>
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/show.js"></script>
 
-		<!--[if lt IE 9]>
-    <script src="/assets/libs/html5shiv.js?2.6.17.2.3"></script>
-  <![endif]-->
-		<!--[if IE 8]>
-    <script src="/assets/libs/respond.min.js?2.6.17.2.3"></script>
-  <![endif]-->
+	
 
 		<style>
 			.cke {
@@ -45,7 +41,7 @@
 			<div class="container">
 				<div class="navbar-header pull-left">
 					<a href="http://www.howzhi.com/" class="navbar-brand">
-						<img src="logo.png" class="img-responsive" alt="好知，howzhi.com">
+						<img src="images/logo.png" class="img-responsive" alt="好知，howzhi.com">
 					</a>
 					<button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse" type="button">
 		          <span class="sr-only">Toggle navigation</span>
@@ -94,7 +90,7 @@
 						</li>
 						<li class="dropdown user-nav-dropdown user-img">
 							<a href="#" class="dropdown-toggle">
-								<img src="../images/avatar.png" class="user-avatar" alt="The_free">
+								<img src="images/avatar.png" class="user-avatar" alt="The_free">
 							</a>
 							<ul class="dropdown-menu" role="menu">
 								<li>
@@ -156,7 +152,7 @@
 			<div class="container">
 				<div class="personImg">
 					<a class=" js-user-card" href="http://www.howzhi.com/u/2358985/" data-card-url="/user/2358985/card/show" data-user-id="2358985">
-						<img class="img-responsive" src="../images/avatar.png" alt="The_free">
+						<img class="img-responsive" src="images/avatar.png" alt="The_free">
 					</a>
 
 					<div class="user-info">
@@ -316,7 +312,7 @@
 
 						<div class="hz-ad flat">
 							<!--这里插入要显示的班级图片，然后点击跳转到班级信息-->
-							<a href="javascript:void(0)" target="_blank"><img src="../images/block_picture.jpg" class="img-responsive" alt="小九入门班"></a>
+							<a href="javascript:void(0)" target="_blank"><img src="images/block_picture.jpg" class="img-responsive" alt="小九入门班"></a>
 						</div>
 					</div>
 					<!--------------------------------任务信息------------------------------------------>
@@ -393,15 +389,7 @@
 				Powered by <a href="http://www.edusoho.com/" target="_blank">EduSoho v6.17.2</a> ©2014-2016 <a class="mlm" href="http://www.howzhi.com/" target="_blank">好知网</a>
 			</div>
 		</div>
-		<!--<script src="piwik.js" defer="defer" async="" type="text/javascript"></script>
-		<script src="analytics.js" async=""></script>
-		<script src="hm.js"></script>
-		<script src="/sea.js"></script>
-		<script src="/seajs-style.js"></script>
-		<script src="/seajs-global-config.js"></script>
-		<script>
-		  seajs.use(app.mainScript);
-		</script> -->
+		
 		
 	</body>
 

@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 
 <html class="">
-
 	<head>
+	<base href="/newhaozhiwang/"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
 		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
@@ -18,20 +18,14 @@
 
 		<link href="http://f1.howzhi.com/system/2016/03-31/113613d6a857327741.ico" rel="shortcut icon">
 
-		<link href="../css/bootstrap.css" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="../css/howzhi.css">
+		<link href="css/bootstrap.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/howzhi.css">
 		
-		<script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
-		<script type="text/javascript" src="../js/bootstrap.js"></script>
-		<script type="text/javascript" src="../js/show.js"></script>
-
-		<!--[if lt IE 9]>
-    <script src="/assets/libs/html5shiv.js?2.6.17.2.3"></script>
-  <![endif]-->
-		<!--[if IE 8]>
-    <script src="/assets/libs/respond.min.js?2.6.17.2.3"></script>
-  <![endif]-->
-
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/show.js"></script>
+		<script type="text/javascript" src="js/top.js"></script>
+	
 		<style>
 			.cke {
 				visibility: hidden;
@@ -45,7 +39,7 @@
 			<div class="container">
 				<div class="navbar-header pull-left">
 					<a href="http://www.howzhi.com/" class="navbar-brand">
-						<img src="logo.png" class="img-responsive" alt="好知，howzhi.com">
+						<img src="images/logo.png" class="img-responsive" alt="好知，howzhi.com">
 					</a>
 					<button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse" type="button">
 		          <span class="sr-only">Toggle navigation</span>
@@ -94,7 +88,7 @@
 						</li>
 						<li class="dropdown user-nav-dropdown user-img">
 							<a href="#" class="dropdown-toggle">
-								<img src="../images/avatar.png" class="user-avatar" alt="The_free">
+								<img src="images/avatar.png" class="user-avatar" alt="The_free">
 							</a>
 							<ul class="dropdown-menu" role="menu">
 								<li>
@@ -156,7 +150,7 @@
 			<div class="container">
 				<div class="personImg">
 					<a class=" js-user-card" href="http://www.howzhi.com/u/2358985/" data-card-url="/user/2358985/card/show" data-user-id="2358985">
-						<img class="img-responsive" src="../images/avatar.png" alt="The_free">
+						<img class="img-responsive" src="images/avatar.png" alt="The_free">
 					</a>
 
 					<div class="user-info">
@@ -229,7 +223,7 @@
 											<div class="course-item">
 												<div class="course-img">
 													<a href="Javascript:void(0)">
-														<img src="../images/course02.jpg" class="img-responsive" alt="AK：AE特效教程">
+														<img src="images/course02.jpg" class="img-responsive" alt="AK：AE特效教程">
 														<span class="load" style="width:0%"></span>
 														<div class="image-overlay"></div>
 													</a>
@@ -248,7 +242,7 @@
 													</div>
 													<div class="teacher">
 														<a class=" js-user-card" href="Javascript:void(0)" data-card-url="/user/7797/card/show" data-user-id="7797">
-															<img class="avatar-ss " src="../images/avatar.png" 　alt="艾影">														艾影
+															<img class="avatar-ss " src="images/avatar.png" 　alt="艾影">														艾影
 														</a>
 													</div>
 												</div>
@@ -279,7 +273,7 @@
 											<div class="course-item">
 												<div class="course-img">
 													<a href="http://www.howzhi.com/course/2730/">
-														<img src="../images/course02.jpg" class="img-responsive" alt="AK：AE特效教程">
+														<img src="images/course02.jpg" class="img-responsive" alt="AK：AE特效教程">
 														<div class="image-overlay"></div>
 													</a>
 													<div class="mask"><a href="http://www.howzhi.com/course/2730/">查看课程</a></div>
@@ -296,7 +290,7 @@
 													</div>
 													<div class="teacher">
 														<a class=" js-user-card" href="http://www.howzhi.com/u/7797/" data-card-url="/user/7797/card/show" data-user-id="7797">
-															<img class="avatar-ss " src="../images/avatar.png" 　alt="艾影">						艾影
+															<img class="avatar-ss " src="images/avatar.png" 　alt="艾影">						艾影
 														</a>
 									                </div>
 									            </div>
@@ -316,7 +310,7 @@
 									<div class="class-item ">
 										<div class="class-img">
 											<a href="http://www.howzhi.com/classroom/16" target="_blank">
-												<img src="../images/course03.jpg" class="img-responsive">
+												<img src="images/course03.jpg" class="img-responsive">
 												<h3 style="text-align: center;">零基础摄影入门班</h3>
 												<div class="image-overlay"></div>
 											</a>
@@ -393,7 +387,7 @@
 
 						<div class="hz-ad flat">
 							<!--这里插入要显示的班级图片，然后点击跳转到班级信息-->
-							<a href="javascript:void(0)" target="_blank"><img src="../images/block_picture.jpg" class="img-responsive" alt="小九入门班"></a>
+							<a href="javascript:void(0)" target="_blank"><img src="images/block_picture.jpg" class="img-responsive" alt="小九入门班"></a>
 						</div>
 					</div>
 					<!--------------------------------任务信息------------------------------------------>

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html >
 <head>
-<base href="/Haozhi/"/>
+<base href="/newhaozhiwang/"/>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
 	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
@@ -38,11 +38,11 @@
 								$("#baseinfo")[0].style.display = "block";
 								$("#touxiang")[0].style.display = "none";
 								$("#update")[0].style.display = "none";
-							} else if (str.trim() == 　"头像设置") {
+							} else if (str.trim() == "头像设置") {
 								$("#touxiang")[0].style.display = "block";
 								$("#baseinfo")[0].style.display = "none";
 								$("#update")[0].style.display = "none";
-							} else if (str.trim() == 　"安全设置") {
+							} else if (str.trim() == "安全设置") {
 								$("#update")[0].style.display = "block";
 								$("#baseinfo")[0].style.display = "none";
 								$("#touxiang")[0].style.display = "none";
