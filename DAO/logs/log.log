@@ -1,0 +1,7 @@
+2016-01-10 14:50:44,822 - com.yc.logutil.LogUtil - java.sql.SQLException: ORA-00917: »± ß∂∫∫≈
+
+2016-01-10 14:52:32,801 - com.yc.logutil.LogUtil - java.sql.SQLException: ORA-00917: »± ß∂∫∫≈
+
+2016-01-10 18:39:57,219 - com.yc.logutil.LogUtil - java.sql.SQLException: Io “Ï≥£: The Network Adapter could not establish the connection
+2016-01-22 21:33:03,377 - com.yc.logutil.LogUtil - java.sql.SQLException: ORA-00904: "CID": ±Í ∂∑˚Œﬁ–ß
+
