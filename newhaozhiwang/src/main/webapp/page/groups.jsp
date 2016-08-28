@@ -6,9 +6,6 @@
 		<base href="/newhaozhiwang/"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
-		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-		<meta name="renderer" content="webkit">
-		<meta name="baidu-site-verification" content="XN2OVFQdUg">
 		<title>小组 - 好知网-重拾学习乐趣</title>
 		<meta name="keywords" content="小组">
 		<meta name="description" content="小组首页">
@@ -22,6 +19,12 @@
 		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.js"></script>
 		<script type="text/javascript" src="js/top.js"></script>
+		
+		<style>
+			.navbar-form{
+				margin-top: 25px;
+			}
+		</style>
 	</head>
 
 	<body class="group-page">

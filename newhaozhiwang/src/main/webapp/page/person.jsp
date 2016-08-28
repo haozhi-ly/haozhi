@@ -6,15 +6,8 @@
 	<base href="/newhaozhiwang/"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
-		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-		<meta name="renderer" content="webkit">
-		<meta name="baidu-site-verification" content="XN2OVFQdUg">
 		<title>首页 - 珘珘的个人主页 - 好知网-重拾学习乐趣-Powered By Howzhi</title>
-		<meta name="keywords" content="珘珘，个人主页，好知网">
-		<meta name="description" content="珘珘在好知网的个人主页">
-		<meta content="cfe9b96f569703f379d055687bf9a957774ae94c" name="csrf-token">
-		<meta content="1" name="is-login">
-		<meta content="1" name="is-open">
+
 		<link rel="stylesheet" href="css/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="css/howzhi.css">
 		<link rel="stylesheet" type="text/css" href="css/swiper.css">
@@ -23,12 +16,6 @@
 		<script type="text/javascript" src="js/swiper-3.3.1.min.js"></script>
 		<script type="text/javascript" src="js/page.js"></script>
 		<script type="text/javascript" src="js/top.js"></script>
-		<style type="text/css">
-			#dropdown-menu i {
-				margin-left: -30px;
-				margin-right: 20px;
-			}
-		</style>
 		<script type="text/javascript">
 			$(function() {
 
@@ -57,7 +44,7 @@
 
 	<body class="index">
      <!-- 头部 -------------------------------------------------------------------  -->		
-		
+	<jsp:include page="top.jsp"></jsp:include>
 	<!-- 头部 -------------------------------------------------------------------  -->		
 
 
@@ -74,7 +61,7 @@
 
 						<p>“TA还未设置签名哦”
 							<a href="hjavaScript:void(0)" class="tool" style="display: block;">
-								<i style="color:#666"; class="glyphicon glyphicon-edit" title="" data-toggle="tooltip" data-placement="top" data-original-title="编辑"></i>
+								<i style="color:#666;" class="glyphicon glyphicon-edit" title="" data-toggle="tooltip" data-placement="top" data-original-title="编辑"></i>
 							</a>
 
 						</p>
@@ -189,7 +176,7 @@
 											</div>
 											<div class="teacher text-o-show">
 												<a class=" js-user-card" href="javaScript:void(0);" data-card-url="/user/1931873/card/show" data-user-id="1931873">
-													<img class="avatar-ss " src="images/105454e6cdc9246475.jpg" 　alt="牛牛很忙"> 牛牛很忙
+													<img class="avatar-ss " src="images/105454e6cdc9246475.jpg" alt="牛牛很忙"> 牛牛很忙
 												</a>
 												<div class="price free pull-right"><span>免费</span></div>
 											</div>

@@ -7,18 +7,9 @@
 		<base href="/newhaozhiwang/"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
-		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-		<meta name="renderer" content="webkit">
-		<meta name="baidu-site-verification" content="XN2OVFQdUg">
 		<title>小组 </title>
-		<meta name="keywords" content="免费教程 在线教育  在线学习  知识分享 教程 视频教程 视频教学  网络教学  自学教程 摄影教程 折纸教程 编程教程  电脑教程  健身教程  ps教程  公开课">
-		<meta name="description" content="好知网是一个综合性在线学习平台。这里有大量的在线课程，课程涵盖计算机知识，企业管理，摄影，photoshop，职业技能，运动、外语、美食，时尚，手工艺，公开课，职业资格考试等。">
-		<meta content="0726602168a166f6c80004c6b5a9453f2f080c56" name="csrf-token">
-		<meta content="1" name="is-login">
-		<meta content="1" name="is-open">
 
 		<link href="http://f1.howzhi.com/system/2016/03-31/113613d6a857327741.ico" rel="shortcut icon">
-
 		<link href="css/bootstrap.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="css/howzhi.css">
 		
@@ -26,12 +17,6 @@
 		<script type="text/javascript" src="js/bootstrap.js"></script>
 		<script type="text/javascript" src="js/show.js"></script>
 		<script type="text/javascript" src="js/top.js"></script>
-		<!--[if lt IE 9]>
-    <script src="/assets/libs/html5shiv.js?2.6.17.2.3"></script>
-  <![endif]-->
-		<!--[if IE 8]>
-    <script src="/assets/libs/respond.min.js?2.6.17.2.3"></script>
-  <![endif]-->
 
 		<style>
 			.cke {
@@ -44,10 +29,7 @@
 		
 		<jsp:include page="top.jsp"></jsp:include>
 		<!---------------我是头部分隔线-------------------------------------------------------------->
-		
-		
-		
-			
+
 		<!---------------中间部分内容------------------------------------------------------------------->
 		<!---------------个人信息------------------------------------------>
 		<section class="p-home">

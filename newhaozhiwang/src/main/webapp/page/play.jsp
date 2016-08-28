@@ -6,7 +6,6 @@
 <head>
 <base href="/newhaozhiwang/"/>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
 	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 	<meta name="renderer" content="webkit">
@@ -118,7 +117,7 @@
 	<!--  右侧视频旁的div 课程列表  笔记  问答 等----------------------------------------------------------- -->
 		<div class="dashboard-toolbar pull-right">
 			<ul class="options clearfix">
-				<li class="active" 　data-step="2" data-intro="点击查看当前课程所有课时列表，想学哪里点哪里" data-position="left">
+				<li class="active" data-step="2" data-intro="点击查看当前课程所有课时列表，想学哪里点哪里" data-position="left">
 					<a data-toggle="tab" href="javascript:void(0)"><i class="hz-icon icon-formatlistbulleted"></i><span>课时</span></a>
 				</li>
 				<li data-step="3" data-intro="好记性不如烂笔头，点击添加新笔记吧" data-position="left">
@@ -451,7 +450,7 @@
 						<!-- 分页 ---------------------------------------------------------------------------------  -->
 						<ul class="pagination">
 							<li class="active"><a href="javaScript:void(0);">1</a></li>
-							<li><a href="javaScript:void(0);>2</a></li>
+							<li><a href="javaScript:void(0);">2</a></li>
 							<li><a href="javaScript:void(0);">3</a></li>
 							<li><a href="javaScript:void(0);">4</a></li>
 							<li><a href="javaScript:void(0);">5</a></li>
@@ -522,7 +521,7 @@
           </h3>
 					<div class="media-left">
 						<a class=" js-user-card" href="javaScript:void(0);" data-card-url="/user/8441/card/show" data-user-id="8441">
-							<img class=" avatar-sm " src="images/062247776d46161023.jpg" 　alt="Orchid">
+							<img class=" avatar-sm " src="images/062247776d46161023.jpg" alt="Orchid">
 						</a>
 
 					</div>
@@ -629,7 +628,7 @@
 		</div>
 	</div>
 	
-	<section class="serch-enginne-course visible-lg" 　role="alert">
+	<section class="serch-enginne-course visible-lg" role="alert">
 	</section>
 	<div id="login-modal" class="modal is-login" data-url="/login/ajax"></div>
 	<div id="modal" class="modal" tabindex="-1"></div>
