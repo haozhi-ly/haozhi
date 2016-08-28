@@ -4,7 +4,7 @@
 <html class="">
 
 	<head>
-	<base href="/newhaozhiwang/">
+		<base href="/newhaozhiwang/">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
 		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
@@ -174,18 +174,18 @@
 		<nav class="home-nav">
 			<div class="container">
 				<ul class="nav nav-mian">
-					<li class=""><a href="learnCenter.html">首页</a></li>
-					<li class=""><a href="http://www.howzhi.com/me/course/learning">在学</a></li>
-					<li class=" active  "><a href="http://www.howzhi.com/me/course/teaching/published"> 在教</a></li>
-					<li class=""><a href="http://www.howzhi.com/me/group">小组</a></li>
-					<li class=" "><a href="http://www.howzhi.com/me/following">好友</a></li>
-					<li class=" "><a href="http://www.howzhi.com/me/favorite/course">收藏夹</a></li>
+					<li class=""><a href="page/learnCenter.jsp">首页</a></li>
+					<li class=""><a href="page/studying.jsp">在学</a></li>
+					<li class=" active  "><a href="page/teaching.jsp"> 在教</a></li>
+					<li class=""><a href="page/mygroups.jsp">小组</a></li>
+					<li class=" "><a href="javascript:void(0)">好友</a></li>
+					<li class=" "><a href="javascript:void(0)">收藏夹</a></li>
 					<li class="more dropdown"><a href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">更多<b class="caret"></b></a>
 						<ul class="dropdown-menu" role="menu">
-							<li class=" "><a href="http://www.howzhi.com/my/homework/list">作业</a></li>
-							<li class=" "><a href="http://www.howzhi.com/me/note">笔记</a></li>
-							<li class=""><a href="http://www.howzhi.com/me/question/created">问答</a></li>
-							<li class="  "><a href="http://www.howzhi.com/task/">任务</a></li>
+							<li class=" "><a href="javascript:void(0)">作业</a></li>
+							<li class=" "><a href="javascript:void(0)">笔记</a></li>
+							<li class=""><a href="javascript:void(0)">问答</a></li>
+							<li class="  "><a href="javascript:void(0)">任务</a></li>
 						</ul>
 					</li>
 				</ul>

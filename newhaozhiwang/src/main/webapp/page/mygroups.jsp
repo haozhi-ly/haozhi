@@ -76,18 +76,18 @@
 		<nav class="home-nav">
 			<div class="container">
 				<ul class="nav nav-mian">
-					<li class=""><a href="learnCenter.html">首页</a></li>
-					<li class=""><a href="studying.html">在学</a></li>
-					<li class=""><a href="teaching.html"> 在教</a></li>
-					<li class=" active  "><a href="mygroups.html">小组</a></li>
-					<li class=" "><a href="http://www.howzhi.com/me/following">好友</a></li>
-					<li class=" "><a href="http://www.howzhi.com/me/favorite/course">收藏夹</a></li>
+					<li class=""><a href="page/learnCenter.jsp">首页</a></li>
+					<li class=""><a href="page/studying.jsp">在学</a></li>
+					<li class=""><a href="page/teaching.jsp"> 在教</a></li>
+					<li class=" active  "><a href="page/mygroups.jsp">小组</a></li>
+					<li class=" "><a href="javascript:void(0)">好友</a></li>
+					<li class=" "><a href="javascript:void(0)">收藏夹</a></li>
 					<li class="more dropdown"><a href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">更多<b class="caret"></b></a>
 						<ul class="dropdown-menu" role="menu">
-							<li class=" "><a href="http://www.howzhi.com/my/homework/list">作业</a></li>
-							<li class=" "><a href="http://www.howzhi.com/me/note">笔记</a></li>
-							<li class=""><a href="http://www.howzhi.com/me/question/created">问答</a></li>
-							<li class="  "><a href="http://www.howzhi.com/task/">任务</a></li>
+							<li class=" "><a href="javascript:void(0)">作业</a></li>
+							<li class=" "><a href="javascript:void(0)">笔记</a></li>
+							<li class=""><a href="javascript:void(0)">问答</a></li>
+							<li class="  "><a href="javascript:void(0)">任务</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -101,10 +101,10 @@
 		
 					<div class="myhz-group flat">
 						<h3>
-							<a href="http://www.howzhi.com/me/group/newthreads" class="active">我的小组最新话题</a>
-							<a href="http://www.howzhi.com/my/group/threads" class="">我发起的话题</a>
-							<a href="http://www.howzhi.com/my/group/posts" class="">我回应的话题</a>
-							<a href="http://www.howzhi.com/my/group/join" class="">我的小组</a>
+							<a href="javascript:void(0)" class="active">我的小组最新话题</a>
+							<a href="javascript:void(0)" class="">我发起的话题</a>
+							<a href="javascript:void(0)" class="">我回应的话题</a>
+							<a href="javascript:void(0)" class="">我的小组</a>
 						</h3>
 						<ul class="group-new">
 							<li class="empty"><i class="es-icon es-icon-forum"></i>先加入小组才能看到相关话题，<a href="http://www.howzhi.com/groups/explore">去发现</a>小组和话题</li>

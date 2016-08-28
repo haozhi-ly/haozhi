@@ -4,6 +4,7 @@
 <html class="">
 
 	<head>
+		<base href="/newhaozhiwang/"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
 		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
@@ -18,12 +19,12 @@
 		<meta content="1" name="is-open">
 
 		<link href="http://f1.howzhi.com/system/2016/03-31/113613d6a857327741.ico" rel="shortcut icon">
-		<link href="../css/bootstrap.css" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="../css/howzhi.css">
+		<link href="css/bootstrap.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/howzhi.css">
 
-		<script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
-		<script type="text/javascript" src="../js/bootstrap.js"></script>
-		<script type="text/javascript" src="../js/show.js"></script>
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/show.js"></script>
 
 		<!--		<link rel="stylesheet" media="screen" href="/es-icon.css">
 		<link rel="stylesheet" media="screen" href="/common.css">
@@ -157,7 +158,7 @@
 			<div class="container">
 				<div class="personImg">
 					<a class=" js-user-card" href="http://www.howzhi.com/u/2358987/" data-card-url="/user/2358987/card/show" data-user-id="2358987">
-						<img class="img-responsive" src="../images/avatar.png" alt="仗剑画江湖">
+						<img class="img-responsive" src="images/avatar.png" alt="仗剑画江湖">
 					</a>
 
 					<!---------------------用户信息------------------------>
@@ -179,10 +180,10 @@
 		<nav class="home-nav">
 			<div class="container">
 				<ul class="nav nav-mian">
-					<li class=" active "><a href="learnCenter.html">首页</a></li>
-					<li class=" "><a href="studying.html">在学</a></li>
-					<li class=" "><a href="teaching.html"> 在教</a></li>
-					<li class=""><a href="mygroups.html">小组</a></li>
+					<li class=" active "><a href="page/learnCenter.jsp">首页</a></li>
+					<li class=" "><a href="page/studying.jsp">在学</a></li>
+					<li class=" "><a href="page/teaching.jsp"> 在教</a></li>
+					<li class=""><a href="page/mygroups.jsp">小组</a></li>
 					<li class=" "><a href="javascript:void(0)">好友</a></li>
 					<li class=" "><a href="javascript:void(0)">笔记</a></li>
 					<li class=" "><a href="javascript:void(0)">任务</a></li>
@@ -211,7 +212,7 @@
 							<div class="clearfix studing-item ">
 								<div class="study-img">
 									<a href="http://www.howzhi.com/course/13339/">
-										<img class="img-responsive" src="../images/course01.jpg" 　alt="【古风人像】牛牛很忙教你打造穿越千年古风美人">
+										<img class="img-responsive" src="images/course01.jpg" 　alt="【古风人像】牛牛很忙教你打造穿越千年古风美人">
 										<!--学习进度百分比-->
 										<span class="load" style="width:0%"></span>
 										<span class="pere text-center">0%</span>
@@ -240,7 +241,7 @@
 							<div class="publish-question home-out flat">
 								<div class="f-img">
 									<a class=" js-user-card" href="http://www.howzhi.com/u/2324024/" data-card-url="/user/2324024/card/show" data-user-id="2324024">
-										<img class="avatar-mm " src="../images/avatar.png" alt="叶子1975">
+										<img class="avatar-mm " src="images/avatar.png" alt="叶子1975">
 									</a>
 								</div>
 								<div class="f-left">
@@ -269,7 +270,7 @@
 							<div class="publish-question home-out flat">
 								<div class="f-img">
 									<a class=" js-user-card" href="http://www.howzhi.com/u/1501660/" data-card-url="/user/1501660/card/show" data-user-id="1501660">
-										<img class="avatar-mm " src="../images/avatar.png" alt="叉八仰">
+										<img class="avatar-mm " src="images/avatar.png" alt="叉八仰">
 									</a>
 							
 								</div>
@@ -301,7 +302,7 @@
 							<div class="publish-question home-out flat">
 								<div class="f-img">
 									<a class=" js-user-card" href="http://www.howzhi.com/u/1501660/" data-card-url="/user/1501660/card/show" data-user-id="1501660">
-										<img class="avatar-mm " src="../images/avatar.png" alt="叉八仰">
+										<img class="avatar-mm " src="images/avatar.png" alt="叉八仰">
 									</a>
 								</div>
 								<div class="f-left">
@@ -314,7 +315,7 @@
 									<p></p>
 							
 									<p class="f-con f-dark">
-										"<img src="../images/avatar.png" title="得意" alt="得意">"
+										"<img src="images/avatar.png" title="得意" alt="得意">"
 									</p>
 							
 								</div>
@@ -333,7 +334,7 @@
 							<div class="publish-question home-out flat">
 								<div class="f-img">
 									<a class=" js-user-card" href="http://www.howzhi.com/u/1740750/" data-card-url="/user/1740750/card/show" data-user-id="1740750">
-										<img class="avatar-mm " src="../images/avatar.png" alt="就是兔子">
+										<img class="avatar-mm " src="images/avatar.png" alt="就是兔子">
 									</a>
 							
 								</div>
@@ -365,7 +366,7 @@
 							<div class="publish-question home-out flat">
 								<div class="f-img">
 									<a class=" js-user-card" href="http://www.howzhi.com/u/1350071/" data-card-url="/user/1350071/card/show" data-user-id="1350071">
-										<img class="avatar-mm " src="../images/avatar.png" alt="凝创摄影艺术中心">
+										<img class="avatar-mm " src="images/avatar.png" alt="凝创摄影艺术中心">
 										<span class="dapinpai-icon" title="达品牌"></span>
 									</a>
 							
@@ -396,7 +397,7 @@
 							<div class="publish-question home-out flat">
 								<div class="f-img">
 									<a class=" js-user-card" href="http://www.howzhi.com/u/1740750/" data-card-url="/user/1740750/card/show" data-user-id="1740750">
-										<img class="avatar-mm " src="../images/avatar.png" alt="就是兔子">
+										<img class="avatar-mm " src="images/avatar.png" alt="就是兔子">
 									</a>
 							
 								</div>
@@ -431,7 +432,7 @@
 							<div class="publish-question home-out flat">
 								<div class="f-img">
 									<a class=" js-user-card" href="http://www.howzhi.com/u/5759/" data-card-url="/user/5759/card/show" data-user-id="5759">
-										<img class="avatar-mm" src="../images/person01.jpg" alt="知了">
+										<img class="avatar-mm" src="images/person01.jpg" alt="知了">
 										<span class="daren-icon" title="达人"></span>
 									</a>
 							
@@ -447,7 +448,7 @@
 								</div>
 								<div class="f-content ff">
 									<a href="http://www.howzhi.com/course/2730/" class="c-img">
-										<img src="../images/course02.jpg" class="img-responsive">
+										<img src="images/course02.jpg" class="img-responsive">
 									</a>
 							
 									<div class="c-content">
@@ -462,7 +463,7 @@
 							<div class="publish-question home-out flat">
 								<div class="f-img">
 									<a class=" js-user-card" href="http://www.howzhi.com/u/5759/" data-card-url="/user/5759/card/show" data-user-id="5759">
-										<img class="avatar-mm" src="../images/person01.jpg" alt="知了">
+										<img class="avatar-mm" src="images/person01.jpg" alt="知了">
 										<span class="daren-icon" title="达人"></span>
 									</a>
 							
@@ -478,7 +479,7 @@
 								</div>
 								<div class="f-content ff">
 									<a href="http://www.howzhi.com/course/9573/" class="c-img">
-										<img src="../images/course01.jpg" class="img-responsive">
+										<img src="images/course01.jpg" class="img-responsive">
 									</a>
 							
 									<div class="c-content">
@@ -493,7 +494,7 @@
 							<div class="publish-question home-out flat">
 								<div class="f-img">
 									<a class=" js-user-card" href="http://www.howzhi.com/u/5759/" data-card-url="/user/5759/card/show" data-user-id="5759">
-										<img class="avatar-mm" src="../images/person01.jpg" alt="知了">
+										<img class="avatar-mm" src="images/person01.jpg" alt="知了">
 										<span class="daren-icon" title="达人"></span>
 									</a>
 							
@@ -509,7 +510,7 @@
 								</div>
 								<div class="f-content ff">
 									<a href="http://www.howzhi.com/course/9573/" class="c-img">
-										<img src="../images/course09.jpg" class="img-responsive">
+										<img src="images/course09.jpg" class="img-responsive">
 									</a>
 							
 									<div class="c-content">
@@ -593,7 +594,7 @@
 						
 						<div class="hz-ad flat">
 							<!--这里插入要显示的班级图片，然后点击跳转到班级信息-->
-							<a href="javascript:void(0)" target="_blank"><img src="../images/block_picture.jpg" class="img-responsive" alt="小九入门班"></a>
+							<a href="javascript:void(0)" target="_blank"><img src="images/block_picture.jpg" class="img-responsive" alt="小九入门班"></a>
 						</div>
 				</div>
 <!--------------------------------任务信息------------------------------------------>
@@ -671,101 +672,10 @@
 				Powered by <a href="http://www.edusoho.com/" target="_blank">EduSoho v6.17.2</a> ©2014-2016 <a class="mlm" href="http://www.howzhi.com/" target="_blank">好知网</a>
 			</div>
 		</div>
-		<!--<script src="%E6%88%91%E7%9A%84%E5%A5%BD%E7%9F%A5%20-%20%E5%A5%BD%E7%9F%A5%E7%BD%91-%E9%87%8D%E6%8B%BE%E5%AD%A6%E4%B9%A0%E4%B9%90%E8%B6%A3-Powered%20By%20Howzhi_files/piwik.js" defer="defer" async="" type="text/javascript"></script>
-		<script src="%E6%88%91%E7%9A%84%E5%A5%BD%E7%9F%A5%20-%20%E5%A5%BD%E7%9F%A5%E7%BD%91-%E9%87%8D%E6%8B%BE%E5%AD%A6%E4%B9%A0%E4%B9%90%E8%B6%A3-Powered%20By%20Howzhi_files/analytics.js" async=""></script>
-		<script src="%E6%88%91%E7%9A%84%E5%A5%BD%E7%9F%A5%20-%20%E5%A5%BD%E7%9F%A5%E7%BD%91-%E9%87%8D%E6%8B%BE%E5%AD%A6%E4%B9%A0%E4%B9%90%E8%B6%A3-Powered%20By%20Howzhi_files/hm.js"></script>-->
-		<script>
-			var _hmt = _hmt || [];
-			(function() {
-				var hm = document.createElement("script");
-				hm.src = "//hm.baidu.com/hm.js?4d17172b485f74c1bd66be85d5fe26cc";
-				var s = document.getElementsByTagName("script")[0];
-				s.parentNode.insertBefore(hm, s);
-			})();
-		</script>
-		<script>
-			(function(i, s, o, g, r, a, m) {
-				i['GoogleAnalyticsObject'] = r;
-				i[r] = i[r] || function() {
-					(i[r].q = i[r].q || []).push(arguments)
-				}, i[r].l = 1 * new Date();
-				a = s.createElement(o),
-					m = s.getElementsByTagName(o)[0];
-				a.async = 1;
-				a.src = g;
-				m.parentNode.insertBefore(a, m)
-			})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-			ga('create', 'UA-23840922-1', 'auto');
-			ga('send', 'pageview');
-		</script>
-
-		<!-- Piwik -->
-		<script type="text/javascript">
-			var _paq = _paq || [];
-			_paq.push(['trackPageView']);
-			_paq.push(['enableLinkTracking']);
-			(function() {
-				var u = "//piwik.edusoho.cn/";
-				_paq.push(['setTrackerUrl', u + 'piwik.php']);
-				_paq.push(['setSiteId', 3]);
-				var d = document,
-					g = d.createElement('script'),
-					s = d.getElementsByTagName('script')[0];
-				g.type = 'text/javascript';
-				g.async = true;
-				g.defer = true;
-				g.src = u + 'piwik.js';
-				s.parentNode.insertBefore(g, s);
-			})();
-		</script>
-		<noscript><p><img src="//piwik.edusoho.cn/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
-		<!-- End Piwik Code -->
-
-		<section class="serch-enginne-course visible-lg" 　role="alert">
-		</section>
-		<div id="login-modal" class="modal is-login" data-url="/login/ajax"></div>
-		<div id="modal" class="modal" tabindex="-1"></div>
-		<div id="upload-image-modal" class="modal" tabindex="-1" aria-hidden="true" style="display: none;"></div>
-		<ul class="fixed-bar">
-			<li class="hz-app">
-				<a class="active btn btn-primary" target="_blank" href="http://www.edusoho.com/download/mobile?client=android&amp;code=howzhi">
-      APP
-    </a>
-			</li>
-			<li class="hz-weixin">
-				<a class="fixed-bar-icon" href="javascript:;">
-					<i class="hz-icon icon-erweima "></i>
-				</a>
-				<div class="weixin">
-					<p class="text-center mvs t-primary hidden-xs hidden-sm">扫一扫 关注好知微信</p>
-					<img src="%E6%88%91%E7%9A%84%E5%A5%BD%E7%9F%A5%20-%20%E5%A5%BD%E7%9F%A5%E7%BD%91-%E9%87%8D%E6%8B%BE%E5%AD%A6%E4%B9%A0%E4%B9%90%E8%B6%A3-Powered%20By%20Howzhi_files/wenxin-qrcode.jpg" class="img-responsive" alt="好知网微信">
-				</div>
-			</li>
-			<li class="hz-feedback">
-				<a class="fixed-bar-icon" href="http://www.howzhi.com/feedback/user/list">
-					<i class="hz-icon icon-question "></i>
-				</a>
-				<a href="http://www.howzhi.com/feedback/user/list?feedurl=http://www.howzhi.com/me/" target="_blank" class="js-feedback fixed-bar-text">
-      问题反馈
-    </a>
-			</li>
-			<li style="display: none;" class="go-top">
-				<a class="fixed-bar-icon" href="javascript:;">
-					<i class="hz-icon icon-keyboardarrowup"></i>
-				</a>
-				<a class="fixed-bar-text" href="javascript:;">
-      回到顶部
-    </a>
-			</li>
-		</ul>
 		
-		<!--<script src="%E6%88%91%E7%9A%84%E5%A5%BD%E7%9F%A5%20-%20%E5%A5%BD%E7%9F%A5%E7%BD%91-%E9%87%8D%E6%8B%BE%E5%AD%A6%E4%B9%A0%E4%B9%90%E8%B6%A3-Powered%20By%20Howzhi_files/sea.js"></script>
-		<script src="%E6%88%91%E7%9A%84%E5%A5%BD%E7%9F%A5%20-%20%E5%A5%BD%E7%9F%A5%E7%BD%91-%E9%87%8D%E6%8B%BE%E5%AD%A6%E4%B9%A0%E4%B9%90%E8%B6%A3-Powered%20By%20Howzhi_files/seajs-style.js"></script>
-		<script src="%E6%88%91%E7%9A%84%E5%A5%BD%E7%9F%A5%20-%20%E5%A5%BD%E7%9F%A5%E7%BD%91-%E9%87%8D%E6%8B%BE%E5%AD%A6%E4%B9%A0%E4%B9%90%E8%B6%A3-Powered%20By%20Howzhi_files/seajs-global-config.js"></script>
-		<script>
-			seajs.use(app.mainScript);
-		</script>-->
+
+		
+
 
 	</body>
 
