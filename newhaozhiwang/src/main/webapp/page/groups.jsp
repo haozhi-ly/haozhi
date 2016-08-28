@@ -87,7 +87,7 @@
 						</li>
 						<li class="dropdown user-nav-dropdown user-img">
 							<a href="#" class="dropdown-toggle">
-								<img src="../images/avatar.png" class="user-avatar" alt="珘珘">
+								<img src="images/avatar.png" class="user-avatar" alt="珘珘">
 							</a>
 							<ul class="dropdown-menu" role="menu">
 								<li>
@@ -156,7 +156,7 @@
 								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 grid">
 									<p>
 										<a href="javascript:void(0)" title="好知大本营（教务处）">
-											<img src="../images/120652c07d78265998.jpg" alt="好知大本营（教务处）" class="group-avatar-sm">
+											<img src="images/120652c07d78265998.jpg" alt="好知大本营（教务处）" class="group-avatar-sm">
 										</a>
 									</p>
 									<p class="title"><a class="link-light" href="javascript:void(0)" title="好知大本营（教务处）">好知大本营（教务处）</a></p>
@@ -165,7 +165,7 @@
 								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 grid">
 									<p>
 										<a href="javascript:void(0)" title="摄影公社">
-											<img src="../images/111938a63532860008.jpg" alt="摄影公社" class="group-avatar-sm">
+											<img src="images/111938a63532860008.jpg" alt="摄影公社" class="group-avatar-sm">
 										</a>
 									</p>
 									<p class="title"><a class="link-light" href="javascript:void(0)" title="摄影公社">摄影公社</a></p>
@@ -173,23 +173,23 @@
 								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 grid">
 									<p>
 										<a href="javascript:void(0)" title="Photoshop照片后期处理学习交流">
-											<img src="../images/163453d26839163811.jpg" alt="Photoshop照片后期处理学习交流" class="group-avatar-sm">
+											<img src="images/163453d26839163811.jpg" alt="Photoshop照片后期处理学习交流" class="group-avatar-sm">
 										</a>
 									</p>
 									<p class="title"><a class="link-light" href="javascript:void(0)" title="Photoshop照片后期处理学习交流">Photoshop照片后期处理学习交流</a></p>
 								</div>
 								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 grid">
 									<p>
-										<a href="href=" javascript:void(0) "" title="我是从零开始学吉他的">
-											<img src="../images/120652c07d78265998.jpg" alt="我是从零开始学吉他的" class="group-avatar-sm">
+										<a href="javascript:void(0)" title="我是从零开始学吉他的">
+											<img src="images/120652c07d78265998.jpg" alt="我是从零开始学吉他的" class="group-avatar-sm">
 										</a>
 									</p>
 									<p class="title"><a class="link-light" href="javascript:void(0)" title="我是从零开始学吉他的">我是从零开始学吉他的</a></p>
 								</div>
 								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 grid">
 									<p>
-										<a href="href=" javascript:void(0) "" title="每月养成一个好习惯">
-											<img src="../images/1151175e2fc5261920.jpg" alt="每月养成一个好习惯" class="group-avatar-sm">
+										<a href="javascript:void(0)" title="每月养成一个好习惯">
+											<img src="images/1151175e2fc5261920.jpg" alt="每月养成一个好习惯" class="group-avatar-sm">
 										</a>
 									</p>
 									<p class="title"><a class="link-light" href="javascript:void(0)" title="每月养成一个好习惯">每月养成一个好习惯</a></p>
@@ -197,7 +197,7 @@
 								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 grid">
 									<p>
 										<a href="javascript:void(0)" title="摄影入门学习">
-											<img src="../images/220322a3adc0705905.jpg" alt="摄影入门学习" class="group-avatar-sm">
+											<img src="images/220322a3adc0705905.jpg" alt="摄影入门学习" class="group-avatar-sm">
 										</a>
 									</p>
 									<p class="title"><a class="link-light" href="javascript:void(0)" title="摄影入门学习">摄影入门学习</a></p>
@@ -357,7 +357,7 @@
 							<div class="media">
 								<div class="media-left">
 									<a class=" " href="http://www.howzhi.com/u/2358982/" data-card-url="/user/2358982/card/show" data-user-id="2358982">
-										<img class="avatar-md" src="../images/avatar.png" alt="珘珘">
+										<img class="avatar-md" src="images/avatar.png" alt="珘珘">
 									</a>
 								</div>
 								<div class="media-body">
@@ -404,7 +404,7 @@
 								<div class="media media-group">
 									<div class="media-left">
 										<a href="http://www.howzhi.com/group/355/" title="音乐爱好者">
-											<img src="../images/120652c07d78265998.jpg" alt="音乐爱好者" class="avatar-square-md">
+											<img src="images/120652c07d78265998.jpg" alt="音乐爱好者" class="avatar-square-md">
 										</a>
 									</div>
 									<div class="media-body">
@@ -422,7 +422,7 @@
 								<div class="media media-group">
 									<div class="media-left">
 										<a href="http://www.howzhi.com/group/349/" title="科学学英语">
-											<img src="../images/01460088969f639218.jpg" alt="科学学英语" class="avatar-square-md">
+											<img src="images/01460088969f639218.jpg" alt="科学学英语" class="avatar-square-md">
 										</a>
 									</div>
 									<div class="media-body">
@@ -440,7 +440,7 @@
 								<div class="media media-group">
 									<div class="media-left">
 										<a href="http://www.howzhi.com/group/344/" title="三维动画">
-											<img src="../images/220322a3adc0705905.jpg" alt="三维动画" class="avatar-square-md">
+											<img src="images/220322a3adc0705905.jpg" alt="三维动画" class="avatar-square-md">
 										</a>
 									</div>
 									<div class="media-body">
@@ -480,10 +480,9 @@
 						关注我们：
 						<a href="http://weibo.com/howzhicom"><i class="hz-icon icon-weibo"></i></a>
 						<a class="icon-sns"><i class="hz-icon icon-weixin"></i>
-          <div class="sns-popover" style="background:url(&quot;/assets/img/howzhi/weichat.png?2.6.17.2.3&quot;)">
-            
-          </div>
-        </a>
+       					<div class="sns-popover" style="background:url(/assets/img/howzhi/weichat.png?2.6.17.2.3)">
+          				</div>
+       					 </a>
 						<a href="http://user.qzone.qq.com/2485597828/"><i class="hz-icon icon-qq"></i></a>
 
 						<a href="http://site.douban.com/124522/"><i class="hz-icon icon-gongnengyedouban"></i></a>
@@ -599,7 +598,7 @@
 						<div class="media">
 							<div class="media-left">
 								<a class=" " href="http://www.howzhi.com/u/2358982/" data-card-url="/user/2358982/card/show" data-user-id="2358982">
-									<img class="avatar-md" src="../images/avatar.png" alt="珘珘">
+									<img class="avatar-md" src="images/avatar.png" alt="珘珘">
 								</a>
 
 							</div>
