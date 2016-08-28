@@ -63,7 +63,7 @@
 								</div>
 								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 grid">
 									<p>
-										<a href="href=" javascript:void(0) "" title="我是从零开始学吉他的">
+										<a href="javascript:void(0)" title="我是从零开始学吉他的">
 											<img src="images/120652c07d78265998.jpg" alt="我是从零开始学吉他的" class="group-avatar-sm">
 										</a>
 									</p>
@@ -71,7 +71,7 @@
 								</div>
 								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 grid">
 									<p>
-										<a href="href=" javascript:void(0) "" title="每月养成一个好习惯">
+										<a href="javascript:void(0)" title="每月养成一个好习惯">
 											<img src="images/1151175e2fc5261920.jpg" alt="每月养成一个好习惯" class="group-avatar-sm">
 										</a>
 									</p>
@@ -98,7 +98,7 @@
 							<ul class="media-list thread-list">
 								<li class="media">
 									<a class="pull-left js-user-card" id="introduce" href="javascript:void(0)" data-card-url="/user/1321903/card/show" data-user-id="1321903">
-										<img class="avatar-md " src="images/touxiang.jpg" 　alt="曹佳佳的熊猫眼">
+										<img class="avatar-md " src="../images/touxiang.jpg" alt="曹佳佳的熊猫眼">
 									</a>
 
 									<div class="media-body">
@@ -120,7 +120,7 @@
 								<!---------------------------------------------------->
 								<li class="media">
 									<a class="pull-left js-user-card" href="http://www.howzhi.com/u/187/" data-card-url="/user/187/card/show" data-user-id="187">
-										<img class="avatar-md " src="images/user-images.jpg" 　alt="乱流">
+										<img class="avatar-md " src="../images/user-images.jpg" alt="乱流">
 									</a>
 
 									<div class="media-body">
@@ -143,7 +143,7 @@
 								<!---------------------------------------------------->
 								<li class="media">
 									<a class="pull-left js-user-card" href="http://www.howzhi.com/u/1321903/" data-card-url="/user/1321903/card/show" data-user-id="1321903">
-										<img class="avatar-md " src="images/touxiang.jpg" 　alt="曹佳佳的熊猫眼">
+										<img class="avatar-md " src="../images/touxiang.jpg" alt="曹佳佳的熊猫眼">
 									</a>
 
 									<div class="media-body">
@@ -165,7 +165,7 @@
 								<!---------------------------------------------------->
 								<li class="media">
 									<a class="pull-left js-user-card" href="http://www.howzhi.com/u/1321903/" data-card-url="/user/1321903/card/show" data-user-id="1321903">
-										<img class="avatar-md " src="images/user-images.jpg" 　alt="曹佳佳的熊猫眼">
+										<img class="avatar-md " src="../images/user-images.jpg" alt="曹佳佳的熊猫眼">
 									</a>
 
 									<div class="media-body">
@@ -188,7 +188,7 @@
 								<!---------------------------------------------------->
 								<li class="media">
 									<a class="pull-left js-user-card" id="card01" href="http://www.howzhi.com/u/187/" data-card-url="/user/187/card/show" data-user-id="187">
-										<img class="avatar-md " src="images/user-images.jpg" 　alt="乱流">
+										<img class="avatar-md " src="../images/user-images.jpg" alt="乱流">
 									</a>
 
 									<div class="media-body">
@@ -221,7 +221,7 @@
 							<div class="media">
 								<div class="media-left">
 									<a title="" data-original-title="" class=" js-user-card"  href="javascript:void(0)" data-card-url="/user/2358982/card/show" data-user-id="2358982">
-										<img class="avatar-md " src="images/avatar.png" 　alt="珘珘">
+										<img class="avatar-md " src="../images/avatar.png" alt="珘珘">
 									</a>
 
 								</div>
@@ -363,10 +363,9 @@
 						关注我们：
 						<a href="http://weibo.com/howzhicom"><i class="hz-icon icon-weibo"></i></a>
 						<a class="icon-sns"><i class="hz-icon icon-weixin"></i>
-          <div class="sns-popover" style="background:url(&quot;/assets/img/howzhi/weichat.png?2.6.17.2.3&quot;)">
-            
-          </div>
-        </a>
+       					<div class="sns-popover" style="background:url(/assets/img/howzhi/weichat.png?2.6.17.2.3)">
+          				</div>
+       					 </a>
 						<a href="http://user.qzone.qq.com/2485597828/"><i class="hz-icon icon-qq"></i></a>
 
 						<a href="http://site.douban.com/124522/"><i class="hz-icon icon-gongnengyedouban"></i></a>

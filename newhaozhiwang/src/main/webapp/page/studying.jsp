@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html>
 
@@ -7,7 +8,6 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
 		<title>在学 </title>
-
 		<link href="http://f1.howzhi.com/system/2016/03-31/113613d6a857327741.ico" rel="shortcut icon">
 		<link href="css/bootstrap.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="css/howzhi.css">
@@ -28,7 +28,7 @@
 		<!---------------我是头部分隔线-------------------------------------------------------------->
 		<jsp:include page="top.jsp"></jsp:include>
 		<!---------------中间部分内容------------------------------------------------------------------->
-		<!---------------个人信息------------------------------------------>
+		<!---------------个人信息----------------------------------------->
 		<section class="p-home">
 			<div class="container">
 				<div class="personImg">
@@ -125,7 +125,7 @@
 													</div>
 													<div class="teacher">
 														<a class=" js-user-card" href="Javascript:void(0)" data-card-url="/user/7797/card/show" data-user-id="7797">
-															<img class="avatar-ss " src="images/avatar.png" 　alt="艾影">														艾影
+															<img class="avatar-ss " src="images/avatar.png" alt="艾影">														艾影
 														</a>
 													</div>
 												</div>
@@ -173,7 +173,7 @@
 													</div>
 													<div class="teacher">
 														<a class=" js-user-card" href="http://www.howzhi.com/u/7797/" data-card-url="/user/7797/card/show" data-user-id="7797">
-															<img class="avatar-ss " src="images/avatar.png" 　alt="艾影">						艾影
+															<img class="avatar-ss " src="images/avatar.png" alt="艾影">						艾影
 														</a>
 									                </div>
 									            </div>
@@ -347,16 +347,7 @@
 				Powered by <a href="http://www.edusoho.com/" target="_blank">EduSoho v6.17.2</a> ©2014-2016 <a class="mlm" href="http://www.howzhi.com/" target="_blank">好知网</a>
 			</div>
 		</div>
-		<!--<script src="piwik.js" defer="defer" async="" type="text/javascript"></script>
-		<script src="analytics.js" async=""></script>
-		<script src="hm.js"></script>
-		<script src="/sea.js"></script>
-		<script src="/seajs-style.js"></script>
-		<script src="/seajs-global-config.js"></script>
-		<script>
-		  seajs.use(app.mainScript);
-		</script> -->
-		
+
 	</body>
 
 </html>

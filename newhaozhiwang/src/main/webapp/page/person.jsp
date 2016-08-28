@@ -61,7 +61,7 @@
 
 						<p>“TA还未设置签名哦”
 							<a href="hjavaScript:void(0)" class="tool" style="display: block;">
-								<i style="color:#666"; class="glyphicon glyphicon-edit" title="" data-toggle="tooltip" data-placement="top" data-original-title="编辑"></i>
+								<i style="color:#666;" class="glyphicon glyphicon-edit" title="" data-toggle="tooltip" data-placement="top" data-original-title="编辑"></i>
 							</a>
 
 						</p>
@@ -176,7 +176,7 @@
 											</div>
 											<div class="teacher text-o-show">
 												<a class=" js-user-card" href="javaScript:void(0);" data-card-url="/user/1931873/card/show" data-user-id="1931873">
-													<img class="avatar-ss " src="images/105454e6cdc9246475.jpg" 　alt="牛牛很忙"> 牛牛很忙
+													<img class="avatar-ss " src="images/105454e6cdc9246475.jpg" alt="牛牛很忙"> 牛牛很忙
 												</a>
 												<div class="price free pull-right"><span>免费</span></div>
 											</div>
