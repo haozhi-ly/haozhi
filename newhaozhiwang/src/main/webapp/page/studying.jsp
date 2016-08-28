@@ -242,7 +242,7 @@
 													</div>
 													<div class="teacher">
 														<a class=" js-user-card" href="Javascript:void(0)" data-card-url="/user/7797/card/show" data-user-id="7797">
-															<img class="avatar-ss " src="images/avatar.png" 　alt="艾影">														艾影
+															<img class="avatar-ss " src="images/avatar.png" alt="艾影">														艾影
 														</a>
 													</div>
 												</div>
@@ -290,7 +290,7 @@
 													</div>
 													<div class="teacher">
 														<a class=" js-user-card" href="http://www.howzhi.com/u/7797/" data-card-url="/user/7797/card/show" data-user-id="7797">
-															<img class="avatar-ss " src="images/avatar.png" 　alt="艾影">						艾影
+															<img class="avatar-ss " src="images/avatar.png" alt="艾影">						艾影
 														</a>
 									                </div>
 									            </div>

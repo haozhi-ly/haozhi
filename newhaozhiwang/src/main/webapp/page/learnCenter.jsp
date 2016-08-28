@@ -211,7 +211,7 @@
 							<div class="clearfix studing-item ">
 								<div class="study-img">
 									<a href="http://www.howzhi.com/course/13339/">
-										<img class="img-responsive" src="../images/course01.jpg" 　alt="【古风人像】牛牛很忙教你打造穿越千年古风美人">
+										<img class="img-responsive" src="../images/course01.jpg" alt="【古风人像】牛牛很忙教你打造穿越千年古风美人">
 										<!--学习进度百分比-->
 										<span class="load" style="width:0%"></span>
 										<span class="pere text-center">0%</span>
@@ -722,7 +722,7 @@
 		<noscript><p><img src="//piwik.edusoho.cn/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
 		<!-- End Piwik Code -->
 
-		<section class="serch-enginne-course visible-lg" 　role="alert">
+		<section class="serch-enginne-course visible-lg" role="alert">
 		</section>
 		<div id="login-modal" class="modal is-login" data-url="/login/ajax"></div>
 		<div id="modal" class="modal" tabindex="-1"></div>

@@ -215,7 +215,7 @@
 							<ul class="media-list thread-list">
 								<li class="media">
 									<a class="pull-left js-user-card" id="introduce" href="javascript:void(0)" data-card-url="/user/1321903/card/show" data-user-id="1321903">
-										<img class="avatar-md " src="../images/touxiang.jpg" 　alt="曹佳佳的熊猫眼">
+										<img class="avatar-md " src="../images/touxiang.jpg" alt="曹佳佳的熊猫眼">
 									</a>
 
 									<div class="media-body">
@@ -237,7 +237,7 @@
 								<!---------------------------------------------------->
 								<li class="media">
 									<a class="pull-left js-user-card" href="http://www.howzhi.com/u/187/" data-card-url="/user/187/card/show" data-user-id="187">
-										<img class="avatar-md " src="../images/user-images.jpg" 　alt="乱流">
+										<img class="avatar-md " src="../images/user-images.jpg" alt="乱流">
 									</a>
 
 									<div class="media-body">
@@ -260,7 +260,7 @@
 								<!---------------------------------------------------->
 								<li class="media">
 									<a class="pull-left js-user-card" href="http://www.howzhi.com/u/1321903/" data-card-url="/user/1321903/card/show" data-user-id="1321903">
-										<img class="avatar-md " src="../images/touxiang.jpg" 　alt="曹佳佳的熊猫眼">
+										<img class="avatar-md " src="../images/touxiang.jpg" alt="曹佳佳的熊猫眼">
 									</a>
 
 									<div class="media-body">
@@ -282,7 +282,7 @@
 								<!---------------------------------------------------->
 								<li class="media">
 									<a class="pull-left js-user-card" href="http://www.howzhi.com/u/1321903/" data-card-url="/user/1321903/card/show" data-user-id="1321903">
-										<img class="avatar-md " src="../images/user-images.jpg" 　alt="曹佳佳的熊猫眼">
+										<img class="avatar-md " src="../images/user-images.jpg" alt="曹佳佳的熊猫眼">
 									</a>
 
 									<div class="media-body">
@@ -305,7 +305,7 @@
 								<!---------------------------------------------------->
 								<li class="media">
 									<a class="pull-left js-user-card" id="card01" href="http://www.howzhi.com/u/187/" data-card-url="/user/187/card/show" data-user-id="187">
-										<img class="avatar-md " src="../images/user-images.jpg" 　alt="乱流">
+										<img class="avatar-md " src="../images/user-images.jpg" alt="乱流">
 									</a>
 
 									<div class="media-body">
@@ -338,7 +338,7 @@
 							<div class="media">
 								<div class="media-left">
 									<a title="" data-original-title="" class=" js-user-card"  href="javascript:void(0)" data-card-url="/user/2358982/card/show" data-user-id="2358982">
-										<img class="avatar-md " src="../images/avatar.png" 　alt="珘珘">
+										<img class="avatar-md " src="../images/avatar.png" alt="珘珘">
 									</a>
 
 								</div>
