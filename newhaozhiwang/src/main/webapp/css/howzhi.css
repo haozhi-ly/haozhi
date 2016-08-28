@@ -1,3 +1,23 @@
+/* 头部样式分割线 */
+.hz-search {
+    border-width: 0;
+    height: 35px;
+    margin: 22px 0 0;
+    padding: 0;
+}
+/* .form-group{
+	margin-top:14px;
+	margin-left:35px;
+} */
+
+#dropdown-menu i {
+	margin-left: -30px;
+	margin-right: 20px;
+}
+/* 头部样式分割线 */
+.nav navbar-nav topmenu li a{
+	color:#999;
+}
 .text-o-show {
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -3838,7 +3858,8 @@ a.hzlink-line:hover {
 
 .topmenu.navbar-nav>li>a {
 	padding: 30px 25px;
-	font-size: 16px
+	font-size: 16px;
+	color:#666;
 }
 
 @media (max-width:1200px) {
@@ -3870,15 +3891,15 @@ a.hzlink-line:hover {
 	min-width: 265px;
 	padding: 5px
 }
-
 .topmenu .dropdown-menu li {
-	min-width: 85px;
-	float: left
+	min-width: 80px;
+	float: left;
+	
 }
-
 .topmenu .dropdown-menu li a {
 	text-align: center;
-	padding: 10px 0
+	padding: 10px 0;
+	color:#999;
 }
 
 .user-nav {
@@ -3911,12 +3932,13 @@ a.hzlink-line:hover {
 }
 
 .user-nav .nav>li a {
-	padding: 0 10px !important
+	padding: 0 10px !important;
+	color:#666;
 }
 
 .user-nav .nav>li>a.btn {
 	padding: 6px 12px !important;
-	margin: 23px 10px 23px 20px;
+	margin: 23px 10px 23px 5px;
 	border-radius: 20px
 }
 
@@ -4487,16 +4509,16 @@ a.hzlink-line:hover {
 	height: 210px
 }
 
-@media (min-width:992px) and (max-width:1200px) {
+ @media (min-width:992px) and (max-width:1200px) { 
 	.hot-tag .hot-tag-main>div>ul li.item-s {
 		height: 112px
 	}
 	.hot-tag .hot-tag-main>div>ul li.item-l {
 		height: 173px
 	}
-}
+ } 
 
-@media (max-width:992px) {
+ @media (max-width:992px) { 
 	.hot-tag .hot-tag-main>div>ul li.item-s {
 		height: 224px
 	}
@@ -4505,14 +4527,14 @@ a.hzlink-line:hover {
 	}
 }
 
-@media (max-width:480px) {
+ @media (max-width:480px) { 
 	.hot-tag .hot-tag-main>div>ul li.item-s {
 		height: 120px
 	}
 	.hot-tag .hot-tag-main>div>ul li.item-l {
 		height: 160px
 	}
-}
+ } 
 
 .hot-tag .hot-tag-main>div>ul li img {
 	width: 100%;

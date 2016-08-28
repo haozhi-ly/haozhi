@@ -24,13 +24,18 @@
 			margin-left: 10px;
 		}
 					
-					#unload {
-						background: #15c288 none repeat scroll 0 0;
-						border: 1px solid #15c288;
-						color: #fff !important;
-					}
-				</style>
-				<script type="text/javascript">
+		#unload {
+			background: #15c288 none repeat scroll 0 0;
+			border: 1px solid #15c288;
+			color: #fff !important;
+		}
+		
+		.form-group{
+			margin-top:14px;
+			margin-left:35px;
+		}
+		</style>
+		<script type="text/javascript">
 					$(function() {
 						$(".list-group-item a").bind("click", function() {
 							var str = this.innerText;
@@ -55,8 +60,8 @@
 
 		<body class="index">
 		<!-- 头部 -------------------------------------------------------------------  -->		
-			
-			<!-- 头部 -------------------------------------------------------------------  -->		
+		<jsp:include page="top.jsp"></jsp:include>
+		<!-- 头部 -------------------------------------------------------------------  -->		
 
 			<div class="container" id="content-container">
 				<div class="row">

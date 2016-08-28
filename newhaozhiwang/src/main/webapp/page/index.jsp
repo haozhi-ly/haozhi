@@ -2,23 +2,14 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
 <!DOCTYPE html>
-<!-- saved from url=(0022)http://www.howzhi.com/ -->
 <html class="">
-<!--<![endif]-->
 <head>
-	<base href="/newhaozhiwang/"/>
+<base href="/newhaozhiwang/"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
-<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-<meta name="renderer" content="webkit">
-<meta name="baidu-site-verification" content="XN2OVFQdUg">
 <title>好知网</title>
-<meta name="keywords" content="免费教程 在线教育  在线学习  知识分享 教程 视频教程 视频教学  网络教学  自学教程 摄影教程 折纸教程 编程教程  电脑教程  健身教程  ps教程  公开课">
-<meta name="description" content="好知网是一个综合性在线学习平台。这里有大量的在线课程，课程涵盖计算机知识，企业管理，摄影，photoshop，职业技能，运动、外语、美食，时尚，手工艺，公开课，职业资格考试等。">
-<meta content="d5427967e212be85fef39cc418950d552ad867a6" name="csrf-token">
-<meta content="0" name="is-login">
-<meta content="1" name="is-open">
 
+<link href="http://f1.howzhi.com/system/2016/03-31/113613d6a857327741.ico" rel="shortcut icon">
 <link rel="stylesheet" media="screen" href="css/es-icon.css">
 <link rel="stylesheet" type="text/css" href="css/howzhi.css">
 <link rel="stylesheet" type="text/css" href="css/index.css">
@@ -29,14 +20,14 @@
 <script src="js/swiper-3.3.1.min.js"></script> 
 <script src="js/bootstrap.js"></script> 
 <script type="text/javascript" src="js/top.js"></script>
-
+	<style type="text/css">
+		.form-group{
+			margin-top:14px;
+			margin-left:35px;
+		}
+	</style>
 </head>
 <body class="index">
-	<script>
-	function test(){
-		console.info("this is a test");
-	}
-</script>	
 
 <jsp:include page="top.jsp"></jsp:include>
  <section class="es-poster hz-poster">
@@ -69,10 +60,7 @@
           <p class="hz-line-left">现在</p>
           <div class="number">
             <strong>2622</strong>
-            <p class="text">
-              人在好知<br>
-              学习课程
-            </p>
+            <p class="text">人在好知<br>学习课程 </p>
           </div>
         </div>
         <a href="http://www.howzhi.com/courses" class="text-center">
