@@ -18,15 +18,11 @@
 		<meta content="1" name="is-open">
 
 		<link href="http://f1.howzhi.com/system/2016/03-31/113613d6a857327741.ico" rel="shortcut icon">
-
 		<link href="css/bootstrap.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="css/howzhi.css">
-		
 		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.js"></script>
 		<script type="text/javascript" src="js/show.js"></script>
-
-	
 
 		<style>
 			.cke {
