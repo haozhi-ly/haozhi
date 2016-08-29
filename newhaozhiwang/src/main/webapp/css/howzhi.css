@@ -11509,7 +11509,8 @@ a.hzlink-line:hover {
 .empty {
 	background: #fff;
 	color: #666;
-	padding: 20px 0 30px
+	padding: 20px 0 30px;
+	text-align: center;
 }
 
 .empty a {
