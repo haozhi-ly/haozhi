@@ -32,7 +32,7 @@
 
 	<body class="course-dashboard-page">
 	
-		<jsp:include page="top.jsp"></jsp:include>
+		<jsp:include page="topf.jsp"></jsp:include>
 		
 		<section class="course-header-new">
 			<div class="container">

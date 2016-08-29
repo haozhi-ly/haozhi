@@ -29,7 +29,7 @@
 </head>
 <body class="index">
 
-<jsp:include page="top.jsp"></jsp:include>
+<jsp:include page="topf.jsp"></jsp:include>
  <section class="es-poster hz-poster">
 
 <div class="swiper-container">

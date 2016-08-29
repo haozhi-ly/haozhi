@@ -41,7 +41,7 @@
 </head>
 <body class="hzco-classify">
 <!-- 头部 -------------------------------------------------------------------  -->			
-<jsp:include page="top.jsp"></jsp:include>
+<jsp:include page="topf.jsp"></jsp:include>
 <!-- 头部 分割线------------------------------------------------------------------------------------  -->		
 <div class="container" id="content-container" style="margin-top: 30px;">
   <ul class="tab-head tab clearfix">

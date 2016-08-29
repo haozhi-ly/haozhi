@@ -110,7 +110,7 @@
 
 <body>
   
-    <jsp:include page="top.jsp" />
+    <jsp:include page="topf.jsp" />
     
     <div id="body">
     	<div id="login-box">

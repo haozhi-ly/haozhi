@@ -60,7 +60,7 @@
 
 		<body class="index">
 		<!-- 头部 -------------------------------------------------------------------  -->		
-		<jsp:include page="top.jsp"></jsp:include>
+		<jsp:include page="topb.jsp"></jsp:include>
 		<!-- 头部 -------------------------------------------------------------------  -->		
 
 			<div class="container" id="content-container">
