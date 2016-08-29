@@ -183,7 +183,7 @@
 												<button id="profile-save-btn" data-submiting-text="正在保存" type="submit" class="btn btn-primary">保存</button>
 											</div>
 										</div>
-
+									
 										<input type="hidden" name="_csrf_token" value="cfe9b96f569703f379d055687bf9a957774ae94c">
 								</form>
 
