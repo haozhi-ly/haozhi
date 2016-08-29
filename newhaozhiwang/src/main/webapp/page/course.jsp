@@ -9,26 +9,24 @@
 <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <meta name="renderer" content="webkit">
 <meta name="baidu-site-verification" content="XN2OVFQdUg">
-<title>所有课程-好知网-重拾学习乐趣-Powered By Howzhi</title>
-
+<title>所有课程-好知网</title>
+<link href="http://f1.howzhi.com/system/2016/03-31/113613d6a857327741.ico" rel="shortcut icon">
 <link  rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="css/howzhi.css">
+<link rel="stylesheet" type="text/css" href="css/course.css">
 <link rel="stylesheet" type="text/css" href="css/swiper.css" >
 <script src="js/jquery.js"></script> 
 <script src="js/bootstrap.min.js"></script> 
 <script src="js/top.js"></script>
 <script src="js/swiper-3.3.1.min.js"></script>
 <style type="text/css">
-#dropdown-menu i {
-	margin-left: -30px;
-	margin-right: 20px;
-}
+
+
 </style>
 
 </head>
 <body class="hzco-classify">
 <!-- 头部 -------------------------------------------------------------------  -->			
-
+<jsp:include page="top.jsp"></jsp:include>
 <!-- 头部 分割线------------------------------------------------------------------------------------  -->		
 <div class="container" id="content-container" style="margin-top: 30px;">
   <ul class="tab-head tab clearfix">
@@ -79,7 +77,7 @@
               <div class="title text-o-show"> <a href="http://www.howzhi.com/course/3539/">sai基础教程</a> </div>
               <div class="metas"> <span>69万+浏览</span>/ <span>19335学员</span>/ <span>4.7评分</span> </div>
               <div class="teacher text-o-show"> <a class=" js-user-card" href="http://www.howzhi.com/u/1282433/" data-card-url="/user/1282433/card/show" data-user-id="1282433"> 
-              	<img class="avatar-ss " src=" images/2001255a2bbc776915.jpg" 　alt="木桃" > 木桃 </a>
+              	<img class="avatar-ss " src=" images/2001255a2bbc776915.jpg" alt="木桃" > 木桃 </a>
                 <div class="price free pull-right"><span>免费</span></div>
               </div>
             </div>
@@ -92,42 +90,25 @@
             <div class="course-info">
               <div class="title text-o-show"> <a href="http://www.howzhi.com/course/3539/">sai基础教程</a> </div>
               <div class="metas"> <span>69万+浏览</span>/ <span>19335学员</span>/ <span>4.7评分</span> </div>
-              <div class="teacher text-o-show"> <a class=" js-user-card" href="http://www.howzhi.com/u/1282433/" data-card-url="/user/1282433/card/show" data-user-id="1282433"> <img class="avatar-ss" src="images/2001255a2bbc776915.jpg" 　alt="木桃"> 木桃 </a>
+              <div class="teacher text-o-show"> <a class=" js-user-card" href="http://www.howzhi.com/u/1282433/" data-card-url="/user/1282433/card/show" data-user-id="1282433"> <img class="avatar-ss" src="images/2001255a2bbc776915.jpg" alt="木桃"> 木桃 </a>
                 <div class="price free pull-right"><span>免费</span></div>
               </div>
             </div>
           </div>
         </div>
-        
+
          <div class="col-md-4 col-xs-6">
           <div class="course-item ">
             <div class="course-img"> <a href="javaScript:void(0);"> <img src="images/0650251c4120932070.jpg" alt="sai基础教程" class=""> </a> </div>
             <div class="course-info">
               <div class="title text-o-show"> <a href="http://www.howzhi.com/course/3539/">sai基础教程</a> </div>
               <div class="metas"> <span>69万+浏览</span>/ <span>19335学员</span>/ <span>4.7评分</span> </div>
-              <div class="teacher text-o-show"> <a class=" js-user-card" href="http://www.howzhi.com/u/1282433/" data-card-url="/user/1282433/card/show" data-user-id="1282433"> <img class="avatar-ss " src="..//2001255a2bbc776915.jpg" 　alt="木桃"> 木桃 </a>
+              <div class="teacher text-o-show"> <a class=" js-user-card" href="http://www.howzhi.com/u/1282433/" data-card-url="/user/1282433/card/show" data-user-id="1282433"> <img class="avatar-ss " src="images/2001255a2bbc776915.jpg" alt="木桃"> 木桃 </a>
                 <div class="price free pull-right"><span>免费</span></div>
               </div>
             </div>
           </div>
         </div>
-        
-         <div class="col-md-4 col-xs-6">
-          <div class="course-item ">
-            <div class="course-img"> <a href="javaScript:void(0);"> <img src="images/0650251c4120932070.jpg" alt="sai基础教程" class=""> </a> </div>
-            <div class="course-info">
-              <div class="title text-o-show"> <a href="http://www.howzhi.com/course/3539/">sai基础教程</a> </div>
-              <div class="metas"> <span>69万+浏览</span>/ <span>19335学员</span>/ <span>4.7评分</span> </div>
-              <div class="teacher text-o-show"> <a class=" js-user-card" href="http://www.howzhi.com/u/1282433/" data-card-url="/user/1282433/card/show" data-user-id="1282433"> <img class="avatar-ss " src="images/2001255a2bbc776915.jpg" 　alt="木桃"> 木桃 </a>
-                <div class="price free pull-right"><span>免费</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-    
-     <!--  ------------------------------------------------------------------------------------------------------  -->
-        
-        
         
         <ul class="pagination ">
           <li class="active"><a href="javaScript:void(0)">1</a></li>
@@ -152,7 +133,7 @@
             </div>
             <div class="course-info">
               <div class="title text-o-show"> <a href="javaScript:void(0)">极致风光摄影高手班—后期修图调色</a> </div>
-              <div class="teacher text-o-show"> <a class=" js-user-card" href="javaScript:void(0)" data-card-url="/user/1882233/card/show" data-user-id="1882233"> <img class="avatar-ss " src="images/101557dab659509843.jpg" 　alt="双向摄影学院"> 双向摄影学院 </a> <span class="dapinpai-icon-t" title="达品牌"></span>
+              <div class="teacher text-o-show"> <a class=" js-user-card" href="javaScript:void(0)" data-card-url="/user/1882233/card/show" data-user-id="1882233"> <img class="avatar-ss " src="images/101557dab659509843.jpg" alt="双向摄影学院"> 双向摄影学院 </a> <span class="dapinpai-icon-t" title="达品牌"></span>
                 <div class="price pull-right"><span>￥880.00</span></div>
               </div>
             </div>
@@ -168,7 +149,7 @@
             <div class="course-img"> <a href="http://www.howzhi.com/course/13254/"> <img src="images/lazyload_course.png" alt="百度网盟推广入门必备" class="" data-echo="http://f1.howzhi.com/default/2016/03-14/1045288563e3244992.jpg"> </a> </div>
             <div class="course-info">
               <div class="title text-o-show"> <a href="http://www.howzhi.com/course/13254/">百度网盟推广入门必备</a> </div>
-              <div class="teacher text-o-show"> <a class=" js-user-card" href="http://www.howzhi.com/u/1637688/" data-card-url="/user/1637688/card/show" data-user-id="1637688"> <img class="avatar-ss " src="images/11480117880b049054.jpg" 　alt="luemery"> luemery </a>
+              <div class="teacher text-o-show"> <a class=" js-user-card" href="http://www.howzhi.com/u/1637688/" data-card-url="/user/1637688/card/show" data-user-id="1637688"> <img class="avatar-ss " src="images/11480117880b049054.jpg" alt="luemery"> luemery </a>
                 <div class="price free pull-right"><span>免费</span></div>
               </div>
             </div>

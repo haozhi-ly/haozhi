@@ -6,16 +6,7 @@
 		<base href="/newhaozhiwang/"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
-		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-		<meta name="renderer" content="webkit">
-		<meta name="baidu-site-verification" content="XN2OVFQdUg">
-		<title>
-			人像摄影高级教程 - 好知网-重拾学习乐趣-Powered By Howzhi </title>
-		<meta name="keywords" content="人像摄影 调色教程 磨皮教程 人像摄影高级教程">
-		<meta name="description" content="由摄影师杨最醉主讲的人像摄影高级教程，从人像摄影器材到主题策划、光线捕捉、后期调色、磨皮等各个角度讲解。...">
-		<meta content="fc9037d9bd9cac24cb93e5eecdec95d994b6c54e" name="csrf-token">
-		<meta content="1" name="is-login">
-		<meta content="1" name="is-open">
+		<title>人像摄影高级教程 - 好知网-重拾学习乐趣 </title>
 		
 		<link href="http://f1.howzhi.com/system/2016/03-31/113613d6a857327741.ico" rel="shortcut icon">
 		<link href="css/bootstrap.css" rel="stylesheet">
@@ -40,7 +31,9 @@
 	</head>
 
 	<body class="course-dashboard-page">
+	
 		<jsp:include page="top.jsp"></jsp:include>
+		
 		<section class="course-header-new">
 			<div class="container">
 				<!-- 面包屑 -->

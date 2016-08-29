@@ -5,15 +5,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
-		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-		<meta name="renderer" content="webkit">
-		<meta name="baidu-site-verification" content="XN2OVFQdUg">
 		<title>小组 - 好知网-重拾学习乐趣</title>
-		<meta name="keywords" content="小组">
-		<meta name="description" content="小组首页">
-		<meta content="2fbd468350a8348322e8aed780d7f3178511d79d" name="csrf-token">
-		<meta content="1" name="is-login">
-		<meta content="1" name="is-open">
 
 		<link href="http://f1.howzhi.com/system/2016/03-31/113613d6a857327741.ico" rel="shortcut icon">
 		<link href="../css/bootstrap.css" rel="stylesheet">
@@ -23,121 +15,12 @@
 		<script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
 		<script type="text/javascript" src="../js/bootstrap.js"></script>
 		
-		<!--<script type="text/javascript" src="../js/analytics.js"></script>
-		<script type="text/javascript" src="../js/hm.js"></script>
-		<script type="text/javascript" src="../js/npm.js"></script>
-		<script type="text/javascript" src="../js/piwik.js"></script>
-		<script type="text/javascript" src="../js/sea.js"></script>
-		<script type="text/javascript" src="../js/seajs-global-config.js"></script>
-		<script type="text/javascript" src="../js/seajs-style.js"></script>-->
 
 	</head>
 
 	<body class="group-page">
 		<!-------------------------我是头部------------------------------------------->
-		<header class="header">
-			<div class="container">
-				<div class="navbar-header pull-left">
-					<a href="http://www.howzhi.com/" class="navbar-brand">
-						<img src="/logo.png" class="img-responsive" alt="好知，howzhi.com">
-					</a>
-					<button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse" type="button">
-			          <span class="sr-only">Toggle navigation</span>
-			          <span class="icon-bar"></span>
-			          <span class="icon-bar"></span>
-			          <span class="icon-bar"></span>
-        			</button>
-				</div>
-				<nav class="collapse navbar-collapse pull-left">
-					<ul class="nav navbar-nav topmenu">
-						<li class="visible-xs">
-							<a href="javascript:void(0)"><i class="fa fa-search mrm"></i>搜索</a>
-						</li>
-
-						<li class="">
-							<a href="javascript:void(0)">学习中心 </a>
-						</li>
-						<li class="nav-hover">
-							<a href="javascript:void(0)">课程  <b class="caret"></b></a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="javascript:void(0)">摄影课堂</a></li>
-								<li><a href="javascript:void(0)">创意设计</a></li>
-								<li><a href="javascript:void(0)">声乐器乐</a></li>
-								<li><a href="javascript:void(0)">运动健身</a></li>
-								<li><a href="javascript:void(0)">IT互联网</a></li>
-								<li><a href="javascript:void(0)">兴趣爱好</a></li>
-								<li><a href="javascript:void(0)">语言学习</a></li>
-								<li><a href="javascript:void(0)">职场技能</a></li>
-								<li><a href="javascript:void(0)">公开课</a></li>
-							</ul>
-						</li>
-						<li class="">
-							<a href="javascript:void(0)">班级 </a>
-						</li>
-						<li class="">
-							<a href="javascript:void(0)">小组 </a>
-						</li>
-					</ul>
-				</nav>
-				<div class="pull-right user-nav clearfix">
-
-					<ul class="nav pull-right">
-						<li class="hidden-xs hidden-sm">
-							<a class="btn btn-primary radius" href="http://www.howzhi.com/ugc/course"><i class="fa fa-plus"></i> 创建课程</a>
-						</li>
-						<li class="dropdown user-nav-dropdown user-img">
-							<a href="#" class="dropdown-toggle">
-								<img src="images/avatar.png" class="user-avatar" alt="珘珘">
-							</a>
-							<ul class="dropdown-menu" role="menu">
-								<li>
-									<a href="javascript:void(0)"><i class="fa fa-university"></i>学习中心</a>
-								</li>
-								<li><a href="javascript:void(0)"><i class="fa fa-graduation-cap"></i>个人主页</a></li>
-								<li><a href="javascript:void(0)"><i class="hz-icon icon-setting"></i>个人设置</a></li>
-								<li><a href="javascript:void(0)"><i class="hz-icon icon-accountbalancewallet"></i>账户中心</a></li>
-								<li><a href="javascript:void(0)"><i class="fa fa-sign-out"></i>退出登录</a></li>
-							</ul>
-						</li>
-						<li class="user-msg user-nav-dropdown hidden-xs ">
-							<a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-								<i class="hz-icon icon-notifications"></i>
-							</a>
-							<ul class="dropdown-menu text-center" role="menu">
-								<li><a href="javascript:void(0)"><i class="hz-icon icon-bullhorn"></i>通知</a></li>
-								<li><a href="javascript:void(0)"><i class="hz-icon icon-mail"></i>私信</a></li>
-								<li><a href="javascript:void(0)"><i class="hz-icon icon-forum"></i>回复</a></li>
-								<li><a href="javascript:void(0)"><i class="hz-icon icon-livehelp "></i>问答</a></li>
-							</ul>
-						</li>
-						<li class="hidden-xs hzapp hidden-sm">
-							<a href="javascript:void(0)">
-								<small class="badge"> </small>
-								<i class="hz-icon icon-smartphone"></i> 好知APP
-							</a>
-						</li>
-					</ul>
-					<form class="navbar-form pull-right hz-search hidden-xs" role="search" action="/search">
-						<div class="form-group">
-							<div id="search-left" class="pull-left search-left">
-								<div class="search-type pull-left">
-									<div class="choose">课程<i class="hz-icon icon-keyboardarrowdown"></i></div>
-									<ul class="text-center">
-										<li data-type="course">课程</li>
-										<li data-type="discussion">话题</li>
-										<li data-type="user">用户</li>
-										<li data-type="group">小组</li>
-									</ul>
-								</div>
-								<input class="form-control js-search" name="q" placeholder="输入要查找的内容" autocomplete="off">
-							</div>
-							<input name="t" value="course" type="hidden">
-							<button class="button fa fa-search" type="submit"></button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</header>
+		<jsp:include page="top.jsp"></jsp:include>
 		<!-------------------------我是头部分割线------------------------------------------->
 
 		<!--------------------------中间小组内容-------------------------------------->
@@ -180,7 +63,7 @@
 								</div>
 								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 grid">
 									<p>
-										<a href="href=" javascript:void(0) "" title="我是从零开始学吉他的">
+										<a href="javascript:void(0)" title="我是从零开始学吉他的">
 											<img src="images/120652c07d78265998.jpg" alt="我是从零开始学吉他的" class="group-avatar-sm">
 										</a>
 									</p>
@@ -188,7 +71,7 @@
 								</div>
 								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 grid">
 									<p>
-										<a href="href=" javascript:void(0) "" title="每月养成一个好习惯">
+										<a href="javascript:void(0)" title="每月养成一个好习惯">
 											<img src="images/1151175e2fc5261920.jpg" alt="每月养成一个好习惯" class="group-avatar-sm">
 										</a>
 									</p>
@@ -215,7 +98,7 @@
 							<ul class="media-list thread-list">
 								<li class="media">
 									<a class="pull-left js-user-card" id="introduce" href="javascript:void(0)" data-card-url="/user/1321903/card/show" data-user-id="1321903">
-										<img class="avatar-md " src="images/touxiang.jpg" 　alt="曹佳佳的熊猫眼">
+										<img class="avatar-md " src="../images/touxiang.jpg" alt="曹佳佳的熊猫眼">
 									</a>
 
 									<div class="media-body">
@@ -237,7 +120,7 @@
 								<!---------------------------------------------------->
 								<li class="media">
 									<a class="pull-left js-user-card" href="http://www.howzhi.com/u/187/" data-card-url="/user/187/card/show" data-user-id="187">
-										<img class="avatar-md " src="images/user-images.jpg" 　alt="乱流">
+										<img class="avatar-md " src="../images/user-images.jpg" alt="乱流">
 									</a>
 
 									<div class="media-body">
@@ -260,7 +143,7 @@
 								<!---------------------------------------------------->
 								<li class="media">
 									<a class="pull-left js-user-card" href="http://www.howzhi.com/u/1321903/" data-card-url="/user/1321903/card/show" data-user-id="1321903">
-										<img class="avatar-md " src="images/touxiang.jpg" 　alt="曹佳佳的熊猫眼">
+										<img class="avatar-md " src="../images/touxiang.jpg" alt="曹佳佳的熊猫眼">
 									</a>
 
 									<div class="media-body">
@@ -282,7 +165,7 @@
 								<!---------------------------------------------------->
 								<li class="media">
 									<a class="pull-left js-user-card" href="http://www.howzhi.com/u/1321903/" data-card-url="/user/1321903/card/show" data-user-id="1321903">
-										<img class="avatar-md " src="images/user-images.jpg" 　alt="曹佳佳的熊猫眼">
+										<img class="avatar-md " src="../images/user-images.jpg" alt="曹佳佳的熊猫眼">
 									</a>
 
 									<div class="media-body">
@@ -305,7 +188,7 @@
 								<!---------------------------------------------------->
 								<li class="media">
 									<a class="pull-left js-user-card" id="card01" href="http://www.howzhi.com/u/187/" data-card-url="/user/187/card/show" data-user-id="187">
-										<img class="avatar-md " src="images/user-images.jpg" 　alt="乱流">
+										<img class="avatar-md " src="../images/user-images.jpg" alt="乱流">
 									</a>
 
 									<div class="media-body">
@@ -338,7 +221,7 @@
 							<div class="media">
 								<div class="media-left">
 									<a title="" data-original-title="" class=" js-user-card"  href="javascript:void(0)" data-card-url="/user/2358982/card/show" data-user-id="2358982">
-										<img class="avatar-md " src="images/avatar.png" 　alt="珘珘">
+										<img class="avatar-md " src="../images/avatar.png" alt="珘珘">
 									</a>
 
 								</div>
@@ -480,10 +363,9 @@
 						关注我们：
 						<a href="http://weibo.com/howzhicom"><i class="hz-icon icon-weibo"></i></a>
 						<a class="icon-sns"><i class="hz-icon icon-weixin"></i>
-          <div class="sns-popover" style="background:url(&quot;/assets/img/howzhi/weichat.png?2.6.17.2.3&quot;)">
-            
-          </div>
-        </a>
+       					<div class="sns-popover" style="background:url(/assets/img/howzhi/weichat.png?2.6.17.2.3)">
+          				</div>
+       					 </a>
 						<a href="http://user.qzone.qq.com/2485597828/"><i class="hz-icon icon-qq"></i></a>
 
 						<a href="http://site.douban.com/124522/"><i class="hz-icon icon-gongnengyedouban"></i></a>

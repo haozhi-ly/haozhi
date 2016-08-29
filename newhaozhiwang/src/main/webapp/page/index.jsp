@@ -2,23 +2,14 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
 <!DOCTYPE html>
-<!-- saved from url=(0022)http://www.howzhi.com/ -->
 <html class="">
-<!--<![endif]-->
 <head>
-	<base href="/newhaozhiwang/"/>
+<base href="/newhaozhiwang/"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
-<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-<meta name="renderer" content="webkit">
-<meta name="baidu-site-verification" content="XN2OVFQdUg">
 <title>好知网</title>
-<meta name="keywords" content="免费教程 在线教育  在线学习  知识分享 教程 视频教程 视频教学  网络教学  自学教程 摄影教程 折纸教程 编程教程  电脑教程  健身教程  ps教程  公开课">
-<meta name="description" content="好知网是一个综合性在线学习平台。这里有大量的在线课程，课程涵盖计算机知识，企业管理，摄影，photoshop，职业技能，运动、外语、美食，时尚，手工艺，公开课，职业资格考试等。">
-<meta content="d5427967e212be85fef39cc418950d552ad867a6" name="csrf-token">
-<meta content="0" name="is-login">
-<meta content="1" name="is-open">
 
+<link href="http://f1.howzhi.com/system/2016/03-31/113613d6a857327741.ico" rel="shortcut icon">
 <link rel="stylesheet" media="screen" href="css/es-icon.css">
 <link rel="stylesheet" type="text/css" href="css/howzhi.css">
 <link rel="stylesheet" type="text/css" href="css/index.css">
@@ -29,14 +20,14 @@
 <script src="js/swiper-3.3.1.min.js"></script> 
 <script src="js/bootstrap.js"></script> 
 <script type="text/javascript" src="js/top.js"></script>
-
+	<style type="text/css">
+		.form-group{
+			margin-top:14px;
+			margin-left:35px;
+		}
+	</style>
 </head>
 <body class="index">
-	<script>
-	function test(){
-		console.info("this is a test");
-	}
-</script>	
 
 <jsp:include page="top.jsp"></jsp:include>
  <section class="es-poster hz-poster">
@@ -69,10 +60,7 @@
           <p class="hz-line-left">现在</p>
           <div class="number">
             <strong>2622</strong>
-            <p class="text">
-              人在好知<br>
-              学习课程
-            </p>
+            <p class="text">人在好知<br>学习课程 </p>
           </div>
         </div>
         <a href="http://www.howzhi.com/courses" class="text-center">
@@ -159,7 +147,7 @@
             <div class="course-img"> <a href="http://www.howzhi.com/course/13886/"> <img src="images/174207f521af450302.jpg" alt="快速上手淘宝摄影教程" class=""> </a> </div>
             <div class="course-info">
               <div class="title"> <a href="http://www.howzhi.com/course/13886/">快速上手淘宝摄影教程</a> </div>
-              <div class="teacher text-o-show"> <a class=" js-user-card" href="http://www.howzhi.com/u/1314678/" data-card-url="/user/1314678/card/show" data-user-id="1314678"> <img class="avatar-ss " src="images/212720870038390860.jpg" 　alt="一个小九"> 一个小九 </a> <span class="daren-icon-t" title="达人"></span>
+              <div class="teacher text-o-show"> <a class=" js-user-card" href="http://www.howzhi.com/u/1314678/" data-card-url="/user/1314678/card/show" data-user-id="1314678"> <img class="avatar-ss " src="images/212720870038390860.jpg" alt="一个小九"> 一个小九 </a> <span class="daren-icon-t" title="达人"></span>
                 <div class="price pull-right"><span>￥99.00</span></div>
               </div>
             </div>
@@ -170,7 +158,7 @@
             <div class="course-img"> <a href="http://www.howzhi.com/course/13843/"> <img src="images/092653da050d783369.jpg" alt="如何自制冷萃咖啡/冰滴咖啡" class=""> </a> </div>
             <div class="course-info">
               <div class="title"> <a href="http://www.howzhi.com/course/13843/">如何自制冷萃咖啡/冰滴咖啡</a> </div>
-              <div class="teacher text-o-show"> <a class=" js-user-card" href="http://www.howzhi.com/u/87/" data-card-url="/user/87/card/show" data-user-id="87"> <img class="avatar-ss " src="images/22500800974f867554.jpg" 　alt="卷卷"> 卷卷 </a> <span class="daren-icon-t" title="达人"></span>
+              <div class="teacher text-o-show"> <a class=" js-user-card" href="http://www.howzhi.com/u/87/" data-card-url="/user/87/card/show" data-user-id="87"> <img class="avatar-ss " src="images/22500800974f867554.jpg" alt="卷卷"> 卷卷 </a> <span class="daren-icon-t" title="达人"></span>
                 <div class="price free pull-right"><span>免费</span></div>
               </div>
             </div>
@@ -179,7 +167,7 @@
             <div class="course-img"> <a href="http://www.howzhi.com/course/13867/"> <img src="images/1815528835e2477749.jpg" alt="人民攻摄 零基础轻松搞定PS" class=""> </a> </div>
             <div class="course-info">
               <div class="title"> <a href="http://www.howzhi.com/course/13867/">人民攻摄 零基础轻松搞定PS</a> </div>
-              <div class="teacher text-o-show"> <a class=" js-user-card" href="http://www.howzhi.com/u/2343104/" data-card-url="/user/2343104/card/show" data-user-id="2343104"> <img class="avatar-ss " src="images/173852cc4c2f638240.jpg" 　alt="人民攻摄"> 人民攻摄 </a>
+              <div class="teacher text-o-show"> <a class=" js-user-card" href="http://www.howzhi.com/u/2343104/" data-card-url="/user/2343104/card/show" data-user-id="2343104"> <img class="avatar-ss " src="images/173852cc4c2f638240.jpg" alt="人民攻摄"> 人民攻摄 </a>
                 <div class="price free pull-right"><span>免费</span></div>
               </div>
             </div>
@@ -190,7 +178,7 @@
             <div class="course-img"> <a href="http://www.howzhi.com/course/13996/"> <img src="images/09395179cf7b631358.jpeg" alt="Fitime马甲线养成计划" class=""> </a> </div>
             <div class="course-info">
               <div class="title"> <a href="http://www.howzhi.com/course/13996/">Fitime马甲线养成计划</a> </div>
-              <div class="teacher text-o-show"> <a class=" js-user-card" href="http://www.howzhi.com/u/91/" data-card-url="/user/91/card/show" data-user-id="91"> <img class="avatar-ss " src="images/02515170a7b9957485.jpg" 　alt="三尺青锋"> 三尺青锋 </a> <span class="daren-icon-t" title="达人"></span>
+              <div class="teacher text-o-show"> <a class=" js-user-card" href="http://www.howzhi.com/u/91/" data-card-url="/user/91/card/show" data-user-id="91"> <img class="avatar-ss " src="images/02515170a7b9957485.jpg" alt="三尺青锋"> 三尺青锋 </a> <span class="daren-icon-t" title="达人"></span>
                 <div class="price free pull-right"><span>免费</span></div>
               </div>
             </div>
@@ -199,7 +187,7 @@
             <div class="course-img"> <a href="http://www.howzhi.com/course/269/"> <img src="images/09113359ff66316435.jpg" alt="如何追女孩（把妹达人）" class=""> </a> </div>
             <div class="course-info">
               <div class="title"> <a href="http://www.howzhi.com/course/269/">如何追女孩（把妹达人）</a> </div>
-              <div class="teacher text-o-show"> <a class=" js-user-card" href="http://www.howzhi.com/u/5296/" data-card-url="/user/5296/card/show" data-user-id="5296"> <img class="avatar-ss " src="images/103256878613838446.jpg" 　alt="坏男孩学院"> 坏男孩学院 </a> <span class="dapinpai-icon-t" title="达品牌"></span>
+              <div class="teacher text-o-show"> <a class=" js-user-card" href="http://www.howzhi.com/u/5296/" data-card-url="/user/5296/card/show" data-user-id="5296"> <img class="avatar-ss " src="images/103256878613838446.jpg" alt="坏男孩学院"> 坏男孩学院 </a> <span class="dapinpai-icon-t" title="达品牌"></span>
                 <div class="price free pull-right"><span>免费</span></div>
               </div>
             </div>
@@ -210,7 +198,7 @@
             <div class="course-img"> <a href="http://www.howzhi.com/course/13907/"> <img src="images/17160338a3cf386465.png" alt="衍纸画的制作" class=""> </a> </div>
             <div class="course-info">
               <div class="title"> <a href="http://www.howzhi.com/course/13907/">衍纸画的制作</a> </div>
-              <div class="teacher text-o-show"> <a class=" js-user-card" href="http://www.howzhi.com/u/2332819/" data-card-url="/user/2332819/card/show" data-user-id="2332819"> <img class="avatar-ss " src="images/165648087343419947.jpg" 　alt="endlessnet"> endlessnet </a>
+              <div class="teacher text-o-show"> <a class=" js-user-card" href="http://www.howzhi.com/u/2332819/" data-card-url="/user/2332819/card/show" data-user-id="2332819"> <img class="avatar-ss " src="images/165648087343419947.jpg" alt="endlessnet"> endlessnet </a>
                 <div class="price free pull-right"><span>免费</span></div>
               </div>
             </div>
@@ -219,7 +207,7 @@
             <div class="course-img"> <a href="http://www.howzhi.com/course/13876/"> <img src="images/1250466d462c594838.png" alt="【AE教程】motion v2 脚本全面解析" class=""> </a> </div>
             <div class="course-info">
               <div class="title"> <a href="http://www.howzhi.com/course/13876/">【AE教程】motion v2 脚本全面解析</a> </div>
-              <div class="teacher text-o-show"> <a class=" js-user-card" href="http://www.howzhi.com/u/1958262/" data-card-url="/user/1958262/card/show" data-user-id="1958262"> <img class="avatar-ss " src="images/202412c1b54f150673.jpg" 　alt="MG动画自习室"> MG动画自习室 </a>
+              <div class="teacher text-o-show"> <a class=" js-user-card" href="http://www.howzhi.com/u/1958262/" data-card-url="/user/1958262/card/show" data-user-id="1958262"> <img class="avatar-ss " src="images/202412c1b54f150673.jpg" alt="MG动画自习室"> MG动画自习室 </a>
                 <div class="price free pull-right"><span>免费</span></div>
               </div>
             </div>
@@ -619,7 +607,7 @@
 </div>
 
 
-<section class="serch-enginne-course visible-lg" 　role="alert"> </section>
+<section class="serch-enginne-course visible-lg" role="alert"> </section>
 <div id="login-modal" class="modal " data-url="/login/ajax"></div>
 <div id="modal" class="modal" tabindex="-1"></div>
 <div id="upload-image-modal" class="modal" tabindex="-1" aria-hidden="true" style="display: none;"></div>

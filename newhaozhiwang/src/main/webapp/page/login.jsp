@@ -3,15 +3,15 @@
 <!Doctype html>
 <html>
 <head>
+<base href="/newhaozhiwang/"/>
 <meta charset="utf-8">
-
 <title>登录</title>
-<script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="../js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../js/register.js"></script>
-<script src="../js/top.js"></script>
-<link rel="stylesheet" type="text/css" href="../css/howzhi.css">
-<link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css" />
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/register.js"></script>
+<script type="text/javascript" src="js/top.js"></script>
+<link rel="stylesheet" type="text/css" href="css/howzhi.css">
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
 <style type="text/css">
 	*{
 		padding:0px;
@@ -25,7 +25,7 @@
 		padding-top:50px;
 		height:773px;
 		width:100%;
-		background: rgba(0, 0, 0, 0) url("../images/login_bg.jpg") no-repeat scroll center top;
+		background: rgba(0, 0, 0, 0) url("images/login_bg.jpg") no-repeat scroll center top;
 		background-size:cover;
 	}
 	
@@ -95,10 +95,10 @@
 		height:200px;
 		width:100%;
 		}
-	i{
+	#register-in i{
 		float:left;
 		}
-	a:hover{
+	#login-in a:hover{
 		color:#0F9;
 		text-decoration:none;
 		}
@@ -106,9 +106,7 @@
 </head>
 
 <body>
-    <!-- <div id="header">
-    
-    </div> -->
+  
     <jsp:include page="top.jsp" />
     
     <div id="body">
