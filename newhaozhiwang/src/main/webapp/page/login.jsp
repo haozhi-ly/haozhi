@@ -164,8 +164,6 @@
         </div>
     </div>
     
-    <div id="foot">
-    
-    </div>
+    <jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

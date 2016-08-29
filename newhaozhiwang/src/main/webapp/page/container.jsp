@@ -5,6 +5,12 @@
 <head>
 <meta charset="utf-8">
 <title>服务协议 -好知网</title>
+	<link href="../css/bootstrap.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../css/howzhi.css">
+	<link rel="stylesheet" type="text/css" href="../css/main.css">
+
+	<script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.js"></script>
 <style type="text/css">
 * {
 	padding: 0px;
@@ -165,6 +171,6 @@ p {
     <p>好知网对本使用协议享有最终解释权。</p>
   </div>
 </div>
-<div id="foot"> </div>
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
