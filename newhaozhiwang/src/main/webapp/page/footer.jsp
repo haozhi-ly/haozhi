@@ -4,7 +4,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4 ">
-				<a href="http://www.howzhi.com/"><img src="%E5%AD%A6%E4%B9%A0%E4%B8%AD%20-%20%E6%88%91%E7%9A%84%E5%A5%BD%E7%9F%A5%20-%20%E5%A5%BD%E7%9F%A5%E7%BD%91-%E9%87%8D%E6%8B%BE%E5%AD%A6%E4%B9%A0%E4%B9%90%E8%B6%A3-Powered%20By%20Howzhi_files/foot-logo.png" alt="好知，知识分享新社区"></a>
+				<a href="http://www.howzhi.com/"><img src="images/foot-logo.png" alt="好知，知识分享新社区"></a>
 			</div>
 			<div class="col-md-4 about">
 				<span><a href="http://www.howzhi.com/info/about">关于我们</a></span>|
@@ -19,8 +19,8 @@
 				关注我们：
 				<a href="http://weibo.com/howzhicom"><i class="hz-icon icon-weibo"></i></a>
 				<a class="icon-sns"><i class="hz-icon icon-weixin"></i>
-          <div class="sns-popover" style="background:url(&quot;/assets/img/howzhi/weichat.png?2.6.17.2.3&quot;)">
-            
+          <div class="sns-popover">
+            <!-- style="background:url(&quot;/assets/img/howzhi/weichat.png?2.6.17.2.3&quot;)" -->
           </div>
         </a>
 				<a href="http://user.qzone.qq.com/2485597828/"><i class="hz-icon icon-qq"></i></a>
