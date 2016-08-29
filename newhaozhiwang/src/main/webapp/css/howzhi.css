@@ -3098,12 +3098,12 @@ li {
 	display: inline-block;
 	width: 14px;
 	height: 14px;
-	background: url("../images/darens-icon.png") no-repeat;
+	background: url("images/darens-icon.png") no-repeat;
 	vertical-align: middle
 }
 
 .dapinpai-icon-t {
-	background: url("../images/dapinpais-icon.png") no-repeat
+	background: url("images/dapinpais-icon.png") no-repeat
 }
 
 .no-bottom-line {
@@ -3114,7 +3114,7 @@ li {
 	display: inline-block;
 	width: 14px;
 	height: 14px;
-	background: url("../images/daren-icon.png") no-repeat;
+	background: url("images/daren-icon.png") no-repeat;
 	vertical-align: middle
 }
 
