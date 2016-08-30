@@ -127,31 +127,5 @@
       </div>
     
           <jsp:include page="footer.jsp"></jsp:include>
-<div class="friendlinks">
-  <div class="container">
-      <div class="content">
-        <font>友情链接:</font>
-        <a href="http://www.edusoho.com/" target="_blank" class="white">EduSoho开源网络课堂</a> 
-        <span>|</span>
-        <a href="http://www.qiqiuyu.com/" target="_blank" class="white">气球鱼学院</a>
-        <span>|</span>
-        <a href="http://hao.360.cn/" target="_blank" class="white">360安全网址导航</a>
-        <span>|</span>
-        <a href="http://www.hao123.com/" target="_blank" class="white">hao123</a>
-        <span>|</span>
-        <a href="http://www.lvse.com/" target="_blank" class="white">绿色网</a>
-        <span>|</span>
-        <a href="http://www.chinaz.com/" target="_blank" class="white">站长之家</a>
-        <span>|</span>
-        <a href="http://www.xker.com/" target="_blank" class="white">新客网</a> 
-        <span>|</span>
-        <a href="http://www.talang100.com/" target="_blank" class="white">踏浪100</a> 
-        <span>|</span>
-        <a href="http://www.maiziedu.com/" target="_blank" class="white">麦子学院</a> 
-        <br>        
-      </div>
-        Powered by <a href="http://www.edusoho.com/" target="_blank">EduSoho v6.17.2</a>
-  ©2014-2016 <a class="mlm" href="http://www.howzhi.com/" target="_blank">好知网</a>               
-  </div>
-</div>
+
 </body></html>
