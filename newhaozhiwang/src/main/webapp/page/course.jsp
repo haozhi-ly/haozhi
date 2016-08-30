@@ -14,10 +14,12 @@
 <link  rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="css/course.css">
 <link rel="stylesheet" type="text/css" href="css/swiper.css" >
-<script src="js/jquery.js"></script> 
+
+<script src="js/jquery-2.1.4.min.js"></script> 
 <script src="js/bootstrap.min.js"></script> 
 <script src="js/top.js"></script>
 <script src="js/swiper-3.3.1.min.js"></script>
+
 <style type="text/css">
 
 
@@ -25,6 +27,15 @@
 
 </head>
 <body class="hzco-classify">
+	<script>        
+		  var mySwiper = new Swiper ('.swiper-container', {
+			direction: 'horizontal',
+			loop: true,
+			autoplay : 3000,
+			speed:300,
+			
+		  })        
+  	</script>
 <!-- 头部 -------------------------------------------------------------------  -->			
 <jsp:include page="top.jsp"></jsp:include>
 <!-- 头部 分割线------------------------------------------------------------------------------------  -->		
@@ -44,14 +55,29 @@
   <div class="category"> </div>
   <div class="row co-classify-list">
     <div class="col-md-9">
-      <div style="height: 100px;" class="ad swiper-container swiper-container-horizontal swiper-container-fade">
-        <div style="width: 850px; height: 400px; transform: translate3d(0px, -300px, 0px); transition-duration: 0.3s;" class="swiper-wrapper">
+      <!-- <div style="height: 100px;" class="ad swiper-container swiper-container-horizontal swiper-container-fade">
+        <div style="width: 850px; height: 400px; transform: translate3d(0px, 0px, 0px); transition-duration: 0.3s;" class="swiper-wrapper">
           <div style="width: 850px; height: 100px;" class="swiper-slide  swiper-slide-duplicate"> <a href="javaScript:void(0);"> <img src="images/block_picture_1460533852.jpg" alt="【吕小川】创意大片合成教程"></a> </div>
           <div style="width: 850px; height: 100px;" class="swiper-slide"> <a href="javaScript:void(0);"> <img src="images/block_picture_1460094695.jpg" alt="牛牛很忙人像摄影班，教你拍摄唯美人像"></a> </div>
           <div style="width: 850px; height: 100px;" class="swiper-slide"> <a href="javaScript:void(0);"> <img src="images/block_picture_1460533852.jpg" alt="【吕小川】创意大片合成教程"></a> </div>
           <div style="width: 850px; height: 100px;display:block" class="swiper-slide  swiper-slide-duplicate swiper-slide-visible swiper-slide-active"> <a href="javaScript:void(0);"> <img src="images/block_picture_1460094695.jpg" alt="牛牛很忙人像摄影班，教你拍摄唯美人像"></a> </div>
         </div>
+        
+        <span class="close" aria-hidden="true" data-dismiss="alert">×</span> </div> -->
+        
+        
+        
+        <div style="height: 100px;" class="ad swiper-container swiper-container-horizontal swiper-container-fade">
+        <div style="width: 850px; height: 400px" class="swiper-wrapper">
+          <div style="width: 850px; height: 100px" class="swiper-slide"> <a href="javaScript:void(0);"> <img src="images/block_picture_1460533852.jpg" alt="【吕小川】创意大片合成教程"></a> </div>
+          <div style="width: 850px; height: 100px" class="swiper-slide"> <a href="javaScript:void(0);"> <img src="images/block_picture_1460094695.jpg" alt="牛牛很忙人像摄影班，教你拍摄唯美人像"></a> </div>
+          <div style="width: 850px; height: 100px" class="swiper-slide"> <a href="javaScript:void(0);"> <img src="images/block_picture_1460533852.jpg" alt="【吕小川】创意大片合成教程"></a> </div>
+          <div style="width: 850px; height:100px" class="swiper-slide"> <a href="javaScript:void(0);"> <img src="images/block_picture_1460094695.jpg" alt="牛牛很忙人像摄影班，教你拍摄唯美人像"></a> </div>
+        </div>
+        
         <span class="close" aria-hidden="true" data-dismiss="alert">×</span> </div>
+        
+        
       <div class="sort-nav">
         <dl class="clearfix">
           <dd class="first"><a class="act " href="">综合排序</a></dd>
@@ -173,7 +199,7 @@
 </div>
 
 <!-- 尾部 ---------------------------------------------------------------- -->
-
+	
 
 </body>
 </html>

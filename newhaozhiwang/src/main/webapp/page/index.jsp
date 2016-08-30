@@ -9,6 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
 <title>好知网</title>
 
+
 <link href="http://f1.howzhi.com/system/2016/03-31/113613d6a857327741.ico" rel="shortcut icon">
 <link rel="stylesheet" media="screen" href="css/es-icon.css">
 <link rel="stylesheet" type="text/css" href="css/howzhi.css">
@@ -23,7 +24,7 @@
 	<style type="text/css">
 		.form-group{
 			margin-top:14px;
-			margin-left:35px;
+			margin-left:30px;
 		}
 	</style>
 </head>
@@ -119,8 +120,6 @@
     <p class="sec-more mtl mbs"><a class="btn" href="http://www.howzhi.com/channel/all?fliter%5Btype%5D=live&amp;orderBy%5B0%5D=publishedTime&amp;orderBy%5B1%5D=desc">更多 <i class="glyphicon glyphicon-chevron-right"></i></a></p>
   </div>
 </div>
-
-
 
 
 
@@ -303,9 +302,7 @@
       <h4 class="hz-line-left">班级动态</h4>
       <div id="dynamic-swiper" class="swiper-container" style="height: 56px;">
         <div class="swiper-wrapper row clearfix" style="width: 1098px; height: 280px; transform: translate3d(0px, -224px, 0px); transition-duration: 0.5s;">
-          
-          
-          
+                 
           <div class="swiper-slide" style="width: 1098px; height: 56px;">
             <div class="col-md-6"> <a href="http://www.howzhi.com/u/1546008/"> <img class="avatar-ss" src="images/avatar.png" alt="微梦星光"> </a>
               <p> <a href="http://www.howzhi.com/u/1546008/"> 微梦星光</a> 加入了<a class="active" href="http://www.howzhi.com/classroom/17">牛牛人像摄影班</a> </p>
