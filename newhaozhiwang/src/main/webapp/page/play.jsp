@@ -90,7 +90,7 @@
 						<p>
 						<img src="http://f1.howzhi.com/course/2016/07-05/09520331395c632441.jpg" alt="">
 						</p>
-						<p> </p>body">
+						<p> </p>
 					</div>
 				</div>
 

@@ -22,7 +22,7 @@
         
         <!--以注解的方式配置bean,指定bean所在的包  -->
         
-	<context:component-scan base-package="com.yc.haozhi"/>
+	<context:component-scan base-package="com.haozhi"/>
 	
 	
 	
@@ -51,7 +51,7 @@
 		<!--使用外部的mybatis配置文件
 			<propety name="configLoaction" value="classpath:mybatis.xml"/> 
 		 -->
-		<property name="typeAliasesPackage" value="com.yc.haozhi.entity"/>
+		<property name="typeAliasesPackage" value="com.haozhi.entity"/>
 		<property name="mapperLocations" value="classpath:mapper/*Mapper.xml"/>
 	</bean>
 	<!--创建映射接口代理实现对象,创建bean的名称默认为映射接口名首字母小写 -->
