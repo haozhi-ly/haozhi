@@ -8,22 +8,22 @@
     <nav class="collapse navbar-collapse pull-left">
       <ul class="nav navbar-nav topmenu">
         <li class="visible-xs"> <a href="javaScript:void(0);"><i class="fa fa-search mrm"></i>搜索</a> </li>
-        <li class=""> <a href="javaScript:void(0);">学习中心 </a> </li>
-        <li class="nav-hover" > <a href="javaScript:void(0);">课程 <b class="caret"></b></a>
+        <li class=""> <a href="page/learnCenter.jsp">学习中心 </a> </li>
+        <li class="nav-hover" > <a href="page/course.jsp">课程 <b class="caret"></b></a>
           <ul class="dropdown-menu"  role="menu" id="dropdown-menu">
-            <li class="change" ><a href="javaScript:void(0);">摄影课堂</a></li>
-            <li><a href="javaScript:void(0);">创意设计</a></li>
-            <li><a href="javaScript:void(0);">声乐器乐</a></li>
-            <li><a href="javaScript:void(0);">运动健身</a></li>
-            <li><a href="javaScript:void(0);">IT互联网</a></li>
-            <li><a href="javaScript:void(0);">兴趣爱好</a></li>
-            <li><a href="javaScript:void(0);">语言学习</a></li>
-            <li><a href="javaScript:void(0);">职场技能</a></li>
-            <li><a href="javaScript:void(0);">公开课</a></li>
+            <li class="change" ><a href="page/course.jsp">摄影课堂</a></li>
+            <li><a href="page/course.jsp">创意设计</a></li>
+            <li><a href="page/course.jsp">声乐器乐</a></li>
+            <li><a href="page/course.jsp">运动健身</a></li>
+            <li><a href="page/course.jsp">IT互联网</a></li>
+            <li><a href="page/course.jsp">兴趣爱好</a></li>
+            <li><a href="page/course.jsp">语言学习</a></li>
+            <li><a href="page/course.jsp">职场技能</a></li>
+            <li><a href="page/course.jsp">公开课</a></li>
           </ul>
         </li>
         <li class=""> <a href="javaScript:void(0);">班级 </a> </li>
-        <li class=""> <a href="javaScript:void(0);">小组 </a> </li>
+        <li class=""> <a href="page/groups.jsp">小组 </a> </li>
       </ul>
       <div class="new-tips hz-triangle hidden-xs"> “我的好知” 正式更名为 “<span class="t-primary">学习中心</span>”
         <div class="colse" id="hz-head-update" data-dismiss="alert">×</div>
@@ -34,11 +34,11 @@
         <li class="hidden-xs hidden-sm"> <a class="btn btn-primary radius" href="javaScript:void(0);"><i style="color: rgb(255, 247, 255);" class="glyphicon glyphicon-plus"></i> 创建课程</a> </li>
         <li class="dropdown user-nav-dropdown user-img"> <a href="#" class="dropdown-toggle"> <img src="images/avatar.png" class="user-avatar" alt="珘珘"> </a>
           <ul class="dropdown-menu" role="menu" id="dropdown-menu">
-            <li> <a href="javaScript:void(0);" ><i style="color:#666;" class="glyphicon glyphicon-home" ></i>学习中心</a> </li>
-            <li><a href="javaScript:void(0);"><i style="color:#666;" class="glyphicon glyphicon-user" ></i>个人主页</a></li>
-            <li><a href="javaScript:void(0);"><i style="color:#666;" class="glyphicon glyphicon-cog" ></i>个人设置</a></li>
+            <li> <a href="page/learnCenter.jsp" ><i style="color:#666;" class="glyphicon glyphicon-home" ></i>学习中心</a> </li>
+            <li><a href="page/person.jsp"><i style="color:#666;" class="glyphicon glyphicon-user" ></i>个人主页</a></li>
+            <li><a href="page/info.jsp"><i style="color:#666;" class="glyphicon glyphicon-cog" ></i>个人设置</a></li>
             <li><a href="javaScript:void(0);"><i style="color:#666;" class="glyphicon glyphicon-credit-card" ></i>账户中心</a></li>
-            <li><a href="javaScript:void(0);"><i style="color:#666;" class="glyphicon glyphicon-log-out" ></i>退出登录</a></li>
+            <li><a href="page/login.jsp"><i style="color:#666;" class="glyphicon glyphicon-log-out" ></i>退出登录</a></li>
           </ul>
         </li>
         <li class="user-msg user-nav-dropdown hidden-xs "> <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <i style="font-size:16px;" class="glyphicon glyphicon-bell"></i> </a>

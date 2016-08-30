@@ -26,15 +26,15 @@
       <li class="nav-hover">
   <a href="page/course.jsp">课程  <b class="caret"></b></a>
       <ul class="dropdown-menu" role="menu">
-              <li><a href="javascript:void(0);">摄影课堂</a></li>
-              <li><a href="javascript:void(0);">创意设计</a></li>
-              <li><a href="javascript:void(0);">声乐器乐</a></li>
-              <li><a href="javascript:void(0);">运动健身</a></li>
-              <li><a href="javascript:void(0);">IT互联网</a></li>
-              <li><a href="javascript:void(0);">兴趣爱好</a></li>
-              <li><a href="javascript:void(0);">语言学习</a></li>
-              <li><a href="javascript:void(0);">职场技能</a></li>
-              <li><a href="javascript:void(0);">公开课</a></li>
+              <li><a href="page/course.jsp">摄影课堂</a></li>
+              <li><a href="page/course.jsp">创意设计</a></li>
+              <li><a href="page/course.jsp">声乐器乐</a></li>
+              <li><a href="page/course.jsp">运动健身</a></li>
+              <li><a href="page/course.jsp">IT互联网</a></li>
+              <li><a href="page/course.jsp">兴趣爱好</a></li>
+              <li><a href="page/course.jsp">语言学习</a></li>
+              <li><a href="page/course.jsp">职场技能</a></li>
+              <li><a href="page/course.jsp">公开课</a></li>
           </ul>
   </li>      
       <li class="">
@@ -53,10 +53,10 @@
       </nav>
     <div class="pull-right user-nav clearfix">
                 <ul class="nav nav-login">
-            <li><a class="color-gray-one" href="javascript:void(0);">登录</a></li>
-            <li><a href="javascript:void(0);">注册</a></li>
+            <li><a class="color-gray-one" href="page/login.jsp">登录</a></li>
+            <li><a href="page/login.jsp">注册</a></li>
                             <li class="hidden-xs hzapp hidden-sm">
-                  <a href="javascript:void(0);">
+                  <a href="page/manage.jsp">
                     <small class="badge"> </small>
                     <i class="hz-icon icon-smartphone"></i>
                     好知APP
