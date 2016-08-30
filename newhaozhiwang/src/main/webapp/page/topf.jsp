@@ -4,7 +4,7 @@
 <header class="header">
   <div class="container">
       <div class="navbar-header pull-left">
-                 <a href="javascript:void(0);" class="navbar-brand">
+                 <a href="page/index.jsp" class="navbar-brand">
             <img src="images/logo.png" class="img-responsive" alt="好知，howzhi.com">
          </a>
                 <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse" type="button">
@@ -21,10 +21,10 @@
           </li>
               
       <li class="">
-  <a href="javascript:void(0);">学习中心 </a>
+  <a href="page/learnCenter.jsp">学习中心 </a>
   </li>      
       <li class="nav-hover">
-  <a href="javascript:void(0);">课程  <b class="caret"></b></a>
+  <a href="page/course.jsp">课程  <b class="caret"></b></a>
       <ul class="dropdown-menu" role="menu">
               <li><a href="javascript:void(0);">摄影课堂</a></li>
               <li><a href="javascript:void(0);">创意设计</a></li>
@@ -41,7 +41,7 @@
   <a href="javascript:void(0);">班级 </a>
   </li>      
       <li class="">
-  <a href="javascript:void(0);">小组 </a>
+  <a href="page/groups.jsp">小组 </a>
   </li>  
         </ul>
         <div class="new-tips hz-triangle hidden-xs">

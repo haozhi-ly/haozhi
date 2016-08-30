@@ -20,7 +20,7 @@
 <script src="js/jquery-2.1.4.min.js"></script> 
 <script src="js/swiper-3.3.1.min.js"></script> 
 <script src="js/bootstrap.js"></script> 
-<script type="text/javascript" src="js/top.js"></script>
+<script src="js/top.js"></script>
 	<style type="text/css">
 		.form-group{
 			margin-top:14px;

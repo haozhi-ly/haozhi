@@ -13,8 +13,8 @@
 <link href="css/main.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/howzhi.css">
 <link rel="stylesheet" type="text/css" href="css/iconfont.css">
-<link charset="utf-8" rel="stylesheet" href="css/select2.css">
-<link charset="utf-8" rel="stylesheet" href="css/introjs.min.css">
+<link rel="stylesheet" href="css/select2.css">
+<link rel="stylesheet" href="css/introjs.min.css">
 <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script> 
 	<script type="text/javascript" src="ckeditor/ckeditor.js"></script>  
     <script type="text/javascript" src="ckeditor/config.js"></script>  
@@ -35,7 +35,7 @@
     <div class="course-managehead media manage">
     <div class="pic media-left">
       <a href="http://www.howzhi.com/course/14023/">
-        <img src="./images/course.png">
+        <img src="images/course.png">
       </a>
     </div>
     <div class="info media-body">
@@ -48,8 +48,7 @@
     </div>
      <div class="action"> 
       <a class="btn com radius mts" href="http://www.howzhi.com/course/14023/?previewAs=member" target="_blank">返回课程</a>
-                          <a data-step="4" data-intro="完善所有信息后，点击&#39;申请发布&#39;，向管理员提交发布请求" data-position="left" class="radius btn disable mtl">申请发布</a>
-                
+                          <a data-step="4" data-intro="完善所有信息后，点击&#39;申请发布&#39;，向管理员提交发布请求" data-position="left" class="radius btn disable mtl">申请发布</a>      
      </div>
   </div>
 
@@ -59,9 +58,7 @@
     <div class="col-md-3">
       <ul class="list-group affix-top" data-spy="affix" data-offset-top="300">
         <li class="active" data-step="1" data-intro="点击&#39;基本信息&#39;，填写完整课程信息，并保存。打绿色勾表示该项完成" data-position="right">
-                          <span>
-                1
-              </span>
+                         <span> 1 </span>
                         <a title="请输入标题" href="http://www.howzhi.com/ugc/course/14023/manage">
             基本信息
           </a>
