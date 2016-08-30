@@ -30,7 +30,7 @@
 <body class="index">   
    
     
-    <jsp:include page="top.jsp"></jsp:include>
+    <jsp:include page="topf.jsp"></jsp:include>
     <div class="container" id="content-container"> 
     <div class="course-managehead media manage">
     <div class="pic media-left">

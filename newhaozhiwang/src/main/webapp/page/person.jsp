@@ -44,7 +44,7 @@
 
 	<body class="index">
      <!-- 头部 -------------------------------------------------------------------  -->		
-	<jsp:include page="top.jsp"></jsp:include>
+	<jsp:include page="topb.jsp"></jsp:include>
 	<!-- 头部 -------------------------------------------------------------------  -->		
 
 
@@ -158,11 +158,9 @@
 											<span class="status ing">直播</span>
 
 											<img src="images/160148ccf620140008.jpg" alt="【古风人像】牛牛很忙教你打造穿越千年古风美人" class="">
-											<a href="javaScript:void(0);">
-												<div class="mask">
+											<div class="mask"><a href="javaScript:void(0);">												
 													<span class="btn btn-primary">开始学习</span>
-												</div>
-											</a>
+												</a></div>
 										</div>
 										<div class="course-info">
 											<div class="title">
@@ -403,13 +401,13 @@
 		<div class="popover es-card fade bottom in" style="top: 237px; left: 509px; display: block;">
 			<!--<div class="arrow"></div>-->
 			
-			<div class="popover-content" style="display:none">
+			<div class="popover-content" style="display:block">
 				<div id="user-card-2358982" class="js-card-content" data-user-id="2358982">
 					<div class="card-header media-middle">
 						<div class="media">
 							<div class="media-left">
 								<a class=" " href="http://www.howzhi.com/u/2358982/" data-card-url="/user/2358982/card/show" data-user-id="2358982">
-									<img class="avatar-md" src="images/avatar.png" alt="珘珘">
+									<img class="avatar-md" src="images/avatar.png" alt="珘珘" style="width:60px;height:60px;">
 								</a>
 
 							</div>
@@ -439,7 +437,7 @@
 
 		</div>
 
-
+	<jsp:include page="footer.jsp"></jsp:include>
 	</body>
 
 </html>

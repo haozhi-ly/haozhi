@@ -6,6 +6,7 @@
 <base href="/newhaozhiwang/"/>
 <meta charset="utf-8">
 <title>登录</title>
+<link href="http://f1.howzhi.com/system/2016/03-31/113613d6a857327741.ico" rel="shortcut icon">
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/register.js"></script>
@@ -102,12 +103,15 @@
 		color:#0F9;
 		text-decoration:none;
 		}
+	.form-group{
+			margin-top:14px;
+		}
 </style>
 </head>
 
 <body>
   
-    <jsp:include page="top.jsp" />
+    <jsp:include page="topf.jsp" />
     
     <div id="body">
     	<div id="login-box">
@@ -164,8 +168,6 @@
         </div>
     </div>
     
-    <div id="foot">
-    
-    </div>
+    <jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

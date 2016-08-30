@@ -16,14 +16,32 @@
 <link rel="stylesheet" type="text/css" href="css/swiper.css" >
 
 <script src="js/jquery-2.1.4.min.js"></script> 
+<script src="js/swiper-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script> 
 <script src="js/top.js"></script>
 <script src="js/swiper-3.3.1.min.js"></script>
 
 <style type="text/css">
 
+<script>        
+		  var mySwiper = new Swiper ('.swiper-container', {
+			
+			loop: true,
+			autoplay : 3000,
+			speed:300,
+			// 如果需要分页器
+			pagination: '.swiper-pagination',
+			
+			// 如果需要前进后退按钮
+			nextButton: '.swiper-button-next',
+			prevButton: '.swiper-button-prev',
+			
+			// 如果需要滚动条
+			scrollbar: '.swiper-scrollbar',
+			autoplayDisableOnInteraction : false,
+		  })        
+  	</script>
 
-</style>
 
 </head>
 <body class="hzco-classify">
@@ -37,7 +55,7 @@
 		  })        
   	</script>
 <!-- 头部 -------------------------------------------------------------------  -->			
-<jsp:include page="top.jsp"></jsp:include>
+<jsp:include page="topf.jsp"></jsp:include>
 <!-- 头部 分割线------------------------------------------------------------------------------------  -->		
 <div class="container" id="content-container" style="margin-top: 30px;">
   <ul class="tab-head tab clearfix">
@@ -172,7 +190,7 @@
         <ul class="course clearfix row">
         <!-- --------从数据库查出来的热门课程--------------------------------------------------------------------------------------- -->
           <li class="course-item col-md-12 col-xs-6">
-            <div class="course-img"> <a href="http://www.howzhi.com/course/13254/"> <img src="images/lazyload_course.png" alt="百度网盟推广入门必备" class="" data-echo="http://f1.howzhi.com/default/2016/03-14/1045288563e3244992.jpg"> </a> </div>
+            <div class="course-img"> <a href="http://www.howzhi.com/course/13254/"> <img src="http://f1.howzhi.com/default/2016/03-14/1045288563e3244992.jpg" alt="百度网盟推广入门必备" class="" data-echo="http://f1.howzhi.com/default/2016/03-14/1045288563e3244992.jpg"> </a> </div>
             <div class="course-info">
               <div class="title text-o-show"> <a href="http://www.howzhi.com/course/13254/">百度网盟推广入门必备</a> </div>
               <div class="teacher text-o-show"> <a class=" js-user-card" href="http://www.howzhi.com/u/1637688/" data-card-url="/user/1637688/card/show" data-user-id="1637688"> <img class="avatar-ss " src="images/11480117880b049054.jpg" alt="luemery"> luemery </a>

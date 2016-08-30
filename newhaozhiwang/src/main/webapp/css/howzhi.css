@@ -18,6 +18,30 @@
 .nav navbar-nav topmenu li a{
 	color:#999;
 }
+/* person页面  */
+.es-card .avatar-md {
+    border: 2px solid #fff;
+}
+.avatar-md {
+    border-radius: 50%;
+    height: 60px !important;
+    width: 60px !important;
+}
+.es-card .card-body {
+    color: #919191;
+    line-height: 24px;
+    padding: 20px;
+}
+.es-card .card-footer span {
+    border-right: 1px solid #f5f5f5;
+    float: left;
+    line-height: 24px;
+    margin: 5px auto;
+    text-align: center;
+    width: 33.33%;
+}
+
+/*  */
 .text-o-show {
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -3098,12 +3122,12 @@ li {
 	display: inline-block;
 	width: 14px;
 	height: 14px;
-	background: url("../images/darens-icon.png") no-repeat;
+	background: url("images/darens-icon.png") no-repeat;
 	vertical-align: middle
 }
 
 .dapinpai-icon-t {
-	background: url("../images/dapinpais-icon.png") no-repeat
+	background: url("images/dapinpais-icon.png") no-repeat
 }
 
 .no-bottom-line {
@@ -3114,7 +3138,7 @@ li {
 	display: inline-block;
 	width: 14px;
 	height: 14px;
-	background: url("../images/daren-icon.png") no-repeat;
+	background: url("images/daren-icon.png") no-repeat;
 	vertical-align: middle
 }
 

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-
+<!-- 登录后的头部----------- -->
 <header class="header">
   <div class="container" >
     <div class="navbar-header pull-left"> <a href="javaScript:void(0);" class="navbar-brand"> <img src="images/logo.png" class="img-responsive" alt="好知，howzhi.com"> </a>
