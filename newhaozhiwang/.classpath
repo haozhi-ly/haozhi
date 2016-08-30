@@ -27,6 +27,5 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/xwork-core-2.3.16.3.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

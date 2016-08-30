@@ -48,8 +48,7 @@
     </div>
      <div class="action"> 
       <a class="btn com radius mts" href="http://www.howzhi.com/course/14023/?previewAs=member" target="_blank">返回课程</a>
-                          <a data-step="4" data-intro="完善所有信息后，点击&#39;申请发布&#39;，向管理员提交发布请求" data-position="left" class="radius btn disable mtl">申请发布</a>
-                
+                          <a data-step="4" data-intro="完善所有信息后，点击&#39;申请发布&#39;，向管理员提交发布请求" data-position="left" class="radius btn disable mtl">申请发布</a>      
      </div>
   </div>
 
