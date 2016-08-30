@@ -106,6 +106,7 @@
 	.form-group{
 			margin-top:14px;
 		}
+	
 </style>
 </head>
 
@@ -148,7 +149,9 @@
          						<div class="col-xs-6">
             						<input data-explain="" data-widget-cid="widget-1" class="form-control ident" id="captcha_num" name="captcha_num" maxlength="5" placeholder="验证码" required data-url="/register/captcha/check" type="text">
           						</div>
-                                <div class="col-xs-6 ident-img"> <img src="/0.jpg" data-url="/captcha_num/0" id="getcode_numxxx" title="看不清，点击换一张" style="cursor:pointer;" alt="看不清，点击换一张"> </div>
+                                <div class="col-xs-6 ident-img"> 
+                                	 <button type="submit" class="btn btn-default" id="submit">获取邮箱验证码</button> 
+                                 </div>
           						<div class="help-block" style="display:none;"></div>
         					</div>
       					</div>
@@ -156,7 +159,7 @@
                         <div class="form-group mb40 agren">
         					<div class="controls">
          						<label><input data-explain="" data-widget-cid="widget-5" id="user_terms" checked="checked" type="checkbox">我已阅读并同意
-                                <a href="#" target="_blank">《服务协议》</a> </label>
+                                <a href="page/container.jsp" target="_blank">《服务协议》</a> </label>
           						<div class="help-block" style="display:none;"></div>
        						</div>
      					</div>

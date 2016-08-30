@@ -5,12 +5,14 @@
 <head>
 <meta charset="utf-8">
 <title>服务协议 -好知网</title>
-	<link href="../css/bootstrap.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="../css/howzhi.css">
-	<link rel="stylesheet" type="text/css" href="../css/main.css">
-
-	<script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
-	<script type="text/javascript" src="../js/bootstrap.js"></script>
+	<base href="/newhaozhiwang/"/>
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/howzhi.css">
+	
+	
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script src="js/top.js"></script>
 <style type="text/css">
 * {
 	padding: 0px;
@@ -21,16 +23,15 @@
 	height:auto;
 	background-color:#F4F6F8;
 	}
-#header {
-	height: 100px;
-	width: 100%;
-}
+
 #body {
 	height: auto;
 	width: 80%;
 	border: #CCC solid 1px;
 	background:#FFF;
 	 border-radius:5px;
+	 margin-top:30px;
+	 margin-bottom:50px;
 }
 p {
 	font-size: 14px;
@@ -58,7 +59,7 @@ p {
 </head>
 
 <body id="bgcolor">
-<div id="header"> </div>
+<jsp:include page="topf.jsp"></jsp:include>
 <div id="body" class="container">
   <div class="es-section">
     <div class="section-header">
