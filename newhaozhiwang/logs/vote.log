@@ -85,3 +85,128 @@ java.io.IOException: Could not find resource MybatisConfiguration.xml
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675) [.cp/:?]
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382) [.cp/:?]
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192) [.cp/:?]
+DEBUG LogFactory (LogFactory.java:135) - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+DEBUG SqlSessionFactoryBean (SqlSessionFactoryBean.java:411) - Property `configuration` or 'configLocation' not specified, using default MyBatis Configuration
+DEBUG VFS (VFS.java:109) - Class not found: org.jboss.vfs.VFS
+DEBUG JBoss6VFS (JBoss6VFS.java:142) - JBoss 6 VFS API is not available in this environment.
+DEBUG VFS (VFS.java:109) - Class not found: org.jboss.vfs.VirtualFile
+DEBUG VFS (VFS.java:70) - VFS implementation org.apache.ibatis.io.JBoss6VFS is not valid in this environment.
+DEBUG VFS (VFS.java:84) - Using VFS adapter org.apache.ibatis.io.DefaultVFS
+DEBUG DefaultVFS (DefaultVFS.java:222) - Find JAR URL: file:/E:/mygit/haozhi/newhaozhiwang/target/classes/com/haozhi/entity
+DEBUG DefaultVFS (DefaultVFS.java:248) - Not a JAR: file:/E:/mygit/haozhi/newhaozhiwang/target/classes/com/haozhi/entity
+DEBUG DefaultVFS (DefaultVFS.java:102) - Reader entry: Admin.class
+DEBUG DefaultVFS (DefaultVFS.java:102) - Reader entry: Attention.class
+DEBUG DefaultVFS (DefaultVFS.java:102) - Reader entry: Cgroup.class
+DEBUG DefaultVFS (DefaultVFS.java:102) - Reader entry: Course.class
+DEBUG DefaultVFS (DefaultVFS.java:102) - Reader entry: CourseAnswer.class
+DEBUG DefaultVFS (DefaultVFS.java:102) - Reader entry: CourseAssess.class
+DEBUG DefaultVFS (DefaultVFS.java:102) - Reader entry: CourseManage.class
+DEBUG DefaultVFS (DefaultVFS.java:102) - Reader entry: CourseNote.class
+DEBUG DefaultVFS (DefaultVFS.java:102) - Reader entry: CourseQuestion.class
+DEBUG DefaultVFS (DefaultVFS.java:102) - Reader entry: CourseType.class
+DEBUG DefaultVFS (DefaultVFS.java:102) - Reader entry: SelfMessage.class
+DEBUG DefaultVFS (DefaultVFS.java:102) - Reader entry: StudyCourse.class
+DEBUG DefaultVFS (DefaultVFS.java:102) - Reader entry: UserInfo.class
+DEBUG DefaultVFS (DefaultVFS.java:113) - Listing file:/E:/mygit/haozhi/newhaozhiwang/target/classes/com/haozhi/entity
+DEBUG DefaultVFS (DefaultVFS.java:222) - Find JAR URL: file:/E:/mygit/haozhi/newhaozhiwang/target/classes/com/haozhi/entity/Admin.class
+DEBUG DefaultVFS (DefaultVFS.java:248) - Not a JAR: file:/E:/mygit/haozhi/newhaozhiwang/target/classes/com/haozhi/entity/Admin.class
+DEBUG DefaultVFS (DefaultVFS.java:102) - Reader entry: ����   3 X  com/haozhi/entity/Admin  java/lang/Object aid I aname Ljava/lang/String; email 	apassword temp01 temp02 temp03 <init> ()V Code
+DEBUG DefaultVFS (DefaultVFS.java:222) - Find JAR URL: file:/E:/mygit/haozhi/newhaozhiwang/target/classes/com/haozhi/entity/Attention.class
+DEBUG DefaultVFS (DefaultVFS.java:248) - Not a JAR: file:/E:/mygit/haozhi/newhaozhiwang/target/classes/com/haozhi/entity/Attention.class
+DEBUG DefaultVFS (DefaultVFS.java:102) - Reader entry: ����   3 Q  com/haozhi/entity/Attention  java/lang/Object atid I 	attention userid temp01 Ljava/lang/String; temp02 temp03 <init> ()V Code
+DEBUG DefaultVFS (DefaultVFS.java:222) - Find JAR URL: file:/E:/mygit/haozhi/newhaozhiwang/target/classes/com/haozhi/entity/Cgroup.class
+DEBUG DefaultVFS (DefaultVFS.java:248) - Not a JAR: file:/E:/mygit/haozhi/newhaozhiwang/target/classes/com/haozhi/entity/Cgroup.class
+DEBUG DefaultVFS (DefaultVFS.java:102) - Reader entry: ����   3 _  com/haozhi/entity/Cgroup  java/lang/Object gid I 	groupname Ljava/lang/String; 	createman 
+DEBUG DefaultVFS (DefaultVFS.java:222) - Find JAR URL: file:/E:/mygit/haozhi/newhaozhiwang/target/classes/com/haozhi/entity/Course.class
+DEBUG DefaultVFS (DefaultVFS.java:248) - Not a JAR: file:/E:/mygit/haozhi/newhaozhiwang/target/classes/com/haozhi/entity/Course.class
+DEBUG DefaultVFS (DefaultVFS.java:102) - Reader entry: ����   3 u  com/haozhi/entity/Course  java/lang/Object courseid I ctitle Ljava/lang/String; cintrodution ctid 
+DEBUG DefaultVFS (DefaultVFS.java:222) - Find JAR URL: file:/E:/mygit/haozhi/newhaozhiwang/target/classes/com/haozhi/entity/CourseAnswer.class
+DEBUG DefaultVFS (DefaultVFS.java:248) - Not a JAR: file:/E:/mygit/haozhi/newhaozhiwang/target/classes/com/haozhi/entity/CourseAnswer.class
+DEBUG DefaultVFS (DefaultVFS.java:102) - Reader entry: ����   3 _  com/haozhi/entity/CourseAnswer  java/lang/Object caid I cqid userid 
+DEBUG DefaultVFS (DefaultVFS.java:222) - Find JAR URL: file:/E:/mygit/haozhi/newhaozhiwang/target/classes/com/haozhi/entity/CourseAssess.class
+DEBUG DefaultVFS (DefaultVFS.java:248) - Not a JAR: file:/E:/mygit/haozhi/newhaozhiwang/target/classes/com/haozhi/entity/CourseAssess.class
+DEBUG DefaultVFS (DefaultVFS.java:102) - Reader entry: ����   3 f  com/haozhi/entity/CourseAssess  java/lang/Object csid I userid cmid content Ljava/lang/String; time 
+DEBUG DefaultVFS (DefaultVFS.java:222) - Find JAR URL: file:/E:/mygit/haozhi/newhaozhiwang/target/classes/com/haozhi/entity/CourseManage.class
+DEBUG DefaultVFS (DefaultVFS.java:248) - Not a JAR: file:/E:/mygit/haozhi/newhaozhiwang/target/classes/com/haozhi/entity/CourseManage.class
+DEBUG DefaultVFS (DefaultVFS.java:102) - Reader entry: ����   3 f  com/haozhi/entity/CourseManage  java/lang/Object cmid I courseid type title Ljava/lang/String; 	courseseq 
+DEBUG DefaultVFS (DefaultVFS.java:222) - Find JAR URL: file:/E:/mygit/haozhi/newhaozhiwang/target/classes/com/haozhi/entity/CourseNote.class
+DEBUG DefaultVFS (DefaultVFS.java:248) - Not a JAR: file:/E:/mygit/haozhi/newhaozhiwang/target/classes/com/haozhi/entity/CourseNote.class
+DEBUG DefaultVFS (DefaultVFS.java:102) - Reader entry: ����   3 f  com/haozhi/entity/CourseNote  java/lang/Object courseNoteId I userid cmid praiseNumber Ljava/lang/String; noteContent ntime temp01 temp02 temp03 <init> ()V Code
+DEBUG DefaultVFS (DefaultVFS.java:222) - Find JAR URL: file:/E:/mygit/haozhi/newhaozhiwang/target/classes/com/haozhi/entity/CourseQuestion.class
+DEBUG DefaultVFS (DefaultVFS.java:248) - Not a JAR: file:/E:/mygit/haozhi/newhaozhiwang/target/classes/com/haozhi/entity/CourseQuestion.class
+DEBUG DefaultVFS (DefaultVFS.java:102) - Reader entry: ����   3 m   com/haozhi/entity/CourseQuestion  java/lang/Object cqid I userid cmid 	cqcontent Ljava/lang/String; cqtime cqview qreadstatus temp01 temp02 temp03 <init> ()V Code
+DEBUG DefaultVFS (DefaultVFS.java:222) - Find JAR URL: file:/E:/mygit/haozhi/newhaozhiwang/target/classes/com/haozhi/entity/CourseType.class
+DEBUG DefaultVFS (DefaultVFS.java:248) - Not a JAR: file:/E:/mygit/haozhi/newhaozhiwang/target/classes/com/haozhi/entity/CourseType.class
+DEBUG DefaultVFS (DefaultVFS.java:102) - Reader entry: ����   3 <  com/haozhi/entity/CourseType  java/lang/Object ctid I typename Ljava/lang/String; temp01 <init> ()V Code
+DEBUG DefaultVFS (DefaultVFS.java:222) - Find JAR URL: file:/E:/mygit/haozhi/newhaozhiwang/target/classes/com/haozhi/entity/SelfMessage.class
+DEBUG DefaultVFS (DefaultVFS.java:248) - Not a JAR: file:/E:/mygit/haozhi/newhaozhiwang/target/classes/com/haozhi/entity/SelfMessage.class
+DEBUG DefaultVFS (DefaultVFS.java:102) - Reader entry: ����   3 m  com/haozhi/entity/SelfMessage  java/lang/Object smid I sendman 
+DEBUG DefaultVFS (DefaultVFS.java:222) - Find JAR URL: file:/E:/mygit/haozhi/newhaozhiwang/target/classes/com/haozhi/entity/StudyCourse.class
+DEBUG DefaultVFS (DefaultVFS.java:248) - Not a JAR: file:/E:/mygit/haozhi/newhaozhiwang/target/classes/com/haozhi/entity/StudyCourse.class
+DEBUG DefaultVFS (DefaultVFS.java:102) - Reader entry: ����   3 f  com/haozhi/entity/StudyCourse  java/lang/Object scid I userid courseid 	begintime Ljava/lang/String; assess studyPeriod temp01 temp02 temp03 <init> ()V Code
+DEBUG DefaultVFS (DefaultVFS.java:222) - Find JAR URL: file:/E:/mygit/haozhi/newhaozhiwang/target/classes/com/haozhi/entity/UserInfo.class
+DEBUG DefaultVFS (DefaultVFS.java:248) - Not a JAR: file:/E:/mygit/haozhi/newhaozhiwang/target/classes/com/haozhi/entity/UserInfo.class
+DEBUG DefaultVFS (DefaultVFS.java:102) - Reader entry: ����   3 �  com/haozhi/entity/UserInfo  java/lang/Object userid I uname Ljava/lang/String; email 	upassword gender photo usign introdution status score signDate temp02 temp03 <init> ()V Code
+DEBUG ResolverUtil (ResolverUtil.java:256) - Checking to see if class com.haozhi.entity.Admin matches criteria [is assignable to Object]
+DEBUG ResolverUtil (ResolverUtil.java:256) - Checking to see if class com.haozhi.entity.Attention matches criteria [is assignable to Object]
+DEBUG ResolverUtil (ResolverUtil.java:256) - Checking to see if class com.haozhi.entity.Cgroup matches criteria [is assignable to Object]
+DEBUG ResolverUtil (ResolverUtil.java:256) - Checking to see if class com.haozhi.entity.Course matches criteria [is assignable to Object]
+DEBUG ResolverUtil (ResolverUtil.java:256) - Checking to see if class com.haozhi.entity.CourseAnswer matches criteria [is assignable to Object]
+DEBUG ResolverUtil (ResolverUtil.java:256) - Checking to see if class com.haozhi.entity.CourseAssess matches criteria [is assignable to Object]
+DEBUG ResolverUtil (ResolverUtil.java:256) - Checking to see if class com.haozhi.entity.CourseManage matches criteria [is assignable to Object]
+DEBUG ResolverUtil (ResolverUtil.java:256) - Checking to see if class com.haozhi.entity.CourseNote matches criteria [is assignable to Object]
+DEBUG ResolverUtil (ResolverUtil.java:256) - Checking to see if class com.haozhi.entity.CourseQuestion matches criteria [is assignable to Object]
+DEBUG ResolverUtil (ResolverUtil.java:256) - Checking to see if class com.haozhi.entity.CourseType matches criteria [is assignable to Object]
+DEBUG ResolverUtil (ResolverUtil.java:256) - Checking to see if class com.haozhi.entity.SelfMessage matches criteria [is assignable to Object]
+DEBUG ResolverUtil (ResolverUtil.java:256) - Checking to see if class com.haozhi.entity.StudyCourse matches criteria [is assignable to Object]
+DEBUG ResolverUtil (ResolverUtil.java:256) - Checking to see if class com.haozhi.entity.UserInfo matches criteria [is assignable to Object]
+DEBUG SqlSessionFactoryBean (SqlSessionFactoryBean.java:436) - Scanned package: 'com.haozhi.entity' for aliases
+DEBUG SqlSessionFactoryBean (SqlSessionFactoryBean.java:528) - Parsed mapper file: 'file [E:\mygit\haozhi\newhaozhiwang\target\classes\mapper\AdminMapper.xml]'
+DEBUG SqlSessionFactoryBean (SqlSessionFactoryBean.java:528) - Parsed mapper file: 'file [E:\mygit\haozhi\newhaozhiwang\target\classes\mapper\AttentionMapper.xml]'
+DEBUG SqlSessionFactoryBean (SqlSessionFactoryBean.java:528) - Parsed mapper file: 'file [E:\mygit\haozhi\newhaozhiwang\target\classes\mapper\CgroupMapper.xml]'
+DEBUG SqlSessionFactoryBean (SqlSessionFactoryBean.java:528) - Parsed mapper file: 'file [E:\mygit\haozhi\newhaozhiwang\target\classes\mapper\CourseAnswerMapper.xml]'
+DEBUG SqlSessionFactoryBean (SqlSessionFactoryBean.java:528) - Parsed mapper file: 'file [E:\mygit\haozhi\newhaozhiwang\target\classes\mapper\CourseAssessMapper.xml]'
+DEBUG SqlSessionFactoryBean (SqlSessionFactoryBean.java:528) - Parsed mapper file: 'file [E:\mygit\haozhi\newhaozhiwang\target\classes\mapper\CourseManageMapper.xml]'
+DEBUG SqlSessionFactoryBean (SqlSessionFactoryBean.java:528) - Parsed mapper file: 'file [E:\mygit\haozhi\newhaozhiwang\target\classes\mapper\CourseMapper.xml]'
+DEBUG SqlSessionFactoryBean (SqlSessionFactoryBean.java:528) - Parsed mapper file: 'file [E:\mygit\haozhi\newhaozhiwang\target\classes\mapper\CourseNoteMapper.xml]'
+DEBUG SqlSessionFactoryBean (SqlSessionFactoryBean.java:528) - Parsed mapper file: 'file [E:\mygit\haozhi\newhaozhiwang\target\classes\mapper\CourseQuestionMapper.xml]'
+DEBUG SqlSessionFactoryBean (SqlSessionFactoryBean.java:528) - Parsed mapper file: 'file [E:\mygit\haozhi\newhaozhiwang\target\classes\mapper\CourseTypeMapper.xml]'
+DEBUG SqlSessionFactoryBean (SqlSessionFactoryBean.java:528) - Parsed mapper file: 'file [E:\mygit\haozhi\newhaozhiwang\target\classes\mapper\SelfMessageMapper.xml]'
+DEBUG SqlSessionFactoryBean (SqlSessionFactoryBean.java:528) - Parsed mapper file: 'file [E:\mygit\haozhi\newhaozhiwang\target\classes\mapper\StudyCourseMapper.xml]'
+DEBUG SqlSessionFactoryBean (SqlSessionFactoryBean.java:528) - Parsed mapper file: 'file [E:\mygit\haozhi\newhaozhiwang\target\classes\mapper\UserInfoMapper.xml]'
+DEBUG LoggerFactory (LoggerFactory.java:19) - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+INFO  Version (Version.java:17) - HV000001: Hibernate Validator 5.3.0.Alpha1
+DEBUG DefaultTraversableResolver (DefaultTraversableResolver.java:70) - Cannot find javax.persistence.Persistence on classpath. Assuming non JPA 2 environment. All properties will per default be traversable.
+DEBUG ConfigurationImpl (ConfigurationImpl.java:157) - Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+DEBUG ConfigurationImpl (ConfigurationImpl.java:179) - Setting custom ConstraintValidatorFactory of type org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory
+DEBUG ConfigurationImpl (ConfigurationImpl.java:193) - Setting custom ParameterNameProvider of type $Proxy33
+DEBUG ValidationXmlParser (ValidationXmlParser.java:91) - Trying to load META-INF/validation.xml for XML based Validator configuration.
+DEBUG ResourceLoaderHelper (ResourceLoaderHelper.java:47) - Trying to load META-INF/validation.xml via user class loader
+DEBUG ResourceLoaderHelper (ResourceLoaderHelper.java:54) - Trying to load META-INF/validation.xml via TCCL
+DEBUG ResourceLoaderHelper (ResourceLoaderHelper.java:60) - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
+DEBUG ValidationXmlParser (ValidationXmlParser.java:98) - No META-INF/validation.xml found. Using annotation based configuration only.
+DEBUG SqlSessionUtils (SqlSessionUtils.java:99) - Creating a new SqlSession
+DEBUG SqlSessionUtils (SqlSessionUtils.java:150) - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1c76d78] was not registered for synchronization because synchronization is not active
+DEBUG SpringManagedTransaction (SpringManagedTransaction.java:89) - JDBC Connection [5958562, URL=jdbc:oracle:thin:@localhost:1521:orcl, UserName=HAOZHI, Oracle JDBC driver] will not be managed by Spring
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: insert into course values(seq_courseid.nextval,?,?,?,?, ? ,?,null,null,null,null) 
+DEBUG SqlSessionUtils (SqlSessionUtils.java:193) - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1c76d78]
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: insert into course values(seq_courseid.nextval,?,?,?,?, ? ,?,null,null,null,null) 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: insert into course (courseid,ctitle,cintrodution,ctid,courseting,cview,temp1,temp2,temp3) values(seq_courseid.nextval,?,?,?,?, ? ,?,0,null,null,null) 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: insert into course (courseid,ctitle,cintrodution,ctid,courseting,cview,temp1,temp2,temp3) values(seq_courseid.nextval,?,?,?,?, ? ,?,0,null,null,null) 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: insert into course (courseid,ctitle,cintrodution,ctid,courseting,cview,temp1,temp2,temp3) values(seq_courseid.nextval,?,?,?,?, ? ,?,0,null,null,null) 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 【古风人像】牛牛很忙教你打造穿越千年古风美人(String), 牛牛很忙教你打造穿越千年古风美人(String), 1(Integer), 人像 摄影(String), images/18220084d310400588.jpg(String), 3(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: insert into course (courseid,ctitle,cintrodution,ctid,courseting,cview,coursephoto,userId,temp1,temp2,temp3) values(seq_courseid.nextval,?,?,?,?, ? ,?,0,null,null,null) 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: insert into course (courseid,ctitle,cintrodution,ctid,courseting,cview,coursephoto,userId,temp1,temp2,temp3) values(seq_courseid.nextval,?,?,?,?, ?,?,0,null,null,null) 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: insert into course values(seq_courseid.nextval,?,?,?,?, ?,?,0,null,null,null) 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 【古风人像】牛牛很忙教你打造穿越千年古风美人(String), 牛牛很忙教你打造穿越千年古风美人(String), 1(Integer), 人像 摄影(String), images/18220084d310400588.jpg(String), 3(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==    Updates: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: insert into course values(seq_courseid.nextval,?,?,?,?, ? ,?,0,null,null,null) 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: insert into course values(seq_courseid.nextval,?,?,?,?, SET ? ,?,0,null,null,null) 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: insert into course values(seq_courseid.nextval,?,?,?,?, ? ,?,0,null,null,null) 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: insert into course values(seq_courseid.nextval,?,?,?,?, ? ,?,0,null,null,null) 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: insert into course values(seq_courseid.nextval,?,?,?,?, null ,?,0,null,null,null) 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: ps绘画教程（photoshop绘画）(String), ps绘画教程（photoshop绘画）(String), 2(Integer), 创意 设计(String), 3(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==    Updates: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: insert into course values(seq_courseid.nextval,?,?,?,?, ? ,?,0,null,null,null) 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: ps绘画教程（photoshop绘画）(String), ps绘画教程（photoshop绘画）(String), 2(Integer), 创意 设计(String), images/065247f5dc70390703.jpg(String), 3(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==    Updates: 1

@@ -10,7 +10,7 @@ select * from courseAnswer;
 select * from attention;
 select * from studyCourse;
 select * from selfMessage;
-select * from group;
+select * from cgroup;
 
 
 drop table userinfo;
@@ -60,6 +60,8 @@ insert into admin values(seq_aid.nextval,'管理员','123456@qq.com','123456',nu
 
 drop table course;
 drop sequence seq_courseid ;
+delete from course ;
+select * from course;
 -----------------3.课程表
 create table course(
        courseid int primary key,
@@ -76,7 +78,7 @@ create table course(
        temp02 varchar2(200),--备用字段
        temp03 varchar2(200)--备用字段  
 )
-create sequence seq_courseid start with 1;
+create sequence seq_courseid start with 10;
 
 insert into course values(seq_courseid.nextval,'人像摄影高级教程','由摄影师杨最醉主讲的人像摄影高级教程，从人像摄影器材到主题策划、光线捕捉、后期调色、磨皮等各个角度讲解。',
 1,'人像 摄影',null,3,0,null,null,null);

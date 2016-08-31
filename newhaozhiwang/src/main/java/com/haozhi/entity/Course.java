@@ -1,10 +1,15 @@
 package com.haozhi.entity;
+
+import java.io.Serializable;
+
 /**
  * 课程信息
  * @author admin
  *
  */
-public class Course {
+public class Course implements Serializable{
+	
+	private static final long serialVersionUID = 8705965992116136650L;
 	private int courseid;
 	private String ctitle;// --标题
 	private String cintrodution;// --课程简介
@@ -20,10 +25,9 @@ public class Course {
 	public Course() {
 	}
 
-	public Course(int courseid, String ctitle, String cintrodution, int ctid,
+	public Course(String ctitle, String cintrodution, int ctid,
 			String courseting, String coursephoto, int userId, int cview,
 			String temp01, String temp02, String temp03) {
-		this.courseid = courseid;
 		this.ctitle = ctitle;
 		this.cintrodution = cintrodution;
 		this.ctid = ctid;
@@ -34,6 +38,17 @@ public class Course {
 		this.temp01 = temp01;
 		this.temp02 = temp02;
 		this.temp03 = temp03;
+	}
+	
+
+	public Course(String ctitle, String cintrodution, int ctid, String courseting, String coursephoto, int userId) {
+		super();
+		this.ctitle = ctitle;
+		this.cintrodution = cintrodution;
+		this.ctid = ctid;
+		this.courseting = courseting;
+		this.coursephoto = coursephoto;
+		this.userId = userId;
 	}
 
 	public int getCourseid() {
