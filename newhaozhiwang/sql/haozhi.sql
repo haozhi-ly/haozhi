@@ -16,7 +16,7 @@ select * from group;
 drop table userinfo;
 drop sequence seq_userid cascade constraints;
 delete from userinfo;
-----------------用户表
+----------------1.用户表
 create table userinfo(
        userid int primary key,
        uname varchar2(20),
@@ -45,7 +45,7 @@ commit;
 
 drop table admin;
 drop sequence seq_aid ;
---------------管理员
+--------------2.管理员
 create table  admin(
        aid int primary key,
        aname varchar2(20),
@@ -60,7 +60,7 @@ insert into admin values(seq_aid.nextval,'管理员','123456@qq.com','123456',nu
 
 drop table course;
 drop sequence seq_courseid ;
------------------课程表
+-----------------3.课程表
 create table course(
        courseid int primary key,
        ctitle varchar2(100),--标题
@@ -100,7 +100,7 @@ insert into course values(seq_courseid.nextval,'腾飞五千年之《塞北三�
 
 
 select * from courseType;
--------课程类别表
+-------4.课程类别表
 create table courseType(
        ctid int primary key,
        typename varchar2(20),
@@ -119,7 +119,7 @@ insert into courseType values(seq_ctid.nextval,'公开课',null);
 
 drop table courseManage;
 drop sequence seq_cmid ;
---------------课时管理表
+--------------5.课时管理表
 create table courseManage(
        cmid int primary key ,
        courseid int 
@@ -152,7 +152,7 @@ insert into courseManage values(seq_cmid.nextval,6,1,' L2:高大上的冰滴法 
 5 水滴式咖啡的一个成败关键则是滴滤速度，以10秒七滴左右的慢速滴滤为佳。水与咖啡粉有较长的时间融合，咖啡口感较饱和;若滴滤时间太快，味道太淡
 ，同时会产生积水外溢，反之，太慢会使得咖啡发酵，产生酸味及酒味。</p>',null,null,null);
 
------------------课程评价表
+-----------------6.课程评价表
 create table courseAssess(
        csid int primary key ,
        userid int 
@@ -170,7 +170,7 @@ create sequence seq_csid start with 1;
 insert into courseAssess values(seq_csid.nextval,1,1,'老师讲的非常好！',sysdate,0,null,null,null);
 insert into courseAssess values(seq_csid.nextval,1,2,'今天终于学会了做咖啡！',sysdate,0,null,null,null);
 
---------------------课程提问表
+--------------------7.课程提问表
 create table courseQuestion(
        cqid int primary key,
        userid int 
@@ -191,7 +191,7 @@ insert into courseQuestion values(seq_cqid.nextval,4,1,'水的分量还是把握
 
 drop table courseNote;
 drop sequence seq_coursenoteId ;
----------------------课程笔记表
+---------------------8.课程笔记表
 create table courseNote(
        courseNoteId int primary key ,
        userid int 
@@ -209,7 +209,7 @@ create sequence seq_courseNoteId start with 1;
 insert into courseNote values(seq_courseNoteId.nextval,2,1,null,'冷萃咖啡，最重要的是把握好水的分量以及咖啡的量',sysdate,null,null,null);
 
 
-----------------------课时问题问答表
+----------------------9.课时问题问答表
 create table courseAnswer(
        caid int primary key ,
        cqid int 
@@ -226,7 +226,7 @@ create sequence seq_caid start with 1;
 insert into courseAnswer values(seq_caid.nextval,1,3,'多多联系一下就好了，相信自己！',sysdate,null,null,null);
 
 
---------------------------关注表（保留意见）
+--------------------------10.关注表（保留意见）
 create table attention(
        atid  int  primary key,  
        attention int 
@@ -242,7 +242,7 @@ insert into attention values(seq_atid.nextval,3,1,null,null,null);
 insert into attention values(seq_atid.nextval,1,3,null,null,null);
 
 
----------------------学习课程表
+---------------------11.学习课程表
 create table studyCourse(
        scid int primary key,
        userid int 
@@ -260,7 +260,7 @@ create sequence seq_scid start with 1;
 insert into studyCourse values(seq_scid.nextval,1,5,to_date('2016-8-1','yyyy-mm-dd'),2,null,null,null,null);
 insert into studyCourse values(seq_scid.nextval,4,6,to_date('2016-8-10','yyyy-mm-dd'),4,null,null,null,null);
 
--------------私信表  or   留言表
+-------------12.私信表  or   留言表
 create table selfMessage(
        smid int primary key ,
        sendman int 
@@ -280,7 +280,7 @@ insert into selfMessage values(seq_smid.nextval,1,3,'哈喽halo！！',sysdate,0
 insert into selfMessage values(seq_smid.nextval,3,1,'你好呀！！',sysdate,0,0,null,null,null);
 
 
------------------小组表
+-----------------13.小组表
 create table cgroup(
        gid int primary key ,
        groupname varchar2(50),---小组名

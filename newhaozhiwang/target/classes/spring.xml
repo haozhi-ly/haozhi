@@ -56,7 +56,7 @@
 	</bean>
 	<!--创建映射接口代理实现对象,创建bean的名称默认为映射接口名首字母小写 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.yc.haozhi.mapper"/>
+		<property name="basePackage" value="com.haozhi.mapper"/>
 		<!-- 设置映射接口所在的包类 -->
 		<!-- 设置sqlsessionfactoryz在spring容器中的名称 -->
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/> 
