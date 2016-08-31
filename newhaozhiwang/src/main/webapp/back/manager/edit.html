@@ -1,0 +1,88 @@
+<div id="select_news" class="easyui-panel"  style="width:600px;height:300px;margin-left: 400px;margin-top: 50px;font-size: 24px" data-options="iconCls:'icon-add',closed:true">
+	<form action="" style="float:left;padding-left:20px;">
+		<br />
+		<label>旧&ensp;密码：</label><input type="password" id="oldpwd" onblur="checkOld()"/>
+		<label id="checkold" >请输入旧密码...</label> <br /><br />
+		<label>新&ensp;密码：</label><input type="password" id="newpwd" onblur="checkNew()"/> 
+		<label id="checknew" >请输入新密码...</label> <br /><br />
+		<label>确认密码：</label><input type="password" id="pwd"  onblur="checkPwd()"/>
+		<label id="checkpwd" >请输入确认密码...</label> <br /><br />
+		<input type="button" id="search" value="修改" width="200px" onclick="editPwd()" /> <br /><br />  
+	</form>
+</div>
+
+<script>
+	$("#select_news").panel('open'); 
+	//$('#select_news').dialog({ 
+   // closed: false,  
+   /// cache: false,  
+   // modal: false  
+//});  
+
+	var  checkold=true;
+	var checknew=true;
+	var checkpwd=true;
+	
+	function checkOld(){
+		var oldpwd=$.trim($("#oldpwd").val());
+		$.post("../../adminServlet",{op:"findAmdinsPwd",oldpwd:oldpwd},function(data){
+			if(data==1){
+				 $("#checkold").html("该密码正确...").css("color", "#0F0");
+				 checkold=true;
+				}else{
+				 $("#checkold").html("该密码不正确...").css("color", "#F00");
+				 $("#checkold").val("");
+				 checkold=false;
+				}
+			});
+	}
+	
+	function checkNew(){
+		var newpwd=$.trim($("#newpwd").val());
+		if(null!=newpwd){
+			var reg = /^([a-zA-Z0-9_-]{6,20})/;
+		    if (newpwd.match(reg)) {
+		        $("#checknew").html("可以使用该密码...").css("color", "#0F0");
+		        checknew=true;
+		    } else {
+		        $("#newpwd").val("");
+		        $("#checknew").html("密码不合格...").css("color", "#F00");
+		        checknew=false;
+		    }
+		}
+	}
+	
+	function checkPwd(){
+		var newpwd=$.trim($("#newpwd").val());
+		var pwd=$.trim($("#pwd").val());
+		 if (newpwd == pwd && pwd != "" && pwd != null) {
+		        $("#checkpwd").html("密码重复确认正确...").css("color", "#0F0");
+		        checkpwd=true;
+		    } else {
+		        $("#checkpwd").html("密码不一致请重新输入...").css("color", "#F00");
+		        $("#pwd").val("");
+		        checkpwd=false;
+		    }
+	}
+	
+	
+	function editPwd(){
+		var newpwd=$.trim($("#newpwd").val());
+		if(checkold&&checknew&&checkpwd){
+			$.post("../../adminServlet",{op:"updatePwd",newpwd:newpwd},function(data){
+				if(data>0){
+					$.messager.show({title:'成功提示',msg:"新闻信息修改成功...",timeout:2000,showType:'slide'});
+					
+					$("#oldpwd").val("");
+					$("#newpwd").val("");
+					$("#pwd").val("");
+					$('#select_news').datagrid("reload");//数据重新加载
+				}else{
+					alert("修改密码失败，请重新尝试...");
+				}
+			});
+		}
+	}
+	
+	
+</script>
