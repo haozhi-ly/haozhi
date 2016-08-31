@@ -88,7 +88,8 @@
       <div class="course list row">
       
       <!--  从数据库查出来的课程------------------------------------------------------------------------------------------------ -->
-       <if test="${courses}!=null">
+
+       <c:if test="${courses}!=null">
        <c:forEach items="${courses}" var="item">
         <div class="col-md-4 col-xs-6">
           <div class="course-item ">
@@ -103,7 +104,7 @@
             </div>
           </div>
         </div>    
-       </c:forEach></if>
+       </c:forEach></c:if>
        <!--  从数据库查出来的课程 0 ------------------------------------------------------------------------------------------------ -->
         
         
