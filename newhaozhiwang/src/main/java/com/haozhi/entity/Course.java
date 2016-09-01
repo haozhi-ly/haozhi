@@ -18,16 +18,19 @@ public class Course implements Serializable{
 	private String coursephoto;// --课程图片
 	private int userId;// --外键 课程的创建者
 	private int cview;// --浏览量
-	private String temp01;// --备用字段
+	private String createTime;// --备用字段
 	private String temp02;// --备用字段
 	private String temp03;// --备用字段
+	private int memberCount;  //--课程总人员
+	private double assessAvg;  //--课程评分
+	private UserInfo user;  // 用户
 
 	public Course() {
 	}
 
 	public Course(String ctitle, String cintrodution, int ctid,
 			String courseting, String coursephoto, int userId, int cview,
-			String temp01, String temp02, String temp03) {
+			String createTime, String temp02, String temp03) {
 		this.ctitle = ctitle;
 		this.cintrodution = cintrodution;
 		this.ctid = ctid;
@@ -35,7 +38,7 @@ public class Course implements Serializable{
 		this.coursephoto = coursephoto;
 		this.userId = userId;
 		this.cview = cview;
-		this.temp01 = temp01;
+		this.createTime = createTime;
 		this.temp02 = temp02;
 		this.temp03 = temp03;
 	}
@@ -115,12 +118,12 @@ public class Course implements Serializable{
 		this.cview = cview;
 	}
 
-	public String getTemp01() {
-		return temp01;
+	public String getCreateTime() {
+		return createTime;
 	}
 
-	public void setTemp01(String temp01) {
-		this.temp01 = temp01;
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
 	}
 
 	public String getTemp02() {
@@ -139,13 +142,42 @@ public class Course implements Serializable{
 		this.temp03 = temp03;
 	}
 
+	public int getMemberCount() {
+		return memberCount;
+	}
+
+	public void setMemberCount(int memberCount) {
+		this.memberCount = memberCount;
+	}
+
+	public double getAssessAvg() {
+		return assessAvg;
+	}
+
+	public void setAssessAvg(double assessAvg) {
+		this.assessAvg = assessAvg;
+	}
+	
+	
+
+
+	public UserInfo getUser() {
+		return user;
+	}
+
+	public void setUser(UserInfo user) {
+		this.user = user;
+	}
+
 	@Override
 	public String toString() {
-		return "Course [courseid=" + courseid + ", ctitle=" + ctitle
-				+ ", cintrodution=" + cintrodution + ", ctid=" + ctid
-				+ ", courseting=" + courseting + ", coursephoto=" + coursephoto
-				+ ", userId=" + userId + ", cview=" + cview + ", temp01="
-				+ temp01 + ", temp02=" + temp02 + ", temp03=" + temp03 + "]";
+		return "Course [courseid=" + courseid + ", ctitle=" + ctitle + ", cintrodution=" + cintrodution + ", ctid="
+				+ ctid + ", courseting=" + courseting + ", coursephoto=" + coursephoto + ", userId=" + userId
+				+ ", cview=" + cview + ", createTime=" + createTime + ", memberCount=" + memberCount + ", assessAvg="
+				+ assessAvg + ", user=" + user + "]";
 	}
+
+	
+
 
 }

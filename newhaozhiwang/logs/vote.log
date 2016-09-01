@@ -210,3 +210,205 @@ DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==    Updates: 1
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: insert into course values(seq_courseid.nextval,?,?,?,?, ? ,?,0,null,null,null) 
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: ps绘画教程（photoshop绘画）(String), ps绘画教程（photoshop绘画）(String), 2(Integer), 创意 设计(String), images/065247f5dc70390703.jpg(String), 3(Integer)
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==    Updates: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s; 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 10
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg, (select uname from userinfo where userid = s.userid ) userUname from course s; 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg, (select uname from userinfo where userid = s.userid ) userUname from course s 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 10
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg, (select uname from userinfo where userid = s.userid ) userUname from course s where 3>=rownum order by memberCount desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 3
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg, (select * from userinfo where userid = s.userid ) user from course s 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg, from course s 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 10
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 3(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 3(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 5(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 2(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 4(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 10
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg, (select uname,photo from userinfo where userid = s.userid ) userUname from course s where 3>=rownum order by memberCount desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s where 3>=rownum order by memberCount desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 3(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 5(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 3
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s where 3>=rownum order by memberCount desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 3(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 5(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 3
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s where 3>=rownum order by memberCount desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 3(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 5(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 3
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from (select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s order by memberCount desc) where 3>=rownum; 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from (select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s order by memberCount desc) where 3>=rownum 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 4(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 3(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 3
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s where s.ctid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 3(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s where s.ctid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 3(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s where s.ctid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 3(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s where s.ctid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 3(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s where s.ctid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 3(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from (select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s where s.ctid=? order by memberCount desc) where 3>=rownum 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 2(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 3(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 5(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 2
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from (select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s where s.ctid=? order by memberCount desc) where 3>=rownum 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 2(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 3(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 5(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 2
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from (select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s order by memberCount desc) where 3>=rownum 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 4(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 3(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 3
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from (select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s order by memberCount desc) where 3>=rownum 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 4(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 3(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 3
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from (select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s order by memberCount desc) where 3>=rownum 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 4(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 3(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 3
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s where s.ctid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 3(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 3(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 5(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 2(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 4(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 10
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from (select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s where s.ctid=? order by memberCount desc) where 3>=rownum 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 2(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 3(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 5(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 2
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s order by createTime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 3(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 5(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 4(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 2(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 10

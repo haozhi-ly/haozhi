@@ -18,6 +18,11 @@ public class CourseServiceImpl implements CourseService {
 	public List<Course> getAllCourse() {
 		return courseMapper.getAllCourse();
 	}
+	
+	@Override
+	public List<Course> getHostCourse() {
+		return courseMapper.getHostCourse();
+	}
 
 	@Override
 	public boolean insertCourse(Course course) {
@@ -26,5 +31,27 @@ public class CourseServiceImpl implements CourseService {
 		}
 		return false;
 	}
+
+	@Override
+	public List<Course> getCourseByCtid(Integer ctid) {
+		return courseMapper.getCourseByCtid(ctid);
+	}
+
+	@Override
+	public List<Course> getHostByCtid(Integer ctid) {
+		return courseMapper.getHostByCtid(ctid);
+	}
+
+	@Override
+	public List<Course> getCourseDescTime() {
+		return courseMapper.getCourseDescTime();
+	}
+
+	@Override
+	public List<Course> getAllHostCourse() {
+		return courseMapper.getAllHostCourse();
+	}
+
+	
 
 }

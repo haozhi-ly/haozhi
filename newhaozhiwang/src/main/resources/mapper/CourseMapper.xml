@@ -4,11 +4,49 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
 <mapper namespace="com.haozhi.mapper.CourseMapper">
+	<!-- 查询所有课程  -->
+	<sql id="selectCourse">
+		select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount,
+		(select avg(assess) from studyCourse where courseid = s.courseid) assessAvg
+		 from course s
+	</sql>
+	
+	<!-- 查热门课程 显示前三个  -->
+	<sql id="selectHostCourse">
+		select * from (select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount,
+		(select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s 
+	</sql>
+	
+	
+	<!-- 查所有课程  -->
+	<resultMap type="Course" id="CourseMap">
+		<id column="courseid" property="courseid"/>
+		<id column="userId" property="userId"/>
+		<collection property="user" column="userId" ofType="UserInfo" select="getUserByUsid" />
+	</resultMap>
+	<select id="getAllCourse" resultMap="CourseMap" >
+		 <include refid="selectCourse"/>
+	</select>
+	<select id="getUserByUsid" resultType="UserInfo" parameterType="int">
+		select * from userinfo where userid = #{userid}
+	</select>
 
-	<select id="getAllCourse" resultType="Course">
-		select * from course
+	<!-- 查热门课程 显示前三个  -->
+	<resultMap type="Course" id="CourseMap2">
+		<id column="courseid" property="courseid"/>
+		<id column="userId" property="userId"/>
+		<id column="memberCount" property="memberCount"/>
+		<id column="assessAvg" property="assessAvg"/>
+		<collection property="user" column="userId" ofType="UserInfo" select="getUserByUsid1" />
+	</resultMap>
+	<select id="getHostCourse" resultMap="CourseMap2" >
+		<include refid="selectHostCourse"/> order by memberCount desc) where 3>=rownum
+	</select>
+	<select id="getUserByUsid1" resultType="UserInfo" parameterType="int">
+		select * from userinfo where userid = #{userid}
 	</select>
 	
+	<!-- 插入课程 -->
 	<insert id="insertCourse" parameterType="Course">
 		insert into course values(seq_courseid.nextval,#{ctitle},#{cintrodution},#{ctid},#{courseting},
 		 <if test='coursephoto==null'>
@@ -17,6 +55,45 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			#{coursephoto}
 		</if>,#{userId},0,null,null,null)
 	</insert>
+	
+	<!-- 通过课程类型查所有课程 -->
+	<resultMap type="Course" id="CourseMap3">
+		<id column="courseid" property="courseid"/>
+		<id column="userId" property="userId"/>
+		<collection property="user" column="userId" ofType="UserInfo" select="getUserByUsid3" />
+	</resultMap>
+	<select id="getCourseByCtid" resultMap="CourseMap3" parameterType="Integer" >
+		<include refid="selectCourse"/> where s.ctid=#{ctid}
+	</select>
+	<select id="getUserByUsid3" resultType="UserInfo" parameterType="int">
+		select * from userinfo where userid = #{userid}
+	</select>
 
+	<!-- 通过课程类型查询热门课程的前三门 -->
+	<resultMap type="Course" id="CourseMap4">
+		<id column="courseid" property="courseid"/>
+		<id column="userId" property="userId"/>
+		<collection property="user" column="userId" ofType="UserInfo" select="getUserByUsid4" />
+	</resultMap>
+	<select id="getHostByCtid" resultMap="CourseMap4" parameterType="Integer" >
+		<include refid="selectHostCourse"/> where s.ctid=#{ctid}
+		 order by memberCount desc) where 3>=rownum 
+	</select>
+	<select id="getUserByUsid4" resultType="UserInfo" parameterType="int">
+		select * from userinfo where userid = #{userid}
+	</select>
+	
+	<!-- 查询课程按创建时间排序 -->
+	<resultMap type="Course" id="CourseMap5">
+		<id column="courseid" property="courseid"/>
+		<id column="userId" property="userId"/>
+		<collection property="user" column="userId" ofType="UserInfo" select="getUserByUsid5" />
+	</resultMap>
+	<select id="getCourseDescTime" resultMap="CourseMap5" >
+		 <include refid="selectCourse"/> order by createTime desc
+	</select>
+	<select id="getUserByUsid5" resultType="UserInfo" parameterType="int">
+		select * from userinfo where userid = #{userid}
+	</select>
 
 </mapper>
