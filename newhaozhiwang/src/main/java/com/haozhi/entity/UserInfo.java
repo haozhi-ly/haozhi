@@ -26,6 +26,11 @@ public class UserInfo implements Serializable {
 	public UserInfo() {
 	}
 
+	public UserInfo(String uname, String upassword) {
+		this.uname = uname;
+		this.upassword = upassword;
+	}
+
 	public UserInfo(int userid, String uname, String email, String upassword,
 			String gender, String photo, String usign, String introdution,
 			int status, int score, String signDate, String temp02, String temp03) {

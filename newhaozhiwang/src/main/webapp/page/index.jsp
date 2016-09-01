@@ -1,5 +1,5 @@
-
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html class="">
@@ -7,7 +7,7 @@
 <base href="/newhaozhiwang/"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
-<title>好知网</title>
+<title>首页--好知网</title>
 
 
 <link href="http://f1.howzhi.com/system/2016/03-31/113613d6a857327741.ico" rel="shortcut icon">
@@ -29,8 +29,14 @@
 	</style>
 </head>
 <body class="index">
+<c:set value="${users}" var="us"/>
+<c:if test="${us==null }">
+	<jsp:include page="topf.jsp"></jsp:include>
+</c:if>
+<c:if test="${us!=null }">
+	<jsp:include page="topb.jsp"></jsp:include>
+</c:if>
 
-<jsp:include page="topf.jsp"></jsp:include>
  <section class="es-poster hz-poster">
 
 <div class="swiper-container">
