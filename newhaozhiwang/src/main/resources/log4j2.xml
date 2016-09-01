@@ -10,7 +10,7 @@
     </Appenders>
     <Loggers>
     	<!-- 设置包的级别 -->
-        <Logger name="com.hcf" level="debug"/>
+        <Logger name="com.haozhi" level="debug"/>
         <!-- 总日志级别 -->
         <Root level="error">
             <AppenderRef ref="STDOUT"/>
