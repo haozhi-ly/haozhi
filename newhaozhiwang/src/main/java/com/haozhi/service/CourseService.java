@@ -1,5 +1,11 @@
 package com.haozhi.service;
 
-public interface CourseService {
+import java.util.List;
 
+import com.haozhi.entity.Course;
+
+public interface CourseService {
+	List<Course> getAllCourse();
+	
+	boolean insertCourse(Course course);
 }

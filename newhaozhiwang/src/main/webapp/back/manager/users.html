@@ -1,0 +1,227 @@
+<table id="users_data"></table>  
+<div id="add_users" class="easyui-dialog" title="添加会员" data-options="iconCls:'icon-add',resizable:true,model:true,closed:true,fit:true">
+	<br />
+	<form action="" style="float:left;padding-left:20px;">
+		<label>会员名称：</label><input type="text" id="users_uname" name="uname" required="required" /> <br /><br />
+		<label>会员密码：</label><input type="password" id="users_pwd" name="pwd" required="required" /> <br /><br />
+		<label>电子邮件：</label><input type="text" id="users_email" name="email" required="required" /> <br /><br />
+		<label>会员照片：</label><input type="file" id="users_pics" name="pics" required="required" multiple="multiple" onchange="previewMultipleImage(this,'users_pic_show')" /> <br /><br />
+		
+		<a href="javascript:addUsersInfo()"  class="easyui-linkbutton" data-options="iconCls:'icon-add'" >添加</a>
+	</form>
+	
+	
+	<div style="float:right;width:360px;margin-right:20px;">
+		<fieldset id="users_pic_show">
+			<legend>图片预览</legend>
+		</fieldset>
+	</div>
+</div>
+
+<div id="edit_users" class="easyui-dialog" title="修改会员" data-options="iconCls:'icon-edit',resizable:true,model:true,closed:true,fit:true">
+	<br />
+	<form action="" style="float:left;padding-left:20px;">
+		<label>会员编号：</label><input type="text" id="eusers_usid" name="usid" readonly="readonly" /> <br /><br />
+		<label>会员名称：</label><input type="text" id="eusers_uname" name="uname" required="required" /> <br /><br />
+		<label>会员密码：</label><input type="password" id="eusers_pwd" name="pwd" required="required" /> <br /><br />
+		<label>电子邮件：</label><input type="text" id="eusers_email" name="email" required="required" /> <br /><br />
+		<label>会员照片：</label><input type="file" id="eusers_pics" name="pics" required="required" multiple="multiple" onchange="previewMultipleImage(this,'eusers_pic_show')" /> <br /><br />
+		
+		<a href="javascript:editUsersInfo()"  class="easyui-linkbutton" data-options="iconCls:'icon-add'" >修改</a>
+	</form>
+	
+	
+	<div style="float:right;width:360px;margin-right:20px;">
+		<fieldset id="eusers_pic_show">
+			<legend>图片预览</legend>
+		</fieldset>
+	</div>
+</div>
+
+<script>
+$('#users_data').datagrid({  
+    url:'../../usersServlet',  
+    queryParams:{op:'findUsersByPage'}, //请求远程服务器数据时候, 并且发送的额外的参数.
+	fitColumns:true,//true将自动扩展/收缩columns大小适应grid的宽度,防止水平滚动.
+	striped:true,//显示条纹所在行
+	loadMsg:"数据加载中...",//当从远程服务器加载数据的时候,显示的提示消息.
+	pagination:true,//分页
+	fit:true,//满屏
+	pageNumber:1,//初始页码
+	pageSize:10,//分页大小
+	pageList:[5,10,20,30,40,50],//设置属性
+	sortName:'usid',//定义那个列可以排序.
+	remoteSort:false,//定义是否远程排序.对数据库进行操作
+    columns:[[ 
+		{field:'usids',title:'',width:60,align:'center',checkbox:true}, 
+        {field:'userid',title:'会员编号',width:80,align:'center',sortable:true},  
+        {field:'uname',title:'会员名称',width:80,align:'center'},
+        {field:'email',title:'电子邮件',width:80,align:'center'},
+        {field:'gender',title:'性别',width:80,align:'center'},
+        {field:'usign',title:'个性签名',width:80,align:'center'},
+        {field:'introdution',title:'自我介绍',width:80,align:'center'},
+        {field:'photo',title:'个人头像',width:400,align:'center',
+        	formatter: function(value,rowData,index){
+				if(value!=null){
+					var str="";
+					var pics=value.split(",");
+					for(var i=0;i<pics.length;i++){
+						str+="<img src='../../"+pics[i]+"' width='60px' height='60px'/>&nbsp;";
+					}
+					return str;
+				}else{
+					return;
+				}
+			}
+        },
+        {field:'status',title:'状态',width:80,align:'center'},
+        {field:'score',title:'学分',width:80,align:'center'},
+        {field:'签到',title:'签到',width:80,align:'center'}
+
+    ]],
+    toolbar:[{
+		text:"添加",
+		iconCls:"icon-add",
+		handler:function(){
+			$('#add_users').dialog('open'); 
+		}
+	},{
+		text:"修改",
+		iconCls:"icon-edit",
+		handler:function(){
+			var rows=$('#users_data').datagrid("getChecked")[0];
+			console.info(rows);
+			if(rows!=undefined){
+				 var usid=rows.usid;
+				$('#edit_users').dialog('open');
+				$("#eusers_usid").val(usid);
+				$.post("../../usersServlet",{op:"findInfoByUsid",usid:usid},function(data){
+					$.each(data.rows,function(index,item){
+						$("#eusers_uname").val(item.uname);
+						$("#eusers_pwd").val(item.upwd);
+						$("#eusers_email").val(item.email);
+							
+					});
+				},"json");	
+			}else{
+				$.messager.show({
+					title:'成功提示',
+					msg:'请选中您要修改的数据...',
+					timeout:2000,
+					showType:'slide'
+				});
+			}
+			
+		}
+	},{
+		text:"删除",
+		iconCls:"icon-remove",
+		handler:function(){
+			var rows=$('#users_data').datagrid("getChecked");
+			if(rows!=undefined){
+				console.info(rows);
+				 $.messager.confirm('信息确认','您确认要删除选定的数据吗？',function(rs){
+						if(rs){
+							var usids="";
+							for(var i=0;i<rows.length-1;i++){
+								usids+=rows[i].usid+",";
+							}
+							usids+=rows[i].usid;
+							//发请求到数据库删除
+							$.post("../../usersServlet",{op:"delUsersByUsid",usid:usids},function(data){
+								if(data>0){
+									$.messager.show({
+										title:'成功提示',
+										msg:'会员删除成功',
+										timeout:2000,
+										showType:'slide'
+									});
+									rows=null;
+									$('#users_data').datagrid("reload");//刷新表格
+								}else{	
+									$.messager.alert('失败提示','新闻删除失败','error');
+								}
+							});
+						}else{
+							return;
+						}
+					});
+			}else{
+				$.messager.show({
+					title:'成功提示',
+					msg:'请选中您要删除的数据...',
+					timeout:2000,
+					showType:'slide'
+				});
+			}
+		}
+	}
+	]
+}); 
+
+function addUsersInfo(){
+	var uname=$.trim($("#users_uname").val());
+	console.info(uname);
+	var pwd=$.trim($("#users_pwd").val());
+	console.info(pwd);
+	var email=$.trim($("#users_email").val());
+	console.info(email);
+	
+	$.ajaxFileUpload({
+		url:"../../usersServlet?op=addUsersInfo",//只有把op的值放在链接里  才能保证不乱码
+		secureuri:false,
+		fileElementId:"users_pics",
+		dataType:"json",
+		data:{uname:uname,pwd:pwd,email:email},
+		success:function(data,status){
+			if(data>0){
+				$.messager.show({title:'成功提示',msg:"新闻信息添加成功...",timeout:2000,showType:'slide'});
+				
+				$("#users_uname").val("");
+				$("#users_pwd").val("");
+				$("#users_email").val("");
+
+				$('#users_data').datagrid("reload");//数据重新加载
+				$("#add_users").dialog('close');//关闭添加新闻页面
+			}else{
+				$.messager.alert("错误提示","会员添加失败...\n","error");
+			}
+		},
+		error:function(data,status,e){
+			$.messager.alert("错误信息","会员添加失败...\n"+e,"error");
+		}
+	});
+}
+function editUsersInfo(){
+	var usid=$.trim($("#eusers_usid").val());
+	var uname=$.trim($("#eusers_uname").val());
+	var upwd=$.trim($("#eusers_pwd").val());
+	var email=$.trim($("#eusers_email").val());
+	
+	$.ajaxFileUpload({
+		url:"../../usersServlet?op=editUsersInfo",//只有把op的值放在链接里  才能保证不乱码
+		secureuri:false,
+		fileElementId:"eusers_pics",
+		dataType:"json",
+		data:{usid:usid,uname:uname,upwd:upwd,email:email},
+		success:function(data,status){
+			if(data>0){
+				$.messager.show({title:'成功提示',msg:"新闻信息修改成功...",timeout:2000,showType:'slide'});
+				
+				$("#eusers_uname").val("");
+				$("#eusers_pwd").val("");
+				$("#eusers_email").val("");
+
+				
+				$('#users_data').datagrid("reload");//数据重新加载
+				$("#edit_users").dialog('close');//关闭添加新闻页面
+			}else{
+				$.messager.alert("错误提示","会员修改失败...\n","error");
+			}
+		},
+		error:function(data,status,e){
+			$.messager.alert("错误信息","会员修改失败...\n"+e,"error");
+		}
+	});
+}
+</script>

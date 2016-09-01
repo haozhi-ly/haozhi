@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html class="">
 <head>
@@ -18,6 +18,7 @@
 <script src="js/swiper-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script> 
 <script src="js/top.js"></script>
+<script type="text/javascript" src="js/course.js"></script>
 <script>        
 		  var mySwiper = new Swiper ('.swiper-container', {
 			
@@ -60,12 +61,14 @@
   <div class="row co-classify-list">
     <div class="col-md-9">
       <div style="height: 100px;" class="ad swiper-container swiper-container-horizontal swiper-container-fade">
-        <div style="width: 850px; height: 400px; transform: translate3d(0px, -300px, 0px); transition-duration: 0.3s;" class="swiper-wrapper">
-          <div style="width: 850px; height: 100px;" class="swiper-slide  swiper-slide-duplicate"> <a href="javaScript:void(0);"> <img src="images/block_picture_1460533852.jpg" alt="【吕小川】创意大片合成教程"></a> </div>
+    <!--      <div style="width: 850px; height: 400px; transform: translate3d(0px, -300px, 0px); transition-duration: 0.3s;" class="swiper-wrapper">
+         <div style="width: 850px; height: 100px;" class="swiper-slide  swiper-slide-duplicate"> <a href="javaScript:void(0);"> <img src="images/block_picture_1460533852.jpg" alt="【吕小川】创意大片合成教程"></a> </div>
           <div style="width: 850px; height: 100px;" class="swiper-slide"> <a href="javaScript:void(0);"> <img src="images/block_picture_1460094695.jpg" alt="牛牛很忙人像摄影班，教你拍摄唯美人像"></a> </div>
           <div style="width: 850px; height: 100px;" class="swiper-slide"> <a href="javaScript:void(0);"> <img src="images/block_picture_1460533852.jpg" alt="【吕小川】创意大片合成教程"></a> </div>
-          <div style="width: 850px; height: 100px;display:block" class="swiper-slide  swiper-slide-duplicate swiper-slide-visible swiper-slide-active"> <a href="javaScript:void(0);"> <img src="images/block_picture_1460094695.jpg" alt="牛牛很忙人像摄影班，教你拍摄唯美人像"></a> </div>
-        </div>
+          <div style="width: 850px; height: 100px;display: block;" class="swiper-slide  swiper-slide-duplicate swiper-slide-visible swiper-slide-active"> <a href="javaScript:void(0);"> <img src="images/block_picture_1460094695.jpg" alt="牛牛很忙人像摄影班，教你拍摄唯美人像"></a> </div>       
+         </div>  -->
+         <div style="width: 850px; height:100px;display: block;" > <a href="javaScript:void(0);"> <img src="images/block_picture_1460533852.jpg" alt="牛牛很忙人像摄影班，教你拍摄唯美人像"></a> </div>
+         
         <span class="close" aria-hidden="true" data-dismiss="alert">×</span> </div>
       <div class="sort-nav">
         <dl class="clearfix">
@@ -85,45 +88,25 @@
       <div class="course list row">
       
       <!--  从数据库查出来的课程------------------------------------------------------------------------------------------------ -->
+
+       <c:if test="${courses}!=null">
+       <c:forEach items="${courses}" var="item">
         <div class="col-md-4 col-xs-6">
           <div class="course-item ">
-            <div class="course-img"> <a href="javaScript:void(0);"> <img src="images/0650251c4120932070.jpg" alt="sai基础教程" class=""> </a> </div>
+            <div class="course-img"> <a href="javaScript:void(0);"> <img src="images/160148ccf620140008.jpg" alt="sai基础教程" class=""> </a> </div>
             <div class="course-info">
-              <div class="title text-o-show"> <a href="http://www.howzhi.com/course/3539/">sai基础教程</a> </div>
-              <div class="metas"> <span>69万+浏览</span>/ <span>19335学员</span>/ <span>4.7评分</span> </div>
+              <div class="title text-o-show"> <a href="http://www.howzhi.com/course/3539/">${item.ctitle }</a> </div>
+              <div class="metas"  style="color:#666"><span>浏览量:${item.cview}</span>/ <span>19335学员</span>/ <span>4.7评分</span> </div>
               <div class="teacher text-o-show"> <a class=" js-user-card" href="http://www.howzhi.com/u/1282433/" data-card-url="/user/1282433/card/show" data-user-id="1282433"> 
-              	<img class="avatar-ss " src=" images/2001255a2bbc776915.jpg" alt="木桃" > 木桃 </a>
+              	<img class="avatar-ss " src=" images/2001255a2bbc776915.jpg" alt="木桃" >${item.userId } </a>
                 <div class="price free pull-right"><span>免费</span></div>
               </div>
             </div>
           </div>
-        </div>
+        </div>    
+       </c:forEach></c:if>
+       <!--  从数据库查出来的课程 0 ------------------------------------------------------------------------------------------------ -->
         
-         <div class="col-md-4 col-xs-6">
-          <div class="course-item ">
-            <div class="course-img"> <a href="javaScript:void(0);"> <img src="images/0650251c4120932070.jpg" alt="sai基础教程" class=""> </a> </div>
-            <div class="course-info">
-              <div class="title text-o-show"> <a href="http://www.howzhi.com/course/3539/">sai基础教程</a> </div>
-              <div class="metas"> <span>69万+浏览</span>/ <span>19335学员</span>/ <span>4.7评分</span> </div>
-              <div class="teacher text-o-show"> <a class=" js-user-card" href="http://www.howzhi.com/u/1282433/" data-card-url="/user/1282433/card/show" data-user-id="1282433"> <img class="avatar-ss" src="images/2001255a2bbc776915.jpg" alt="木桃"> 木桃 </a>
-                <div class="price free pull-right"><span>免费</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-         <div class="col-md-4 col-xs-6">
-          <div class="course-item ">
-            <div class="course-img"> <a href="javaScript:void(0);"> <img src="images/0650251c4120932070.jpg" alt="sai基础教程" class=""> </a> </div>
-            <div class="course-info">
-              <div class="title text-o-show"> <a href="http://www.howzhi.com/course/3539/">sai基础教程</a> </div>
-              <div class="metas"> <span>69万+浏览</span>/ <span>19335学员</span>/ <span>4.7评分</span> </div>
-              <div class="teacher text-o-show"> <a class=" js-user-card" href="http://www.howzhi.com/u/1282433/" data-card-url="/user/1282433/card/show" data-user-id="1282433"> <img class="avatar-ss " src="images/2001255a2bbc776915.jpg" alt="木桃"> 木桃 </a>
-                <div class="price free pull-right"><span>免费</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
         
         <ul class="pagination ">
           <li class="active"><a href="javaScript:void(0)">1</a></li>
