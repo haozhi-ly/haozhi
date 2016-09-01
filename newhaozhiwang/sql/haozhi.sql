@@ -32,7 +32,7 @@ create table userinfo(
        temp02 varchar2(200),--备用字段
        temp03 varchar2(200)--备用字段      
 );
-
+select * from UserInfo where uname='超超' and upassword=123456
 create sequence seq_userid start with 1;
 
 insert into userinfo values(seq_userid.nextval,'管理员','123456@qq.com','123456','女',null,'我就是我，颜色不一样是烟火','我很傻很天真',1,0,null,null,null);
