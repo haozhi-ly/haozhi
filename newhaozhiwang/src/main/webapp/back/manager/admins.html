@@ -9,7 +9,7 @@
 	var flag;
 
     obj=$('#admins_data').datagrid({  
-    url:'../../adminServlet',  
+    url:'/admin/findAll',  
     queryParams:{op:'findAmdinsByPage'}, //请求远程服务器数据时候, 并且发送的额外的参数.
 	fitColumns:true,//true将自动扩展/收缩columns大小适应grid的宽度,防止水平滚动.
 	striped:true,//显示条纹所在行
@@ -89,7 +89,7 @@
 						}
 						aids+=rows[i].aid;
 						//发请求到数据库删除
-						$.post("../../adminServlet",{op:"delAdmin",aid:aids},function(data){
+						$.post("/admin/deleteAdmin",{op:"delAdmin",aid:aids},function(data){
 							if(data>0){
 								$.messager.show({
 									title:'成功提示',
@@ -136,7 +136,7 @@
 				//保存到数据库
 				rows["op"]=currentOp;
 				
-				$.post("../../adminServlet",rows,function(data){
+				$.post("/admin/"+currentOp,rows,function(data){
 					if(data>0){
 						$.messager.show({
 							title:'成功提示',
