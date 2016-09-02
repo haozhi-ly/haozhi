@@ -29,7 +29,7 @@
 
 	<body class="group-page">
 		<!-------------------------我是头部------------------------------------------->
-			<jsp:include page="topf.jsp"></jsp:include>
+		<jsp:include page="topf.jsp"></jsp:include>
 		<!-------------------------我是头部分割线------------------------------------------->
 
 		<!--------------------------中间小组内容-------------------------------------->
@@ -230,9 +230,8 @@
 							<div class="media">
 								<div class="media-left">
 									<a title="" data-original-title="" class=" js-user-card"  href="javascript:void(0)" data-card-url="/user/2358982/card/show" data-user-id="2358982">
-										<img class="avatar-md " src="images/avatar.png" 　alt="珘珘">
+										<img class="avatar-md " src="images/avatar.png" alt="珘珘">
 									</a>
-
 								</div>
 								<div class="media-body">
 									<p> <a class="link-light link-light" href="http://www.howzhi.com/u/2358982/">珘珘</a>

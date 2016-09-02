@@ -64,7 +64,7 @@ public class UserHandler {
 			map.put("users", "");
 			return "login";
 		}
-		return "index";
+		return "redirect:../page/index.jsp";
 	}
 	
 	@RequestMapping(value="/checkemail",method=RequestMethod.POST)
@@ -89,11 +89,12 @@ public class UserHandler {
 	}
 	
 	@RequestMapping("/sendMail")
-	public void sendMail(ModelMap map,String email,PrintWriter out){
+	public void sendMail(ModelMap map,String email,PrintWriter out,Model model){
 		System.out.println(email);
 		//int yzm=(int)(Math.random()*1000000);
 		int yzm=RandomNumUtil.getRandomNumber();//生成六位不重复随机数
-		map.put("yzm", yzm);
+		model.addAttribute("yzm", yzm);
+		//map.put("yzm", yzm);
 		activeAccountMail("好知网注册验证信息","您的验证码是："+yzm,"15886486481@163.com",email);
 		out.print(yzm);
 		out.flush();
@@ -104,17 +105,6 @@ public class UserHandler {
 	@RequestMapping(value="/register",method=RequestMethod.POST)
 	public String register(@ModelAttribute("user") UserInfo userInfo,ModelMap map){
 		System.out.println("register ===>" +userInfo);
-		System.out.println(userInfoService.getUname(userInfo.getUname()));
-		System.out.println(userInfoService.getUname(userInfo.getEmail()));
-		
-		/*if(userInfoService.getUname(userInfo.getUname())==true || userInfoService.getEmail(userInfo.getEmail())==true){
-			System.out.println("注册失败啦。。。");
-			return "login";
-		}
-		
-		if(map.get("yzm").equals(userInfo.getCode())){
-			
-		}*/
 		userInfoService.register(userInfo);
 			return "login";
 	}
@@ -138,10 +128,7 @@ public class UserHandler {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/save",method=RequestMethod.POST)
-
 	public String saveInfo(UserInfo user,int userid,String gender,String usign,String introdution,ModelMap map,HttpServletRequest request,Model model){
-
-
 		System.out.println("save进来了");
 		String flag="";
 		user.setUserid(userid);user.setGender(gender);user.setUsign(usign);user.setIntrodution(introdution);
