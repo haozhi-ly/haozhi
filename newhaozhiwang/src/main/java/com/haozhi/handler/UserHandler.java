@@ -45,6 +45,7 @@ public class UserHandler {
 	public String login(@ModelAttribute("users") UserInfo userInfo,ModelMap map){
 		String name=userInfo.getUname();
 		System.out.println("test");
+		
 		 name=new UsuallyUtil().decode(name);
 	     System.out.println(name+"yes");
 		if(userInfo!=null && name.contains("@")){
