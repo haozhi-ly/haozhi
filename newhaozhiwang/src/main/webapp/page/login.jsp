@@ -4,7 +4,7 @@
 <html>
 <head>
 <base href="/newhaozhiwang/"/>
-<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>登录</title>
 <link href="http://f1.howzhi.com/system/2016/03-31/113613d6a857327741.ico" rel="shortcut icon">
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
@@ -137,7 +137,7 @@
                 <span class="glyphicon glyphicon-circle-arrow-right"></span>
                 </a></h3><br>
                 <div class="conten"> 
-                    <form method="post" action="userinfo/login">
+                    <form method="post" action="userinfo/login" accept-charset="UTF-8">
                     	<c:set value="${Message }" var="ms"/>
                         <c:if test="${ms!=null }">
                         	<div class="alert alert-danger" id="error">帐号或密码错误！！！</div>
@@ -162,7 +162,7 @@
                 <span class="glyphicon glyphicon-circle-arrow-right"></span>
                 </a><i class="fa fa-arrow-circle-o-right"></i></h3><br>
                 <div class="conten"> 
-                    <form method="post" action="userinfo/register">
+                    <form method="post" action="userinfo/register" onsubmit="return register()">
                         <input id="register_eamil" class="form-control" type="email" placeholder="常用邮箱" value="" name="email" onblur="check_email()">
                        	<div class="error_eamil"></div>
                         <input id="register_username" class="form-control" type="text" placeholder="请输入昵称" value="" name="uname" onblur="check_uname()">
@@ -171,7 +171,7 @@
                         <div class="form-group mb40 captcha_div">
         					<div class="controls row">
          						<div class="col-xs-6">
-            						<input data-explain="" data-widget-cid="widget-1" class="form-control ident" id="captcha_num" name="captcha_num" maxlength="5" placeholder="验证码" required data-url="/register/captcha/check" type="text">
+            						<input data-explain="" data-widget-cid="widget-1" class="form-control ident" id="captcha_num" name="code" maxlength="6" placeholder="验证码" required data-url="/register/captcha/check" type="text">
           						</div>
                                 <div class="col-xs-6 ident-img"> 
                                 	 <button type="button" class="btn btn-default" id="submit" onclick="sendMail()">发送邮箱验证码</button> 

@@ -7,8 +7,7 @@
 	var flag;
 	
 	obj=$('#types_data').datagrid({
-	url:'../../newsTypeServlet',
-	queryParams:{op:'findAllTypes'},
+	url:'/CourseType/findAllType',
 	fitColumns:true,
 	striped:true,
 	loadMsg:"数据加载中...",
@@ -28,7 +27,7 @@
 		text:"添加",
 		iconCls:"icon-add",
 		handler:function(){
-			currentOp="addNewsType";
+			currentOp="addCourseType";
 			flag="添加";
 			if(editRow !=undefined){
 				obj.datagrid("rejectChanges"); //回滚所有的数据
@@ -44,7 +43,7 @@
 		text:"修改",
 		iconCls:"icon-edit",
 		handler:function(){
-			currentOp="updateNewsType";
+			currentOp="updateCourseType";
 			flag="修改";
 			var rows=obj.datagrid("getChecked")[0];
 			if(rows!=undefined){
@@ -85,11 +84,11 @@
 						}
 						tids+=rows[i].tid;
 						//发请求到数据库删除
-						$.post("../../newsTypeServlet",{op:"delNewsType",tid:tids},function(data){
+						$.post("/course/deleteCourseType",{tid:tids},function(data){
 							if(data>0){
 								$.messager.show({
 									title:'成功提示',
-									msg:'新闻类型删除成功',
+									msg:'课程类型删除成功',
 									timeout:2000,
 									showType:'slide'
 								});
@@ -97,7 +96,7 @@
 								obj.datagrid("reload");//刷新表格
 								$('#types_data').datagrid("reload");
 							}else{	
-								$.messager.alert('失败提示','新闻类型删除失败','error');
+								$.messager.alert('失败提示','课程类型删除失败','error');
 							}
 						});
 					}else{
@@ -125,18 +124,18 @@
 				obj.datagrid("rejectChanges"); //回滚所有的数据
 				obj.datagrid("endEdit",editRow); //关闭正在被编辑的行
 				editRow=undefined;
-			}else if(rows.tname==""){
+			}else if(rows.typename==""){
 				editRow=undefined;
 				obj.datagrid("rejectChanges");
 			}else{
 				//保存到数据库
 				rows["op"]=currentOp;
 				
-				$.post("../../newsTypeServlet",rows,function(data){
+				$.post("/course/"+op,rows,function(data){
 					if(data>0){
 						$.messager.show({
 							title:'成功提示',
-							msg:'新闻类型操作成功',
+							msg:'课程类型操作成功',
 							timeout:2000,
 							showType:'slide'
 						});
@@ -147,7 +146,7 @@
 						obj.datagrid("rejectChanges");
 						obj.datagrid("endEdit",editRow);
 					}else{
-						$.messager.alert('失败提示','新闻类型操作失败','error');
+						$.messager.alert('失败提示','课程类型操作失败','error');
 					}
 				});
 				

@@ -12,7 +12,6 @@ select * from studyCourse;
 select * from selfMessage;
 select * from cgroup;
 
-
 drop table userinfo;
 drop sequence seq_userid cascade constraints;
 delete from userinfo;
@@ -35,7 +34,7 @@ create table userinfo(
 select * from UserInfo where uname='超超' and upassword=123456
 create sequence seq_userid start with 1;
 
-insert into userinfo values(seq_userid.nextval,'管理员','123456@qq.com','123456','女',null,'我就是我，颜色不一样是烟火','我很傻很天真',1,0,null,null,null);
+insert into userinfo values(seq_userid.nextval,'ly','123456@qq.com','123456','男',null,'我就是我，颜色不一样是烟火','一只会飞的鱼',1,0,null,null,null);
 insert into userinfo values(seq_userid.nextval,'超超','23456@qq.com','123456','女',null,'我就是我，颜色不一样是烟火','我很傻很天真',1,0,null,null,null);
 insert into userinfo values(seq_userid.nextval,'仗剑画江湖','345678@qq.com','123456','男',null,'我就是我，颜色不一样是烟火','我很傻很天真',1,0,null,null,null);
 insert into userinfo values(seq_userid.nextval,'雨落画汀珘','634607145@qq.com','123456','女',null,'我就是我，颜色不一样是烟火','想成为超人',1,0,null,null,null);

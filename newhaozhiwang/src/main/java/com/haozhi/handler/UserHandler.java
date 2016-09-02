@@ -1,19 +1,19 @@
 package com.haozhi.handler;
 
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
 import javax.mail.internet.MimeMessage;
+import javax.management.DescriptorRead;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,31 +22,41 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.haozhi.entity.UserInfo;
 import com.haozhi.service.UserInfoService;
-import com.haozhi.util.SendEmailUtil;
+
+
+import com.haozhi.util.RandomNumUtil;
+import com.haozhi.util.UsuallyUtil;
+import com.sun.mail.util.DecodingException;
+
+
 
 @Controller
 @RequestMapping("/userinfo")
-@SessionAttributes(value={"users"})
+@SessionAttributes(value={"users","yzm"})
 public class UserHandler {
-	
 	@Autowired
 	private UserInfoService userInfoService;
 	
-	@ModelAttribute
+	/*@ModelAttribute
 	public void getModel(ModelMap map){
 		map.put("users",new UserInfo());
-	}
-	
+	}*/
+	//不要再用modelAttribute了要存入session直接用Model 
 	//登录
 	@RequestMapping(value="/login",method=RequestMethod.POST)
-	public String login(@ModelAttribute("users") UserInfo userInfo,ModelMap map){
+	public String login(UserInfo userInfo,Model model,ModelMap map){
+		
 		String name=userInfo.getUname();
+		
+		 name=new UsuallyUtil().decode(name);
 		if(userInfo!=null && name.contains("@")){
 			userInfo=userInfoService.loginByEamil(userInfo);
-			map.put("users", userInfo);
+			model.addAttribute("users", userInfo);
 		}else if(userInfo!=null && !name.contains("@")){
+			userInfo.setUname(name);
+			userInfo.toString();
 			userInfo=userInfoService.loginByUname(userInfo);
-			map.put("users", userInfo);
+			model.addAttribute("users", userInfo);
 		}
 		//登录页面跳转
 		if(userInfo==null){
@@ -54,7 +64,7 @@ public class UserHandler {
 			map.put("users", "");
 			return "login";
 		}
-		return "index";
+		return "redirect:../page/index.jsp";
 	}
 	
 	@RequestMapping(value="/checkemail",method=RequestMethod.POST)
@@ -79,30 +89,24 @@ public class UserHandler {
 	}
 	
 	@RequestMapping("/sendMail")
-	public void sendMail(UserInfo userInfo){
-		System.out.println("发送邮件啦....");
-		int yzm=(int)(Math.random()*10000);
-		//activeAccountMail("好知网注册验证信息","您的验证码是："+yzm,"13237340867@163.com",userInfo.getEmail());
-		/*SendEmailUtil.activeAccountMail();*/
+	public void sendMail(ModelMap map,String email,PrintWriter out,Model model){
+		System.out.println(email);
+		//int yzm=(int)(Math.random()*1000000);
+		int yzm=RandomNumUtil.getRandomNumber();//生成六位不重复随机数
+		model.addAttribute("yzm", yzm);
+		//map.put("yzm", yzm);
+		activeAccountMail("好知网注册验证信息","您的验证码是："+yzm,"15886486481@163.com",email);
+		out.print(yzm);
+		out.flush();
+		out.close();
 	}
 	
 	//注册
 	@RequestMapping(value="/register",method=RequestMethod.POST)
-	public String register(@ModelAttribute("user") UserInfo userInfo,BindingResult bindingResult,ModelMap map,HttpServletRequest request){
+	public String register(@ModelAttribute("user") UserInfo userInfo,ModelMap map){
 		System.out.println("register ===>" +userInfo);
-		System.out.println(userInfoService.getUname(userInfo.getUname()));
-		System.out.println(userInfoService.getUname(userInfo.getEmail()));
-		
-		if(userInfoService.getUname(userInfo.getUname())==true || userInfoService.getEmail(userInfo.getEmail())==true){
-			System.out.println("注册失败啦。。。");
+		userInfoService.register(userInfo);
 			return "login";
-		}
-		SendEmailUtil.activeAccountMail();
-		System.out.println("邮件发送啦");
-		/*activeAccountMail("验证码来啦！！！","13237340867@163.com",userInfo.getEmail());*/
-		//userInfoService.register(userInfo) ;
-		return "register";
-		
 	}
 	
 	
@@ -112,44 +116,38 @@ public class UserHandler {
 		return "index";
 	}
 	
-
+	/**
+	 * 
+	 * @param user
+	 * @param userid
+	 * @param gender
+	 * @param usign
+	 * @param introdution
+	 * @param map
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value="/save",method=RequestMethod.POST)
-	public String saveInfo(UserInfo user,int userid,String gender,String usign,String introdution,ModelMap map,HttpServletRequest request){
+	public String saveInfo(UserInfo user,int userid,String gender,String usign,String introdution,ModelMap map,HttpServletRequest request,Model model){
 		System.out.println("save进来了");
 		String flag="";
-		HttpSession session=request.getSession();
-		
-		UserInfo userinfo=(UserInfo)session.getAttribute("users");
 		user.setUserid(userid);user.setGender(gender);user.setUsign(usign);user.setIntrodution(introdution);
 		
-		System.out.println("dkgha"+user);
 		userInfoService.saveInfo(user);
 		if(userInfoService.saveInfo(user)==1){
 			flag = "1";
-			userinfo.setGender(gender);
+
+			user.setUname("lytest");
+			model.addAttribute("users",user);
+			//session.setAttribute("users",userinfo);
+		}else{
+			
+
 		}
 		return flag;
 	}
 	
-	/*@Autowired
-	private static JavaMailSender mailSender;
-	public static void activeAccountMail() {
-		UserInfo user=new UserInfo();
-		int yzm=(int)(Math.random()*10000);
-		try {
-			MimeMessage mm=mailSender.createMimeMessage();
-			MimeMessageHelper mmh=new MimeMessageHelper(mm, true,"utf-8");
-			mmh.setTo(user.getEmail());//设置邮件接收者
-			mmh.setFrom("13237340867@163.com");
-			mmh.setSubject("好知网注册验证信息");//设置主题
-			mmh.setText("您的验证码是："+yzm+"千万不要告诉别人哦！",true);//设置内容
-			mailSender.send(mm);//发送邮件
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-	}*/
+
 	
 	@Autowired
 	private JavaMailSender mailSender;
