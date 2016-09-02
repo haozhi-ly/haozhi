@@ -32,7 +32,6 @@ import com.sun.mail.util.DecodingException;
 @RequestMapping("/userinfo")
 @SessionAttributes(value={"users"})
 public class UserHandler {
-	
 	@Autowired
 	private UserInfoService userInfoService;
 	
@@ -48,7 +47,6 @@ public class UserHandler {
 		 name=new UsuallyUtil().decode(name);
 	     System.out.println(name+"yes");
 		if(userInfo!=null && name.contains("@")){
-			
 			userInfo=userInfoService.loginByEamil(userInfo);
 			map.put("users", userInfo);
 		}else if(userInfo!=null && !name.contains("@")){
