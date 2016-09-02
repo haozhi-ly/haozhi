@@ -25,4 +25,7 @@ $(function(){
 		$(".choose").text("");
 		$(".choose").append(st);
 	});
+	
+	
+	
 });

@@ -13,5 +13,10 @@ public interface UserInfoService {
 	boolean getUname(String uname);
 
 	boolean getEmail(String email);
+	
+	//保存信息
+	int saveInfo(UserInfo user);
+	
+	UserInfo getAllUname(String uname);
 
 }
