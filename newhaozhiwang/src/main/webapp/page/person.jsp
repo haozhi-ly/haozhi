@@ -63,7 +63,6 @@
 							<a href="hjavaScript:void(0)" class="tool" style="display: block;">
 								<i style="color:#666;" class="glyphicon glyphicon-edit" title="" data-toggle="tooltip" data-placement="top" data-original-title="编辑"></i>
 							</a>
-
 						</p>
 
 					</div>

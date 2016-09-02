@@ -136,7 +136,7 @@
 				//保存到数据库
 				rows["op"]=currentOp;
 				
-				$.post("/admin/"+currentOp,rows,function(data){
+				$.post("admin/rows",function(data){
 					if(data>0){
 						$.messager.show({
 							title:'成功提示',
