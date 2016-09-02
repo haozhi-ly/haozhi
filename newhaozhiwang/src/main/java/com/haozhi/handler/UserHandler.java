@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,14 +36,15 @@ public class UserHandler {
 	@Autowired
 	private UserInfoService userInfoService;
 	
-	@ModelAttribute
+	/*@ModelAttribute
 	public void getModel(ModelMap map){
 		map.put("users",new UserInfo());
-	}
-	
+	}*/
+	//不要再用modelAttribute了要存入session直接用Model 
 	//登录
 	@RequestMapping(value="/login",method=RequestMethod.POST)
-	public String login(@ModelAttribute("users") UserInfo userInfo,ModelMap map){
+	public String login(UserInfo userInfo,Model model,ModelMap map){
+		
 		String name=userInfo.getUname();
 		System.out.println("test");
 		
@@ -50,12 +52,12 @@ public class UserHandler {
 	     System.out.println(name+"yes");
 		if(userInfo!=null && name.contains("@")){
 			userInfo=userInfoService.loginByEamil(userInfo);
-			map.put("users", userInfo);
+			model.addAttribute("users", userInfo);
 		}else if(userInfo!=null && !name.contains("@")){
 			userInfo.setUname(name);
 			userInfo.toString();
 			userInfo=userInfoService.loginByUname(userInfo);
-			map.put("users", userInfo);
+			model.addAttribute("users", userInfo);
 		}
 		//登录页面跳转
 		if(userInfo==null){
@@ -131,7 +133,7 @@ public class UserHandler {
 
 	@ResponseBody
 	@RequestMapping(value="/save",method=RequestMethod.POST)
-	public String saveInfo(UserInfo user,int userid,String gender,String usign,String introdution,ModelMap map,HttpServletRequest request){
+	public String saveInfo(UserInfo user,int userid,String gender,String usign,String introdution,ModelMap map,HttpServletRequest request,Model model){
 		System.out.println("save进来了");
 		String flag="";
 		HttpSession session=request.getSession();
@@ -143,7 +145,9 @@ public class UserHandler {
 		userInfoService.saveInfo(user);
 		if(userInfoService.saveInfo(user)==1){
 			flag = "1";
-			session.setAttribute("users",userinfo);
+			userinfo.setUname("lytest");
+			model.addAttribute("users",userinfo);
+			//session.setAttribute("users",userinfo);
 		}else{
 			
 		}
