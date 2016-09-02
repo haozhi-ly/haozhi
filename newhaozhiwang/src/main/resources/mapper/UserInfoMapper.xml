@@ -24,8 +24,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select email from UserInfo where email=#{email}
 	</select>
 	
-	<select id="getAllUname" parameterType="string" resultType="UserInfo">
-		select * from UserInfo where uname=#{uname}
+	<select id="getInfoByUserid" parameterType="int" resultType="UserInfo">
+		select * from UserInfo where userid=#{userid}
 	</select>
 	
 	<update id="saveInfo" parameterType="UserInfo">

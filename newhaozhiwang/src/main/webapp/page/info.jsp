@@ -17,6 +17,7 @@
 	<link href="css/main.css" rel="stylesheet">
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript"  src="js/top.js"></script>
+	<script type="text/javascript"  src="js/info.js"></script>
 
 	<style type="text/css">
 		#profile-save-btn {
@@ -36,24 +37,7 @@
 		}
 		</style>
 		<script type="text/javascript">
-					$(function() {
-						$(".list-group-item a").bind("click", function() {
-							var str = this.innerText;
-							if (str.trim() == "基础信息") {
-								$("#baseinfo")[0].style.display = "block";
-								$("#touxiang")[0].style.display = "none";
-								$("#update")[0].style.display = "none";
-							} else if (str.trim() == "头像设置") {
-								$("#touxiang")[0].style.display = "block";
-								$("#baseinfo")[0].style.display = "none";
-								$("#update")[0].style.display = "none";
-							} else if (str.trim() == "安全设置") {
-								$("#update")[0].style.display = "block";
-								$("#baseinfo")[0].style.display = "none";
-								$("#touxiang")[0].style.display = "none";
-							}
-						});
-					});
+					
 				</script>
 
 		</head>
@@ -87,18 +71,18 @@
 					</div>
 					<!--  --------------基础信息-------------------------------------------------------------------- -->
 					<div class="col-md-9" id="baseinfo" style="display: block;">
-						
+						<div id="info"></div>
 						<div class="panel panel-default panel-col">
 							<div class="panel-heading">基础信息</div>
 							<div class="panel-body">
 
-								<form id="user-profile-form" class="form-horizontal" method="post" novalidate="novalidate" data-widget-cid="widget-0" action="userinfo/save">
+								<form id="user-profile-form" class="form-horizontal" method="post" novalidate="novalidate" data-widget-cid="widget-0" >
 
 									<div class="form-group">
 										<label class="col-md-2 control-label">昵称</label>
 										<div class="col-md-7 controls">
 											<div class="control-text">
-												${users.uname}</div>
+											<input type="text" name="userid" value="${users.userid}" style="display: none;">${users.uname}</div>
 										</div>
 									</div>
 
@@ -108,21 +92,21 @@
 											<div id="profile_gender">
 											<c:choose>
 												<c:when test="${users.gender}==null">
-													<input type="radio" id="profile_gender_0" name="gender" required="required" value="male" >
+													<input type="radio" id="profile_gender_0" name="gender" required="required" value="男" >
 													<label for="profile_gender_0" class="required">男</label>
-													<input type="radio" id="profile_gender_1" name="gender" required="required" value="female">
+													<input type="radio" id="profile_gender_1" name="gender" required="required" value="女">
 													<label for="profile_gender_1" class="required">女</label>
 												</c:when>
 												<c:when test="${users.gender}=='男'">
-													<input type="radio" id="profile_gender_0" name="gender" required="required" value="male"  checked="checked">
+													<input type="radio" id="profile_gender_0" name="gender" required="required" value="男"  checked="checked">
 													<label for="profile_gender_0" class="required">男</label>
-													<input type="radio" id="profile_gender_1" name="gender" required="required" value="female">
+													<input type="radio" id="profile_gender_1" name="gender" required="required" value="女">
 													<label for="profile_gender_1" class="required">女</label>
 												</c:when>
 												<c:otherwise>
-													<input type="radio" id="profile_gender_0" name="gender" required="required" value="male" >
+													<input type="radio" id="profile_gender_0" name="gender" required="required" value="男" >
 													<label for="profile_gender_0" class="required">男</label>
-													<input type="radio" id="profile_gender_1" name="gender" required="required" value="female"  checked="checked">
+													<input type="radio" id="profile_gender_1" name="gender" required="required" value="女"  checked="checked">
 													<label for="profile_gender_1" class="required">女</label>
 												</c:otherwise>
 											</c:choose>
@@ -134,7 +118,7 @@
 									<div class="form-group">
 										<label class="col-md-2 control-label" for="usign">个人签名</label>
 										<div class="col-md-7 controls">
-											<input type="text" id="profile_signature" name="profile[signature]" data-url="/sensitive/check" class="form-control" value="${users.usign}" data-widget-cid="widget-1" data-explain="">
+											<input type="text" id="profile_signature" name="usign" data-url="/sensitive/check" class="form-control" value="${users.usign}" data-widget-cid="widget-1" data-explain="">
 											<div class="help-block" style="display:none;"></div>
 										</div>
 									</div>
@@ -147,7 +131,7 @@
 									</div>
 										<div class="row">
 											<div class="col-md-7 col-md-offset-2">
-												<button id="profile-save-btn" data-submiting-text="正在保存" type="submit" class="btn btn-primary">保存</button>
+												<button id="profile-save-btn" data-submiting-text="正在保存" type="button" class="btn btn-primary" onclick="save('${users.userid}')">保存</button>
 											</div>
 										</div>
 										

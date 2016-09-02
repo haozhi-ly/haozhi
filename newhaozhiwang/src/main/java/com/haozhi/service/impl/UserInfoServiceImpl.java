@@ -61,8 +61,10 @@ public class UserInfoServiceImpl implements UserInfoService {
 	}
 
 	@Override
-	public UserInfo getAllUname(String uname) {
-		return userInfoMapper.getAllUname(uname);
+	public UserInfo getInfoByUserid(int userid) {
+		return userInfoMapper.getInfoByUserid(userid);
 	}
+
+
 
 }

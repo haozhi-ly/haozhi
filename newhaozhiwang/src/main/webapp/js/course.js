@@ -1,7 +1,7 @@
 		
 $(function(){
 	//获取所有课程
-	/*$.post("course/getAll/",{"_method":"POST"},function(data){		
+	$.post("course/getAll/",{"_method":"POST"},function(data){		
 		var str="";
 		 if(data){
 		 $.each(data,function(index,item){
@@ -14,7 +14,7 @@ $(function(){
 			});
 			$('#findCourse').html("").append( $(str) );
 		 }
-	},'json');*/
+	},'json');
 	//查询热门的三门课程
 	 $.post("course/getHostCourse/",{"_method":"POST"},function(data){	
 		 var str="";
