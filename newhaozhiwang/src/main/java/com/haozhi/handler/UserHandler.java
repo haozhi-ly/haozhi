@@ -24,6 +24,7 @@ import com.haozhi.entity.UserInfo;
 import com.haozhi.service.UserInfoService;
 
 
+import com.haozhi.util.RandomNumUtil;
 import com.haozhi.util.UsuallyUtil;
 import com.sun.mail.util.DecodingException;
 
@@ -46,10 +47,8 @@ public class UserHandler {
 	public String login(UserInfo userInfo,Model model,ModelMap map){
 		
 		String name=userInfo.getUname();
-		System.out.println("test");
 		
 		 name=new UsuallyUtil().decode(name);
-	     System.out.println(name+"yes");
 		if(userInfo!=null && name.contains("@")){
 			userInfo=userInfoService.loginByEamil(userInfo);
 			model.addAttribute("users", userInfo);
@@ -92,7 +91,8 @@ public class UserHandler {
 	@RequestMapping("/sendMail")
 	public void sendMail(ModelMap map,String email,PrintWriter out){
 		System.out.println(email);
-		int yzm=(int)(Math.random()*1000000);
+		//int yzm=(int)(Math.random()*1000000);
+		int yzm=RandomNumUtil.getRandomNumber();//生成六位不重复随机数
 		map.put("yzm", yzm);
 		activeAccountMail("好知网注册验证信息","您的验证码是："+yzm,"15886486481@163.com",email);
 		out.print(yzm);
@@ -115,12 +115,8 @@ public class UserHandler {
 		if(map.get("yzm").equals(userInfo.getCode())){
 			
 		}*/
-		if(userInfoService.register(userInfo)==true){
+		userInfoService.register(userInfo);
 			return "login";
-		}
-		return "re";
-		
-		
 	}
 	
 	
@@ -130,26 +126,36 @@ public class UserHandler {
 		return "index";
 	}
 	
-
+	/**
+	 * 
+	 * @param user
+	 * @param userid
+	 * @param gender
+	 * @param usign
+	 * @param introdution
+	 * @param map
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value="/save",method=RequestMethod.POST)
+
 	public String saveInfo(UserInfo user,int userid,String gender,String usign,String introdution,ModelMap map,HttpServletRequest request,Model model){
+
+
 		System.out.println("save进来了");
 		String flag="";
-		HttpSession session=request.getSession();
-		
-		UserInfo userinfo=(UserInfo)session.getAttribute("users");
 		user.setUserid(userid);user.setGender(gender);user.setUsign(usign);user.setIntrodution(introdution);
 		
-		System.out.println("dkgha"+user);
 		userInfoService.saveInfo(user);
 		if(userInfoService.saveInfo(user)==1){
 			flag = "1";
-			userinfo.setUname("lytest");
-			model.addAttribute("users",userinfo);
+
+			user.setUname("lytest");
+			model.addAttribute("users",user);
 			//session.setAttribute("users",userinfo);
 		}else{
 			
+
 		}
 		return flag;
 	}
