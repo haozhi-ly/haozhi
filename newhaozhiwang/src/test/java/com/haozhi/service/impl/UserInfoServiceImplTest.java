@@ -55,7 +55,7 @@ public class UserInfoServiceImplTest extends UserInfoServiceImpl {
 	
 	@Test
 	public void testGetAll() {
-		UserInfo user=userInfoService.getAllUname("超超");
+		UserInfo user=userInfoService.getInfoByUserid(2);
 		System.out.println(user);
 		assertNotNull(user);
 	}

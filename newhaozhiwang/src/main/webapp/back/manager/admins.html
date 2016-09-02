@@ -1,5 +1,38 @@
 <table id="admins_data"></table>  
 
+<div id="add_admin" class="easyui-dialog" title="添加管理员" 
+style="width:500px;height:360px;"
+data-options="iconCls:'icon-add',resizable:true,model:true,closed:true">
+	<form action="" method="post">
+		<div id="admincss" style="margin-top:50px;">
+		<label>管理员姓名：</label><input type="text" id="aname" name="aname" required="required" /> <br/><br/><br/>
+		<label>管理员密码：</label><input type="password" id="apassword" name="apassword" value="a" required="required"/> <br/><br/><br/>
+		<label>电 子 邮 件：</label><input type="text" id="email" name="email" required="required" /> <br/><br/><br/>
+		</div>
+		<div style="margin-top:50px;">
+		<a id="a1" href="javascript:addAdminInfo()" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="addadmin()">Ok</a>
+		<a id="a2" href="javascript:closeDialog()"  class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="closedialog()">Cancel</a>
+		</div>
+	</form>
+</div>
+<style>
+	#admincss label{
+		margin-left:100px;
+		font-size:16px;
+	}
+	a{
+		float:right;
+	}
+	#a1{
+		margin-right:40px;
+	}
+	#a2{
+		margin-right:20px;
+	}
+</style>
+=======
+
+>>>>>>> branch 'master' of ssh://git@github.com/haozhi-ly/haozhi.git
 
 
 <script>
@@ -44,7 +77,7 @@
 				editRow=0;  //记录当前被编辑的行
 			} 
 		}
-	},{
+	}/* ,{
 		text:"修改",
 		iconCls:"icon-edit",
 		handler:function(){
@@ -74,13 +107,12 @@
 				});
 			}
 		  }
-	},{
+	} */,{
 		text:"删除",
 		iconCls:"icon-remove",
 		handler:function(){
 			var rows=obj.datagrid("getChecked");
-			console.info(rows);
-			if(rows!=undefined){
+			if(rows.length>0){
 				$.messager.confirm('信息确认','您确认要删除选定的数据吗？',function(rs){
 					if(rs){
 						var aids="";
@@ -89,8 +121,11 @@
 						}
 						aids+=rows[i].aid;
 						//发请求到数据库删除
-						$.post("/admin/deleteAdmin",{op:"delAdmin",aid:aids},function(data){
+
+						$.post("admin/deladmin",{aid:aids},function(data){
+
 							if(data>0){
+								alert(data)
 								$.messager.show({
 									title:'成功提示',
 									msg:'管理员删除成功',
@@ -99,7 +134,7 @@
 								});
 								rows=null;
 								obj.datagrid("reload");//刷新表格
-								$('#types_data').datagrid("reload");
+								$('#admins_data').datagrid("reload");
 							}else{	
 								$.messager.alert('失败提示','管理员删除失败','error');
 							}
@@ -110,7 +145,7 @@
 				});
 			}else{
 				$.messager.show({
-					title:'成功提示',
+					title:'错误提示',
 					msg:'请选中您要删除的数据...',
 					timeout:2000,
 					showType:'slide'
@@ -168,5 +203,41 @@
 		}
 	}
 	]
-}); 
+});
+    
+   function closedialog(){
+	   $("#add_admin").dialog("close");
+   }
+   function addadmin(){
+	   var aname=$("#aname").val();
+	   var apassword=$("#apassword").val();
+	   var email=$("#email").val();
+	   
+	   $.post("admin/addadmin",{aname:aname,apassword:apassword,email:email},function(data){
+		   if(data>0){
+			   $("#aname").val("");
+			  $("#apassword").val("");
+			  $("#email").val("");
+			   $("#add_admin").dialog("close");
+			   $.messager.show({
+					title:'成功提示',
+					msg:'管理员添加成功',
+					timeout:2000,
+					showType:'slide'
+				});
+			   obj.datagrid("reload");
+			   $('#admins_data').datagrid("reload");
+		   }else{
+			   $("#add_admin").dialog("close");
+			   $.messager.show({
+					title:'成功提示',
+					msg:'管理员添加失败',
+					timeout:2000,
+					showType:'slide'
+				});
+			   obj.datagrid("reload"); 
+		   }
+	   });
+   }
+   
 </script>

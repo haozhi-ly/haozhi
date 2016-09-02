@@ -4,8 +4,11 @@ import java.io.PrintWriter;
 
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
@@ -15,6 +18,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.haozhi.entity.UserInfo;
@@ -118,6 +122,24 @@ public class UserHandler {
 	}
 	
 
+	@ResponseBody
+	@RequestMapping(value="/save",method=RequestMethod.POST)
+	public String saveInfo(UserInfo user,int userid,String gender,String usign,String introdution,ModelMap map,HttpServletRequest request){
+		System.out.println("save进来了");
+		String flag="";
+		HttpSession session=request.getSession();
+		
+		UserInfo userinfo=(UserInfo)session.getAttribute("users");
+		user.setUserid(userid);user.setGender(gender);user.setUsign(usign);user.setIntrodution(introdution);
+		
+		System.out.println("dkgha"+user);
+		userInfoService.saveInfo(user);
+		if(userInfoService.saveInfo(user)==1){
+			flag = "1";
+			userinfo.setGender(gender);
+		}
+		return flag;
+	}
 	
 	/*@Autowired
 	private static JavaMailSender mailSender;
@@ -155,14 +177,6 @@ public class UserHandler {
 		
 	}
 
-	@RequestMapping(value="/save")
-	public String saveInfo(UserInfo user,ModelMap map){
-		System.out.println(user);
-		userInfoService.saveInfo(user);
-		UserInfo userInfo = userInfoService.getAllUname(user.getUname());
-		map.put("users", userInfo);
-		return "info";
-	}
 	
 
 }
