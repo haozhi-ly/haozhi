@@ -64,7 +64,10 @@
 	<filter-mapping>
 		<filter-name>struts2</filter-name>
 		<url-pattern>/ImgUpload.action</url-pattern>
+
 	</filter-mapping>
+
+
 	<!--  struts配置结束 -->
 	
 	<welcome-file-list>

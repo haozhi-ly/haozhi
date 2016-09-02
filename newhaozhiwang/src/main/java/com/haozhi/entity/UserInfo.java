@@ -1,10 +1,14 @@
 package com.haozhi.entity;
+
+import java.io.Serializable;
+
 /**
  * 用户信息
  * @author admin
  *
  */
-public class UserInfo {
+public class UserInfo implements Serializable {
+	private static final long serialVersionUID = 3945675989523219499L;
 	private int userid;
 	private String uname;
 	private String email;
@@ -20,6 +24,11 @@ public class UserInfo {
 	private String temp03;// --备用字段
 
 	public UserInfo() {
+	}
+
+	public UserInfo(String uname, String upassword) {
+		this.uname = uname;
+		this.upassword = upassword;
 	}
 
 	public UserInfo(int userid, String uname, String email, String upassword,

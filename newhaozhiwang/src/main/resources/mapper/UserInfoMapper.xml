@@ -4,4 +4,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
 <mapper namespace="com.haozhi.mapper.UserInfoMapper">
+	<select id="getUserByUname" resultType="UserInfo" parameterType="UserInfo">
+		select * from UserInfo where upassword=#{upassword} and uname=#{uname}
+	</select>
+	
+	<select id="getUserByEmail" resultType="UserInfo" parameterType="UserInfo">
+		select * from UserInfo where upassword=#{upassword} and email=#{uname}
+	</select>
+	
+	<insert id="insertUser" parameterType="UserInfo">
+		insert into UserInfo values(seq_userid.nextval,#{uname},#{email},#{upassword},'女',null,null,null,1,0,null,null,null)
+	</insert>
+	
+	<select id="getUname" parameterType="string" resultType="string">
+		select uname from UserInfo where uname=#{uname}
+	</select>
+	
+	<select id="getEmail" parameterType="string" resultType="string">
+		select email from UserInfo where email=#{email}
+	</select>
 </mapper>

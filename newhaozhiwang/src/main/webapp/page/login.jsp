@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!Doctype html>
 <html>
 <head>
@@ -13,6 +13,7 @@
 <script type="text/javascript" src="js/top.js"></script>
 <link rel="stylesheet" type="text/css" href="css/howzhi.css">
 <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+
 <style type="text/css">
 	*{
 		padding:0px;
@@ -45,7 +46,7 @@
 		}
 	#body #register-box{
 		width:380px;
-		height:500px;
+		height:550px;
 		background-color:#FFF;
 		margin-right:120px;
 		display:none;
@@ -68,7 +69,7 @@
 		height:45px;
 		margin-bottom:20px;
 		}
-	#body #login-box #submit{
+	#body #login-box #submit-login,#body #register-box #submit-register{
 		width:300px;
 		height:44px;
 		background-color:#0C9;
@@ -107,7 +108,16 @@
 	.form-group{
 			margin-top:14px;
 		}
-	
+	button:hover{
+		color: ##008040;
+	}
+	#error{
+	text-align: center;
+	}
+	.error_eamil,.error_name{
+	color:red;
+	/* margin-bottom:20px; */
+	}
 </style>
 </head>
 
@@ -122,14 +132,20 @@
                 <span class="glyphicon glyphicon-circle-arrow-right"></span>
                 </a></h3><br>
                 <div class="conten"> 
-                    <form method="" action="">
-                        <input id="login_username" class="form-control" type="text" placeholder="邮箱/手机/用户名" required value="" name="username" >
-                        <input id="login_password" class="form-control" type="password" placeholder="密码" required value="" name="password" >
+                    <form method="post" action="userinfo/login">
+                    	<c:set value="${Message }" var="ms"/>
+                        <c:if test="${ms!=null }">
+                        	<div class="alert alert-danger" id="error">帐号或密码错误！！！</div>
+                        </c:if>
+                         
+                        <input id="login_username" class="form-control" type="text" placeholder="邮箱/用户名" required value=""  name="uname">
+                        <input id="login_password" class="form-control" type="password" placeholder="密码" required value="" name="upassword" >
+                       
                          <div class="controls"> 
                             <label id="remember_me"><input name="_remember_me" checked="checked" type="checkbox">记住密码</label>
                             <a class="pull-right active" href="#">忘记密码</a>
                          </div>
-                        <button id="submit" type="submit" class="btn btn-default">登录</button>
+                        <button id="submit-login" type="submit" class="btn btn-default">登录</button>
                     </form>
             	</div>
            </div>
@@ -141,10 +157,12 @@
                 <span class="glyphicon glyphicon-circle-arrow-right"></span>
                 </a><i class="fa fa-arrow-circle-o-right"></i></h3><br>
                 <div class="conten"> 
-                    <form method="" action="">
-                        <input id="register_eamil" class="form-control" type="email" placeholder="常用邮箱" required value="" name="email" >
-                        <input id="register_username" class="form-control" type="text" placeholder="请输入昵称" required value="" name="username" >
-                        <input id="register_password" class="form-control" type="password" placeholder="密码" required value="" name="password" >
+                    <form method="post" action="userinfo/register">
+                        <input id="register_eamil" class="form-control" type="email" placeholder="常用邮箱" value="" name="email" onblur="check_email()">
+                       	<div class="error_eamil"></div>
+                        <input id="register_username" class="form-control" type="text" placeholder="请输入昵称" value="" name="uname" onblur="check_uname()">
+                       	<div class="error_name"></div>
+                        <input id="register_password" class="form-control" type="password" placeholder="密码" required value="" name="upassword" >
                         <div class="form-group mb40 captcha_div">
         					<div class="controls row">
          						<div class="col-xs-6">
@@ -164,7 +182,7 @@
           						<div class="help-block" style="display:none;"></div>
        						</div>
      					</div>
-                        <button id="submit" type="submit" class="btn btn-default">注册</button>
+                        <button id="submit-register" type="submit" class="btn btn-default">注册</button>
                     </form>
             	</div>
            </div>
