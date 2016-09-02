@@ -1,8 +1,10 @@
 package com.haozhi.handler;
 
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
 import javax.mail.internet.MimeMessage;
+import javax.management.DescriptorRead;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -20,11 +22,16 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.haozhi.entity.UserInfo;
 import com.haozhi.service.UserInfoService;
 
+
+import com.haozhi.util.UsuallyUtil;
+import com.sun.mail.util.DecodingException;
+
+
+
 @Controller
 @RequestMapping("/userinfo")
 @SessionAttributes(value={"users","yzm"})
 public class UserHandler {
-	
 	@Autowired
 	private UserInfoService userInfoService;
 	
@@ -37,10 +44,16 @@ public class UserHandler {
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public String login(@ModelAttribute("users") UserInfo userInfo,ModelMap map){
 		String name=userInfo.getUname();
+		System.out.println("test");
+		
+		 name=new UsuallyUtil().decode(name);
+	     System.out.println(name+"yes");
 		if(userInfo!=null && name.contains("@")){
 			userInfo=userInfoService.loginByEamil(userInfo);
 			map.put("users", userInfo);
 		}else if(userInfo!=null && !name.contains("@")){
+			userInfo.setUname(name);
+			userInfo.toString();
 			userInfo=userInfoService.loginByUname(userInfo);
 			map.put("users", userInfo);
 		}

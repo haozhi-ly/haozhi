@@ -1,6 +1,10 @@
 
 package com.haozhi.mapper;
 
-public interface CourseTypeMapper {
+import java.util.List;
 
+import com.haozhi.entity.CourseType;
+
+public interface CourseTypeMapper {
+	List<CourseType> findAllType();
 }

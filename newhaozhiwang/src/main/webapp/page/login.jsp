@@ -137,7 +137,7 @@
                 <span class="glyphicon glyphicon-circle-arrow-right"></span>
                 </a></h3><br>
                 <div class="conten"> 
-                    <form method="post" action="userinfo/login">
+                    <form method="post" action="userinfo/login" accept-charset="UTF-8">
                     	<c:set value="${Message }" var="ms"/>
                         <c:if test="${ms!=null }">
                         	<div class="alert alert-danger" id="error">帐号或密码错误！！！</div>
