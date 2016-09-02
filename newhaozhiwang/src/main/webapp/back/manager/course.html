@@ -1,4 +1,4 @@
-<table id="news_data"></table>  
+<table id="course_data"></table>  
 <!-- <table id="news_error"><label style="font-size: 20px;text-align: center;">没有找到相关新闻,请重新查询...</label></table>
 <div id="add_news" class="easyui-dialog" title="添加新闻" data-options="iconCls:'icon-add',resizable:true,model:true,closed:true,fit:true">
 	<br />
@@ -69,10 +69,8 @@
 	/* var ue = UE.getEditor('editor');
 	var ue2 = UE.getEditor('editor2'); */
 	
-	$('#news_data').datagrid({  
-	    url:'../../newsInfoServlet',  
-	    queryParams:{//请求远程服务器数据时候, 并且发送的额外的参数. 
-			op:'findNewsByPage'},
+	$('#course_data').datagrid({  
+	    url:'/course/findAllCourse',  
 		fitColumns:true,//true将自动扩展/收缩columns大小适应grid的宽度,防止水平滚动.
 		striped:true,//显示条纹所在行
 		loadMsg:"数据加载中...",//当从远程服务器加载数据的时候,显示的提示消息.
@@ -81,7 +79,7 @@
 		pageNumber:1,//初始页码
 		pageSize:10,//分页大小
 		pageList:[5,10,20,30,40,50],//设置属性
-		sortName:'weight',//定义那个列可以排序.
+		sortName:'createTime',//定义那个列可以排序
 		sortOrder:'desc',
 		remoteSort:false,//定义是否远程排序.对数据库进行操作
 	    columns:[[ 
@@ -89,7 +87,7 @@
 	        {field:'courseid',title:'课程编号',width:80,align:'center',sortable:true},  
 	        {field:'ctitle',title:'课程标题',width:80,align:'center'},
 	        {field:'cintrodution',title:'新闻作者',width:80,align:'center'},
-	        {field:'course',title:'发布日期',width:130,align:'center'},
+	        {field:'createtime',title:'发布日期',width:130,align:'center'},
 	        {field:'typename',title:'课程类型名称',width:80,align:'center'},
 	        {field:'ctid',title:'课程类型编号',width:80,align:'center'},
 	        {field:'cviews',title:'浏览次数',width:60,align:'center'},

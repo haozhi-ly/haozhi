@@ -61,3 +61,9 @@ DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select email from UserInfo where email=? 
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 23456@qq.com(String)
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 2
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from coursetype 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 9
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from coursetype 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 9
