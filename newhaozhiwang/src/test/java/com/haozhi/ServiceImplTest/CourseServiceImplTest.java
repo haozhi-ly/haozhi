@@ -58,7 +58,7 @@ public class CourseServiceImplTest {
 	
 	@Test
 	public void getCourseDescTime() {
-		List<Course> course = courseService.getCourseDescTime();
+		List<Course> course = courseService.getCourseDescTime(2);
 		System.out.println(course);
 		assertNotNull(course);
 	}

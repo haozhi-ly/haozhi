@@ -43,8 +43,8 @@ public class CourseServiceImpl implements CourseService {
 	}
 
 	@Override
-	public List<Course> getCourseDescTime() {
-		return courseMapper.getCourseDescTime();
+	public List<Course> getCourseDescTime(Integer ctid) {
+		return courseMapper.getCourseDescTime(ctid);
 	}
 
 	@Override

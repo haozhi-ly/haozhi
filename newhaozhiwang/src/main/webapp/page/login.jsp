@@ -9,6 +9,11 @@
 <link href="http://f1.howzhi.com/system/2016/03-31/113613d6a857327741.ico" rel="shortcut icon">
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="easyui/css/easyui.css">
+<link rel="stylesheet" type="text/css" href="easyui/css/icon.css">
+<link rel="stylesheet" type="text/css" href="easyui/css/demo.css">
+<script type="text/javascript" src="easyui/js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="easyui/js/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript" src="js/register.js"></script>
 <script type="text/javascript" src="js/top.js"></script>
 <link rel="stylesheet" type="text/css" href="css/howzhi.css">
@@ -46,7 +51,7 @@
 		}
 	#body #register-box{
 		width:380px;
-		height:550px;
+		min-height:300px;
 		background-color:#FFF;
 		margin-right:120px;
 		display:none;
@@ -169,7 +174,7 @@
             						<input data-explain="" data-widget-cid="widget-1" class="form-control ident" id="captcha_num" name="captcha_num" maxlength="5" placeholder="验证码" required data-url="/register/captcha/check" type="text">
           						</div>
                                 <div class="col-xs-6 ident-img"> 
-                                	 <button type="submit" class="btn btn-default" id="submit">获取邮箱验证码</button> 
+                                	 <button type="button" class="btn btn-default" id="submit" onclick="sendMail()">发送邮箱验证码</button> 
                                  </div>
           						<div class="help-block" style="display:none;"></div>
         					</div>

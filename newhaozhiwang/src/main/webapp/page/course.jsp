@@ -14,7 +14,6 @@
 <link  rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="css/course.css">
 <link rel="stylesheet" type="text/css" href="css/swiper.css" >
-
 <script src="js/jquery.js"></script> 
 <script src="js/swiper-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script> 

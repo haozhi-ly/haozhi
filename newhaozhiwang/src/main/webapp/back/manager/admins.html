@@ -1,4 +1,5 @@
 <table id="admins_data"></table>  
+
 <div id="add_admin" class="easyui-dialog" title="添加管理员" 
 style="width:500px;height:360px;"
 data-options="iconCls:'icon-add',resizable:true,model:true,closed:true">
@@ -29,6 +30,9 @@ data-options="iconCls:'icon-add',resizable:true,model:true,closed:true">
 		margin-right:20px;
 	}
 </style>
+=======
+
+>>>>>>> branch 'master' of ssh://git@github.com/haozhi-ly/haozhi.git
 
 
 <script>
@@ -38,7 +42,8 @@ data-options="iconCls:'icon-add',resizable:true,model:true,closed:true">
 	var flag;
 
     obj=$('#admins_data').datagrid({  
-    url:'admin/findAll',  
+    url:'/admin/findAll',  
+    queryParams:{op:'findAmdinsByPage'}, //请求远程服务器数据时候, 并且发送的额外的参数.
 	fitColumns:true,//true将自动扩展/收缩columns大小适应grid的宽度,防止水平滚动.
 	striped:true,//显示条纹所在行
 	loadMsg:"数据加载中...",//当从远程服务器加载数据的时候,显示的提示消息.
@@ -60,7 +65,17 @@ data-options="iconCls:'icon-add',resizable:true,model:true,closed:true">
 		text:"添加",
 		iconCls:"icon-add",
 		handler:function(){
-			$('#add_admin').dialog('open');
+			currentOp="addAdmin";
+			flag="添加";
+			if(editRow !=undefined){
+				obj.datagrid("rejectChanges"); //回滚所有的数据
+				obj.datagrid("endEdit",editRow); //关闭正在被编辑的行
+				editRow=undefined;
+			}else{
+				obj.datagrid("insertRow",{index:0,row:{}}); 
+				obj.datagrid("beginEdit",0);
+				editRow=0;  //记录当前被编辑的行
+			} 
 		}
 	}/* ,{
 		text:"修改",
@@ -106,7 +121,9 @@ data-options="iconCls:'icon-add',resizable:true,model:true,closed:true">
 						}
 						aids+=rows[i].aid;
 						//发请求到数据库删除
+
 						$.post("admin/deladmin",{aid:aids},function(data){
+
 							if(data>0){
 								alert(data)
 								$.messager.show({

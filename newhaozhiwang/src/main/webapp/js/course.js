@@ -74,8 +74,12 @@ $(function(){
 		 $(this).parent().parent().children().children().removeClass("act");  
 		 $(this).addClass("act"); 	  //样式改变
 		 var id = this.id;
-		
+		 $.post("course/selectCourseBy/"+tid+id,{"_method":"POST"},function(data){	
+			 
+		 },'json');
 	});
+	
+	
 	
 	
 });

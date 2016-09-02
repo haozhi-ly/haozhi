@@ -1,6 +1,6 @@
 package com.haozhi.handler;
 
-import java.io.PrintWriter;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,6 +78,12 @@ public class CourseHandler {
 		return courses;
 	}
 	
+	/**
+	 * 通过ctid来查热门课程
+	 * @param id
+	 * @param map
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value="/getHostByCtid/{id}",method=RequestMethod.POST)
 	public List<Course> getHostByCtid(@PathVariable("id")Integer id,ModelMap map){
@@ -91,20 +97,34 @@ public class CourseHandler {
 		return courses;
 	}
 	
+	/**
+	 * 通过
+	 * @param tid  课程类型
+	 * @param id   按什么排序
+	 * @param map
+	 * @return
+	 */
 	@ResponseBody
-	@RequestMapping(value="/selectCourseBy/{tid}{id}",method=RequestMethod.POST)
-	public List<Course> selectCourseBy(@PathVariable("tid")Integer tid,@PathVariable("id")Integer id,ModelMap map){
+	@RequestMapping(value="/selectCourseBy/{id}",method=RequestMethod.POST)
+	public List<Course> selectCourseBy(Integer tid,@PathVariable("id")Integer id,ModelMap map){
 		LogManager.getLogger().debug("selectCourseBy 到达...");
 		List<Course> courses;
-/*		if(id==0){
-			courses =  courseService.getAllCourse();
+		String ttid= String.valueOf(id).substring(0,1);
+		String iid = String.valueOf(id).substring(1,2);
+		tid = Integer.parseInt(ttid); id = Integer.parseInt(iid);
+		if(id==0){
+			courses =  courseService.getAllCourse(); //为0代表为综合排序
+		}else if(id==1){
+			courses = courseService.getCourseDescTime(tid);  //为1代表为按时间排序
+		}else{
+			courses = courseService.getHostByCtid(tid);  //为2代表为按热门排序
 		}
-		courses  = courseService.getHostCourse();*/
-		courses =  courseService.getAllCourse();
 		System.out.println( tid+"呵呵哒"+id);
 		map.put("courses", courses);		
 		return courses;
 	}
+	
+	
 	
 
 }

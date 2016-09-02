@@ -23,4 +23,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getEmail" parameterType="string" resultType="string">
 		select email from UserInfo where email=#{email}
 	</select>
+	
+	<select id="getInfoByUserid" parameterType="int" resultType="UserInfo">
+		select * from UserInfo where userid=#{userid}
+	</select>
+	
+	<update id="saveInfo" parameterType="UserInfo">
+		update userinfo set gender=#{gender,jdbcType=VARCHAR}, usign=#{usign,jdbcType=VARCHAR} 
+		, introdution=#{introdution,jdbcType=VARCHAR} where userid=#{userid}
+	</update>
 </mapper>

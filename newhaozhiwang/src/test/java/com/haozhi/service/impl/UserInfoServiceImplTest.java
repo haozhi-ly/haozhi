@@ -43,5 +43,21 @@ public class UserInfoServiceImplTest extends UserInfoServiceImpl {
 		assertNotNull(user);
 		assertNotNull(email);
 	}
+	
+	@Test
+	public void testSave() {
+		UserInfo user = new UserInfo();
+		user.setUserid(2);user.setIntrodution("我太傻太傻了!!");
+		int result = userInfoService.saveInfo(user);
+		System.out.println(user);
+		assertEquals(result, 1);
+	}
+	
+	@Test
+	public void testGetAll() {
+		UserInfo user=userInfoService.getInfoByUserid(2);
+		System.out.println(user);
+		assertNotNull(user);
+	}
 
 }

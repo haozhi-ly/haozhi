@@ -15,7 +15,7 @@ public interface CourseService {
 	
 	List<Course> getHostByCtid(Integer ctid);  //通过课程类型查热门课程的头三条
 	
-	List<Course> getCourseDescTime();  //查询课程按创建时间排序
+	List<Course> getCourseDescTime(Integer ctid);  //查询课程按创建时间排序
 	
 	List<Course> getAllHostCourse();  //查询所有热门课程
 }

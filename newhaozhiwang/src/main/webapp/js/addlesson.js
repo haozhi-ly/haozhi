@@ -31,6 +31,8 @@
 		$("#lesson-content-field").hide();
 		$(".for-flash-type for-text-type for-ppt-type for-document-type").hide();	
 		$("#texttime").hide();
+		$("#myckeditor").hide();
+		$("#parentmyckeditor").hide();
 	});
 	$("#addtext").click(function(){
 		$("#textarea").show();
@@ -42,7 +44,8 @@
 		
 		$(".for-video-type").hide();
 		$(".form-group for-video-type for-audio-type").hide();
-		
+		$("#myckeditor").show();
+		$("#parentmyckeditor").show();
 	});
  });
 

@@ -13,7 +13,7 @@ public class Course implements Serializable{
 	private int courseid;
 	private String ctitle;// --标题
 	private String cintrodution;// --课程简介
-	private int ctid; // --课程类别（外键）
+	private Integer ctid; // --课程类别（外键）
 	private String courseting;// --应用于课程关键字搜索
 	private String coursephoto;// --课程图片
 	private int userId;// --外键 课程的创建者
@@ -28,7 +28,7 @@ public class Course implements Serializable{
 	public Course() {
 	}
 
-	public Course(String ctitle, String cintrodution, int ctid,
+	public Course(String ctitle, String cintrodution, Integer ctid,
 			String courseting, String coursephoto, int userId, int cview,
 			String createTime, String temp02, String temp03) {
 		this.ctitle = ctitle;
@@ -82,7 +82,7 @@ public class Course implements Serializable{
 		return ctid;
 	}
 
-	public void setCtid(int ctid) {
+	public void setCtid(Integer ctid) {
 		this.ctid = ctid;
 	}
 

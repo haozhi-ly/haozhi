@@ -22,7 +22,7 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>CharacterEncodingFilter</filter-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>/ImgUpload.action</url-pattern>
 	</filter-mapping>
 	
 	
@@ -66,7 +66,6 @@
 		<url-pattern>/ImgUpload.action</url-pattern>
 
 	</filter-mapping>
-
 
 
 	<!--  struts配置结束 -->
