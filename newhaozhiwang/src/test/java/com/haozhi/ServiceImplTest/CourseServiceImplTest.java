@@ -27,6 +27,13 @@ public class CourseServiceImplTest {
 	}
 	
 	@Test
+	public void testGetHostCourse() {
+		List<Course> course = courseService.getHostCourse();
+		System.out.println(course);
+		assertNotNull(course);
+	}
+	
+	@Test
 	public void testInsertCourse() {
 		Course  c = new Course();
 		c.setCtitle("ps绘画教程（photoshop绘画）");c.setCintrodution("ps绘画教程（photoshop绘画）");
@@ -35,4 +42,25 @@ public class CourseServiceImplTest {
 		assertEquals(result, true);
 	}
 
+	@Test
+	public void testGetCourseByCtid() {
+		List<Course> course = courseService.getCourseByCtid(1);
+		System.out.println(course);
+		assertNotNull(course);
+	}
+	
+	@Test
+	public void testGetHostByCtid() {
+		List<Course> course = courseService.getHostByCtid(2);
+		System.out.println(course);
+		assertNotNull(course);
+	}
+	
+	@Test
+	public void getCourseDescTime() {
+		List<Course> course = courseService.getCourseDescTime(2);
+		System.out.println(course);
+		assertNotNull(course);
+	}
+	
 }

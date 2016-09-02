@@ -30,7 +30,7 @@ create table userinfo(
        score int ,--学分
        signDate date ,  --签到       
        temp02 varchar2(200),--备用字段
-       temp03 varchar2(200)--备用字段      
+       temp03 varchar2(200)--备用字段    
 );
 select * from UserInfo where uname='超超' and upassword=123456
 create sequence seq_userid start with 1;
@@ -60,7 +60,7 @@ insert into admin values(seq_aid.nextval,'管理员','123456@qq.com','123456',nu
 
 drop table course;
 drop sequence seq_courseid ;
-delete from course ;
+delete from course;
 select * from course;
 -----------------3.课程表
 create table course(
@@ -74,32 +74,40 @@ create table course(
        userId int 
               constraint FK_userinfo_userid references userinfo(userid),--外键 课程的创建者
        cview int ,--浏览量
-       temp01 varchar2(200),--备用字段
+       createTime date,--创建时间
        temp02 varchar2(200),--备用字段
        temp03 varchar2(200)--备用字段  
 )
-create sequence seq_courseid start with 10;
+ALTER TABLE haozhi.course RENAME COLUMN temp01 TO createTime --修改表列名 
+ALTER TABLE haozhi.course MODIFY createTime date  --修改字段类型 
+
+update course set createTime = to_date('2016-7-20','yyyy-mm-dd');
+create sequence seq_courseid start with 1;
 
 insert into course values(seq_courseid.nextval,'人像摄影高级教程','由摄影师杨最醉主讲的人像摄影高级教程，从人像摄影器材到主题策划、光线捕捉、后期调色、磨皮等各个角度讲解。',
-1,'人像 摄影',null,3,0,null,null,null);
+1,'人像 摄影',null,3,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
 insert into course values(seq_courseid.nextval,'AI之全程揭秘美图秀秀UI设计','以 ios系统手机app为例，全程揭秘美图秀秀UI设计。从图标到启动界面，再到功能界面，一步一步重现美图秀秀的绘制过程。从临摹开始，零基础也可以快速掌握手机app的UI设计方法。',
-2,'创意 设计 UI',null,1,0,null,null,null);
+2,'创意 设计 UI',null,5,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
 insert into course values(seq_courseid.nextval,'吉他自学入门 ','本课程通俗易懂，按照由浅入深、循序渐进的学习规律，把乐理基础、乐感训练和弹奏技巧三者有机结合起来，为吉他初学者提供一条科学规范合理的学习途径',
-3,'声乐 吉他',null,3,0,null,null,null);
+3,'声乐 吉他',null,3,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
 insert into course values(seq_courseid.nextval,'跆拳道品势教学 ','跆拳道品势教学，跆拳道品势与跆拳道竞技腿法同为跆拳道运动的重要组成部分，品势动作包含跆拳道各类技法的精髓，长期练习可以很好的训练个人的协调性和发力，加深对跆拳道精神的理解。',
-4,'运动 跆拳道',null,2,0,null,null,null);
+4,'运动 跆拳道',null,2,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
 insert into course values(seq_courseid.nextval,'html,div+css视频教程(2014最新,带多个企业级项目实战) ','本课程讲解细腻，加入了作者很多付出，希望能够对大家的学习产生很大帮助',
-5,'IT html',null,4,0,null,null,null);
+5,'IT html',null,4,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
 insert into course values(seq_courseid.nextval,'如何自制冷萃咖啡/冰滴咖啡  ','炎炎夏日，很多人喜欢在咖啡里加冰块以图凉爽。然而近期由于星巴克的推广，让冷萃咖啡走进了大家的视线。冷萃咖啡和普通的冰咖啡有什么不同？
 冰镇咖啡或冰咖啡是指用热水快速萃取、然后加冰块或急速降温后的冷饮咖啡。冷萃咖啡是指用低于摄氏5度的水长时间低温浸泡萃取的咖啡饮料。',
-6,'兴趣 咖啡',null,3,0,null,null,null);
+6,'兴趣 咖啡',null,3,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
 insert into course values(seq_courseid.nextval,'韩语零基础入门','标准韩国语第一册(修订版) 1-13课',
-7,'语言 韩语',null,1,0,null,null,null);
+7,'语言 韩语',null,5,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
 insert into course values(seq_courseid.nextval,'15分钟与陌生人成为朋友 ','什么？你还是单身？那快快点击这个课程，纯干货方法，观看后立即成为交际达人。',
-8,'职场 朋友',null,2,0,null,null,null);
+8,'职场 朋友',null,2,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
 insert into course values(seq_courseid.nextval,'腾飞五千年之《塞北三朝之金》全22集 ','　公元1125年，曾经幅员万里的大辽帝国，被原本附属于自己的女真人消灭了。那么女真是一个什么样的民族？他们起源于何方？又是怎样从一个原始部落逐渐发展壮大，如何创造了仅用12年就灭辽平宋的奇迹？',
-9,'公开课 五千年',null,4,0,null,null,null);
+9,'公开课 五千年',null,4,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
+commit;
 
+select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount,
+		(select avg(assess) from studyCourse where courseid = s.courseid) assessAvg,
+		(select * from userinfo where userid = s.userid ) users from course s 
 
 select * from courseType;
 -------4.课程类别表
@@ -243,7 +251,10 @@ create sequence seq_atid start with 1;
 insert into attention values(seq_atid.nextval,3,1,null,null,null);
 insert into attention values(seq_atid.nextval,1,3,null,null,null);
 
+select * from (select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount,
+(select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s order by memberCount desc) where rownum<=3 ;
 
+select * from studyCourse
 ---------------------11.学习课程表
 create table studyCourse(
        scid int primary key,
@@ -259,9 +270,11 @@ create table studyCourse(
        temp03 varchar2(200)--备用字段
 );
 create sequence seq_scid start with 1;
-insert into studyCourse values(seq_scid.nextval,1,5,to_date('2016-8-1','yyyy-mm-dd'),2,null,null,null,null);
+insert into studyCourse values(seq_scid.nextval,5,5,to_date('2016-8-1','yyyy-mm-dd'),2,null,null,null,null);
 insert into studyCourse values(seq_scid.nextval,4,6,to_date('2016-8-10','yyyy-mm-dd'),4,null,null,null,null);
-
+insert into studyCourse values(seq_scid.nextval,2,5,to_date('2016-8-1','yyyy-mm-dd'),4,null,null,null,null);
+commit;
+update studyCourse set userid=5 where scid=3;
 -------------12.私信表  or   留言表
 create table selfMessage(
        smid int primary key ,

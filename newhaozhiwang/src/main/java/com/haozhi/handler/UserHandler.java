@@ -4,7 +4,6 @@ import java.io.PrintWriter;
 
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -12,7 +11,6 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -110,6 +108,7 @@ public class UserHandler {
 		return "index";
 	}
 	
+
 	
 	/*@Autowired
 	private static JavaMailSender mailSender;
@@ -146,4 +145,15 @@ public class UserHandler {
 		}
 		
 	}
+
+	@RequestMapping(value="/save")
+	public String saveInfo(UserInfo user,ModelMap map){
+		System.out.println(user);
+		userInfoService.saveInfo(user);
+		UserInfo userInfo = userInfoService.getAllUname(user.getUname());
+		map.put("users", userInfo);
+		return "info";
+	}
+	
+
 }

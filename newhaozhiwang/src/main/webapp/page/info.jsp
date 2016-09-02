@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html >
 <head>
@@ -87,26 +87,18 @@
 					</div>
 					<!--  --------------基础信息-------------------------------------------------------------------- -->
 					<div class="col-md-9" id="baseinfo" style="display: block;">
-
+						
 						<div class="panel panel-default panel-col">
 							<div class="panel-heading">基础信息</div>
 							<div class="panel-body">
 
-								<form id="user-profile-form" class="form-horizontal" method="post" novalidate="novalidate" data-widget-cid="widget-0">
+								<form id="user-profile-form" class="form-horizontal" method="post" novalidate="novalidate" data-widget-cid="widget-0" action="userinfo/save">
 
 									<div class="form-group">
 										<label class="col-md-2 control-label">昵称</label>
 										<div class="col-md-7 controls">
 											<div class="control-text">
-												珘珘 </div>
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label class="col-md-2 control-label" for="profile_truename">姓名</label>
-										<div class="col-md-7 controls">
-											<input type="text" id="profile_truename" name="profile[truename]" class="form-control" data-widget-cid="widget-4" data-explain="" value="">
-											<div class="help-block" style="display:none;"> </div>
+												${users.uname}</div>
 										</div>
 									</div>
 
@@ -114,76 +106,51 @@
 										<label class="col-md-2 control-label">性别</label>
 										<div class="col-md-7 controls radios">
 											<div id="profile_gender">
-												<input type="radio" id="profile_gender_0" name="profile[gender]" required="required" value="male">
-												<label for="profile_gender_0" class="required">男</label>
-												<input type="radio" id="profile_gender_1" name="profile[gender]" required="required" value="female">
-												<label for="profile_gender_1" class="required">女</label>
+											<c:choose>
+												<c:when test="${users.gender}==null">
+													<input type="radio" id="profile_gender_0" name="gender" required="required" value="male" >
+													<label for="profile_gender_0" class="required">男</label>
+													<input type="radio" id="profile_gender_1" name="gender" required="required" value="female">
+													<label for="profile_gender_1" class="required">女</label>
+												</c:when>
+												<c:when test="${users.gender}=='男'">
+													<input type="radio" id="profile_gender_0" name="gender" required="required" value="male"  checked="checked">
+													<label for="profile_gender_0" class="required">男</label>
+													<input type="radio" id="profile_gender_1" name="gender" required="required" value="female">
+													<label for="profile_gender_1" class="required">女</label>
+												</c:when>
+												<c:otherwise>
+													<input type="radio" id="profile_gender_0" name="gender" required="required" value="male" >
+													<label for="profile_gender_0" class="required">男</label>
+													<input type="radio" id="profile_gender_1" name="gender" required="required" value="female"  checked="checked">
+													<label for="profile_gender_1" class="required">女</label>
+												</c:otherwise>
+											</c:choose>
+									
 											</div>
 										</div>
-									</div>
+									</div>						
 
 									<div class="form-group">
-										<label class="col-md-2 control-label" for="profile_idcard">身份证号</label>
-										<div class="col-md-7 controls radios">
-											<input type="text" id="profile_idcard" name="profile[idcard]" class="form-control" value="" data-widget-cid="widget-8" data-explain="">
-											<div class="help-block" style="display:none;"></div>
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label for="profile_mobile" class="col-md-2 control-label">手机号码</label>
+										<label class="col-md-2 control-label" for="usign">个人签名</label>
 										<div class="col-md-7 controls">
-											<div class="control-text">
-												<input type="text" id="profile_idcard" name="profile[idcard]" class="form-control" value="" data-widget-cid="widget-8" data-explain="">
-												<div class="help-block" style="display:none;"></div>
-											</div>
-										</div>
-									</div>
-
-									<div class="form-group form-forIam-group form-notStudent-group">
-										<label class="col-md-2 control-label">城市</label>
-										<div class="col-md-7 controls">
-											<input type="text" id="profile_company" name="profile[city]" class="form-control" value="">
-											<div class="help-block" style="display:none;"></div>
-										</div>
-									</div>
-
-									<div class="form-group form-forIam-group form-notStudent-group">
-										<label class="col-md-2 control-label">公司</label>
-										<div class="col-md-7 controls">
-											<input type="text" id="profile_company" name="profile[company]" class="form-control" value="">
-											<div class="help-block" style="display:none;"></div>
-										</div>
-									</div>
-
-									<div class="form-group form-forIam-group form-notStudent-group">
-										<label class="col-md-2 control-label">职业</label>
-										<div class="col-md-7 controls">
-											<input type="text" id="profile_job" name="profile[job]" class="form-control" value="">
+											<input type="text" id="profile_signature" name="profile[signature]" data-url="/sensitive/check" class="form-control" value="${users.usign}" data-widget-cid="widget-1" data-explain="">
 											<div class="help-block" style="display:none;"></div>
 										</div>
 									</div>
 
 									<div class="form-group">
-										<label class="col-md-2 control-label" for="profile_signature">个人签名</label>
+										<label class="col-md-2 control-label" for="introdution">自我介绍</label>
 										<div class="col-md-7 controls">
-											<input type="text" id="profile_signature" name="profile[signature]" data-url="/sensitive/check" class="form-control" value="" data-widget-cid="widget-1" data-explain="">
-											<div class="help-block" style="display:none;"></div>
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label class="col-md-2 control-label" for="profile_about">自我介绍</label>
-										<div class="col-md-7 controls">
-											<textarea rows="10" id="profile_about" class="form-control" data-url="/sensitive/check"></textarea>
+											<textarea rows="10" id="profile_about" class="form-control" data-url="/sensitive/check">${users.introdution}</textarea>
 										</div><br>
-
+									</div>
 										<div class="row">
 											<div class="col-md-7 col-md-offset-2">
 												<button id="profile-save-btn" data-submiting-text="正在保存" type="submit" class="btn btn-primary">保存</button>
 											</div>
 										</div>
-									
+										
 										<input type="hidden" name="_csrf_token" value="cfe9b96f569703f379d055687bf9a957774ae94c">
 								</form>
 

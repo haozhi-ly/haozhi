@@ -493,7 +493,7 @@
 										</div>
 										<div class="teacher text-o-show">
 											<a class=" js-user-card" href="javaScript:void(0);" data-card-url="/user/1282433/card/show" data-user-id="1282433">
-												<img class="avatar-ss " src="images/2001255a2bbc776915.jpg" 　alt="木桃"> 木桃
+												<img class="avatar-ss " src="images/2001255a2bbc776915.jpg" alt="木桃"> 木桃
 											</a>
 
 											<div class="price free pull-right"><span>免费</span></div>
