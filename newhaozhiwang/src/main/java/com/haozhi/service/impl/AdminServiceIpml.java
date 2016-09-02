@@ -20,4 +20,19 @@ public class AdminServiceIpml implements AdminService {
 		return adminMapper.findAll();
 	}
 
+	@Override
+	public int addadmin(Admin admin) {
+		return adminMapper.addadmin(admin);
+	}
+
+	@Override
+	public int count() {
+		return adminMapper.count();
+	}
+
+	@Override
+	public int deladmin(String aid) {
+		return adminMapper.deladmin(aid);
+	}
+
 }

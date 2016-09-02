@@ -22,6 +22,9 @@ public class UserInfo implements Serializable {
 	private String signDate;// --签到
 	private String temp02; // --备用字段
 	private String temp03;// --备用字段
+	private int code;//从前台拿到的验证码
+	private int sendCode;//从后台发送过去的验证码
+	
 
 	public UserInfo() {
 	}
@@ -151,6 +154,18 @@ public class UserInfo implements Serializable {
 
 	public void setTemp03(String temp03) {
 		this.temp03 = temp03;
+	}
+
+	public int getCode() {
+		return code;
+	}
+
+	public void setCode(int code) {
+		this.code = code;
+	}
+
+	public void setSendCode(int sendCode) {
+		this.sendCode = sendCode;
 	}
 
 	@Override

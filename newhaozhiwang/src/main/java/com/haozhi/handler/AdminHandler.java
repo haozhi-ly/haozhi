@@ -23,13 +23,35 @@ public class AdminHandler {
 	@RequestMapping("/findAll")
 	public void findAll(PrintWriter out){
 		List<Admin> admins=adminService.findAll();
+		int count=adminService.count();
 		JSONArray json = JSONArray.fromObject(admins);
 		JSONObject jb = new JSONObject();
 		jb.put("rows", json);
-		jb.put("total",1);
+		jb.put("total",count);
 		out.print(jb);
 		out.flush();
 		out.close();
 	}
 	
+	@RequestMapping("/addadmin")
+	public void addadmin(Admin admin,String aname,String apassword,String email,PrintWriter out){
+		admin.setAname(aname);
+		admin.setApassword(apassword);
+		admin.setEmail(email);
+		int admins=adminService.addadmin(admin);
+		JSONArray json = JSONArray.fromObject(admins);
+		JSONObject jb = new JSONObject();
+		jb.put("rows", json);
+		out.print(jb);
+		out.flush();
+		out.close();
+	}
+	
+	@RequestMapping("/deladmin")
+	public void deladmin(String aid,PrintWriter out){
+		int result=adminService.deladmin(aid);
+		out.print(result);
+		out.flush();
+		out.close();
+	}
 }

@@ -11,4 +11,10 @@ public interface AdminService {
 
 	List<Admin> findAll();
 
+	int addadmin(Admin admin);
+
+	int count();
+
+	int deladmin(String aid);
+
 }
