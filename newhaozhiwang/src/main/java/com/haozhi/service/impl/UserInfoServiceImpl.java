@@ -55,4 +55,14 @@ public class UserInfoServiceImpl implements UserInfoService {
 		return true;
 	}
 
+	@Override
+	public int saveInfo(UserInfo user) {
+		return userInfoMapper.saveInfo(user);
+	}
+
+	@Override
+	public UserInfo getAllUname(String uname) {
+		return userInfoMapper.getAllUname(uname);
+	}
+
 }

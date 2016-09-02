@@ -19,22 +19,21 @@
           <li class="visible-xs">
             <a href="javascript:void(0);"><i class="fa fa-search mrm"></i>搜索</a>
           </li>
-              
       <li class="">
   <a href="page/learnCenter.jsp">学习中心 </a>
   </li>      
       <li class="nav-hover">
   <a href="page/course.jsp">课程  <b class="caret"></b></a>
-      <ul class="dropdown-menu" role="menu">
-              <li><a href="page/course.jsp">摄影课堂</a></li>
-              <li><a href="page/course.jsp">创意设计</a></li>
-              <li><a href="page/course.jsp">声乐器乐</a></li>
-              <li><a href="page/course.jsp">运动健身</a></li>
-              <li><a href="page/course.jsp">IT互联网</a></li>
-              <li><a href="page/course.jsp">兴趣爱好</a></li>
-              <li><a href="page/course.jsp">语言学习</a></li>
-              <li><a href="page/course.jsp">职场技能</a></li>
-              <li><a href="page/course.jsp">公开课</a></li>
+      <ul class="dropdown-menu" role="menu" id="menu">
+              <li id="1"><a href="page/course.jsp">摄影课堂</a></li>
+              <li id="2"><a href="page/course.jsp">创意设计</a></li>
+              <li id="3"><a href="page/course.jsp">声乐器乐</a></li>
+              <li id="4"><a href="page/course.jsp">运动健身</a></li>
+              <li id="5"><a href="page/course.jsp">IT互联网</a></li>
+              <li id="6"><a href="page/course.jsp">兴趣爱好</a></li>
+              <li id="7"><a href="page/course.jsp">语言学习</a></li>
+              <li id="8"><a href="page/course.jsp">职场技能</a></li>
+              <li id="9"><a href="page/course.jsp">公开课</a></li>
           </ul>
   </li>      
       <li class="">

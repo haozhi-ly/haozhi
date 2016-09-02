@@ -20,7 +20,7 @@ import com.haozhi.service.UserInfoService;
 
 @Controller
 @RequestMapping("/userinfo")
-@SessionAttributes(value={"users"})
+@SessionAttributes(value={"users","info"})
 public class UserHandler {
 	
 	@Autowired
@@ -29,6 +29,7 @@ public class UserHandler {
 	@ModelAttribute
 	public void getModel(ModelMap map){
 		map.put("users",new UserInfo());
+		map.put("info", new String());
 	}
 	
 	//登录
@@ -93,4 +94,19 @@ public class UserHandler {
 		System.out.print("YES");
 		return "index";
 	}
+	
+	@RequestMapping(value="/save")
+	public String saveInfo(UserInfo user,ModelMap map){
+/*		if(userInfoService.saveInfo(user)==1){
+			map.put("info", "true");
+		}else{
+			map.put("info", "false");
+		}*/
+		System.out.println(user);
+		userInfoService.saveInfo(user);
+		UserInfo userInfo = userInfoService.getAllUname(user.getUname());
+		map.put("users", userInfo);
+		return "info";
+	}
+	
 }

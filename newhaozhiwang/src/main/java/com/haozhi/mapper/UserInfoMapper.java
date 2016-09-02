@@ -19,4 +19,11 @@ public interface UserInfoMapper {
 	
 	//注册时判断是否有相同的邮箱
 	String getEmail(String email);
+	
+	//保存信息
+	int saveInfo(UserInfo user);
+	
+	UserInfo getAllUname(String uname);
+	
+	
 }
