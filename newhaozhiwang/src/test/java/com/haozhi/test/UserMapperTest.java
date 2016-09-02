@@ -41,7 +41,7 @@ public class UserMapperTest{
 		SqlSession session =MybatisUtil.getSession();
 		UserInfoMapper ftm=session.getMapper(UserInfoMapper.class);
 		String userInfo=ftm.getUname("超超");
-		String userEmail=ftm.getEmail("23456@qq.com");
+		String userEmail=ftm.getEmail("23465656@qq.com");
 		System.out.println(userInfo);
 		System.out.println(userEmail);
 		assertNotNull(userInfo);

@@ -40,8 +40,8 @@ public class UserInfoServiceImpl implements UserInfoService {
 	}
 
 	@Override
-	public boolean getUname(String uname) {
-		if(uname==null && userInfoMapper.getUname(uname).equals("")){
+	public boolean getUname(String uname){
+		if(userInfoMapper.getUname(uname)==null){
 			return false;
 		}
 		return true;
@@ -49,7 +49,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 
 	@Override
 	public boolean getEmail(String email) {
-		if(email==null && userInfoMapper.getEmail(email).equals("")){
+		if(userInfoMapper.getEmail(email)==null){
 			return false;
 		}
 		return true;

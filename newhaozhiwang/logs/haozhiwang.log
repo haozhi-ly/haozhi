@@ -1,0 +1,63 @@
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select uname from UserInfo where uname=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 超超(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select email from UserInfo where email=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 236756@qq.com(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 0
+DEBUG MybatisUtil (MybatisUtil.java:23) - 加载mybatis配置文件成功...
+DEBUG MybatisUtil (MybatisUtil.java:29) - 根据mybatis配置文件信息构建SqlSessionFactory实例对象成功...
+DEBUG MybatisUtil (MybatisUtil.java:38) - 根据SqlSessionFactory生产手动事务SqlSession实例对象成功....
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select uname from UserInfo where uname=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 超超(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select email from UserInfo where email=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 23456@qq.com(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG MybatisUtil (MybatisUtil.java:23) - 加载mybatis配置文件成功...
+DEBUG MybatisUtil (MybatisUtil.java:29) - 根据mybatis配置文件信息构建SqlSessionFactory实例对象成功...
+DEBUG MybatisUtil (MybatisUtil.java:38) - 根据SqlSessionFactory生产手动事务SqlSession实例对象成功....
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select uname from UserInfo where uname=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 超超(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select email from UserInfo where email=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 23456@qq.com(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select uname from UserInfo where uname=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 超超(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select email from UserInfo where email=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 236756@qq.com(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 0
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select email from UserInfo where email=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 236756@qq.com(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 0
+DEBUG MybatisUtil (MybatisUtil.java:23) - 加载mybatis配置文件成功...
+DEBUG MybatisUtil (MybatisUtil.java:29) - 根据mybatis配置文件信息构建SqlSessionFactory实例对象成功...
+DEBUG MybatisUtil (MybatisUtil.java:38) - 根据SqlSessionFactory生产手动事务SqlSession实例对象成功....
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select uname from UserInfo where uname=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 超超(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select email from UserInfo where email=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 23465656@qq.com(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 0
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select uname from UserInfo where uname=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 超超(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select email from UserInfo where email=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 236756@qq.com(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 0
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select email from UserInfo where email=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 236756@qq.com(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 0
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select uname from UserInfo where uname=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 超超(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select email from UserInfo where email=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 236756@qq.com(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 0
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select uname from UserInfo where uname=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 超超(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select email from UserInfo where email=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 23456@qq.com(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 2
