@@ -124,24 +124,26 @@ public class UserHandler {
 		return "index";
 	}
 	
-
+	/**
+	 * 
+	 * @param user
+	 * @param userid
+	 * @param gender
+	 * @param usign
+	 * @param introdution
+	 * @param map
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value="/save",method=RequestMethod.POST)
-	public String saveInfo(UserInfo user,int userid,String gender,String usign,String introdution,ModelMap map,HttpServletRequest request){
+	public String saveInfo(UserInfo user,int userid,String gender,String usign,String introdution,ModelMap map){
 		System.out.println("save进来了");
 		String flag="";
-		HttpSession session=request.getSession();
-		
-		UserInfo userinfo=(UserInfo)session.getAttribute("users");
 		user.setUserid(userid);user.setGender(gender);user.setUsign(usign);user.setIntrodution(introdution);
 		
-		System.out.println("dkgha"+user);
 		userInfoService.saveInfo(user);
 		if(userInfoService.saveInfo(user)==1){
 			flag = "1";
-			session.setAttribute("users",userinfo);
-		}else{
-			
 		}
 		return flag;
 	}
