@@ -7,4 +7,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="findAll" resultType="Admin">
 		select * from admin
 	</select>
+	
+	<insert id="addadmin" parameterType="Admin" >
+		insert into admin values(seq_aid.nextval,#{aname},#{email},#{apassword},null,null,null)
+	</insert>
+	
+	<select id="count" resultType="int">
+		select count(*) from admin
+	</select>
+	
+	<delete id="deladmin" parameterType="String">
+		delete from admin where aid in (#{aid})
+	</delete>
 </mapper>
