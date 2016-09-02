@@ -5,16 +5,12 @@ import java.io.PrintWriter;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,7 +19,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.haozhi.entity.UserInfo;
 import com.haozhi.service.UserInfoService;
-import com.haozhi.util.SendEmailUtil;
 
 @Controller
 @RequestMapping("/userinfo")
@@ -85,7 +80,6 @@ public class UserHandler {
 		int yzm=(int)(Math.random()*1000000);
 		map.put("yzm", yzm);
 		activeAccountMail("好知网注册验证信息","您的验证码是："+yzm,"15886486481@163.com",email);
-		/*SendEmailUtil.activeAccountMail();*/
 		out.print(yzm);
 		out.flush();
 		out.close();
@@ -141,24 +135,7 @@ public class UserHandler {
 		return flag;
 	}
 	
-	/*@Autowired
-	private static JavaMailSender mailSender;
-	public static void activeAccountMail() {
-		UserInfo user=new UserInfo();
-		int yzm=(int)(Math.random()*10000);
-		try {
-			MimeMessage mm=mailSender.createMimeMessage();
-			MimeMessageHelper mmh=new MimeMessageHelper(mm, true,"utf-8");
-			mmh.setTo(user.getEmail());//设置邮件接收者
-			mmh.setFrom("13237340867@163.com");
-			mmh.setSubject("好知网注册验证信息");//设置主题
-			mmh.setText("您的验证码是："+yzm+"千万不要告诉别人哦！",true);//设置内容
-			mailSender.send(mm);//发送邮件
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-	}*/
+
 	
 	@Autowired
 	private JavaMailSender mailSender;
