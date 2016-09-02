@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,7 +23,7 @@ import com.haozhi.util.SendEmailUtil;
 
 @Controller
 @RequestMapping("/userinfo")
-@SessionAttributes(value={"users"})
+@SessionAttributes(value={"users","yzm"})
 public class UserHandler {
 	
 	@Autowired
@@ -75,29 +76,37 @@ public class UserHandler {
 	}
 	
 	@RequestMapping("/sendMail")
-	public void sendMail(UserInfo userInfo){
-		System.out.println("发送邮件啦....");
-		int yzm=(int)(Math.random()*10000);
-		//activeAccountMail("好知网注册验证信息","您的验证码是："+yzm,"13237340867@163.com",userInfo.getEmail());
+	public void sendMail(ModelMap map,String email,PrintWriter out){
+		System.out.println(email);
+		int yzm=(int)(Math.random()*1000000);
+		map.put("yzm", yzm);
+		activeAccountMail("好知网注册验证信息","您的验证码是："+yzm,"15886486481@163.com",email);
 		/*SendEmailUtil.activeAccountMail();*/
+		out.print(yzm);
+		out.flush();
+		out.close();
 	}
 	
 	//注册
 	@RequestMapping(value="/register",method=RequestMethod.POST)
-	public String register(@ModelAttribute("user") UserInfo userInfo,BindingResult bindingResult,ModelMap map,HttpServletRequest request){
+	public String register(@ModelAttribute("user") UserInfo userInfo,ModelMap map){
 		System.out.println("register ===>" +userInfo);
 		System.out.println(userInfoService.getUname(userInfo.getUname()));
 		System.out.println(userInfoService.getUname(userInfo.getEmail()));
 		
-		if(userInfoService.getUname(userInfo.getUname())==true || userInfoService.getEmail(userInfo.getEmail())==true){
+		/*if(userInfoService.getUname(userInfo.getUname())==true || userInfoService.getEmail(userInfo.getEmail())==true){
 			System.out.println("注册失败啦。。。");
 			return "login";
 		}
-		SendEmailUtil.activeAccountMail();
-		System.out.println("邮件发送啦");
-		/*activeAccountMail("验证码来啦！！！","13237340867@163.com",userInfo.getEmail());*/
-		//userInfoService.register(userInfo) ;
-		return "register";
+		
+		if(map.get("yzm").equals(userInfo.getCode())){
+			
+		}*/
+		if(userInfoService.register(userInfo)==true){
+			return "login";
+		}
+		return "re";
+		
 		
 	}
 	
