@@ -23,7 +23,7 @@ public interface UserInfoMapper {
 	//保存信息
 	int saveInfo(UserInfo user);
 	
-	UserInfo getAllUname(String uname);
+	UserInfo getInfoByUserid(int userid);
 	
 	
 }

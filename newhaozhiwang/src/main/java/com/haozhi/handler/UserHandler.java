@@ -3,9 +3,11 @@ package com.haozhi.handler;
 import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -13,6 +15,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.haozhi.entity.UserInfo;
@@ -95,18 +98,23 @@ public class UserHandler {
 		return "index";
 	}
 	
-	@RequestMapping(value="/save")
-	public String saveInfo(UserInfo user,ModelMap map){
-/*		if(userInfoService.saveInfo(user)==1){
-			map.put("info", "true");
-		}else{
-			map.put("info", "false");
-		}*/
-		System.out.println(user);
+	@ResponseBody
+	@RequestMapping(value="/save",method=RequestMethod.POST)
+	public String saveInfo(UserInfo user,int userid,String gender,String usign,String introdution,ModelMap map,HttpServletRequest request){
+		System.out.println("save进来了");
+		String flag="";
+		HttpSession session=request.getSession();
+		
+		UserInfo userinfo=(UserInfo)session.getAttribute("users");
+		user.setUserid(userid);user.setGender(gender);user.setUsign(usign);user.setIntrodution(introdution);
+		
+		System.out.println("dkgha"+user);
 		userInfoService.saveInfo(user);
-		UserInfo userInfo = userInfoService.getAllUname(user.getUname());
-		map.put("users", userInfo);
-		return "info";
+		if(userInfoService.saveInfo(user)==1){
+			flag = "1";
+			userinfo.setGender(gender);
+		}
+		return flag;
 	}
 	
 }
