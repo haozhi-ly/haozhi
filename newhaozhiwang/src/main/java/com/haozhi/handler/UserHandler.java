@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,7 @@ import com.haozhi.entity.UserInfo;
 import com.haozhi.service.UserInfoService;
 
 
+import com.haozhi.util.RandomNumUtil;
 import com.haozhi.util.UsuallyUtil;
 import com.sun.mail.util.DecodingException;
 
@@ -35,27 +37,26 @@ public class UserHandler {
 	@Autowired
 	private UserInfoService userInfoService;
 	
-	@ModelAttribute
+	/*@ModelAttribute
 	public void getModel(ModelMap map){
 		map.put("users",new UserInfo());
-	}
-	
+	}*/
+	//不要再用modelAttribute了要存入session直接用Model 
 	//登录
 	@RequestMapping(value="/login",method=RequestMethod.POST)
-	public String login(@ModelAttribute("users") UserInfo userInfo,ModelMap map){
+	public String login(UserInfo userInfo,Model model,ModelMap map){
+		
 		String name=userInfo.getUname();
-		System.out.println("test");
 		
 		 name=new UsuallyUtil().decode(name);
-	     System.out.println(name+"yes");
 		if(userInfo!=null && name.contains("@")){
 			userInfo=userInfoService.loginByEamil(userInfo);
-			map.put("users", userInfo);
+			model.addAttribute("users", userInfo);
 		}else if(userInfo!=null && !name.contains("@")){
 			userInfo.setUname(name);
 			userInfo.toString();
 			userInfo=userInfoService.loginByUname(userInfo);
-			map.put("users", userInfo);
+			model.addAttribute("users", userInfo);
 		}
 		//登录页面跳转
 		if(userInfo==null){
@@ -63,7 +64,7 @@ public class UserHandler {
 			map.put("users", "");
 			return "login";
 		}
-		return "index";
+		return "redirect:../page/index.jsp";
 	}
 	
 	@RequestMapping(value="/checkemail",method=RequestMethod.POST)
@@ -88,10 +89,12 @@ public class UserHandler {
 	}
 	
 	@RequestMapping("/sendMail")
-	public void sendMail(ModelMap map,String email,PrintWriter out){
+	public void sendMail(ModelMap map,String email,PrintWriter out,Model model){
 		System.out.println(email);
-		int yzm=(int)(Math.random()*1000000);
-		map.put("yzm", yzm);
+		//int yzm=(int)(Math.random()*1000000);
+		int yzm=RandomNumUtil.getRandomNumber();//生成六位不重复随机数
+		model.addAttribute("yzm", yzm);
+		//map.put("yzm", yzm);
 		activeAccountMail("好知网注册验证信息","您的验证码是："+yzm,"15886486481@163.com",email);
 		out.print(yzm);
 		out.flush();
@@ -102,23 +105,8 @@ public class UserHandler {
 	@RequestMapping(value="/register",method=RequestMethod.POST)
 	public String register(@ModelAttribute("user") UserInfo userInfo,ModelMap map){
 		System.out.println("register ===>" +userInfo);
-		System.out.println(userInfoService.getUname(userInfo.getUname()));
-		System.out.println(userInfoService.getUname(userInfo.getEmail()));
-		
-		/*if(userInfoService.getUname(userInfo.getUname())==true || userInfoService.getEmail(userInfo.getEmail())==true){
-			System.out.println("注册失败啦。。。");
+		userInfoService.register(userInfo);
 			return "login";
-		}
-		
-		if(map.get("yzm").equals(userInfo.getCode())){
-			
-		}*/
-		if(userInfoService.register(userInfo)==true){
-			return "login";
-		}
-		return "re";
-		
-		
 	}
 	
 	
@@ -140,7 +128,7 @@ public class UserHandler {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/save",method=RequestMethod.POST)
-	public String saveInfo(UserInfo user,int userid,String gender,String usign,String introdution,ModelMap map){
+	public String saveInfo(UserInfo user,int userid,String gender,String usign,String introdution,ModelMap map,HttpServletRequest request,Model model){
 		System.out.println("save进来了");
 		String flag="";
 		user.setUserid(userid);user.setGender(gender);user.setUsign(usign);user.setIntrodution(introdution);
@@ -148,6 +136,13 @@ public class UserHandler {
 		userInfoService.saveInfo(user);
 		if(userInfoService.saveInfo(user)==1){
 			flag = "1";
+
+			user.setUname("lytest");
+			model.addAttribute("users",user);
+			//session.setAttribute("users",userinfo);
+		}else{
+			
+
 		}
 		return flag;
 	}
