@@ -23,6 +23,7 @@ import com.haozhi.entity.UserInfo;
 import com.haozhi.service.UserInfoService;
 
 
+import com.haozhi.util.RandomNumUtil;
 import com.haozhi.util.UsuallyUtil;
 import com.sun.mail.util.DecodingException;
 
@@ -44,10 +45,8 @@ public class UserHandler {
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public String login(@ModelAttribute("users") UserInfo userInfo,ModelMap map){
 		String name=userInfo.getUname();
-		System.out.println("test");
 		
 		 name=new UsuallyUtil().decode(name);
-	     System.out.println(name+"yes");
 		if(userInfo!=null && name.contains("@")){
 			userInfo=userInfoService.loginByEamil(userInfo);
 			map.put("users", userInfo);
@@ -90,7 +89,8 @@ public class UserHandler {
 	@RequestMapping("/sendMail")
 	public void sendMail(ModelMap map,String email,PrintWriter out){
 		System.out.println(email);
-		int yzm=(int)(Math.random()*1000000);
+		//int yzm=(int)(Math.random()*1000000);
+		int yzm=RandomNumUtil.getRandomNumber();//生成六位不重复随机数
 		map.put("yzm", yzm);
 		activeAccountMail("好知网注册验证信息","您的验证码是："+yzm,"15886486481@163.com",email);
 		out.print(yzm);
@@ -113,12 +113,8 @@ public class UserHandler {
 		if(map.get("yzm").equals(userInfo.getCode())){
 			
 		}*/
-		if(userInfoService.register(userInfo)==true){
+		userInfoService.register(userInfo);
 			return "login";
-		}
-		return "re";
-		
-		
 	}
 	
 	

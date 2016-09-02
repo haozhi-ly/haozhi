@@ -82,6 +82,7 @@
 		if(emailFlag==true  &&  nameFlag==true  && codeFlag==true){
 			return true;
 		}else{
+			$.messager.alert('错误提示','注册失败!!!','error');
 			return false;
 		}
 	}
