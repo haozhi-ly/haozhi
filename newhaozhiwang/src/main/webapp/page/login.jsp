@@ -4,7 +4,7 @@
 <html>
 <head>
 <base href="/newhaozhiwang/"/>
-<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>登录</title>
 <link href="http://f1.howzhi.com/system/2016/03-31/113613d6a857327741.ico" rel="shortcut icon">
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
