@@ -1,7 +1,7 @@
 $(function(){
 	$('#center_area').tabs('add',{
 		title:'首页',
-		href:"zc.html"
+		href:"/newhaozhiwang/back/manager/zc.html"
 	});
 	
 	$('#menu_tree').tree({
@@ -14,7 +14,7 @@ $(function(){
 				}else{
 					tabs.tabs('add',{
 						title:'课程类型管理',
-						href:"coursetype.html",
+						href:"/newhaozhiwang/back/manager/coursetype.html",
 						closable:true
 					});
 				}
@@ -24,7 +24,7 @@ $(function(){
 				}else{
 					tabs.tabs('add',{
 						title:'课程管理',
-						href:"course.html",
+						href:"/newhaozhiwang/back/manager/course.html",
 						closable:true
 					});
 				}
@@ -34,7 +34,7 @@ $(function(){
 				}else{
 					tabs.tabs('add',{
 						title:'管理员管理',
-						href:"admins.html",
+						href:"/newhaozhiwang/back/manager/admins.html",
 						closable:true
 					});
 				}
@@ -44,7 +44,7 @@ $(function(){
 				}else{
 					tabs.tabs('add',{
 						title:'会员管理',
-						href:"users.html",
+						href:"/newhaozhiwang/back/manager/users.html",
 						closable:true
 					});
 				}
@@ -54,7 +54,7 @@ $(function(){
 				}else{
 					tabs.tabs('add',{
 						title:'个人信息',
-						href:"edit.html",
+						href:"/newhaozhiwang/back/manager/edit.html",
 						closable:true
 					});
 				}
@@ -65,7 +65,7 @@ $(function(){
 				}else{
 					tabs.tabs('add',{
 						title:'小组管理',
-						href:"group.html",
+						href:"/newhaozhiwang/back/manager/group.html",
 						closable:true
 					});
 				}
