@@ -35,9 +35,10 @@
 			margin-top:14px;
 			margin-left:35px;
 		}
+		
 		</style>
 		<script type="text/javascript">
-					
+	
 				</script>
 
 		</head>
@@ -138,7 +139,7 @@
 										<input type="hidden" name="_csrf_token" value="cfe9b96f569703f379d055687bf9a957774ae94c">
 								</form>
 
-								</div>
+							
 							</div>
 						</div>
 
@@ -155,8 +156,8 @@
 
 									<div class="form-group">
 										<div class="col-md-2 control-label"><b>当前头像</b></div>
-										<div class="controls col-md-8 controls">
-											<img src="images/avatar.png">
+										<div class="controls col-md-8 controls" id="showimg">
+											<img id="imgPrc" src="images/avatar.png" style="width:200px;height:180px;">
 										</div>
 									</div>
 
@@ -170,9 +171,10 @@
 
 									<div class="form-group">
 										<div class="col-md-2 control-label"></div>
-										<div class="controls col-md-8 controls">
-											<input type="file" accept="image/*" class="webuploader-element-invisible" name="file" id="unload" style="border: none;">
-											<button class="btn btn-primary" type="submit" id="profile-save-btn">取消</button>
+										<div class="controls col-md-8 controls" id="updateImg">
+											<input type="file" accept="image/*" class="webuploader-element-invisible" name="file" id="unload" style="border: none;"onchange="preImg(this.id);">
+											<button class="btn btn-primary" type="button" id="profile-save-btn">保存</button>
+											<button class="btn btn-primary" type="button" id="profile-edit-btn" style="margin-top:20px;margin-left:10px;">取消</button>
 										</div>
 									</div>
 
