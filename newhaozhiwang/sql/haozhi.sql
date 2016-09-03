@@ -302,13 +302,19 @@ create table cgroup(
                  constraint FK_userinfo_userid001 references userinfo(userid),--创建人 
        createtime date,---创建时间
        groupnumber varchar2(500),---小组成员（拼接）
-       temp01 varchar2(200),--备用字段
+       peoplecount int,--小组成员总人数
        temp02 varchar2(200),--备用字段
        temp03 varchar2(200)--备用字段
 );
+ALTER TABLE haozhi.cgroup RENAME COLUMN temp01 TO peoplecount --修改表列名 
+ALTER TABLE haozhi.cgroup MODIFY peoplecount int  --修改字段类型 
 create sequence seq_gid start with 1;
-insert into cgroup values(seq_gid.nextval,'摄影公社',3,sysdate,'3,1,2',null,null,null);
-insert into cgroup values(seq_gid.nextval,'绘画世界',2,sysdate,'2,1,4',null,null,null);
+insert into cgroup values(seq_gid.nextval,'摄影公社',3,sysdate,'3,1,2',100,null,null);
+insert into cgroup values(seq_gid.nextval,'绘画世界',2,sysdate,'2,1,4',80,null,null);
+insert into cgroup values(seq_gid.nextval,'好知大本营（教务处）',2,sysdate,'2,1,4',80,null,null);
+insert into cgroup values(seq_gid.nextval,'Photoshop照片后期处理学习交流',2,sysdate,'2,1,4',70,null,null);
+insert into cgroup values(seq_gid.nextval,'我是从零开始学吉他的',2,sysdate,'2,1,4',85,null,null);
+insert into cgroup values(seq_gid.nextval,'每月养成一个好习惯',2,sysdate,'2,1,4',60,null,null);
 
 
 ------------------话题表 topic

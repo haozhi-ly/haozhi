@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html class="">
 
@@ -6,7 +8,7 @@
 		<base href="/newhaozhiwang/"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
-		<title>小组 - 好知网-重拾学习乐趣</title>
+		<title>小组  --好知网</title>
 		<meta name="keywords" content="小组">
 		<meta name="description" content="小组首页">
 		<meta content="2fbd468350a8348322e8aed780d7f3178511d79d" name="csrf-token">
@@ -19,6 +21,7 @@
 		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.js"></script>
 		<script type="text/javascript" src="js/top.js"></script>
+		<script type="text/javascript" src="js/groups.js"></script>
 		
 		<style>
 			.navbar-form{
@@ -29,7 +32,13 @@
 
 	<body class="group-page">
 		<!-------------------------我是头部------------------------------------------->
-		<jsp:include page="topf.jsp"></jsp:include>
+		<c:set value="${users}" var="us"/>
+			<c:if test="${us==null }">
+				<jsp:include page="topf.jsp"></jsp:include>
+			</c:if>
+			<c:if test="${us!=null }">
+				<jsp:include page="topb.jsp"></jsp:include>
+			</c:if>
 		<!-------------------------我是头部分割线------------------------------------------->
 
 		<!--------------------------中间小组内容-------------------------------------->
@@ -42,59 +51,9 @@
 							热门小组<a href="javascript:void(0)" class="pull-right">»更多</a>
 						</div>
 						<div class="panel-body">
-							<div class="row group-grids">
+							<div class="row group-grids" id="hostGroups">
 
 								<!-- -------------------从数据库获取热门小组的数据，重复代码---------------------------->
-								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 grid">
-									<p>
-										<a href="javascript:void(0)" title="好知大本营（教务处）">
-											<img src="images/120652c07d78265998.jpg" alt="好知大本营（教务处）" class="group-avatar-sm">
-										</a>
-									</p>
-									<p class="title"><a class="link-light" href="javascript:void(0)" title="好知大本营（教务处）">好知大本营（教务处）</a></p>
-								</div>
-
-								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 grid">
-									<p>
-										<a href="javascript:void(0)" title="摄影公社">
-											<img src="images/111938a63532860008.jpg" alt="摄影公社" class="group-avatar-sm">
-										</a>
-									</p>
-									<p class="title"><a class="link-light" href="javascript:void(0)" title="摄影公社">摄影公社</a></p>
-								</div>
-								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 grid">
-									<p>
-										<a href="javascript:void(0)" title="Photoshop照片后期处理学习交流">
-											<img src="images/163453d26839163811.jpg" alt="Photoshop照片后期处理学习交流" class="group-avatar-sm">
-										</a>
-									</p>
-									<p class="title"><a class="link-light" href="javascript:void(0)" title="Photoshop照片后期处理学习交流">Photoshop照片后期处理学习交流</a></p>
-								</div>
-								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 grid">
-									<p>
-										<a href="href=" javascript:void(0) "" title="我是从零开始学吉他的">
-											<img src="images/120652c07d78265998.jpg" alt="我是从零开始学吉他的" class="group-avatar-sm">
-										</a>
-									</p>
-									<p class="title"><a class="link-light" href="javascript:void(0)" title="我是从零开始学吉他的">我是从零开始学吉他的</a></p>
-								</div>
-								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 grid">
-									<p>
-										<a href="href=" javascript:void(0) "" title="每月养成一个好习惯">
-											<img src="images/1151175e2fc5261920.jpg" alt="每月养成一个好习惯" class="group-avatar-sm">
-										</a>
-									</p>
-									<p class="title"><a class="link-light" href="javascript:void(0)" title="每月养成一个好习惯">每月养成一个好习惯</a></p>
-								</div>
-								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 grid">
-									<p>
-										<a href="javascript:void(0)" title="摄影入门学习">
-											<img src="images/220322a3adc0705905.jpg" alt="摄影入门学习" class="group-avatar-sm">
-										</a>
-									</p>
-									<p class="title"><a class="link-light" href="javascript:void(0)" title="摄影入门学习">摄影入门学习</a></p>
-								</div>
-
 							</div>
 						</div>
 					</div>
@@ -225,7 +184,7 @@
 				<!--------------------------右边的div--------------------------------------------------------->
 				<div class="col-md-4">
 					<!-----------------------个人介绍------------------->
-					<div class="panel panel-default">
+					<div class="panel panel-default" style="display: none">
 						<div class="panel-body">
 							<div class="media">
 								<div class="media-left">

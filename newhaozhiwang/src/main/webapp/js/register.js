@@ -54,7 +54,7 @@
 	}
 	
 	//点击获取验证码
-	function sendMail(){
+	/*function sendMail(){
 		var emailBox=$("#register_eamil").val();
 		alert(emailBox);
 		var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
@@ -75,6 +75,36 @@
 				$.messager.alert('错误提示','邮箱格式不正确!!!','error');
 			}
 		}
+	}*/
+	var timeObj;
+	var time;
+	function sendMail(){
+		var emailBox=$("#register_eamil").val();
+		//alert(emailBox);
+		var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+		if(emailBox=="" || emailBox==null){
+			$.messager.alert('错误提示','您还没有输入邮箱!!!','error');
+		}else{
+			if(emailBox.match(reg)){
+				time=10;
+				$.post("userinfo/sendMail",{"email":emailBox},function(data){
+					//alert(data);
+					var yzmBox=$("#captcha_num").val();
+					if(data>0){
+				    	   timeObj=window.setInterval(timeCode, 1000);
+				    	   $("#submit").attr("disabled","false");
+				       }
+					
+					if(yzmBox==data){
+						codeFlag=true;
+					}else{
+						codeFlag=false;
+					}
+				})
+			}else{
+				$.messager.alert('错误提示','邮箱格式不正确!!!','error');
+			}
+		}
 	}
 	
 	//判断是否到达注册标准
@@ -84,5 +114,17 @@
 		}else{
 			$.messager.alert('错误提示','注册失败!!!','error');
 			return false;
+		}
+	}
+	
+	
+	function timeCode(){
+		if(time>0){
+			$("#submit").html(time+"s");
+			time=time-1;
+		}else{
+			window.clearInterval(timeObj);
+			$("#submit").html("发送邮箱验证码");
+			$("#submit").removeAttr("disabled");
 		}
 	}
