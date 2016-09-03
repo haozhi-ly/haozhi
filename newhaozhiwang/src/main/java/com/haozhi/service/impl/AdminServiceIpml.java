@@ -31,7 +31,7 @@ public class AdminServiceIpml implements AdminService {
 	}
 
 	@Override
-	public int deladmin(String aid) {
+	public int deladmin(Integer...aid) {
 		return adminMapper.deladmin(aid);
 	}
 

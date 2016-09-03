@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html class="">
 
@@ -29,7 +31,13 @@
 
 	<body class="group-page">
 		<!-------------------------我是头部------------------------------------------->
-		<jsp:include page="topf.jsp"></jsp:include>
+		<c:set value="${users}" var="us"/>
+			<c:if test="${us==null }">
+				<jsp:include page="topf.jsp"></jsp:include>
+			</c:if>
+			<c:if test="${us!=null }">
+				<jsp:include page="topb.jsp"></jsp:include>
+			</c:if>
 		<!-------------------------我是头部分割线------------------------------------------->
 
 		<!--------------------------中间小组内容-------------------------------------->
@@ -225,7 +233,7 @@
 				<!--------------------------右边的div--------------------------------------------------------->
 				<div class="col-md-4">
 					<!-----------------------个人介绍------------------->
-					<div class="panel panel-default">
+					<div class="panel panel-default" style="display: none">
 						<div class="panel-body">
 							<div class="media">
 								<div class="media-left">
