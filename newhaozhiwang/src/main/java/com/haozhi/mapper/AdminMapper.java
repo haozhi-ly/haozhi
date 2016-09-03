@@ -15,4 +15,10 @@ public interface AdminMapper {
 
 	int deladmin(Integer...aid);
 
+	Admin loginadmin(Admin admin);
+
+	Admin findmyself(Admin admin);
+
+	int updateadmin(Admin admin);
+
 }

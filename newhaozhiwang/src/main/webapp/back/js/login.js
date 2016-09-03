@@ -1,266 +1,140 @@
-checkname=true;
-checknpwd=true;
-checkemail=true;
-
-//设为首页
-function SetHome(obj,url){
-	try{
-		obj.style.behavior='url(#default#homepage)';
-		obj.setHomePage(url);
-	}catch(e){
-		if(window.netscape){
-			try{
-				netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
-			}catch(e){
-				alert("抱歉，此操作被浏览器拒绝！\n\n请在浏览器地址栏输入about:config并回车然后将[signed.applets.codebase_principal_support]设置为'true'");
-			}
-		}else{
-			alert("抱歉，您所使用的浏览器无法完成此操作。\n\n您需要手动将【"+url+"】设置为首页。");
-		}
-	}
-}
-
-//点击收藏
-function AddFavorite(title,url){
-	try{
-		window.external.addFavorite(url,title);
-	}catch(e){
-		try{window.sidebar.addPanel(title,url,"");
-		}catch(e){
-			alert("抱歉，您所使用的浏览器无法完成此操作。\n\n加入收藏失败，请使用Ctrl+D进行添加");
-		}
-	}
-}
-
-
-//用户登录
-function showlogin(){
-	$("#smallpage #uname").val("");
-	$("#smallpage #pwd").val("");
-	$("#unamep").html("请输入昵称或邮箱").css("color","#CC6666");
-	$("#pwdp").html("请输入您的密码").css("color","#CC6666");
-	$("#zcpages").hide();
-	$("#loginpages").mywin({left:"center",top:"center"});
-	$("#uname").select();
-	$(".bg").fadeIn("3000","linear");
-}
-
-//登陆框隐藏
-function hidenloginpage() {
-    var text = $("#loginpages").val();
-    $("#loginpages").hide();
-    $(".bg").hide();
-}
-
-//注册显示
-function showzc(){
-	$("#zcuname").val("");
-	$("#zcpwd").val("");
-	$("#zcpwdagain").val("");
-	$("#zcemail").val("");
-	$("#zccode").val("");
+$(function(){
 	
-	$("#zcunamep").html("请输入您的昵称或注册邮箱(至少6位)").css("color","#CC6666");
-	$("#zcpwdp").html("请输入您的登录密码(至少6位)").css("color","#CC6666");
-	$("#zcpwdtwop").html("请重复输入您的登录密码(至少6位)").css("color","#CC6666");
-	$("#zcemailp").html("请输入您的邮箱地址").css("color","#CC6666");
-	$("#zccodep").html("请输入验证码").css("color","#CC6666");
-	$("#loginpages").hide();
-	$("#zcpages").mywin({left:"center",top:"center"});$("#player5").hide();$("#setswfembed").hide();
-	$(".bg").fadeIn("3000","linear");
-	$("#uname").select();
+	$('#switch_qlogin').click(function(){
+		$('#switch_login').removeClass("switch_btn_focus").addClass('switch_btn');
+		$('#switch_qlogin').removeClass("switch_btn").addClass('switch_btn_focus');
+		$('#switch_bottom').animate({left:'0px',width:'70px'});
+		$('#qlogin').css('display','none');
+		$('#web_qr_login').css('display','block');
+		
+		});
+	$('#switch_login').click(function(){
+		
+		$('#switch_login').removeClass("switch_btn").addClass('switch_btn_focus');
+		$('#switch_qlogin').removeClass("switch_btn_focus").addClass('switch_btn');
+		$('#switch_bottom').animate({left:'154px',width:'70px'});
+		
+		$('#qlogin').css('display','block');
+		$('#web_qr_login').css('display','none');
+		});
+if(getParam("a")=='0')
+{
+	$('#switch_login').trigger('click');
 }
 
-//注册框隐藏
-function hidenzcpage() {
-    var text = $("#zcpages").val();
-    $("#zcpages").hide();
-    $(".bg").hide();
-}
-
-//登陆用户名验证
-function checkloginuname() {
-    var uname = $("#uname").val();
-    if ("" == uname || uname == null) {
-        $("#unamep").html("用户名不能为空...").css("color", "#F00");
-    } else {
-        $("#unamep").html("用户名格式正确...").css("color", "#0F0");
-    }
-}
-
-//登陆密码验证
-function checkloginpwd() {
-    var pwd = $("#pwd").val();
-    if ("" == pwd || pwd == null) {
-        $("#pwdp").html("您的密码不能为空...").css("color", "#F00");
-    } else {
-        $("#pwdp").html("密码格式正确...").css("color", "#0F0");
-    }
-}
-
-//验证注册用户名
-function checkzcuname() {
-    var uname = $("#zcuname").val();
-    var reg = /^([a-zA-Z0-9\u4E00-\u9FA5_-]{6,12})/;
-    if (uname.match(reg)) {
-        $.post("../DoLoginServlet", {
-            op: "checkuname",
-            uname: uname
-        },
-        function(data) {
-            if (parseInt(data) > 0) {
-                $("#zcunamep").html("该名称可以使用...").css("color", "#0F0");
-                checkname=true;
-            } else {
-                $("#zcunamep").html("用户名已经存在...").css("color", "#F00");
-                checkname=false;
-            }
-        });
-    } else {
-        $("#uname").val("");
-        $("#zcunamep").html("用户名格式不正确...").css("color", "#F00");
-        checkname=false;
-    }
-}
-
-//验证注册密码
-function checkzcpwd() {
-    var pwd = $("#zcpwd").val();
-    var reg = /^([a-zA-Z0-9_-]{6,20})/;
-    if (pwd.match(reg)) {
-        $("#zcpwdp").html("可以使用该密码...").css("color", "#0F0");
-    } else {
-        $("#zcpwd").val("");
-        $("#zcpwdp").html("密码不合格...").css("color", "#F00");
-    }
-}
-
-//验证重复密码
-function checkzcpwdagain() {
-    var pwdagain = $("#zcpwdagain").val();
-    var pwd = $("#zcpwd").val();
-    if (pwdagain == pwd && pwd != "" && pwd != null) {
-        $("#zcpwdtwop").html("密码重复确认正确...").css("color", "#0F0");
-        checknpwd=true;
-    } else {
-        $("#zcpwdtwop").html("密码不一致请重新输入...").css("color", "#F00");
-        $("#zcpwdagain").val("");
-        checknpwd=false;
-    }
-}
-
-//验证邮箱
-function checkzcemail() {
-    var zcemail = $("#zcemail").val();
-    var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
-    if (zcemail.match(reg)) {
-        $.post("../DoLoginServlet", {
-            op: "checkemail",
-            zcemail: zcemail
-        },
-        function(data) {
-            if (parseInt(data) > 0) {
-                $("#zcemailp").html("该邮箱可以使用...").css("color", "#0F0");
-                checkemail=true;
-            } else {
-                $("#zcemailp").html("该邮箱已被注册...").css("color", "#F00");
-                $("#zcemail").val("");
-                checkemail=false;
-            }
-        });
-    } else {
-        $("#zcemailp").html("邮箱格式不正确...").css("color", "#F00");
-        $("#zcemail").val("");
-        checkemail=false;
-    }
-}
-
-//重新获取验证码
-function changeVilidateCode(obj){
-	var timenow=new Date().getTime();
-	obj.src="front/pages/valiCodeImg.jsp?d="+timenow;
-}
-
-$.fn.mywin=function(position){
-	if (position&&position instanceof Object){
-		var positionleft=position.left;
-		var positiontop=position.top;
-
-		var currentwin=this;
-		var mywidth =currentwin.outerWidth(true);
-		var myheight = currentwin.outerHeight(true);
-
-		var left=0;
-		var top=0;
-		var width=0;
-		var height=0;
-		var scrollleft=0;
-		var scrolltop=0;
+	});
 	
+function logintab(){
+	scrollTo(0);
+	$('#switch_qlogin').removeClass("switch_btn_focus").addClass('switch_btn');
+	$('#switch_login').removeClass("switch_btn").addClass('switch_btn_focus');
+	$('#switch_bottom').animate({left:'154px',width:'96px'});
+	$('#qlogin').css('display','none');
+	$('#web_qr_login').css('display','block');
+	
+}
 
-		function getWinInfo(){
-			width=$(window).width();
-			height=$(window).height();
-			scrollleft=$(window).scrollLeft();
-			scrolltop=$(window).scrollTop();
+
+//根据参数名获得该参数 pname等于想要的参数名 
+function getParam(pname) { 
+    var params = location.search.substr(1); // 获取参数 平且去掉？ 
+    var ArrParam = params.split('&'); 
+    if (ArrParam.length == 1) { 
+        //只有一个参数的情况 
+        return params.split('=')[1]; 
+    } 
+    else { 
+         //多个参数参数的情况 
+        for (var i = 0; i < ArrParam.length; i++) { 
+            if (ArrParam[i].split('=')[0] == pname) { 
+                return ArrParam[i].split('=')[1]; 
+            } 
+        } 
+    } 
+}  
+
+
+var reMethod = "GET",
+	pwdmin = 6;
+
+$(document).ready(function() {
+
+
+	$('#reg').click(function() {
+
+		if ($('#user').val() == "") {
+			$('#user').focus().css({
+				border: "1px solid red",
+				boxShadow: "0 0 2px red"
+			});
+			$('#userCue').html("<font color='red'><b>×用户名不能为空</b></font>");
+			return false;
 		}
 
-		function calleft(positionleft,scrollleft,width,mywidth){
-			if(positionleft!=""&&typeof(positionleft)=="string"){
-				if(positionleft=="center"){
-					left=scrollleft+(width-mywidth)/2;
-				}else if(positionleft=="left"){
-					left=scrollleft;
-				}else if (positionleft == "right"){
-					left=scrollleft+width-mywidth;
-				}else{
-					left=scrollleft+(width-mywidth)/2;
+
+
+		if ($('#user').val().length < 4 || $('#user').val().length > 16) {
+
+			$('#user').focus().css({
+				border: "1px solid red",
+				boxShadow: "0 0 2px red"
+			});
+			$('#userCue').html("<font color='red'><b>×用户名位4-16字符</b></font>");
+			return false;
+
+		}
+		$.ajax({
+			type: reMethod,
+			url: "/member/ajaxyz.php",
+			data: "uid=" + $("#user").val() + '&temp=' + new Date(),
+			dataType: 'html',
+			success: function(result) {
+
+				if (result.length > 2) {
+					$('#user').focus().css({
+						border: "1px solid red",
+						boxShadow: "0 0 2px red"
+					});$("#userCue").html(result);
+					return false;
+				} else {
+					$('#user').css({
+						border: "1px solid #D7D7D7",
+						boxShadow: "none"
+					});
 				}
-			}else if(positionleft != ""&&typeof(positionleft)=="number"){
-				left=positionleft+scrollleft;
-			}else{
-				left=0;
+
 			}
+		});
+
+
+		if ($('#passwd').val().length < pwdmin) {
+			$('#passwd').focus();
+			$('#userCue').html("<font color='red'><b>×密码不能小于" + pwdmin + "位</b></font>");
+			return false;
+		}
+		if ($('#passwd2').val() != $('#passwd').val()) {
+			$('#passwd2').focus();
+			$('#userCue').html("<font color='red'><b>×两次密码不一致！</b></font>");
+			return false;
+		}
+
+		var sqq = /^[1-9]{1}[0-9]{4,9}$/;
+		if (!sqq.test($('#qq').val()) || $('#qq').val().length < 5 || $('#qq').val().length > 12) {
+			$('#qq').focus().css({
+				border: "1px solid red",
+				boxShadow: "0 0 2px red"
+			});
+			$('#userCue').html("<font color='red'><b>×QQ号码格式不正确</b></font>");return false;
+		} else {
+			$('#qq').css({
+				border: "1px solid #D7D7D7",
+				boxShadow: "none"
+			});
 			
 		}
-		
-		function caltop(positiontop,scrolltop,height,myheight){
-			if(positiontop!=""&&typeof(positiontop)=="string"){
-				if(positiontop=="center"){
-					top=scrolltop+(height-myheight)/2;
-				}else if(positiontop == "top"){
-					top=scrolltop;
-				}else if(positiontop=="bottom"){
-					top = scrolltop+height-myheight;
-				}else{
-					top=scrolltop+(height-myheight)/2;
-				}
-			}else if(positiontop!=""&&typeof(positiontop)=="number"){
-				top=positiontop+scrolltop;
-			}else{
-				top=0;
-			}
-		}
 
-		getWinInfo();
-		calleft(positionleft, scrollleft,width,mywidth);
-		caltop(positiontop,scrolltop,height,myheight);
+		$('#regUser').submit();
+	});
+	
 
-		$(window).scroll(function(){
-			getWinInfo();
-			calleft(positionleft,scrollleft,width,mywidth);
-			caltop(positiontop,scrolltop,height,myheight);
-			currentwin.css("left",left).css("top",top);
-		});
-
-		$(window).resize(function(){
-			getWinInfo();
-			calleft(positionleft, scrollleft, width, mywidth);
-			caltop(positiontop, scrolltop, height, myheight);
-			currentwin.animate({left : left,top : top}, 300);
-		});
-		
-		currentwin.css("left",left).css("top", top).fadeIn("slow");
-	}
-	return this;
-}
+});

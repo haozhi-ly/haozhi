@@ -26,16 +26,11 @@
 	height: 30px;
 }
 </style>
-
 </head>
 <body class="easyui-layout">
 	<div data-options="region:'north',border:false" style="height:60px;background:#B3DFDA;padding:10px">
 	<div id="login">
-		<%if(null!=session.getAttribute("Admin")){ %>
-		<c:forEach items="${Admin}" var="item" varStatus="s"> 	
-                	<p>欢迎 ${item.aname} 登陆</p><a href="javascript:outLogin()">退出登录</a>
-        </c:forEach>
-        <%} %>
+        ${myself.aname}
 	</div>
 	</div>
 	<div data-options="region:'west',split:true,title:'菜单'" style="width:150px;padding:10px;">
@@ -62,5 +57,6 @@
 		<div id="center_area" class="easyui-tabs" data-options="fit:true">
 		</div>
 	</div>
+	
 </body>
 </html>
