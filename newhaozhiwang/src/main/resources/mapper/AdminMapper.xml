@@ -16,7 +16,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from admin
 	</select>
 	
-	<delete id="deladmin" parameterType="String">
-		delete from admin where aid in (#{aid})
+	<delete id="deladmin" parameterType="int">
+		delete from admin where aid in 
+		
+		<foreach collection="array" item="aid" open="(" close=")" separator=",">
+			#{aid}
+		</foreach>
 	</delete>
 </mapper>

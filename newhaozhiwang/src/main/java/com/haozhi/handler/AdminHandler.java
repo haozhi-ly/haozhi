@@ -9,6 +9,7 @@ import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import com.haozhi.entity.Admin;
 import com.haozhi.service.AdminService;
 
@@ -39,17 +40,19 @@ public class AdminHandler {
 		admin.setApassword(apassword);
 		admin.setEmail(email);
 		int admins=adminService.addadmin(admin);
-		JSONArray json = JSONArray.fromObject(admins);
-		JSONObject jb = new JSONObject();
-		jb.put("rows", json);
-		out.print(jb);
+		out.print(admins);
 		out.flush();
 		out.close();
 	}
 	
 	@RequestMapping("/deladmin")
 	public void deladmin(String aid,PrintWriter out){
-		int result=adminService.deladmin(aid);
+		String arr[] = aid.split(",");
+		Integer[] intarr = new Integer[arr.length];
+		for(int i=0;i<arr.length;i++){
+			intarr[i] = Integer.parseInt(arr[i]);
+		}
+		int result=adminService.deladmin(intarr);
 		out.print(result);
 		out.flush();
 		out.close();

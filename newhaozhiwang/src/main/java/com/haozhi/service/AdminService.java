@@ -15,6 +15,6 @@ public interface AdminService {
 
 	int count();
 
-	int deladmin(String aid);
+	int deladmin(Integer...intarr);
 
 }
