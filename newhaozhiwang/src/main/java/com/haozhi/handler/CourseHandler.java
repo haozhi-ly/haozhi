@@ -106,11 +106,11 @@ public class CourseHandler {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/selectCourseBy/{id}",method=RequestMethod.POST)
-	public List<Course> selectCourseBy(Integer tid,@PathVariable("id")Integer id,ModelMap map){
+	public List<Course> selectCourseBy(Integer tid,@PathVariable("id")String iid,Integer id,ModelMap map){
 		LogManager.getLogger().debug("selectCourseBy 到达...");
 		List<Course> courses;
-		String ttid= String.valueOf(id).substring(0,1);
-		String iid = String.valueOf(id).substring(1,2);
+		String ttid= String.valueOf(iid).substring(0,1);
+		iid = String.valueOf(iid).substring(1,2);
 		tid = Integer.parseInt(ttid); id = Integer.parseInt(iid);
 		if(id==0){
 			courses =  courseService.getAllCourse(); //为0代表为综合排序

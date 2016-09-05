@@ -1,7 +1,11 @@
 package com.haozhi.handler;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -16,13 +20,52 @@ import com.haozhi.service.AdminService;
 
 @Controller
 @RequestMapping("/admin")
+/*@SessionAttributes(value={"admin"})*/
 public class AdminHandler {
 	
 	@Autowired
 	private AdminService adminService;
 	
+	
+	@RequestMapping("/loginadmin")
+	public void loginadmin(Admin admin,String aname,String apassword,PrintWriter out,HttpSession session){
+		admin.setAname(aname);
+		 admin.setApassword(apassword);
+		Admin admins=adminService.loginadmin(admin);
+		session.setAttribute("myself", admins);
+		JSONArray json = JSONArray.fromObject(admins);
+		JSONObject jb = new JSONObject();
+		jb.put("rows", json);
+		out.print(jb);
+		out.flush();
+		out.close();
+		
+	}
+	
+	@RequestMapping("/findmyself")
+	public void findmyself(Admin admin,HttpSession session,PrintWriter out){
+		Admin myself=(Admin) session.getAttribute("myself");
+		admin.setAid(myself.getAid());
+		Admin admins=adminService.findmyself(admin);
+		JSONArray json = JSONArray.fromObject(admins);
+		JSONObject jb = new JSONObject();
+		jb.put("rows", json);
+		jb.put("total",1);
+		out.print(jb);
+		out.flush();
+		out.close();
+		
+	}
+	
 	@RequestMapping("/findAll")
-	public void findAll(PrintWriter out){
+	public void findAll(PrintWriter out,HttpServletResponse response){
+		try {
+			response.setCharacterEncoding("utf-8");
+			response.setContentType("charset=utf-8");
+			out = response.getWriter();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		List<Admin> admins=adminService.findAll();
 		int count=adminService.count();
 		JSONArray json = JSONArray.fromObject(admins);
@@ -53,6 +96,14 @@ public class AdminHandler {
 			intarr[i] = Integer.parseInt(arr[i]);
 		}
 		int result=adminService.deladmin(intarr);
+		out.print(result);
+		out.flush();
+		out.close();
+	}
+	
+	@RequestMapping("/updateadmin")
+	public void updateadmin(Admin admin,PrintWriter out){
+		int result=adminService.updateadmin(admin);
 		out.print(result);
 		out.flush();
 		out.close();

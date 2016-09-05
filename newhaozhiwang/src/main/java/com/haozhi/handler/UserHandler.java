@@ -1,12 +1,9 @@
 package com.haozhi.handler;
 
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 
 import javax.mail.internet.MimeMessage;
-import javax.management.DescriptorRead;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -22,11 +19,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.haozhi.entity.UserInfo;
 import com.haozhi.service.UserInfoService;
-
-
 import com.haozhi.util.RandomNumUtil;
 import com.haozhi.util.UsuallyUtil;
-import com.sun.mail.util.DecodingException;
 
 
 

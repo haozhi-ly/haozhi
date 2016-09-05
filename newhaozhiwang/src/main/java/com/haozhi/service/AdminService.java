@@ -17,4 +17,10 @@ public interface AdminService {
 
 	int deladmin(Integer...intarr);
 
+	Admin loginadmin(Admin admin);
+
+	Admin findmyself(Admin admin);
+
+	int updateadmin(Admin admin);
+
 }

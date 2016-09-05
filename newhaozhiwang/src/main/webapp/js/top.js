@@ -1,4 +1,4 @@
-		
+	
 $(function(){
 	$(".nav-hover").bind("mouseover",function(){
 		$(".dropdown-menu")[0].style.display = "block";
@@ -25,7 +25,6 @@ $(function(){
 		$(".choose").text("");
 		$(".choose").append(st);
 	});
-	
-	
+
 	
 });
