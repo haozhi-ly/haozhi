@@ -102,3 +102,9 @@ DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 12
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from (select * from cgroup order by peoplecount desc ) where 12>=rownum 
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 12
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from (select * from cgroup order by createtime desc ) where 4>rownum 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 3
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from (select * from cgroup order by createtime desc ) where 4>rownum 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 3

@@ -19,5 +19,10 @@ public class CgroupServiceImpl implements CgroupService{
 		List<Cgroup> groups=groupMapper.getHostGroups();
 		return groups;
 	}
+	@Override
+	public List<Cgroup> getNewGroups() {
+		List<Cgroup> groups=groupMapper.getNewGroups();
+		return groups;
+	}
 
 }
