@@ -9,4 +9,6 @@ public interface CgroupMapper {
 
 	List<Cgroup> getHostGroups();
 
+	List<Cgroup> getNewGroups();
+
 }
