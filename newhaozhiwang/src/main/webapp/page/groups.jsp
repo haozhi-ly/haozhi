@@ -251,58 +251,7 @@
 						<div class="panel-body">
 							<div class="media-group-list" id="newGroups">
 								<!------------------新晋小组1----------------->
-								<!-- <div class="media media-group">
-									<div class="media-left">
-										<a href="http://www.howzhi.com/group/355/" title="音乐爱好者">
-											<img src="images/120652c07d78265998.jpg" alt="音乐爱好者" class="avatar-square-md">
-										</a>
-									</div>
-									<div class="media-body">
-										<div class="title">
-											<a class="gray-darker" href="http://www.howzhi.com/group/355/" title="音乐爱好者">音乐爱好者</a>
-										</div>
-										<div class="metas">
-											<span><i class="es-icon es-icon-people"></i>64</span>
-											<span><i class="es-icon es-icon-textsms"></i>1433</span>
-										</div>
-									</div>
-								</div>
 
-								----------------新晋小组2---------------
-								<div class="media media-group">
-									<div class="media-left">
-										<a href="http://www.howzhi.com/group/349/" title="科学学英语">
-											<img src="images/01460088969f639218.jpg" alt="科学学英语" class="avatar-square-md">
-										</a>
-									</div>
-									<div class="media-body">
-										<div class="title">
-											<a class="gray-darker" href="http://www.howzhi.com/group/349/" title="科学学英语">科学学英语</a>
-										</div>
-										<div class="metas">
-											<span><i class="es-icon es-icon-people"></i>148</span>
-											<span><i class="es-icon es-icon-textsms"></i>1362</span>
-										</div>
-									</div>
-								</div>
-
-								----------------新晋小组3---------------
-								<div class="media media-group">
-									<div class="media-left">
-										<a href="http://www.howzhi.com/group/344/" title="三维动画">
-											<img src="images/220322a3adc0705905.jpg" alt="三维动画" class="avatar-square-md">
-										</a>
-									</div>
-									<div class="media-body">
-										<div class="title">
-											<a class="gray-darker" href="http://www.howzhi.com/group/344/" title="三维动画">三维动画</a>
-										</div>
-										<div class="metas">
-											<span><i class="es-icon es-icon-people"></i>71</span>
-											<span><i class="es-icon es-icon-textsms"></i>1341</span>
-										</div>
-									</div>
-								</div> -->
 							</div>
 						</div>
 					</div>
