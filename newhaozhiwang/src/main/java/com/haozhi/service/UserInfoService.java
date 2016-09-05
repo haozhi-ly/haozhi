@@ -18,5 +18,8 @@ public interface UserInfoService {
 	int saveInfo(UserInfo user);
 	
 	UserInfo getInfoByUserid(int userid);
+	
+	//修改头像
+	int editPhoto(UserInfo userInfo);
 
 }

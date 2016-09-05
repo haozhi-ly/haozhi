@@ -32,4 +32,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update userinfo set gender=#{gender,jdbcType=VARCHAR}, usign=#{usign,jdbcType=VARCHAR} 
 		, introdution=#{introdution,jdbcType=VARCHAR} where userid=#{userid}
 	</update>
+	
+	<update id="editPhoto" parameterType="UserInfo">
+		update userinfo set photo=#{photo,jdbcType=VARCHAR} where userid=#{userid}
+	</update>
 </mapper>

@@ -38,7 +38,15 @@
 		
 		</style>
 		<script type="text/javascript">
-	
+		$('#oldpwd').bind("blur",function(){
+			alert("");
+		});
+		
+		/* function savePhoto(id){
+			alert(id);
+			$.post("${pageContext.request.contextPath}/userinfo/editPhoto", {"_method" : "POST",userid : id},function(data){
+				
+			}); */
 				</script>
 
 		</head>
@@ -59,7 +67,7 @@
 									<a href="javascript:void(0)" id="cc"><i class="glyphicon glyphicon-user"></i> 基础信息</a>
 								</li>
 								<li class="list-group-item ">
-									<a href="javascript:void(0)"><i class="glyphicon glyphicon-picture"></i> 头像设置</a>
+									<a href="javascript:void(0)" ><i class="glyphicon glyphicon-picture"></i> 头像设置</a>
 								</li>
 								<li class="list-group-item ">
 									<a href="javascript:void(0)"><i class="glyphicon glyphicon-lock"></i> 安全设置</a>
@@ -152,12 +160,21 @@
 							<div class="panel-heading">头像</div>
 							<div class="panel-body">
 
-								<form id="settings-avatar-form" class="form-horizontal" method="post">
+								<form id="settings-avatar-form" class="form-horizontal" method="post" action="${pageContext.request.contextPath}/userinfo/editPhoto" enctype="multipart/form-data">
 
 									<div class="form-group">
 										<div class="col-md-2 control-label"><b>当前头像</b></div>
 										<div class="controls col-md-8 controls" id="showimg">
-											<img id="imgPrc" src="images/avatar.png" style="width:200px;height:180px;">
+											<input name="userid" value="${users.userid}" style="display:none;" /> 
+											 <c:choose>
+												<c:when test="${users.photo==null}"> 
+													<img id="imgPrc" src="images/avatar.png" style="width:200px;height:180px;">
+									 			</c:when>
+												<c:when test=""></c:when>
+											</c:choose>
+											<c:if test="${users.photo!=null}">
+												<img id="imgPrc" src="/touxiangPic/${users.photo}" style="width:200px;height:180px;">
+											</c:if>
 										</div>
 									</div>
 
@@ -173,9 +190,9 @@
 										<div class="col-md-2 control-label"></div>
 										<div class="controls col-md-8 controls">
 											<div id="updateImg">
-												<input type="file" accept="image/*"  class="webuploader-element-invisible" name="file" id="unload" style="border: none;"onchange="preImg(this.id);">
-											</div>
-											<button class="btn btn-primary" type="button" id="profile-save-btn">保存</button>
+												<input type="file"  name="items_pic" id="unload" style="border: none;" onchange="preImg(this.id);">
+											</div>  <!-- accept="image/*"   class="webuploader-element-invisible"--> 
+											<button class="btn btn-primary" type="submit" id="profile-save-btn2"style="margin-top:20px;" >保存</button>
 											<button class="btn btn-primary" type="button" id="profile-edit-btn" style="margin-top:20px;margin-left:10px;">取消</button>
 										</div>
 									</div>
@@ -201,14 +218,14 @@
 										<label class="col-md-2 control-label">昵称</label>
 										<div class="col-md-7 controls">
 											<div class="control-text">
-												珘珘 </div>
+												${users.uname} </div>
 										</div>
 									</div>
 
 									<div class="form-group form-forIam-group form-notStudent-group">
 										<label class="col-md-2 control-label">旧密码</label>
 										<div class="col-md-7 controls">
-											<input type="text" id="profile_company" name="profile[city]" class="form-control" value="">
+											<input type="text" id="oldpwd" name="" class="form-control" value="">
 											<div class="help-block" style="display:none;"></div>
 										</div>
 									</div>
@@ -216,14 +233,14 @@
 									<div class="form-group form-forIam-group form-notStudent-group">
 										<label class="col-md-2 control-label">新密码</label>
 										<div class="col-md-7 controls">
-											<input type="text" id="profile_company" name="profile[company]" class="form-control" value="">
+											<input type="text" id="newpwd" name="" class="form-control" value="">
 											<div class="help-block" style="display:none;"></div>
 										</div>
 									</div>
 
 									<div class="row">
 										<div class="col-md-7 col-md-offset-2">
-											<button id="profile-save-btn" data-submiting-text="正在保存" type="submit" class="btn btn-primary">保存</button>
+											<button id="profile-save-btn3" data-submiting-text="正在保存" type="button" class="btn btn-primary">保存</button>
 										</div>
 									</div>
 

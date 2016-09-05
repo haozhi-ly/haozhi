@@ -1,5 +1,7 @@
 //学习中心的js
 $(function() {
+	var userid = $("input[name='userid']").val();
+	
 	$(".list-group-item a").bind("click", function() {
 		var str = this.innerText;
 		if (str.trim() == "基础信息") {
@@ -10,6 +12,21 @@ $(function() {
 			$("#touxiang")[0].style.display = "block";
 			$("#baseinfo")[0].style.display = "none";
 			$("#update")[0].style.display = "none";
+			
+			$.post("userinfo/selectTouxiang", {"_method" : "POST",userid :userid},function(data){
+				if(data){
+					var st ="";
+					st = data.photo;
+					if(st.indexOf("avatar") > 0 ){
+						$("#imgPrc").attr('src',"images/avatar.png");
+					}else{
+						$("#imgPrc").attr('src',"/touxiangPic/"+data.photo);
+					}
+					
+					
+				}
+			});
+			
 		} else if (str.trim() == "安全设置") {
 			$("#update")[0].style.display = "block";
 			$("#baseinfo")[0].style.display = "none";
@@ -24,8 +41,17 @@ $(function() {
 		$('#updateImg').html('').append($(str2));
 	});
 	
-	$('profile-save-btn').bind("click", function(){
-		
+/*	$('#profile-save-btn2').bind("click", function(){
+		alert("dgodgn");
+		var userid=$('.user-avatar').id;
+		alert(userid);
+	});*/
+	
+	
+	$('#profile-save-btn3').bind("click", function(){
+		var oldpwd = $('oldpwd').val();
+		var newpwd = $('newold').val();
+		alert("dgagih");
 	});
 });
 
@@ -66,5 +92,23 @@ function preImg(sourceId, targetId) {
     }  
     reader.readAsDataURL(document.getElementById(sourceId).files[0]);  
 }  
+
+/*function selectTouxiang(id){
+	$.post("userinfo/selectTouxiang", {"_method" : "POST",userid : id},function(data){
+		if(data){
+			var str="";
+			 $.each(data,function(index,item){
+				 if(item.photo.contains("avatar")){
+					str= '<img id="imgPrc" src="images/avatar.png" style="width:200px;height:180px;">';
+					$("#imgPrc").attr('src',"images/avatar.png");
+				 }else{
+					str='<img id="imgPrc" src="/touxiangPic/'+item.photo+'" style="width:200px;height:180px;">';
+					$("#imgPrc").attr('src',"/touxiangPic/"+item.photo);
+				 }
+			 })
+			
+		}
+	});
+}*/
 
 

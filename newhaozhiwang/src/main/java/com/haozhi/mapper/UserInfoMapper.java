@@ -25,5 +25,6 @@ public interface UserInfoMapper {
 	
 	UserInfo getInfoByUserid(int userid);
 	
-	
+	//换头像
+	int editPhoto(UserInfo userInfo);
 }

@@ -65,6 +65,11 @@ public class UserInfoServiceImpl implements UserInfoService {
 		return userInfoMapper.getInfoByUserid(userid);
 	}
 
+	@Override
+	public int editPhoto(UserInfo userInfo) {
+		return userInfoMapper.editPhoto(userInfo);
+	}
+
 
 
 }
