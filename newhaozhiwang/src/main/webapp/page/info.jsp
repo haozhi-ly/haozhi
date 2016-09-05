@@ -171,8 +171,10 @@
 
 									<div class="form-group">
 										<div class="col-md-2 control-label"></div>
-										<div class="controls col-md-8 controls" id="updateImg">
-											<input type="file" accept="image/*" class="webuploader-element-invisible" name="file" id="unload" style="border: none;"onchange="preImg(this.id);">
+										<div class="controls col-md-8 controls">
+											<div id="updateImg">
+												<input type="file" accept="image/*"  class="webuploader-element-invisible" name="file" id="unload" style="border: none;"onchange="preImg(this.id);">
+											</div>
 											<button class="btn btn-primary" type="button" id="profile-save-btn">保存</button>
 											<button class="btn btn-primary" type="button" id="profile-edit-btn" style="margin-top:20px;margin-left:10px;">取消</button>
 										</div>

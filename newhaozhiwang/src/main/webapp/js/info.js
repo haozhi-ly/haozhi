@@ -19,11 +19,13 @@ $(function() {
 	
 	$('#profile-edit-btn').bind("click", function(){
 		var str='<img id="imgPrc" src="images/avatar.png" style="width:200px;height:180px;">';
-		var str2='<input type="file" accept="image/*" class="webuploader-element-invisible" name="file" id="unload" style="border: none;"onchange="preImg(this.id);">'
-		+'<button class="btn btn-primary" type="button" id="profile-save-btn">保存</button>'
-		+'<button class="btn btn-primary" type="button" id="profile-edit-btn" style="margin-top:20px;margin-left:10px;">取消</button>';
+		var str2='<input type="file" accept="image/*" class="webuploader-element-invisible" name="file" id="unload" style="border: none;"onchange="preImg(this.id);">';
 		$('#showimg').html('').append($(str));
 		$('#updateImg').html('').append($(str2));
+	});
+	
+	$('profile-save-btn').bind("click", function(){
+		
 	});
 });
 
@@ -64,3 +66,5 @@ function preImg(sourceId, targetId) {
     }  
     reader.readAsDataURL(document.getElementById(sourceId).files[0]);  
 }  
+
+

@@ -161,5 +161,11 @@ public class UserHandler {
 	}
 
 	
+	@ResponseBody
+	@RequestMapping(value="/savePhoto",method=RequestMethod.POST)
+	public String savePhoto(){
+		return null;
+	}
+	
 
 }
