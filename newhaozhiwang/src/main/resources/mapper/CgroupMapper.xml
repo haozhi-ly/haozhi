@@ -17,4 +17,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getNewGroups" resultType="Cgroup">
 		select * from (select * from cgroup order by createtime desc ) where 4>rownum
 	</select>
+	
+	<select id="searchGroups" parameterType="string" resultType="Cgroup">
+		select * from cgroup
+		<if test="_parameter==null">
+		</if>
+		<if test="_parameter!=null">
+			 where groupname like '%' || #{_parameter} || '%'
+		</if>
+	</select>
 </mapper>

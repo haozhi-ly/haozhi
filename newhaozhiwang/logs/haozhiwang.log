@@ -118,3 +118,23 @@ DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from (
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 3
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 12
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from (select * from cgroup order by createtime desc ) where 4>rownum 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 3
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from cgroup where groupname like ('%keyWord=?%'); 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from cgroup where groupname like ('%?%'); 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from cgroup where groupname like '%' || ? || '%' 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 英语(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from cgroup where groupname like '%' || ? || '%' 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 英语(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from cgroup where groupname like '%' || ? || '%' 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 英语(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from cgroup where groupname like '%' || ? || '%' 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 吉(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 2
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from cgroup where groupname like '%' || ? || '%' 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: (String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 22

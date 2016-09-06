@@ -23,5 +23,10 @@ public class CgroupMapperTest {
 	public void testGetNewGroups() {
 		System.out.println(groupMapper.getNewGroups());
 	}
+	
+	@Test
+	public void testSearchGroups() {
+		System.out.println(groupMapper.searchGroups("英语"));
+	}
 
 }

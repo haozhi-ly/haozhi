@@ -24,8 +24,14 @@
 		<link rel="stylesheet" type="text/css" href="css/main.css">
 		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.js"></script>
-
-
+		<script type="text/javascript" src="js/top.js"></script>
+		<script type="text/javascript" src="js/groups.js"></script>
+		
+		<style>
+			.navbar-form{
+				margin-top: 25px;
+			}
+		</style>
 		<style>
 			.cke {
 				visibility: hidden;
@@ -47,7 +53,6 @@
 		<div class="container" id="content-container">
 			<div class="panel panel-default panel-lg group-all">
 				<div class="panel-heading">
-
 					<div class="row">
 						<div class="col-sm-8">
 							<h1>小组搜索</h1></div>
@@ -55,7 +60,7 @@
 							<form class="form-inline pull-right" id="form_group_search" action="/group/search_group" method="get">
 								<div class="form-group">
 									<div class="input-group group-search">
-										<input class="form-control" placeholder="小组搜索" name="keyWord" value="英语" type="text">
+										<input class="form-control" placeholder="小组搜索" name="keyWord" value="${groups.keyWord }" type="text">
 										<input class="form-control" name="categoryId" value="" type="hidden">
 										<span class="input-group-btn">
 								            <button class="btn btn-default" type="submit">
@@ -67,7 +72,6 @@
 							</form>
 						</div>
 					</div>
-
 				</div>
 
 				<div class="panel-body">
@@ -88,110 +92,39 @@
 						<a href="javascript:;" data-target="openclass" data-id="4">公开课</a>
 					</div>
 					
-					<!--关键字查询，小组为空时（没有查询到信息）-->
-					<div class="row" style="display: none;">
-            			<div class="empty">暂无小组信息</div>
-            		</div>
-            		
-            		<!--关键字查询，有相关小组信息时-->
-					<div class="row" >
-						<div class="col-md-3">
-							<div class="media group-media group-media-sm">
-								<a href="http://www.howzhi.com/group/349/" title="科学学英语" class="pull-left">
-									<img src="images/105050a0ca1c653470.jpg" alt="科学学英语" class="media-object">
-								</a>
-								<div class="media-body">
-									<p>
-										<a href="http://www.howzhi.com/group/349/" title="科学学英语">科学学英语</a>
-									</p>
-									<div class="text-muted text-normal">
-										150个成员&nbsp; 1362个话题
+					<c:set value="${searchgroups}" var="search"/>
+					<c:if test="${search==null }">
+						<!--关键字查询，小组为空时（没有查询到信息）-->
+						<div class="row">
+	            			<div class="empty">暂无小组信息</div>
+	            		</div>
+					</c:if>
+            		<c:if test="${search!=null }">
+            			<!--关键字查询，有相关小组信息时-->
+            			<div class="row" >
+		            		<c:forEach items="${searchgroups}" var="item">
+		            			<div class="col-md-3">
+									<div class="media group-media group-media-sm">
+										<a href="http://www.howzhi.com/group/349/" title="${item.groupname }" class="pull-left">
+											<img src="images/105050a0ca1c653470.jpg" alt="${item.groupname }" class="media-object">
+										</a>
+										<div class="media-body">
+											<p>
+												<a href="http://www.howzhi.com/group/349/" title="${item.groupname }">${item.groupname }</a>
+											</p>
+											<div class="text-muted text-normal">
+												${item.peoplecount }&nbsp; 1362个话题
+											</div>
+										</div>
 									</div>
 								</div>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="media group-media group-media-sm">
-								<a href="http://www.howzhi.com/group/220/" title="从0开始学英语" class="pull-left">
-									<img src="images/155439f3b7d4729628.jpg" alt="从0开始学英语" class="media-object">
-								</a>
-								<div class="media-body">
-									<p>
-										<a href="http://www.howzhi.com/group/220/" title="从0开始学英语">从0开始学英语</a>
-									</p>
-									<div class="text-muted text-normal">
-										193个成员&nbsp; 1405个话题
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="media group-media group-media-sm">
-								<a href="http://www.howzhi.com/group/219/" title="看美剧学英语" class="pull-left">
-									<img src="images/165954a2f0ba918446.jpg" alt="看美剧学英语" class="media-object">
-								</a>
-								<div class="media-body">
-									<p>
-										<a href="http://www.howzhi.com/group/219/" title="看美剧学英语">看美剧学英语</a>
-									</p>
-									<div class="text-muted text-normal">
-										306个成员&nbsp; 1417个话题
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="media group-media group-media-sm">
-								<a href="http://www.howzhi.com/group/218/" title="英语培训机构排名" class="pull-left">
-									<img src="images/2312099204d9984069.jpg" alt="英语培训机构排名" class="media-object">
-								</a>
-								<div class="media-body">
-									<p>
-										<a href="http://www.howzhi.com/group/218/" title="英语培训机构排名">英语培训机构排名</a>
-									</p>
-									<div class="text-muted text-normal">
-										81个成员&nbsp; 2995个话题
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="media group-media group-media-sm">
-								<a href="http://www.howzhi.com/group/161/" title="微英语" class="pull-left">
-									<img src="images/220322a3adc0705905.jpg" alt="微英语" class="media-object">
-								</a>
-								<div class="media-body">
-									<p>
-										<a href="http://www.howzhi.com/group/161/" title="微英语">微英语</a>
-									</p>
-									<div class="text-muted text-normal">
-										289个成员&nbsp; 2968个话题
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="media group-media group-media-sm">
-								<a href="http://www.howzhi.com/group/154/" title="我要学英语" class="pull-left">
-									<img src="images/01460088969f639218.jpg" alt="我要学英语" class="media-object">
-								</a>
-								<div class="media-body">
-									<p>
-										<a href="http://www.howzhi.com/group/154/" title="我要学英语">我要学英语</a>
-									</p>
-									<div class="text-muted text-normal">
-										492个成员&nbsp; 1371个话题
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
+		            		</c:forEach>
+	            		</div>
+            		</c:if>
 				</div>
 			</div>
-
 		</div>
-
+	
 		
 		<!---------------------------------------我是底部分割线------------------------------------------------------>
 		<jsp:include page="footer.jsp"></jsp:include>

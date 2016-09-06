@@ -320,5 +320,15 @@ insert into cgroup values(seq_gid.nextval,'Photoshop照片后期处理学习交�
 insert into cgroup values(seq_gid.nextval,'我是从零开始学吉他的',2,sysdate,'2,1,4',85,null,null);
 insert into cgroup values(seq_gid.nextval,'每月养成一个好习惯',2,sysdate,'2,1,4',60,null,null);
 
+insert into cgroup values(seq_gid.nextval,'漫画学院',3,sysdate,'3,1,2',150,null,null);
+insert into cgroup values(seq_gid.nextval,'坏男孩学院',2,sysdate,'2,1,4',152,null,null);
+insert into cgroup values(seq_gid.nextval,'天天理财',2,sysdate,'2,1,4',83,null,null);
+insert into cgroup values(seq_gid.nextval,'古筝吧',2,sysdate,'2,1,4',38,null,null);
+insert into cgroup values(seq_gid.nextval,'Ubuntu',2,sysdate,'2,1,4',1005,null,null);
+insert into cgroup values(seq_gid.nextval,'早起狗',2,sysdate,'2,1,4',880,null,null);
 
+insert into cgroup values(seq_gid.nextval,'插画交流',2,sysdate,'2,1,4',87,null,null);
+insert into cgroup values(seq_gid.nextval,'java开发',2,sysdate,'2,1,4',68,null,null);
+insert into cgroup values(seq_gid.nextval,'吉卜力',2,sysdate,'2,1,4',1585,null,null);
+insert into cgroup values(seq_gid.nextval,'工笔画',2,sysdate,'2,1,4',820,null,null);
 ------------------话题表 topic

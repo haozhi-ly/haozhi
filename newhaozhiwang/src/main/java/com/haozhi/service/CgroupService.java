@@ -10,5 +10,7 @@ public interface CgroupService {
 
 	List<Cgroup> getNewGroups();
 
+	List<Cgroup> searchGroups(String keyWord);
+
 
 }

@@ -1,8 +1,6 @@
 $(function(){
 	//热门小组
 	$.get("groups/hostgroups",function(data){
-		alert("aaaaa");
-		alert(data);
 		var listStr="";
 		for(var i=0;i<data.length;i++){		
 			listStr+='<div class="col-lg2 col-md-2 col-sm-2 col-xs-4 grid">';
@@ -18,7 +16,6 @@ $(function(){
 	
 	//新晋小组
 	$.get("groups/newgroups",function(data){
-		alert(data);
 		var listStr="";
 		for(var i=0;i<data.length;i++){		
 			listStr+='<div class="media media-group">';

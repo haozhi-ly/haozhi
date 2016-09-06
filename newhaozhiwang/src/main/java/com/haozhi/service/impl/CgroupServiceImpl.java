@@ -24,5 +24,10 @@ public class CgroupServiceImpl implements CgroupService{
 		List<Cgroup> groups=groupMapper.getNewGroups();
 		return groups;
 	}
+	@Override
+	public List<Cgroup> searchGroups(String keyWord) {
+		List<Cgroup> groups=groupMapper.searchGroups(keyWord);
+		return groups;
+	}
 
 }

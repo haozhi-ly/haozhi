@@ -10,7 +10,8 @@ public class Cgroup {
 	private int peoplecount;// --备用字段
 	private String temp02;// --备用字段
 	private String temp03;// --备用字段
-
+	private String keyWord;//关键字，查询时用
+	
 	public Cgroup() {
 	}
 
@@ -24,6 +25,14 @@ public class Cgroup {
 		this.peoplecount = peoplecount;
 		this.temp02 = temp02;
 		this.temp03 = temp03;
+	}
+
+	public String getKeyWord() {
+		return keyWord;
+	}
+
+	public void setKeyWord(String keyWord) {
+		this.keyWord = keyWord;
 	}
 
 	public int getGid() {
@@ -96,8 +105,10 @@ public class Cgroup {
 				+ ", createman=" + createman + ", createtime=" + createtime
 				+ ", groupnumber=" + groupnumber + ", peoplecount="
 				+ peoplecount + ", temp02=" + temp02 + ", temp03=" + temp03
-				+ "]";
+				+ ", keyWord=" + keyWord + "]";
 	}
+
+	
 
 	
 }
