@@ -7,7 +7,7 @@
 <head>
 	<base href="/newhaozhiwang/"/>
 	<meta charset="UTF-8">
-	<title>好知网后台管理</title>
+	<title>好知网</title>
 	<link rel="stylesheet" type="text/css" href="easyui/css/easyui.css">
 	<link rel="stylesheet" type="text/css" href="easyui/css/icon.css">
 	<link rel="stylesheet" type="text/css" href="easyui/css/demo.css">
@@ -15,9 +15,6 @@
 	
 	<script type="text/javascript" src="easyui/js/jquery.min.js"></script>
 	<script type="text/javascript" src="easyui/js/jquery.easyui.min.js"></script>
-	<script type="text/javascript" src="easyui/js/easyui-lang-zh_CN.js"></script>
-	<script type="text/javascript"  src="back/js/ajaxfileupload.js"></script>
-	<script type="text/javascript" charset="utf-8" src="back/js/cropbox.js"></script>
 	<script type="text/javascript" src="easyui/js/index.js"></script>
 	<script type="text/javascript" src="easyui/js/easyui-lang-zh_CN.js"></script>
 
@@ -28,7 +25,12 @@
 	
 	<script type="text/javascript" src="ckeditor/ckeditor.js"></script>  
     <script type="text/javascript" src="ckeditor/config.js"></script>  
-   	
+   	<!-- <script type="text/javascript">
+   		var myckeditor;
+	    	$(document).ready(function(){  
+	    	 myckeditor=CKEDITOR.replace('myckeditor'); 
+	    });  
+	</script>   -->
 <style type="text/css">
 #login{
 	float: right;
@@ -36,11 +38,16 @@
 	height: 30px;
 }
 </style>
+
 </head>
 <body class="easyui-layout">
 	<div data-options="region:'north',border:false" style="height:60px;background:#B3DFDA;padding:10px">
 	<div id="login">
-        ${myself.aname}
+		<%if(null!=session.getAttribute("Admin")){ %>
+		<c:forEach items="${Admin}" var="item" varStatus="s"> 	
+                	<p>欢迎 ${item.aname} 登陆</p><a href="javascript:outLogin()">退出登录</a>
+        </c:forEach>
+        <%} %>
 	</div>
 	</div>
 	<div data-options="region:'west',split:true,title:'菜单'" style="width:150px;padding:10px;">
@@ -66,6 +73,5 @@
 		<div id="center_area" class="easyui-tabs" data-options="fit:true">
 		</div>
 	</div>
-	
 </body>
 </html>
