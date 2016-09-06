@@ -63,4 +63,11 @@ public class CourseServiceImplTest {
 		assertNotNull(course);
 	}
 	
+	@Test
+	public void getCourseById() {
+		Course course = courseService.getCourseById(2);
+		System.out.println(course);
+		assertNotNull(course);
+	}
+	
 }

@@ -20,6 +20,6 @@ public interface CourseMapper {
 	
 	List<Course> getAllHostCourse();  //查询所有热门课程
 	
-	
+	Course getCourseById(Integer courseid); // 通过课程号查课程
 }
 

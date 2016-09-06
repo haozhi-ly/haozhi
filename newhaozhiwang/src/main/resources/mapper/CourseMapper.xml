@@ -101,5 +101,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getUserByUsid5" resultType="UserInfo" parameterType="int">
 		select * from userinfo where userid = #{userid}
 	</select>
+	
+	<resultMap type="Course" id="Course">
+		<id column="courseid" property="courseid"/>
+		<id column="userId" property="userId"/>
+		<collection property="user" column="userId" ofType="UserInfo" select="getUserByUsid6" />
+	</resultMap>
+	<select id="getCourseById" resultMap="Course" parameterType="Integer" >
+		 <include refid="selectCourse"/> where s.courseid=#{_parameter}
+	</select>
+	<select id="getUserByUsid6" resultType="UserInfo" parameterType="int">
+		select * from userinfo where userid = #{userid}
+	</select>
 
 </mapper>

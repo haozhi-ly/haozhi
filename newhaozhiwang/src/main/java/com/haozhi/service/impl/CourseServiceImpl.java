@@ -52,6 +52,11 @@ public class CourseServiceImpl implements CourseService {
 		return courseMapper.getAllHostCourse();
 	}
 
+	@Override
+	public Course getCourseById(Integer courseid) {
+		return courseMapper.getCourseById(courseid);
+	}
+
 	
 
 }

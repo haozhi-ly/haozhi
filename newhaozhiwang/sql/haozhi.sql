@@ -132,6 +132,9 @@ insert into courseType values(seq_ctid.nextval,'公开课',null);
 
 drop table courseManage;
 drop sequence seq_cmid ;
+
+select * from courseManage;
+select count(*) from courseManage where courseid=6;
 --------------5.课时管理表
 create table courseManage(
        cmid int primary key ,
@@ -258,6 +261,8 @@ select * from (select s.*,(select count(1) from studyCourse where courseid = s.c
 (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s order by memberCount desc) where rownum<=3 ;
 
 select * from studyCourse
+select count(userid) from studyCourse where courseid=5;
+
 ---------------------11.学习课程表
 create table studyCourse(
        scid int primary key,
