@@ -70,7 +70,7 @@ $(function(){
 			},'json');		
 	});
 	
-	$('.clearfix a').bind("click",function(){
+	$('#sortNav a').bind("click",function(){
 		 $(this).parent().parent().children().children().removeClass("act");  
 		 $(this).addClass("act"); 	  //样式改变
 		 var id = this.id;

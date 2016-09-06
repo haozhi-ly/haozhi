@@ -12,6 +12,10 @@ select * from studyCourse;
 select * from selfMessage;
 select * from cgroup;
 
+select * from (select s.*,(select count(1) from studyCourse where courseid = s.courseid )
+memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg 
+from course s where s.ctid=2 order by memberCount desc) where 3>=rownum 
+
 drop table userinfo;
 drop sequence seq_userid cascade constraints;
 delete from userinfo;

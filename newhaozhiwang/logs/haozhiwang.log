@@ -67,6 +67,15 @@ DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 9
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from coursetype 
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 9
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from (select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s where s.ctid=? order by memberCount desc) where 3>=rownum 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 2(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 3(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 5(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 2
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from cgroup where 5>rownum order by peoplecount desc 
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from cgroup where 5>rownum order by peoplecount desc 
@@ -102,3 +111,15 @@ DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 12
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from (select * from cgroup order by peoplecount desc ) where 12>=rownum 
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 12
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from (select * from cgroup order by createtime desc ) where 4>rownum 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 3
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from (select * from cgroup order by createtime desc ) where 4>rownum 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 3
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 12
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: update userinfo set photo=? where userid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 147308775646389232.jpg(String), 147308775646389232.jpg(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: update userinfo set photo=? where userid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 147308775646389232.jpg(String), 2(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==    Updates: 1

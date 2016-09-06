@@ -76,6 +76,15 @@ public class UserInfoServiceImpl implements UserInfoService {
 	public int count() {
 		return userInfoMapper.count();
 	}
+	@Override
+	public int editPhoto(UserInfo userInfo) {
+		return userInfoMapper.editPhoto(userInfo);
+	}
+
+	@Override
+	public int editPwd(UserInfo userInfo) {
+		return userInfoMapper.editPwd(userInfo);
+	}
 
 
 

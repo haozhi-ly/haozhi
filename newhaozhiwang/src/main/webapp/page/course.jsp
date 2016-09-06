@@ -52,7 +52,7 @@
          
         <span class="close" aria-hidden="true" data-dismiss="alert">×</span> </div>
       <div class="sort-nav">
-        <dl class="clearfix">
+        <dl class="clearfix" id="sortNav">
           <dd class="first"><a class="act" href="javascript:void(0);" id="0">综合排序</a></dd>
           <dd><a class="" href="javascript:void(0);" id="1">最新</a></dd>
           <dd><a class="" href="javascript:void(0);" id="2">最热</a></dd>

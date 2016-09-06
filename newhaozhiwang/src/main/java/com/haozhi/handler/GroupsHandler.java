@@ -1,6 +1,5 @@
 package com.haozhi.handler;
 
-import java.io.PrintWriter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +22,14 @@ public class GroupsHandler {
 	@RequestMapping("/hostgroups")
 	public List<Cgroup> groupByDesc(Model model){
 		List<Cgroup> groups= groupService.getHostGroups();
+		model.addAttribute("groups", groups);
+		return groups;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/newgroups")
+	public List<Cgroup> newGroups(Model model){
+		List<Cgroup> groups= groupService.getNewGroups();
 		model.addAttribute("groups", groups);
 		return groups;
 	}

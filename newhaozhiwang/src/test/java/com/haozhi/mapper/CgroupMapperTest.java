@@ -18,5 +18,10 @@ public class CgroupMapperTest {
 	public void testGetListGroups() {
 		System.out.println(groupMapper.getHostGroups());
 	}
+	
+	@Test
+	public void testGetNewGroups() {
+		System.out.println(groupMapper.getNewGroups());
+	}
 
 }

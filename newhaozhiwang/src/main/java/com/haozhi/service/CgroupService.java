@@ -8,5 +8,7 @@ public interface CgroupService {
 
 	List<Cgroup> getHostGroups();
 
+	List<Cgroup> getNewGroups();
+
 
 }

@@ -26,5 +26,12 @@ public class CgroupServiceImplTest {
 		System.out.println(group);
 		assertNotNull(group);
 	}
+	
+	@Test
+	public void testGetNewGroups() {
+		List<Cgroup> group=groupService.getNewGroups();
+		System.out.println(group);
+		assertNotNull(group);
+	}
 
 }
