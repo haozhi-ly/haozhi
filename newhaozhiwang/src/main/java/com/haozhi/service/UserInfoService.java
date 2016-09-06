@@ -21,5 +21,8 @@ public interface UserInfoService {
 	
 	//修改头像
 	int editPhoto(UserInfo userInfo);
+	
+	//修改密码
+    int editPwd(UserInfo userInfo);
 
 }

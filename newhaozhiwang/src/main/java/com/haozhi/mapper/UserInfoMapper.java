@@ -27,4 +27,7 @@ public interface UserInfoMapper {
 	
 	//换头像
 	int editPhoto(UserInfo userInfo);
+	
+	//修改密码
+	int editPwd(UserInfo userInfo);
 }

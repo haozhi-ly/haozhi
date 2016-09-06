@@ -1,7 +1,6 @@
 //学习中心的js
 $(function() {
 	var userid = $("input[name='userid']").val();
-	
 	$(".list-group-item a").bind("click", function() {
 		var str = this.innerText;
 		if (str.trim() == "基础信息") {
@@ -34,6 +33,44 @@ $(function() {
 		}
 	});
 	
+	$('#password-save-btn4').bind("click", function(){
+		var curpwd = $('#form_currentPassword').val();
+		var newpwd = $('#form_newPassword').val();
+		var conpwd = $('#form_confirmPassword').val();
+		if(curpwd!=null&newpwd!=null&conpwd!=null){
+			$.post("userinfo/editpwd", {"_method" : "POST",userid :userid,curpwd:curpwd,newpwd:newpwd,conpwd:conpwd},function(data){
+				if(data==1){
+					alert("当前密码输入错误!!!");
+				}else if(data==2){
+					alert("确认密码输入错误!!!");
+				}else{
+					alert("修改密码成功!!!");
+					$('#form_currentPassword').val("");
+					$('#form_newPassword').val("");
+					$('#form_confirmPassword').val("");
+				}
+			});
+		}
+	});
+	
+	$('.form-control').bind("blur",function(){
+		var str = $(this).val();
+		if(str ==""){
+			var st = $(this).next().text();
+			$(this).next().css('display', 'block');
+			$(this).next().css('color', 'red');
+			$(this).parent().prev().css('color', '#A94442');
+			$(this).css('border-color', '#F03D7B');
+		}
+	});
+	$('.form-control').bind("focus",function(){
+		var str = $(this).val();
+		$(this).next().css('display', 'none');
+		$(this).parent().prev().css('color', '#333333');
+		$(this).css('border-color', '#E1E1E1');
+	});
+	
+	
 	$('#profile-edit-btn').bind("click", function(){
 		var str='<img id="imgPrc" src="images/avatar.png" style="width:200px;height:180px;">';
 		var str2='<input type="file" accept="image/*" class="webuploader-element-invisible" name="file" id="unload" style="border: none;"onchange="preImg(this.id);">';
@@ -41,26 +78,21 @@ $(function() {
 		$('#updateImg').html('').append($(str2));
 	});
 	
-/*	$('#profile-save-btn2').bind("click", function(){
-		alert("dgodgn");
-		var userid=$('.user-avatar').id;
-		alert(userid);
-	});*/
-	
 	
 	$('#profile-save-btn3').bind("click", function(){
 		var oldpwd = $('oldpwd').val();
 		var newpwd = $('newold').val();
 		alert("dgagih");
 	});
+	
+	
+	
 });
 
 function save(id) {
 	var usign = $("#profile_signature").val();
 	var introdution = $("#profile_about").val();
 	var gender = $("input[name='gender']:checked").val();
-
-	alert(gender + usign + introdution);
 
 	$.post("userinfo/save", {
 		"_method" : "POST",
@@ -69,7 +101,6 @@ function save(id) {
 		usign : usign,
 		introdution : introdution
 	}, function(data) {
-		alert("ogaugrhn");
 		var str = "";
 		if (data == 1) {
 			str = '<div class="alert alert-success">基础信息保存成功。</div>';
@@ -93,22 +124,6 @@ function preImg(sourceId, targetId) {
     reader.readAsDataURL(document.getElementById(sourceId).files[0]);  
 }  
 
-/*function selectTouxiang(id){
-	$.post("userinfo/selectTouxiang", {"_method" : "POST",userid : id},function(data){
-		if(data){
-			var str="";
-			 $.each(data,function(index,item){
-				 if(item.photo.contains("avatar")){
-					str= '<img id="imgPrc" src="images/avatar.png" style="width:200px;height:180px;">';
-					$("#imgPrc").attr('src',"images/avatar.png");
-				 }else{
-					str='<img id="imgPrc" src="/touxiangPic/'+item.photo+'" style="width:200px;height:180px;">';
-					$("#imgPrc").attr('src',"/touxiangPic/"+item.photo);
-				 }
-			 })
-			
-		}
-	});
-}*/
+
 
 

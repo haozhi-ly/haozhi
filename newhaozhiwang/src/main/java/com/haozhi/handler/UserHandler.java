@@ -193,5 +193,20 @@ public class UserHandler {
 			return user;
 	}
 	
+	@RequestMapping(value="/editpwd",method=RequestMethod.POST)
+	public void editpwd(UserInfo userInfo,Integer userid,String curpwd,String newpwd,String conpwd, PrintWriter out){
+		UserInfo user=userInfoService.getInfoByUserid(userid);
+		System.out.println(user);
+		if(!curpwd.equals( user.getUpassword()) ){
+			out.print(1);
+		}else if(!newpwd.equals(conpwd)){
+			out.print(2);
+		}else{
+			userInfo.setUserid(userid);userInfo.setUpassword(newpwd);
+			userInfoService.editPwd(userInfo);
+			out.print(3);
+		}
+	}
+	
 
 }

@@ -70,6 +70,11 @@ public class UserInfoServiceImpl implements UserInfoService {
 		return userInfoMapper.editPhoto(userInfo);
 	}
 
+	@Override
+	public int editPwd(UserInfo userInfo) {
+		return userInfoMapper.editPwd(userInfo);
+	}
+
 
 
 }
