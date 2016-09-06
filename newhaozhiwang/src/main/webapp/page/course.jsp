@@ -23,7 +23,13 @@
 </head>
 <body class="hzco-classify">
 <!-- 头部 -------------------------------------------------------------------  -->			
-<jsp:include page="topf.jsp"></jsp:include>
+<c:set value="${users}" var="us"/>
+<c:if test="${us==null }">
+	<jsp:include page="topf.jsp"></jsp:include>
+</c:if>
+<c:if test="${us!=null }">
+	<jsp:include page="topb.jsp"></jsp:include>
+</c:if>
 <!-- 头部 分割线------------------------------------------------------------------------------------  -->		
 <div class="container" id="content-container" style="margin-top: 30px;">
   <ul class="tab-head tab clearfix">

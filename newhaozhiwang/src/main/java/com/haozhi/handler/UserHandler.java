@@ -13,8 +13,7 @@ import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
-
-
+import javax.servlet.jsp.PageContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -197,12 +196,12 @@ public class UserHandler {
 	@RequestMapping("/editPhoto")
 	 public String editItemsSubmit( Model model,HttpServletRequest request,Integer userid,
 			  MultipartFile items_pic,UserInfo user)throws Exception {
-		System.out.println("fkghdkhg");
+		
 	      // 上传图片的原始名称
 	      String originalFilename = items_pic.getOriginalFilename();
 	      // 上传图片
 	      if (items_pic!= null&&originalFilename!=null&&originalFilename.length()>0) {// 存储图片的物理路径
-	        String pic_path = "D:\\apache-tomcat-7.0.30\\webapps\\touxiangPic\\";
+	        String pic_path = "g:\\yc\\apache-tomcat-7.0.30\\webapps\\touxiangPic\\";
 	        // 新的图片名称
 	        String newFilename = new Date().getTime()+""+new Random().nextInt(100000)
 	        		 +originalFilename.substring(originalFilename.lastIndexOf("."));
