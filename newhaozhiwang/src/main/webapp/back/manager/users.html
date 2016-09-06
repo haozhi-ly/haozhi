@@ -1,21 +1,35 @@
 <table id="users_data"></table>  
 <div id="add_users" class="easyui-dialog" title="添加会员" data-options="iconCls:'icon-add',resizable:true,model:true,closed:true,fit:true">
 	<br />
-	<form action="" style="float:left;padding-left:20px;">
-		<label>会员名称：</label><input type="text" id="users_uname" name="uname" required="required" /> <br /><br />
-		<label>会员密码：</label><input type="password" id="users_pwd" name="pwd" required="required" /> <br /><br />
-		<label>电子邮件：</label><input type="text" id="users_email" name="email" required="required" /> <br /><br />
-		<label>会员照片：</label><input type="file" id="users_pics" name="pics" required="required" multiple="multiple" onchange="previewMultipleImage(this,'users_pic_show')" /> <br /><br />
-		
-		<a href="javascript:addUsersInfo()"  class="easyui-linkbutton" data-options="iconCls:'icon-add'" >添加</a>
+	<form action="" style="float:left;padding-left:100px;">
+		<label>会员名称：</label><input type="text" id="users_uname" name="uname" required="required" /> <br /><br /><br />
+		<label>会员密码：</label><input type="password" id="users_pwd" name="upassword" required="required" /> <br /><br /><br />
+		<label>电子邮件：</label><input type="text" id="users_email" name="email" required="required" /> <br /><br /><br />
+		<label>性 &nbsp; &nbsp;&nbsp;别：</label><input type="radio" id="users_sex" name="gender" checked="checked" value="男"/>男 <input type="radio" id="users_sex" name="gender" value="女"/>女<br /><br /><br />
+		<label>个性签名：</label><input  type="text" Style="width:400px;" id="users_usign" name="usign" required="required"><br /><br /><br />
+		<div><label >自我介绍：</label></div><textarea id="users_introdution" name="introdution" Style="width:400px;height:200px;" rows="" cols=""></textarea><br /><br /><br /><br />
+		<a href="javascript:addUsersInfo()" style="mrgin-left:400px;" class="easyui-linkbutton" data-options="iconCls:'icon-add'" onclick="addUsersInfo()">添加</a>
 	</form>
 	
+	<div class="container" style="float:right;margin-right: 300px;">
+	  <div class="imageBox" style=" url(&quot;http://www.17sucai.com/preview/1/2015-03-19/%E4%B8%8A%E4%BC%A0%E6%88%AA%E5%9B%BE/images/avatar.jpg&quot;); background-size: 658px 851px; background-position: -129px -225.5px; background-repeat: no-repeat;">
+	    <div class="thumbBox"></div>
+	    <div class="spinner" style="display: none;">Loading...</div>
+	  </div>
+		  <div class="action"> 
+		    <!-- <input type="file" id="file" style=" width: 200px">-->
+		    <div class="new-contentarea tc"> <a href="javascript:void(0)" class="upload-img">
+		      <label for="upload-file">上传头像</label>
+		      </a>
+		      <input type="file" class="" name="upload-file" id="upload-file">
+		    </div>
+		    <input type="button" id="btnCrop" class="Btnsty_peyton" value="裁切">
+		    <input type="button" id="btnZoomIn" class="Btnsty_peyton" value="+">
+		    <input type="button" id="btnZoomOut" class="Btnsty_peyton" value="-">
+		  </div>
+  <div class="cropped"></div>
+</div>
 	
-	<div style="float:right;width:360px;margin-right:20px;">
-		<fieldset id="users_pic_show">
-			<legend>图片预览</legend>
-		</fieldset>
-	</div>
 </div>
 
 <div id="edit_users" class="easyui-dialog" title="修改会员" data-options="iconCls:'icon-edit',resizable:true,model:true,closed:true,fit:true">
@@ -37,11 +51,12 @@
 		</fieldset>
 	</div>
 </div>
-
+<style type="text/css">
+	
+</style>
 <script>
 $('#users_data').datagrid({  
-    url:'../../usersServlet',  
-    queryParams:{op:'findUsersByPage'}, //请求远程服务器数据时候, 并且发送的额外的参数.
+    url:'userinfo/findall',  
 	fitColumns:true,//true将自动扩展/收缩columns大小适应grid的宽度,防止水平滚动.
 	striped:true,//显示条纹所在行
 	loadMsg:"数据加载中...",//当从远程服务器加载数据的时候,显示的提示消息.
@@ -50,17 +65,15 @@ $('#users_data').datagrid({
 	pageNumber:1,//初始页码
 	pageSize:10,//分页大小
 	pageList:[5,10,20,30,40,50],//设置属性
-	sortName:'usid',//定义那个列可以排序.
+	sortName:'userid',//定义那个列可以排序.
 	remoteSort:false,//定义是否远程排序.对数据库进行操作
     columns:[[ 
 		{field:'usids',title:'',width:60,align:'center',checkbox:true}, 
         {field:'userid',title:'会员编号',width:80,align:'center',sortable:true},  
         {field:'uname',title:'会员名称',width:80,align:'center'},
-        {field:'email',title:'电子邮件',width:80,align:'center'},
-        {field:'gender',title:'性别',width:80,align:'center'},
-        {field:'usign',title:'个性签名',width:80,align:'center'},
-        {field:'introdution',title:'自我介绍',width:80,align:'center'},
-        {field:'photo',title:'个人头像',width:400,align:'center',
+        {field:'email',title:'电子邮件',width:150,align:'center'},
+        {field:'gender',title:'性别',width:50,align:'center'},
+        {field:'photo',title:'个人头像',width:100,align:'center',
         	formatter: function(value,rowData,index){
 				if(value!=null){
 					var str="";
@@ -72,11 +85,12 @@ $('#users_data').datagrid({
 				}else{
 					return;
 				}
-			}
-        },
+			}},
+        {field:'usign',title:'个性签名',width:200,align:'center'},
+        {field:'introdution',title:'自我介绍',width:350,align:'center'},
         {field:'status',title:'状态',width:80,align:'center'},
         {field:'score',title:'学分',width:80,align:'center'},
-        {field:'签到',title:'签到',width:80,align:'center'}
+        {field:'signDate',title:'签到',width:80,align:'center'}
 
     ]],
     toolbar:[{
@@ -160,22 +174,15 @@ $('#users_data').datagrid({
 }); 
 
 function addUsersInfo(){
-	var uname=$.trim($("#users_uname").val());
-	console.info(uname);
-	var pwd=$.trim($("#users_pwd").val());
-	console.info(pwd);
-	var email=$.trim($("#users_email").val());
-	console.info(email);
-	
-	$.ajaxFileUpload({
-		url:"../../usersServlet?op=addUsersInfo",//只有把op的值放在链接里  才能保证不乱码
-		secureuri:false,
-		fileElementId:"users_pics",
-		dataType:"json",
-		data:{uname:uname,pwd:pwd,email:email},
-		success:function(data,status){
+	var uname=$("#users_uname").val();
+	var upassword=$("#users_pwd").val();
+	var email=$("#users_email").val();
+	var gender=$('input:radio:checked').val();
+	var usign=$("#users_usign").val();
+	var introdution=$("#users_introdution").val();
+	$.post("userinfo/adduserinfo",{uname:uname,upassword:upassword,email:email,gender:gender,usign:usign,introdution:introdution},function(data,status){
 			if(data>0){
-				$.messager.show({title:'成功提示',msg:"新闻信息添加成功...",timeout:2000,showType:'slide'});
+				$.messager.show({title:'成功提示',msg:"会员添加成功...",timeout:2000,showType:'slide'});
 				
 				$("#users_uname").val("");
 				$("#users_pwd").val("");
@@ -186,12 +193,8 @@ function addUsersInfo(){
 			}else{
 				$.messager.alert("错误提示","会员添加失败...\n","error");
 			}
-		},
-		error:function(data,status,e){
-			$.messager.alert("错误信息","会员添加失败...\n"+e,"error");
-		}
-	});
-}
+		});
+	}
 function editUsersInfo(){
 	var usid=$.trim($("#eusers_usid").val());
 	var uname=$.trim($("#eusers_uname").val());
@@ -224,4 +227,35 @@ function editUsersInfo(){
 		}
 	});
 }
+
+var options =
+{
+	thumbBox: '.thumbBox',
+	spinner: '.spinner',
+	imgSrc: 'images/avatar.jpg'
+}
+var cropper = $('.imageBox').cropbox(options);
+$('#upload-file').on('change', function(){
+	var reader = new FileReader();
+	reader.onload = function(e) {
+		options.imgSrc = e.target.result;
+		cropper = $('.imageBox').cropbox(options);
+	}
+	reader.readAsDataURL(this.files[0]);
+	this.files = [];
+})
+
+$('#btnCrop').on('click', function(){
+	var img = cropper.getDataURL();
+	$('.cropped').html('');
+	$('.cropped').append('<img  id="test" onclick="getUrl(this)" src="'+img+'" align="absmiddle" style="width:64px;margin-top:4px;border-radius:64px;box-shadow:0px 0px 12px #7E7E7E;" ><p>64px*64px</p>');
+	$('.cropped').append('<img src="'+img+'" align="absmiddle" style="width:128px;margin-top:4px;border-radius:128px;box-shadow:0px 0px 12px #7E7E7E;"><p>128px*128px</p>');
+	$('.cropped').append('<img src="'+img+'" align="absmiddle" style="width:180px;margin-top:4px;border-radius:180px;box-shadow:0px 0px 12px #7E7E7E;"><p>180px*180px</p>');
+})
+$('#btnZoomIn').on('click', function(){
+	cropper.zoomIn();
+})
+$('#btnZoomOut').on('click', function(){
+	cropper.zoomOut();
+})
 </script>

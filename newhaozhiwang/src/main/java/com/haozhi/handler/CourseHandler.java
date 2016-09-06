@@ -1,12 +1,20 @@
 package com.haozhi.handler;
 
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,9 +26,13 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.haozhi.entity.Course;
 import com.haozhi.service.CourseService;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+import sun.misc.BASE64Decoder;
+
 @Controller
 @RequestMapping("/course")
-@SessionAttributes(value={"courses","hostcourse"})
+@SessionAttributes(value={"courses","hostcourse","course"})
 public class CourseHandler {
 	@Autowired
 	private CourseService courseService;
@@ -124,6 +136,92 @@ public class CourseHandler {
 		return courses;
 	}
 	
+	@RequestMapping("/getAllcoursebypage")
+	public void getAllcoursebypage(String page,String rows,String sort,String order,HttpServletResponse response){
+		PrintWriter out=null;
+		try {
+			response.setCharacterEncoding("utf-8");
+			response.setContentType("charset=utf-8");
+			out = response.getWriter();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		List<Course> typelist=courseService.getAllCourseBypage(Integer.parseInt(rows),Integer.parseInt(page));
+		int count=courseService.findAlltype();
+		//Gson gson=new Gson();
+		//String liststr=gson.toJson(typelist);
+		JSONArray json = JSONArray.fromObject(typelist);
+		JSONObject jb = new JSONObject();
+		System.out.println(jb.toString());
+		jb.put("rows", json);
+		jb.put("total",count);
+		out.print(jb);
+		out.flush();
+		out.close();
+	}
+	@RequestMapping("/addCourse")
+	public void addCourse(String coursephoto,String ctid,String ctitle,String courseting,String userId,String createTime,String ctintrodution,HttpServletResponse response){
+		System.out.println("我进来了");
+		PrintWriter out=null;
+		try {
+			response.setCharacterEncoding("utf-8");
+			response.setContentType("charset=utf-8");
+			out = response.getWriter();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		BASE64Decoder decoder = new BASE64Decoder();  
+		System.out.println(coursephoto);
+		coursephoto = coursephoto.replaceAll("data:image/png;base64,", "");  
+	   
+   
+        // Base64解码  
+        byte[] b=null;
+		try {
+			b = decoder.decodeBuffer(coursephoto);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  
+        for (int i = 0; i < b.length; ++i) {  
+            if (b[i] < 0) {// 调整异常数据  
+                b[i] += 256;  
+            }  
+        }
+        // 生成jpeg图片  
+        long temp=System.currentTimeMillis()+new Random().nextInt(100000);
+        String filename=temp+".png";
+        System.out.println(filename);
+        String photopath="../img/headimg/"+filename;
+        FileOutputStream fos;
+	try {
+		fos = new FileOutputStream("G:\\yc\\apache-tomcat-7.0.30\\webapps\\img\\headimg\\"+filename);
+		fos.write(b);  
+        fos.flush();  
+        fos.close(); 
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}  
+		Date date=new Date();
+		createTime=createTime+" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
+        Course course=new Course(ctitle,ctintrodution,Integer.parseInt(ctid),courseting,photopath,Integer.parseInt(userId),createTime);
+        
+        boolean result=courseService.insertCourse(course);
+       
+		out.print(result);
+		out.flush();
+		out.close();
+	}
+	
+	@RequestMapping(value="/getCourseById",method=RequestMethod.POST)
+	public void getCourseById(Integer courseid,Model model){
+		LogManager.getLogger().debug("getCourseById 到达...");
+		Course course = courseService.getCourseById(courseid);
+		model.addAttribute("course", course);
+	}
 	
 	
 

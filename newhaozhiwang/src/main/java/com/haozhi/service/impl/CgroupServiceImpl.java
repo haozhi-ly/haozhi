@@ -1,6 +1,10 @@
 package com.haozhi.service.impl;
 
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +32,30 @@ public class CgroupServiceImpl implements CgroupService{
 	public List<Cgroup> searchGroups(String keyWord) {
 		List<Cgroup> groups=groupMapper.searchGroups(keyWord);
 		return groups;
+	}
+
+	@Autowired 
+	private CgroupMapper cgroupMapper;
+	
+	@Override
+	public List<Cgroup> getAllgroupBypage(int pagesize, int pagenumber) {
+		// TODO Auto-generated method stub
+		Map<String,Object> map=new HashMap<String,Object>();
+		map.put("pagenumber",pagesize);
+		map.put("pagesize", pagenumber);
+		return cgroupMapper.findAllgroupBypage(map);
+	}
+
+	@Override
+	public int findAll(){
+		// TODO Auto-generated method stub
+		return cgroupMapper.findAll();
+	}
+
+	@Override
+	public boolean insertgroup(Cgroup group) {
+		// TODO Auto-generated method stub
+		return cgroupMapper.insertCgroup(group);
 	}
 
 }

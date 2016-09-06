@@ -4,6 +4,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
 <mapper namespace="com.haozhi.mapper.CgroupMapper">
+
+	<resultMap type="Cgroup" id="CgroupMap">
+		
+		<!-- <id column="userId" property="createman"/>  -->
+		
+		<association property="userinfo" column="createman" javaType="UserInfo" select="getUserByUsid" />
+	</resultMap>
+	<select id="findAllgroupBypage" resultMap="CgroupMap" parameterType="java.util.Map" >
+			select * from(select c.*,rownum rn from (select * from cgroup)c 
+					where #{pagesize}*#{pagenumber}>=rownum)
+			 				where rn>#{pagesize}*(#{pagenumber}-1) 	
+	</select>
+	
+	
+	<select id="getUserByUsid" resultType="UserInfo" parameterType="int">
+		select * from userinfo where userid = #{userid}
+	</select>
+	
+	<select id="findAll" resultType="int">
+		select count(*) from cgroup
+	</select>
+
+
+
 	<sql id="selectGroups">
 		select * from (select * from cgroup order by peoplecount desc )
 	</sql>
