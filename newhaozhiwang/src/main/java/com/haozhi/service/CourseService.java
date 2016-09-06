@@ -20,7 +20,11 @@ public interface CourseService {
 	
 	List<Course> getAllHostCourse();  //查询所有热门课程
 
+
 	List<Course> getAllCourseBypage(int rows, int page);
 
 	int findAlltype();
+
+	
+	Course getCourseById(Integer courseid); // 通过课程号查课程
 }

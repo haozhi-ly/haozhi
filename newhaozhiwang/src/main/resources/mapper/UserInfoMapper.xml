@@ -43,8 +43,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<update id="editPhoto" parameterType="UserInfo">
-		update us
-		erinfo set photo=#{photo,jdbcType=VARCHAR} where userid=#{userid}
+		update userinfo set photo=#{photo,jdbcType=VARCHAR} where userid=#{userid}
 	</update>
 	
 	<update id="editPwd" parameterType="UserInfo">

@@ -51,7 +51,6 @@ public class UserHandler {
 	//登录
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public String login(UserInfo userInfo,Model model,ModelMap map){
-		
 		String name=userInfo.getUname();
 		
 		 name=new UsuallyUtil().decode(name);

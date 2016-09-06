@@ -19,10 +19,15 @@ public interface CourseMapper {
 	
 	List<Course> getCourseDescTime(Integer ctid);  //查询课程按创建时间排序
 	
-	List<Course> getAllHostCourse();//查询所有热门课程
+
 	List<Course> getCoursebypageDescTime(Map<String,Object> map);
 
 	int countCoursenumber();
 	
+
+	List<Course> getAllHostCourse();  //查询所有热门课程
+	
+	Course getCourseById(Integer courseid); // 通过课程号查课程
+
 }
 

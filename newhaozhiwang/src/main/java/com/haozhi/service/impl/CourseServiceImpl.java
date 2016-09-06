@@ -56,6 +56,7 @@ public class CourseServiceImpl implements CourseService {
 	}
 
 	@Override
+
 	public List<Course> getAllCourseBypage(int rows, int page) {
 		// TODO Auto-generated method stub
 		Map<String,Object> map=new HashMap<String,Object>();
@@ -70,6 +71,10 @@ public class CourseServiceImpl implements CourseService {
 	public int findAlltype() {
 		// TODO Auto-generated method stub
 		return courseMapper.countCoursenumber();
+	}
+	public Course getCourseById(Integer courseid) {
+		return courseMapper.getCourseById(courseid);
+
 	}
 
 	

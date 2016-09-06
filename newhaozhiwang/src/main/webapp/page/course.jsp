@@ -74,11 +74,11 @@
        <c:forEach items="${courses}" var="item">
         <div class="col-md-4 col-xs-6">
           <div class="course-item ">
-            <div class="course-img"> <a href="javaScript:void(0);"> <img src="images/160148ccf620140008.jpg" alt="sai基础教程" class=""> </a> </div>
+            <div class="course-img" id="cimg"> <a href="javaScript:void(0);" id="${item.courseid}"> <img src="images/160148ccf620140008.jpg" alt="${item.ctitle}" class=""> </a> </div>
             <div class="course-info">
-              <div class="title text-o-show"> <a href="http://www.howzhi.com/course/3539/">${item.ctitle}</a> </div>
+              <div class="title text-o-show"> <a href="javaScript:void(0);" id="${item.courseid}">${item.ctitle}</a> </div>
               <div class="metas"  style="color:#666"><span>浏览量:${item.cview}</span>/ <span>${item.memberCount}学员</span>/ <span>${item.assessAvg}评分</span> </div>
-              <div class="teacher text-o-show"> <a class=" js-user-card" href="http://www.howzhi.com/u/1282433/" data-card-url="/user/1282433/card/show" data-user-id="1282433"> 
+              <div class="teacher text-o-show"> <a class=" js-user-card" href="javaScript:void(0);" data-card-url="/user/1282433/card/show" data-user-id="1282433"> 
               	<img class="avatar-ss " src=" images/2001255a2bbc776915.jpg" alt="${item.user.uname}" >${item.user.uname} </a>
                 <div class="price free pull-right"><span>免费</span></div>
               </div>

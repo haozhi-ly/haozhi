@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,7 +32,7 @@ import sun.misc.BASE64Decoder;
 
 @Controller
 @RequestMapping("/course")
-@SessionAttributes(value={"courses","hostcourse"})
+@SessionAttributes(value={"courses","hostcourse","course"})
 public class CourseHandler {
 	@Autowired
 	private CourseService courseService;
@@ -213,6 +214,13 @@ public class CourseHandler {
 		out.print(result);
 		out.flush();
 		out.close();
+	}
+	
+	@RequestMapping(value="/getCourseById",method=RequestMethod.POST)
+	public void getCourseById(Integer courseid,Model model){
+		LogManager.getLogger().debug("getCourseById 到达...");
+		Course course = courseService.getCourseById(courseid);
+		model.addAttribute("course", course);
 	}
 	
 	
