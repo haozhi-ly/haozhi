@@ -31,8 +31,23 @@ public class AdminServiceIpml implements AdminService {
 	}
 
 	@Override
-	public int deladmin(String aid) {
+	public int deladmin(Integer...aid) {
 		return adminMapper.deladmin(aid);
+	}
+
+	@Override
+	public Admin loginadmin(Admin admin) {
+		return adminMapper.loginadmin(admin);
+	}
+
+	@Override
+	public Admin findmyself(Admin admin) {
+		return adminMapper.findmyself(admin);
+	}
+
+	@Override
+	public int updateadmin(Admin admin) {
+		return adminMapper.updateadmin(admin);
 	}
 
 }

@@ -1,13 +1,8 @@
-package com.haozhi.mapper;
+package com.haozhi.service.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
-
-
-import org.junit.Test;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,23 +11,27 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.haozhi.entity.Cgroup;
-import com.haozhi.entity.Course;
 import com.haozhi.service.CgroupService;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring.xml")
-public class CgroupMapperTest {
+public class CgroupServiceImplTest {
 	
 	@Autowired
-	private CgroupMapper groupMapper;
-	
+	private CgroupService groupService;
+
 	@Test
-	public void testGetListGroups() {
-		System.out.println(groupMapper.getHostGroups());
+	public void testGetHostGroups() {
+		List<Cgroup> group=groupService.getHostGroups();
+		System.out.println(group);
+		assertNotNull(group);
 	}
 	
 	@Test
 	public void testGetNewGroups() {
-		System.out.println(groupMapper.getNewGroups());
+		List<Cgroup> group=groupService.getNewGroups();
+		System.out.println(group);
+		assertNotNull(group);
 	}
 
 }

@@ -7,16 +7,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="findAll" resultType="Admin">
 		select * from admin
 	</select>
+	<select id="loginadmin" resultType="Admin" parameterType="Admin">
+		select * from admin where aname=#{aname} and apassword=#{apassword}
+	</select>
 	
+	<select id="findmyself" parameterType="Admin" resultType="Admin">
+		select * from admin where aid=#{aid}
+	</select>
 	<insert id="addadmin" parameterType="Admin" >
-		insert into admin values(seq_aid.nextval,#{aname},#{email},#{apassword},null,null,null)
+		insert into admin values(seq_aid.nextval,#{aname},#{email},#{email},null,null,null)
 	</insert>
 	
 	<select id="count" resultType="int">
 		select count(*) from admin
 	</select>
-	
-	<delete id="deladmin" parameterType="String">
-		delete from admin where aid in (#{aid})
+	<delete id="deladmin" parameterType="int">
+		delete from admin where aid in 
+		
+		<foreach collection="array" item="aid" open="(" close=")" separator=",">
+			#{aid}
+		</foreach>
 	</delete>
+	<update id="updateadmin" parameterType="Admin">
+		update admin set aname=#{aname},email=#{email},apassword=#{apassword} where aid=#{aid}
+	</update>
 </mapper>

@@ -12,5 +12,7 @@ public interface CgroupService {
 	int findAll();
 
 	boolean insertgroup(Cgroup group);
+	List<Cgroup> getHostGroups();
 
+	List<Cgroup> getNewGroups();
 }

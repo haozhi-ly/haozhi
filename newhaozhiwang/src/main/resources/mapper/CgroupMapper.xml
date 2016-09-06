@@ -28,4 +28,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 
+	<sql id="selectGroups">
+		select * from (select * from cgroup order by peoplecount desc )
+	</sql>
+	
+	<!-- 查询热门小组    选人数最多的 -->
+	<select id="getHostGroups" resultType="Cgroup">
+		<include refid="selectGroups"/> where 12>=rownum
+	</select>
+	
+	<!-- 查询新晋小组  选最近时间创建的 -->
+	<select id="getNewGroups" resultType="Cgroup">
+		select * from (select * from cgroup order by createtime desc ) where 4>rownum
+	</select>
 </mapper>

@@ -59,5 +59,12 @@ public class UserInfoServiceImplTest extends UserInfoServiceImpl {
 		System.out.println(user);
 		assertNotNull(user);
 	}
-
+	
+	@Test
+	public void testeditPhoto() {
+		UserInfo user = new UserInfo();
+		user.setUserid(2);user.setPhoto("147308775646389232.jpg");
+		int result=userInfoService.editPhoto(user);
+		assertEquals(result, 1);
+	}
 }

@@ -80,7 +80,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 	<select id="getHostByCtid" resultMap="CourseMap4" parameterType="Integer" >
 		<include refid="selectHostCourse"/>
-		 where s.ctid=#{ctid}
+		<if test="_parameter==0"></if>
+		<if test="_parameter!=0"> where s.ctid=#{_parameter}</if>
 		 order by memberCount desc) where 3>=rownum 
 	</select>
 	<select id="getUserByUsid4" resultType="UserInfo" parameterType="int">

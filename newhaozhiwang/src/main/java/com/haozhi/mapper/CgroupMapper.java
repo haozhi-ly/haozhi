@@ -13,5 +13,8 @@ public interface CgroupMapper {
 	int findAll();
 
 	boolean insertCgroup(Cgroup group);
+	List<Cgroup> getHostGroups();
+
+	List<Cgroup> getNewGroups();
 
 }

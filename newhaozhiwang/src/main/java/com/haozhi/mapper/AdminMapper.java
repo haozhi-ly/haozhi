@@ -13,6 +13,12 @@ public interface AdminMapper {
 
 	int count();
 
-	int deladmin(String aid);
+	int deladmin(Integer...aid);
+
+	Admin loginadmin(Admin admin);
+
+	Admin findmyself(Admin admin);
+
+	int updateadmin(Admin admin);
 
 }

@@ -1,12 +1,20 @@
 package com.haozhi.handler;
 
+import java.io.File;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import java.util.Date;
+import java.util.Random;
+
 
 import javax.mail.internet.MimeMessage;
-import javax.management.DescriptorRead;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -19,14 +27,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.haozhi.entity.UserInfo;
 import com.haozhi.service.UserInfoService;
-
-
 import com.haozhi.util.RandomNumUtil;
 import com.haozhi.util.UsuallyUtil;
-import com.sun.mail.util.DecodingException;
 
 
 
@@ -64,7 +70,7 @@ public class UserHandler {
 			map.put("users", "");
 			return "login";
 		}
-		return "index";
+		return "redirect:../page/index.jsp";
 	}
 	
 	@RequestMapping(value="/checkemail",method=RequestMethod.POST)
@@ -89,11 +95,12 @@ public class UserHandler {
 	}
 	
 	@RequestMapping("/sendMail")
-	public void sendMail(ModelMap map,String email,PrintWriter out){
+	public void sendMail(ModelMap map,String email,PrintWriter out,Model model){
 		System.out.println(email);
 		//int yzm=(int)(Math.random()*1000000);
 		int yzm=RandomNumUtil.getRandomNumber();//生成六位不重复随机数
-		map.put("yzm", yzm);
+		model.addAttribute("yzm", yzm);
+		//map.put("yzm", yzm);
 		activeAccountMail("好知网注册验证信息","您的验证码是："+yzm,"15886486481@163.com",email);
 		out.print(yzm);
 		out.flush();
@@ -104,17 +111,6 @@ public class UserHandler {
 	@RequestMapping(value="/register",method=RequestMethod.POST)
 	public String register(@ModelAttribute("user") UserInfo userInfo,ModelMap map){
 		System.out.println("register ===>" +userInfo);
-		System.out.println(userInfoService.getUname(userInfo.getUname()));
-		System.out.println(userInfoService.getUname(userInfo.getEmail()));
-		
-		/*if(userInfoService.getUname(userInfo.getUname())==true || userInfoService.getEmail(userInfo.getEmail())==true){
-			System.out.println("注册失败啦。。。");
-			return "login";
-		}
-		
-		if(map.get("yzm").equals(userInfo.getCode())){
-			
-		}*/
 		userInfoService.register(userInfo);
 			return "login";
 	}
@@ -138,10 +134,7 @@ public class UserHandler {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/save",method=RequestMethod.POST)
-
 	public String saveInfo(UserInfo user,int userid,String gender,String usign,String introdution,ModelMap map,HttpServletRequest request,Model model){
-
-
 		System.out.println("save进来了");
 		String flag="";
 		user.setUserid(userid);user.setGender(gender);user.setUsign(usign);user.setIntrodution(introdution);
@@ -149,7 +142,6 @@ public class UserHandler {
 		userInfoService.saveInfo(user);
 		if(userInfoService.saveInfo(user)==1){
 			flag = "1";
-
 			user.setUname("lytest");
 			model.addAttribute("users",user);
 			//session.setAttribute("users",userinfo);
@@ -178,7 +170,75 @@ public class UserHandler {
 		}
 		
 	}
-
 	
+
+	@ResponseBody
+	@RequestMapping("/findall")
+	private Map<String, Object> findall(){
+		List<UserInfo> users=userInfoService.findall();
+		int count=userInfoService.count();
+		System.out.println(users);
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("rows", users);
+		result.put("total",count);
+		return result;
+	}
+	
+	@RequestMapping("/adduserinfo")
+	private void adduserinfo(UserInfo userInfo,String uname,String upassword,String email,String gender,String usign,String introdution,PrintWriter out){
+		userInfo.setUname(uname);
+		userInfo.setUpassword(upassword);
+		userInfo.setEmail(email);
+		userInfo.setGender(gender);
+		userInfo.setIntrodution(introdution);
+		userInfo.setUsign(usign);
+		
+	}
+
+	@RequestMapping("/editPhoto")
+	 public String editItemsSubmit( Model model,HttpServletRequest request,Integer userid,
+			  MultipartFile items_pic,UserInfo user)throws Exception {
+		System.out.println("fkghdkhg");
+	      // 上传图片的原始名称
+	      String originalFilename = items_pic.getOriginalFilename();
+	      // 上传图片
+	      if (items_pic!= null&&originalFilename!=null&&originalFilename.length()>0) {// 存储图片的物理路径
+	        String pic_path = "D:\\apache-tomcat-7.0.30\\webapps\\touxiangPic\\";
+	        // 新的图片名称
+	        String newFilename = new Date().getTime()+""+new Random().nextInt(100000)
+	        		 +originalFilename.substring(originalFilename.lastIndexOf("."));
+	        //新的图片
+	        File newfile=new java.io.File(pic_path+newFilename);
+	        //将内存的数据写入磁盘
+	        items_pic.transferTo(newfile);	
+	        user.setUserid(userid);user.setPhoto(newFilename);
+	        userInfoService.editPhoto(user);
+	   }
+	      return "forward:/page/info.jsp";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/selectTouxiang",method=RequestMethod.POST)
+	public UserInfo register(Integer userid,ModelMap map){
+		UserInfo user=userInfoService.getInfoByUserid(userid);
+			return user;
+	}
+	
+	@RequestMapping(value="/editpwd",method=RequestMethod.POST)
+	public void editpwd(UserInfo userInfo,Integer userid,String curpwd,String newpwd,String conpwd, PrintWriter out){
+		UserInfo user=userInfoService.getInfoByUserid(userid);
+		System.out.println(user);
+		if(!curpwd.equals( user.getUpassword()) ){
+			out.print(1);
+		}else if(!newpwd.equals(conpwd)){
+			out.print(2);
+		}else{
+			userInfo.setUserid(userid);userInfo.setUpassword(newpwd);
+			userInfoService.editPwd(userInfo);
+			out.print(3);
+		}
+	}
+	
+
 
 }

@@ -1,8 +1,10 @@
 package com.haozhi.service.impl;
 
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,19 @@ import com.haozhi.service.CgroupService;
 
 @Service("cgroupService")
 public class CgroupServiceImpl implements CgroupService{
+	
+	@Autowired
+	private CgroupMapper groupMapper;
+	@Override
+	public List<Cgroup> getHostGroups() {
+		List<Cgroup> groups=groupMapper.getHostGroups();
+		return groups;
+	}
+	@Override
+	public List<Cgroup> getNewGroups() {
+		List<Cgroup> groups=groupMapper.getNewGroups();
+		return groups;
+	}
 
 	@Autowired 
 	private CgroupMapper cgroupMapper;
