@@ -7,7 +7,7 @@
     </div>
     <nav class="collapse navbar-collapse pull-left">
       <ul class="nav navbar-nav topmenu">
-        <li class="visible-xs"> <a href="javaScript:void(0);"><i class="fa fa-search mrm"></i>搜索</a> </li>
+        <li class="visible-xs"> <a href="page/index.jsp"><i class="fa fa-search mrm"></i>搜索</a> </li>
         <li class=""> <a href="page/learnCenter.jsp">学习中心 </a> </li>
         <li class="nav-hover" > <a href="page/course.jsp">课程 <b class="caret"></b></a>
           <ul class="dropdown-menu"  role="menu" id="dropdown-menu">
@@ -31,9 +31,6 @@
     </nav>
     <div class="pull-right user-nav clearfix">
       <ul class="nav pull-right">
-
-        <li class="hidden-xs hidden-sm"> <a class="btn btn-primary radius" href="createcourse.jsp"><i style="color: rgb(255, 247, 255);" class="glyphicon glyphicon-plus"></i> 创建课程</a> </li>
-        <li class="dropdown user-nav-dropdown user-img"> <a href="#" class="dropdown-toggle"> <img src="images/avatar.png" class="user-avatar" alt="珘珘"> </a>
 
         <li class="hidden-xs hidden-sm"> <a class="btn btn-primary radius" href="javaScript:void(0);"><i style="color: rgb(255, 247, 255);" class="glyphicon glyphicon-plus"></i> 创建课程</a> </li>
         <li class="dropdown user-nav-dropdown user-img"> <a href="#" class="dropdown-toggle"> <img src="images/avatar.png" class="user-avatar" alt="${users.uname }" id="${users.userid}"> </a>
