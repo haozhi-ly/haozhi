@@ -302,13 +302,14 @@ create table cgroup(
                  constraint FK_userinfo_userid001 references userinfo(userid),--创建人 
        createtime date,---创建时间
        groupnumber varchar2(500),---小组成员（拼接）
-       temp01 varchar2(200),--备用字段
-       temp02 varchar2(200),--备用字段
-       temp03 varchar2(200)--备用字段
+       peoplecount int,--小组成员总数
+       pic varchar2(200),--小组头像
+       introduction varchar2(400)--小组简介
 );
+drop table cgroup;
 create sequence seq_gid start with 1;
-insert into cgroup values(seq_gid.nextval,'摄影公社',3,sysdate,'3,1,2',null,null,null);
-insert into cgroup values(seq_gid.nextval,'绘画世界',2,sysdate,'2,1,4',null,null,null);
-
+insert into cgroup values(seq_gid.nextval,'摄影公社',3,sysdate,'3,1,2',1000,null,'摄影爱好者的天堂');
+insert into cgroup values(seq_gid.nextval,'绘画世界',2,sysdate,'2,1,4',2000,null,'灵感来自于生活');
+commit;
 
 ------------------话题表 topic

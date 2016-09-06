@@ -11,14 +11,26 @@
 	<link rel="stylesheet" type="text/css" href="easyui/css/easyui.css">
 	<link rel="stylesheet" type="text/css" href="easyui/css/icon.css">
 	<link rel="stylesheet" type="text/css" href="easyui/css/demo.css">
+		<link rel="stylesheet" type="text/css" href="back/css/style.css">
+	
 	<script type="text/javascript" src="easyui/js/jquery.min.js"></script>
 	<script type="text/javascript" src="easyui/js/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="easyui/js/index.js"></script>
 	<script type="text/javascript" src="easyui/js/easyui-lang-zh_CN.js"></script>
 
-	<script type="text/javascript" charset="utf-8" src="js/showpic.js"></script>
+	<script type="text/javascript" charset="utf-8" src="back/js/showpic.js"></script>
 
-	<script type="text/javascript"  src="js/ajaxfileupload.js"></script>
+	<script type="text/javascript"  src="back/js/ajaxfileupload.js"></script>
+		<script type="text/javascript"  src="back/js/cropbox.js"></script>
+	
+	<script type="text/javascript" src="ckeditor/ckeditor.js"></script>  
+    <script type="text/javascript" src="ckeditor/config.js"></script>  
+   	<!-- <script type="text/javascript">
+   		var myckeditor;
+	    	$(document).ready(function(){  
+	    	 myckeditor=CKEDITOR.replace('myckeditor'); 
+	    });  
+	</script>   -->
 <style type="text/css">
 #login{
 	float: right;
@@ -48,8 +60,7 @@
 					<li>课程类型管理</li>
 					<li>课程管理</li>
 					<li>小组管理</li>
-				    <li>个人信息</li>
-							
+				    <li>个人信息</li>	
 				</ul>
 			</li>
 		</ul>

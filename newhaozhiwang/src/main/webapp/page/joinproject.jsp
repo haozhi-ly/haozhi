@@ -203,7 +203,7 @@
 						</div>
 						<div class="section-body">
 							<div class="row">
-								<div class="col-md-4 col-sm-6 ">
+							<!-- 	<div class="col-md-4 col-sm-6 nobd">
 
 									<div class="course-item">
 										<div class="">
@@ -235,7 +235,41 @@
 											</div>
 										</div>
 									</div>
+								</div> -->
+								<div class="col-md-4 col-sm-6  nobd">
+
+									<div class="course-item">
+										<div class="course-img">
+
+											<img src="images/0650262eb443828220.jpg" alt="人像摄影布光入门" class="ly-course-img-moreproject">
+											<a href="http://www.howzhi.com/course/157/">
+												<div class="mask">
+													<span class="btn btn-primary">开始学习</span>
+												</div>
+											</a>
+										</div>
+										<div class="course-info">
+											<div class="title">
+												<span class="label label-p">人像</span>
+												<a class="transition" href="http://www.howzhi.com/course/157/">人像摄影布光入门</a>
+											</div>
+											<div class="metas">
+												<span>11万+浏览</span>/
+												<span>3989学员</span>/
+												<span>4.3评分</span>
+											</div>
+											<div class="teacher text-o-show">
+												<a class=" js-user-card" href="http://www.howzhi.com/u/187/" data-card-url="/user/187/card/show" data-user-id="187">
+													<img class="avatar-ss " src="images/145733d2af26635228.jpg" 　alt="乱流"> 乱流
+												</a>
+												<span class="daren-icon-t" title="达人"></span>
+
+												<div class="price free pull-right"><span>免费</span></div>
+											</div>
+										</div>
+									</div>
 								</div>
+								
 								<div class="col-md-4 col-sm-6  nobd">
 
 									<div class="course-item">

@@ -14,6 +14,7 @@ public class Course implements Serializable{
 	private String ctitle;// --标题
 	private String cintrodution;// --课程简介
 	private Integer ctid; // --课程类别（外键）
+	private CourseType courseType;//ly--添加的字段目的是为了，在后台获得课程的类型
 	private String courseting;// --应用于课程关键字搜索
 	private String coursephoto;// --课程图片
 	private int userId;// --外键 课程的创建者
@@ -43,6 +44,41 @@ public class Course implements Serializable{
 		this.temp03 = temp03;
 	}
 	
+	public Course(String ctitle, String cintrodution, CourseType courseType,
+			String courseting, String coursephoto, UserInfo userInfo, int cview,
+			String createTime, String temp02, String temp03) {
+		this.ctitle = ctitle;
+		this.cintrodution = cintrodution;
+		this.courseType=courseType;
+		this.courseting = courseting;
+		this.coursephoto = coursephoto;
+		this.user = userInfo;
+		this.cview = cview;
+		this.createTime = createTime;
+		this.temp02 = temp02;
+		this.temp03 = temp03;
+	}
+	
+	
+	public Course(String ctitle, String cintrodution, Integer ctid, String courseting, String coursephoto, int userId,
+			String createTime) {
+		super();
+		this.ctitle = ctitle;
+		this.cintrodution = cintrodution;
+		this.ctid = ctid;
+		this.courseting = courseting;
+		this.coursephoto = coursephoto;
+		this.userId = userId;
+		this.createTime = createTime;
+	}
+
+	public CourseType getCourseType() {
+		return courseType;
+	}
+
+	public void setCourseType(CourseType courseType) {
+		this.courseType = courseType;
+	}
 
 	public Course(String ctitle, String cintrodution, int ctid, String courseting, String coursephoto, int userId) {
 		super();
@@ -158,9 +194,6 @@ public class Course implements Serializable{
 		this.assessAvg = assessAvg;
 	}
 	
-	
-
-
 	public UserInfo getUser() {
 		return user;
 	}
@@ -172,10 +205,19 @@ public class Course implements Serializable{
 	@Override
 	public String toString() {
 		return "Course [courseid=" + courseid + ", ctitle=" + ctitle + ", cintrodution=" + cintrodution + ", ctid="
-				+ ctid + ", courseting=" + courseting + ", coursephoto=" + coursephoto + ", userId=" + userId
-				+ ", cview=" + cview + ", createTime=" + createTime + ", memberCount=" + memberCount + ", assessAvg="
-				+ assessAvg + ", user=" + user + "]";
+				+ ctid + ", courseType=" + courseType + ", courseting=" + courseting + ", coursephoto=" + coursephoto
+				+ ", userId=" + userId + ", cview=" + cview + ", createTime=" + createTime + ", temp02=" + temp02
+				+ ", temp03=" + temp03 + ", memberCount=" + memberCount + ", assessAvg=" + assessAvg + ", user=" + user
+				+ "]";
 	}
+
+	
+
+	
+	
+
+
+	
 
 	
 

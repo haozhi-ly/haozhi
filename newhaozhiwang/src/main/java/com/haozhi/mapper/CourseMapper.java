@@ -2,6 +2,7 @@
 package com.haozhi.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import com.haozhi.entity.Course;
 
@@ -18,8 +19,10 @@ public interface CourseMapper {
 	
 	List<Course> getCourseDescTime(Integer ctid);  //查询课程按创建时间排序
 	
-	List<Course> getAllHostCourse();  //查询所有热门课程
-	
+	List<Course> getAllHostCourse();//查询所有热门课程
+	List<Course> getCoursebypageDescTime(Map<String,Object> map);
+
+	int countCoursenumber();
 	
 }
 
