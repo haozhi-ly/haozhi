@@ -1,5 +1,7 @@
 package com.haozhi.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -65,6 +67,15 @@ public class UserInfoServiceImpl implements UserInfoService {
 		return userInfoMapper.getInfoByUserid(userid);
 	}
 
+	@Override
+	public List<UserInfo> findall() {
+		return userInfoMapper.findall();
+	}
+
+	@Override
+	public int count() {
+		return userInfoMapper.count();
+	}
 	@Override
 	public int editPhoto(UserInfo userInfo) {
 		return userInfoMapper.editPhoto(userInfo);

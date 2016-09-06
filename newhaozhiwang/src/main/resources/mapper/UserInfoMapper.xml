@@ -33,6 +33,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		, introdution=#{introdution,jdbcType=VARCHAR} where userid=#{userid}
 	</update>
 	
+
+	<select id="findall" resultType="UserInfo">
+		select * from UserInfo
+	</select>
+	
+	<select id="count" resultType="int">
+		select count(*) from UserInfo
+	</select>
+
 	<update id="editPhoto" parameterType="UserInfo">
 		update us
 		erinfo set photo=#{photo,jdbcType=VARCHAR} where userid=#{userid}
@@ -42,4 +51,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update userinfo set upassword=#{upassword,jdbcType=VARCHAR} where userid=#{userid}
 	</update>
 	
+
 </mapper>

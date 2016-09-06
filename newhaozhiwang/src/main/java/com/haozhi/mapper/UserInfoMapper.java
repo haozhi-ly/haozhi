@@ -1,6 +1,8 @@
 
 package com.haozhi.mapper;
 
+import java.util.List;
+
 import com.haozhi.entity.UserInfo;
 
 public interface UserInfoMapper {
@@ -24,6 +26,10 @@ public interface UserInfoMapper {
 	int saveInfo(UserInfo user);
 	
 	UserInfo getInfoByUserid(int userid);
+
+	List<UserInfo> findall();
+
+	int count();
 	
 	//换头像
 	int editPhoto(UserInfo userInfo);

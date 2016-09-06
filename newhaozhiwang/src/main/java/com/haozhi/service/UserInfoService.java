@@ -1,5 +1,7 @@
 package com.haozhi.service;
 
+import java.util.List;
+
 import com.haozhi.entity.UserInfo;
 
 public interface UserInfoService {
@@ -24,5 +26,9 @@ public interface UserInfoService {
 	
 	//修改密码
     int editPwd(UserInfo userInfo);
+
+	List<UserInfo> findall();
+
+	int count();
 
 }

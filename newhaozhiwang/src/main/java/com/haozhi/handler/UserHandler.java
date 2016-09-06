@@ -2,11 +2,19 @@ package com.haozhi.handler;
 
 import java.io.File;
 import java.io.PrintWriter;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import java.util.Date;
 import java.util.Random;
 
+
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
+
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -162,8 +170,31 @@ public class UserHandler {
 		}
 		
 	}
-
 	
+
+	@ResponseBody
+	@RequestMapping("/findall")
+	private Map<String, Object> findall(){
+		List<UserInfo> users=userInfoService.findall();
+		int count=userInfoService.count();
+		System.out.println(users);
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("rows", users);
+		result.put("total",count);
+		return result;
+	}
+	
+	@RequestMapping("/adduserinfo")
+	private void adduserinfo(UserInfo userInfo,String uname,String upassword,String email,String gender,String usign,String introdution,PrintWriter out){
+		userInfo.setUname(uname);
+		userInfo.setUpassword(upassword);
+		userInfo.setEmail(email);
+		userInfo.setGender(gender);
+		userInfo.setIntrodution(introdution);
+		userInfo.setUsign(usign);
+		
+	}
+
 	@RequestMapping("/editPhoto")
 	 public String editItemsSubmit( Model model,HttpServletRequest request,Integer userid,
 			  MultipartFile items_pic,UserInfo user)throws Exception {
@@ -208,5 +239,6 @@ public class UserHandler {
 		}
 	}
 	
+
 
 }
