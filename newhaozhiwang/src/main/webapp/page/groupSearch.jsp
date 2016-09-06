@@ -93,7 +93,7 @@
 					</div>
 					
 					<c:set value="${searchgroups}" var="search"/>
-					<c:if test="${search==null }">
+					<c:if test="${empty search}">
 						<!--关键字查询，小组为空时（没有查询到信息）-->
 						<div class="row">
 	            			<div class="empty">暂无小组信息</div>
