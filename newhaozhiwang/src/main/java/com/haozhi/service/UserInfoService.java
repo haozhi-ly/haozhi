@@ -1,5 +1,7 @@
 package com.haozhi.service;
 
+import java.util.List;
+
 import com.haozhi.entity.UserInfo;
 
 public interface UserInfoService {
@@ -18,5 +20,9 @@ public interface UserInfoService {
 	int saveInfo(UserInfo user);
 	
 	UserInfo getInfoByUserid(int userid);
+
+	List<UserInfo> findall();
+
+	int count();
 
 }

@@ -32,4 +32,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update userinfo set gender=#{gender,jdbcType=VARCHAR}, usign=#{usign,jdbcType=VARCHAR} 
 		, introdution=#{introdution,jdbcType=VARCHAR} where userid=#{userid}
 	</update>
+	
+	<select id="findall" resultType="UserInfo">
+		select * from UserInfo
+	</select>
+	
+	<select id="count" resultType="int">
+		select count(*) from UserInfo
+	</select>
 </mapper>

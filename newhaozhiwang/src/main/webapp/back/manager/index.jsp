@@ -7,18 +7,20 @@
 <head>
 	<base href="/newhaozhiwang/"/>
 	<meta charset="UTF-8">
-	<title>好知网</title>
+	<title>好知网后台管理</title>
 	<link rel="stylesheet" type="text/css" href="easyui/css/easyui.css">
 	<link rel="stylesheet" type="text/css" href="easyui/css/icon.css">
 	<link rel="stylesheet" type="text/css" href="easyui/css/demo.css">
+	<link rel="stylesheet" type="text/css" href="back/css/style.css">
+	
 	<script type="text/javascript" src="easyui/js/jquery.min.js"></script>
 	<script type="text/javascript" src="easyui/js/jquery.easyui.min.js"></script>
-	<script type="text/javascript" src="easyui/js/index.js"></script>
 	<script type="text/javascript" src="easyui/js/easyui-lang-zh_CN.js"></script>
-
-	<script type="text/javascript" charset="utf-8" src="js/showpic.js"></script>
-
-	<script type="text/javascript"  src="js/ajaxfileupload.js"></script>
+	<script type="text/javascript"  src="back/js/ajaxfileupload.js"></script>
+	<script type="text/javascript" charset="utf-8" src="back/js/cropbox.js"></script>
+	<script type="text/javascript" src="easyui/js/index.js"></script>
+	
+	
 <style type="text/css">
 #login{
 	float: right;

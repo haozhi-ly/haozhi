@@ -34,7 +34,7 @@
 		<!-------------------------我是头部------------------------------------------->
 		<c:set value="${users}" var="us"/>
 			<c:if test="${us==null }">
-				<jsp:include page="topf.jsp"></jsp:include>
+				<jsp:include page="topb.jsp"></jsp:include>
 			</c:if>
 			<c:if test="${us!=null }">
 				<jsp:include page="topb.jsp"></jsp:include>
