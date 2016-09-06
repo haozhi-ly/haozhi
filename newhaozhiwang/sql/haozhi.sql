@@ -31,6 +31,9 @@ create table userinfo(
        temp02 varchar2(200),--备用字段
        temp03 varchar2(200)--备用字段    
 );
+
+delete from userinfo where email='542933376@qq.com'
+commit
 select * from UserInfo where uname='超超' and upassword=123456
 create sequence seq_userid start with 1;
 
