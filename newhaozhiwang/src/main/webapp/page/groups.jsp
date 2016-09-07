@@ -234,12 +234,13 @@
 					</div>-->
 
 					<!-----------------------小组搜索-------------------->
-					<form class="mbl" action="/group/search_group" method="get">
+					<form class="mbl" action="groups/search" method="get">
 						<div class="input-group group-search">
 							<input name="_csrf_token" value="2fbd468350a8348322e8aed780d7f3178511d79d" type="hidden">
 							<input class="form-control" placeholder="小组搜索" name="keyWord" type="text">
 							<span class="input-group-btn">
-            <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+            					<button class="btn btn-default" type="submit">
+            					<span class="glyphicon glyphicon-search"></span></button>
 							</span>
 						</div>
 					</form>
@@ -262,13 +263,6 @@
 		<!---------------------------------------我是底部分割线------------------------------------------------------>
 		<jsp:include page="footer.jsp"></jsp:include>
 
-		<!--<script src="%E5%B0%8F%E7%BB%84%20-%20%E5%A5%BD%E7%9F%A5%E7%BD%91-%E9%87%8D%E6%8B%BE%E5%AD%A6%E4%B9%A0%E4%B9%90%E8%B6%A3-Powered%20By%20Howzhi_files/sea.js"></script>
-		<script src="%E5%B0%8F%E7%BB%84%20-%20%E5%A5%BD%E7%9F%A5%E7%BD%91-%E9%87%8D%E6%8B%BE%E5%AD%A6%E4%B9%A0%E4%B9%90%E8%B6%A3-Powered%20By%20Howzhi_files/seajs-style.js"></script>
-		<script src="%E5%B0%8F%E7%BB%84%20-%20%E5%A5%BD%E7%9F%A5%E7%BD%91-%E9%87%8D%E6%8B%BE%E5%AD%A6%E4%B9%A0%E4%B9%90%E8%B6%A3-Powered%20By%20Howzhi_files/seajs-global-config.js"></script>
-		<script>
-			seajs.use(app.mainScript);
-		</script>-->
-	
 
 		<!--<div id="user-card-store" class="hidden">
 				<div id="user-card-2358982" class="js-card-content" data-user-id="2358982">

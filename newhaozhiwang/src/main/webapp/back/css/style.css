@@ -1,12 +1,12 @@
 @charset "utf-8";
-.container {
+.mycontainer {
 	width: 400px;
 	margin: 40px auto 0 auto;
 	position: relative;
 	font-family: 微软雅黑;
 	font-size: 12px;
 }
-.container p {
+.mycontainer p {
 	line-height: 12px;
 	line-height: 0px;
 	height: 0px;
@@ -44,10 +44,10 @@
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	width: 200px;
+	width: 400px;
 	height: 200px;
 	margin-top: -100px;
-	margin-left: -100px;
+	margin-left: -200px;
 	box-sizing: border-box;
 	border: 1px solid rgb(102, 102, 102);
 	box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.5);

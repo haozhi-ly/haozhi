@@ -17,8 +17,17 @@ public class CourseTypeServiceImplTest {
 	@Autowired
 	private CourseTypeService courseTypeService;
 	
+	@Test
 	public void testFindAlltype() {
+		System.out.println("yes");
 		System.out.println(courseTypeService.findAlltype());
+		
+	}
+	@Test
+	public void testFindAll() {
+		System.out.println("yes");
+		System.out.println(courseTypeService.findAllCourseType());
+		
 	}
 
 }

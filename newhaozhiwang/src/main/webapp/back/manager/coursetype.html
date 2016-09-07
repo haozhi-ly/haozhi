@@ -7,15 +7,15 @@
 	var flag;
 	
 	obj=$('#types_data').datagrid({
-	url:'/CourseType/findAllType',
+	url:'/newhaozhiwang/courseType/findAllTypeByPage',
 	fitColumns:true,
 	striped:true,
 	loadMsg:"数据加载中...",
 	pagination:true,
 	fit:true,
 	pageNumber:1,
-	pageSize:10,
-	pageList:[10,15,20,30],
+	pageSize:5,
+	pageList:[5,10,15,20,30],
 	sortName:'ctid',
 	remoteSort:false,
 	columns:[[
@@ -84,8 +84,8 @@
 						}
 						tids+=rows[i].tid;
 						//发请求到数据库删除
-						$.post("/course/deleteCourseType",{tid:tids},function(data){
-							if(data>0){
+						$.post("/courseType/deleteCourseType",{ctid:ctids},function(data){
+							if(data){
 								$.messager.show({
 									title:'成功提示',
 									msg:'课程类型删除成功',
@@ -120,6 +120,7 @@
 	
 			//获取正在编辑的数据
 			var rows=obj.datagrid("getChanges")[0];
+			
 			 if(rows ==undefined){   //说明没有被保存到数据库
 				obj.datagrid("rejectChanges"); //回滚所有的数据
 				obj.datagrid("endEdit",editRow); //关闭正在被编辑的行
@@ -129,17 +130,16 @@
 				obj.datagrid("rejectChanges");
 			}else{
 				//保存到数据库
-				rows["op"]=currentOp;
+				//rows["op"]=currentOp;
 				
-				$.post("/course/"+op,rows,function(data){
-					if(data>0){
+				$.post("/newhaozhiwang/courseType/"+currentOp,rows,function(data){
+					if(data){
 						$.messager.show({
 							title:'成功提示',
 							msg:'课程类型操作成功',
 							timeout:2000,
 							showType:'slide'
 						});
-						
 						rows=null;
 						obj.datagrid("reload"); 
 						editRow=undefined;

@@ -2,7 +2,7 @@
 <!-- 登录后的头部----------- -->
 <header class="header">
   <div class="container" >
-    <div class="navbar-header pull-left"> <a href="javaScript:void(0);" class="navbar-brand"> <img src="images/logo.png" class="img-responsive" alt="好知，howzhi.com"> </a>
+    <div class="navbar-header pull-left"> <a href="page/index.jsp" class="navbar-brand"> <img src="images/logo.png" class="img-responsive" alt="好知，howzhi.com"> </a>
       <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse" type="button"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
     </div>
     <nav class="collapse navbar-collapse pull-left">

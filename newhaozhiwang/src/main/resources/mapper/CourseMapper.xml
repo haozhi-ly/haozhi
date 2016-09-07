@@ -27,6 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getAllCourse" resultMap="CourseMap" >
 		 <include refid="selectCourse"/>
 	</select>
+	
 	<select id="getUserByUsid" resultType="UserInfo" parameterType="int">
 		select * from userinfo where userid = #{userid}
 	</select>
@@ -46,6 +47,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from userinfo where userid = #{userid}
 	</select>
 	
+	
+	
 	<!-- 插入课程 -->
 	<insert id="insertCourse" parameterType="Course">
 		insert into course values(seq_courseid.nextval,#{ctitle},#{cintrodution},#{ctid},#{courseting},
@@ -53,7 +56,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			null</if>
 		<if test='coursephoto!=null'>
 			#{coursephoto}
-		</if>,#{userId},0,null,null,null)
+		</if>,#{userId},0,null,null,to_date(#{createTime},'yyyy-mm-dd hh24:mi:ss'))
 	</insert>
 	
 	<!-- 通过课程类型查所有课程 -->
@@ -102,16 +105,44 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from userinfo where userid = #{userid}
 	</select>
 	
-	<resultMap type="Course" id="Course">
+	<!-- 分页查询课程按创建时间排序 -->
+	
+	<resultMap type="Course" id="CourseMap6">
+		
+		<id column="userId" property="userId"/>
+		<id column="ctid" property="ctid"/>
+		<collection property="user" column="userId" ofType="UserInfo" select="getUserByUsid5" />
+		<collection property="courseType" column="ctid" ofType="CourseType" select="getCourseType" />
+	</resultMap>
+	<select id="getCoursebypageDescTime" resultMap="CourseMap6" parameterType="java.util.Map" >
+			select * from(select c.*,rownum rn from (select * from course)c 
+					where #{pagesize}*#{pagenumber}>=rownum)
+			 				where rn>#{pagesize}*(#{pagenumber}-1) 	
+	</select>
+	<select id="getCourseType" resultType="CourseType" parameterType="int">
+		select * from courseType where ctid=#{ctid}
+	</select>
+	
+	<select id="countCoursenumber" resultType="int">
+		select count(*) from course
+	</select>
+	
+		   <resultMap type="Course" id="Course">
 		<id column="courseid" property="courseid"/>
 		<id column="userId" property="userId"/>
 		<collection property="user" column="userId" ofType="UserInfo" select="getUserByUsid6" />
 	</resultMap>
 	<select id="getCourseById" resultMap="Course" parameterType="Integer" >
-		 <include refid="selectCourse"/> where s.courseid=#{_parameter}
+		select s.*,(select count(1) from studyCourse where courseid = s.courseid )
+		memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg,
+		typename,(select count(*) from courseManage where courseid=s.courseid) courseCount,(
+		select count(courseid) from studyCourse where courseid=s.courseid ) userCount,
+		(select count(*) from courseAssess where cmid in (select cmid from courseManage where courseid=s.courseid)
+		) assessCount from course s,courseType t where s.ctid=t.ctid and  s.courseid=#{_parameter}
 	</select>
 	<select id="getUserByUsid6" resultType="UserInfo" parameterType="int">
 		select * from userinfo where userid = #{userid}
 	</select>
+	
 
 </mapper>

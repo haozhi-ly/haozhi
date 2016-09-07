@@ -12,6 +12,7 @@ select * from studyCourse;
 select * from selfMessage;
 select * from cgroup;
 
+<<<<<<< HEAD
 select * from (select s.*,(select count(1) from studyCourse where courseid = s.courseid )
 memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg 
 from course s where s.ctid=2 order by memberCount desc) where 3>=rownum 
@@ -19,12 +20,14 @@ from course s where s.ctid=2 order by memberCount desc) where 3>=rownum
 select s.*,(select count(1) from studyCourse where courseid = s.courseid )
 memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg,
 typename,(select count(*) from courseManage where courseid=s.courseid) courseCount,(
-select count(courseid) from studyCourse where courseid=s.courseid ) userCount
-from course s,courseType t where s.ctid=t.ctid and  s.courseid=6 
+select count(courseid) from studyCourse where courseid=s.courseid ) userCount,
+(select count(*) from courseAssess where cmid in (select cmid from courseManage where courseid=s.courseid)
+) assessCount from course s,courseType t where s.ctid=t.ctid and  s.courseid=6 
 
 select count(*) from courseManage
 select count(*) from courseManage where courseid=2;
 select count(userid) from studyCourse where courseid=5;
+
 
 drop table userinfo;
 drop sequence seq_userid cascade constraints;
@@ -45,6 +48,9 @@ create table userinfo(
        temp02 varchar2(200),--备用字段
        temp03 varchar2(200)--备用字段    
 );
+
+delete from userinfo where email='542933376@qq.com'
+commit
 select * from UserInfo where uname='超超' and upassword=123456
 create sequence seq_userid start with 1;
 
@@ -179,6 +185,7 @@ insert into courseManage values(seq_cmid.nextval,6,1,' L2:高大上的冰滴法 
 5 水滴式咖啡的一个成败关键则是滴滤速度，以10秒七滴左右的慢速滴滤为佳。水与咖啡粉有较长的时间融合，咖啡口感较饱和;若滴滤时间太快，味道太淡
 ，同时会产生积水外溢，反之，太慢会使得咖啡发酵，产生酸味及酒味。</p>',null,null,null);
 
+select count(*) from courseAssess where cmid in (select cmid from courseManage where courseid=6)
 -----------------6.课程评价表
 create table courseAssess(
        csid int primary key ,
@@ -322,12 +329,11 @@ create table cgroup(
                  constraint FK_userinfo_userid001 references userinfo(userid),--创建人 
        createtime date,---创建时间
        groupnumber varchar2(500),---小组成员（拼接）
-       peoplecount int,--小组成员总人数
-       temp02 varchar2(200),--备用字段
-       temp03 varchar2(200)--备用字段
+       peoplecount int,--小组成员总数
+       pic varchar2(200),--小组头像
+       introduction varchar2(400)--小组简介
 );
-ALTER TABLE haozhi.cgroup RENAME COLUMN temp01 TO peoplecount --修改表列名 
-ALTER TABLE haozhi.cgroup MODIFY peoplecount int  --修改字段类型 
+drop table cgroup;
 create sequence seq_gid start with 1;
 insert into cgroup values(seq_gid.nextval,'摄影公社',3,sysdate,'3,1,2',100,null,null);
 insert into cgroup values(seq_gid.nextval,'绘画世界',2,sysdate,'2,1,4',80,null,null);
@@ -336,5 +342,18 @@ insert into cgroup values(seq_gid.nextval,'Photoshop照片后期处理学习交�
 insert into cgroup values(seq_gid.nextval,'我是从零开始学吉他的',2,sysdate,'2,1,4',85,null,null);
 insert into cgroup values(seq_gid.nextval,'每月养成一个好习惯',2,sysdate,'2,1,4',60,null,null);
 
+insert into cgroup values(seq_gid.nextval,'漫画学院',3,sysdate,'3,1,2',150,null,null);
+insert into cgroup values(seq_gid.nextval,'坏男孩学院',2,sysdate,'2,1,4',152,null,null);
+insert into cgroup values(seq_gid.nextval,'天天理财',2,sysdate,'2,1,4',83,null,null);
+insert into cgroup values(seq_gid.nextval,'古筝吧',2,sysdate,'2,1,4',38,null,null);
+insert into cgroup values(seq_gid.nextval,'Ubuntu',2,sysdate,'2,1,4',1005,null,null);
+insert into cgroup values(seq_gid.nextval,'早起狗',2,sysdate,'2,1,4',880,null,null);
+insert into cgroup values(seq_gid.nextval,'摄影公社',3,sysdate,'3,1,2',1000,null,'摄影爱好者的天堂');
+insert into cgroup values(seq_gid.nextval,'绘画世界',2,sysdate,'2,1,4',2000,null,'灵感来自于生活');
+commit;
 
+insert into cgroup values(seq_gid.nextval,'插画交流',2,sysdate,'2,1,4',87,null,null);
+insert into cgroup values(seq_gid.nextval,'java开发',2,sysdate,'2,1,4',68,null,null);
+insert into cgroup values(seq_gid.nextval,'吉卜力',2,sysdate,'2,1,4',1585,null,null);
+insert into cgroup values(seq_gid.nextval,'工笔画',2,sysdate,'2,1,4',820,null,null);
 ------------------话题表 topic

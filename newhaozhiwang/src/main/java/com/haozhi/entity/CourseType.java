@@ -18,6 +18,12 @@ public class CourseType {
 		this.temp01 = temp01;
 	}
 
+	public CourseType(int ctid, String typename) {
+		// TODO Auto-generated constructor stub
+		this.ctid = ctid;
+		this.typename = typename;
+	}
+
 	public int getCtid() {
 		return ctid;
 	}

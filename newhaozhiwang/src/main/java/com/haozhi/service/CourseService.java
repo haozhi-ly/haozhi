@@ -3,6 +3,7 @@ package com.haozhi.service;
 import java.util.List;
 
 import com.haozhi.entity.Course;
+import com.haozhi.entity.CourseType;
 
 public interface CourseService {
 	List<Course> getAllCourse();  //查询所有课程
@@ -18,6 +19,12 @@ public interface CourseService {
 	List<Course> getCourseDescTime(Integer ctid);  //查询课程按创建时间排序
 	
 	List<Course> getAllHostCourse();  //查询所有热门课程
+
+
+	List<Course> getAllCourseBypage(int rows, int page);
+
+	int findAlltype();
+
 	
 	Course getCourseById(Integer courseid); // 通过课程号查课程
 }

@@ -7,23 +7,111 @@ public class Cgroup {
 	private int createman;// --创建人
 	private String createtime;// ---创建时间
 	private String groupnumber;// ---小组成员（拼接）
-	private int peoplecount;// --备用字段
+	private int peoplecount;
+	private String pic;//小组头像
+	private String introduction;//小组简介
+	private UserInfo userinfo;
+	
 	private String temp02;// --备用字段
 	private String temp03;// --备用字段
-
+	private String keyWord;//关键字，查询时用
+	
 	public Cgroup() {
 	}
 
+	
+	
+	
+	public int getPeoplecount() {
+		return peoplecount;
+	}
+
+
+
+
+	public void setPeoplecount(int peoplecount) {
+		this.peoplecount = peoplecount;
+	}
+
+
+
+
+	public String getPic() {
+		return pic;
+	}
+
+
+
+
+	public void setPic(String pic) {
+		this.pic = pic;
+	}
+
+
+
+
+	public String getIntroduction() {
+		return introduction;
+	}
+
+
+
+
+	public void setIntroduction(String introduction) {
+		this.introduction = introduction;
+	}
+
+
+
+
+	public UserInfo getUserinfo() {
+		return userinfo;
+	}
+
+
+
+
+	public void setUserinfo(UserInfo userinfo) {
+		this.userinfo = userinfo;
+	}
+
+
+
+
+	public Cgroup(int gid, String groupname, String createtime, String groupnumber, int peoplecount, String pic,
+			String introduction, UserInfo userinfo) {
+		super();
+		this.gid = gid;
+		this.groupname = groupname;
+		this.createtime = createtime;
+		this.groupnumber = groupnumber;
+		this.peoplecount = peoplecount;
+		this.pic = pic;
+		this.introduction = introduction;
+		this.userinfo = userinfo;
+	}
+
+
+
+
 	public Cgroup(int gid, String groupname, int createman, String createtime,
-			String groupnumber, int peoplecount, String temp02, String temp03) {
+			String groupnumber, String temp02, String temp03) {
 		this.gid = gid;
 		this.groupname = groupname;
 		this.createman = createman;
 		this.createtime = createtime;
 		this.groupnumber = groupnumber;
-		this.peoplecount = peoplecount;
+	
 		this.temp02 = temp02;
 		this.temp03 = temp03;
+	}
+
+	public String getKeyWord() {
+		return keyWord;
+	}
+
+	public void setKeyWord(String keyWord) {
+		this.keyWord = keyWord;
 	}
 
 	public int getGid() {
@@ -66,6 +154,7 @@ public class Cgroup {
 		this.groupnumber = groupnumber;
 	}
 
+	
 	public String getTemp02() {
 		return temp02;
 	}
@@ -82,22 +171,26 @@ public class Cgroup {
 		this.temp03 = temp03;
 	}
 
-	public int getPeoplecount() {
-		return peoplecount;
-	}
 
-	public void setPeoplecount(int peoplecount) {
-		this.peoplecount = peoplecount;
-	}
+
 
 	@Override
 	public String toString() {
 		return "\nCgroup [gid=" + gid + ", groupname=" + groupname
 				+ ", createman=" + createman + ", createtime=" + createtime
 				+ ", groupnumber=" + groupnumber + ", peoplecount="
-				+ peoplecount + ", temp02=" + temp02 + ", temp03=" + temp03
-				+ "]";
+				+ peoplecount + ", pic=" + pic + ", introduction="
+				+ introduction + ", userinfo=" + userinfo + ", temp02="
+				+ temp02 + ", temp03=" + temp03 + ", keyWord=" + keyWord + "]";
 	}
 
-	
+
+
+
+
+
+
+
+
+
 }

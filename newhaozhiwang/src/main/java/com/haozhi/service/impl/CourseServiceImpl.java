@@ -1,11 +1,14 @@
 package com.haozhi.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.haozhi.entity.Course;
+import com.haozhi.entity.CourseType;
 import com.haozhi.mapper.CourseMapper;
 import com.haozhi.service.CourseService;
 
@@ -53,8 +56,26 @@ public class CourseServiceImpl implements CourseService {
 	}
 
 	@Override
+
+	public List<Course> getAllCourseBypage(int rows, int page) {
+		// TODO Auto-generated method stub
+		Map<String,Object> map=new HashMap<String,Object>();
+		map.put("pagenumber",page);
+		map.put("pagesize", rows);
+		List<Course> list=courseMapper.getCoursebypageDescTime(map);
+		
+		return list;
+	}
+
+	@Override
+	public int findAlltype() {
+		// TODO Auto-generated method stub
+		return courseMapper.countCoursenumber();
+	}
+	@Override
 	public Course getCourseById(Integer courseid) {
 		return courseMapper.getCourseById(courseid);
+
 	}
 
 	
