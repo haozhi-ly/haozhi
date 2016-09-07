@@ -223,6 +223,15 @@ public class CourseHandler {
 		model.addAttribute("course", course);
 	}
 	
+	//这是我对jionproject.jsp加载参数的修改-ly
+	@ResponseBody
+	@RequestMapping(value="/getCourseByIdly")
+	public Course getCourseByIdly(Integer courseid,ModelMap map){
+		LogManager.getLogger().debug("getCourseById 到达...ly");
+		Course course = courseService.getCourseById(courseid);
+		return course;
+	}
+	
 	
 
 }

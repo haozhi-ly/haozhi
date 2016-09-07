@@ -257,11 +257,11 @@
 							<div class="col-md-4 col-sm-6 ">
 
 								<div class="course-item">
-									<div class="">
+									<div class="course-img">
 
-										<img src="images/065523b78450837537.jpg" alt="人像摄影入门"
-											class="ly-course-img-moreproject"> <a
-											href="http://www.howzhi.com/course/106/">
+										<img src="images/0646571e86d5209598.jpg" alt="人像摄影课程"
+											class="class="ly-course-img-moreproject""> <a
+											href="http://www.howzhi.com/course/3559/">
 											<div class="mask">
 												<span class="btn btn-primary">开始学习</span>
 											</div>
@@ -270,17 +270,19 @@
 									<div class="course-info">
 										<div class="title">
 											<span class="label label-p">人像</span> <a class="transition"
-												href="http://www.howzhi.com/course/106/">人像摄影入门</a>
+												href="http://www.howzhi.com/course/3559/">人像摄影课程</a>
 										</div>
 										<div class="metas">
-											<span>12万+浏览</span>/ <span>7064学员</span>/ <span>4.1评分</span>
+											<span>10万+浏览</span>/ <span>9091学员</span>/ <span>4.1评分</span>
 										</div>
 										<div class="teacher text-o-show">
-											<a class=" js-user-card" href="http://www.howzhi.com/u/187/"
-												data-card-url="/user/187/card/show" data-user-id="187">
-												<img class="avatar-ss " src="images/145733d2af26635228.jpg"
-												　alt="乱流"> 乱流
-											</a> <span class="daren-icon-t" title="达人"></span>
+											<a class=" js-user-card"
+												href="http://www.howzhi.com/u/1304328/"
+												data-card-url="/user/1304328/card/show"
+												data-user-id="1304328"> <img class="avatar-ss "
+												src="images/165229dcc0b7462331.jpg" 　alt="维纳斯学院">
+												维纳斯学院
+											</a>
 
 											<div class="price free pull-right">
 												<span>免费</span>
@@ -324,6 +326,7 @@
 									</div>
 								</div>
 							</div>
+							
 							<div class="col-md-4 col-sm-6 ">
 
 								<div class="course-item">
@@ -503,7 +506,7 @@
 						<li><a class=" js-user-card"
 							href="http://www.howzhi.com/u/2359828/"
 							data-card-url="/user/2359828/card/show" data-user-id="2359828">
-								<img class="avatar-sm" src="images/144044ca93fc977675.jpg"
+								<img class="avatar-sm" src="images/avatar.png"
 								alt="红日211">
 						</a> <a href="http://www.howzhi.com/u/2359828/" title="红日211"
 							class="name">红日211</a></li>
