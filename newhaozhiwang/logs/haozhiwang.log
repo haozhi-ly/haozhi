@@ -373,3 +373,30 @@ DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 5(Integer)
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from (select * from cgroup order by createtime desc ) where 4>rownum 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 3
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from cgroup where groupname like '%' || ? || '%' and ctid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 英语(String), 7(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from cgroup where groupname like '%' || ? || '%' 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 英语(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from cgroup where groupname like '%' || ? || '%' 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 英语(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from cgroup where groupname like '%' || ? || '%' where ctid=? where groupname like '%' || ? || '%' and ctid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 英语(String), 9(Integer), 英语(String), 9(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from cgroup where groupname like '%' || ? || '%' where ctid=? where groupname like '%' || ? || '%' and ctid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 英语(String), 9(Integer), 英语(String), 9(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from cgroup where groupname like '%' || ? || '%' where groupname like '%' || ? || '%' and ctid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 英语(String), 英语(String), 9(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from cgroup where groupname like '%' || ? || '%' and ctid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 英语(String), 9(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 0
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from cgroup where groupname like '%' || ? || '%' and ctid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: (String), 9(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 3
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from cgroup where groupname like '%' || ? || '%' and ctid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: (String), 9(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 3

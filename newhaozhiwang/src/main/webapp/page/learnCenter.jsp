@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html class="">
@@ -31,7 +32,13 @@
 
 	<body class="hzme">
 		<!-------------------------我是头部------------------------------------------->
-			<jsp:include page="topb.jsp"></jsp:include>
+			<c:set value="${users}" var="us"/>
+				<c:if test="${us==null }">
+					<jsp:include page="topf.jsp"></jsp:include>
+				</c:if>
+				<c:if test="${us!=null }">
+					<jsp:include page="topb.jsp"></jsp:include>
+				</c:if>
 		<!---------------------------------我是头部分隔线--------------------------------------------->
 
 		<section class="p-home">

@@ -57,7 +57,7 @@
 						<div class="col-sm-8">
 							<h1>小组搜索</h1></div>
 						<div class="col-sm-4">
-							<form class="form-inline pull-right" id="form_group_search" action="/group/search_group" method="get">
+							<form class="form-inline pull-right" id="form_group_search" action="groups/search" method="get">
 								<div class="form-group">
 									<div class="input-group group-search">
 										<input class="form-control" placeholder="小组搜索" name="keyWord" value="${groups.keyWord }" type="text">
@@ -75,52 +75,51 @@
 				</div>
 
 				<div class="panel-body">
-					<div class="nav inline">
-						<a class="active" href="javascript:;">全部</a>
-						<a href="javascript:;" data-target="photography" data-id="1">摄影课堂</a>
-						<a href="javascript:;" data-target="creative-design" data-id="204">创意设计</a>
-						<a href="javascript:;" data-target="music-school" data-id="205">声乐器乐</a>
-						<a href="javascript:;" data-target="exercise-fitness" data-id="206">运动健身</a>
-						<a href="javascript:;" data-target="IT-internet" data-id="222">IT互联网</a>
-						<a href="javascript:;" data-target="programme" data-id="151">编程</a>
-						<a href="javascript:;" data-target="interest" data-id="9">兴趣爱好</a>
-						<a href="javascript:;" data-target="computer" data-id="155">电脑</a>
-						<a href="javascript:;" data-target="language" data-id="10">语言学习</a>
-						<a href="javascript:;" data-target="life" data-id="8">生活</a>
-						<a href="javascript:;" data-target="career" data-id="178">职场技能</a>
-						<a href="javascript:;" data-target="culture" data-id="173">文化</a>
-						<a href="javascript:;" data-target="openclass" data-id="4">公开课</a>
+					<div class="nav inline" id="navid">
+						<a class="active" href="groups/moresearch" id="0">全部</a>
+						<a href="javascript:;" data-target="photography" data-id="1" id="1">摄影课堂</a>
+						<a href="javascript:;" data-target="creative-design" data-id="204" id="2">创意设计</a>
+						<a href="javascript:;" data-target="music-school" data-id="205" id="3">声乐器乐</a>
+						<a href="javascript:;" data-target="exercise-fitness" data-id="206" id="4">运动健身</a>
+						<a href="javascript:;" data-target="IT-internet" data-id="222" id="5">IT互联网</a>
+						<!-- <a href="javascript:;" data-target="programme" data-id="151" id="6">编程</a> -->
+						<a href="javascript:;" data-target="interest" data-id="9" id="6">兴趣爱好</a>
+						<!-- <a href="javascript:;" data-target="computer" data-id="155" id="8">电脑</a> -->
+						<a href="javascript:;" data-target="language" data-id="10" id="7">语言学习</a>
+						<!-- <a href="javascript:;" data-target="life" data-id="8" id="10">生活</a> -->
+						<a href="javascript:;" data-target="career" data-id="178" id="8">职场技能</a>
+						<!-- <a href="javascript:;" data-target="culture" data-id="173" id="12">文化</a> -->
+						<a href="javascript:;" data-target="openclass" data-id="4" id="9">公开课</a>
 					</div>
-					
-					<c:set value="${searchgroups}" var="search"/>
-					<c:if test="${empty search}">
-						<!--关键字查询，小组为空时（没有查询到信息）-->
-						<div class="row">
-	            			<div class="empty">暂无小组信息</div>
-	            		</div>
-					</c:if>
-            		<c:if test="${search!=null }">
-            			<!--关键字查询，有相关小组信息时-->
-            			<div class="row" >
-		            		<c:forEach items="${searchgroups}" var="item">
-		            			<div class="col-md-3">
-									<div class="media group-media group-media-sm">
-										<a href="http://www.howzhi.com/group/349/" title="${item.groupname }" class="pull-left">
-											<img src="images/105050a0ca1c653470.jpg" alt="${item.groupname }" class="media-object">
-										</a>
-										<div class="media-body">
-											<p>
-												<a href="http://www.howzhi.com/group/349/" title="${item.groupname }">${item.groupname }</a>
-											</p>
-											<div class="text-muted text-normal">
-												${item.peoplecount }&nbsp; 1362个话题
+					<div class="row" id="add">
+						<c:set value="${searchgroups}" var="search"/>
+						<c:if test="${empty search}">
+							<!--关键字查询，小组为空时（没有查询到信息）-->
+		            			<div class="empty">暂无小组信息</div>
+						</c:if>
+	            		<c:if test="${search!=null }">
+	            			<!--关键字查询，有相关小组信息时-->
+	            			
+			            		<c:forEach items="${searchgroups}" var="item">
+			            			<div class="col-md-3">
+										<div class="media group-media group-media-sm">
+											<a href="http://www.howzhi.com/group/349/" title="${item.groupname }" class="pull-left">
+												<img src="images/105050a0ca1c653470.jpg" alt="${item.groupname }" class="media-object">
+											</a>
+											<div class="media-body">
+												<p>
+													<a href="http://www.howzhi.com/group/349/" title="${item.groupname }">${item.groupname }</a>
+												</p>
+												<div class="text-muted text-normal">
+													${item.peoplecount }&nbsp; 1362个话题
+												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-		            		</c:forEach>
-	            		</div>
-            		</c:if>
+			            		</c:forEach>
+		            		
+	            		</c:if>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -11,72 +11,50 @@ public class Cgroup {
 	private String pic;//小组头像
 	private String introduction;//小组简介
 	private UserInfo userinfo;
-	
-	private String temp02;// --备用字段
-	private String temp03;// --备用字段
 	private String keyWord;//关键字，查询时用
-	
+	private int ctid;
 	public Cgroup() {
 	}
 
-	
-	
-	
+	public int getCtid() {
+		return ctid;
+	}
+
+	public void setCtid(int ctid) {
+		this.ctid = ctid;
+	}
+
 	public int getPeoplecount() {
 		return peoplecount;
 	}
-
-
-
 
 	public void setPeoplecount(int peoplecount) {
 		this.peoplecount = peoplecount;
 	}
 
-
-
-
 	public String getPic() {
 		return pic;
 	}
-
-
-
 
 	public void setPic(String pic) {
 		this.pic = pic;
 	}
 
-
-
-
 	public String getIntroduction() {
 		return introduction;
 	}
-
-
-
 
 	public void setIntroduction(String introduction) {
 		this.introduction = introduction;
 	}
 
-
-
-
 	public UserInfo getUserinfo() {
 		return userinfo;
 	}
 
-
-
-
 	public void setUserinfo(UserInfo userinfo) {
 		this.userinfo = userinfo;
 	}
-
-
-
 
 	public Cgroup(int gid, String groupname, String createtime, String groupnumber, int peoplecount, String pic,
 			String introduction, UserInfo userinfo) {
@@ -91,19 +69,14 @@ public class Cgroup {
 		this.userinfo = userinfo;
 	}
 
-
-
-
 	public Cgroup(int gid, String groupname, int createman, String createtime,
-			String groupnumber, String temp02, String temp03) {
+			String groupnumber) {
 		this.gid = gid;
 		this.groupname = groupname;
 		this.createman = createman;
 		this.createtime = createtime;
 		this.groupnumber = groupnumber;
 	
-		this.temp02 = temp02;
-		this.temp03 = temp03;
 	}
 
 	public String getKeyWord() {
@@ -154,35 +127,21 @@ public class Cgroup {
 		this.groupnumber = groupnumber;
 	}
 
-	
-	public String getTemp02() {
-		return temp02;
-	}
-
-	public void setTemp02(String temp02) {
-		this.temp02 = temp02;
-	}
-
-	public String getTemp03() {
-		return temp03;
-	}
-
-	public void setTemp03(String temp03) {
-		this.temp03 = temp03;
-	}
-
-
-
-
 	@Override
 	public String toString() {
 		return "\nCgroup [gid=" + gid + ", groupname=" + groupname
 				+ ", createman=" + createman + ", createtime=" + createtime
 				+ ", groupnumber=" + groupnumber + ", peoplecount="
 				+ peoplecount + ", pic=" + pic + ", introduction="
-				+ introduction + ", userinfo=" + userinfo + ", temp02="
-				+ temp02 + ", temp03=" + temp03 + ", keyWord=" + keyWord + "]";
+				+ introduction + ", userinfo=" + userinfo + ", keyWord="
+				+ keyWord + ", ctid=" + ctid + "]";
 	}
+
+
+	
+
+
+
 
 
 

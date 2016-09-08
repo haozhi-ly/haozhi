@@ -2,17 +2,19 @@ package com.haozhi.handler;
 
 import java.io.File;
 import java.io.PrintWriter;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import java.util.Date;
 import java.util.Random;
 
 
+
+
 import javax.mail.internet.MimeMessage;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.PageContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,6 +73,15 @@ public class UserHandler {
 		return "redirect:../page/index.jsp";
 	}
 	
+	//注销
+	@RequestMapping(value="/loginOut")
+	public String loginOut(Model model){
+		System.out.println("yes");
+		model.addAttribute("users",null);
+		return "redirect:../page/login.jsp";
+	}
+	
+	
 	@RequestMapping(value="/checkemail",method=RequestMethod.POST)
 	public void checkEmail(String email,PrintWriter out){
 		System.out.println(email);
@@ -112,6 +123,7 @@ public class UserHandler {
 		userInfoService.register(userInfo);
 			return "login";
 	}
+	
 	
 	
 	@RequestMapping("/login01")
