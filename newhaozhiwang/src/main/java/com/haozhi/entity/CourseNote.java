@@ -13,23 +13,24 @@ public class CourseNote {
 	private String praiseNumber;// --赞的人，拼接
 	private String noteContent;// --笔记内容
 	private String ntime;
-	private String temp01;// --备用字段
+	private String title;// --备用字段
 	private String temp02;// --备用字段
 	private String temp03;// --备用字段
+	private UserInfo user;
 
 	public CourseNote() {
 	}
 
 	public CourseNote(int courseNoteId, int userid, int cmid,
 			String praiseNumber, String noteContent, String ntime,
-			String temp01, String temp02, String temp03) {
+			String title, String temp02, String temp03) {
 		this.courseNoteId = courseNoteId;
 		this.userid = userid;
 		this.cmid = cmid;
 		this.praiseNumber = praiseNumber;
 		this.noteContent = noteContent;
 		this.ntime = ntime;
-		this.temp01 = temp01;
+		this.title = title;
 		this.temp02 = temp02;
 		this.temp03 = temp03;
 	}
@@ -82,12 +83,12 @@ public class CourseNote {
 		this.ntime = ntime;
 	}
 
-	public String getTemp01() {
-		return temp01;
+	public String gettitle() {
+		return title;
 	}
 
-	public void setTemp01(String temp01) {
-		this.temp01 = temp01;
+	public void settitle(String title) {
+		this.title = title;
 	}
 
 	public String getTemp02() {
@@ -105,14 +106,25 @@ public class CourseNote {
 	public void setTemp03(String temp03) {
 		this.temp03 = temp03;
 	}
+	
+	
+
+	public UserInfo getUser() {
+		return user;
+	}
+
+	public void setUser(UserInfo user) {
+		this.user = user;
+	}
 
 	@Override
 	public String toString() {
-		return "CourseNote [courseNoteId=" + courseNoteId + ", userid="
-				+ userid + ", cmid=" + cmid + ", praiseNumber=" + praiseNumber
-				+ ", noteContent=" + noteContent + ", ntime=" + ntime
-				+ ", temp01=" + temp01 + ", temp02=" + temp02 + ", temp03="
-				+ temp03 + "]";
+		return "CourseNote [courseNoteId=" + courseNoteId + ", userid=" + userid + ", cmid=" + cmid + ", praiseNumber="
+				+ praiseNumber + ", noteContent=" + noteContent + ", ntime=" + ntime + ", title=" + title + ", user="
+				+ user + "]";
 	}
+
+	
+
 
 }

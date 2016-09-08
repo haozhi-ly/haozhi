@@ -1,6 +1,5 @@
 		
 $(function(){
-	
 	//显示页面所有信息
 	//console.info();
 	var courseid=window.location.href.split('=')[1];
@@ -14,8 +13,43 @@ $(function(){
 		$('#c1').html("课时：("+data.courseCount+")"); 
 		$('#c2').html("学员：("+data.userCount+")"); 
 		$('#c3').html("浏览：("+data.cview+")"); 
+		$('#courseinfo').html(data.cintrodution);
+		$('#courseing').html(data.courseting);
 		
 	},"json");
+	
+	//根据courseid查笔记   显示笔记数目
+	 $.post("courseNote/getCourseNoteById/",{"_method":"POST",courseid:courseid},function(data){	
+			$('#bj').html("("+data.length+")"); });
+	
+	//根据courseid查课时
+	$.post("courseManage/getCourseManageById/",{"_method":"POST",courseid:courseid},function(data){	
+		var str = "";
+		$('#cm').html("("+data.length+")");
+		if(data){
+			$.each(data,function(index,item){
+				 if(item.type==1){
+					 str +='<li class="period lesson-item lesson-item-85093 " data-num="1" data-id="85093">'
+						+'<a title="'+item.title+'" href="page/play.jsp?cmid='+item.cmid+'">'
+					 	+'<i class="es-icon es-icon-undone status-icon"></i>'
+					 	+'<span class="title">L'+item.courseseq+'：'+item.title+'</span><span class="course-type">'
+					 	+'<i class="glyphicon glyphicon-picture" data-original-title="图文课程" title="" data-placement="top" data-toggle="tooltip"></i>'
+					 	+'</span></a></li>';
+				 }else{
+					 str+='<li class="period lesson-item lesson-item-67383 " data-num="1" data-id="67383">'
+						 +'<a title="'+item.title+'" href="page/play.jsp?cmid='+item.cmid+'">'
+					 	 +'<i class="es-icon es-icon-undone status-icon"></i>'
+					 	 +'<span class="title">L'+item.courseseq+'：'+item.title+'</span>'
+					 	 +'<span class="date" title="视频时长75:10">(75:10)</span>'
+					 	 +'<span class="course-type">'
+					 	 +'<i class="glyphicon glyphicon-play" title="" data-placement="top" data-toggle="tooltip" data-original-title="视频课程"></i>'
+					 	 +'</span></a></li>'	
+				 }		
+				 $('#course-item-list').html("").append( $(str) );			
+		 });
+		}
+	},"json");
+	
 
 	$.post("courseAssess/CMcountbycourseid/",{"_method":"POST",courseid:courseid},function(data){
 		console.info(data);
@@ -92,6 +126,33 @@ $(function(){
 			 $('#courseQuestion').css('display', 'none');
 			 $('#courseClassmate').css('display', 'none');
 			 $('#courseAssess').css('display', 'none');
+			 
+			//根据courseid查课时
+				$.post("courseManage/getCourseManageById/",{"_method":"POST",courseid:courseid},function(data){	
+					var str = "";
+					if(data){
+						$.each(data,function(index,item){
+							 if(item.type==1){
+								 str +='<li class="period lesson-item lesson-item-85093 " data-num="1" data-id="85093">'
+									+'<a title="'+item.title+'" href="page/play.jsp?cmid='+item.cmid+'">'
+								 	+'<i class="es-icon es-icon-undone status-icon"></i>'
+								 	+'<span class="title">L'+item.courseseq+'：'+item.title+'</span><span class="course-type">'
+								 	+'<i class="glyphicon glyphicon-picture" data-original-title="图文课程" title="" data-placement="top" data-toggle="tooltip"></i>'
+								 	+'</span></a></li>';
+							 }else{
+								 str+='<li class="period lesson-item lesson-item-67383 " data-num="1" data-id="67383">'
+									 +'<a title="'+item.title+'" href="page/play.jsp?cmid='+item.cmid+'">'
+								 	 +'<i class="es-icon es-icon-undone status-icon"></i>'
+								 	 +'<span class="title">L'+item.courseseq+'：'+item.title+'</span>'
+								 	 +'<span class="date" title="视频时长75:10">(75:10)</span>'
+								 	 +'<span class="course-type">'
+								 	 +'<i class="glyphicon glyphicon-play" title="" data-placement="top" data-toggle="tooltip" data-original-title="视频课程"></i>'
+								 	 +'</span></a></li>'	
+							 }	
+							 $('#courselist').html("").append( $(str) );			
+					 });
+					}
+				});	
 		 }else if(str.indexOf("笔记")>=0){
 			 $('#courselist').css('display', 'none'); 
 			 $('#courseInfo').css('display', 'none');
@@ -99,6 +160,26 @@ $(function(){
 			 $('#courseQuestion').css('display', 'none');
 			 $('#courseClassmate').css('display', 'none');
 			 $('#courseAssess').css('display', 'none');
+			 
+			 //根据courseid查笔记  
+			 $.post("courseNote/getCourseNoteById/",{"_method":"POST",courseid:courseid},function(data){	
+					var str = "";
+					if(data){
+						$.each(data,function(index,item){
+							str+='<li class="clearfix"><div class="notes-img"><a class=" js-user-card"'
+								+'href="javascript:void(0);" data-card-url="/user/2362180/card/show" data-user-id="2362180">'
+								+'<img class="avatar-sm" src="images/avatar.png" alt="'+item.user.uname+'"></a></div>'
+								+'<div class="notes-content"><h4><a href="javascript:void(0);" class="title">'+item.title+' </a></h4><p>'+item.noteContent+'</p>'
+								+'<div class="metas"><span class="name">by <a href="javascrit:;">'+item.user.uname+'</a></span> <span'
+								+'class="count pull-right"> <a href="javascript:;"data-role="like" data-like-url="/course/note/43065/like">'
+								+'<i class="glyphicon glyphicon-thumbs-up" title="点我支持一下笔记的作者"></i>1</a> <a style="display: none" title="您已经支持过该笔记">' 
+								+'<i class="glyphicon glyphicon-thumbs-up"></i><span class="newNoteLikeNumxxxxx">1</span></a>'
+								+'</span></div></div></li>';
+							
+							$('#noteslist').html("").append( $(str) );
+						});					
+					}
+			 });
 		 }else if(str.indexOf("问答")>=0){
 			 $('#courselist').css('display', 'none'); 
 			 $('#courseInfo').css('display', 'none');
@@ -124,10 +205,28 @@ $(function(){
 			 var courseid=window.location.href.split('=')[1];
 			 $.post("");
 		 }
+		  
 	});
+	
+	//根据courseid查笔记   右侧显示最新两条
+	 $.post("courseNote/getCourseNoteById/",{"_method":"POST",courseid:courseid},function(data){	
+			var str = "";
+			var count =0;
+			if(data){
+				$.each(data,function(index,item){
+					 count +=1;
+					if(count<3){
+						str+='<li><h4><a href="javascript:void(0);"><iclass="glyphicon glyphicon-pencil"></i>'+item.title+'</a>'
+							 +'</h4> <span>'+item.noteContent+'</span></li>';	
+					}
+					$('#rightNote').html("").append( $(str) );
+				});					
+			}
+	 }); 
 		
 	
 });
+
 
 function join(){	
 	var st = $('.color-gray-one').val();

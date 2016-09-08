@@ -6,5 +6,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.haozhi.mapper.CourseManageMapper">
 
 
+
 	
+
+	<select id="getCourseManagebyId" resultType="CourseManage" parameterType="int">
+		select * from courseManage where courseid = #{courseid}
+	</select>
+	
+	<select id="getPlayByCmid" resultType="CourseManage" parameterType="int">
+		select * from courseManage where cmid = #{cmid}
+	</select>
+
+
 </mapper>

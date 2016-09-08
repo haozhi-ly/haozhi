@@ -12,7 +12,9 @@ select * from studyCourse;
 select * from selfMessage;
 select * from cgroup;
 
-<<<<<<< HEAD
+select c.*,u.* from courseNote c inner join userinfo u  on  c.userid=u.userid and cmid in
+		 (select cmid from courseManage where courseid= 6 ) order by ntime desc
+
 select * from (select s.*,(select count(1) from studyCourse where courseid = s.courseid )
 memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg 
 from course s where s.ctid=2 order by memberCount desc) where 3>=rownum 
@@ -155,7 +157,7 @@ drop sequence seq_cmid ;
 
 select * from courseManage;
 select count(*) from courseManage where courseid=6;
-update courseManage set  courseseq=2 where cmid=2;
+dele
 --------------5.课时管理表
 create table courseManage(
        cmid int primary key ,
@@ -170,7 +172,7 @@ create table courseManage(
        temp03 varchar2(200)--备用字段  
 );
 create sequence seq_cmid start with 1;
-insert into courseManage values(seq_cmid.nextval,6,1,'L1:超级简单的冷萃咖啡制作方... ',1,'<p>冷萃咖啡听起来高大上，但实际上制作非常简单。</p><p><strong>你需要准备的材料有：</strong>
+insert into courseManage values(seq_cmid.nextval,6,1,'超级简单的冷萃咖啡制作方... ',1,'<p>冷萃咖啡听起来高大上，但实际上制作非常简单。</p><p><strong>你需要准备的材料有：</strong>
 </p><p>咖啡粉（建议使用单品咖啡）</p><p>冷藏过的纯净水（据说矿泉水会不利于风味萃取）</p><p>过滤设备（滤纸或法压壶或挂耳咖啡）</p><p>杯子</p>
 <p><strong>冲泡步骤：</strong></p><p>以法压壶冲泡为例</p><p><img src="http://f1.howzhi.com/course/2016/07-05/0951004c19aa105897.jpg" alt="">
 </p><p> </p><p>1、把10~12g咖啡粉放入法压壶</p><p>2、倒入180ml左右的冷藏纯净水</p><p>3、把滤网下压到法压壶中部</p><p>4、放到冰箱5摄氏度以下冷藏12小时左右即可</p>
@@ -178,7 +180,7 @@ insert into courseManage values(seq_cmid.nextval,6,1,'L1:超级简单的冷萃�
 <img src="http://f1.howzhi.com/course/2016/07-05/094900c9e831099088.jpg" alt=""></p><p>甚而还可以进行大量制作</p><p>
 <img src="http://f1.howzhi.com/course/2016/07-05/0952022f0dcc504072.jpg" alt=""></p><p><img src="http://f1.howzhi.com/course/2016/07-05/09520338f95e750367.jpg" alt="">
 </p><p><img src="http://f1.howzhi.com/course/2016/07-05/09520331395c632441.jpg" alt=""></p><p> </p>',null,null,null);
-insert into courseManage values(seq_cmid.nextval,6,1,' L2:高大上的冰滴法 ',2,'
+insert into courseManage values(seq_cmid.nextval,6,1,' 高大上的冰滴法 ',2,'
 <p>冰滴咖啡的制作相对会比较麻烦，因为需要使用专用的冰滴装置。</p><p><img src="http://f1.howzhi.com/course/2016/07-05/0955539d7214579669.jpg" alt="">
 </p><p><strong>材料</strong></p><p>冰滴式滴滤器、深培咖啡豆、矿泉水、冰块。</p><p><strong>制作步骤</strong></p><p>1 将咖啡豆用磨豆机2-3刻度研磨。
 <br>2 把滤网放入萃取瓶底部。<br>3 咖啡粉倒入萃取瓶中，并将咖啡粉整平。<br>4 将萃取瓶置于收集瓶上方，再将滴盘放在萃取瓶上方。<br>5 准备冰块与过滤纯水，用1：1之比例倒入储水球。
@@ -188,6 +190,13 @@ insert into courseManage values(seq_cmid.nextval,6,1,' L2:高大上的冰滴法 
 <br>3 因萃取时间长，故适合使用深焙咖啡豆、高级纯咖啡或冰滴专用咖啡豆。<br>4 冰滴式咖啡先浓后淡，故需等待冰水全部滴完后才能饮用最佳风味。<br>
 5 水滴式咖啡的一个成败关键则是滴滤速度，以10秒七滴左右的慢速滴滤为佳。水与咖啡粉有较长的时间融合，咖啡口感较饱和;若滴滤时间太快，味道太淡
 ，同时会产生积水外溢，反之，太慢会使得咖啡发酵，产生酸味及酒味。</p>',null,null,null);
+insert into courseManage values(seq_cmid.nextval,5,0,'简易天空替换',1,'http://player.youku.com/player.php/
+sid/XNDY2NTYwMjI4/isAutoPlay/false/partnerid/0edbfd2e4fc91b72/v.swf',null,null,null);
+insert into courseManage values(seq_cmid.nextval,5,0,'消除隔行扫描',2,'http://player.youku.com/player.php/
+sid/XNDY2NTYwMjI4/isAutoPlay/false/partnerid/0edbfd2e4fc91b72/v.swf',null,null,null);
+insert into courseManage values(seq_cmid.nextval,5,0,'老电影画面',3,'http://player.youku.com/player.php/
+sid/XNDY2NTYwMjI4/isAutoPlay/false/partnerid/0edbfd2e4fc91b72/v.swf',null,null,null);
+commit;
 
 select count(*) from courseAssess where cmid in (select cmid from courseManage where courseid=6)
 -----------------6.课程评价表
@@ -245,7 +254,11 @@ create table courseNote(
 );
 create sequence seq_courseNoteId start with 1;
 insert into courseNote values(seq_courseNoteId.nextval,2,1,null,'冷萃咖啡，最重要的是把握好水的分量以及咖啡的量',sysdate,null,null,null);
+insert into courseNote values(seq_courseNoteId.nextval,4,2,null,'人像氛围确实是很重要，很容易被人忽视的，每个摄影师拍的之所以不一样，可能就是摄影师营造的氛围不一样，',sysdate,null,null,null);
+insert into courseNote values(seq_courseNoteId.nextval,5,1,null,'风光摄影后期：一般下拍天空曝光准确的，再拍地面曝光准确的，然后合成。PS中，复制图层，创建副本，擦出天空',sysdate,null,null,null);
+insert into courseNote values(seq_courseNoteId.nextval,2,2,null,'全幅的虚化还是比半幅高的，老师说的。半幅视角小，要拍同样的大小必须后退，后退跟离大了虚化就小的',sysdate,null,null,null);
 
+select c.*,u.* from courseNote c inner join userinfo u  on  c.userid=u.userid and cmid in (select cmid from courseManage where courseid=6) order by ntime desc;
 
 ----------------------9.课时问题问答表
 create table courseAnswer(

@@ -14,7 +14,7 @@ public class CourseManage {
 	private int type;// --(o/1，表示视频或图文)
 	private String title;// --课时标题
 	private int courseseq;// --课时序号
-	private String pathOrContent;// --课时内容（路径或者内容）
+	private String pathOrContetn;// --课时内容（路径或者内容）
 	private String temp01;// --备用字段
 	private String temp02;// --备用字段
 	private String temp03;// --备用字段
@@ -23,7 +23,7 @@ public class CourseManage {
 	}
 
 	public CourseManage(int cmid, int courseid, Course course, int type, String title, int courseseq,
-			String pathOrContent) {
+			String pathOrContetn) {
 		super();
 		this.cmid = cmid;
 		this.courseid = courseid;
@@ -31,7 +31,7 @@ public class CourseManage {
 		this.type = type;
 		this.title = title;
 		this.courseseq = courseseq;
-		this.pathOrContent = pathOrContent;
+		this.pathOrContetn = pathOrContetn;
 	}
 
 	public int getCmid() {
@@ -82,21 +82,21 @@ public class CourseManage {
 		this.courseseq = courseseq;
 	}
 
-	public String getPathOrContent() {
-		return pathOrContent;
+	public String getPathOrContetn() {
+		return pathOrContetn;
 	}
 
-	public void setPathOrContent(String pathOrContent) {
-		this.pathOrContent = pathOrContent;
+	public void setPathOrContetn(String pathOrContetn) {
+		this.pathOrContetn = pathOrContetn;
 	}
 
 	@Override
 	public String toString() {
 		return "CourseManage [cmid=" + cmid + ", courseid=" + courseid + ", course=" + course + ", type=" + type
-				+ ", title=" + title + ", courseseq=" + courseseq + ", pathOrContent=" + pathOrContent + ", temp01="
-				+ temp01 + ", temp02=" + temp02 + ", temp03=" + temp03 + "]";
+				+ ", title=" + title + ", courseseq=" + courseseq + ", pathOrContetn=" + pathOrContetn + "]";
 	}
 
+	
 	
 	
 }

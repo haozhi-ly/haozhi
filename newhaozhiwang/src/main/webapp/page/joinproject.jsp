@@ -192,9 +192,9 @@
 
 							<li class="active"><a href="javascript:void(0);">简介</a></li>
 
-							<li class=""><a href="javascript:void(0);">课时 <span>(9)</span>
+							<li class=""><a href="javascript:void(0);">课时 <span id="cm"></span>
 							</a></li>
-							<li class="hz-x-hide "><a href="javascript:void(0);">笔记 <span>(89)</span>
+							<li class="hz-x-hide "><a href="javascript:void(0);">笔记 <span id="bj"></span>
 							</a></li>
 							<li class="hz-x-hide "><a href="javascript:void(0);">问答 <span>(23)</span>
 							</a></li>
@@ -210,29 +210,19 @@
 					<div class="hz-overview hzcourse-detail" style="display: block;"id="courseInfo">
 						<h3 class="overview-title hz-line-left">课程简介</h3>
 						<div class="editor-text ptl">
-							<p>${course.cintrodution}<br>
+							<p id="courseinfo"><br>
 							</p>
 						</div>
 						<h3 class="overview-title hz-line-left">课程标签</h3>
 						<ul class="tag mtl phl clearfix">
-							<li><a href="">人像摄影</a></li>
-							<li><a href="">调色教程</a></li>
-							<li><a href="">磨皮教程</a></li>
+							<li><a href="" id="courseing">人像摄影</a></li>
 						</ul>
 
 						<h3 class="overview-title hz-line-left">课程列表</h3>
 						<ul class="period-list hz-courselist" id="course-item-list">
 
-							<li class="period lesson-item lesson-item-77617 " data-id="77617"
-								data-num="9"><a href="page/play.jsp" title="人像氛围"> <span
-									class="title">L9：人像氛围</span> <!-- 紧跟标题 --> <!-- 右边图标 --> <span
-									class="date" title="视频时长233:09"></span> <span
-									class="course-type"> <i class="glyphicon glyphicon-play"
-										data-toggle="tooltip" data-placement="top" title=""
-										data-original-title="视频课程"></i>
-								</span>
-
-							</a></li>
+					<li class="period lesson-item lesson-item-67383 "style="text-align: center;color:#616161">
+						该课程还未添加课时！！！</li>
 
 						</ul>
 					</div>
@@ -240,32 +230,8 @@
 
 					<!--  课程列表分割线  ---------------------------------------------- -->
 					<ul class="period-list hz-courselist" id="courselist" style="display: none;">
-						<li class="period lesson-item lesson-item-67383 " data-id="67383"
-							data-num="1"><a
-							href="http://www.howzhi.com/course/9573/lesson/67383"
-							title="人像器材的选择"> <i
-								class="es-icon es-icon-undone status-icon"></i> <span
-								class="title">L1：人像器材的选择</span> <!-- 紧跟标题 --> <!-- 右边图标 --> <span
-								class="date" title="视频时长75:10">(75:10)</span> <span
-								class="course-type"> <i data-original-title="视频课程"
-									class="hz-icon icon-play-nobg" data-toggle="tooltip"
-									data-placement="top" title=""></i>
-							</span>
-
-						</a></li>
-						<li class="period lesson-item lesson-item-67384 " data-id="67384"
-							data-num="2"><a
-							href="http://www.howzhi.com/course/9573/lesson/67384"
-							title="模特与主题策划"> <i
-								class="es-icon es-icon-undone status-icon"></i> <span
-								class="title">L2：模特与主题策划</span> <!-- 紧跟标题 --> <!-- 右边图标 --> <span
-								class="date" title="视频时长44:38">(44:38)</span> <span
-								class="course-type"> <i data-original-title="视频课程"
-									class="hz-icon icon-play-nobg" data-toggle="tooltip"
-									data-placement="top" title=""></i>
-							</span>
-
-						</a></li>
+						<li class="period lesson-item lesson-item-67383 "style="text-align: center;color:#616161">
+						该课程还未添加课时！！！</li>
 
 					</ul>
 					<!--  课程列表分割线  ---------------------------------------------- -->
@@ -273,13 +239,10 @@
 					<div class="course-notes course-in" style="display: none;" id="courseNotes">
 						<div class="notes-header">
 							<a href="http://www.howzhi.com/course/9573/notes"
-								class="  active  nn">同学笔记</a> <span><ahref
-									="http://www.howzhi.com/course/9573/notes?author=all&amp;sort=likeNum
-									"class="first-a ">最热</a> <a
-									href="http://www.howzhi.com/course/9573/notes?author=all&amp;sort=latest"
-									class="active">最新</a></span>
+								class="  active  nn">同学笔记</a> <span><a href="javascript:void(0);">最热</a> 
+								<a href="javascript:void(0);" class="active">最新</a></span>
 						</div>
-						<ul class="notes-list" id="notes-list">
+						<ul class="notes-list" id="noteslist">
 							<li class="clearfix">
 								<div class="notes-img">
 									<a class=" js-user-card"
@@ -308,39 +271,7 @@
 									</div>
 								</div>
 							</li>
-							<li class="clearfix">
-								<div class="notes-img">
-									<a class=" js-user-card"
-										href="http://www.howzhi.com/u/1559536/"
-										data-card-url="/user/1559536/card/show" data-user-id="1559536">
-										<img class="avatar-sm" src="images/avatar.png" alt="ylzd">
-									</a>
-
-								</div>
-								<div class="notes-content">
-									<h4>
-										<a href="http://www.howzhi.com/note/42874" class="title">
-											人像氛围的笔记 </a>
-									</h4>
-									<p>人像氛围：配置文件，Camera
-										Standard，用原厂设置，色彩最好。人像的肤色，相对于环境来调整，不能一概而论。画笔，按空格，变成放大按钮，进行局部调整。CTRL+Z，撤
-										销。干货：画笔，微调，曝光度减少，对比度增加。流畅度减小，画笔擦除大小减小。黑的地方多擦一下，更黑，亮的地方不用动。复制设置，应用到下一张照片
-										中。按住ALT键，减法减掉。营造氛围：颜色、加深暗部、提高亮度、柔、过渡。进PS，液化、磨皮，去痘。在绿色通道下，按住CTRL，选中高光部分，添
-										加曲线调整图层。复制图层，擦出肤色。加黑白、曲线图层，液化，去痘痘，去黑眼圈。相机打开，对着相机里的照片调色，锻炼自己的色彩感。&nbsp;
-									</p>
-									<div class="metas">
-										<span class="name">by <a href="javascrit:;">ylzd</a></span> <span
-											class="count pull-right"> <a href="javascript:;"
-											data-role="like" data-like-url="/course/note/42874/like"><i
-												class="fa fa-thumbs-o-up" title="点我支持一下笔记的作者"></i>0</a> <a
-											style="display: none" title="您已经支持过该笔记"> <i
-												class="fa fa-thumbs-o-up"></i><span
-												class="newNoteLikeNumxxxxx">0</span></a>
-										</span>
-									</div>
-								</div>
-							</li>
-
+							
 							
 
 						</ul>
@@ -456,8 +387,8 @@
 					</div>
 					<!--  学员分割线 ------------------------------ -->
 					<!-- 评论分割线 ---------------------------------------- -->
-					<div class="course-notes course-in" style="display: none;">
-						<ul class="notes-list" id="courseAssess">
+					<div class="course-notes course-in" style="display: none" id="courseAssess">
+						<ul class="notes-list" id="commentcontent">
 							<li id="item92930">
 								<div class="notes-img">
 									<a class=" js-user-card"
@@ -510,6 +441,12 @@
 						
 					</div>
 					<!--  评论分割线 ------------------------------------- -->
+					
+					
+					
+					
+					
+					
 
 				</div>
 
@@ -727,12 +664,13 @@
 
 				<div class="flat sidebar-notes">
 					<h3>课程最新笔记</h3>
-					<ul>
+					<ul id="rightNote">
 						<li>
 							<h4>
-								<a href="http://www.howzhi.com/note/42998"><i
+								<a href="javascript:void(0);"><i
 									class="glyphicon glyphicon-pencil"></i>人像后期调色的笔记</a>
-							</h4> 呈现出
+							</h4> 
+								<span>呈现出</span>
 						</li>
 
 					</ul>
@@ -768,7 +706,7 @@
 						<li><a class=" js-user-card"
 							href="http://www.howzhi.com/u/2359828/"
 							data-card-url="/user/2359828/card/show" data-user-id="2359828">
-								<img class="avatar-sm" src="images/avatar.jpg"
+								<img class="avatar-sm" src="images/avatar.png"
 								alt="红日211">
 						</a> <a href="http://www.howzhi.com/u/2359828/" title="红日211"
 							class="name">红日211</a></li>

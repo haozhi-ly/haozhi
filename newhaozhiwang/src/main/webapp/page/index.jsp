@@ -27,6 +27,12 @@
 			margin-left:30px;
 		}
 	</style>
+	<script type="text/javascript">
+	$(function(){
+
+
+	});
+	</script>
 </head>
 <body class="index">
 <c:set value="${users}" var="us"/>
