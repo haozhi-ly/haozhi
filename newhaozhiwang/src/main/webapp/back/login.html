@@ -7,18 +7,28 @@
 <script type="text/javascript" src="back/js/jquery-1.9.0.min.js"></script>
 <script type="text/javascript" src="back/js/login.js"></script>
 <link href="back/css/login2.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+	#msg{
+		color:red;
+	}
+</style>
 <script>
 	function loginadmin(){
 		var aname=$("#aname").val();
 		var apassword=$("#apassword").val();
-		
+		if(aname==null || aname==""){
+			$("#msg").html("账号不能为空！");
+		}
+		if(apassword==null || apassword==""){
+			$("#msg02").html("密码不能为空！");
+		}
 		$.post("admin/loginadmin",{aname:aname,apassword:apassword},function(data){
-			if(data!=null || data!=""){
+			if(data>0){
 				location.href = "back/manager/index.jsp";
 			}else{
 				alert("温馨提示：登录失败！请确认账号和密码后再登录");
 			}
-		},"json");
+		});
 	}
 
 </script>
@@ -50,14 +60,14 @@
                 <label class="input-tips" for="u">帐号：</label>
                 <div class="inputOuter" id="uArea">
                     
-                    <input type="text" id="aname" name="aname" class="inputstyle"/>
+                    <input type="text" id="aname" name="aname" class="inputstyle"/><span id="msg"></span>
                 </div>
                 </div>
                 <div class="pwdArea" id="pwdArea">
                <label class="input-tips" for="p">密码：</label> 
                <div class="inputOuter" id="pArea">
                     
-                    <input type="password" id="apassword" name="apassword" class="inputstyle"/>
+                    <input type="password" id="apassword" name="apassword" class="inputstyle"/><span id="msg02"></span>
                 </div>
                 </div>
                

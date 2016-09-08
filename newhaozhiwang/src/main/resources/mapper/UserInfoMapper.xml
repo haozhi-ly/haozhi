@@ -49,6 +49,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="editPwd" parameterType="UserInfo">
 		update userinfo set upassword=#{upassword,jdbcType=VARCHAR} where userid=#{userid}
 	</update>
-	
+	<insert id="adduserinfo" parameterType="UserInfo">
+		insert into UserInfo values(seq_userid.nextval,#{uname},#{email},#{upassword},#{gender},#{photo},#{usign},#{introdution},1,0,null,null,null)
+	</insert>
 
 </mapper>

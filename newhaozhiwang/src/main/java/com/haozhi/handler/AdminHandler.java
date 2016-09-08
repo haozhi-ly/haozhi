@@ -1,8 +1,9 @@
 package com.haozhi.handler;
 
-import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -13,6 +14,7 @@ import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.haozhi.entity.Admin;
 import com.haozhi.service.AdminService;
@@ -28,18 +30,19 @@ public class AdminHandler {
 	
 	
 	@RequestMapping("/loginadmin")
-	public void loginadmin(Admin admin,String aname,String apassword,PrintWriter out,HttpSession session){
+	public void loginadmin(Admin admin,String aname,String apassword,PrintWriter out,HttpSession session,HttpServletResponse response){
 		admin.setAname(aname);
 		 admin.setApassword(apassword);
 		Admin admins=adminService.loginadmin(admin);
-		session.setAttribute("myself", admins);
-		JSONArray json = JSONArray.fromObject(admins);
-		JSONObject jb = new JSONObject();
-		jb.put("rows", json);
-		out.print(jb);
+		response.setContentType("text/html");
+		if(admins == null){
+			out.print(0);
+		}else{
+			out.print(1);
+			session.setAttribute("myself", admins);
+		}
 		out.flush();
 		out.close();
-		
 	}
 	
 	@RequestMapping("/findmyself")
@@ -56,25 +59,16 @@ public class AdminHandler {
 		out.close();
 		
 	}
-	
+	@ResponseBody
 	@RequestMapping("/findAll")
-	public void findAll(PrintWriter out,HttpServletResponse response){
-		try {
-			response.setCharacterEncoding("utf-8");
-			response.setContentType("charset=utf-8");
-			out = response.getWriter();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	public Map<String, Object> findAll(){
 		List<Admin> admins=adminService.findAll();
 		int count=adminService.count();
-		JSONArray json = JSONArray.fromObject(admins);
-		JSONObject jb = new JSONObject();
-		jb.put("rows", json);
-		jb.put("total",count);
-		out.print(jb);
-		out.flush();
-		out.close();
+		System.out.println(admins);
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("rows", admins);
+		result.put("total",count);
+		return result;
 	}
 	
 	@RequestMapping("/addadmin")

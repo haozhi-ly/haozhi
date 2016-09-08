@@ -11,6 +11,9 @@ import java.util.Random;
 
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,12 +26,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import sun.misc.BASE64Decoder;
+
 import com.haozhi.entity.Course;
 import com.haozhi.service.CourseService;
-
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-import sun.misc.BASE64Decoder;
 
 @Controller
 @RequestMapping("/course")

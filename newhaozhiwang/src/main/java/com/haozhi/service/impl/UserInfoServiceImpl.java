@@ -86,6 +86,11 @@ public class UserInfoServiceImpl implements UserInfoService {
 		return userInfoMapper.editPwd(userInfo);
 	}
 
+	@Override
+	public int adduserinfo(UserInfo userInfo) {
+		return userInfoMapper.adduserinfo(userInfo);
+	}
+
 
 
 }

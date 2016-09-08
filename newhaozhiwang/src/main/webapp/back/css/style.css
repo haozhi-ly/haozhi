@@ -20,11 +20,22 @@
 }
 .cropped {
 	position: absolute;
-	right: -230px;
-	top: 0;
-	width: 200px;
+	right: 30px;
+	top: 45px;
+	width: 250px;
 	border: 1px #ddd solid;
-	height: 460px;
+	height: 260px;
+	padding: 4px;
+	box-shadow: 0px 0px 12px #ddd;
+	text-align: center;
+}
+.cropped02 {
+	position: absolute;
+	right: 30px;
+	top: 45px;
+	width: 250px;
+	border: 1px #ddd solid;
+	height: 260px;
 	padding: 4px;
 	box-shadow: 0px 0px 12px #ddd;
 	text-align: center;
@@ -53,6 +64,7 @@
 	box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.5);
 	background: none repeat scroll 0% 0% transparent;
 }
+
 .imageBox .spinner {
 	position: absolute;
 	top: 0;
