@@ -4,4 +4,61 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
 <mapper namespace="com.haozhi.mapper.CourseAssessMapper">
+
+	
+	<resultMap type="CourseAssess" id="AssessMap">
+		<id column="csid" property="csid"/>
+		<result column="cmid" property="cmid"/>
+		<result column="content" property="content"/>
+		<result column="time" property="time"/>
+		<association property="user" column="userid" javaType="UserInfo">
+			<id column="userid" property="userid"/>
+			<result column="uname" property="uname"/>
+			<result column="photo" property="photo"/>
+		</association>
+		<association property="courseManage" column="cmid" javaType="CourseManage">
+			<id column="cmid" property="cmid"/>
+			<result column="title" property="title"/>
+			<result column="courseseq" property="courseseq"/>
+			<association property="course" column="courseid" javaType="Course" select="getCoursebyId" />
+		</association>
+	</resultMap>
+	<select id="getAssessbypageDescTime" resultMap="AssessMap" parameterType="java.util.Map" >
+select * from(select a.*,rownum rn from 
+	(select ca.cmid,ca.userid,ca.content,ca.time,
+		cm.courseid,cm.title,cm.courseseq,u.uname,u.photo
+    		from courseAssess ca,course c,courseManage cm,userinfo u 
+				where ca.cmid=cm.cmid and cm.courseid=c.courseid and 
+					ca.userid=u.userid and c.courseid=#{courseid} order by time desc)a  
+						where #{pagesize}*#{pagenumber}>=rownum)
+			 				where rn>#{pagesize}*(#{pagenumber}-1) 	
+	</select>
+	<select id="getCoursebyId" parameterType="int" resultType="Course">
+		select * from course where courseid=#{courseid}
+	</select> 
+	
+	
+	
+	
+	<select id="CMcountbycourseid" parameterType="int" resultType="CourseAssess">
+		select * from courseAssess ca join courseManage cm on ca.cmid=cm.cmid where cm.courseid=#{courseid} 
+	</select>
+	<!-- <resultMap type="CourseAssess" id="AssessMap">
+		<id column="csid" property="csid"/>
+		<id column="cmid" property="cmid"/>
+		<result column="content" property="content"/>
+		<result column="time" property="time"/>
+		<association property="courseManage" column="cmid" javaType="CourseManage">
+			<id column="cmid" property="cmid"/>
+			<result column="title" property="title"/>
+			<result column="courseseq" property="courseseq"/>
+		</association
+	</resultMap>
+	<select id="test" resultMap="AssessMap">
+			select * from courseassess ca,coursemanage cm where ca.cmid=cm.cmid 	
+	</select> -->
+	
+	
+	
+	
 </mapper>

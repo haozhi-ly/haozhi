@@ -12,6 +12,23 @@ select * from studyCourse;
 select * from selfMessage;
 select * from cgroup;
 
+<<<<<<< HEAD
+select * from (select s.*,(select count(1) from studyCourse where courseid = s.courseid )
+memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg 
+from course s where s.ctid=2 order by memberCount desc) where 3>=rownum 
+
+select s.*,(select count(1) from studyCourse where courseid = s.courseid )
+memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg,
+typename,(select count(*) from courseManage where courseid=s.courseid) courseCount,(
+select count(courseid) from studyCourse where courseid=s.courseid ) userCount,
+(select count(*) from courseAssess where cmid in (select cmid from courseManage where courseid=s.courseid)
+) assessCount from course s,courseType t where s.ctid=t.ctid and  s.courseid=6 
+
+select count(*) from courseManage
+select count(*) from courseManage where courseid=2;
+select count(userid) from studyCourse where courseid=5;
+
+
 drop table userinfo;
 drop sequence seq_userid cascade constraints;
 delete from userinfo;
@@ -82,9 +99,11 @@ create table course(
        temp02 varchar2(200),--备用字段
        temp03 varchar2(200)--备用字段  
 )
-ALTER TABLE haozhi.course RENAME COLUMN temp01 TO createTime --修改表列名 
+ALTER TABLE haozhi.course RENAME COLUMN temp01 TO temp03 --修改表列名 
 ALTER TABLE haozhi.course MODIFY createTime date  --修改字段类型 
 
+commit;
+select * from course;
 update course set createTime = to_date('2016-7-20','yyyy-mm-dd');
 create sequence seq_courseid start with 1;
 
@@ -136,6 +155,7 @@ drop sequence seq_cmid ;
 
 select * from courseManage;
 select count(*) from courseManage where courseid=6;
+update courseManage set  courseseq=2 where cmid=2;
 --------------5.课时管理表
 create table courseManage(
        cmid int primary key ,
@@ -158,7 +178,7 @@ insert into courseManage values(seq_cmid.nextval,6,1,'L1:超级简单的冷萃�
 <img src="http://f1.howzhi.com/course/2016/07-05/094900c9e831099088.jpg" alt=""></p><p>甚而还可以进行大量制作</p><p>
 <img src="http://f1.howzhi.com/course/2016/07-05/0952022f0dcc504072.jpg" alt=""></p><p><img src="http://f1.howzhi.com/course/2016/07-05/09520338f95e750367.jpg" alt="">
 </p><p><img src="http://f1.howzhi.com/course/2016/07-05/09520331395c632441.jpg" alt=""></p><p> </p>',null,null,null);
-insert into courseManage values(seq_cmid.nextval,6,1,' L2:高大上的冰滴法 ',1,'
+insert into courseManage values(seq_cmid.nextval,6,1,' L2:高大上的冰滴法 ',2,'
 <p>冰滴咖啡的制作相对会比较麻烦，因为需要使用专用的冰滴装置。</p><p><img src="http://f1.howzhi.com/course/2016/07-05/0955539d7214579669.jpg" alt="">
 </p><p><strong>材料</strong></p><p>冰滴式滴滤器、深培咖啡豆、矿泉水、冰块。</p><p><strong>制作步骤</strong></p><p>1 将咖啡豆用磨豆机2-3刻度研磨。
 <br>2 把滤网放入萃取瓶底部。<br>3 咖啡粉倒入萃取瓶中，并将咖啡粉整平。<br>4 将萃取瓶置于收集瓶上方，再将滴盘放在萃取瓶上方。<br>5 准备冰块与过滤纯水，用1：1之比例倒入储水球。
@@ -169,6 +189,7 @@ insert into courseManage values(seq_cmid.nextval,6,1,' L2:高大上的冰滴法 
 5 水滴式咖啡的一个成败关键则是滴滤速度，以10秒七滴左右的慢速滴滤为佳。水与咖啡粉有较长的时间融合，咖啡口感较饱和;若滴滤时间太快，味道太淡
 ，同时会产生积水外溢，反之，太慢会使得咖啡发酵，产生酸味及酒味。</p>',null,null,null);
 
+select count(*) from courseAssess where cmid in (select cmid from courseManage where courseid=6)
 -----------------6.课程评价表
 create table courseAssess(
        csid int primary key ,

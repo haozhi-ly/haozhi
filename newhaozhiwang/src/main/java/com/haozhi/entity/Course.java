@@ -20,18 +20,20 @@ public class Course implements Serializable{
 	private int userId;// --外键 课程的创建者
 	private int cview;// --浏览量
 	private String createTime;// --备用字段
-	private String temp02;// --备用字段
-	private String temp03;// --备用字段
 	private int memberCount;  //--课程总人员
 	private double assessAvg;  //--课程评分
 	private UserInfo user;  // 用户
+	private int courseCount; //课程的课时数
+	private int userCount; //课程的用户人数
+	private int assessCount; //评价人数
+	private String typename; //课程类型名
 
 	public Course() {
 	}
 
 	public Course(String ctitle, String cintrodution, Integer ctid,
 			String courseting, String coursephoto, int userId, int cview,
-			String createTime, String temp02, String temp03) {
+			String createTime) {
 		this.ctitle = ctitle;
 		this.cintrodution = cintrodution;
 		this.ctid = ctid;
@@ -40,13 +42,11 @@ public class Course implements Serializable{
 		this.userId = userId;
 		this.cview = cview;
 		this.createTime = createTime;
-		this.temp02 = temp02;
-		this.temp03 = temp03;
 	}
 	
 	public Course(String ctitle, String cintrodution, CourseType courseType,
 			String courseting, String coursephoto, UserInfo userInfo, int cview,
-			String createTime, String temp02, String temp03) {
+			String createTime) {
 		this.ctitle = ctitle;
 		this.cintrodution = cintrodution;
 		this.courseType=courseType;
@@ -55,8 +55,6 @@ public class Course implements Serializable{
 		this.user = userInfo;
 		this.cview = cview;
 		this.createTime = createTime;
-		this.temp02 = temp02;
-		this.temp03 = temp03;
 	}
 	
 	
@@ -162,21 +160,7 @@ public class Course implements Serializable{
 		this.createTime = createTime;
 	}
 
-	public String getTemp02() {
-		return temp02;
-	}
-
-	public void setTemp02(String temp02) {
-		this.temp02 = temp02;
-	}
-
-	public String getTemp03() {
-		return temp03;
-	}
-
-	public void setTemp03(String temp03) {
-		this.temp03 = temp03;
-	}
+	
 
 	public int getMemberCount() {
 		return memberCount;
@@ -201,25 +185,51 @@ public class Course implements Serializable{
 	public void setUser(UserInfo user) {
 		this.user = user;
 	}
+	
+	
+
+	public int getCourseCount() {
+		return courseCount;
+	}
+
+	public void setCourseCount(int courseCount) {
+		this.courseCount = courseCount;
+	}
+
+	public int getUserCount() {
+		return userCount;
+	}
+
+	public void setUserCount(int userCount) {
+		this.userCount = userCount;
+	}
+
+	public int getAssessCount() {
+		return assessCount;
+	}
+
+	public void setAssessCount(int assessCount) {
+		this.assessCount = assessCount;
+	}
+	
+
+	public String getTypename() {
+		return typename;
+	}
+
+	public void setTypename(String typename) {
+		this.typename = typename;
+	}
 
 	@Override
 	public String toString() {
 		return "Course [courseid=" + courseid + ", ctitle=" + ctitle + ", cintrodution=" + cintrodution + ", ctid="
 				+ ctid + ", courseType=" + courseType + ", courseting=" + courseting + ", coursephoto=" + coursephoto
-				+ ", userId=" + userId + ", cview=" + cview + ", createTime=" + createTime + ", temp02=" + temp02
-				+ ", temp03=" + temp03 + ", memberCount=" + memberCount + ", assessAvg=" + assessAvg + ", user=" + user
-				+ "]";
+				+ ", userId=" + userId + ", cview=" + cview + ", createTime=" + createTime + ", memberCount="
+				+ memberCount + ", assessAvg=" + assessAvg + ", user=" + user + ", courseCount=" + courseCount
+				+ ", userCount=" + userCount + ", assessCount=" + assessCount + ", typename=" + typename + "]";
 	}
 
-	
-
-	
-	
-
-
-	
-
-	
 
 
 }
