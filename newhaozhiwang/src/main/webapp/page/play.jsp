@@ -11,11 +11,12 @@
 	<meta name="renderer" content="webkit">
 	<meta name="baidu-site-verification" content="XN2OVFQdUg">
 	<title>好知网 播放</title>
-
+	<link href="http://f1.howzhi.com/system/2016/03-31/113613d6a857327741.ico" rel="shortcut icon">
 	<link href="css/bootstrap.css" rel="stylesheet">
 	<link href="css/main.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/howzhi.css">
-
+	<script type="text/javascript" src="js/jquery.js"></script> 
+	<script type="text/javascript" src="js/play.js"></script>
 	<style>
 		.cke {
 			visibility: hidden;
@@ -48,12 +49,24 @@
 				<div id="learn-loading" class="learn-load text-center" style="display: none;">正在加载请稍候...</div>
 				<div class="lesson-content" id="lesson-video-content" data-role="lesson-content" style="display:none;" data-watermark="http://f1.howzhi.com/system/watermark_1438736692.png" data-user-id="2358982" data-balloon-player="1"></div>
 				<div class="watermarkEmbedded"><input type="hidden" id="videoWatermarkEmbedded" value="0"></div>
-
 				<div class="lesson-content lesson-content-audio" id="lesson-audio-content" data-role="lesson-content" style="display:none;"></div>
-				<div class="lesson-content" id="lesson-swf-content" data-role="lesson-content" style="display:none;"></div>
+				<div class="lesson-content" id="lesson-swf-content" data-role="lesson-content" style="display:none; text-align: center">
+						<h1 style="color:#fff;margin-top:200px;">抱歉!该课程还未添加课时内容!!!</h1></div>
 				<div class="lesson-content" id="lesson-iframe-content" data-role="lesson-content"  style="display:none;">
-					<iframe src="" style="position:absolute; left:0; top:0; height:100%; width:100%; border:0px;" scrolling="no"></iframe></div>
-				<div class="lesson-content lesson-content-text" id="lesson-text-content"   style="display:block;">
+					<iframe scrolling="no" style="position:absolute; left:0; top:0; height:100%; width:100%; border:0px;" src="http://player.youku.com/embed/XNDY2NTYwMjI4">
+						<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+						<html>
+						<head>
+						<body>
+						<div id="youku-playerBox" style="width:100%;height:100%;">
+						<object id="youku-player" width="100%" height="100%" data="" type="application/x-shockwave-flash">
+						</div>
+						<script id="_youkujs_" type="text/javascript" src="http://player.youku.com/jsapi"></script>
+						</body>
+						</html>
+						</iframe>
+					</div> 
+				<div class="lesson-content lesson-content-text" id="lesson-text-content"   style="display:none;">
 					<div class="lesson-content-text-body" id="lesson-text" onmousewheel="return scroll(event,this)" style="overflow-y:auto; overflow-x:auto; width:880px; height:500px;">
 							<p>冷萃咖啡听起来高大上，但实际上制作非常简单。</p>
 							<p>

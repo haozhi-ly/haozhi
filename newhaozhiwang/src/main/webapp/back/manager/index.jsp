@@ -11,7 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="easyui/css/easyui.css">
 	<link rel="stylesheet" type="text/css" href="easyui/css/icon.css">
 	<link rel="stylesheet" type="text/css" href="easyui/css/demo.css">
-		<link rel="stylesheet" type="text/css" href="back/css/style.css">
+	<link rel="stylesheet" type="text/css" href="back/css/style.css">
 	
 	<script type="text/javascript" src="easyui/js/jquery.min.js"></script>
 	<script type="text/javascript" src="easyui/js/jquery.easyui.min.js"></script>

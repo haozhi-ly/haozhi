@@ -8,7 +8,7 @@
 		<base href="/newhaozhiwang/"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
-		<title>小组  --好知网</title>
+		<title>小组  --好知网</title> 
 		<meta name="keywords" content="小组">
 		<meta name="description" content="小组首页">
 		<meta content="2fbd468350a8348322e8aed780d7f3178511d79d" name="csrf-token">
