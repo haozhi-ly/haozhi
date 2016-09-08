@@ -472,3 +472,9 @@ DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 0
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from courseManage where cmid = ? 
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 21(Integer)
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from courseManage where cmid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from courseManage where cmid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 21(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 21(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1

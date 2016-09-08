@@ -239,33 +239,8 @@
 								<a href="javascript:void(0);" class="active">最新</a></span>
 						</div>
 						<ul class="notes-list" id="noteslist">
-							<li class="clearfix">
-								<div class="notes-img">
-									<a class=" js-user-card"
-										href="http://www.howzhi.com/u/2362180/"
-										data-card-url="/user/2362180/card/show" data-user-id="2362180">
-										<img class="avatar-sm" src="images/210456878707190727.jpg"
-										alt="a阿远">
-									</a>
-
-								</div>
-								<div class="notes-content">
-									<h4>
-										<a href="http://www.howzhi.com/note/43065" class="title">
-											人像氛围的笔记 </a>
-									</h4>
-									<p>人像氛围确实是很重要，很容易被人忽视的，每个摄影师拍的之所以不一样，可能就是摄影师营造的氛围不一样，</p>
-									<div class="metas">
-										<span class="name">by <a href="javascrit:;">a阿远</a></span> <span
-											class="count pull-right"> <a href="javascript:;"
-											data-role="like" data-like-url="/course/note/43065/like"><i
-												class="fa fa-thumbs-o-up" title="点我支持一下笔记的作者"></i>1</a> <a
-											style="display: none" title="您已经支持过该笔记"> <i
-												class="fa fa-thumbs-o-up"></i><span
-												class="newNoteLikeNumxxxxx">1</span></a>
-										</span>
-									</div>
-								</div>
+							<li class="clearfix" style="text-align: center;color:#616161">
+								该课程还没有笔记！！！
 							</li>
 							
 							<ul class="pagination ">

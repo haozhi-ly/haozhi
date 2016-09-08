@@ -78,6 +78,7 @@ create table  admin(
 );
 create sequence seq_aid start with 1;
 insert into admin values(seq_aid.nextval,'管理员','123456@qq.com','123456',null,null,null);
+insert into admin values(seq_aid.nextval,'zj','123456@qq.com','a',null,null,null);
 
 drop table course;
 drop sequence seq_courseid ;
@@ -100,7 +101,8 @@ create table course(
        temp03 varchar2(200)--备用字段  
 )
 ALTER TABLE haozhi.course RENAME COLUMN temp01 TO createTime --修改表列名 
-ALTER TABLE haozhi.course MODIFY createTime date  --修改字段类型 
+ALTER TABLE haozhi.course MODIFY createTime date  --修改字段类型  (name varchar(255)
+alter table haozhi.course modify(cintrodution varchar(1000))
 
 update course set createTime = to_date('2016-7-20','yyyy-mm-dd');
 create sequence seq_courseid start with 1;
