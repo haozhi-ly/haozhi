@@ -40,7 +40,7 @@
             <li><a href="page/person.jsp"><i style="color:#666;" class="glyphicon glyphicon-user" ></i>个人主页</a></li>
             <li><a href="page/info.jsp"><i style="color:#666;" class="glyphicon glyphicon-cog" ></i>个人设置</a></li>
             <li><a href="javaScript:void(0);"><i style="color:#666;" class="glyphicon glyphicon-credit-card" ></i>账户中心</a></li>
-            <li><a href="page/login.jsp"><i style="color:#666;" class="glyphicon glyphicon-log-out" ></i>退出登录</a></li>
+            <li><a href="userinfo/loginOut"><i style="color:#666;" class="glyphicon glyphicon-log-out" ></i>退出登录</a></li>
           </ul>
         </li>
         <li class="user-msg user-nav-dropdown hidden-xs "> <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <i style="font-size:16px;" class="glyphicon glyphicon-bell"></i> </a>
@@ -58,7 +58,7 @@
           <div id="search-left" class="pull-left search-left">
             <div class="search-type pull-left">
               <div class="choose" style="color:#666;font-size:14px;margin-top:3px;">课程<i style="color:#999;font-size:11px;margin-left:5px" class="glyphicon glyphicon-chevron-down"></i></div>
-              <ul class="text-center" id="textcenter" style="color:#999;">
+              <ul class="text-center" id="text-center" style="color:#999;">
                 <li data-type="course">课程</li>
                 <li data-type="discussion">话题</li>
                 <li data-type="user">用户</li>

@@ -346,31 +346,39 @@ create table cgroup(
                  constraint FK_userinfo_userid001 references userinfo(userid),--创建人 
        createtime date,---创建时间
        groupnumber varchar2(500),---小组成员（拼接）
-       peoplecount int,--小组成员总数
+       peoplecount int,--小组成员总人数
        pic varchar2(200),--小组头像
-       introduction varchar2(400)--小组简介
+       introduction varchar2(400),--小组简介
+       ctid int
+            constraint FK_course_Type_ctid references courseType(ctid)--类型
 );
 drop table cgroup;
 create sequence seq_gid start with 1;
-insert into cgroup values(seq_gid.nextval,'摄影公社',3,sysdate,'3,1,2',100,null,null);
-insert into cgroup values(seq_gid.nextval,'绘画世界',2,sysdate,'2,1,4',80,null,null);
-insert into cgroup values(seq_gid.nextval,'好知大本营（教务处）',2,sysdate,'2,1,4',80,null,null);
-insert into cgroup values(seq_gid.nextval,'Photoshop照片后期处理学习交流',2,sysdate,'2,1,4',70,null,null);
-insert into cgroup values(seq_gid.nextval,'我是从零开始学吉他的',2,sysdate,'2,1,4',85,null,null);
-insert into cgroup values(seq_gid.nextval,'每月养成一个好习惯',2,sysdate,'2,1,4',60,null,null);
 
-insert into cgroup values(seq_gid.nextval,'漫画学院',3,sysdate,'3,1,2',150,null,null);
-insert into cgroup values(seq_gid.nextval,'坏男孩学院',2,sysdate,'2,1,4',152,null,null);
-insert into cgroup values(seq_gid.nextval,'天天理财',2,sysdate,'2,1,4',83,null,null);
-insert into cgroup values(seq_gid.nextval,'古筝吧',2,sysdate,'2,1,4',38,null,null);
-insert into cgroup values(seq_gid.nextval,'Ubuntu',2,sysdate,'2,1,4',1005,null,null);
-insert into cgroup values(seq_gid.nextval,'早起狗',2,sysdate,'2,1,4',880,null,null);
-insert into cgroup values(seq_gid.nextval,'摄影公社',3,sysdate,'3,1,2',1000,null,'摄影爱好者的天堂');
-insert into cgroup values(seq_gid.nextval,'绘画世界',2,sysdate,'2,1,4',2000,null,'灵感来自于生活');
+insert into cgroup values(seq_gid.nextval,'摄影公社',3,sysdate,'3,1,2',100,null,null,1);
+insert into cgroup values(seq_gid.nextval,'绘画世界',2,sysdate,'2,1,4',80,null,null,6);
+insert into cgroup values(seq_gid.nextval,'好知大本营（教务处）',2,sysdate,'2,1,4',80,null,null,9);
+insert into cgroup values(seq_gid.nextval,'Photoshop照片后期处理学习交流',2,sysdate,'2,1,4',70,null,null,1);
+insert into cgroup values(seq_gid.nextval,'我是从零开始学吉他的',2,sysdate,'2,1,4',85,null,null,6);
+insert into cgroup values(seq_gid.nextval,'每月养成一个好习惯',2,sysdate,'2,1,4',60,null,null,4);
+insert into cgroup values(seq_gid.nextval,'名校公开课',3,sysdate,'3,1,2',150,null,null,9);
+insert into cgroup values(seq_gid.nextval,'摄影基础交流',2,sysdate,'2,1,4',112,null,null,1);
+insert into cgroup values(seq_gid.nextval,'摄影入门学习',2,sysdate,'2,1,4',88,null,null,1);
+insert into cgroup values(seq_gid.nextval,'科学学英语',2,sysdate,'2,1,4',98,null,null,7);
+insert into cgroup values(seq_gid.nextval,'三维动画',2,sysdate,'2,1,4',85,null,null,6);
+insert into cgroup values(seq_gid.nextval,'思想的力量',2,sysdate,'2,1,4',30,null,null,8);
 commit;
+insert into cgroup values(seq_gid.nextval,'漫画学院',3,sysdate,'3,1,2',150,null,null,7);
+insert into cgroup values(seq_gid.nextval,'坏男孩学院',2,sysdate,'2,1,4',152,null,null,6);
+insert into cgroup values(seq_gid.nextval,'天天理财',2,sysdate,'2,1,4',83,null,null,8);
+insert into cgroup values(seq_gid.nextval,'古筝吧',2,sysdate,'2,1,4',38,null,null,3);
+insert into cgroup values(seq_gid.nextval,'Ubuntu',2,sysdate,'2,1,4',1005,null,null,5);
+insert into cgroup values(seq_gid.nextval,'早起狗',2,sysdate,'2,1,4',880,null,null,6);
 
-insert into cgroup values(seq_gid.nextval,'插画交流',2,sysdate,'2,1,4',87,null,null);
-insert into cgroup values(seq_gid.nextval,'java开发',2,sysdate,'2,1,4',68,null,null);
-insert into cgroup values(seq_gid.nextval,'吉卜力',2,sysdate,'2,1,4',1585,null,null);
-insert into cgroup values(seq_gid.nextval,'工笔画',2,sysdate,'2,1,4',820,null,null);
+insert into cgroup values(seq_gid.nextval,'插画交流',2,sysdate,'2,1,4',87,null,null,6);
+insert into cgroup values(seq_gid.nextval,'java开发',2,sysdate,'2,1,4',68,null,null,5);
+insert into cgroup values(seq_gid.nextval,'吉卜力',2,sysdate,'2,1,4',1585,null,null,2);
+insert into cgroup values(seq_gid.nextval,'工笔画',2,sysdate,'2,1,4',820,null,null,2);
 ------------------话题表 topic
+commit;
+select * from cgroup;

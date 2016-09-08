@@ -67,7 +67,7 @@
           <div id="search-left" class="pull-left search-left">
             <div class="search-type pull-left">
              <div class="choose" style="color:#666;font-size:14px;margin-top:3px;">课程<i style="color:#999;font-size:11px;margin-left:5px" class="glyphicon glyphicon-chevron-down"></i></div>
-              <ul class="text-center" id="textcenter" style="color:#999;">
+              <ul class="text-center" id="text-center" style="color:#999;">
                 <li data-type="course">课程</li>
                 <li data-type="discussion">话题</li>
                 <li data-type="user">用户</li>

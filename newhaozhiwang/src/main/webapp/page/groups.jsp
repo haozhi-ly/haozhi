@@ -48,7 +48,7 @@
 					<div class="panel panel-default">
 
 						<div class="panel-heading">
-							热门小组<a href="javascript:void(0)" class="pull-right">»更多</a>
+							热门小组<a href="groups/moresearch" class="pull-right">»更多</a>
 						</div>
 						<div class="panel-body">
 							<div class="row group-grids" id="hostGroups">
