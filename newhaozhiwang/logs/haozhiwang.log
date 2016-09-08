@@ -1,0 +1,3 @@
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from courseManage where cmid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 25(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1

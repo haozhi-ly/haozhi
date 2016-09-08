@@ -71,12 +71,12 @@ $(function(){
 	            $.post("courseAssess/getAssessbypageDescTime/",{"courseid":courseid},function(data){
 	            	var contentstr="";
 	            	for(var i=0;i<data.length;i++){
-	            		contentstr+="<li><div class=' notes-img'> <a class='js-user-card'";
+	            		contentstr+="<li><div class=' notes-img'> <a class='js-user-card' href='#'> <img class='avatar-sm'";
 	            			
 	            		/*	<li>
 						<div class="notes-img">
 							<a class=" js-user-card"
-								href="http://www.howzhi.com/u/1731774/"
+								href="#"
 								data-card-url="/user/1731774/card/show" data-user-id="1731774">
 								<img class="avatar-sm" src="images/avatar.png"
 								alt="竹墨涵清">

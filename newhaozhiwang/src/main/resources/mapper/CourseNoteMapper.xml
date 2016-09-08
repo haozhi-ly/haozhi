@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<id column="userid" property="userid"/>
 		<collection property="user" column="userid" ofType="UserInfo" select="getUserByUsid" />
 	</resultMap>
-	<select id="getCourseNoteById" resultMap="CourseNoteMap" >
+	<select id="getCourseNoteById" resultMap="CourseNoteMap">
 		select n.*,title from courseNote n inner join courseManage m on n.cmid=m.cmid and  n.cmid in
 		 (select cmid from courseManage where courseid= #{courseid,jdbcType=VARCHAR} ) order by ntime desc
 	</select>
