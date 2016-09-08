@@ -4,4 +4,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
 <mapper namespace="com.haozhi.mapper.CourseNoteMapper">
+<!-- 	<select id="getCourseNoteById" parameterType="int" resultType="CourseNote">
+		select * from courseNote where  cmid in
+		 (select cmid from courseManage where courseid= #{courseid} ) order by ntime desc
+	</select> -->
+	
+	<resultMap type="CourseNote" id="CourseNoteMap">
+		<id column="courseid" property="courseid"/>
+		<id column="userid" property="userid"/>
+		<collection property="user" column="userid" ofType="UserInfo" select="getUserByUsid" />
+	</resultMap>
+	<select id="getCourseNoteById" resultMap="CourseNoteMap" >
+		select n.*,title from courseNote n inner join courseManage m on n.cmid=m.cmid and  n.cmid in
+		 (select cmid from courseManage where courseid= #{courseid} ) order by ntime desc
+	</select>
+	
+	<select id="getUserByUsid" resultType="UserInfo" parameterType="int">
+		select * from userinfo where userid = #{userid}
+	</select>
+	
 </mapper>

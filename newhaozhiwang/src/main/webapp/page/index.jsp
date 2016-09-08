@@ -20,13 +20,19 @@
 <script src="js/jquery-2.1.4.min.js"></script> 
 <script src="js/swiper-3.3.1.min.js"></script> 
 <script src="js/bootstrap.js"></script> 
-<script src="js/top.js"></script>
+
 	<style type="text/css">
 		.form-group{
 			margin-top:14px;
 			margin-left:30px;
 		}
 	</style>
+	<script type="text/javascript">
+	$(function(){
+
+
+	});
+	</script>
 </head>
 <body class="index">
 <c:set value="${users}" var="us"/>
@@ -41,13 +47,14 @@
 
 <div class="swiper-container">
   <div class="swiper-wrapper" style="width: 9443px; height: 420px; transform: translate3d(-6745px, 0px, 0px); transition-duration: 0.3s;">
-    <div class="swiper-slide swiper-slide-duplicate" style="background-size:cover;background-image:url(images/Penguins.jpg); width: 1349px; height: 420px;"> <a href="http://www.howzhi.com/daren/" target="_blank" title="入驻好知，分享知识"></a> </div>
-    <div class="swiper-slide" style="background-size:cover;background-image:url(images/Penguins.jpg); width: 1349px; height: 420px;"> <a href="http://www.howzhi.com/courses" target="_blank" title="发现好知"></a> </div>
-    <div class="swiper-slide" style="background-size:cover;background-image:url(images/Chrysanthemum.jpg); width: 1349px; height: 420px;"> <a href="http://www.howzhi.com/camera/play?ref=banner" target="_blank" title="好知网模拟相机，没有相机也能学摄影"></a> </div>
+    <div class="swiper-slide swiper-slide-duplicate" style="background-size:cover;background-image:url(images/block_picture_1471493110.jpg); width: 1349px; height: 420px;"> <a href="http://www.howzhi.com/daren/" target="_blank" title="入驻好知，分享知识"></a> </div>
+    <div class="swiper-slide" style="background-size:cover;background-image:url(images/block_picture_1471493110.jpg); width: 1349px; height: 420px;"> <a href="http://www.howzhi.com/courses" target="_blank" title="发现好知"></a> </div>
+    <div class="swiper-slide" style="background-size:cover;background-image:url(images/block_picture_1470403193.jpg); width: 1349px; height: 420px;"> <a href="http://www.howzhi.com/courses" target="_blank" title="发现好知"></a> </div>
+    <div class="swiper-slide" style="background-size:cover;background-image:url(images/block_picture_1469785113.jpg); width: 1349px; height: 420px;"> <a href="http://www.howzhi.com/camera/play?ref=banner" target="_blank" title="好知网模拟相机，没有相机也能学摄影"></a> </div>
     <!-- test-->
-    <div class="swiper-slide" style="background-size:cover;background-image:url(images/Hydrangeas.jpg); width: 1349px; height: 420px;"> <a href="http://www.howzhi.com/course/13886/" target="_blank" title="零基础学习淘宝摄影 服装摄影 产品摄影"></a> </div>
-    <div class="swiper-slide" style="background-size:cover;background-image:url(images/Jellyfish.jpg); width: 1349px; height: 420px;"> <a href="http://www.howzhi.com/daren/" target="_blank" title="入驻好知，分享知识"></a> </div>
-    <div class="swiper-slide swiper-slide-duplicate" style="background-size:cover;background-image:url(images/Lighthouse.jpg); width: 1349px; height: 420px;"> <a href="http://www.howzhi.com/courses" target="_blank" title="发现好知"></a> </div>
+    <div class="swiper-slide" style="background-size:cover;background-image:url(images/block_picture_1468976358.jpg); width: 1349px; height: 420px;"> <a href="http://www.howzhi.com/course/13886/" target="_blank" title="零基础学习淘宝摄影 服装摄影 产品摄影"></a> </div>
+    <div class="swiper-slide" style="background-size:cover;background-image:url(images/block_picture_1470381191.jpg); width: 1349px; height: 420px;"> <a href="http://www.howzhi.com/daren/" target="_blank" title="入驻好知，分享知识"></a> </div>
+    <div class="swiper-slide swiper-slide-duplicate" style="background-size:cover;background-image:url(images/block_picture_1471493110.jpg); width: 1349px; height: 420px;"> <a href="http://www.howzhi.com/courses" target="_blank" title="发现好知"></a> </div>
   </div>
   <div class="swiper-pagination"></div>
   
