@@ -36,7 +36,7 @@ public class CgroupServiceImplTest {
 	
 	@Test
 	public void testSearchGroups() {
-		List<Cgroup> group=groupService.searchGroups("");
+		List<Cgroup> group=groupService.searchGroups("",9);
 		System.out.println(group);
 		assertNotNull(group);
 	}

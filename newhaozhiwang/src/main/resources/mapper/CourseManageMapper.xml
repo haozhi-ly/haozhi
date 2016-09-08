@@ -4,4 +4,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
 <mapper namespace="com.haozhi.mapper.CourseManageMapper">
+
+
+
+	
+
+	<select id="getCourseManagebyId" resultType="CourseManage" parameterType="int">
+		select * from courseManage where courseid = #{courseid}
+	</select>
+	
+	<select id="getPlayByCmid" resultType="CourseManage" parameterType="int">
+		select * from courseManage where cmid = #{cmid}
+	</select>
+
+
 </mapper>

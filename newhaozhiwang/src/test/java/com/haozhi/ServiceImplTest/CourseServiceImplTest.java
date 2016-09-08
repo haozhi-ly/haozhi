@@ -65,7 +65,7 @@ public class CourseServiceImplTest {
 	
 	@Test
 	public void getCourseById() {
-		Course course = courseService.getCourseById(2);
+		Course course = courseService.getCourseById(6);
 		System.out.println(course);
 		assertNotNull(course);
 	}

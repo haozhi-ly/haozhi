@@ -35,4 +35,36 @@ $(function(){
 			}
 		$("#newGroups").html(listStr);
 	},"json");
+	
+	
+	$("#navid a").bind("click",function(){
+		$(this).parent().parent().children().children().removeClass("active");
+		$(this).addClass("active");
+		var ctid=this.id;
+		
+		$.get("groups/navSearch",{"ctid":ctid},function(data){
+			var listStr="";
+			if(data){
+				for(var i=0;i<data.length;i++){		
+					listStr+='<div class="col-md-3">';
+					listStr+='<div class="media group-media group-media-sm">';
+					listStr+='<a href="http://www.howzhi.com/group/349/" title="'+data[i].groupname+'" class="pull-left">';
+					listStr+='<img src="images/105050a0ca1c653470.jpg" alt="'+data[i].groupname+'" class="media-object">';
+					listStr+='</a>';
+					listStr+='<div class="media-body">';
+					listStr+='<p>';
+					listStr+='<a href="http://www.howzhi.com/group/349/" title="'+data[i].groupname+'">'+data[i].groupname+'</a>';
+					listStr+='</p>';
+					listStr+='<div class="text-muted text-normal">';
+					listStr+=''+data[i].peoplecount+'&nbsp; 1362个话题';
+					listStr+='</div></div></div></div>';
+					}
+			}else{
+				listStr+='<div class="empty">暂无小组信息</div>';
+			}
+			$("#add").html(listStr);
+		},"json");
+	});
+		
+	
 });

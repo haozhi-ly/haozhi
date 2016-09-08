@@ -56,7 +56,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			null</if>
 		<if test='coursephoto!=null'>
 			#{coursephoto}
-		</if>,#{userId},0,null,null,to_date(#{createTime},'yyyy-mm-dd hh24:mi:ss'))
+		</if>,#{userId},0,to_date(#{createTime},'yyyy-mm-dd hh24:mi:ss'),null,null)
 	</insert>
 	
 	<!-- 通过课程类型查所有课程 -->
@@ -133,7 +133,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<collection property="user" column="userId" ofType="UserInfo" select="getUserByUsid6" />
 	</resultMap>
 	<select id="getCourseById" resultMap="Course" parameterType="Integer" >
-		 <include refid="selectCourse"/> where s.courseid=#{_parameter}
+		select s.*,(select count(1) from studyCourse where courseid = s.courseid )
+		memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg,
+		typename,(select count(*) from courseManage where courseid=s.courseid) courseCount,(
+		select count(courseid) from studyCourse where courseid=s.courseid ) userCount,
+		(select count(*) from courseAssess where cmid in (select cmid from courseManage where courseid=s.courseid)
+		) assessCount from course s,courseType t where s.ctid=t.ctid and  s.courseid=#{_parameter}
 	</select>
 	<select id="getUserByUsid6" resultType="UserInfo" parameterType="int">
 		select * from userinfo where userid = #{userid}

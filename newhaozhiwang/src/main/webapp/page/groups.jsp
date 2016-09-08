@@ -8,7 +8,7 @@
 		<base href="/newhaozhiwang/"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
-		<title>小组  --好知网</title>
+		<title>小组  --好知网</title> 
 		<meta name="keywords" content="小组">
 		<meta name="description" content="小组首页">
 		<meta content="2fbd468350a8348322e8aed780d7f3178511d79d" name="csrf-token">
@@ -48,7 +48,7 @@
 					<div class="panel panel-default">
 
 						<div class="panel-heading">
-							热门小组<a href="javascript:void(0)" class="pull-right">»更多</a>
+							热门小组<a href="groups/moresearch" class="pull-right">»更多</a>
 						</div>
 						<div class="panel-body">
 							<div class="row group-grids" id="hostGroups">

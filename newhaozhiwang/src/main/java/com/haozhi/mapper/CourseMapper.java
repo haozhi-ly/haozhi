@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.haozhi.entity.Course;
+import com.haozhi.entity.CourseManage;
 
 public interface CourseMapper {
 	List<Course> getAllCourse();  //查询所有课程
@@ -28,6 +29,7 @@ public interface CourseMapper {
 	List<Course> getAllHostCourse();  //查询所有热门课程
 	
 	Course getCourseById(Integer courseid); // 通过课程号查课程
+	
 
 }
 
