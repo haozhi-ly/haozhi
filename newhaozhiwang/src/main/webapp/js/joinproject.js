@@ -1,4 +1,4 @@
-		
+		var courseid=window.location.href.split('=')[1];
 $(function(){
 	//显示页面所有信息
 	//console.info();
@@ -51,6 +51,7 @@ $(function(){
 	},"json");
 	
 
+	var courseid=window.location.href.split('=')[1];
 	$.post("courseAssess/CMcountbycourseid/",{"_method":"POST",courseid:courseid},function(data){
 		console.info(data);
 		var page;
@@ -128,6 +129,7 @@ $(function(){
 			 $('#courseAssess').css('display', 'none');
 			 
 			//根据courseid查课时
+			 var courseid=window.location.href.split('=')[1];
 				$.post("courseManage/getCourseManageById/",{"_method":"POST",courseid:courseid},function(data){	
 					var str = "";
 					if(data){
@@ -161,6 +163,7 @@ $(function(){
 			 $('#courseClassmate').css('display', 'none');
 			 $('#courseAssess').css('display', 'none');
 			 
+			 var courseid=window.location.href.split('=')[1];
 			 //根据courseid查笔记  
 			 $.post("courseNote/getCourseNoteById/",{"_method":"POST",courseid:courseid},function(data){	
 					var str = "";
@@ -208,6 +211,7 @@ $(function(){
 		  
 	});
 	
+	var courseid=window.location.href.split('=')[1];
 	//根据courseid查笔记   右侧显示最新两条
 	 $.post("courseNote/getCourseNoteById/",{"_method":"POST",courseid:courseid},function(data){	
 			var str = "";

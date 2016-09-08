@@ -215,7 +215,7 @@ public class CourseHandler {
 	try {
 		fos = new FileOutputStream("G:\\yc\\apache-tomcat-7.0.30\\webapps\\img\\headimg\\"+filename);
 		//System.out.println(servletcontext.getRealPath("../img/headimg/"));
-		fos = new FileOutputStream(request.getServletContext().getRealPath("../../img/headimg/")+filename);
+		//fos = new FileOutputStream(request.getServletContext().getRealPath("../img/headimg/")+filename);
 
 		
 		fos.write(b);  

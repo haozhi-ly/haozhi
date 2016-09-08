@@ -79,8 +79,8 @@ create table  admin(
        temp03 varchar2(200)--备用字段  
 );
 create sequence seq_aid start with 1;
-insert into admin values(seq_aid.nextval,'管理员','123456@qq.com','123456',null,null,null);
-
+insert into admin values(seq_aid.nextval,'ly','123456@qq.com','123456',null,null,null);
+commit
 drop table course;
 drop sequence seq_courseid ;
 delete from course;
