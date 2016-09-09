@@ -4,6 +4,8 @@ package com.haozhi.mapper;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.haozhi.entity.Cgroup;
 
 public interface CgroupMapper {
@@ -17,6 +19,5 @@ public interface CgroupMapper {
 
 	List<Cgroup> getNewGroups();
 
-	List<Cgroup> searchGroups(String keyWord);
-
+	List<Cgroup> searchGroups(@Param("keyWord")String keyWord,@Param("ctid")Integer ctid);
 }

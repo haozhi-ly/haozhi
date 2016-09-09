@@ -32,5 +32,11 @@ public class CourseManageServiceImplTest {
 		CourseManage course = courseManageService.getPlayByCmid(21);
 		System.out.println(course);
 	}
+	
+	@Test
+	public void testSelectTeachByCmid() {
+		CourseManage course = courseManageService.selectTeachInfo(1);
+		System.out.println(course);
+	}
 
 }

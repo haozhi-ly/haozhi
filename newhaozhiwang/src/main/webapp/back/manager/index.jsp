@@ -11,17 +11,14 @@
 	<link rel="stylesheet" type="text/css" href="easyui/css/easyui.css">
 	<link rel="stylesheet" type="text/css" href="easyui/css/icon.css">
 	<link rel="stylesheet" type="text/css" href="easyui/css/demo.css">
-		<link rel="stylesheet" type="text/css" href="back/css/style.css">
+	<link rel="stylesheet" type="text/css" href="back/css/style.css">
 	
 	<script type="text/javascript" src="easyui/js/jquery.min.js"></script>
 	<script type="text/javascript" src="easyui/js/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="easyui/js/index.js"></script>
 	<script type="text/javascript" src="easyui/js/easyui-lang-zh_CN.js"></script>
-
-	<script type="text/javascript" charset="utf-8" src="back/js/showpic.js"></script>
-
 	<script type="text/javascript"  src="back/js/ajaxfileupload.js"></script>
-		<script type="text/javascript"  src="back/js/cropbox.js"></script>
+	<script type="text/javascript"  src="back/js/cropbox.js"></script>
 	
 	<script type="text/javascript" src="ckeditor/ckeditor.js"></script>  
     <script type="text/javascript" src="ckeditor/config.js"></script>  
@@ -32,22 +29,29 @@
 	    });  
 	</script>   -->
 <style type="text/css">
-#login{
-	float: right;
-	width: 100px;
-	height: 30px;
-}
+	#toplogo{
+		font-size:14px;
+		float: right;
+		width: 180px;
+		height: 30px;
+		margin-top:15px;
+		margin-right:20px;
+	}
+	#toplogo a:hover{
+		color:red;
+	}
+	#footer{
+			font-size:20px;
+			letter-spacing:8px;
+		}
 </style>
 
 </head>
 <body class="easyui-layout">
 	<div data-options="region:'north',border:false" style="height:60px;background:#B3DFDA;padding:10px">
-	<div id="login">
-		<%if(null!=session.getAttribute("Admin")){ %>
-		<c:forEach items="${Admin}" var="item" varStatus="s"> 	
-                	<p>欢迎 ${item.aname} 登陆</p><a href="javascript:outLogin()">退出登录</a>
-        </c:forEach>
-        <%} %>
+	<span style="font-size:30px;letter-spacing:14px;margin-left:500px;">好知网后台管理</span>
+	<div id="toplogo">
+		<span style="float:left;font-size:14px;">当前管理员:${myself.aname}</span><a href="javascript:void(0)" style="float:left;font-size:14px;margin-left:20px;text-decoration:none;" id="tuichu">[安全退出]</a>
 	</div>
 	</div>
 	<div data-options="region:'west',split:true,title:'菜单'" style="width:150px;padding:10px;">
@@ -67,8 +71,9 @@
 	</div>
 	<div data-options="region:'east',split:true,collapsed:true,title:'帮助'" style="width:100px;padding:10px;">
 	east region</div>
-	<div data-options="region:'south',border:false" style="height:50px;background:#A9FACD;padding:10px;">
-	south region</div>
+	<div data-options="region:'south',border:false" style="height:50px;background:#A9FACD;padding:10px; text-align:center" id="footer">
+	@源辰信息   版权所有
+	</div>
 	<div data-options="region:'center',title:'操作'">
 		<div id="center_area" class="easyui-tabs" data-options="fit:true">
 		</div>

@@ -9,7 +9,17 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
+import javax.servlet.Servlet;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.jsp.JspFactory;
+import javax.servlet.jsp.PageContext;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,18 +32,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
+import sun.misc.BASE64Decoder;
 
 import com.haozhi.entity.Course;
 import com.haozhi.service.CourseService;
-
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-import sun.misc.BASE64Decoder;
 
 @Controller
 @RequestMapping("/course")
 @SessionAttributes(value={"courses","hostcourse"})
 public class CourseHandler {
+	
+	
 	@Autowired
 	private CourseService courseService;
 	
@@ -161,8 +173,12 @@ public class CourseHandler {
 		out.close();
 	}
 	@RequestMapping("/addCourse")
-	public void addCourse(String coursephoto,String ctid,String ctitle,String courseting,String userId,String createTime,String ctintrodution,HttpServletResponse response){
+	public void addCourse(String coursephoto,String ctid,String ctitle,String courseting,String userId,String createTime,String ctintrodution,HttpServletResponse response,HttpServletRequest request){
 		System.out.println("我进来了");
+		System.out.println();
+		
+		
+
 		PrintWriter out=null;
 		try {
 			response.setCharacterEncoding("utf-8");
@@ -197,7 +213,11 @@ public class CourseHandler {
         String photopath="../img/headimg/"+filename;
         FileOutputStream fos;
 	try {
-		fos = new FileOutputStream("D:\\apache-tomcat-7.0.30\\webapps\\img\\headimg\\"+filename);
+		fos = new FileOutputStream("G:\\yc\\apache-tomcat-7.0.30\\webapps\\img\\headimg\\"+filename);
+		//System.out.println(servletcontext.getRealPath("../img/headimg/"));
+		fos = new FileOutputStream(request.getServletContext().getRealPath("../../img/headimg/")+filename);
+
+		
 		fos.write(b);  
         fos.flush();  
         fos.close(); 
@@ -208,6 +228,7 @@ public class CourseHandler {
 		createTime=createTime+" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
         Course course=new Course(ctitle,ctintrodution,Integer.parseInt(ctid),courseting,photopath,Integer.parseInt(userId),createTime);
         
+        System.out.println(course.toString());
         boolean result=courseService.insertCourse(course);
        
 		out.print(result);
@@ -219,6 +240,15 @@ public class CourseHandler {
 	@RequestMapping(value="/getCourseById",method=RequestMethod.POST)
 	public Course getCourseById(Integer courseid){
 		LogManager.getLogger().debug("getCourseById 到达...");
+		Course course = courseService.getCourseById(courseid);
+		return course;
+	}
+	
+	//这是我对jionproject.jsp加载参数的修改-ly
+	@ResponseBody
+	@RequestMapping(value="/getCourseByIdly")
+	public Course getCourseByIdly(Integer courseid,ModelMap map){
+		LogManager.getLogger().debug("getCourseById 到达...ly");
 		Course course = courseService.getCourseById(courseid);
 		return course;
 	}

@@ -4,12 +4,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
 <mapper namespace="com.haozhi.mapper.CourseManageMapper">
+
+
 	<select id="getCourseManagebyId" resultType="CourseManage" parameterType="int">
-		select * from courseManage where courseid = #{courseid}
+		select * from courseManage where courseid = #{courseid,jdbcType=VARCHAR}
 	</select>
 	
 	<select id="getPlayByCmid" resultType="CourseManage" parameterType="int">
 		select * from courseManage where cmid = #{cmid}
 	</select>
-
+	
+	<resultMap type="CourseManage" id="CourseManageMap">
+		<id column="courseid" property="courseid"/>
+		<id column="cmid" property="cmid"/>
+		<collection property="user" column="courseid" ofType="UserInfo" select="getUserByCmid" />
+	</resultMap>
+	<select id="selectTeachInfo" resultMap="CourseManageMap" >
+		 select c.*, t.teachCount,a.fansCount from (select count(*) teachCount from 
+		 course where userId in (select userid from course where courseid in(select 
+		 courseid from courseManage where cmid=#{cmid}))) t,(select count(*) fansCount from attention
+		  where attention in (select userid from course where courseid in(select courseid from 
+		  courseManage where cmid=#{cmid}))) a,(select * from courseManage where cmid=#{cmid}) c
+		 
+	</select>
+	
+	<select id="getUserByCmid" resultType="UserInfo" parameterType="int">
+		select * from userinfo where userid in (select userid from course where courseid=#{coueseid})
+	</select>
+	
 </mapper>

@@ -56,7 +56,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			null</if>
 		<if test='coursephoto!=null'>
 			#{coursephoto}
-		</if>,#{userId},0,null,null,to_date(#{createTime},'yyyy-mm-dd hh24:mi:ss'))
+		</if>,#{userId},0,to_date(#{createTime},'yyyy-mm-dd hh24:mi:ss'),null,null)
 	</insert>
 	
 	<!-- 通过课程类型查所有课程 -->

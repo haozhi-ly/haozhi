@@ -31,4 +31,6 @@ public interface UserInfoService {
 
 	int count();
 
+	int adduserinfo(UserInfo userInfo);
+
 }

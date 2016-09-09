@@ -1,20 +1,20 @@
 package com.haozhi.handler;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.PrintWriter;
-
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import java.util.Date;
 import java.util.Random;
-
-
 import javax.mail.internet.MimeMessage;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.PageContext;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
-
+import sun.misc.BASE64Decoder;
 import com.haozhi.entity.UserInfo;
 import com.haozhi.service.UserInfoService;
 import com.haozhi.util.RandomNumUtil;
@@ -71,6 +71,15 @@ public class UserHandler {
 		return "redirect:../page/index.jsp";
 	}
 	
+	//注销
+	@RequestMapping(value="/loginOut")
+	public String loginOut(Model model){
+		System.out.println("yes");
+		model.addAttribute("users",null);
+		return "redirect:../page/login.jsp";
+	}
+	
+	
 	@RequestMapping(value="/checkemail",method=RequestMethod.POST)
 	public void checkEmail(String email,PrintWriter out){
 		System.out.println(email);
@@ -112,6 +121,7 @@ public class UserHandler {
 		userInfoService.register(userInfo);
 			return "login";
 	}
+	
 	
 	
 	@RequestMapping("/login01")
@@ -175,7 +185,6 @@ public class UserHandler {
 	private Map<String, Object> findall(){
 		List<UserInfo> users=userInfoService.findall();
 		int count=userInfoService.count();
-		System.out.println(users);
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("rows", users);
 		result.put("total",count);
@@ -183,14 +192,50 @@ public class UserHandler {
 	}
 	
 	@RequestMapping("/adduserinfo")
-	private void adduserinfo(UserInfo userInfo,String uname,String upassword,String email,String gender,String usign,String introdution,PrintWriter out){
+	private void adduserinfo(UserInfo userInfo,String uname,String upassword,String email,String gender,String photo,String usign,String introdution,PrintWriter out){
+		BASE64Decoder decoder = new BASE64Decoder();  
+		System.out.println(photo);
+		photo = photo.replaceAll("data:image/png;base64,", "");  
+	   
+   
+        // Base64解码  
+        byte[] b=null;
+		try {
+			b = decoder.decodeBuffer(photo);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  
+        for (int i = 0; i < b.length; ++i) {  
+            if (b[i] < 0) {// 调整异常数据  
+                b[i] += 256;  
+            }  
+        }
+        // 生成jpeg图片  
+        long temp=System.currentTimeMillis()+new Random().nextInt(100000);
+        String filename=temp+".png";
+        System.out.println(filename);
+        String photopath="../touxiangPic/"+filename;
+        FileOutputStream fos;
+	try {
+		fos = new FileOutputStream("D:\\apache-tomcat-7.0.30\\webapps\\touxiangPic\\"+filename);
+		fos.write(b);  
+        fos.flush();  
+        fos.close(); 
+	} catch (Exception e) {
+		e.printStackTrace();
+	} 
 		userInfo.setUname(uname);
 		userInfo.setUpassword(upassword);
 		userInfo.setEmail(email);
 		userInfo.setGender(gender);
+		userInfo.setPhoto(filename);
 		userInfo.setIntrodution(introdution);
 		userInfo.setUsign(usign);
-		
+		int result=userInfoService.adduserinfo(userInfo);
+		out.print(result);
+		out.flush();
+		out.close();
 	}
 
 	@RequestMapping("/editPhoto")

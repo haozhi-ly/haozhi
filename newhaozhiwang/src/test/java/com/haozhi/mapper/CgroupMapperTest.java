@@ -2,9 +2,8 @@ package com.haozhi.mapper;
 
 import static org.junit.Assert.*;
 
-
-
 import org.junit.Test;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,7 +36,7 @@ public class CgroupMapperTest {
 	
 	@Test
 	public void testSearchGroups() {
-		System.out.println(groupMapper.searchGroups("英语"));
+		System.out.println(groupMapper.searchGroups("",9));
 	}
 
 }

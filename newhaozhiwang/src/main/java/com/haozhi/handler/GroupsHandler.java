@@ -1,9 +1,6 @@
 package com.haozhi.handler;
 
-
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,13 +38,29 @@ public class GroupsHandler {
 		return groups;
 	}
 	
-	
+	//搜索小组
 	@RequestMapping(value="/search")
-	public String newSearchGroups(String keyWord,Model model,HttpServletRequest request){
+	public String newSearchGroups(String keyWord,Model model){
 		keyWord=new UsuallyUtil().decode(keyWord);
 		System.out.println(keyWord);
-		List<Cgroup> groups= groupService.searchGroups(keyWord);
+		List<Cgroup> groups= groupService.searchGroups(keyWord,null);
 		model.addAttribute("searchgroups", groups);
 		return "groupSearch";
+	}
+	
+	//点击更多（显示全部小组信息）
+	@RequestMapping(value="/moresearch")
+	public String newMoreGroups(Model model){
+		List<Cgroup> groups= groupService.searchGroups(null,null);
+		model.addAttribute("searchgroups", groups);
+		return "groupSearch";
+	}
+	
+	//点击导航栏查询小组
+	@ResponseBody
+	@RequestMapping(value="/navSearch")
+	public List<Cgroup> newNavGroups(String keyWord,int ctid){
+		List<Cgroup> groups= groupService.searchGroups(keyWord,ctid);
+		return groups;
 	}
 }

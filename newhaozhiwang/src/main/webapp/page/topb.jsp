@@ -33,14 +33,14 @@
       <ul class="nav pull-right">
 
         <li class="hidden-xs hidden-sm"> <a class="btn btn-primary radius" href="javaScript:void(0);"><i style="color: rgb(255, 247, 255);" class="glyphicon glyphicon-plus"></i> 创建课程</a> </li>
-        <li class="dropdown user-nav-dropdown user-img"> <a href="#" class="dropdown-toggle"> <img src="images/avatar.png" class="user-avatar" alt="${users.uname }" id="${users.userid}"> </a>
+        <li class="dropdown user-nav-dropdown user-img"> <a href="#" class="dropdown-toggle" id="toggle"> <img src="images/avatar.png" class="user-avatar" alt="${users.uname }" id="${users.userid}"> </a>
 
           <ul class="dropdown-menu" role="menu" id="dropdown-menu">
             <li> <a href="page/learnCenter.jsp" ><i style="color:#666;" class="glyphicon glyphicon-home" ></i>学习中心</a> </li>
             <li><a href="page/person.jsp"><i style="color:#666;" class="glyphicon glyphicon-user" ></i>个人主页</a></li>
             <li><a href="page/info.jsp"><i style="color:#666;" class="glyphicon glyphicon-cog" ></i>个人设置</a></li>
             <li><a href="javaScript:void(0);"><i style="color:#666;" class="glyphicon glyphicon-credit-card" ></i>账户中心</a></li>
-            <li><a href="page/login.jsp"><i style="color:#666;" class="glyphicon glyphicon-log-out" ></i>退出登录</a></li>
+            <li><a href="userinfo/loginOut"><i style="color:#666;" class="glyphicon glyphicon-log-out" ></i>退出登录</a></li>
           </ul>
         </li>
         <li class="user-msg user-nav-dropdown hidden-xs "> <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <i style="font-size:16px;" class="glyphicon glyphicon-bell"></i> </a>

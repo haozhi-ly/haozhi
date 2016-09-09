@@ -51,6 +51,55 @@ $(function(){
 	},"json");
 	
 
+	$.post("courseAssess/CMcountbycourseid/",{"_method":"POST",courseid:courseid},function(data){
+		console.info(data);
+		var page;
+		var count=parseInt(data);
+		console.info(count);
+		if(count%20==0){
+			page=count/20;
+		}else{
+			page=Math.floor((count/20)+1);
+		}
+		
+		console.info(page);
+		$("#commenttcpage").createPage({
+	        pageCount:page,
+	        current:1,
+	        backFn:function(p){
+	            console.log(p);
+	            $.post("courseAssess/getAssessbypageDescTime/",{"courseid":courseid},function(data){
+	            	var contentstr="";
+	            	for(var i=0;i<data.length;i++){
+	            		contentstr+="<li><div class=' notes-img'> <a class='js-user-card' href='#'> <img class='avatar-sm'";
+	            			
+	            		/*	<li>
+						<div class="notes-img">
+							<a class=" js-user-card"
+								href="#"
+								data-card-url="/user/1731774/card/show" data-user-id="1731774">
+								<img class="avatar-sm" src="images/avatar.png"
+								alt="竹墨涵清">
+							</a>
+
+						</div>
+						<div class="notes-content">
+							<h4>
+								发布在课时 <a href="http://www.howzhi.com/course/9573/lesson/67386">人像后期调色</a>
+							</h4>
+							<div class="body">好好</div>
+							<div class="metas">
+								<span class="name">by <a href="javascrit:;">竹墨涵清</a></span><span
+									class="time">--8天前</span>
+							</div>
+						</div>
+					</li>*/
+	            	}
+	            });
+	        }
+	    });
+	},"json");
+	
 	
 	//点击关闭
 	$('.close').bind("click",function(){
@@ -78,6 +127,7 @@ $(function(){
 			 $('#courseClassmate').css('display', 'none');
 			 $('#courseAssess').css('display', 'none');
 			 
+			 var courseid=window.location.href.split('=')[1];
 			//根据courseid查课时
 				$.post("courseManage/getCourseManageById/",{"_method":"POST",courseid:courseid},function(data){	
 					var str = "";
@@ -152,6 +202,9 @@ $(function(){
 			 $('#courseQuestion').css('display', 'none');
 			 $('#courseClassmate').css('display', 'none');
 			 $('#courseAssess').css('display', 'block');
+			 
+			 var courseid=window.location.href.split('=')[1];
+			 $.post("");
 		 }
 		  
 	});

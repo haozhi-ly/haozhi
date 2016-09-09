@@ -20,12 +20,16 @@
 <link href="css/main.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/howzhi.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/tcdPageCode.css">
+
 <link href="css/bootstrap.css" rel="stylesheet">
 <!-- 		<link rel="stylesheet" type="text/css" href="css/iconfont.css">
  -->
+ 
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="js/top.js"></script>
 <script type="text/javascript" src="js/joinproject.js"></script>
+<script  type="text/javascript" src="js/jquery.page.js"></script>
 <style>
 .form-group {
 	margin-top: 14px;
@@ -242,26 +246,6 @@
 							<li class="clearfix" style="text-align: center;color:#616161">
 								该课程还没有笔记！！！
 							</li>
-							
-							<ul class="pagination ">
-								<li class="active"><a
-									href="http://www.howzhi.com/course/9573/notes?page=1">1</a></li>
-								<li><a
-									href="http://www.howzhi.com/course/9573/notes?page=2">2</a></li>
-								<li><a
-									href="http://www.howzhi.com/course/9573/notes?page=3">3</a></li>
-								<li><a
-									href="http://www.howzhi.com/course/9573/notes?page=4">4</a></li>
-								<li><a
-									href="http://www.howzhi.com/course/9573/notes?page=5">5</a></li>
-
-								<li><a
-									href="http://www.howzhi.com/course/9573/notes?page=2"><i
-										class="es-icon es-icon-chevronright"></i></a></li>
-								<li><a
-									href="http://www.howzhi.com/course/9573/notes?page=5">尾</a></li>
-							</ul>
-
 						</ul>
 
 					</div>
@@ -273,7 +257,7 @@
 						</div>
 						<textarea rows="4" cols="3"></textarea>
 
-						<ul class="course-in-ul">
+						<ul class="course-in-ul" id="questionAndAnswer">
 							<li>
 								<h4>
 									<span class="q-icon"></span><a class="js-nav"
@@ -304,6 +288,16 @@
 							</li>
 
 						</ul>
+						<div class="tcdPageCode" id="qatcpage"></div>
+						<script type="text/javascript">
+							$("#qatcpage").createPage({
+						        pageCount:6,
+						        current:1,
+						        backFn:function(p){
+						            console.log(p);
+						        }
+						    });
+						</script>
 					</div>
 					<!--  问答分割线 ----------------------------------- -->
 					<!--  学员分割线 --------------------------------- -->
@@ -311,7 +305,7 @@
 						<h4>
 							<span class="dash-icon"></span>授课老师
 						</h4>
-						<ul class="course-in-ul clearfix">
+						<ul class="course-in-ul clearfix" id="studentsInfo">
 							<li><a class=" js-user-card"
 								href="http://www.howzhi.com/u/1687444/"
 								data-card-url="/user/1687444/card/show" data-user-id="1687444">
@@ -349,30 +343,24 @@
 						</ul>
 
 
-						<ul class="pagination ">
-							<li class="active"><a
-								href="http://www.howzhi.com/course/9573/members?page=1">1</a></li>
-							<li><a
-								href="http://www.howzhi.com/course/9573/members?page=2">2</a></li>
-							<li><a
-								href="http://www.howzhi.com/course/9573/members?page=3">3</a></li>
-							<li><a
-								href="http://www.howzhi.com/course/9573/members?page=4">4</a></li>
-							<li><a
-								href="http://www.howzhi.com/course/9573/members?page=5">5</a></li>
+						
+						<div class="tcdPageCode" id="stcpage"></div>
+						<script type="text/javascript">
+							$("#stcpage").createPage({
+						        pageCount:6,
+						        current:1,
+						        backFn:function(p){
+						            console.log(p);
+						        }
+						    });
+						</script>
 
-							<li><a
-								href="http://www.howzhi.com/course/9573/members?page=2"><i
-									class="es-icon es-icon-chevronright"></i></a></li>
-							<li><a
-								href="http://www.howzhi.com/course/9573/members?page=505">尾</a></li>
-						</ul>
 
 					</div>
 					<!--  学员分割线 ------------------------------ -->
 					<!-- 评论分割线 ---------------------------------------- -->
-					<div class="course-notes course-in" style="display: none;" id="courseAssess">
-						<ul class="notes-list">
+					<div class="course-notes course-in" style="display: none" id="courseAssess">
+						<ul class="notes-list" id="commentcontent">
 							<li id="item92930">
 								<div class="notes-img">
 									<a class=" js-user-card"
@@ -416,29 +404,11 @@
 								</div>
 							</li>
 
-							<ul class="pagination ">
-								<li class="active"><a
-									href="http://www.howzhi.com/course/9573/comments?page=1">1</a></li>
-								<li><a
-									href="http://www.howzhi.com/course/9573/comments?page=2">2</a></li>
-								<li><a
-									href="http://www.howzhi.com/course/9573/comments?page=3">3</a></li>
-								<li><a
-									href="http://www.howzhi.com/course/9573/comments?page=4">4</a></li>
-								<li><a
-									href="http://www.howzhi.com/course/9573/comments?page=5">5</a></li>
-
-								<li><a
-									href="http://www.howzhi.com/course/9573/comments?page=2"><i
-										class="es-icon es-icon-chevronright"></i></a></li>
-								<li><a
-									href="http://www.howzhi.com/course/9573/comments?page=24">尾</a></li>
-							</ul>
-
 						</ul>
+						<div class="tcdPageCode" id="commenttcpage"></div>					
 					</div>
 					<!--  评论分割线 ------------------------------------- -->
-
+					
 				</div>
 
 				<div class="course flat nopad">

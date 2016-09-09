@@ -51,8 +51,10 @@ create table userinfo(
        temp03 varchar2(200)--备用字段    
 );
 
-delete from userinfo where email='542933376@qq.com'
-commit
+delete from userinfo where email='542933376@qq.com';
+
+commit;
+
 select * from UserInfo where uname='超超' and upassword=123456
 create sequence seq_userid start with 1;
 
@@ -84,6 +86,17 @@ drop table course;
 drop sequence seq_courseid ;
 delete from course;
 select * from course;
+select  t.teachCount,a.fansCount from 
+(select count(*) teachCount from course where userId in (select userid from course where courseid in(select courseid from courseManage where cmid=1)
+)) t,
+(select count(*) fansCount from attention where attention in (select userid from course where courseid in(select courseid from courseManage where cmid=1)
+)) a;
+select c.*, t.teachCount,a.fansCount from 
+(select count(*) teachCount from course where userId in (select userid from course where courseid in(select courseid from courseManage where cmid=1)
+)) t,
+(select count(*) fansCount from attention where attention in (select userid from course where courseid in(select courseid from courseManage where cmid=1)
+)) a,(select * from courseManage where cmid=1) c,;
+
 -----------------3.课程表
 create table course(
        courseid int primary key,
@@ -100,11 +113,17 @@ create table course(
        temp02 varchar2(200),--备用字段
        temp03 varchar2(200)--备用字段  
 )
+
 ALTER TABLE haozhi.course RENAME COLUMN temp01 TO createTime --修改表列名 
 ALTER TABLE haozhi.course MODIFY createTime date  --修改字段类型  (name varchar(255)
 alter table haozhi.course modify(cintrodution varchar(1000))
 
-update course set createTime = to_date('2016-7-20','yyyy-mm-dd');
+ALTER TABLE haozhi.course RENAME COLUMN temp01 TO temp03 --修改表列名 
+ALTER TABLE haozhi.course MODIFY createTime date  --修改字段类型 
+
+
+commit;
+select * from course;
 create sequence seq_courseid start with 1;
 
 insert into course values(seq_courseid.nextval,'人像摄影高级教程','由摄影师杨最醉主讲的人像摄影高级教程，从人像摄影器材到主题策划、光线捕捉、后期调色、磨皮等各个角度讲解。',
@@ -155,7 +174,6 @@ drop sequence seq_cmid ;
 
 select * from courseManage;
 select count(*) from courseManage where courseid=6;
-
 --------------5.课时管理表
 create table courseManage(
        cmid int primary key ,
@@ -169,6 +187,7 @@ create table courseManage(
        temp02 varchar2(200),--备用字段
        temp03 varchar2(200)--备用字段  
 );
+ALTER TABLE haozhi.courseManage RENAME COLUMN temp01 TO cmintroduction --修改表列名 
 create sequence seq_cmid start with 1;
 insert into courseManage values(seq_cmid.nextval,6,1,'超级简单的冷萃咖啡制作方... ',1,'<p>冷萃咖啡听起来高大上，但实际上制作非常简单。</p><p><strong>你需要准备的材料有：</strong>
 </p><p>咖啡粉（建议使用单品咖啡）</p><p>冷藏过的纯净水（据说矿泉水会不利于风味萃取）</p><p>过滤设备（滤纸或法压壶或挂耳咖啡）</p><p>杯子</p>
@@ -196,7 +215,6 @@ insert into courseManage values(seq_cmid.nextval,5,0,'老电影画面',3,'http:/
 sid/XNDY2NTYwMjI4/isAutoPlay/false/partnerid/0edbfd2e4fc91b72/v.swf',null,null,null);
 commit;
 
-select count(*) from courseAssess where cmid in (select cmid from courseManage where courseid=6)
 -----------------6.课程评价表
 create table courseAssess(
        csid int primary key ,
@@ -274,7 +292,6 @@ create table courseAnswer(
 create sequence seq_caid start with 1;
 insert into courseAnswer values(seq_caid.nextval,1,3,'多多联系一下就好了，相信自己！',sysdate,null,null,null);
 
-
 --------------------------10.关注表（保留意见）
 create table attention(
        atid  int  primary key,  
@@ -344,31 +361,39 @@ create table cgroup(
                  constraint FK_userinfo_userid001 references userinfo(userid),--创建人 
        createtime date,---创建时间
        groupnumber varchar2(500),---小组成员（拼接）
-       peoplecount int,--小组成员总数
+       peoplecount int,--小组成员总人数
        pic varchar2(200),--小组头像
-       introduction varchar2(400)--小组简介
+       introduction varchar2(400),--小组简介
+       ctid int
+            constraint FK_course_Type_ctid references courseType(ctid)--类型
 );
 drop table cgroup;
 create sequence seq_gid start with 1;
-insert into cgroup values(seq_gid.nextval,'摄影公社',3,sysdate,'3,1,2',100,null,null);
-insert into cgroup values(seq_gid.nextval,'绘画世界',2,sysdate,'2,1,4',80,null,null);
-insert into cgroup values(seq_gid.nextval,'好知大本营（教务处）',2,sysdate,'2,1,4',80,null,null);
-insert into cgroup values(seq_gid.nextval,'Photoshop照片后期处理学习交流',2,sysdate,'2,1,4',70,null,null);
-insert into cgroup values(seq_gid.nextval,'我是从零开始学吉他的',2,sysdate,'2,1,4',85,null,null);
-insert into cgroup values(seq_gid.nextval,'每月养成一个好习惯',2,sysdate,'2,1,4',60,null,null);
 
-insert into cgroup values(seq_gid.nextval,'漫画学院',3,sysdate,'3,1,2',150,null,null);
-insert into cgroup values(seq_gid.nextval,'坏男孩学院',2,sysdate,'2,1,4',152,null,null);
-insert into cgroup values(seq_gid.nextval,'天天理财',2,sysdate,'2,1,4',83,null,null);
-insert into cgroup values(seq_gid.nextval,'古筝吧',2,sysdate,'2,1,4',38,null,null);
-insert into cgroup values(seq_gid.nextval,'Ubuntu',2,sysdate,'2,1,4',1005,null,null);
-insert into cgroup values(seq_gid.nextval,'早起狗',2,sysdate,'2,1,4',880,null,null);
-insert into cgroup values(seq_gid.nextval,'摄影公社',3,sysdate,'3,1,2',1000,null,'摄影爱好者的天堂');
-insert into cgroup values(seq_gid.nextval,'绘画世界',2,sysdate,'2,1,4',2000,null,'灵感来自于生活');
+insert into cgroup values(seq_gid.nextval,'摄影公社',3,sysdate,'3,1,2',100,null,null,1);
+insert into cgroup values(seq_gid.nextval,'绘画世界',2,sysdate,'2,1,4',80,null,null,6);
+insert into cgroup values(seq_gid.nextval,'好知大本营（教务处）',2,sysdate,'2,1,4',80,null,null,9);
+insert into cgroup values(seq_gid.nextval,'Photoshop照片后期处理学习交流',2,sysdate,'2,1,4',70,null,null,1);
+insert into cgroup values(seq_gid.nextval,'我是从零开始学吉他的',2,sysdate,'2,1,4',85,null,null,6);
+insert into cgroup values(seq_gid.nextval,'每月养成一个好习惯',2,sysdate,'2,1,4',60,null,null,4);
+insert into cgroup values(seq_gid.nextval,'名校公开课',3,sysdate,'3,1,2',150,null,null,9);
+insert into cgroup values(seq_gid.nextval,'摄影基础交流',2,sysdate,'2,1,4',112,null,null,1);
+insert into cgroup values(seq_gid.nextval,'摄影入门学习',2,sysdate,'2,1,4',88,null,null,1);
+insert into cgroup values(seq_gid.nextval,'科学学英语',2,sysdate,'2,1,4',98,null,null,7);
+insert into cgroup values(seq_gid.nextval,'三维动画',2,sysdate,'2,1,4',85,null,null,6);
+insert into cgroup values(seq_gid.nextval,'思想的力量',2,sysdate,'2,1,4',30,null,null,8);
 commit;
+insert into cgroup values(seq_gid.nextval,'漫画学院',3,sysdate,'3,1,2',150,null,null,7);
+insert into cgroup values(seq_gid.nextval,'坏男孩学院',2,sysdate,'2,1,4',152,null,null,6);
+insert into cgroup values(seq_gid.nextval,'天天理财',2,sysdate,'2,1,4',83,null,null,8);
+insert into cgroup values(seq_gid.nextval,'古筝吧',2,sysdate,'2,1,4',38,null,null,3);
+insert into cgroup values(seq_gid.nextval,'Ubuntu',2,sysdate,'2,1,4',1005,null,null,5);
+insert into cgroup values(seq_gid.nextval,'早起狗',2,sysdate,'2,1,4',880,null,null,6);
 
-insert into cgroup values(seq_gid.nextval,'插画交流',2,sysdate,'2,1,4',87,null,null);
-insert into cgroup values(seq_gid.nextval,'java开发',2,sysdate,'2,1,4',68,null,null);
-insert into cgroup values(seq_gid.nextval,'吉卜力',2,sysdate,'2,1,4',1585,null,null);
-insert into cgroup values(seq_gid.nextval,'工笔画',2,sysdate,'2,1,4',820,null,null);
+insert into cgroup values(seq_gid.nextval,'插画交流',2,sysdate,'2,1,4',87,null,null,6);
+insert into cgroup values(seq_gid.nextval,'java开发',2,sysdate,'2,1,4',68,null,null,5);
+insert into cgroup values(seq_gid.nextval,'吉卜力',2,sysdate,'2,1,4',1585,null,null,2);
+insert into cgroup values(seq_gid.nextval,'工笔画',2,sysdate,'2,1,4',820,null,null,2);
 ------------------话题表 topic
+commit;
+select * from cgroup;

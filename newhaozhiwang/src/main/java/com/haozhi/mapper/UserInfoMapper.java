@@ -36,4 +36,6 @@ public interface UserInfoMapper {
 	
 	//修改密码
 	int editPwd(UserInfo userInfo);
+
+	int adduserinfo(UserInfo userInfo);
 }
