@@ -3,7 +3,7 @@ package com.haozhi.service;
 import java.util.List;
 
 import com.haozhi.entity.Course;
-import com.haozhi.entity.CourseType;
+import com.haozhi.entity.StudyCourse;
 
 public interface CourseService {
 	List<Course> getAllCourse();  //查询所有课程
@@ -27,4 +27,8 @@ public interface CourseService {
 
 	
 	Course getCourseById(Integer courseid); // 通过课程号查课程
+
+	List<StudyCourse> getAllStudentNumber(Integer courseid);
+
+	List<Course> getStudentsbypageDescTime(Integer p, Integer courseid);
 }

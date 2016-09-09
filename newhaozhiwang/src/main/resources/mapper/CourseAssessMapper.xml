@@ -43,20 +43,6 @@ select * from(select a.*,rownum rn from
 	<select id="CMcountbycourseid" parameterType="int" resultType="CourseAssess">
 		select * from courseAssess ca join courseManage cm on ca.cmid=cm.cmid where cm.courseid=#{courseid} 
 	</select>
-	<!-- <resultMap type="CourseAssess" id="AssessMap">
-		<id column="csid" property="csid"/>
-		<id column="cmid" property="cmid"/>
-		<result column="content" property="content"/>
-		<result column="time" property="time"/>
-		<association property="courseManage" column="cmid" javaType="CourseManage">
-			<id column="cmid" property="cmid"/>
-			<result column="title" property="title"/>
-			<result column="courseseq" property="courseseq"/>
-		</association
-	</resultMap>
-	<select id="test" resultMap="AssessMap">
-			select * from courseassess ca,coursemanage cm where ca.cmid=cm.cmid 	
-	</select> -->
 	
 	
 	

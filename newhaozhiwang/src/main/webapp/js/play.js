@@ -47,7 +47,6 @@ $(function() {
 		if(data){
 			$('.link-light ').html(data.user.uname);
 			$('#teachImg').att("src",data.user.photo);
-			alert(data.teachCount+"fsf"+data.fansCount);
 			$('#teach').html(data.teachCount);
 			$('#fans').html(data.fansCount);
 		}

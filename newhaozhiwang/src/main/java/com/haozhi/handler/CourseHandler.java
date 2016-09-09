@@ -9,22 +9,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
-import javax.servlet.Servlet;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.jsp.JspFactory;
-import javax.servlet.jsp.PageContext;
-
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,13 +22,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import sun.misc.BASE64Decoder;
-
+import com.google.gson.Gson;
 import com.haozhi.entity.Course;
+import com.haozhi.entity.StudyCourse;
 import com.haozhi.service.CourseService;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+import sun.misc.BASE64Decoder;
 
 @Controller
 @RequestMapping("/course")
@@ -215,7 +207,7 @@ public class CourseHandler {
 	try {
 		fos = new FileOutputStream("G:\\yc\\apache-tomcat-7.0.30\\webapps\\img\\headimg\\"+filename);
 		//System.out.println(servletcontext.getRealPath("../img/headimg/"));
-		fos = new FileOutputStream(request.getServletContext().getRealPath("../../img/headimg/")+filename);
+		//fos = new FileOutputStream(request.getServletContext().getRealPath("../img/headimg/")+filename);
 
 		
 		fos.write(b);  
@@ -244,14 +236,35 @@ public class CourseHandler {
 		return course;
 	}
 	
-	//这是我对jionproject.jsp加载参数的修改-ly
 	@ResponseBody
-	@RequestMapping(value="/getCourseByIdly")
-	public Course getCourseByIdly(Integer courseid,ModelMap map){
-		LogManager.getLogger().debug("getCourseById 到达...ly");
-		Course course = courseService.getCourseById(courseid);
-		return course;
+	@RequestMapping(value="/getAllStudentNumber",method=RequestMethod.POST)
+	public int getAllStudentNumber(Integer courseid){
+		List<StudyCourse> courselist = courseService.getAllStudentNumber(courseid);
+		return courselist.size();
 	}
+	
+	
+	@RequestMapping(value="/getStudentsbypageDescTime",method=RequestMethod.POST)
+	public void getStudentsbypageDescTime(String p,String courseid,ModelMap map,HttpServletResponse response){
+		PrintWriter out=null;
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("charset=utf-8");
+		try {
+			out = response.getWriter();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		List<Course> courselist = courseService.getStudentsbypageDescTime(Integer.parseInt(p),Integer.parseInt(courseid));
+		
+		System.out.println(courselist);
+		Gson gson=new Gson();
+		out.print(gson.toJson(courselist));
+		out.flush();
+		out.close();
+	}
+	
+	
 	
 	
 

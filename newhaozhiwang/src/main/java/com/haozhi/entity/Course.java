@@ -1,6 +1,7 @@
 package com.haozhi.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * 课程信息
@@ -27,10 +28,12 @@ public class Course implements Serializable{
 	private int userCount; //课程的用户人数
 	private int assessCount; //评价人数
 	private String typename; //课程类型名
-
+	private UserInfo student;//学习本课程的学生
 	public Course() {
 	}
 
+	
+	
 	public Course(String ctitle, String cintrodution, Integer ctid,
 			String courseting, String coursephoto, int userId, int cview,
 			String createTime) {
@@ -58,6 +61,10 @@ public class Course implements Serializable{
 	}
 	
 	
+	
+	
+
+
 	public Course(String ctitle, String cintrodution, Integer ctid, String courseting, String coursephoto, int userId,
 			String createTime) {
 		super();
@@ -221,14 +228,35 @@ public class Course implements Serializable{
 		this.typename = typename;
 	}
 
+
+
+	public UserInfo getStudent() {
+		return student;
+	}
+
+
+
+	public void setStudent(UserInfo student) {
+		this.student = student;
+	}
+
+
+
 	@Override
 	public String toString() {
-		return "Course [courseid=" + courseid + ", ctitle=" + ctitle + ", cintrodution=" + cintrodution + ", ctid="
+		return "\nCourse [courseid=" + courseid + ", ctitle=" + ctitle + ", cintrodution=" + cintrodution + ", ctid="
 				+ ctid + ", courseType=" + courseType + ", courseting=" + courseting + ", coursephoto=" + coursephoto
 				+ ", userId=" + userId + ", cview=" + cview + ", createTime=" + createTime + ", memberCount="
 				+ memberCount + ", assessAvg=" + assessAvg + ", user=" + user + ", courseCount=" + courseCount
-				+ ", userCount=" + userCount + ", assessCount=" + assessCount + ", typename=" + typename + "]";
+				+ ", userCount=" + userCount + ", assessCount=" + assessCount + ", typename=" + typename + ", student="
+				+ student + "]";
 	}
+
+
+
+	
+
+	
 
 
 

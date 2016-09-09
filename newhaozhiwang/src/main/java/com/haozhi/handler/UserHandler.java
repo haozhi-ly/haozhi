@@ -192,7 +192,7 @@ public class UserHandler {
 	}
 	
 	@RequestMapping("/adduserinfo")
-	private void adduserinfo(UserInfo userInfo,String uname,String upassword,String email,String gender,String photo,String usign,String introdution,PrintWriter out){
+	private void adduserinfo(UserInfo userInfo,String uname,String upassword,String email,String gender,String photo,String usign,String introdution,PrintWriter out,HttpServletRequest request){
 		BASE64Decoder decoder = new BASE64Decoder();  
 		System.out.println(photo);
 		photo = photo.replaceAll("data:image/png;base64,", "");  
@@ -218,7 +218,7 @@ public class UserHandler {
         String photopath="../touxiangPic/"+filename;
         FileOutputStream fos;
 	try {
-		fos = new FileOutputStream("D:\\apache-tomcat-7.0.30\\webapps\\touxiangPic\\"+filename);
+		fos = new FileOutputStream("g:\\yc\\apache-tomcat-7.0.30\\webapps\\touxiangPic\\"+filename);
 		fos.write(b);  
         fos.flush();  
         fos.close(); 
@@ -251,7 +251,7 @@ public class UserHandler {
 	        String newFilename = new Date().getTime()+""+new Random().nextInt(100000)
 	        		 +originalFilename.substring(originalFilename.lastIndexOf("."));
 	        //新的图片
-	        File newfile=new java.io.File(pic_path+newFilename);
+	        File newfile=new java.io.File("G:\\yc\\apache-tomcat-7.0.30\\webapps\\img\\headimg\\"+newFilename);
 	        //将内存的数据写入磁盘
 	        items_pic.transferTo(newfile);	
 	        user.setUserid(userid);user.setPhoto(newFilename);

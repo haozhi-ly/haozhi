@@ -81,7 +81,8 @@ create table  admin(
 create sequence seq_aid start with 1;
 insert into admin values(seq_aid.nextval,'管理员','123456@qq.com','123456',null,null,null);
 insert into admin values(seq_aid.nextval,'zj','123456@qq.com','a',null,null,null);
-
+insert into admin values(seq_aid.nextval,'ly','123456@qq.com','123456',null,null,null);
+commit
 drop table course;
 drop sequence seq_courseid ;
 delete from course;
@@ -231,7 +232,7 @@ create table courseAssess(
 );
 create sequence seq_csid start with 1;
 insert into courseAssess values(seq_csid.nextval,1,1,'老师讲的非常好！',sysdate,0,null,null,null);
-insert into courseAssess values(seq_csid.nextval,1,2,'今天终于学会了做咖啡！',sysdate,0,null,null,null);
+insert into courseAssess values(seq_csid.nextval,1,2,'做咖啡！',sysdate,0,null,null,null);
 
 --------------------7.课程提问表
 create table courseQuestion(
@@ -328,8 +329,9 @@ create table studyCourse(
        temp03 varchar2(200)--备用字段
 );
 create sequence seq_scid start with 1;
+select * from userinfo
 insert into studyCourse values(seq_scid.nextval,5,5,to_date('2016-8-1','yyyy-mm-dd'),2,null,null,null,null);
-insert into studyCourse values(seq_scid.nextval,4,6,to_date('2016-8-10','yyyy-mm-dd'),4,null,null,null,null);
+insert into studyCourse values(seq_scid.nextval,107,6,to_date('2016-8-10','yyyy-mm-dd'),4,null,null,null,null);
 insert into studyCourse values(seq_scid.nextval,2,5,to_date('2016-8-1','yyyy-mm-dd'),4,null,null,null,null);
 commit;
 update studyCourse set userid=5 where scid=3;
