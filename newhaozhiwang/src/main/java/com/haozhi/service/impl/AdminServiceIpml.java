@@ -50,4 +50,9 @@ public class AdminServiceIpml implements AdminService {
 		return adminMapper.updateadmin(admin);
 	}
 
+	@Override
+	public int register(Admin admin) {
+		return adminMapper.register(admin);
+	}
+
 }

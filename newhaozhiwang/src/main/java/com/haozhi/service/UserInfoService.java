@@ -33,4 +33,8 @@ public interface UserInfoService {
 
 	int adduserinfo(UserInfo userInfo);
 
+	int updateuserinfo(UserInfo userInfo);
+
+	int deluserinfo(Integer[] intarr);
+
 }
