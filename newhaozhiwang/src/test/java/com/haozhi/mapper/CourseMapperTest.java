@@ -20,9 +20,11 @@ public class CourseMapperTest {
 	@Test
 	public void testGetAllCoursebypage() {
 		Map<String,Object> map=new HashMap<String,Object>();
-		map.put("pagesize",5);
+		map.put("pagesize",24);
 		map.put("pagenumber",1);
-		List<Course> list=courseMapper.getCoursebypageDescTime(map);
+		map.put("courseid",6);
+		//List<Course> list=courseMapper.getCoursebypageDescTime(map);
+		List<Course> list=courseMapper.getStudentsbypageDescTime(map);
 		System.out.println(list.toString());
 		
 	}
@@ -31,6 +33,11 @@ public class CourseMapperTest {
 	public void testcountnumber() {
 		Course course=new Course("","",1,"","",1,"2016-09-17 8:8:8");
 		System.out.println(courseMapper.insertCourse(course));
+	}
+	@Test
+	public void testgetAllCount() {
+		
+		System.out.println(courseMapper.getAllStudents(6).toString());
 	}
 
 }

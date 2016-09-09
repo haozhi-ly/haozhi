@@ -144,5 +144,40 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from userinfo where userid = #{userid}
 	</select>
 	
+	<!--  获得所有学习了当前课程的学生-->
+	
+	<resultMap type="Course" id="SCMap">
+		
+		<association property="user" column="userid" javaType="UserInfo">
+			<result column="userid" property="userid"/>
+			<result column="uname" property="uname"/>
+			<result column="photo" property="photo"/>
+		</association>
+		<collection property="student" column="studyid" ofType="UserInfo" select="getUserInfobyId"/>
+		
+	</resultMap>
+	<select id="getStudentsbypageDescTime" resultMap="SCMap" parameterType="java.util.Map" >
+select * from(select a.*,rownum rn from 
+	(select u.userid,u.uname,u.photo,sc.userid studyid
+			
+    		from course c
+    		left outer join studycourse  sc on c.courseid=sc.courseid
+        	left outer join userinfo u   on u.userid=c.userid
+          		where c.courseid=#{courseid} order by sc.begintime)a  
+						where #{pagesize}*#{pagenumber}>=rownum)
+			 				where rn>#{pagesize}*(#{pagenumber}-1) 	
+	</select>
+	<select id="getUserInfobyId" parameterType="int" resultType="UserInfo">
+		select * from UserInfo where userid=#{studyid}
+	</select> 
+	
+	<select id="getAllStudents" parameterType="int" resultType="StudyCourse">
+		select sc.userid,sc.courseid
+    		from course c
+    		left outer join studycourse  sc on c.courseid=sc.courseid
+        	
+          		where c.courseid=#{courseid} order by sc.begintime
+	</select>
 
+	
 </mapper>
