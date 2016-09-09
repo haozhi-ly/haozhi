@@ -20,4 +20,6 @@ public interface CgroupService {
 
 	List<Cgroup> searchGroups(String keyWord,Integer ctid);
 
+	Cgroup showGroups(String groupname);
+
 }

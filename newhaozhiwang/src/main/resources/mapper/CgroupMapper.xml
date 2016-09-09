@@ -59,4 +59,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</otherwise>
 		</choose>
 	</select>
+	
+	<select id="showGroups" parameterType="string" resultType="Cgroup">
+		select * from cgroup where groupname=#{groupname}
+	</select>
 </mapper>
