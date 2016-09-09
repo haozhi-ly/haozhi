@@ -309,18 +309,18 @@
 							<li><a class=" js-user-card"
 								href="http://www.howzhi.com/u/1687444/"
 								data-card-url="/user/1687444/card/show" data-user-id="1687444">
-									<img class="avatar-ll" src="images/125522a1b6f0301474.jpg"
+									<img  id="teacherimg" class="avatar-ll" src="images/125522a1b6f0301474.jpg"
 									alt="杨最醉">
 							</a>
 
 								<p>
-									<a href="http://www.howzhi.com/u/1687444/">杨最醉</a>
+									<a href="http://www.howzhi.com/u/1687444/" id="teachername">杨最醉</a>
 								</p></li>
 						</ul>
 						<h4>
 							<span class="dash-icon"></span>学员
 						</h4>
-						<ul class="course-in-ul clearfix">
+						<ul class="course-in-ul clearfix" id="studentlist">
 							<li><a class=" js-user-card"
 								href="http://www.howzhi.com/u/2364232/"
 								data-card-url="/user/2364232/card/show" data-user-id="2364232">
@@ -345,15 +345,7 @@
 
 						
 						<div class="tcdPageCode" id="stcpage"></div>
-						<script type="text/javascript">
-							$("#stcpage").createPage({
-						        pageCount:6,
-						        current:1,
-						        backFn:function(p){
-						            console.log(p);
-						        }
-						    });
-						</script>
+						
 
 
 					</div>
@@ -404,22 +396,11 @@
 								</div>
 							</li>
 
-							
-						
-
-
 						</ul>
-						<div class="tcdPageCode" id="commenttcpage"></div>
-						
+						<div class="tcdPageCode" id="commenttcpage"></div>					
 					</div>
 					<!--  评论分割线 ------------------------------------- -->
 					
-					
-					
-					
-					
-					
-
 				</div>
 
 				<div class="course flat nopad">

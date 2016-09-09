@@ -6,6 +6,7 @@ import java.util.Map;
 
 import com.haozhi.entity.Course;
 import com.haozhi.entity.CourseManage;
+import com.haozhi.entity.StudyCourse;
 
 public interface CourseMapper {
 	List<Course> getAllCourse();  //查询所有课程
@@ -30,6 +31,9 @@ public interface CourseMapper {
 	
 	Course getCourseById(Integer courseid); // 通过课程号查课程
 	
+	List<Course> getStudentsbypageDescTime(Map<String,Object> map);
+	
+	List<StudyCourse> getAllStudents(int courseid);
 
 }
 

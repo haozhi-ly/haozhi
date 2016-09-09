@@ -8,14 +8,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Date;
 import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import javax.servlet.jsp.PageContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -196,7 +192,7 @@ public class UserHandler {
 	}
 
 	@RequestMapping("/adduserinfo")
-	private void adduserinfo(UserInfo userInfo,String uname,String upassword,String email,String gender,String photo,String usign,String introdution,PrintWriter out){
+	private void adduserinfo(UserInfo userInfo,String uname,String upassword,String email,String gender,String photo,String usign,String introdution,PrintWriter out,HttpServletRequest request){
 		BASE64Decoder decoder = new BASE64Decoder();  
 		System.out.println(photo);
 		photo = photo.replaceAll("data:image/png;base64,", "");  
@@ -210,6 +206,7 @@ public class UserHandler {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}  
+
 		for (int i = 0; i < b.length; ++i) {  
 			if (b[i] < 0) {// 调整异常数据  
 				b[i] += 256;  
@@ -229,6 +226,7 @@ public class UserHandler {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
+
 		userInfo.setUname(uname);
 		userInfo.setUpassword(upassword);
 		userInfo.setEmail(email);
@@ -242,26 +240,26 @@ public class UserHandler {
 		out.close();
 	}
 
-	@RequestMapping("/editPhoto")
-	public String editItemsSubmit( Model model,HttpServletRequest request,Integer userid,
-			MultipartFile items_pic,UserInfo user)throws Exception {
 
-		// 上传图片的原始名称
-		String originalFilename = items_pic.getOriginalFilename();
-		// 上传图片
-		if (items_pic!= null&&originalFilename!=null&&originalFilename.length()>0) {// 存储图片的物理路径
-			String pic_path = "g:\\yc\\apache-tomcat-7.0.30\\webapps\\touxiangPic\\";
-			// 新的图片名称
-			String newFilename = new Date().getTime()+""+new Random().nextInt(100000)
-					+originalFilename.substring(originalFilename.lastIndexOf("."));
-			//新的图片
-			File newfile=new java.io.File(pic_path+newFilename);
-			//将内存的数据写入磁盘
-			items_pic.transferTo(newfile);	
-			user.setUserid(userid);user.setPhoto(newFilename);
-			userInfoService.editPhoto(user);
-		}
-		return "forward:/page/info.jsp";
+	 public String editItemsSubmit( Model model,HttpServletRequest request,Integer userid,
+			  MultipartFile items_pic,UserInfo user)throws Exception {
+		
+	      // 上传图片的原始名称
+	      String originalFilename = items_pic.getOriginalFilename();
+	      // 上传图片
+	      if (items_pic!= null&&originalFilename!=null&&originalFilename.length()>0) {// 存储图片的物理路径
+	        String pic_path = request.getServletContext().getRealPath("../img/headimg");
+	        // 新的图片名称
+	        String newFilename = new Date().getTime()+""+new Random().nextInt(100000)
+	        		 +originalFilename.substring(originalFilename.lastIndexOf("."));
+	        //新的图片
+	        File newfile=new java.io.File(pic_path+newFilename);
+	        //将内存的数据写入磁盘
+	        items_pic.transferTo(newfile);	
+	        user.setUserid(userid);user.setPhoto(newFilename);
+	        userInfoService.editPhoto(user);
+	   }
+	      return "forward:/page/info.jsp";
 	}
 
 	@ResponseBody
