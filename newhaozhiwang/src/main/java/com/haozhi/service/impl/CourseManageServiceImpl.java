@@ -26,4 +26,10 @@ public class CourseManageServiceImpl implements CourseManageService {
 		return courseManageMapper.getPlayByCmid(cmid);
 	}
 
+
+	@Override
+	public CourseManage selectTeachInfo(Integer cmid) {
+		return courseManageMapper.selectTeachInfo(cmid);
+	}
+
 }

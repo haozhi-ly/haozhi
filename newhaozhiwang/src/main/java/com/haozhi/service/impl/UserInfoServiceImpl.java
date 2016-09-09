@@ -91,6 +91,16 @@ public class UserInfoServiceImpl implements UserInfoService {
 		return userInfoMapper.adduserinfo(userInfo);
 	}
 
+	@Override
+	public int updateuserinfo(UserInfo userInfo) {
+		return userInfoMapper.updateuserinfo(userInfo);
+	}
+
+	@Override
+	public int deluserinfo(Integer[] intarr) {
+		return userInfoMapper.deluserinfo(intarr);
+	}
+
 
 
 }

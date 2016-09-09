@@ -14,9 +14,12 @@
 	<link href="http://f1.howzhi.com/system/2016/03-31/113613d6a857327741.ico" rel="shortcut icon">
 	<link href="css/bootstrap.css" rel="stylesheet">
 	<link href="css/main.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tcdPageCode.css">
 	<link rel="stylesheet" type="text/css" href="css/howzhi.css">
 	<script type="text/javascript" src="js/jquery.js"></script> 
 	<script type="text/javascript" src="js/play.js"></script>
+	<script  type="text/javascript" src="js/jquery.page.js"></script>
+	
 	<style>
 		.cke {
 			visibility: hidden;
@@ -67,43 +70,7 @@
 						</iframe>
 					</div> 
 				<div class="lesson-content lesson-content-text" id="lesson-text-content"   style="display:none;">
-					<div class="lesson-content-text-body" id="lesson-text" onmousewheel="return scroll(event,this)" style="overflow-y:auto; overflow-x:auto; width:880px; height:500px;">
-							<p>冷萃咖啡听起来高大上，但实际上制作非常简单。</p>
-							<p>
-						<strong>你需要准备的材料有：</strong>
-						</p>
-						<p>咖啡粉（建议使用单品咖啡）</p>
-						<p>冷藏过的纯净水（据说矿泉水会不利于风味萃取）</p>
-						<p>过滤设备（滤纸或法压壶或挂耳咖啡）</p>
-						<p>杯子</p>
-						<p>
-						<strong>冲泡步骤：</strong>
-						</p>
-						<p>以法压壶冲泡为例</p>
-						<p>
-						<img src="http://f1.howzhi.com/course/2016/07-05/0951004c19aa105897.jpg" alt="">
-						</p>
-						<p> </p>
-						<p>1、把10~12g咖啡粉放入法压壶</p>
-						<p>2、倒入180ml左右的冷藏纯净水</p>
-						<p>3、把滤网下压到法压壶中部</p>
-						<p>4、放到冰箱5摄氏度以下冷藏12小时左右即可</p>
-						<p>是不是超级简单？</p>
-						<p>实际如果使用挂耳咖啡更简单，只要准备一个杯子，把挂耳咖啡包丢进去，注入适量冷水，再冷藏12个小时即可！</p>
-						<p>
-						<img src="http://f1.howzhi.com/course/2016/07-05/094900c9e831099088.jpg" alt="">
-						</p>
-						<p>甚而还可以进行大量制作</p>
-						<p>
-						<img src="http://f1.howzhi.com/course/2016/07-05/0952022f0dcc504072.jpg" alt="">
-						</p>
-						<p>
-						<img src="http://f1.howzhi.com/course/2016/07-05/09520338f95e750367.jpg" alt="">
-						</p>
-						<p>
-						<img src="http://f1.howzhi.com/course/2016/07-05/09520331395c632441.jpg" alt="">
-						</p>
-						<p> </p>
+					<div class="lesson-content-text-body" id="lesson-text" onmousewheel="return scroll(event,this)" style="overflow-y:auto; overflow-x:auto; width:880px; height:500px;">					
 					</div>
 				</div>
 
@@ -365,7 +332,7 @@
 			<div class="col-md-9">
 				<div class="person-comment course-in flat">
 					<h2 class="nopadding">学员评论</h2>
-					<form class="form " id="comment-form" method="post" action="http://www.howzhi.com/comment/0/post" novalidate="novalidate" data-widget-cid="widget-0">
+					<form class="form " id="comment-form" method="post" action="" novalidate="novalidate" data-widget-cid="widget-0">
 
 						<div class="form-group">
 							<label class="control-label hidden" for="comment">内容</label>
@@ -439,12 +406,11 @@
 										<img src="images/209.gif" alt="大哭" title="大哭" style="cursor: pointer;" data-code="[[大哭]]">
 										<img src="images/210.gif" alt="尴尬" title="尴尬" style="cursor: pointer;" data-code="[[尴尬]]">
 										<img src="images/4.gif" alt="抛媚眼" title="抛媚眼" style="cursor: pointer;" data-code="[[抛媚眼]]">
-							</div> <button class="btn btn-primary pull-right" id="comment-btn" data-id="2155" type="submit">发布</button>
+							</div> <button class="btn btn-primary pull-right" id="comment-btn" data-id="2155" type="button">发布</button>
 						</div>
 						<div class="hz-login-editor"></div>
 					</form>
 					<ul class=" comment-item-list" id="commentList">
-
 						<li id="item92627">
 							<div class="userimg">
 								<a class=" js-user-card" href="#" data-card-url="/user/2357277/card/show" data-user-id="2357277">
@@ -459,9 +425,10 @@
 									<a class="con" href="javascript:;" data-role="revert" data-url="/comment/92627/post" data-revertto="楚嫣然">回复</a>
 								</div>
 							</div>
-						</li>
-						<!-- 分页 ---------------------------------------------------------------------------------  -->
-						<ul class="pagination">
+						</li>						
+					</ul>
+					<!-- 分页 ---------------------------------------------------------------------------------  -->
+						<div><ul class="pagination">
 							<li class="active"><a href="javaScript:void(0);">1</a></li>
 							<li><a href="javaScript:void(0);">2</a></li>
 							<li><a href="javaScript:void(0);">3</a></li>
@@ -470,9 +437,8 @@
 
 							<li><a href="javaScript:void(0);"><i class="es-icon es-icon-chevronright"></i></a></li>
 							<li><a href="javaScript:void(0);">尾</a></li>
-						</ul>
+						</ul></div>
 						<!-- 分页  ---------------------------------------------------------------------------------  -->
-					</ul>
 				</div>
 
 				<div class="course flat nopad">
@@ -534,7 +500,7 @@
           </h3>
 					<div class="media-left">
 						<a class=" js-user-card" href="javaScript:void(0);" data-card-url="/user/8441/card/show" data-user-id="8441">
-							<img class=" avatar-sm " src="images/062247776d46161023.jpg" alt="Orchid">
+							<img class="avatar-sm" id="teachImg" src="images/062247776d46161023.jpg" alt="Orchid">
 						</a>
 
 					</div>
@@ -542,7 +508,7 @@
 						<p class="text-o-show"> <a class="link-light " href="javaScript:void(0);">Orchid</a>
 							<span class="daren-icon-t" title="达人"></span>
 						</p>
-						<p><a href="javaScript:void(0);"><span>20</span>在教</a> <a href="javaScript:void(0);"><span>3285</span>粉丝</a></p>
+						<p><a href="javaScript:void(0);"><span id="teach" >20</span>在教</a> <a href="javaScript:void(0);"><span id="fans">3285</span>粉丝</a></p>
 					</div>
 					<div class="info">
 						没什么

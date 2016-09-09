@@ -8,11 +8,11 @@
 		<label>性 &nbsp; &nbsp;&nbsp;别：</label><input type="radio" id="users_sex" name="gender" checked="checked" value="男"/>男 <input type="radio" id="users_sex" name="gender" value="女"/>女<br /><br /><br />
 		<label>个性签名：</label><input  type="text" Style="width:400px;" id="users_usign" name="usign" required="required"><br /><br /><br />
 		<div><label >自我介绍：</label></div><textarea id="users_introdution" name="introdution" Style="width:400px;height:200px;" rows="" cols=""></textarea><br /><br /><br /><br />
-		<a href="javascript:addUsersInfo()" style="width:100px;mrgin-left:400px;" class="easyui-linkbutton" data-options="iconCls:'icon-add'" onclick="addUsersInfo()">添加</a>
+		<a href="javascript:void(0)" style="width:100px;mrgin-left:400px;" class="easyui-linkbutton" data-options="iconCls:'icon-add'" onclick="addUsersInfo()">添加</a>
 	</form>
 	
-	<div class="container" style="float:right;margin-right: 300px;">
-	  <div class="imageBox" style=" url(&quot;http://www.17sucai.com/preview/1/2015-03-19/%E4%B8%8A%E4%BC%A0%E6%88%AA%E5%9B%BE/images/avatar.jpg&quot;); background-size: 658px 851px; background-position: -129px -225.5px; background-repeat: no-repeat;">
+	<div class="container" id="addphoto"  style="float:right;margin-right: 300px;">
+	  <div id="addimg" class="imageBox" style=" url(&quot;http://www.17sucai.com/preview/1/2015-03-19/%E4%B8%8A%E4%BC%A0%E6%88%AA%E5%9B%BE/images/avatar.jpg&quot;); background-size: 658px 851px; background-position: -129px -225.5px; background-repeat: no-repeat;">
 	    <div class="thumbBox"></div>
 	    <div class="spinner" style="display: none;">Loading...</div>
 	  </div>
@@ -39,14 +39,15 @@
 		<label>会员名称：</label><input type="text" id="eusers_uname" name="uname" required="required" /> <br /><br /><br />
 		<label>会员密码：</label><input type="password" id="eusers_pwd" name="upassword" required="required" /> <br /><br /><br />
 		<label>电子邮件：</label><input type="text" id="eusers_email" name="email" required="required" /> <br /><br /><br />
-		<label>性 &nbsp; &nbsp;&nbsp;别：</label><input type="radio" id="eusers_sex" name="gender" checked="checked" value="男"/>男 <input type="radio" id="users_sex" name="gender" value="女"/>女<br /><br /><br />
+		<label>性 &nbsp; &nbsp;&nbsp;别：</label><input type="radio" id="eusers_sex01" name="gender01"  value="男"/>男 <input type="radio" id="eusers_sex02" name="gender01" value="女"/>女<br /><br /><br />
 		<label>个性签名：</label><input  type="text" Style="width:400px;" id="eusers_usign" name="usign" required="required"><br /><br /><br />
-		<div><label >自我介绍：</label></div><textarea id="eusers_introdution" name="introdution" Style="width:400px;height:200px;" rows="" cols=""></textarea><br /><br /><br /><br />
-		<a href="javascript:editUsersInfo()" style="width:100px;mrgin-left:400px;" class="easyui-linkbutton" data-options="iconCls:'icon-add'" onclick="editUsersInfo()">修改</a>
+		<div><label >自我介绍：</label></div><textarea id="eusers_introdution" name="introdution" Style="width:400px;height:200px;" rows="" cols=""></textarea><br /><br />
+		<label>状&nbsp; &nbsp;&nbsp;态：</label><select id="status" style="margin-left:10px;"><option value="0">0</option><option value="1">1</option></select><br /><br />
+		<a href="javascript:void(0)" style="width:100px;mrgin-left:400px;" class="easyui-linkbutton" data-options="iconCls:'icon-add'" onclick="editUsersInfo()">修改</a>
 	</form>
 	
 	<div class="container" style="float:right;margin-right: 300px;">
-	  <div class="imageBox" style=" url(&quot;http://www.17sucai.com/preview/1/2015-03-19/%E4%B8%8A%E4%BC%A0%E6%88%AA%E5%9B%BE/images/avatar.jpg&quot;); background-size: 658px 851px; background-position: -129px -225.5px; background-repeat: no-repeat;">
+	  <div  id="updateimg" class="imageBox" style=" url(&quot;http://www.17sucai.com/preview/1/2015-03-19/%E4%B8%8A%E4%BC%A0%E6%88%AA%E5%9B%BE/images/avatar.jpg&quot;); background-size: 658px 851px; background-position: -129px -225.5px; background-repeat: no-repeat;">
 	    <div class="thumbBox"></div>
 	    <div class="spinner" style="display: none;">Loading...</div>
 	  </div>
@@ -55,11 +56,11 @@
 		    <div class="new-contentarea tc"> <a href="javascript:void(0)" class="upload-img">
 		      <label for="upload-file">上传头像</label>
 		      </a>
-		      <input type="file" class="" name="upload-file" id="upload-file">
+		      <input type="file" class="" name="upload-file" id="upload-file01">
 		    </div>
-		    <input type="button" id="btnCrop" class="Btnsty_peyton" value="裁切">
-		    <input type="button" id="btnZoomIn" class="Btnsty_peyton" value="+">
-		    <input type="button" id="btnZoomOut" class="Btnsty_peyton" value="-">
+		    <input type="button" id="btnCrop01" class="Btnsty_peyton" value="裁切">
+		    <input type="button" id="btnZoomIn01" class="Btnsty_peyton" value="+">
+		    <input type="button" id="btnZoomOut01" class="Btnsty_peyton" value="-">
 		  </div>
   	<div class="cropped02"></div>
 </div>
@@ -107,11 +108,13 @@ $('#users_data').datagrid({
 		iconCls:"icon-add",
 		handler:function(){
 			$('#add_users').dialog('open'); 
+			$("#addphoto").show();
 		}
 	},{
 		text:"修改",
 		iconCls:"icon-edit",
 		handler:function(){
+			$("#addphoto").hide();
 			var rows=$('#users_data').datagrid("getChecked")[0];
 			if(rows!=undefined){
 				 var userid=rows.userid;
@@ -121,19 +124,27 @@ $('#users_data').datagrid({
 				 var gender=rows.gender;
 				 var photo=rows.photo;
 				 var usign=rows.usign;
+				 var status=rows.status;
 				 var introdution=rows.introdution;
 				$('#edit_users').dialog('open');
 				$("#eusers_usid").val(userid);
 				$("#eusers_uname").val(uname);
 				$("#eusers_pwd").val(upassword);
 				$("#eusers_email").val(email);
-				$("#eusers_sex").val(gender);
+				if(gender == "男"){
+					$("#eusers_sex01").attr("checked",'checked');
+				}else{
+					$("#eusers_sex02").attr("checked",'checked');
+				}
+				 
 				$("#eusers_usign").val(usign);
 				$("#eusers_introdution").val(introdution);
-				$('.cropped02').append('<img id="pic" src="../../touxiangPic/'+value+'" style="width:200px;height:200px;margin-top:4px;box-shadow:0px 0px 12px #7E7E7E;" >');
+				$("#status").val(status);
+				$('.cropped02').html("");
+				$('.cropped02').append('<img id="pic01" src="../../touxiangPic/'+photo+'" style="width:200px;height:200px;margin-top:4px;box-shadow:0px 0px 12px #7E7E7E;" >');
 			}else{
 				$.messager.show({
-					title:'成功提示',
+					title:'错误提示',
 					msg:'请选中您要修改的数据...',
 					timeout:2000,
 					showType:'slide'
@@ -150,27 +161,47 @@ $('#users_data').datagrid({
 				console.info(rows);
 				 $.messager.confirm('信息确认','您确认要删除选定的数据吗？',function(rs){
 						if(rs){
-							var usids="";
-							for(var i=0;i<rows.length-1;i++){
-								usids+=rows[i].usid+",";
-							}
-							usids+=rows[i].usid;
-							//发请求到数据库删除
-							$.post("../../usersServlet",{op:"delUsersByUsid",usid:usids},function(data){
-								if(data>0){
-									$.messager.show({
-										title:'成功提示',
-										msg:'会员删除成功',
-										timeout:2000,
-										showType:'slide'
+							if(rows.length == 1){
+								var userid=rows[0].userid;
+								$.post("userinfo/deluserinfo",{userid:userid},function(data){
+									if(data>0){
+										$.messager.show({
+											title:'成功提示',
+											msg:'会员删除成功',
+											timeout:2000,
+											showType:'slide'
+										});
+										rows=null;
+										obj.datagrid("reload");//刷新表格
+										$('#users_data').datagrid("reload");
+									}else{	
+										$.messager.alert('失败提示','会员删除失败','error');
+									}
+								});
+							}else{
+									var userids="";
+									for(var i=0;i<rows.length-1;i++){
+										userids+=rows[i].userid+",";
+									}
+									userids+=rows[i].userid;
+									//发请求到数据库删除
+									$.post("userinfo/deluserinfo",{userid:userids},function(data){
+										if(data>0){
+											$.messager.show({
+												title:'成功提示',
+												msg:'会员删除成功',
+												timeout:2000,
+												showType:'slide'
+											});
+											rows=null;
+											obj.datagrid("reload");//刷新表格
+											$('#users_data').datagrid("reload");
+										}else{	
+											$.messager.alert('失败提示','会员删除失败','error');
+										}
 									});
-									rows=null;
-									$('#users_data').datagrid("reload");//刷新表格
-								}else{	
-									$.messager.alert('失败提示','新闻删除失败','error');
-								}
-							});
-						}else{
+								 }
+								}else{
 							return;
 						}
 					});
@@ -202,7 +233,10 @@ function addUsersInfo(){
 				$("#users_uname").val("");
 				$("#users_pwd").val("");
 				$("#users_email").val("");
-
+				$("#users_usign").val("");
+				$("#users_introdution").val("");
+				$('#addimg').cropbox(options);
+				$('.cropped').html("");
 				$('#users_data').datagrid("reload");//数据重新加载
 				$("#add_users").dialog('close');//关闭添加新闻页面
 			}else{
@@ -215,37 +249,24 @@ function editUsersInfo(){
 	var uname=$("#eusers_uname").val();
 	var upassword=$("#eusers_pwd").val();
 	var email=$("#eusers_email").val();
-	var gender=$("#eusers_sex").val();
+	var gender=$("input[name='gender01']:checked").val();
 	var usign=$("#eusers_usign").val();
 	var introdution=$("#eusers_introdution").val();
-	
-	$.ajaxFileUpload({
-		url:"../../usersServlet?op=editUsersInfo",//只有把op的值放在链接里  才能保证不乱码
-		secureuri:false,
-		fileElementId:"eusers_pics",
-		dataType:"json",
-		data:{usid:usid,uname:uname,upwd:upwd,email:email},
-		success:function(data,status){
-			if(data>0){
-				$.messager.show({title:'成功提示',msg:"新闻信息修改成功...",timeout:2000,showType:'slide'});
-				
-				$("#eusers_uname").val("");
-				$("#eusers_pwd").val("");
-				$("#eusers_email").val("");
-
-				
-				$('#users_data').datagrid("reload");//数据重新加载
-				$("#edit_users").dialog('close');//关闭添加新闻页面
-			}else{
-				$.messager.alert("错误提示","会员修改失败...\n","error");
-			}
-		},
-		error:function(data,status,e){
+	var status=$("#status").val();
+	var photo=document.getElementById("pic01").src;
+	alert(photo)
+	$.post("userinfo/updateuserinfo",{userid:userid,uname:uname,upassword:upassword,email:email,gender:gender,photo:photo,usign:usign,introdution:introdution,status:status},function(data,status){
+		if(data){
+			$.messager.show({title:'成功提示',msg:"会员修改成功...",timeout:2000,showType:'slide'});
+			$('#users_data').datagrid("reload");//数据重新加载
+			$("#edit_users").dialog('close');//关闭添加新闻页面
+			
+		}else{
 			$.messager.alert("错误信息","会员修改失败...\n"+e,"error");
 		}
 	});
 }
-
+//第一个编辑器
 var options =
 {
 	thumbBox: '.thumbBox',
@@ -257,7 +278,7 @@ $('#upload-file').on('change', function(){
 	var reader = new FileReader();
 		reader.onload = function(e) {
 		options.imgSrc = e.target.result;
-		cropper = $('.imageBox').cropbox(options);
+		cropper = $('#addimg').cropbox(options);
 	}
 	reader.readAsDataURL(this.files[0]);
 	this.files = [];
@@ -265,13 +286,37 @@ $('#upload-file').on('change', function(){
 
 $('#btnCrop').on('click', function(){
 	var img = cropper.getDataURL();
-	$('.cropped').html('');
+	$('.cropped').html("");
 	$('.cropped').append('<img id="pic" src="'+img+'" style="width:200px;height:200px;margin-top:4px;box-shadow:0px 0px 12px #7E7E7E;" >');
+	
 })
 $('#btnZoomIn').on('click', function(){
 	cropper.zoomIn();
 })
 $('#btnZoomOut').on('click', function(){
+	cropper.zoomOut();
+})
+//第二份编辑器
+
+$('#upload-file01').on('change', function(){
+	var reader = new FileReader();
+		reader.onload = function(e) {
+		options.imgSrc = e.target.result;
+		cropper = $('#updateimg').cropbox(options);
+	}
+	reader.readAsDataURL(this.files[0]);
+	this.files = [];
+})
+
+$('#btnCrop01').on('click', function(){
+	var img = cropper.getDataURL();
+	$('.cropped02').html("");
+	$('.cropped02').append('<img id="pic01" src="'+img+'" style="width:200px;height:200px;margin-top:4px;box-shadow:0px 0px 12px #7E7E7E;" >');
+})
+$('#btnZoomIn01').on('click', function(){
+	cropper.zoomIn();
+})
+$('#btnZoomOut01').on('click', function(){
 	cropper.zoomOut();
 })
 </script>

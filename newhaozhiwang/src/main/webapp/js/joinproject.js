@@ -1,7 +1,8 @@
-		var courseid=window.location.href.split('=')[1];
+		
 $(function(){
 	//显示页面所有信息
 	//console.info();
+	//var courseid=window.location.href.split('=')[1];
 	var courseid=window.location.href.split('=')[1];
 	$.post("course/getCourseById/",{"_method":"POST",courseid:courseid},function(data){	
 		$('.breadcrumb a')[0].innerHTML = data.typename;
@@ -49,9 +50,96 @@ $(function(){
 		 });
 		}
 	},"json");
-	
+	//显示学员分页初始化
+	$.post("course/getAllStudentNumber/",{"_method":"POST",courseid:courseid},function(data){
+		console.info(data);
+		var page;
+		var count=parseInt(data);
+		console.info(count);
+		if(count%20==0){
+			page=count/24;
+		}else{
+			page=Math.floor((count/24)+1);
+		}
+		
+		console.info(page);
+		$("#stcpage").createPage({
+	        pageCount:page,
+	        current:1,
+	        backFn:function(p){
+	            console.log(p);
+	            $.post("course/getStudentsbypageDescTime/",{"p":p,"courseid":courseid},function(data){
+	            	var contentstr="";
+	             	for(var i=0;i<data.length;i++){
+	             		
+	             		contentstr+="<li><a class=' js-user-card' href='http://www.howzhi.com/u/2364232/'"+
+	             		"data-card-url='/user/2364232/card/show' data-user-id='"+data[i].student.userid+"'>"+
+	             		"<img class='avatar-ll' src=";
+	             		if(data[i].student.photo==null){
+	             			contentstr+="'images/avatar.png' alt='"+data[i].student.uname+"'>";
+	             	
+	             		}else{
+	             			contentstr+="'"+data[i].student.photo+"' alt='"+data[i].student.uname+"'>";
+	             		}
+	             		contentstr+="</a><p><a href='http://www.howzhi.com/u/2364232/'>"+data[i].student.uname+"</a></p></li>"
+	             		
+	             		/*<li><a class=" js-user-card"
+	    						href="http://www.howzhi.com/u/2364232/"
+	    						data-card-url="/user/2364232/card/show" data-user-id="2364232">
+	    							<img class="avatar-ll" src="images/avatar.png" alt="小飞侠灬">
+	    					</a>
 
-	var courseid=window.location.href.split('=')[1];
+	    						<p>
+	    							<a href="http://www.howzhi.com/u/2364232/">小飞侠灬</a>
+	    						</p></li>
+	             	*/
+	             	}
+	             	var teacherphoto=data[0].user.photo!=null?data[0].user.photo:"images/avatar.png";
+	             	$("#teacherimg").attr("src",teacherphoto);
+	             	$("#teachername").html(data[0].user.uname);
+	             	document.getElementById("studentlist").innerHTML=contentstr;
+	             	//$("#studentlist").html($(contentstr));
+	             },"json");
+	        }
+	    });
+	});
+		var courseid=window.location.href.split('=')[1];
+		 $.post("course/getStudentsbypageDescTime/",{"p":1,"courseid":courseid},function(data){
+         	var contentstr="";
+         	for(var i=0;i<data.length;i++){
+         		
+         		contentstr+="<li><a class=' js-user-card' href='http://www.howzhi.com/u/2364232/'"+
+         		"data-card-url='/user/2364232/card/show' data-user-id='"+data[i].student.userid+"'>"+
+         		"<img class='avatar-ll' src=";
+         		if(data[i].student.photo==null){
+         			contentstr+="'images/avatar.png' alt='"+data[i].student.uname+"'>";
+         	
+         		}else{
+         			contentstr+="'"+data[i].student.photo+"' alt='"+data[i].student.uname+"'>";
+         		}
+         		contentstr+="</a><p><a href='http://www.howzhi.com/u/2364232/'>"+data[i].student.uname+"</a></p></li>"
+         		
+         		/*<li><a class=" js-user-card"
+						href="http://www.howzhi.com/u/2364232/"
+						data-card-url="/user/2364232/card/show" data-user-id="2364232">
+							<img class="avatar-ll" src="images/avatar.png" alt="小飞侠灬">
+					</a>
+
+						<p>
+							<a href="http://www.howzhi.com/u/2364232/">小飞侠灬</a>
+						</p></li>
+         	*/
+         	}
+         	var teacherphoto=data[0].user.photo!=null?data[0].user.photo:"images/avatar.png";
+         	$("#teacherimg").attr("src",teacherphoto);
+         	$("#teachername").html(data[0].user.uname);
+         	document.getElementById("studentlist").innerHTML=contentstr;
+         	//$("#studentlist").html($(contentstr));
+         },"json");
+		
+		
+		
+	//评论分页初始化
 	$.post("courseAssess/CMcountbycourseid/",{"_method":"POST",courseid:courseid},function(data){
 		console.info(data);
 		var page;
@@ -69,37 +157,50 @@ $(function(){
 	        current:1,
 	        backFn:function(p){
 	            console.log(p);
-	            $.post("courseAssess/getAssessbypageDescTime/",{"courseid":courseid},function(data){
+	            $.post("courseAssess/getAssessbypageDescTime/",{"p":p,"courseid":courseid},function(data){
 	            	var contentstr="";
 	            	for(var i=0;i<data.length;i++){
-	            		contentstr+="<li><div class=' notes-img'> <a class='js-user-card' href='#'> <img class='avatar-sm'";
-	            			
-	            		/*	<li>
-						<div class="notes-img">
-							<a class=" js-user-card"
-								href="#"
-								data-card-url="/user/1731774/card/show" data-user-id="1731774">
-								<img class="avatar-sm" src="images/avatar.png"
-								alt="竹墨涵清">
-							</a>
-
-						</div>
-						<div class="notes-content">
-							<h4>
-								发布在课时 <a href="http://www.howzhi.com/course/9573/lesson/67386">人像后期调色</a>
-							</h4>
-							<div class="body">好好</div>
-							<div class="metas">
-								<span class="name">by <a href="javascrit:;">竹墨涵清</a></span><span
-									class="time">--8天前</span>
-							</div>
-						</div>
-					</li>*/
+	            		
+	            		contentstr+="<li><div class='notes-img'> <a class=' js-user-card' href='#'>" +
+	            				" <img class='avatar-sm' ";
+	            		console.info(data[i].user.photo);
+	            			if(data[i].user.photo!=null){
+	            				contentstr+="src='"+data[i].user.photo+"'>";
+	            			}else{
+	            				contentstr+="src='images/avatar.png'>";
+	            			}
+	            			contentstr+="</a></div> <div class='notes-content'><h4>发布在课时<a>"+data[i].courseManage.title+"</a></h4>"
+	            			+"<div class='body'>"+data[i].content+"</div>"+
+	            			"<div class='metas'><span class='name'>by <a href='javascript:;'>"+data[i].user.uname+"</a></span>"+
+	            			"<span class='time'>"+data[i].time+"</span></div></div></li>"
+	            	
 	            	}
-	            });
+	            	$("#commentcontent").html($(contentstr));
+	            },"json");
 	        }
 	    });
-	},"json");
+		var courseid=window.location.href.split('=')[1];
+		$.post("courseAssess/getAssessbypageDescTime/",{"p":1,"courseid":courseid},function(data){
+        	var contentstr="";
+        	for(var i=0;i<data.length;i++){
+        		
+        		contentstr+="<li><div class='notes-img'> <a class=' js-user-card' href='#'>" +
+        				" <img class='avatar-sm' ";
+        		console.info(data[i].user.photo);
+        			if(data[i].user.photo!=null){
+        				contentstr+="src='"+data[i].user.photo+"'>";
+        			}else{
+        				contentstr+="src='images/avatar.png'>";
+        			}
+        			contentstr+="</a></div> <div class='notes-content'><h4>发布在课时<a>"+data[i].courseManage.title+"</a></h4>"
+        			+"<div class='body'>"+data[i].content+"</div>"+
+        			"<div class='metas'><span class='name'>by <a href='javascript:;'>"+data[i].user.uname+"</a></span>"+
+        			"<span class='time'>"+data[i].time+"</span></div></div></li>"
+        		
+        	}
+        	$("#commentcontent").html($(contentstr));
+        },"json");
+	
 	
 	
 	//点击关闭
@@ -128,6 +229,7 @@ $(function(){
 			 $('#courseClassmate').css('display', 'none');
 			 $('#courseAssess').css('display', 'none');
 			 
+			 var courseid=window.location.href.split('=')[1];
 			//根据courseid查课时
 			 var courseid=window.location.href.split('=')[1];
 				$.post("courseManage/getCourseManageById/",{"_method":"POST",courseid:courseid},function(data){	
@@ -206,7 +308,7 @@ $(function(){
 			 $('#courseAssess').css('display', 'block');
 			 
 			 var courseid=window.location.href.split('=')[1];
-			 $.post("");
+			
 		 }
 		  
 	});
@@ -230,6 +332,8 @@ $(function(){
 		
 	
 });
+});
+	
 
 
 function join(){	
