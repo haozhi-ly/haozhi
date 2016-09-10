@@ -74,12 +74,21 @@ public class CourseAssessHandler {
 		return coursesassess;
 	}
 	
+
+	@ResponseBody
+	@RequestMapping(value="/getAssesstopfour",method=RequestMethod.POST)
+	public List<CourseAssess> getAssesstopfour(int courseid,ModelMap map){
+		List<CourseAssess> coursesassess = courseAssessService.getAssesstopfour(courseid);
+		map.put("coursesassess", coursesassess);
+		return coursesassess;
+	}
 	
 	@ResponseBody
 	@RequestMapping(value="/getAssessCountByCmid",method=RequestMethod.POST)
 	public int getAssessCountByCmid(Integer cmid){	
 		List<CourseAssess> coursesassess = courseAssessService.getAssessCountByCmid(cmid);	
 		return coursesassess.size();
+
 	}
 
 }

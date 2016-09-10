@@ -9,6 +9,11 @@ public interface CourseAssessService {
 	List<CourseAssess> getAssessbypageDescTime(Map<String, Object> hashmap);
 
 	List<CourseAssess> CMcountbycourseid(String courseid);
+
+
+	List<CourseAssess> getAssesstopfour(int courseid);
+
+
 	
 	List<CourseAssess> getAssessByCmidByPage(Map<String,Object> map); //通过cmid pagesize pagenum查评论分页
 	List<CourseAssess> getAssessCountByCmid(Integer cmid); //根据cmid来查总数

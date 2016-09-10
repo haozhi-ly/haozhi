@@ -59,19 +59,26 @@
 		<ol class="breadcrumb breadcrumb-o" style="margin-top: -18px">
 			<li><a href="http://www.howzhi.com/">首页</a></li>
 			<li><a href="http://www.howzhi.com/groups/explore">小组频道</a></li>
-			<li><a href="http://www.howzhi.com/group/2/">${showgroups.groupname }</a></li>
+			<li><a href="groups/showsearch?groupname=${item.groupname }&userid=${users.userid}">${showgroups.groupname }</a></li>
 		</ol>
 		<div class="group-header"
 			style="background: url(http://f1.howzhi.com/group-icon/2013/02-17/2114262b3815751219.jpg); background-repeat: no-repeat; background-size: 100% 100%;">
 			<div class="media">
 				<div class="media-left">
-					<a href="http://www.howzhi.com/group/2/"> <img src="images/111938a63532860008.jpg"
+					<a href="groups/showsearch?groupname=${item.groupname }&userid=${users.userid}"> <img src="images/111938a63532860008.jpg"
 						alt="${showgroups.groupname }" class="avatar-square-md">
 					</a>
 				</div>
 				<div class="media-body">
-					<h2 class="media-heading">${showgroups.groupname }<a id="add-btn" class="btn btn-success btn-sm mlm"
-							href="groups/joingroup?groupMember=${users.userid}&groupname=${showgroups.groupname }">加入小组</a>
+					<h2 class="media-heading">${showgroups.groupname }
+						<c:choose>
+							<c:when test="${flag==true or joingroups!=null}">
+								<a id="exit-btn" class="btn btn-default btn-sm mlm" href="/group/221/exit">退出小组</a>
+							</c:when>
+							<c:otherwise>
+								<a id="add-btn" class="btn btn-success btn-sm mlm" href="groups/joingroup?groupMember=${users.userid}&groupname=${showgroups.groupname }">加入小组</a>
+							</c:otherwise>
+						</c:choose>
 					</h2>
 					<div class="media-metas">${showgroups.peoplecount }个成员 <span class="mlm">4608个话题</span> <span class="fsn mlm">创建时间：${showgroups.createtime }</span>
 					</div>
@@ -99,16 +106,21 @@
 							<p>&nbsp;</p>
 							<hr>
 							<div class="">
-								<a id="add-btn" class="btn btn-info btn-sm pull-right"
-									href="groups/joingroup?groupMember=${users.userid}&groupname=${showgroups.groupname }">加入小组</a> <span
-									class="text-muted fsn mrm">创建时间：${showgroups.createtime }</span> <span
-									class="text-muted fsn mrm">组长： <a
-									class="link-light link-muted " href="http://www.howzhi.com/u/187/">${showgroups.userinfo.uname }</a></span>
+								<c:choose>
+									<c:when test="${flag==true or joingroups!=null}">
+									</c:when>
+									<c:otherwise>
+										<a id="add-btn" class="btn btn-info btn-sm pull-right" href="groups/joingroup?groupMember=${users.userid}&groupname=${showgroups.groupname }">加入小组</a>
+									</c:otherwise>
+								</c:choose>
+									<span class="text-muted fsn mrm">创建时间：${showgroups.createtime }</span>
+									<span class="text-muted fsn mrm">组长： 
+									<a class="link-light link-muted " href="http://www.howzhi.com/u/187/">${showgroups.userinfo.uname }</a></span>
 									<c:set value="${joingroups}" var="join"/>
-									<c:if test="${join==null }">
+									<c:if test="${empty join}">
 										
 									</c:if>
-									<c:if test="${join!=null }">
+									<c:if test="${join!=null or flag==true }">
 										<span class="text-muted fsn ">你已经是小组成员，<a id="exit-btn" class="text-muted" href="/group/2/exit"> » 退出小组</a></span>
 									</c:if>
 							</div>
@@ -141,6 +153,20 @@
 											href="http://www.howzhi.com/group/2/?isElite=all&amp;num=25&amp;sort=byPostNum">回复数</a></li>
 									</ul></li>
 							</ul>
+							<!-- 加入小组后可以发帖子 -->
+							<c:if test="${flag==true or join!=null}">
+								<div class="pull-right">
+									<a class="btn btn-primary btn-sm" role="button" href="/group/211/thread/create">发话题</a>
+								</div>
+							</c:if>
+							<%-- <c:choose>
+								<c:when test="${flag==true or join!=null}">
+								</c:when>
+								<c:otherwise>
+									<a id="add-btn" class="btn btn-info btn-sm pull-right" href="groups/joingroup?groupMember=${users.userid}&groupname=${showgroups.groupname }">加入小组</a>
+								</c:otherwise>
+							</c:choose> --%>
+							
 
 						</div>
 

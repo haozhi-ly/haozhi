@@ -977,7 +977,21 @@ DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from UserInfo where userid=? 
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 4(Integer)
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+<<<<<<< HEAD
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 17
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from coursequestion cq left join coursemanage cm on cq.cmid=cm.cmid where cm.courseid=?; 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 6(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from coursequestion cq left join coursemanage cm on cq.cmid=cm.cmid where cm.courseid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 6(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 2
+=======
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 17
+<<<<<<< HEAD
+>>>>>>> branch 'master' of ssh://git@github.com/haozhi-ly/haozhi
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select a.*,rownum rn from (select ca.cmid,ca.userid,ca.content,ca.time, cm.courseid,cm.title,cm.courseseq,u.uname,u.photo from courseAssess ca,courseManage cm,userinfo u where ca.cmid=cm.cmid and ca.userid=u.userid and cm.courseid=? order by time desc)a where 4>=rownum 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 6(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 4
+=======
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select s.*,m.memberCount from (select count(userid) memberCount from studyCourse where courseid in (select courseid from courseManage where cmid=?)) m, (select * from studyCourse where courseid in(select courseid from courseManage where cmid=?)) s order by begintime desc 
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer), 1(Integer)
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid in (select userid from course where courseid=?) 
@@ -1063,3 +1077,4 @@ DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: update cgroup s
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 2,1,4,3(String), java开发(String)
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==    Updates: 1
 
+>>>>>>> branch 'master' of ssh://git@github.com/haozhi-ly/haozhi

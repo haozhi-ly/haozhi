@@ -11,7 +11,9 @@
 <title>人像摄影高级教程 - 好知网-重拾学习乐趣</title>
 
 <link
-	href="http://f1.howzhi.com/system/2016/03-31/113613d6a857327741.ico"
+	href="http://f1.howzh
+	
+	i.com/system/2016/03-31/113613d6a857327741.ico"
 	rel="shortcut icon">
 
 <!--		<link rel="stylesheet" media="screen" href="css/common.css">
@@ -197,10 +199,10 @@
 							</a></li>
 							<li class="hz-x-hide "><a href="javascript:void(0);">笔记 <span id="bj"></span>
 							</a></li>
-							<li class="hz-x-hide "><a href="javascript:void(0);">问答 <span>(23)</span>
+							<li class="hz-x-hide "><a href="javascript:void(0);">问答 <span id="questionnumber">(23)</span>
 							</a></li>
-							<li class="hz-x-hide "><a href="javascript:void(0);">学员 <span>(11922)</span></a></li>
-							<li class=""><a href="javascript:void(0);">评论 <span>(474)</span></a></li>
+							<li class="hz-x-hide "><a href="javascript:void(0);">学员 <span id="Allstudent">(11922)</span></a></li>
+							<li class=""><a href="javascript:void(0);">评论 <span id="Allcomment">(474)</span></a></li>
 							<li class="btnbar pull-right"><a
 								class="btn btn-primary joinbtn pull-right mlm"
 								data-toggle="modal" href="javascript:void(0);"
@@ -254,14 +256,14 @@
 					<!--  w問答分割線 -------------------------------------- -->
 					<div class="course-question course-in" style="display: none;" id="courseQuestion">
 						<div class="question-header">
-							共<span>24</span>个问题
+							共<span id="questionnumbertwo">24</span>个问题
 						</div>
 						<textarea rows="4" cols="3"></textarea>
 
 						<ul class="course-in-ul" id="questionAndAnswer">
 							<li>
 								<h4>
-									<span class="q-icon"></span><a class="js-nav"
+									<span class="glyphicon glyphicon-question-sign" style="color: rgb(4, 188, 131);"></span><a class="js-nav"
 										href="http://www.howzhi.com/question/57595">老师好 麻烦老师解释下</a> <a
 										class="link-muted"
 										href="http://www.howzhi.com/course/9573/lesson/67389"
@@ -275,7 +277,7 @@
 							</li>
 							<li>
 								<h4>
-									<span class="q-icon"></span><a class="js-nav"
+									<span class="glyphicon glyphicon-question-sign" style="color: rgb(4, 188, 131);"></span><a class="js-nav"
 										href="http://www.howzhi.com/question/57542">后期修图问题</a> <a
 										class="link-muted"
 										href="http://www.howzhi.com/course/9573/lesson/67383"
@@ -290,15 +292,7 @@
 
 						</ul>
 						<div class="tcdPageCode" id="qatcpage"></div>
-						<script type="text/javascript">
-							$("#qatcpage").createPage({
-						        pageCount:6,
-						        current:1,
-						        backFn:function(p){
-						            console.log(p);
-						        }
-						    });
-						</script>
+						
 					</div>
 					<!--  问答分割线 ----------------------------------- -->
 					<!--  学员分割线 --------------------------------- -->
@@ -307,7 +301,7 @@
 							<span class="dash-icon"></span>授课老师
 						</h4>
 						<ul class="course-in-ul clearfix" id="studentsInfo">
-							<li><a class=" js-user-card"
+							<li><a  id="teacher" class=" js-user-card"
 								href="http://www.howzhi.com/u/1687444/"
 								data-card-url="/user/1687444/card/show" data-user-id="1687444">
 									<img  id="teacherimg" class="avatar-ll" src="images/125522a1b6f0301474.jpg"
@@ -567,8 +561,8 @@
 
 				<div class="flat sidebar-judge">
 					<h3>最新评论</h3>
-					<ul>
-
+					<ul id="mediacomment">
+					<!-- 右边的评论 -->
 						<li class="media">
 							<div class="media-left">
 								<a class=" js-user-card" href="http://www.howzhi.com/u/1559536/"

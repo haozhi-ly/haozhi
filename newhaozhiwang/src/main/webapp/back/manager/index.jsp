@@ -6,7 +6,7 @@
 <html>
 <head>
 	<base href="/newhaozhiwang/"/>
-	<meta charset="UTF-8">
+	<meta charset="UTF-8"> 
 	<title>好知网</title>
 	<link rel="stylesheet" type="text/css" href="easyui/css/easyui.css">
 	<link rel="stylesheet" type="text/css" href="easyui/css/icon.css">

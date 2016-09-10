@@ -19,14 +19,14 @@ public class UserInfoServiceImpl implements UserInfoService {
 	@Override
 	public UserInfo loginByUname(UserInfo userInfo) {
 		//密码加密操作
-		//userInfo.setUpassword(Encrypt.md5AndSha(userInfo.getUpassword()));
+		userInfo.setUpassword(Encrypt.md5AndSha(userInfo.getUpassword()));
 		return userInfoMapper.getUserByUname(userInfo);
 	}
 
 	@Override
 	public UserInfo loginByEamil(UserInfo userInfo) {
 		//密码加密操作
-		//userInfo.setUpassword(Encrypt.md5AndSha(userInfo.getUpassword()));
+		userInfo.setUpassword(Encrypt.md5AndSha(userInfo.getUpassword()));
 		return userInfoMapper.getUserByEmail(userInfo);
 	}
 

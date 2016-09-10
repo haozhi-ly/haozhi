@@ -43,4 +43,11 @@ public class CourseAssessMapperTest {
 		List<CourseAssess> list=courseAssessMapper.getAssessbypageDescTime(map);
 		System.out.println(list.toString());
 	}
+	
+	@Test
+	public void testgetAssesstopfour() {
+		
+		List<CourseAssess> list=courseAssessMapper.getAssesstopfour(6);
+		System.out.println(list.toString());
+	}
 }
