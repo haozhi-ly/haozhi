@@ -50,13 +50,67 @@ $(function(){
 		 });
 		}
 	},"json");
-	//显示学员分页初始化
-	$.post("course/getAllStudentNumber/",{"_method":"POST",courseid:courseid},function(data){
+	
+	//显示问答界面分页根据couresid初始化
+	var courseid=window.location.href.split('=')[1];
+
+	$.post("courseQuestion/getAllcourseQuestionbycourseid/",{"_method":"POST",courseid:courseid},function(data){
 		console.info(data);
+		$("#questionnumber").html("("+data+")");
+		$("#questionnumbertwo").html(data);
+		questionnumbertwo
 		var page;
 		var count=parseInt(data);
 		console.info(count);
 		if(count%20==0){
+			page=count/20;
+		}else{
+			page=Math.floor((count/20)+1);
+		}
+		
+		console.info(page);
+		$("#qatcpage").createPage({
+	        pageCount:page,
+	        current:1,
+	        backFn:function(p){
+	            console.log(p);
+	            $.post("courseQuestion/getAllQuestionbycmid/",{"p":p,"courseid":courseid},function(data){
+	            	var contentstr="";
+	             	for(var i=0;i<data.length;i++){
+	             		contentstr+="<li><h4><span class='glyphicon glyphicon-question-sign' style='color: rgb(4, 188, 131);'></span><a class='js-nav'"+
+	             		"href='javascript:showquestiondetail("+data[i].cqid+")'>"+data[i].cqcontent+
+	             		"><span class='from'>来自L"+data[i].courseManage.courseseq+data[i].courseManage.title+
+	             		"</span></a></h4><p> by <a class='link-light link-muted' href='page/person.jsp?userid="+data[i].user.userid+"'>"+
+	             		data[i].user.uname+"</a> •"+data[i].answercount+"回答 • "+data[i].cqview+"游览</p></li>";
+	             		
+	             	}
+	             	$("#questionAndAnswer").html($(contentstr))
+	             },"json");
+	        }
+	    });
+	});
+		var courseid=window.location.href.split('=')[1];
+		$.post("courseQuestion/getAllQuestionbycmid/",{"p":1,"courseid":courseid},function(data){
+        	var contentstr="";
+         	for(var i=0;i<data.length;i++){
+         		contentstr+="<li><h4><span class='glyphicon glyphicon-question-sign' style='color: rgb(4, 188, 131);'></span><a class='js-nav'"+
+         		"href='javascript:showquestiondetail("+data[i].cqid+")'>"+data[i].cqcontent+
+         		"><span class='from'>来自L"+data[i].courseManage.courseseq+data[i].courseManage.title+
+         		"</span></a></h4><p> by <a class='link-light link-muted' href='page/person.jsp?userid="+data[i].user.userid+"'>"+
+         		data[i].user.uname+"</a> •"+data[i].answercount+"回答 • "+data[i].cqview+"游览</p></li>";
+         	}
+         	$("#questionAndAnswer").html($(contentstr))
+         },"json");
+		
+	
+	//显示学员分页初始化
+	$.post("course/getAllStudentNumber/",{"_method":"POST",courseid:courseid},function(data){
+		console.info(data);
+		$("#Allstudent").html("("+data+")");
+		var page;
+		var count=parseInt(data);
+		console.info(count);
+		if(count%24==0){
 			page=count/24;
 		}else{
 			page=Math.floor((count/24)+1);
@@ -72,7 +126,7 @@ $(function(){
 	            	var contentstr="";
 	             	for(var i=0;i<data.length;i++){
 	             		
-	             		contentstr+="<li><a class=' js-user-card' href='http://www.howzhi.com/u/2364232/'"+
+	             		contentstr+="<li><a class=' js-user-card' href='page/person.jsp?userid="+data[i].student.userid+"'"+
 	             		"data-card-url='/user/2364232/card/show' data-user-id='"+data[i].student.userid+"'>"+
 	             		"<img class='avatar-ll' src=";
 	             		if(data[i].student.photo==null){
@@ -81,24 +135,16 @@ $(function(){
 	             		}else{
 	             			contentstr+="'"+data[i].student.photo+"' alt='"+data[i].student.uname+"'>";
 	             		}
-	             		contentstr+="</a><p><a href='http://www.howzhi.com/u/2364232/'>"+data[i].student.uname+"</a></p></li>"
+	             		contentstr+="</a><p><a href='page/person.jsp?userid="+data[i].student.userid+"'>"+data[i].student.uname+"</a></p></li>"
 	             		
-	             		/*<li><a class=" js-user-card"
-	    						href="http://www.howzhi.com/u/2364232/"
-	    						data-card-url="/user/2364232/card/show" data-user-id="2364232">
-	    							<img class="avatar-ll" src="images/avatar.png" alt="小飞侠灬">
-	    					</a>
-
-	    						<p>
-	    							<a href="http://www.howzhi.com/u/2364232/">小飞侠灬</a>
-	    						</p></li>
-	             	*/
+	             		
 	             	}
 	             	var teacherphoto=data[0].user.photo!=null?data[0].user.photo:"images/avatar.png";
+	             	$("#teacher").attr("href","page/person.jsp?userid="+data[0].user.userid);
 	             	$("#teacherimg").attr("src",teacherphoto);
 	             	$("#teachername").html(data[0].user.uname);
 	             	document.getElementById("studentlist").innerHTML=contentstr;
-	             	//$("#studentlist").html($(contentstr));
+	             	
 	             },"json");
 	        }
 	    });
@@ -106,9 +152,10 @@ $(function(){
 		var courseid=window.location.href.split('=')[1];
 		 $.post("course/getStudentsbypageDescTime/",{"p":1,"courseid":courseid},function(data){
          	var contentstr="";
+         	
          	for(var i=0;i<data.length;i++){
          		
-         		contentstr+="<li><a class=' js-user-card' href='http://www.howzhi.com/u/2364232/'"+
+         		contentstr+="<li><a class=' js-user-card' href='page/person.jsp?userid="+data[i].student.userid+"'"+
          		"data-card-url='/user/2364232/card/show' data-user-id='"+data[i].student.userid+"'>"+
          		"<img class='avatar-ll' src=";
          		if(data[i].student.photo==null){
@@ -117,24 +164,16 @@ $(function(){
          		}else{
          			contentstr+="'"+data[i].student.photo+"' alt='"+data[i].student.uname+"'>";
          		}
-         		contentstr+="</a><p><a href='http://www.howzhi.com/u/2364232/'>"+data[i].student.uname+"</a></p></li>"
+         		contentstr+="</a><p><a href='page/person.jsp?userid="+data[i].student.userid+"'>"+data[i].student.uname+"</a></p></li>"
          		
-         		/*<li><a class=" js-user-card"
-						href="http://www.howzhi.com/u/2364232/"
-						data-card-url="/user/2364232/card/show" data-user-id="2364232">
-							<img class="avatar-ll" src="images/avatar.png" alt="小飞侠灬">
-					</a>
-
-						<p>
-							<a href="http://www.howzhi.com/u/2364232/">小飞侠灬</a>
-						</p></li>
-         	*/
+         		
          	}
          	var teacherphoto=data[0].user.photo!=null?data[0].user.photo:"images/avatar.png";
+         	$("#teacher").attr("href","page/person.jsp?userid="+data[0].user.userid);
          	$("#teacherimg").attr("src",teacherphoto);
          	$("#teachername").html(data[0].user.uname);
          	document.getElementById("studentlist").innerHTML=contentstr;
-         	//$("#studentlist").html($(contentstr));
+         	
          },"json");
 		
 		
@@ -142,6 +181,7 @@ $(function(){
 	//评论分页初始化
 	$.post("courseAssess/CMcountbycourseid/",{"_method":"POST",courseid:courseid},function(data){
 		console.info(data);
+		$("#Allcomment").html("("+data+")");
 		var page;
 		var count=parseInt(data);
 		console.info(count);

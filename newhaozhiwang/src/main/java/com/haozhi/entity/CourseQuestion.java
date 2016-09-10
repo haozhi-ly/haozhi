@@ -12,6 +12,9 @@ public class CourseQuestion {
 	private String cqtime;// --提问时间
 	private int cqview;// ---浏览次数
 	private int qreadstatus;// --0或1表示未读或已读
+	private UserInfo user;
+	private CourseManage courseManage;
+	private int answercount;
 	private String temp01;// --备用字段
 	private String temp02;// --备用字段
 	private String temp03;// --备用字段
@@ -19,9 +22,17 @@ public class CourseQuestion {
 	public CourseQuestion() {
 	}
 
-	public CourseQuestion(int cqid, int userid, int cmid, String cqcontent,
-			String cqtime, int cqview, int qreadstatus, String temp01,
-			String temp02, String temp03) {
+	
+
+	
+	
+
+	
+
+
+	public CourseQuestion(int cqid, int userid, int cmid, String cqcontent, String cqtime, int cqview, int qreadstatus,
+			UserInfo user, CourseManage courseManage, int answercount) {
+		super();
 		this.cqid = cqid;
 		this.userid = userid;
 		this.cmid = cmid;
@@ -29,10 +40,41 @@ public class CourseQuestion {
 		this.cqtime = cqtime;
 		this.cqview = cqview;
 		this.qreadstatus = qreadstatus;
-		this.temp01 = temp01;
-		this.temp02 = temp02;
-		this.temp03 = temp03;
+		this.user = user;
+		this.courseManage = courseManage;
+		this.answercount = answercount;
 	}
+
+
+
+
+
+
+
+
+
+	public CourseManage getCourseManage() {
+		return courseManage;
+	}
+
+
+	public void setCourseManage(CourseManage courseManage) {
+		this.courseManage = courseManage;
+	}
+
+
+
+	public UserInfo getUser() {
+		return user;
+	}
+
+
+
+	public void setUser(UserInfo user) {
+		this.user = user;
+	}
+
+
 
 	public int getCqid() {
 		return cqid;
@@ -114,13 +156,40 @@ public class CourseQuestion {
 		this.temp03 = temp03;
 	}
 
+
+
+	public int getAnswercount() {
+		return answercount;
+	}
+
+
+
+	public void setAnswercount(int answercount) {
+		this.answercount = answercount;
+	}
+
+
+
+
+
+
+
+
+
 	@Override
 	public String toString() {
-		return "CourseQuestion [cqid=" + cqid + ", userid=" + userid
-				+ ", cmid=" + cmid + ", cqcontent=" + cqcontent + ", cqtime="
-				+ cqtime + ", cqview=" + cqview + ", qreadstatus="
-				+ qreadstatus + ", temp01=" + temp01 + ", temp02=" + temp02
-				+ ", temp03=" + temp03 + "]";
+		return "CourseQuestion [cqid=" + cqid + ", userid=" + userid + ", cmid=" + cmid + ", cqcontent=" + cqcontent
+				+ ", cqtime=" + cqtime + ", cqview=" + cqview + ", qreadstatus=" + qreadstatus + ", user=" + user
+				+ ", courseManage=" + courseManage + ", answercount=" + answercount + "]";
 	}
+
+
+
+	
+
+
+
+
+	
 
 }
