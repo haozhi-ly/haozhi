@@ -66,9 +66,23 @@ public class GroupsHandler {
 	
 	//点击小组名称，跳转到详细页面
 	@RequestMapping(value="/showsearch")
-	public String showGroups(Model model,String groupname){
+	public String showGroups(Model model,String groupname,String userid){
+		System.out.println("userid==>"+userid);
+		boolean flag=false;
 		groupname=new UsuallyUtil().decode(groupname);
 		Cgroup groups= groupService.showGroups(groupname);
+		String groupnumber=groups.getGroupnumber();
+		String[] sourceStrArray = groupnumber.split(",");
+		for (int i = 0; i < sourceStrArray.length; i++) {
+		    System.out.println(sourceStrArray[i]);
+		    if(sourceStrArray[i].equals(userid)){
+		    	System.out.println("userid==>"+userid);
+		    	flag=true;
+		    }
+		}
+		if(flag==true){
+	    	model.addAttribute("flag", true);
+		}
 		model.addAttribute("showgroups", groups);
 		return "groupIntroduce";
 	}
