@@ -1,5 +1,7 @@
 package com.haozhi.handler;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -100,5 +102,28 @@ public class GroupsHandler {
 		int groups= groupService.joinGroups(groupnumber,groupname);
 		model.addAttribute("joingroups", groups);
 		return "redirect:../page/groupIntroduce.jsp";
+	}
+	
+	//退出小组
+	@RequestMapping(value="/exitgroup")
+	public String exitGroup(Model model,String groupname,String userid){
+		groupname=new UsuallyUtil().decode(groupname);
+		Cgroup groups= groupService.showGroups(groupname);
+		String groupnumber=groups.getGroupnumber();
+		String[] sourceStrArray = groupnumber.split(",");
+		List<String> userList = new ArrayList<String>();
+		Collections.addAll(userList, sourceStrArray);
+		for(int i=0;i<userList.size();i++){
+			if(userList.get(i).equals(userid)){
+				userList.remove(userList.get(i));
+			}
+		}
+		groupnumber=userList.toString();
+		System.out.println(groupnumber);
+		if(groupService.exitGroup(groupnumber,groupname)==true){
+			return "redirect:../page/groupIntroduce.jsp";
+		}
+		return "";
+		
 	}
 }

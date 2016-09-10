@@ -59,13 +59,13 @@
 		<ol class="breadcrumb breadcrumb-o" style="margin-top: -18px">
 			<li><a href="http://www.howzhi.com/">首页</a></li>
 			<li><a href="http://www.howzhi.com/groups/explore">小组频道</a></li>
-			<li><a href="groups/showsearch?groupname=${item.groupname }&userid=${users.userid}">${showgroups.groupname }</a></li>
+			<li><a href="groups/showsearch?groupname=${showgroups.groupname }&userid=${users.userid}">${showgroups.groupname }</a></li>
 		</ol>
 		<div class="group-header"
 			style="background: url(http://f1.howzhi.com/group-icon/2013/02-17/2114262b3815751219.jpg); background-repeat: no-repeat; background-size: 100% 100%;">
 			<div class="media">
 				<div class="media-left">
-					<a href="groups/showsearch?groupname=${item.groupname }&userid=${users.userid}"> <img src="images/111938a63532860008.jpg"
+					<a href="groups/showsearch?groupname=${showgroups.groupname }&userid=${users.userid}"> <img src="images/111938a63532860008.jpg"
 						alt="${showgroups.groupname }" class="avatar-square-md">
 					</a>
 				</div>
@@ -73,7 +73,7 @@
 					<h2 class="media-heading">${showgroups.groupname }
 						<c:choose>
 							<c:when test="${flag==true or joingroups!=null}">
-								<a id="exit-btn" class="btn btn-default btn-sm mlm" href="/group/221/exit">退出小组</a>
+								<a id="exit-btn" class="btn btn-default btn-sm mlm" href="groups/exitgroup?userid=${users.userid}&groupname=${showgroups.groupname }">退出小组</a>
 							</c:when>
 							<c:otherwise>
 								<a id="add-btn" class="btn btn-success btn-sm mlm" href="groups/joingroup?groupMember=${users.userid}&groupname=${showgroups.groupname }">加入小组</a>
@@ -121,7 +121,7 @@
 										
 									</c:if>
 									<c:if test="${join!=null or flag==true }">
-										<span class="text-muted fsn ">你已经是小组成员，<a id="exit-btn" class="text-muted" href="/group/2/exit"> » 退出小组</a></span>
+										<span class="text-muted fsn ">你已经是小组成员，<a id="exit-btn" class="text-muted" href="groups/exitgroup?userid=${users.userid}&groupname=${showgroups.groupname }"> » 退出小组</a></span>
 									</c:if>
 							</div>
 						</div>
@@ -159,15 +159,6 @@
 									<a class="btn btn-primary btn-sm" role="button" href="/group/211/thread/create">发话题</a>
 								</div>
 							</c:if>
-							<%-- <c:choose>
-								<c:when test="${flag==true or join!=null}">
-								</c:when>
-								<c:otherwise>
-									<a id="add-btn" class="btn btn-info btn-sm pull-right" href="groups/joingroup?groupMember=${users.userid}&groupname=${showgroups.groupname }">加入小组</a>
-								</c:otherwise>
-							</c:choose> --%>
-							
-
 						</div>
 
 						<!--小组热帖-->

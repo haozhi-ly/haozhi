@@ -68,8 +68,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getGroupnumber" parameterType="string" resultType="string">
 		select groupnumber from cgroup where groupname=#{groupname}
 	</select>
-	<!-- 加人新成员 -->
-	<update id="joinGroups">
+	<!-- 加人新成员或者退出小组 -->
+	<update id="updateGroups">
 		update cgroup set groupnumber=#{groupnumber} where groupname=#{groupname}
 	</update>
+	
 </mapper>

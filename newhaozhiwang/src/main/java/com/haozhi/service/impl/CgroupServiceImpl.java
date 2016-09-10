@@ -13,6 +13,7 @@ import java.util.Map;
 
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -73,14 +74,22 @@ public class CgroupServiceImpl implements CgroupService{
 	//加入小组
 	@Override
 	public int joinGroups(String groupnumber,String groupname) {
-		
-		return groupMapper.joinGroups(groupnumber,groupname);
+		return groupMapper.updateGroups(groupnumber,groupname);
 	}
 	//获取到小组原来的成员，加入小组时拼接成员时用
 	@Override
 	public String getGroupnumber(String groupname) {
 		String groupnumber=groupMapper.getGroupnumber(groupname);
 		return groupnumber;
+	}
+	
+	//退出小组
+	@Override
+	public boolean exitGroup(String groupnumber,String groupname) {
+		if(groupMapper.updateGroups(groupnumber,groupname)>0){
+			return true;
+		}
+		return false;
 	}
 	
 }
