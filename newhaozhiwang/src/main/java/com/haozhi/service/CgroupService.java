@@ -22,4 +22,8 @@ public interface CgroupService {
 
 	Cgroup showGroups(String groupname);
 
+	int joinGroups(String groupnumber,String groupname);
+
+	String getGroupnumber(String groupname);
+
 }
