@@ -1078,3 +1078,12 @@ DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 2,1,4,3(String)
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==    Updates: 1
 
 >>>>>>> branch 'master' of ssh://git@github.com/haozhi-ly/haozhi
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: update cgroup set groupnumber=? where groupname=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 2,1,4,3(String), java开发(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==    Updates: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: update cgroup set groupnumber=? where groupname=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 2,1,4,3(String), java开发(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==    Updates: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: update cgroup set groupnumber=? where groupname=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 2,1,4,21(String), java开发(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==    Updates: 1

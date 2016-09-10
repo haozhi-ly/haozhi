@@ -57,8 +57,8 @@
 	<!--小组简介-->
 	<div class="container" id="content-container">
 		<ol class="breadcrumb breadcrumb-o" style="margin-top: -18px">
-			<li><a href="http://www.howzhi.com/">首页</a></li>
-			<li><a href="http://www.howzhi.com/groups/explore">小组频道</a></li>
+			<li><a href="page/index.jsp">首页</a></li>
+			<li><a href="page/groups.jsp">小组频道</a></li>
 			<li><a href="groups/showsearch?groupname=${showgroups.groupname }&userid=${users.userid}">${showgroups.groupname }</a></li>
 		</ol>
 		<div class="group-header"
@@ -173,7 +173,6 @@
 									<div class="media-heading">
 										<span class="label label-danger">置顶</span> <a class="title"
 											href="http://www.howzhi.com/group/2/discuss/265661">【好知活动】冬日唯美人像外拍第一期回顾</a>
-
 									</div>
 
 									<div class="metas">
@@ -196,7 +195,6 @@
 									<div class="media-heading">
 										<span class="label label-danger">置顶</span> <a class="title"
 											href="http://www.howzhi.com/group/2/discuss/265626">Lightroom预设资源分享（第一期）</a>
-
 									</div>
 
 									<div class="metas">
@@ -288,135 +286,18 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">最近加入</div>
 					<!--最近加入成员，从数据库获取-->
-					<div class="panel-body">
+					<div class="panel-body" id="addMemberNow">
 						<ul class="user-avatar-list clearfix">
-							<li><a title="" data-original-title="" class=" js-user-card"
-								href="http://www.howzhi.com/u/2364063/"
-								data-card-url="/user/2364063/card/show" data-user-id="2364063">
-									<img class="avatar-sm" src="images/person02.jpg"
-									alt="浪漫时尚军旅军品店">
-							</a>
-
-								<div class="name">
-									<a class="link-light " href="http://www.howzhi.com/u/2364063/">浪漫时尚军旅军品店</a>
-
-								</div></li>
-							<li><a class=" js-user-card"
-								href="http://www.howzhi.com/u/1969172/"
-								data-card-url="/user/1969172/card/show" data-user-id="1969172">
-									<img class="avatar-sm" src="images/person01.jpg"
-									alt="小芋头Sky">
-							</a>
-
-								<div class="name">
-									<a class="link-light " href="http://www.howzhi.com/u/1969172/">小芋头Sky</a>
-
-								</div></li>
-							<li><a class=" js-user-card"
-								href="http://www.howzhi.com/u/2338273/"
-								data-card-url="/user/2338273/card/show" data-user-id="2338273">
-									<img class="avatar-sm" src="images/person03.jpg"
-									alt="acissejjessica">
-							</a>
-
-								<div class="name">
-									<a class="link-light " href="http://www.howzhi.com/u/2338273/">acissejjessica</a>
-
-								</div></li>
-							<li><a title="" data-original-title="" class=" js-user-card"
-								href="http://www.howzhi.com/u/2363329/"
-								data-card-url="/user/2363329/card/show" data-user-id="2363329">
-									<img class="avatar-sm" src="images/person04.jpg" alt="学无止境V">
-							</a>
-
-								<div class="name">
-									<a class="link-light " href="http://www.howzhi.com/u/2363329/">学无止境V</a>
-
-								</div></li>
-							<li><a class=" js-user-card"
-								href="http://www.howzhi.com/u/1648670/"
-								data-card-url="/user/1648670/card/show" data-user-id="1648670">
-									<img class="avatar-sm" src="images/person05.jpg" alt="源源酱">
-							</a>
-
-								<div class="name">
-									<a class="link-light " href="http://www.howzhi.com/u/1648670/">源源酱</a>
-
-								</div></li>
-							<li><a title="" data-original-title="" class=" js-user-card"
-								href="http://www.howzhi.com/u/2364063/"
-								data-card-url="/user/2364063/card/show" data-user-id="2364063">
-									<img class="avatar-sm" src="images/person02.jpg"
-									alt="浪漫时尚军旅军品店">
-							</a>
-
-								<div class="name">
-									<a class="link-light " href="http://www.howzhi.com/u/2364063/">浪漫时尚军旅军品店</a>
-
-								</div></li>
-							<li><a class=" js-user-card"
-								href="http://www.howzhi.com/u/1969172/"
-								data-card-url="/user/1969172/card/show" data-user-id="1969172">
-									<img class="avatar-sm" src="images/person01.jpg"
-									alt="小芋头Sky">
-							</a>
-
-								<div class="name">
-									<a class="link-light " href="http://www.howzhi.com/u/1969172/">小芋头Sky</a>
-
-								</div></li>
-							<li><a class=" js-user-card"
-								href="http://www.howzhi.com/u/2338273/"
-								data-card-url="/user/2338273/card/show" data-user-id="2338273">
-									<img class="avatar-sm" src="images/person03.jpg"
-									alt="acissejjessica">
-							</a>
-
-								<div class="name">
-									<a class="link-light " href="http://www.howzhi.com/u/2338273/">acissejjessica</a>
-
-								</div></li>
-							<li><a title="" data-original-title="" class=" js-user-card"
-								href="http://www.howzhi.com/u/2363329/"
-								data-card-url="/user/2363329/card/show" data-user-id="2363329">
-									<img class="avatar-sm" src="images/person04.jpg" alt="学无止境V">
-							</a>
-
-								<div class="name">
-									<a class="link-light " href="http://www.howzhi.com/u/2363329/">学无止境V</a>
-
-								</div></li>
-							<li><a class=" js-user-card"
-								href="http://www.howzhi.com/u/1648670/"
-								data-card-url="/user/1648670/card/show" data-user-id="1648670">
-									<img class="avatar-sm" src="images/person05.jpg" alt="源源酱">
-							</a>
-
-								<div class="name">
-									<a class="link-light " href="http://www.howzhi.com/u/1648670/">源源酱</a>
-
-								</div></li>
-							<li><a class=" js-user-card"
-								href="http://www.howzhi.com/u/2338273/"
-								data-card-url="/user/2338273/card/show" data-user-id="2338273">
-									<img class="avatar-sm" src="images/person03.jpg"
-									alt="acissejjessica">
-							</a>
-
-								<div class="name">
-									<a class="link-light " href="http://www.howzhi.com/u/2338273/">acissejjessica</a>
-
-								</div></li>
-							<li><a title="" data-original-title="" class=" js-user-card"
-								href="http://www.howzhi.com/u/2363329/"
-								data-card-url="/user/2363329/card/show" data-user-id="2363329">
-									<img class="avatar-sm" src="images/person04.jpg" alt="学无止境V">
-							</a>
-
-								<div class="name">
-									<a class="link-light " href="http://www.howzhi.com/u/2363329/">学无止境V</a>
-
-								</div></li>
+							<c:forEach items="${groupUser}" var="item">
+								<li><a title="" data-original-title="" class=" js-user-card"
+									href="http://www.howzhi.com/u/2364063/"
+									data-card-url="/user/2364063/card/show" data-user-id="2364063">
+									<img class="avatar-sm" src="images/person02.jpg" alt="${item.uname}"></a>
+									<div class="name">
+										<a class="link-light " href="http://www.howzhi.com/u/2364063/">${item.uname}</a>
+									</div>
+								</li>
+							</c:forEach>
 						</ul>
 					</div>
 				</div>
