@@ -1,8 +1,6 @@
 		
 $(function(){
 	//显示页面所有信息
-	//console.info();
-	//var courseid=window.location.href.split('=')[1];
 	var courseid=window.location.href.split('=')[1];
 	$.post("course/getCourseById/",{"_method":"POST",courseid:courseid},function(data){	
 		$('.breadcrumb a')[0].innerHTML = data.typename;
@@ -52,22 +50,17 @@ $(function(){
 	},"json");
 	//显示学员分页初始化
 	$.post("course/getAllStudentNumber/",{"_method":"POST",courseid:courseid},function(data){
-		console.info(data);
 		var page;
 		var count=parseInt(data);
-		console.info(count);
 		if(count%20==0){
 			page=count/24;
 		}else{
 			page=Math.floor((count/24)+1);
 		}
-		
-		console.info(page);
 		$("#stcpage").createPage({
 	        pageCount:page,
 	        current:1,
 	        backFn:function(p){
-	            console.log(p);
 	            $.post("course/getStudentsbypageDescTime/",{"p":p,"courseid":courseid},function(data){
 	            	var contentstr="";
 	             	for(var i=0;i<data.length;i++){
@@ -144,19 +137,16 @@ $(function(){
 		console.info(data);
 		var page;
 		var count=parseInt(data);
-		console.info(count);
 		if(count%20==0){
 			page=count/20;
 		}else{
 			page=Math.floor((count/20)+1);
 		}
 		
-		console.info(page);
 		$("#commenttcpage").createPage({
 	        pageCount:page,
 	        current:1,
 	        backFn:function(p){
-	            console.log(p);
 	            $.post("courseAssess/getAssessbypageDescTime/",{"p":p,"courseid":courseid},function(data){
 	            	var contentstr="";
 	            	for(var i=0;i<data.length;i++){
@@ -183,8 +173,7 @@ $(function(){
 		var courseid=window.location.href.split('=')[1];
 		$.post("courseAssess/getAssessbypageDescTime/",{"p":1,"courseid":courseid},function(data){
         	var contentstr="";
-        	for(var i=0;i<data.length;i++){
-        		
+        	for(var i=0;i<data.length;i++){		
         		contentstr+="<li><div class='notes-img'> <a class=' js-user-card' href='#'>" +
         				" <img class='avatar-sm' ";
         		console.info(data[i].user.photo);
