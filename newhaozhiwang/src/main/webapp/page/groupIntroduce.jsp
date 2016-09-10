@@ -71,7 +71,7 @@
 				</div>
 				<div class="media-body">
 					<h2 class="media-heading">${showgroups.groupname }<a id="add-btn" class="btn btn-success btn-sm mlm"
-							href="http://www.howzhi.com/group/2/join">加入小组</a>
+							href="groups/joingroup?groupMember=${users.userid}&groupname=${showgroups.groupname }">加入小组</a>
 					</h2>
 					<div class="media-metas">${showgroups.peoplecount }个成员 <span class="mlm">4608个话题</span> <span class="fsn mlm">创建时间：${showgroups.createtime }</span>
 					</div>
@@ -91,55 +91,26 @@
 							<li style="left: 0px; width: 104px; overflow: hidden;"
 								class="highlight"></li>
 						</ul>
+						<!-- 小组简介 -->
 						<div class="alert alert-info clearfix">
 							<p>摄影公社（原称爱摄公社），集结好知网喜欢摄影的同学。欢迎大家在小组里发表作品、提问和分享信息。</p>
 
 							<p>PS：大家传图片记得先处理一下，控制在1M以下哦。</p>
-
-							<p>
-								<strong>本组Q群：113410968</strong>
-							</p>
-
-							<p>
-								<strong>本组微信：<a
-									href="http://www.howzhi.com/group/snap/discuss/10143"
-									target="_blank">photo-tips</a></strong>
-							</p>
-
-							<p>
-								<strong>新浪微博：<a href="http://weibo.com/howzhifoto"
-									target="_blank" title="摄影课堂微博">@howzhifoto</a></strong>
-							</p>
-
-							<p>
-								<strong>常见摄影问答：<a
-									href="http://www.howzhi.com/group/snap/discuss/1675"
-									target="_blank" title="摄影问答">摄影知识之你问我答</a></strong>
-							</p>
-
-							<p>
-								<strong>摄影基础概念：<a
-									href="http://www.howzhi.com/group/snap/discuss/10195"
-									target="_blank" title="摄影基础知识">光圈、景深、对焦，连续更新中</a></strong>
-							</p>
-
-							<p>
-								<strong>摄影课程合集：<a
-									href="http://www.howzhi.com/group/snap/discuss/725"
-									target="_blank" title="摄影课程合集">好知网<strong>摄影课程合集</strong></a>
-								</strong>
-							</p>
-
 							<p>&nbsp;</p>
 							<hr>
 							<div class="">
 								<a id="add-btn" class="btn btn-info btn-sm pull-right"
-									href="http://www.howzhi.com/group/2/join">加入小组</a> <span
+									href="groups/joingroup?groupMember=${users.userid}&groupname=${showgroups.groupname }">加入小组</a> <span
 									class="text-muted fsn mrm">创建时间：${showgroups.createtime }</span> <span
 									class="text-muted fsn mrm">组长： <a
-									class="link-light link-muted " href="http://www.howzhi.com/u/187/">${showgroups.createman }</a></span> <span
-									class="text-muted fsn ">你已经是小组成员，<a id="exit-btn"
-									class="text-muted" href="/group/2/exit"> » 退出小组</a></span>
+									class="link-light link-muted " href="http://www.howzhi.com/u/187/">${showgroups.userinfo.uname }</a></span>
+									<c:set value="${joingroups}" var="join"/>
+									<c:if test="${join==null }">
+										
+									</c:if>
+									<c:if test="${join!=null }">
+										<span class="text-muted fsn ">你已经是小组成员，<a id="exit-btn" class="text-muted" href="/group/2/exit"> » 退出小组</a></span>
+									</c:if>
 							</div>
 						</div>
 
@@ -178,7 +149,7 @@
 							<li class="media"><a class="pull-left js-user-card"
 								href="http://www.howzhi.com/u/187/"
 								data-card-url="/user/187/card/show" data-user-id="187"> <img
-									class="avatar-md " src="images/person04.jpg" 　alt="乱流">
+									class="avatar-md " src="images/person04.jpg" alt="乱流">
 							</a>
 
 								<div class="media-body">

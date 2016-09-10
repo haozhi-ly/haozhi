@@ -5,5 +5,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
 <mapper namespace="com.haozhi.mapper.StudyCourseMapper">
 	
-
+	<resultMap type="StudyCourse" id="StudyCourseMap">
+		<id column="courseid" property="courseid"/>
+		<id column="cmid" property="cmid"/>
+		<collection property="user" column="courseid" ofType="UserInfo" select="getUserByCmid" />
+	</resultMap>
+	<select id="getStudyCourseByCmid" resultMap="StudyCourseMap" >
+		 select s.*,m.memberCount from (select count(userid) memberCount from studyCourse  where courseid in
+		 (select courseid from courseManage where cmid=#{cmid})) m,
+		 (select * from studyCourse where courseid in(select courseid from courseManage where cmid=#{cmid})) s
+		  where 10>rownum  order by begintime desc 
+	</select>	
+	<select id="getUserByCmid" resultType="UserInfo" parameterType="int">
+		select * from userinfo where userid in (select userid from course where courseid=#{coueseid})
+	</select>
 </mapper>

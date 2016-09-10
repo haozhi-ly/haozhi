@@ -242,6 +242,7 @@ $(function(){
 	            },"json");
 	        }
 	    });
+		
 		var courseid=window.location.href.split('=')[1];
 		$.post("courseAssess/getAssessbypageDescTime/",{"p":1,"courseid":courseid},function(data){
         	var contentstr="";

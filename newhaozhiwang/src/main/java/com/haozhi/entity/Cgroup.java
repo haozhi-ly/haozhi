@@ -13,7 +13,17 @@ public class Cgroup {
 	private UserInfo userinfo;
 	private String keyWord;//关键字，查询时用
 	private int ctid;
+	private int groupMember;//新加入的成员
+	
 	public Cgroup() {
+	}
+
+	public int getGroupMember() {
+		return groupMember;
+	}
+
+	public void setGroupMember(int groupMember) {
+		this.groupMember = groupMember;
 	}
 
 	public int getCtid() {
@@ -134,8 +144,13 @@ public class Cgroup {
 				+ ", groupnumber=" + groupnumber + ", peoplecount="
 				+ peoplecount + ", pic=" + pic + ", introduction="
 				+ introduction + ", userinfo=" + userinfo + ", keyWord="
-				+ keyWord + ", ctid=" + ctid + "]";
+				+ keyWord + ", ctid=" + ctid + ", groupMember=" + groupMember
+				+ "]";
 	}
+
+	
+
+	
 
 
 	

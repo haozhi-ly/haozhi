@@ -327,7 +327,6 @@
 	</div>
 
 	<div class="container" id="content-container">
-
 		<div class="row">
 			<div class="col-md-9">
 				<div class="person-comment course-in flat">
@@ -416,7 +415,6 @@
 								<a class=" js-user-card" href="#" data-card-url="/user/2357277/card/show" data-user-id="2357277">
 									<img class="img-responsive" src="images/21584339cab2094074.jpg" alt="楚嫣然">
 								</a>
-
 							</div>
 							<div class="userInfo">
 								<p class="head"><a href="#">楚嫣然</a><span>7天前</span></p>
@@ -428,16 +426,7 @@
 						</li>						
 					</ul>
 					<!-- 分页 ---------------------------------------------------------------------------------  -->
-						<div><ul class="pagination">
-							<li class="active"><a href="javaScript:void(0);">1</a></li>
-							<li><a href="javaScript:void(0);">2</a></li>
-							<li><a href="javaScript:void(0);">3</a></li>
-							<li><a href="javaScript:void(0);">4</a></li>
-							<li><a href="javaScript:void(0);">5</a></li>
-
-							<li><a href="javaScript:void(0);"><i class="es-icon es-icon-chevronright"></i></a></li>
-							<li><a href="javaScript:void(0);">尾</a></li>
-						</ul></div>
+						<div class="tcdPageCode" id="commenttcpage"></div>
 						<!-- 分页  ---------------------------------------------------------------------------------  -->
 				</div>
 
@@ -446,13 +435,11 @@
 						<h2>你感兴趣的课程</h2>
 					</div>
 					<div class="section-body">
-						<div class="row">
+						<div class="row" id="recommedCourse">
 				   <!--  --- 推荐课程 ------------------------------------------------------------------------- -->			
 							<div class="col-md-4 col-sm-6 ">
-
 								<div class="course-item">
 									<div class="course-img">
-
 										<img src="images/0650251c4120932070.jpg" alt="sai基础教程" class="">
 										<a href="javaScript:void(0);">
 											<div class="mask">
@@ -474,7 +461,6 @@
 											<a class=" js-user-card" href="javaScript:void(0);" data-card-url="/user/1282433/card/show" data-user-id="1282433">
 												<img class="avatar-ss " src="images/2001255a2bbc776915.jpg" alt="木桃"> 木桃
 											</a>
-
 											<div class="price free pull-right"><span>免费</span></div>
 										</div>
 									</div>
@@ -495,9 +481,7 @@
 					</div>
 				</div>
 				<div class="flat sidebar-teach media">
-					<h3>
-            课程教师
-          </h3>
+					<h3>课程教师</h3>
 					<div class="media-left">
 						<a class=" js-user-card" href="javaScript:void(0);" data-card-url="/user/8441/card/show" data-user-id="8441">
 							<img class="avatar-sm" id="teachImg" src="images/062247776d46161023.jpg" alt="Orchid">
@@ -514,7 +498,7 @@
 						没什么
 					</div>
 					<div class="ta clearfix" data-role="followUser">
-						<a class="act first follow-btn" href="javascript:;" data-url="/user/8441/follow">
+						<a class="act first follow-btn" href="javascript:;" data-url="/user/8441/follow" id="attion">
 							<i class="fa fa-plus"></i> 关注TA
 						</a>
 						<a class="act first unfollow-btn" href="javascript:;" data-url="/user/8441/unfollow" style="display:none">
@@ -528,15 +512,14 @@
 
 				<div class="flat sidebar-learner ">
 					<h3>
-            最新加入学员<span class="count">(14341)</span>
+            最新加入学员<span class="count">()</span>
           </h3>
-					<ul class="clearfix">
+					<ul class="clearfix" id="member">
 				<!-- 最新加入学员   显示9个就好 ---------------------------------------------------------------------------------- -->
 						<li>
 							<a class=" js-user-card" href="javaScript:void(0);" data-card-url="/user/2359723/card/show" data-user-id="2359723">
 								<img class="avatar-sm" src="images/avatar.png" alt="solo怪兽">
 							</a>
-
 							<a href="javaScript:void(0);" title="solo怪兽" class="name">solo怪兽</a>
 						</li>
 				<!-- 最新加入学员   显示9个就好 ---------------------------------------------------------------------------------- -->

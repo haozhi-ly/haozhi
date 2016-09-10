@@ -15,7 +15,7 @@ import com.haozhi.util.UsuallyUtil;
 
 @Controller
 @RequestMapping("/groups")
-@SessionAttributes(value={"searchgroups"})
+@SessionAttributes(value={"searchgroups","showgroups","joingroups"})
 public class GroupsHandler {
 	
 	@Autowired
@@ -71,5 +71,20 @@ public class GroupsHandler {
 		Cgroup groups= groupService.showGroups(groupname);
 		model.addAttribute("showgroups", groups);
 		return "groupIntroduce";
+	}
+	
+	//加入小组
+	@RequestMapping(value="/joingroup")
+	public String joinGroups(Model model,String groupMember,String groupname){
+		groupMember=new UsuallyUtil().decode(groupMember);
+		groupname=new UsuallyUtil().decode(groupname);
+		if(groupMember==null || groupMember.equals("")){
+			return "login";
+		}
+		String groupnumber=groupService.getGroupnumber(groupname);
+		groupnumber=groupnumber+","+groupMember;
+		int groups= groupService.joinGroups(groupnumber,groupname);
+		model.addAttribute("joingroups", groups);
+		return "redirect:../page/groupIntroduce.jsp";
 	}
 }

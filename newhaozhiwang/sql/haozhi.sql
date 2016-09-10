@@ -12,6 +12,9 @@ select * from studyCourse;
 select * from selfMessage;
 select * from cgroup;
 
+select t.*, rownum rn from (select a.*,rownum rn from courseAssess a where cmid=1
+and 5>=rownum order by a.time desc ) t where rn>0
+
 select c.*,u.* from courseNote c inner join userinfo u  on  c.userid=u.userid and cmid in
 		 (select cmid from courseManage where courseid= 6 ) order by ntime desc
 
@@ -216,6 +219,11 @@ insert into courseManage values(seq_cmid.nextval,5,0,'老电影画面',3,'http:/
 sid/XNDY2NTYwMjI4/isAutoPlay/false/partnerid/0edbfd2e4fc91b72/v.swf',null,null,null);
 commit;
 
+
+
+
+
+select * from courseAssess where cmid=1
 -----------------6.课程评价表
 create table courseAssess(
        csid int primary key ,
@@ -233,7 +241,12 @@ create table courseAssess(
 create sequence seq_csid start with 1;
 insert into courseAssess values(seq_csid.nextval,1,1,'老师讲的非常好！',sysdate,0,null,null,null);
 insert into courseAssess values(seq_csid.nextval,1,2,'做咖啡！',sysdate,0,null,null,null);
-
+insert into courseAssess values(seq_csid.nextval,2,1,'好想学会做哟！',sysdate,0,null,null,null);
+insert into courseAssess values(seq_csid.nextval,4,1,'做咖啡！加油！',sysdate,0,null,null,null);
+insert into courseAssess values(seq_csid.nextval,5,1,'没想到做冷萃咖啡并不怎么难',sysdate,0,null,null,null);
+insert into courseAssess values(seq_csid.nextval,4,1,'再次来学习学习一下',sysdate,0,null,null,null);
+insert into courseAssess values(seq_csid.nextval,2,1,'哎 自己动手总会出差错！',sysdate,0,null,null,null);
+commit
 --------------------7.课程提问表
 create table courseQuestion(
        cqid int primary key,
@@ -312,8 +325,8 @@ select * from (select s.*,(select count(1) from studyCourse where courseid = s.c
 (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s order by memberCount desc) where rownum<=3 ;
 
 select * from studyCourse
-select count(userid) from studyCourse where courseid=5;
-
+select  count(userid) from studyCourse  where courseid=5 order by begintime desc;
+select 
 ---------------------11.学习课程表
 create table studyCourse(
        scid int primary key,
@@ -371,7 +384,7 @@ create table cgroup(
 );
 drop table cgroup;
 create sequence seq_gid start with 1;
-
+delete from cgroup where groupname='名校公开课';
 insert into cgroup values(seq_gid.nextval,'摄影公社',3,sysdate,'3,1,2',100,null,null,1);
 insert into cgroup values(seq_gid.nextval,'绘画世界',2,sysdate,'2,1,4',80,null,null,6);
 insert into cgroup values(seq_gid.nextval,'好知大本营（教务处）',2,sysdate,'2,1,4',80,null,null,9);
@@ -391,7 +404,6 @@ insert into cgroup values(seq_gid.nextval,'天天理财',2,sysdate,'2,1,4',83,nu
 insert into cgroup values(seq_gid.nextval,'古筝吧',2,sysdate,'2,1,4',38,null,null,3);
 insert into cgroup values(seq_gid.nextval,'Ubuntu',2,sysdate,'2,1,4',1005,null,null,5);
 insert into cgroup values(seq_gid.nextval,'早起狗',2,sysdate,'2,1,4',880,null,null,6);
-
 insert into cgroup values(seq_gid.nextval,'插画交流',2,sysdate,'2,1,4',87,null,null,6);
 insert into cgroup values(seq_gid.nextval,'java开发',2,sysdate,'2,1,4',68,null,null,5);
 insert into cgroup values(seq_gid.nextval,'吉卜力',2,sysdate,'2,1,4',1585,null,null,2);

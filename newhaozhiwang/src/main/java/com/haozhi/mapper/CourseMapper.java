@@ -34,6 +34,9 @@ public interface CourseMapper {
 	List<Course> getStudentsbypageDescTime(Map<String,Object> map);
 	
 	List<StudyCourse> getAllStudents(int courseid);
+	
+	List<Course> recommedCourseByCmid(Integer cmid);  //通过cmid来查推荐课程的前三门
+	
 
 }
 

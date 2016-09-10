@@ -134,6 +134,8 @@ public class CourseAssess {
 	public void setCourseManage(CourseManage courseManage) {
 		this.courseManage = courseManage;
 	}
+	
+	
 
 
 	public CourseAssess(int csid, int userid, UserInfo user, int cmid, String content, String time, int readstatus,

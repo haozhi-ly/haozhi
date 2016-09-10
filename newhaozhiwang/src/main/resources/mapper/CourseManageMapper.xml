@@ -26,8 +26,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  where attention in (select userid from course where courseid in(select courseid from 
 		  courseManage where cmid=#{cmid}))) a,(select * from courseManage where cmid=#{cmid}) c
 		 
-	</select>
-	
+	</select>	
 	<select id="getUserByCmid" resultType="UserInfo" parameterType="int">
 		select * from userinfo where userid in (select userid from course where courseid=#{coueseid})
 	</select>

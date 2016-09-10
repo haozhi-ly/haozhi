@@ -70,4 +70,12 @@ public class CourseServiceImplTest {
 		assertNotNull(course);
 	}
 	
+	
+	@Test
+	public void recommedCourseByCmid() {
+		List<Course> course = courseService.recommedCourseByCmid(1);
+		System.out.println(course);
+		assertNotNull(course);
+	}
+	
 }

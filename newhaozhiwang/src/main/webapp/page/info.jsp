@@ -41,9 +41,9 @@
 }
 </style>
 <script type="text/javascript">
-	$('#oldpwd').bind("blur", function() {
+/* 	$('#oldpwd').bind("blur", function() {
 		alert("");
-	});
+	}); */
 
 	/* function savePhoto(id){
 		alert(id);
