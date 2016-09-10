@@ -23,10 +23,7 @@
 <link rel="stylesheet" type="text/css" href="css/howzhi.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/tcdPageCode.css">
-
 <link href="css/bootstrap.css" rel="stylesheet">
-<!-- 		<link rel="stylesheet" type="text/css" href="css/iconfont.css">
- -->
  
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="js/top.js"></script>
@@ -43,7 +40,11 @@
 	width: 261px;
 	background-size: cover;
 }
-
+.modal-dialog{
+	margin-left:28%;
+	margin-top:6%;
+	position:fixed;
+}
 .login-box .form-group .form-control {
 	border-radius: 5px;
 	height: 45px;

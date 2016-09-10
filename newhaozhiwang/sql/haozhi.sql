@@ -326,7 +326,8 @@ select * from (select s.*,(select count(1) from studyCourse where courseid = s.c
 
 select * from studyCourse
 select  count(userid) from studyCourse  where courseid=5 order by begintime desc;
-select 
+select  count(*) from studyCourse where userid = 2 and courseid in (select courseid from courseManage where cmid=1)
+select courseid from courseManage where cmid=1;
 ---------------------11.学习课程表
 create table studyCourse(
        scid int primary key,

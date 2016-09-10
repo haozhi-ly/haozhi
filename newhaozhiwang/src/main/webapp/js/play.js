@@ -29,7 +29,7 @@ $(function() {
 	},"json");
 	
 	//回复	
-	$("#comment-btn").bind("click",function(){
+/*	$("#comment-btn").bind("click",function(){
 		var content = $("#comment").val();
 
 		str= '<li id="item92627"><div class="userimg"><a class=" js-user-card" href="javaScript:void(0)" data-card-url="/user/2358982/card/show" data-user-id="2358982">'+
@@ -40,10 +40,10 @@ $(function() {
 										
 		//$("#commentList").append(str);											
 	    $("#comment").val(" ");		
-	    
-	   // str.insertBefore("#foo");
 	    $(str).insertBefore("#item92627");
-	});
+	   // str.insertBefore("#foo");
+	   
+	});*/
 	
 	//查出授课老师相关信息
 	$.post("courseManage/selectTeachInfo", {"_method" : "POST",cmid :cmid},function(data){
@@ -98,7 +98,7 @@ $(function() {
 	            			contentstr+='alt="'+item.user.uname+'"></a></div><div class="userInfo">'
 								+'<p class="head"><a href="#">'+item.user.uname+'</a><span>'+item.time+'</span></p>'
 								+'<div class="body">'+item.content+'</div><div class="pull-right">'
-								+'<a class="con" href="javascript:;">回复</a>'
+								+'<a class="con" id="revert" href="javascript:;">回复</a>'
 								+'</div></div></li>';	
 	            			$("#commentList").html("").append($(contentstr));
 	            	});
@@ -113,7 +113,7 @@ $(function() {
      	var contentstr="";
      	if(data){
 	     	$.each(data,function(index,item){     		
-	     		contentstr+='<li id="'+item.csid+'"><div class="userimg"><a class="js-user-card" href="page/person.jsp?userid='+item.user.userid+'"><img class="img-responsive" ';
+	     		contentstr+='<li id="item92627"><div class="userimg"><a class="js-user-card" href="page/person.jsp?userid='+item.user.userid+'"><img class="img-responsive" ';
 	     			if(item.user.photo!=null){
 	     				contentstr+="src='"+item.user.photo+"' ";
 	     			}else{
@@ -122,7 +122,7 @@ $(function() {
 	     			contentstr+='alt="'+item.user.uname+'"></a></div><div class="userInfo">'
 							+'<p class="head"><a href="#">'+item.user.uname+'</a><span>'+item.time+'</span></p>'
 							+'<div class="body">'+item.content+'</div><div class="pull-right">'
-							+'<a class="con" href="javascript:;">回复</a>'
+							+'<a class="con" id="revert" href="javascript:;">回复</a>'
 							+'</div></div></li>';	
 	     			$("#commentList").html("").append($(contentstr));
 	     	});   
@@ -154,6 +154,39 @@ $(function() {
 				 });
 			 }
 		 });
+		 
+		
+		 //发评论
+		 $("a.face").smohanfacebox({
+				Event : "click",	//触发事件	
+				divid : "Smohan_FaceBox", //外层DIV ID
+				textid : "Smohan_text" //文本框 ID
+			});
+			//解析表情  $('#Zones').replaceface($('#Zones').html());
+	
+			
+	  //判断是否有用户登录 没有就不能进行评论
+		$('#Smohan_FaceBox').bind("click",function(){
+			 if(flag=="false"){
+				 $('#login-modal').css('display','block');
+				 $('#loadingDiv').css('display','block');
+			 }
+		 }); 
+		//点击关闭
+		$('.close').bind("click",function(){
+			$('#login-modal').css('display','none');
+			$('#loadingDiv').css('display','none');
+		});
+		
+		//发发发
+		$('#comment-btn').click(function() {
+			alert($('#Smohan_text').val());
+			 $('#commentList').fadeIn(360);
+			$('#commentList').append($('#Smohan_text').val());
+			var c=$('#Smohan_text').val();
+			 $('#commentList').replaceface($('#commentList').html());//替换表情
+			}); 
+	  
 	
 });
 
