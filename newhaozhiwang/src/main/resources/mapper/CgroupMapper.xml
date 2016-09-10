@@ -59,4 +59,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</otherwise>
 		</choose>
 	</select>
+	
+	<!-- 在界面上显示小组的具体信息 -->
+	<select id="showGroups" resultMap="CgroupMap" parameterType="java.util.Map">
+		select * from cgroup where groupname=#{groupname}
+	</select>
+	<!-- 获取小组原来的成员，有新成员加入时，拼接用 -->
+	<select id="getGroupnumber" parameterType="string" resultType="string">
+		select groupnumber from cgroup where groupname=#{groupname}
+	</select>
+	<!-- 加人新成员 -->
+	<update id="joinGroups">
+		update cgroup set groupnumber=#{groupnumber} where groupname=#{groupname}
+	</update>
 </mapper>

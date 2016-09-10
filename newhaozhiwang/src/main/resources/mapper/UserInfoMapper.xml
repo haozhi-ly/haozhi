@@ -52,5 +52,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="adduserinfo" parameterType="UserInfo">
 		insert into UserInfo values(seq_userid.nextval,#{uname},#{email},#{upassword},#{gender},#{photo},#{usign},#{introdution},1,0,null,null,null)
 	</insert>
-
+	
+	<update id="updateuserinfo" parameterType="UserInfo">
+		update userinfo set uname=#{uname},upassword=#{upassword},email=#{email},gender=#{gender},photo=#{photo},usign=#{usign},introdution=#{introdution},status=#{status} where userid=#{userid}
+	</update>
+	<delete id="deluserinfo" parameterType="int">
+		delete from userinfo where userid in 
+		
+		<foreach collection="array" item="userid" open="(" close=")" separator=",">
+			#{userid}
+		</foreach>
+	</delete>
 </mapper>

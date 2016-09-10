@@ -8,6 +8,11 @@ import java.util.Map;
 
 
 
+
+
+
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -56,6 +61,26 @@ public class CgroupServiceImpl implements CgroupService{
 	public List<Cgroup> searchGroups(String keyWord, Integer ctid) {
 		List<Cgroup> groups=groupMapper.searchGroups(keyWord,ctid);
 		return groups;
+	}
+	
+	//显示小组详细信息页面时可用
+	@Override
+	public Cgroup showGroups(String groupname) {
+		Cgroup group=groupMapper.showGroups(groupname);
+		return group;
+	}
+	
+	//加入小组
+	@Override
+	public int joinGroups(String groupnumber,String groupname) {
+		
+		return groupMapper.joinGroups(groupnumber,groupname);
+	}
+	//获取到小组原来的成员，加入小组时拼接成员时用
+	@Override
+	public String getGroupnumber(String groupname) {
+		String groupnumber=groupMapper.getGroupnumber(groupname);
+		return groupnumber;
 	}
 	
 }

@@ -185,32 +185,47 @@ data-options="iconCls:'icon-add',resizable:true,model:true,closed:true">
 	   var aname=$("#aname").val();
 	   var apassword=$("#apassword").val();
 	   var email=$("#email").val();
-	   
-	   $.post("admin/addadmin",{aname:aname,apassword:apassword,email:email},function(data){
-		   if(data>0){
-			   $("#aname").val("");
-			  $("#apassword").val("");
-			  $("#email").val("");
-			   $("#add_admin").dialog("close");
-			   $.messager.show({
-					title:'成功提示',
-					msg:'管理员添加成功',
-					timeout:2000,
-					showType:'slide'
-				});
-			   obj.datagrid("reload");
-			   $('#admins_data').datagrid("reload");
-		   }else{
-			   $("#add_admin").dialog("close");
-			   $.messager.show({
-					title:'成功提示',
-					msg:'管理员添加失败',
-					timeout:2000,
-					showType:'slide'
-				});
-			   obj.datagrid("reload"); 
-		   }
-	   });
+	   if(aname == null || aname==""){
+		   $.messager.show({
+				title:'温馨提示',
+				msg:'请填写管理员名称...',
+				timeout:2000,
+				showType:'slide'
+			});
+	   }else if(email == null || email==""){
+		   $.messager.show({
+				title:'温馨提示',
+				msg:'请填写电子邮箱...',
+				timeout:2000,
+				showType:'slide'
+			});
+	   }else{
+		   $.post("admin/addadmin",{aname:aname,apassword:apassword,email:email},function(data){
+			   if(data>0){
+				   $("#aname").val("");
+				  $("#apassword").val("");
+				  $("#email").val("");
+				   $("#add_admin").dialog("close");
+				   $.messager.show({
+						title:'成功提示',
+						msg:'管理员添加成功',
+						timeout:2000,
+						showType:'slide'
+					});
+				   obj.datagrid("reload");
+				   $('#admins_data').datagrid("reload");
+			   }else{
+				   $("#add_admin").dialog("close");
+				   $.messager.show({
+						title:'成功提示',
+						msg:'管理员添加失败',
+						timeout:2000,
+						showType:'slide'
+					});
+				   obj.datagrid("reload"); 
+			   }
+		   }); 
+	   }
    }
    
 </script>

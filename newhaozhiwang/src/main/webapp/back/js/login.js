@@ -73,7 +73,7 @@ $(document).ready(function() {
 
 
 
-		if ($('#user').val().length < 4 || $('#user').val().length > 16) {
+		if ($('#user').val().length < 2 || $('#user').val().length > 16) {
 
 			$('#user').focus().css({
 				border: "1px solid red",
@@ -83,7 +83,7 @@ $(document).ready(function() {
 			return false;
 
 		}
-		$.ajax({
+		/*$.ajax({
 			type: reMethod,
 			url: "/member/ajaxyz.php",
 			data: "uid=" + $("#user").val() + '&temp=' + new Date(),
@@ -104,7 +104,7 @@ $(document).ready(function() {
 				}
 
 			}
-		});
+		});*/
 
 
 		if ($('#passwd').val().length < pwdmin) {
@@ -118,13 +118,13 @@ $(document).ready(function() {
 			return false;
 		}
 
-		var sqq = /^[1-9]{1}[0-9]{4,9}$/;
-		if (!sqq.test($('#qq').val()) || $('#qq').val().length < 5 || $('#qq').val().length > 12) {
+		var sqq = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+		if (!sqq.test($('#qq').val()) || $('#qq').val().length < 5 || $('#qq').val().length >30) {
 			$('#qq').focus().css({
 				border: "1px solid red",
 				boxShadow: "0 0 2px red"
 			});
-			$('#userCue').html("<font color='red'><b>×QQ号码格式不正确</b></font>");return false;
+			$('#userCue').html("<font color='red'><b>×QQ邮箱格式不正确</b></font>");return false;
 		} else {
 			$('#qq').css({
 				border: "1px solid #D7D7D7",
@@ -133,7 +133,7 @@ $(document).ready(function() {
 			
 		}
 
-		$('#regUser').submit();
+		/*$('#regUser').submit();*/
 	});
 	
 

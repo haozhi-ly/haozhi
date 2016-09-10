@@ -11,26 +11,73 @@
 	#msg{
 		color:red;
 	}
+	#clear{ clear:both}
 </style>
 <script>
+
+//验证码校验
+var flag=false;
+function InputYZcode(){
+	var yzm=$("#YZcodeInput").val();
+	if(yzm.length==4){
+		$.post("back/manager/CheckYZcode.jsp",{"yzm":yzm},function(data){
+			if(data>0){
+			flag=true;
+		}else{
+			flag=false;
+			alert("温馨提示：验证码输入错误");
+		}
+	});
+	}
+}
 	function loginadmin(){
 		var aname=$("#aname").val();
 		var apassword=$("#apassword").val();
 		if(aname==null || aname==""){
 			$("#msg").html("账号不能为空！");
+		}else if(apassword==null || apassword==""){
+			$("#msg02").html("两次密码不一致！");
+		}else if(flag==false){
+			alert("温馨提示：验证码输入错误");
+		}else{
+			$.post("admin/loginadmin",{aname:aname,apassword:apassword},function(data){
+				if(data>0){
+					location.href = "back/manager/index.jsp";
+				}else{
+					alert("温馨提示：登录失败！请确认账号和密码后再登录");
+				}
+			});
 		}
-		if(apassword==null || apassword==""){
-			$("#msg02").html("密码不能为空！");
-		}
-		$.post("admin/loginadmin",{aname:aname,apassword:apassword},function(data){
-			if(data>0){
-				location.href = "back/manager/index.jsp";
-			}else{
-				alert("温馨提示：登录失败！请确认账号和密码后再登录");
-			}
-		});
 	}
-
+	
+	//加载验证码
+	function loadimage() {
+		document.getElementById("randImage").src = "back/manager/img.jsp?" + Math.random();
+	}
+	
+	function register(){
+		var aname=$("#user").val();
+		var apassword=$("#passwd").val();
+		var email=$("#qq").val();
+		var password=$("#passwd2").val();
+		if(aname==null || aname==""){
+			$("#userCue").html("账号不能为空！");
+		}else if(apassword==null || apassword==""){
+			$("#userCue").html("密码不能为空！");
+		}else if(apassword!=password){
+			$("#userCue").html("密码输入不一致！");
+		}else if(email==null || email==""){
+			$("#userCue").html("电子邮箱不能为空");
+		}else{
+			$.post("admin/register",{aname:aname,apassword:apassword,email:email},function(data){
+				if(data){
+					alert("温馨提示：恭喜！成功注册管理员");
+				}else{
+					alert("温馨提示：注册失败！");
+				}
+			});
+		}
+	}
 </script>
 </head>
 <body>
@@ -45,7 +92,7 @@
     </div>    
   
     
-    <div class="web_qr_login" id="web_qr_login" style="display: block; height: 235px;">    
+    <div class="web_qr_login" id="web_qr_login" style="display: block; height:300px;">    
 
             <!--登录-->
             <div class="web_login" id="web_login">
@@ -70,8 +117,14 @@
                     <input type="password" id="apassword" name="apassword" class="inputstyle"/><span id="msg02"></span>
                 </div>
                 </div>
-               
-                <div style="padding-left:50px;margin-top:20px;"><input type="button" value="登 录" style="width:150px;" class="button_blue" onclick="loginadmin()"/></div>
+               <div style="width:310px;">
+                <label style="font-size:16px;margin-top:20px;float:left;">验证码：</label>
+               	<input  class="Captcha" name="YZcodeInput" style="height:25px;width:80px;float:left;margin-top:20px;" placeholder="请输入验证码！" onblur="InputYZcode()" id="YZcodeInput" />
+				<img alt="加载失败" name="randImage" id="randImage" src="back/manager/img.jsp" style="margin-left:10px;float:left; width:80px; height:40px; margin-top:10px;" border="1">
+				<a href="javascript:loadimage();" style="margin-left:5px;margin-top:35px;float:left;">点击刷新</a>
+               </div>
+                <div id="clear" style="padding-left:50px;margin-top:100px;"><input type="button" value="登 录" style="width:150px;" class="button_blue" onclick="loginadmin()"/></div>
+             	
               </form>
            </div>
            
@@ -93,7 +146,7 @@
                 	
                     <label for="user"  class="input-tips2">用户名：</label>
                     <div class="inputOuter2">
-                        <input type="text" id="user" name="user" maxlength="16" class="inputstyle2"/>
+                        <input type="text" id="user" name="user" maxlength="30" class="inputstyle2"/><span id="tishi1"></span>
                     </div>
                     
                 </li>
@@ -101,14 +154,14 @@
                 <li>
                 <label for="passwd" class="input-tips2">密码：</label>
                     <div class="inputOuter2">
-                        <input type="password" id="passwd"  name="passwd" maxlength="16" class="inputstyle2"/>
+                        <input type="password" id="passwd"  name="passwd" maxlength="16" class="inputstyle2"/><span id="tishi2"></span>
                     </div>
                     
                 </li>
                 <li>
                 <label for="passwd2" class="input-tips2">确认密码：</label>
                     <div class="inputOuter2">
-                        <input type="password" id="passwd2" name="" maxlength="16" class="inputstyle2" />
+                        <input type="password" id="passwd2" name="" maxlength="16" class="inputstyle2" /><span id="tishi3"></span>
                     </div>
                     
                 </li>
@@ -117,23 +170,19 @@
                  <label for="qq" class="input-tips2">QQ邮箱：</label>
                     <div class="inputOuter2">
                        
-                        <input type="text" id="qq" name="qq" maxlength="10" class="inputstyle2"/>
+                        <input type="text" id="qq" name="qq" maxlength="30" class="inputstyle2"/>
                     </div>
                    
                 </li>
                 
                 <li>
                     <div class="inputArea">
-                        <input type="button" id="reg"  style="margin-top:10px;margin-left:85px;" class="button_blue" value="同意协议并注册"/> <a href="#" class="zcxy" target="_blank">注册协议</a>
+                        <input type="button" id="reg" onclick="register()" style="margin-top:10px;margin-left:85px;" class="button_blue" value="同意协议并注册"/> <a href="javascript:void(0)" class="zcxy" >注册协议</a>
                     </div>
                     
                 </li><div class="cl"></div>
             </ul></form>
-           
-    
     </div>
-   
-    
     </div>
     <!--注册end-->
 </div>

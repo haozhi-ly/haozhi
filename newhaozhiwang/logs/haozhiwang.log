@@ -389,7 +389,6 @@ DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from cgroup where groupname like '%' || ? || '%' 
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 英语(String)
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
-<<<<<<< HEAD
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from courseManage where cmid = ? 
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from courseManage where cmid = ? 
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 21(Integer)
@@ -410,7 +409,22 @@ DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: (String), 9(Int
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 3
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from cgroup where groupname like '%' || ? || '%' and ctid=? 
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: (String), 9(Integer)
-<<<<<<< HEAD
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 3
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from cgroup where groupname=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: java开发(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from cgroup where groupname=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: java开发(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from cgroup where groupname=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: java开发(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from cgroup where groupname=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: java开发(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from cgroup where groupname=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: java开发(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 3
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from courseAssess ca join courseManage cm on ca.cmid=cm.cmid where cm.courseid=? 
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 6(Integer)
@@ -1022,3 +1036,30 @@ DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 3(Integer)
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from cgroup where groupname=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: java开发(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 2(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from cgroup where groupname=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: java开发(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 2(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select groupnumber from cgroup where groupname=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: java开发(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select groupnumber from cgroup where groupname=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: java开发(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: update cgroup set groupnumber=? where groupname=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: update cgroup set groupnumber=? where groupname=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: update cgroup set groupnumber=? where groupname=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: update cgroup set groupnumber=? where groupname=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 2,1,4,3(String), java开发(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==    Updates: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: update cgroup set groupnumber=? where groupname=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 2,1,4,3(String), java开发(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==    Updates: 1
+

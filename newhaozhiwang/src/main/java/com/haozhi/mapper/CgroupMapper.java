@@ -20,4 +20,10 @@ public interface CgroupMapper {
 	List<Cgroup> getNewGroups();
 
 	List<Cgroup> searchGroups(@Param("keyWord")String keyWord,@Param("ctid")Integer ctid);
+
+	Cgroup showGroups(String groupname);
+
+	int joinGroups(@Param("groupnumber")String groupnumber,@Param("groupname")String groupname);
+
+	String getGroupnumber(String groupname);
 }

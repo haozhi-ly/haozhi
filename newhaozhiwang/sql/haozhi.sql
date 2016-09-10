@@ -384,7 +384,7 @@ create table cgroup(
 );
 drop table cgroup;
 create sequence seq_gid start with 1;
-
+delete from cgroup where groupname='名校公开课';
 insert into cgroup values(seq_gid.nextval,'摄影公社',3,sysdate,'3,1,2',100,null,null,1);
 insert into cgroup values(seq_gid.nextval,'绘画世界',2,sysdate,'2,1,4',80,null,null,6);
 insert into cgroup values(seq_gid.nextval,'好知大本营（教务处）',2,sysdate,'2,1,4',80,null,null,9);
