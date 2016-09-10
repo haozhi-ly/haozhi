@@ -390,22 +390,11 @@
 								</div>
 							</li>
 
-							
-						
-
-
 						</ul>
-						<div class="tcdPageCode" id="commenttcpage"></div>
-						
+						<div class="tcdPageCode" id="commenttcpage"></div>					
 					</div>
 					<!--  评论分割线 ------------------------------------- -->
 					
-					
-					
-					
-					
-					
-
 				</div>
 
 				<div class="course flat nopad">
@@ -571,8 +560,8 @@
 
 				<div class="flat sidebar-judge">
 					<h3>最新评论</h3>
-					<ul>
-
+					<ul id="mediacomment">
+					<!-- 右边的评论 -->
 						<li class="media">
 							<div class="media-left">
 								<a class=" js-user-card" href="http://www.howzhi.com/u/1559536/"

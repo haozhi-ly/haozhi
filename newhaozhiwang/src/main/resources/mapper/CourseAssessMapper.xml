@@ -46,5 +46,33 @@ select * from(select a.*,rownum rn from
 	
 	
 	
+	<resultMap type="CourseAssess" id="AssessMapright">
+		<id column="csid" property="csid"/>
+		<result column="cmid" property="cmid"/>
+		<result column="content" property="content"/>
+		<result column="time" property="time"/>
+		<association property="user" column="userid" javaType="UserInfo">
+			<id column="userid" property="userid"/>
+			<result column="uname" property="uname"/>
+			<result column="photo" property="photo"/>
+		</association>
+		<association property="courseManage" column="cmid" javaType="CourseManage">
+			<id column="cmid" property="cmid"/>
+			<result column="courseid" property="courseid"/>
+			<result column="title" property="title"/>
+			<result column="courseseq" property="courseseq"/>
+			
+		</association>
+	</resultMap>
+	<select id="getAssesstopfour" resultMap="AssessMapright" parameterType="int" >
+	select a.*,rownum rn from 
+		(select ca.cmid,ca.userid,ca.content,ca.time,
+			cm.courseid,cm.title,cm.courseseq,u.uname,u.photo
+	    		from courseAssess ca,courseManage cm,userinfo u 
+					where ca.cmid=cm.cmid and 
+						ca.userid=u.userid and cm.courseid=#{courseid} order by time desc)a  
+							where 4>=rownum 	
+	</select>
+	
 	
 </mapper>

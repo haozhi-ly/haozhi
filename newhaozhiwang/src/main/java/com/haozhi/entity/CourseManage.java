@@ -15,9 +15,10 @@ public class CourseManage {
 	private String title;// --课时标题
 	private int courseseq;// --课时序号
 	private String pathOrContetn;// --课时内容（路径或者内容）
-	private String temp01;// --备用字段
-	private String temp02;// --备用字段
-	private String temp03;// --备用字段
+	private String cmintroduction;// --备用字段
+	private int teachCount;// --备用字段
+	private int fansCount;// --备用字段
+	private UserInfo user;
 
 	public CourseManage() {
 	}
@@ -89,14 +90,50 @@ public class CourseManage {
 	public void setPathOrContetn(String pathOrContetn) {
 		this.pathOrContetn = pathOrContetn;
 	}
+	
+	
+
+	public String getCmintroduction() {
+		return cmintroduction;
+	}
+
+	public void setCmintroduction(String cmintroduction) {
+		this.cmintroduction = cmintroduction;
+	}
+	
+	
+
+	public int getTeachCount() {
+		return teachCount;
+	}
+
+	public void setTeachCount(int teachCount) {
+		this.teachCount = teachCount;
+	}
+
+	public int getFansCount() {
+		return fansCount;
+	}
+
+	public void setFansCount(int fansCount) {
+		this.fansCount = fansCount;
+	}
+
+	public UserInfo getUser() {
+		return user;
+	}
+
+	public void setUser(UserInfo user) {
+		this.user = user;
+	}
 
 	@Override
 	public String toString() {
 		return "CourseManage [cmid=" + cmid + ", courseid=" + courseid + ", course=" + course + ", type=" + type
-				+ ", title=" + title + ", courseseq=" + courseseq + ", pathOrContetn=" + pathOrContetn + "]";
+				+ ", title=" + title + ", courseseq=" + courseseq + ", pathOrContetn=" + pathOrContetn
+				+ ", cmintroduction=" + cmintroduction + ", teachCount=" + teachCount + ", fansCount=" + fansCount
+				+ ", user=" + user + "]";
 	}
 
-	
-	
 	
 }

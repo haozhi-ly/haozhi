@@ -38,5 +38,9 @@ public class CgroupMapperTest {
 	public void testSearchGroups() {
 		System.out.println(groupMapper.searchGroups("",9));
 	}
-
+	
+	@Test
+	public void testShowGroups() {
+		System.out.println(groupMapper.showGroups("java开发"));
+	}
 }

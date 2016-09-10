@@ -23,4 +23,6 @@ public interface AdminService {
 
 	int updateadmin(Admin admin);
 
+	int register(Admin admin);
+
 }

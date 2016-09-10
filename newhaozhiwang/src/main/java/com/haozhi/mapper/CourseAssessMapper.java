@@ -10,5 +10,6 @@ public interface CourseAssessMapper {
 	List<CourseAssess> getAssessbypageDescTime(Map<String,Object> map);
 	List<CourseAssess> test();
 	List<CourseAssess> CMcountbycourseid(int courseid);
+	List<CourseAssess> getAssesstopfour(int courseid);
 	
 }

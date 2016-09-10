@@ -57,5 +57,12 @@ public class CourseAssessHandler {
 	
 	
 	
+	@ResponseBody
+	@RequestMapping(value="/getAssesstopfour",method=RequestMethod.POST)
+	public List<CourseAssess> getAssesstopfour(int courseid,ModelMap map){
+		List<CourseAssess> coursesassess = courseAssessService.getAssesstopfour(courseid);
+		map.put("coursesassess", coursesassess);
+		return coursesassess;
+	}
 
 }

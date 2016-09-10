@@ -15,7 +15,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from admin where aid=#{aid}
 	</select>
 	<insert id="addadmin" parameterType="Admin" >
-		insert into admin values(seq_aid.nextval,#{aname},#{email},#{email},null,null,null)
+		insert into admin values(seq_aid.nextval,#{aname},#{email},#{apassword},null,null,null)
 	</insert>
 	
 	<select id="count" resultType="int">
@@ -31,4 +31,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateadmin" parameterType="Admin">
 		update admin set aname=#{aname},email=#{email},apassword=#{apassword} where aid=#{aid}
 	</update>
+	<insert id="register" parameterType="Admin">
+		insert into admin values(seq_aid.nextval,#{aname},#{email},#{apassword},null,null,null)
+	</insert>
 </mapper>

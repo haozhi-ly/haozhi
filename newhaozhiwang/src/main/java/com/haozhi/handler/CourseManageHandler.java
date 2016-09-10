@@ -45,4 +45,17 @@ public class CourseManageHandler {
 		return courseManage;
 	}
 	
+	/**
+	 * 根据cmid
+	 * @param courseid
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value="/selectTeachInfo",method=RequestMethod.POST)
+	public CourseManage selectTeachInfo(Integer cmid){
+		LogManager.getLogger().debug("selectTeachInfo 到达...");
+		CourseManage courseManage = courseManageService.selectTeachInfo(cmid);
+		return courseManage;
+	}
+	
 }

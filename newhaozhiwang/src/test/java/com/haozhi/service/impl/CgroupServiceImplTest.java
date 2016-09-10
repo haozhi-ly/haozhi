@@ -40,5 +40,12 @@ public class CgroupServiceImplTest {
 		System.out.println(group);
 		assertNotNull(group);
 	}
+	
+	@Test
+	public void testShowGroups() {
+		Cgroup group=groupService.showGroups("java开发");
+		System.out.println(group);
+		assertNotNull(group);
+	}
 
 }

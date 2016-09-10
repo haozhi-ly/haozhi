@@ -102,4 +102,20 @@ public class AdminHandler {
 		out.flush();
 		out.close();
 	}
+	
+	@RequestMapping("/register")
+	public void register(Admin admin,String aname,String apassword,String email,PrintWriter out,HttpServletResponse response){
+		admin.setAname(aname);
+		admin.setApassword(apassword);
+		admin.setEmail(email);
+		int result=adminService.register(admin);
+		response.setContentType("text/html");
+		if(result >0){
+			out.print(1);
+		}else{
+			out.print(0);
+		}
+		out.flush();
+		out.close();
+	}
 }

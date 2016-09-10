@@ -30,4 +30,10 @@ public class CourseAssessServiceImpl implements CourseAssessService {
 		return courseAssessMapper.CMcountbycourseid(Integer.parseInt(courseid));
 	}
 
+	@Override
+	public List<CourseAssess> getAssesstopfour(int courseid) {
+		// TODO Auto-generated method stub
+		return courseAssessMapper.getAssesstopfour(courseid);
+	}
+
 }

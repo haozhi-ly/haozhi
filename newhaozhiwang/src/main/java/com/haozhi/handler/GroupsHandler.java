@@ -63,4 +63,13 @@ public class GroupsHandler {
 		List<Cgroup> groups= groupService.searchGroups(keyWord,ctid);
 		return groups;
 	}
+	
+	//点击小组名称，跳转到详细页面
+	@RequestMapping(value="/showsearch")
+	public String showGroups(Model model,String groupname){
+		groupname=new UsuallyUtil().decode(groupname);
+		Cgroup groups= groupService.showGroups(groupname);
+		model.addAttribute("showgroups", groups);
+		return "groupIntroduce";
+	}
 }

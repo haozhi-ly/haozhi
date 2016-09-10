@@ -18,6 +18,29 @@ $(function(){
 		$('#courseing').html(data.courseting);
 		
 	},"json");
+	//根据courseid查询最新的前4条评论
+	$.post("courseAssess/getAssesstopfour/",{"_method":"POST",courseid:courseid},function(data){
+		var contentstr="";
+		for(var i=0;i<data.length;i++){
+			
+			contentstr+="<li class='media'><div class='media-left'> <a class=' js-user-card' href='page/person.jsp?userid='"+data[i].user.userid+
+			"'><img class='avatar-xs ' src='";
+			if(data[i].user.photo==null){
+     			contentstr+="images/avatar.png' alt='"+data[i].user.uname+"'/>";
+     		}else{
+     			contentstr+=""+data[i].user.photo+"' alt='"+data[i].user.uname+"'/>";
+     		}
+			contentstr+="</a></div>" +
+			"<div class='comment-content media-body '>"+
+			"<div class='name'><a class='link-light' href='page/person.jsp?userid="+data[i].user.userid+"'>"+
+			data[i].user.uname+"</a><span class='day'>"+data[i].time.substring(0,10)+"</span>"+
+			"</div><div class='content'>"+data[i].content+"</div></div></li>";
+			
+		}
+		alert(contentstr);
+		document.getElementById("mediacomment").innerHTML=contentstr
+	},"json");
+	
 	
 	//根据courseid查笔记   显示笔记数目
 	 $.post("courseNote/getCourseNoteById/",{"_method":"POST",courseid:courseid},function(data){	
@@ -269,6 +292,7 @@ $(function(){
 			 $('#courseClassmate').css('display', 'none');
 			 $('#courseAssess').css('display', 'none');
 			 
+			 var courseid=window.location.href.split('=')[1];
 			//根据courseid查课时
 			 var courseid=window.location.href.split('=')[1];
 				$.post("courseManage/getCourseManageById/",{"_method":"POST",courseid:courseid},function(data){	

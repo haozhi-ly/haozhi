@@ -79,12 +79,25 @@ create table  admin(
        temp03 varchar2(200)--备用字段  
 );
 create sequence seq_aid start with 1;
+insert into admin values(seq_aid.nextval,'管理员','123456@qq.com','123456',null,null,null);
+insert into admin values(seq_aid.nextval,'zj','123456@qq.com','a',null,null,null);
 insert into admin values(seq_aid.nextval,'ly','123456@qq.com','123456',null,null,null);
 commit
 drop table course;
 drop sequence seq_courseid ;
 delete from course;
 select * from course;
+select  t.teachCount,a.fansCount from 
+(select count(*) teachCount from course where userId in (select userid from course where courseid in(select courseid from courseManage where cmid=1)
+)) t,
+(select count(*) fansCount from attention where attention in (select userid from course where courseid in(select courseid from courseManage where cmid=1)
+)) a;
+select c.*, t.teachCount,a.fansCount from 
+(select count(*) teachCount from course where userId in (select userid from course where courseid in(select courseid from courseManage where cmid=1)
+)) t,
+(select count(*) fansCount from attention where attention in (select userid from course where courseid in(select courseid from courseManage where cmid=1)
+)) a,(select * from courseManage where cmid=1) c,;
+
 -----------------3.课程表
 create table course(
        courseid int primary key,
@@ -101,12 +114,17 @@ create table course(
        temp02 varchar2(200),--备用字段
        temp03 varchar2(200)--备用字段  
 )
+
+ALTER TABLE haozhi.course RENAME COLUMN temp01 TO createTime --修改表列名 
+ALTER TABLE haozhi.course MODIFY createTime date  --修改字段类型  (name varchar(255)
+alter table haozhi.course modify(cintrodution varchar(1000))
+
 ALTER TABLE haozhi.course RENAME COLUMN temp01 TO temp03 --修改表列名 
 ALTER TABLE haozhi.course MODIFY createTime date  --修改字段类型 
 
+
 commit;
 select * from course;
-update course set createTime = to_date('2016-7-20','yyyy-mm-dd');
 create sequence seq_courseid start with 1;
 
 insert into course values(seq_courseid.nextval,'人像摄影高级教程','由摄影师杨最醉主讲的人像摄影高级教程，从人像摄影器材到主题策划、光线捕捉、后期调色、磨皮等各个角度讲解。',
@@ -157,7 +175,6 @@ drop sequence seq_cmid ;
 
 select * from courseManage;
 select count(*) from courseManage where courseid=6;
-dele
 --------------5.课时管理表
 create table courseManage(
        cmid int primary key ,
@@ -171,6 +188,7 @@ create table courseManage(
        temp02 varchar2(200),--备用字段
        temp03 varchar2(200)--备用字段  
 );
+ALTER TABLE haozhi.courseManage RENAME COLUMN temp01 TO cmintroduction --修改表列名 
 create sequence seq_cmid start with 1;
 insert into courseManage values(seq_cmid.nextval,6,1,'超级简单的冷萃咖啡制作方... ',1,'<p>冷萃咖啡听起来高大上，但实际上制作非常简单。</p><p><strong>你需要准备的材料有：</strong>
 </p><p>咖啡粉（建议使用单品咖啡）</p><p>冷藏过的纯净水（据说矿泉水会不利于风味萃取）</p><p>过滤设备（滤纸或法压壶或挂耳咖啡）</p><p>杯子</p>
@@ -198,7 +216,6 @@ insert into courseManage values(seq_cmid.nextval,5,0,'老电影画面',3,'http:/
 sid/XNDY2NTYwMjI4/isAutoPlay/false/partnerid/0edbfd2e4fc91b72/v.swf',null,null,null);
 commit;
 
-select count(*) from courseAssess where cmid in (select cmid from courseManage where courseid=6)
 -----------------6.课程评价表
 create table courseAssess(
        csid int primary key ,
@@ -275,7 +292,6 @@ create table courseAnswer(
 );
 create sequence seq_caid start with 1;
 insert into courseAnswer values(seq_caid.nextval,1,3,'多多联系一下就好了，相信自己！',sysdate,null,null,null);
-
 
 --------------------------10.关注表（保留意见）
 create table attention(

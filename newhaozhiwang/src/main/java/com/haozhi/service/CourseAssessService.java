@@ -13,4 +13,6 @@ public interface CourseAssessService {
 
 	List<CourseAssess> CMcountbycourseid(String courseid);
 
+	List<CourseAssess> getAssesstopfour(int courseid);
+
 }
