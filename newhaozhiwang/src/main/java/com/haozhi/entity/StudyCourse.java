@@ -14,6 +14,8 @@ public class StudyCourse {
 	private String temp01;// --备用字段
 	private String temp02;// --备用字段
 	private String temp03;// --备用字段
+	private int memberCount;
+	private UserInfo user;
 
 	public StudyCourse() {
 	}
@@ -103,14 +105,30 @@ public class StudyCourse {
 	public void setTemp03(String temp03) {
 		this.temp03 = temp03;
 	}
+	
+
+	public UserInfo getUser() {
+		return user;
+	}
+
+	public void setUser(UserInfo user) {
+		this.user = user;
+	}
+	
+
+	public int getMemberCount() {
+		return memberCount;
+	}
+
+	public void setMemberCount(int memberCount) {
+		this.memberCount = memberCount;
+	}
 
 	@Override
 	public String toString() {
-		return "StudyCourse [scid=" + scid + ", userid=" + userid
-				+ ", courseid=" + courseid + ", begintime=" + begintime
-				+ ", assess=" + assess + ", studyPeriod=" + studyPeriod
-				+ ", temp01=" + temp01 + ", temp02=" + temp02 + ", temp03="
-				+ temp03 + "]";
+		return "StudyCourse [scid=" + scid + ", userid=" + userid + ", courseid=" + courseid + ", begintime="
+				+ begintime + ", assess=" + assess + ", studyPeriod=" + studyPeriod + ", memberCount=" + memberCount
+				+ ", user=" + user + "]";
 	}
 
 }

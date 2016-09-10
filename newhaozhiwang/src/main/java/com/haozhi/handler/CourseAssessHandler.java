@@ -48,14 +48,38 @@ public class CourseAssessHandler {
 	
 	@ResponseBody
 	@RequestMapping(value="/CMcountbycourseid",method=RequestMethod.POST)
-	public int CMcountbycourseid(String courseid){
-		
-		List<CourseAssess> coursesassess = courseAssessService.CMcountbycourseid(courseid);
-		
+	public int CMcountbycourseid(String courseid){	
+		List<CourseAssess> coursesassess = courseAssessService.CMcountbycourseid(courseid);	
 		return coursesassess.size();
 	}
 	
 	
+	/**
+	 * 通过cmid来查评论，
+	 * @param p
+	 * @param cmid
+	 * @param map
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value="/getAssessByCmidByPage",method=RequestMethod.POST)
+	public List<CourseAssess> getAssessByCmidByPage(String p,Integer cmid,ModelMap map){
+		LogManager.getLogger().debug("课时评论");
+		Map<String,Object> hashmap=new HashMap<String,Object>();
+		hashmap.put("pagesize",5);
+		hashmap.put("pagenumber", Integer.parseInt(p));
+		hashmap.put("cmid", cmid);
+		List<CourseAssess> coursesassess = courseAssessService.getAssessByCmidByPage(hashmap);
+//		map.put("coursesassess", coursesassess);
+		return coursesassess;
+	}
 	
+	
+	@ResponseBody
+	@RequestMapping(value="/getAssessCountByCmid",method=RequestMethod.POST)
+	public int getAssessCountByCmid(Integer cmid){	
+		List<CourseAssess> coursesassess = courseAssessService.getAssessCountByCmid(cmid);	
+		return coursesassess.size();
+	}
 
 }

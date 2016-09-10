@@ -34,7 +34,6 @@
 
         <li class="hidden-xs hidden-sm"> <a class="btn btn-primary radius" href="javaScript:void(0);"><i style="color: rgb(255, 247, 255);" class="glyphicon glyphicon-plus"></i> 创建课程</a> </li>
         <li class="dropdown user-nav-dropdown user-img"> <a href="#" class="dropdown-toggle" id="toggle"> <img src="images/avatar.png" class="user-avatar" alt="${users.uname }" id="${users.userid}"> </a>
-
           <ul class="dropdown-menu" role="menu" id="dropdown-menu">
             <li> <a href="page/learnCenter.jsp" ><i style="color:#666;" class="glyphicon glyphicon-home" ></i>学习中心</a> </li>
             <li><a href="page/person.jsp"><i style="color:#666;" class="glyphicon glyphicon-user" ></i>个人主页</a></li>

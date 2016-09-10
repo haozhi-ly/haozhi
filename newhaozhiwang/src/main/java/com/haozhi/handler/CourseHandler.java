@@ -252,7 +252,6 @@ public class CourseHandler {
 		try {
 			out = response.getWriter();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		List<Course> courselist = courseService.getStudentsbypageDescTime(Integer.parseInt(p),Integer.parseInt(courseid));
@@ -264,6 +263,17 @@ public class CourseHandler {
 		out.close();
 	}
 	
+	/**
+	 * 推荐课程
+	 * @param cmid
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value="/recommedCourseByCmid",method=RequestMethod.POST)
+	public List<Course> recommedCourseByCmid(Integer cmid){
+		List<Course> courselist = courseService.recommedCourseByCmid(cmid);
+		return courselist;
+	}
 	
 	
 	

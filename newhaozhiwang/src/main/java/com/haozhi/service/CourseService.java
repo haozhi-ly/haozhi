@@ -31,4 +31,6 @@ public interface CourseService {
 	List<StudyCourse> getAllStudentNumber(Integer courseid);
 
 	List<Course> getStudentsbypageDescTime(Integer p, Integer courseid);
+	
+	List<Course> recommedCourseByCmid(Integer cmid);  //通过cmid来查推荐课程的前三门
 }

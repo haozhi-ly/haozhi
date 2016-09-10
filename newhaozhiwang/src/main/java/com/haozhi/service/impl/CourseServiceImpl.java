@@ -59,18 +59,15 @@ public class CourseServiceImpl implements CourseService {
 	@Override
 
 	public List<Course> getAllCourseBypage(int rows, int page) {
-		// TODO Auto-generated method stub
 		Map<String,Object> map=new HashMap<String,Object>();
 		map.put("pagenumber",page);
 		map.put("pagesize", rows);
-		List<Course> list=courseMapper.getCoursebypageDescTime(map);
-		
+		List<Course> list=courseMapper.getCoursebypageDescTime(map);		
 		return list;
 	}
 
 	@Override
 	public int findAlltype() {
-		// TODO Auto-generated method stub
 		return courseMapper.countCoursenumber();
 	}
 	@Override
@@ -81,18 +78,21 @@ public class CourseServiceImpl implements CourseService {
 
 	@Override
 	public List<StudyCourse> getAllStudentNumber(Integer courseid) {
-		// TODO Auto-generated method stub
 		return courseMapper.getAllStudents(courseid);
 	}
 
 	@Override
 	public List<Course> getStudentsbypageDescTime(Integer p, Integer courseid) {
-		// TODO Auto-generated method stub
 		Map<String,Object> hashmap=new HashMap<String,Object>();
 		hashmap.put("pagesize", 24);
 		hashmap.put("pagenumber", p);
 		hashmap.put("courseid", courseid);
 		return courseMapper.getStudentsbypageDescTime(hashmap);
+	}
+
+	@Override
+	public List<Course> recommedCourseByCmid(Integer cmid) {
+		return courseMapper.recommedCourseByCmid(cmid);
 	}
 
 	

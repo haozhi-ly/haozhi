@@ -38,13 +38,25 @@ select * from(select a.*,rownum rn from
 	</select> 
 	
 	
-	
-	
 	<select id="CMcountbycourseid" parameterType="int" resultType="CourseAssess">
 		select * from courseAssess ca join courseManage cm on ca.cmid=cm.cmid where cm.courseid=#{courseid} 
 	</select>
 	
+	<resultMap type="CourseAssess" id="CourseAssessMap">
+		<id column="cmid" property="cmid"/>
+		<id column="userid" property="userid"/>
+		<collection property="user" column="userid" ofType="UserInfo" select="getUserByCmid" />
+	</resultMap>
+	<select id="getAssessByCmidByPage" resultMap="CourseAssessMap" parameterType="java.util.Map">
+		select t.*, rownum rn from(select a.*,rownum rn from courseAssess a where cmid=#{cmid} 
+		and #{pagesize}*#{pagenumber}>=rownum ) t where rn>#{pagesize}*(#{pagenumber}-1) order by time desc
+	</select>	
+	<select id="getUserByCmid" resultType="UserInfo" parameterType="int">
+		select * from userinfo where userid=#{userid}
+	</select>
 	
-	
+	<select id="getAssessCountByCmid" parameterType="int" resultType="CourseAssess">
+		select * from courseAssess where cmid=#{cmid}
+	</select>
 	
 </mapper>
