@@ -39,7 +39,7 @@
             <li><a href="page/person.jsp"><i style="color:#666;" class="glyphicon glyphicon-user" ></i>个人主页</a></li>
             <li><a href="page/info.jsp"><i style="color:#666;" class="glyphicon glyphicon-cog" ></i>个人设置</a></li>
             <li><a href="javaScript:void(0);"><i style="color:#666;" class="glyphicon glyphicon-credit-card" ></i>账户中心</a></li>
-            <li><a href="userinfo/loginOut"><i style="color:#666;" class="glyphicon glyphicon-log-out" ></i>退出登录</a></li>
+            <li><a href="userinfo/loginOut?url=<%=request.getRequestURI()%>"><i style="color:#666;" class="glyphicon glyphicon-log-out" ></i>退出登录</a></li>
           </ul>
         </li>
         <li class="user-msg user-nav-dropdown hidden-xs "> <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <i style="font-size:16px;" class="glyphicon glyphicon-bell"></i> </a>

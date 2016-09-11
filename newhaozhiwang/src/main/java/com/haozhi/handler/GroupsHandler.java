@@ -79,6 +79,7 @@ public class GroupsHandler {
 		groupname=new UsuallyUtil().decode(groupname);
 		Cgroup groups= groupService.showGroups(groupname);
 		String groupnumber=groups.getGroupnumber();
+		
 		String[] sourceStrArray = groupnumber.split(",");
 		for (int i = 0; i < sourceStrArray.length; i++) {
 			UserInfo userInfo= userInfoService.getInfoByUserid(Integer.parseInt(sourceStrArray[i]));
@@ -91,6 +92,7 @@ public class GroupsHandler {
 		model.addAttribute("groupUser", list);
 		if(flag==true){
 	    	model.addAttribute("flag", true);
+	    	System.out.println("我已经加入小组了..."+flag);
 		}
 		model.addAttribute("showgroups", groups);
 		return "groupIntroduce";
@@ -105,9 +107,14 @@ public class GroupsHandler {
 			return "login";
 		}
 		String groupnumber=groupService.getGroupnumber(groupname);
-		groupnumber=groupnumber+","+groupMember;
+		if(groupnumber==null || groupnumber==""){
+			groupnumber=groupMember+",";
+		}else{
+			groupnumber=groupnumber+","+groupMember;
+		}
 		int groups= groupService.joinGroups(groupnumber,groupname);
 		model.addAttribute("joingroups", groups);
+		System.out.println("我已经加入小组了..."+groups);
 		return "redirect:../page/groupIntroduce.jsp";
 	}
 	
@@ -125,8 +132,15 @@ public class GroupsHandler {
 				userList.remove(userList.get(i));
 			}
 		}
-		groupnumber=userList.toString();
-		System.out.println(groupnumber);
+		groupnumber="";
+		for(int j=0;j<userList.size();j++){
+			if(j==userList.size()-1){
+				groupnumber+=userList.get(j);
+			}else{
+				groupnumber+=userList.get(j)+",";
+			}
+		}
+		System.out.println("退出小组==>"+groupnumber);
 		if(groupService.exitGroup(groupnumber,groupname)==true){
 			return "redirect:../page/groupIntroduce.jsp";
 		}

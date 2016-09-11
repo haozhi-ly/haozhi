@@ -48,7 +48,7 @@
 
 	<!--下面是头部-->
 	<c:set value="${users}" var="us"/>
-	<c:if test="${us==null }">
+	<c:if test="${empty us}">
 		<jsp:include page="topf.jsp"></jsp:include>
 	</c:if>
 	<c:if test="${us!=null }">
@@ -71,14 +71,20 @@
 				</div>
 				<div class="media-body">
 					<h2 class="media-heading">${showgroups.groupname }
-						<c:choose>
+						<c:if test="${flag==true or joingroups!=null}">
+							<a id="exit-btn" class="btn btn-default btn-sm mlm" href="groups/exitgroup?userid=${users.userid}&groupname=${showgroups.groupname }">退出小组</a>
+						</c:if>
+						<c:if test="${empty joingroups}">
+							<a id="add-btn" class="btn btn-success btn-sm mlm" href="groups/joingroup?groupMember=${users.userid}&groupname=${showgroups.groupname }">加入小组</a>
+						</c:if>
+						<%-- <c:choose>
 							<c:when test="${flag==true or joingroups!=null}">
 								<a id="exit-btn" class="btn btn-default btn-sm mlm" href="groups/exitgroup?userid=${users.userid}&groupname=${showgroups.groupname }">退出小组</a>
 							</c:when>
 							<c:otherwise>
 								<a id="add-btn" class="btn btn-success btn-sm mlm" href="groups/joingroup?groupMember=${users.userid}&groupname=${showgroups.groupname }">加入小组</a>
 							</c:otherwise>
-						</c:choose>
+						</c:choose> --%>
 					</h2>
 					<div class="media-metas">${showgroups.peoplecount }个成员 <span class="mlm">4608个话题</span> <span class="fsn mlm">创建时间：${showgroups.createtime }</span>
 					</div>
