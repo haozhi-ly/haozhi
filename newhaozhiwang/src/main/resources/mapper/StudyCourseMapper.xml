@@ -19,4 +19,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getUserByCmid" resultType="UserInfo" parameterType="int">
 		select * from userinfo where userid in (select userid from course where courseid=#{coueseid})
 	</select>
+	
+	
+	<select id="countStudyCourseByUseridCmid" resultType="int">
+		select  count(*) from studyCourse where userid =#{userid} and courseid in 
+		(select courseid from courseManage where cmid=#{cmid})
+		
+	</select>
+	
 </mapper>

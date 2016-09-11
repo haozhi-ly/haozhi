@@ -1,8 +1,9 @@
 //学习中心的js
 $(function() {
 	var cmid=window.location.href.split('=')[1];
-	$.post("courseManage/getPlayByCmid", {"_method" : "POST",cmid :cmid},function(data){
+	$.post("courseManage/getPlayByCmid", {"_method" : "POST",cmid :cmid},function(data){		
 		if(data){
+			$('#currentCourseName').html(data.title);  //加入课程时的课程名
 			if(data.type==1){
 				$('#lesson-unpublished-content').css('display','none'); 
 				$('#lesson-iframe-content').css('display','none');
@@ -99,8 +100,10 @@ $(function() {
 								+'<p class="head"><a href="#">'+item.user.uname+'</a><span>'+item.time+'</span></p>'
 								+'<div class="body">'+item.content+'</div><div class="pull-right">'
 								+'<a class="con" id="revert" href="javascript:;">回复</a>'
+								+'<a class="con" id="delete" href="javascript:; style="display:block">删除</a>'
 								+'</div></div></li>';	
 	            			$("#commentList").html("").append($(contentstr));
+	            			$('#commentList').replaceface($('#commentList').html());//替换表情
 	            	});
 	            	
 	            },"json");
@@ -123,8 +126,10 @@ $(function() {
 							+'<p class="head"><a href="#">'+item.user.uname+'</a><span>'+item.time+'</span></p>'
 							+'<div class="body">'+item.content+'</div><div class="pull-right">'
 							+'<a class="con" id="revert" href="javascript:;">回复</a>'
+							+'<a class="con" id="delete" href="javascript:; style="display:block">删除</a>'
 							+'</div></div></li>';	
 	     			$("#commentList").html("").append($(contentstr));
+	     			$('#commentList').replaceface($('#commentList').html());//替换表情
 	     	});   
      	}
      },"json");
@@ -172,21 +177,106 @@ $(function() {
 				 $('#loadingDiv').css('display','block');
 			 }
 		 }); 
-		//点击关闭
+		//点击关闭登录框
 		$('.close').bind("click",function(){
 			$('#login-modal').css('display','none');
 			$('#loadingDiv').css('display','none');
 		});
+		//点击关闭加入框
+		$('.close2').bind("click",function(){
+			$('#studyCurrentCourse').css('display','none');
+			$('#loadingDiv').css('display','none');
+		});
 		
 		//发发发
+		$('#currentUname').html(uname);
 		$('#comment-btn').click(function() {
-			alert($('#Smohan_text').val());
-			 $('#commentList').fadeIn(360);
-			$('#commentList').append($('#Smohan_text').val());
-			var c=$('#Smohan_text').val();
-			 $('#commentList').replaceface($('#commentList').html());//替换表情
-			}); 
+			//查询当前用户是否已学习了该课程
+		   $.post("studyCourse/countStudyCourseByUseridCmid/",{"userid":userid,"cmid":cmid},function(data){
+			   if(data>0){
+				   var con=$('#Smohan_text').val();
+/*				   st =$(con).replaceface($(con).html());
+				   alert(st);*/
+				   $.post("courseAssess/addAssess/",{"userid":userid,"cmid":cmid,"content":con},function(data){
+					   if(data==1){
+						   
+						 //评论分页初始化
+						   var cmid=window.location.href.split('=')[1];
+							$.post("courseAssess/getAssessCountByCmid/",{"_method":"POST",cmid:cmid},function(data){
+								var page;
+								var count=parseInt(data);
+								if(count%5==0){
+									page=count/5;
+								}else{
+									page=Math.floor((count/5)+1);
+								}	
+								$("#commenttcpage").createPage({
+							        pageCount:page,
+							        current:1,
+							        backFn:function(p){
+							            $.post("courseAssess/getAssessByCmidByPage/",{"p":p,"cmid":cmid},function(data){
+							            	var contentstr="";
+							            	
+							            	$.each(data,function(index,item){     		
+							            		contentstr+='<li id="item92627"><div class="userimg"><a class="js-user-card" href="page/person.jsp?'+item.user.userid+'"><img class="img-responsive" ';
+							            			if(item.user.photo!=null){
+							            				contentstr+="src='"+item.user.photo+"' ";
+							            			}else{
+							            				contentstr+="src='images/avatar.png' ";
+							            			}
+							            			contentstr+='alt="'+item.user.uname+'"></a></div><div class="userInfo">'
+														+'<p class="head"><a href="#">'+item.user.uname+'</a><span>'+item.time+'</span></p>'
+														+'<div class="body">'+item.content+'</div><div class="pull-right">'
+														+'<a class="con" id="revert" href="javascript:;">回复</a>'
+														+'<a class="con" id="delete" href="javascript:; style="display:block">删除</a>'
+														+'</div></div></li>';	
+							            			$("#commentList").html("").append($(contentstr));
+							            			$('#commentList').replaceface($('#commentList').html());//替换表情
+							            	});
+							            	
+							            },"json");
+							        }
+							    });
+							 });
+							
+							var cmid=window.location.href.split('=')[1];
+							 $.post("courseAssess/getAssessByCmidByPage/",{"p":1,"cmid":cmid},function(data){
+						     	var contentstr="";
+						     	if(data){
+							     	$.each(data,function(index,item){     		
+							     		contentstr+='<li id="item92627"><div class="userimg"><a class="js-user-card" href="page/person.jsp?userid='+item.user.userid+'"><img class="img-responsive" ';
+							     			if(item.user.photo!=null){
+							     				contentstr+="src='"+item.user.photo+"' ";
+							     			}else{
+							     				contentstr+="src='images/avatar.png' ";
+							     			}
+							     			contentstr+='alt="'+item.user.uname+'"></a></div><div class="userInfo">'
+													+'<p class="head"><a href="#">'+item.user.uname+'</a><span>'+item.time+'</span></p>'
+													+'<div class="body">'+item.content+'</div><div class="pull-right">'
+													+'<a class="con" id="revert" href="javascript:;">回复</a>'
+													+'<a class="con" id="delete" href="javascript:; style="display:block">删除</a>'
+													+'</div></div></li>';	
+							     			$("#commentList").html("").append($(contentstr));
+							     			$('#commentList').replaceface($('#commentList').html());//替换表情
+							     				
+							     	});   
+						     	}
+						     },"json");
+						//评论分割线	 
+						 
+					   }
+				   });
+			   }else{
+				   $('#studyCurrentCourse').css('display','block');
+				   $('#loadingDiv').css('display','block');
+			   }
+			   $('#Smohan_text').val("");
+		   });
+		}); 
 	  
+		$('#Smohan_text').bind("change",function(){
+			alert("fkwh");
+		})
 	
 });
 

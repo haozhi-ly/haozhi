@@ -37,5 +37,12 @@ public class StudyCourseHandler {
 		return studyCourse;
 	}
 	
+	@ResponseBody
+	@RequestMapping("/countStudyCourseByUseridCmid")
+	public int countStudyCourseByUseridCmid(Integer userid,Integer cmid){
+		int count=studyCourseService.countStudyCourseByUseridCmid(userid, cmid);
+		return count;
+	}
+	
 
 }

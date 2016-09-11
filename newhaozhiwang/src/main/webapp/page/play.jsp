@@ -34,7 +34,7 @@
 			
             var flag= "${(empty users)? false : true}";
             var uname='${users.uname}';
-            
+            var userid ='${users.userid}';
         
           
    		$(function (){
@@ -350,7 +350,7 @@
 					<h2 class="nopadding">学员评论</h2>
 				<!-- 发评论 ----------------- -->	
 					<div id="Smohan_FaceBox">
-					   <textarea name="text" id="Smohan_text" class="smohan_text"></textarea>
+					   <textarea name="text" id="Smohan_text" class="smohan_text" ></textarea>
 					   <p>
 					   <a href="javascript:void(0)" class="face" title="表情"></a>
 					   <button class="btn btn-primary pull-right" id="comment-btn" type="button">发布</button>
@@ -433,7 +433,7 @@
 					<h3>课程教师</h3>
 					<div class="media-left">
 						<a class=" js-user-card" href="javaScript:void(0);" data-card-url="/user/8441/card/show" data-user-id="8441">
-							<img class="avatar-sm" id="teachImg" src="images/062247776d46161023.jpg" alt="Orchid">
+							<img class="avatar-sm" id="teachImg" src="images/avatar.jpg" alt="Orchid">
 						</a>
 
 					</div>
@@ -507,7 +507,7 @@
 
 							<div class="form-group">
 								<div class="controls">
-									<label class="fa-label"> <i class="fa fa-user"></i>
+									<label class="fa-label"> <i class="glyphicon glyphicon-user" style="color:#15C288"></i>
 									</label> <input data-explain="" data-widget-cid="widget-6"
 										class="form-control" id="ajax-username" name="_username"
 										placeholder="邮箱/手机/昵称" data-display="请输入邮箱/手机/昵称" type="text">
@@ -546,6 +546,45 @@
 						<a class="active" href="">如果没有好知账号？立即注册&gt;</a>
 						<!--?</div-->
 					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="studyCurrentCourse" class="modal in" style="display: none; position: absolute; z-index: 20000;">
+		<div class="modal-dialog ">
+			<div class="modal-content login-modal-reset">
+				<div class="modal-header">
+					<button type="button" class="close2" data-dismiss="modal"
+						aria-hidden="true">×</button>
+					<h4 class="modal-title text-center" style="color:#333;">您还未加入学习此课程，请加入课程后再评论!</h4>
+					<img class="img-responsive" src="images/login-model.png" style="margin-left:120px;margin-top:10px">
+				</div>
+				<div class="modal-body">
+					<div class="login-box reset">
+
+						<form data-widget-cid="widget-5" novalidate="novalidate"
+							id="login-ajax-form" class="form-vertical form-vertical-small"method="post" >
+							<div class="alert alert-danger" style="display: none;"></div>
+							<div class="form-group">
+								<div class="col-sm-3 control-label" style="margin-top:5px;padding-left:40px;">课程名称:</div>
+								<div class="col-sm-9 controls">
+								<span class="control-text text-muted" id="currentCourseName">《【已结束】室外人像用光指南》</span>
+								<input type="hidden" value="" name="lessonId">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-3 control-label" style="margin-top:5px;padding-left:40px;">用户名称:</div>
+								<div class="col-sm-9 controls">
+								<span class="control-text text-muted" id="currentUname">珘珘</span>
+								<input type="hidden" value="" name="lessonId">
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button id="join-course-btn" class="btn btn-primary" data-target="#course-buy-form" data-toggle="form-submit" type="submit" data-submiting-text="正在加入..." data-loading-text="正在加入...">加入学习</button>
 				</div>
 			</div>
 		</div>

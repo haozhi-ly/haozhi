@@ -19,4 +19,9 @@ public class StudyCourseServiceImpl implements StudyCourseService {
 		return studyCourseMapper.getStudyCourseByCmid(cmid);
 	}
 
+	@Override
+	public int countStudyCourseByUseridCmid(Integer userid, Integer cmid) {
+		return studyCourseMapper.countStudyCourseByUseridCmid(userid, cmid);
+	}
+
 }

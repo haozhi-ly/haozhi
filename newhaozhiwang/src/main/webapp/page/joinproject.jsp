@@ -29,6 +29,7 @@
 <script type="text/javascript" src="js/top.js"></script>
 <script type="text/javascript" src="js/joinproject.js"></script>
 <script  type="text/javascript" src="js/jquery.page.js"></script>
+<script type="text/javascript" src="js/smohan.face.js" charset="utf-8"></script>
 <style>
 .form-group {
 	margin-top: 14px;

@@ -60,7 +60,8 @@ commit;
 
 select * from UserInfo where uname='超超' and upassword=123456
 create sequence seq_userid start with 1;
-
+update userinfo set email='123456@qq.com' where userid=4
+commit
 insert into userinfo values(seq_userid.nextval,'ly','123456@qq.com','123456','男',null,'我就是我，颜色不一样是烟火','一只会飞的鱼',1,0,null,null,null);
 insert into userinfo values(seq_userid.nextval,'超超','23456@qq.com','123456','女',null,'我就是我，颜色不一样是烟火','我很傻很天真',1,0,null,null,null);
 insert into userinfo values(seq_userid.nextval,'仗剑画江湖','345678@qq.com','123456','男',null,'我就是我，颜色不一样是烟火','我很傻很天真',1,0,null,null,null);
@@ -222,8 +223,7 @@ commit;
 
 
 
-
-select * from courseAssess where cmid=1
+select * from courseAssess where cmid=1 order by time desc
 -----------------6.课程评价表
 create table courseAssess(
        csid int primary key ,
@@ -325,9 +325,8 @@ select * from (select s.*,(select count(1) from studyCourse where courseid = s.c
 (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s order by memberCount desc) where rownum<=3 ;
 
 select * from studyCourse
-select  count(userid) from studyCourse  where courseid=5 order by begintime desc;
-select  count(*) from studyCourse where userid = 2 and courseid in (select courseid from courseManage where cmid=1)
-select courseid from courseManage where cmid=1;
+select  count(*) from studyCourse where userid =21 and courseid in 
+		(select courseid from courseManage where cmid=1)
 ---------------------11.学习课程表
 create table studyCourse(
        scid int primary key,
@@ -347,6 +346,8 @@ select * from userinfo
 insert into studyCourse values(seq_scid.nextval,5,5,to_date('2016-8-1','yyyy-mm-dd'),2,null,null,null,null);
 insert into studyCourse values(seq_scid.nextval,107,6,to_date('2016-8-10','yyyy-mm-dd'),4,null,null,null,null);
 insert into studyCourse values(seq_scid.nextval,2,5,to_date('2016-8-1','yyyy-mm-dd'),4,null,null,null,null);
+insert into studyCourse values(seq_scid.nextval,21,6,to_date('2016-8-1','yyyy-mm-dd'),4,null,null,null,null);
+
 commit;
 update studyCourse set userid=5 where scid=3;
 -------------12.私信表  or   留言表

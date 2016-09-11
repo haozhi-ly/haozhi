@@ -88,7 +88,20 @@ public class CourseAssessHandler {
 	public int getAssessCountByCmid(Integer cmid){	
 		List<CourseAssess> coursesassess = courseAssessService.getAssessCountByCmid(cmid);	
 		return coursesassess.size();
-
+	}
+	
+	/**
+	 * 添加评论
+	 * @param userid
+	 * @param cmid
+	 * @param content
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value="/addAssess",method=RequestMethod.POST)
+	public int addAssess(Integer userid,Integer cmid,String content){	
+		int result = courseAssessService.addAssess(userid, cmid, content);	
+		return result;
 	}
 
 }

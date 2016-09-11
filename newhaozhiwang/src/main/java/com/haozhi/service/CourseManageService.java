@@ -10,4 +10,6 @@ public interface CourseManageService {
 	CourseManage getPlayByCmid(Integer cmid); //通过cmid来查课时
 	
 	CourseManage selectTeachInfo(Integer cmid);  //通过cmid来查改课程的相关信息
+	
+	
 }

@@ -1078,3 +1078,77 @@ DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 2,1,4,3(String)
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==    Updates: 1
 
 >>>>>>> branch 'master' of ssh://git@github.com/haozhi-ly/haozhi
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select count(*) from studyCourse where userid =? and courseid in (select courseid from courseManage where cmid=?) 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 2(Integer), 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: insert into courseAssess values(seq_csid.nextval,?,?,?, sysdate,0,null,null,null); 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 21(Integer), 1(Integer), 终于可以自己做考费了，老师棒棒哒！！(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: insert into courseAssess values(seq_csid.nextval,?,?,?, sysdate,0,null,null,null) 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 21(Integer), 1(Integer), 终于可以自己做咖啡了，老师棒棒哒！！(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==    Updates: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select count(*) from studyCourse where userid =? and courseid in (select courseid from courseManage where cmid=?) 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 2(Integer), 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select count(*) from studyCourse where userid =? and courseid in (select courseid from courseManage where cmid=?) 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 2(Integer), 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select count(*) from studyCourse where userid =? and courseid in (select courseid from courseManage where cmid=?) 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 21(Integer), 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from courseAssess where cmid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 10
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select t.*, rownum rn from(select a.*,rownum rn from courseAssess a where cmid=? and ?*?>=rownum ) t where rn>?*(?-1) order by time desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer), 5(Integer), 1(Integer), 5(Integer), 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 21(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 5(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 4(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 2(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 5
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select t.*, rownum rn from(select a.*,rownum rn from courseAssess a where cmid=? and ?*?>=rownum ) t where rn>?*(?-1) order by time desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer), 5(Integer), 1(Integer), 5(Integer), 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 21(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 5(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 4(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 2(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 5
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select t.*, rownum rn from(select a.*,rownum rn from courseAssess a where cmid=? and ?*?>=rownum ) t where rn>?*(?-1) order by time desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer), 5(Integer), 1(Integer), 5(Integer), 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 21(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 5(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 4(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 2(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 5

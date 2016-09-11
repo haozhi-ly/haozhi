@@ -35,8 +35,8 @@ $(function(){
 			"</div><div class='content'>"+data[i].content+"</div></div></li>";
 			
 		}
-		alert(contentstr);
 		document.getElementById("mediacomment").innerHTML=contentstr
+		$('#mediacomment').replaceface($('#mediacomment').html());//替换表情
 	},"json");
 	
 	
@@ -101,8 +101,7 @@ $(function(){
 	             		"href='javascript:showquestiondetail("+data[i].cqid+")'>"+data[i].cqcontent+
 	             		"><span class='from'>来自L"+data[i].courseManage.courseseq+data[i].courseManage.title+
 	             		"</span></a></h4><p> by <a class='link-light link-muted' href='page/person.jsp?userid="+data[i].user.userid+"'>"+
-	             		data[i].user.uname+"</a> •"+data[i].answercount+"回答 • "+data[i].cqview+"游览</p></li>";
-	             		
+	             		data[i].user.uname+"</a> •"+data[i].answercount+"回答 • "+data[i].cqview+"游览</p></li>";             		
 	             	}
 	             	$("#questionAndAnswer").html($(contentstr))
 	             },"json");
@@ -182,8 +181,7 @@ $(function(){
          	$("#teacher").attr("href","page/person.jsp?userid="+data[0].user.userid);
          	$("#teacherimg").attr("src",teacherphoto);
          	$("#teachername").html(data[0].user.uname);
-         	document.getElementById("studentlist").innerHTML=contentstr;
-         	
+         	document.getElementById("studentlist").innerHTML=contentstr;      	
          },"json");
 		
 		
@@ -222,6 +220,7 @@ $(function(){
 	            	
 	            	}
 	            	$("#commentcontent").html($(contentstr));
+	            	$('#commentcontent').replaceface($('#commentcontent').html());//替换表情
 	            },"json");
 	        }
 	    });
@@ -245,6 +244,7 @@ $(function(){
         		
         	}
         	$("#commentcontent").html($(contentstr));
+        	$('#commentcontent').replaceface($('#commentcontent').html());//替换表情
         },"json");
 	
 	
