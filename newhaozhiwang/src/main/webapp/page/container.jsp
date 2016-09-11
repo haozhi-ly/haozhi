@@ -6,6 +6,7 @@
 <meta charset="utf-8">
 <title>服务协议 -好知网</title>
 	<base href="/newhaozhiwang/"/>
+	<link href="http://f1.howzhi.com/system/2016/03-31/113613d6a857327741.ico" rel="shortcut icon">
 	<link href="css/bootstrap.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/howzhi.css">
 	

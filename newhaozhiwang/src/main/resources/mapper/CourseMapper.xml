@@ -178,6 +178,10 @@ select * from(select a.*,rownum rn from
         	
           		where c.courseid=#{courseid} order by sc.begintime
 	</select>
-
+	
+	<insert id="createcourse" parameterType="Course">
+		insert into course values(seq_courseid.nextval,#{ctitle},#{cintrodution},#{ctid},#{courseting},#{coursephoto}
+		,#{userId},0,sysdate,null,null)
+	</insert>
 	
 </mapper>

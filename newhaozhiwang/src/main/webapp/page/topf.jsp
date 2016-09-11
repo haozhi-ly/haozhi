@@ -57,7 +57,7 @@
                             <li class="hidden-xs hzapp hidden-sm">
                   <a href="page/manage.jsp">
                     <small class="badge"> </small>
-                    <i class="hz-icon icon-smartphone"></i>
+                    <i style="font-size:16px;" class="glyphicon glyphicon-phone"></i>
                     好知APP
                   </a>
                 </li>

@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.haozhi.entity.Course;
-import com.haozhi.entity.CourseManage;
 import com.haozhi.entity.StudyCourse;
 
 public interface CourseMapper {
@@ -34,6 +33,8 @@ public interface CourseMapper {
 	List<Course> getStudentsbypageDescTime(Map<String,Object> map);
 	
 	List<StudyCourse> getAllStudents(int courseid);
+
+	int createcourse(Course course);
 
 }
 

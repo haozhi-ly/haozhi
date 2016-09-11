@@ -31,4 +31,6 @@ public interface CourseService {
 	List<StudyCourse> getAllStudentNumber(Integer courseid);
 
 	List<Course> getStudentsbypageDescTime(Integer p, Integer courseid);
+
+	int createcourse(Course course);
 }

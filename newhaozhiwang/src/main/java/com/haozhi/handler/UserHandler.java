@@ -203,7 +203,6 @@ public class UserHandler {
 		try {
 			b = decoder.decodeBuffer(photo);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}  
 
@@ -297,7 +296,6 @@ public class UserHandler {
 			try {
 				b = decoder.decodeBuffer(photo);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}  
 			for (int i = 0; i < b.length; ++i) {  

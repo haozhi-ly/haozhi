@@ -28,5 +28,8 @@ public interface CourseTypeMapper {
 	List<CourseType> findAllCourseType();
 
 
+	CourseType findByctid(CourseType courseType);
+
+
 	
 }

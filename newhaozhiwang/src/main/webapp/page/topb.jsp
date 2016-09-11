@@ -32,7 +32,7 @@
     <div class="pull-right user-nav clearfix">
       <ul class="nav pull-right">
 
-        <li class="hidden-xs hidden-sm"> <a class="btn btn-primary radius" href="javaScript:void(0);"><i style="color: rgb(255, 247, 255);" class="glyphicon glyphicon-plus"></i> 创建课程</a> </li>
+        <li class="hidden-xs hidden-sm"> <a class="btn btn-primary radius" href="page/createcourse.jsp"><i style="color: rgb(255, 247, 255);" class="glyphicon glyphicon-plus"></i> 创建课程</a> </li>
         <li class="dropdown user-nav-dropdown user-img"> <a href="#" class="dropdown-toggle" id="toggle"> <img src="images/avatar.png" class="user-avatar" alt="${users.uname }" id="${users.userid}"> </a>
 
           <ul class="dropdown-menu" role="menu" id="dropdown-menu">

@@ -7,7 +7,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
 		<title>首页 - 珘珘的个人主页 - 好知网-重拾学习乐趣-Powered By Howzhi</title>
-
+		<link href="http://f1.howzhi.com/system/2016/03-31/113613d6a857327741.ico" rel="shortcut icon">
 		<link rel="stylesheet" href="css/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="css/howzhi.css">
 		<link rel="stylesheet" type="text/css" href="css/swiper.css">
