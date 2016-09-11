@@ -32,11 +32,11 @@
 
 	<body class="hzme">
 		<!-------------------------我是头部------------------------------------------->
-			<c:set value="${users}" var="us"/>
-				<c:if test="${us==null }">
+			
+				<c:if test="${empty users or loginOut==true}">
 					<jsp:include page="topf.jsp"></jsp:include>
 				</c:if>
-				<c:if test="${us!=null }">
+				<c:if test="${users!=null }">
 					<jsp:include page="topb.jsp"></jsp:include>
 				</c:if>
 		<!---------------------------------我是头部分隔线--------------------------------------------->

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html class="">
 <head>
@@ -16,16 +15,15 @@
 	<link href="css/main.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/tcdPageCode.css">
 	<link rel="stylesheet" type="text/css" href="css/howzhi.css">
-	<script type="text/javascript" src="js/jquery.js"></script> 
+	<link href="css/smohan.face.css" type="text/css" rel="stylesheet">
+	<script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="js/smohan.face.js" charset="utf-8"></script> 
 	<script type="text/javascript" src="js/play.js"></script>
 	<script  type="text/javascript" src="js/jquery.page.js"></script>
 	
 	<style>
-		.cke {
-			visibility: hidden;
-		}
-	</style>
-
+		
+</style>
 	<script type="text/javascript">
 			var scroll = function(event,scroller){
 				alert("gjeighikh");
@@ -33,7 +31,26 @@
     		scroller.scrollTop = scroller.scrollTop - k;
     		return false;
 			};
-		</script>
+			
+            var flag= "${(empty users)? false : true}";
+            var uname='${users.uname}';
+            
+        
+          
+   		$(function (){
+   			//点击回复
+   			$('#revert').bind("click",function(){
+   				alert("dgkah");
+   				alert(this.parent().parent().children().get(0).children().get(0).text());
+   			});
+   		});
+ 		function revert(){
+ 			alert("dgkah");
+				alert(this.parent().parent().children().get(0).children().get(0).text());
+ 		}
+   	
+   		
+ </script> 
 </head>
 
 
@@ -327,117 +344,38 @@
 	</div>
 
 	<div class="container" id="content-container">
-
 		<div class="row">
 			<div class="col-md-9">
 				<div class="person-comment course-in flat">
 					<h2 class="nopadding">学员评论</h2>
-					<form class="form " id="comment-form" method="post" action="" novalidate="novalidate" data-widget-cid="widget-0">
-
-						<div class="form-group">
-							<label class="control-label hidden" for="comment">内容</label>
-							<div class="controls ">
-								<textarea id="comment" name="content" data-url="/sensitive/check/lesson-comment" class="form-control question_title " data-widget-cid="widget-1" data-explain=""></textarea>
-								<div class="help-block"></div>
-
-							</div>
-						</div>
-
-						<input type="hidden" name="targetType" value="lesson">
-						<input type="hidden" name="targetId" value="33117">
-						<input type="hidden" name="_csrf_token" value="cfe9b96f569703f379d055687bf9a957774ae94c">
-
-						<div class="clearfix">
-							<input type="hidden" value="comment">
-							<a href="javascript:;" class="mlm emotion-expand-btn" style="font-weight:normal;font-size:12px;"><i class="icon-iconfontemoji hz-icon prs"></i>插入表情</a>
-							<div class="emotions mvm" style="display:none;">
-								<img src="images/1.gif" alt="微笑" title="微笑" style="cursor: pointer;" data-code="[[微笑]]">
-										<img src="images/2.gif" alt="哈哈大笑" title="哈哈大笑" style="cursor: pointer;" data-code="[[哈哈大笑]]">
-										<img src="images/3.gif" alt="调皮" title="调皮" style="cursor: pointer;" data-code="[[调皮]]">
-										<img src="images/5.gif" alt="惊讶" title="惊讶" style="cursor: pointer;" data-code="[[惊讶]]">
-										<img src="images/6.gif" alt="惊恐" title="惊恐" style="cursor: pointer;" data-code="[[惊恐]]">
-										<img src="images/7.gif" alt="撇嘴" title="撇嘴" style="cursor: pointer;" data-code="[[撇嘴]]">
-										<img src="images/8.gif" alt="困" title="困" style="cursor: pointer;" data-code="[[困]]">
-										<img src="images/9.gif" alt="难过" title="难过" style="cursor: pointer;" data-code="[[难过]]">
-										<img src="images/10.gif" alt="委屈" title="委屈" style="cursor: pointer;" data-code="[[委屈]]">
-										<img src="images/11.gif" alt="生气" title="生气" style="cursor: pointer;" data-code="[[生气]]">
-										<img src="images/12.gif" alt="流泪" title="流泪" style="cursor: pointer;" data-code="[[流泪]]">
-										<img src="images/16.gif" alt="酷" title="酷" style="cursor: pointer;" data-code="[[酷]]">
-										<img src="images/18.gif" alt="抓狂" title="抓狂" style="cursor: pointer;" data-code="[[抓狂]]">
-										<img src="images/19.gif" alt="吐" title="吐" style="cursor: pointer;" data-code="[[吐]]">
-										<img src="images/20.gif" alt="偷笑" title="偷笑" style="cursor: pointer;" data-code="[[偷笑]]">
-										<img src="images/21.gif" alt="可爱" title="可爱" style="cursor: pointer;" data-code="[[可爱]]">
-										<img src="images/22.gif" alt="白眼" title="白眼" style="cursor: pointer;" data-code="[[白眼]]">
-										<img src="images/24.gif" alt="饥饿" title="饥饿" style="cursor: pointer;" data-code="[[饥饿]]">
-										<img src="images/27.gif" alt="流汗" title="流汗" style="cursor: pointer;" data-code="[[流汗]]">
-										<img src="images/28.gif" alt="憨笑" title="憨笑" style="cursor: pointer;" data-code="[[憨笑]]">
-										<img src="images/30.gif" alt="奋斗" title="奋斗" style="cursor: pointer;" data-code="[[奋斗]]">
-										<img src="images/31.gif" alt="咒骂" title="咒骂" style="cursor: pointer;" data-code="[[咒骂]]">
-										<img src="images/32.gif" alt="疑问" title="疑问" style="cursor: pointer;" data-code="[[疑问]]">
-										<img src="images/33.gif" alt="嘘" title="嘘" style="cursor: pointer;" data-code="[[嘘]]">
-										<img src="images/34.gif" alt="晕" title="晕" style="cursor: pointer;" data-code="[[晕]]">
-										<img src="images/35.gif" alt="抓狂" title="抓狂" style="cursor: pointer;" data-code="[[抓狂]]">
-										<img src="images/38.gif" alt="敲头" title="敲头" style="cursor: pointer;" data-code="[[敲头]]">
-										<img src="images/49.gif" alt="拥抱" title="拥抱" style="cursor: pointer;" data-code="[[拥抱]]">
-										<img src="images/76.gif" alt="强" title="强" style="cursor: pointer;" data-code="[[强]]">
-										<img src="images/77.gif" alt="弱" title="弱" style="cursor: pointer;" data-code="[[弱]]">
-										<img src="images/78.gif" alt="握手" title="握手" style="cursor: pointer;" data-code="[[握手]]">
-										<img src="images/96.gif" alt="冷汗" title="冷汗" style="cursor: pointer;" data-code="[[冷汗]]">
-										<img src="images/97.gif" alt="擦汗" title="擦汗" style="cursor: pointer;" data-code="[[擦汗]]">
-										<img src="images/98.gif" alt="抠鼻" title="抠鼻" style="cursor: pointer;" data-code="[[抠鼻]]">
-										<img src="images/99.gif" alt="鼓掌" title="鼓掌" style="cursor: pointer;" data-code="[[鼓掌]]">
-										<img src="images/100.gif" alt="糗大了" title="糗大了" style="cursor: pointer;" data-code="[[糗大了]]">
-										<img src="images/101.gif" alt="坏笑" title="坏笑" style="cursor: pointer;" data-code="[[坏笑]]">
-										<img src="images/104.gif" alt="哈欠" title="哈欠" style="cursor: pointer;" data-code="[[哈欠]]">
-										<img src="images/105.gif" alt="鄙视" title="鄙视" style="cursor: pointer;" data-code="[[鄙视]]">
-										<img src="images/107.gif" alt="快哭了" title="快哭了" style="cursor: pointer;" data-code="[[快哭了]]">
-										<img src="images/108.gif" alt="阴险" title="阴险" style="cursor: pointer;" data-code="[[阴险]]">
-										<img src="images/109.gif" alt="亲亲" title="亲亲" style="cursor: pointer;" data-code="[[亲亲]]">
-										<img src="images/110.gif" alt="吓" title="吓" style="cursor: pointer;" data-code="[[吓]]">
-										<img src="images/111.gif" alt="可怜" title="可怜" style="cursor: pointer;" data-code="[[可怜]]">
-										<img src="images/118.gif" alt="抱拳" title="抱拳" style="cursor: pointer;" data-code="[[抱拳]]">
-										<img src="images/124.gif" alt="OK" title="OK" style="cursor: pointer;" data-code="[[OK]]">
-										<img src="images/202.gif" alt="色" title="色" style="cursor: pointer;" data-code="[[色]]">
-										<img src="images/203.gif" alt="发呆" title="发呆" style="cursor: pointer;" data-code="[[发呆]]">
-										<img src="images/204.gif" alt="得意" title="得意" style="cursor: pointer;" data-code="[[得意]]">
-										<img src="images/206.gif" alt="害羞" title="害羞" style="cursor: pointer;" data-code="[[害羞]]">
-										<img src="images/207.gif" alt="闭嘴" title="闭嘴" style="cursor: pointer;" data-code="[[闭嘴]]">
-										<img src="images/208.gif" alt="睡觉" title="睡觉" style="cursor: pointer;" data-code="[[睡觉]]">
-										<img src="images/209.gif" alt="大哭" title="大哭" style="cursor: pointer;" data-code="[[大哭]]">
-										<img src="images/210.gif" alt="尴尬" title="尴尬" style="cursor: pointer;" data-code="[[尴尬]]">
-										<img src="images/4.gif" alt="抛媚眼" title="抛媚眼" style="cursor: pointer;" data-code="[[抛媚眼]]">
-							</div> <button class="btn btn-primary pull-right" id="comment-btn" data-id="2155" type="button">发布</button>
-						</div>
-						<div class="hz-login-editor"></div>
-					</form>
+				<!-- 发评论 ----------------- -->	
+					<div id="Smohan_FaceBox">
+					   <textarea name="text" id="Smohan_text" class="smohan_text"></textarea>
+					   <p>
+					   <a href="javascript:void(0)" class="face" title="表情"></a>
+					   <button class="btn btn-primary pull-right" id="comment-btn" type="button">发布</button>
+					   </p>
+					</div>
+					
+				<!--  评论 --------------------------------- -->	
 					<ul class=" comment-item-list" id="commentList">
 						<li id="item92627">
 							<div class="userimg">
 								<a class=" js-user-card" href="#" data-card-url="/user/2357277/card/show" data-user-id="2357277">
 									<img class="img-responsive" src="images/21584339cab2094074.jpg" alt="楚嫣然">
 								</a>
-
 							</div>
 							<div class="userInfo">
 								<p class="head"><a href="#">楚嫣然</a><span>7天前</span></p>
 								<div class="body">老师用的橡皮是哪种、？</div>
 								<div class="pull-right  ">
-									<a class="con" href="javascript:;" data-role="revert" data-url="/comment/92627/post" data-revertto="楚嫣然">回复</a>
+									<a class="con" id="revert" href="javascript:;" data-role="revert" data-url="/comment/92627/post" data-revertto="楚嫣然" onclick="revert()">回复</a>
 								</div>
 							</div>
 						</li>						
 					</ul>
 					<!-- 分页 ---------------------------------------------------------------------------------  -->
-						<div><ul class="pagination">
-							<li class="active"><a href="javaScript:void(0);">1</a></li>
-							<li><a href="javaScript:void(0);">2</a></li>
-							<li><a href="javaScript:void(0);">3</a></li>
-							<li><a href="javaScript:void(0);">4</a></li>
-							<li><a href="javaScript:void(0);">5</a></li>
-
-							<li><a href="javaScript:void(0);"><i class="es-icon es-icon-chevronright"></i></a></li>
-							<li><a href="javaScript:void(0);">尾</a></li>
-						</ul></div>
+						<div class="tcdPageCode" id="commenttcpage"></div>
 						<!-- 分页  ---------------------------------------------------------------------------------  -->
 				</div>
 
@@ -446,13 +384,11 @@
 						<h2>你感兴趣的课程</h2>
 					</div>
 					<div class="section-body">
-						<div class="row">
+						<div class="row" id="recommedCourse">
 				   <!--  --- 推荐课程 ------------------------------------------------------------------------- -->			
 							<div class="col-md-4 col-sm-6 ">
-
 								<div class="course-item">
 									<div class="course-img">
-
 										<img src="images/0650251c4120932070.jpg" alt="sai基础教程" class="">
 										<a href="javaScript:void(0);">
 											<div class="mask">
@@ -474,7 +410,6 @@
 											<a class=" js-user-card" href="javaScript:void(0);" data-card-url="/user/1282433/card/show" data-user-id="1282433">
 												<img class="avatar-ss " src="images/2001255a2bbc776915.jpg" alt="木桃"> 木桃
 											</a>
-
 											<div class="price free pull-right"><span>免费</span></div>
 										</div>
 									</div>
@@ -495,9 +430,7 @@
 					</div>
 				</div>
 				<div class="flat sidebar-teach media">
-					<h3>
-            课程教师
-          </h3>
+					<h3>课程教师</h3>
 					<div class="media-left">
 						<a class=" js-user-card" href="javaScript:void(0);" data-card-url="/user/8441/card/show" data-user-id="8441">
 							<img class="avatar-sm" id="teachImg" src="images/062247776d46161023.jpg" alt="Orchid">
@@ -514,7 +447,7 @@
 						没什么
 					</div>
 					<div class="ta clearfix" data-role="followUser">
-						<a class="act first follow-btn" href="javascript:;" data-url="/user/8441/follow">
+						<a class="act first follow-btn" href="javascript:;" data-url="/user/8441/follow" id="attion">
 							<i class="fa fa-plus"></i> 关注TA
 						</a>
 						<a class="act first unfollow-btn" href="javascript:;" data-url="/user/8441/unfollow" style="display:none">
@@ -528,15 +461,14 @@
 
 				<div class="flat sidebar-learner ">
 					<h3>
-            最新加入学员<span class="count">(14341)</span>
+            最新加入学员<span class="count">()</span>
           </h3>
-					<ul class="clearfix">
+					<ul class="clearfix" id="member">
 				<!-- 最新加入学员   显示9个就好 ---------------------------------------------------------------------------------- -->
 						<li>
 							<a class=" js-user-card" href="javaScript:void(0);" data-card-url="/user/2359723/card/show" data-user-id="2359723">
 								<img class="avatar-sm" src="images/avatar.png" alt="solo怪兽">
 							</a>
-
 							<a href="javaScript:void(0);" title="solo怪兽" class="name">solo怪兽</a>
 						</li>
 				<!-- 最新加入学员   显示9个就好 ---------------------------------------------------------------------------------- -->
@@ -551,6 +483,76 @@
 
 <!-- 尾部 --------------------------------------------------------------------------------------------  -->
 	<jsp:include page="footer.jsp"></jsp:include>
+	
+	<!-- 为登录就弹出框 ---------------------------------------------- -->
+	<div aria-hidden="false"
+		style="display: none; position: absolute; z-index: 20000;"
+		id="login-modal" class="modal in" data-url="/login/ajax">
+		<div class="modal-dialog ">
+			<div class="modal-content login-modal-reset">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">×</button>
+					<h4 class="modal-title text-center">登录好知</h4>
+					<img class="img-responsive" src="images/login-model.png">
+				</div>
+				<div class="modal-body">
+					<div class="login-box reset">
+
+						<form data-widget-cid="widget-5" novalidate="novalidate"
+							id="login-ajax-form" class="form-vertical form-vertical-small"
+							method="post" action="/login_check">
+
+							<div class="alert alert-danger" style="display: none;"></div>
+
+							<div class="form-group">
+								<div class="controls">
+									<label class="fa-label"> <i class="fa fa-user"></i>
+									</label> <input data-explain="" data-widget-cid="widget-6"
+										class="form-control" id="ajax-username" name="_username"
+										placeholder="邮箱/手机/昵称" data-display="请输入邮箱/手机/昵称" type="text">
+									<div class="help-block" style="display: none;"></div>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="controls">
+									<label class="fa-label"> <i class="fa fa-unlock-alt"></i>
+									</label> <input data-explain="" data-widget-cid="widget-7"
+										class="form-control" id="ajax-password" name="_password"
+										placeholder="密码" data-display="密码" type="password">
+									<div class="help-block" style="display: none;"></div>
+								</div>
+							</div>
+							<div class="form-group" id="log">
+								<div class="controls">
+									<span class="checkbox mtm "> <a
+										class="pull-right active"
+										href="http://www.howzhi.com/password/reset">忘记密码</a>
+									</span>
+								</div>
+								<input class="login-btn btn btn-primary" value="登录"
+									type="submit">
+
+
+							</div>
+							<input name="_csrf_token"
+								value="e5ba33c2f523f18887afc283816ce0e566e8c07e" type="hidden">
+						</form>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<div class="toregister">
+						<a class="active" href="">如果没有好知账号？立即注册&gt;</a>
+						<!--?</div-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="loadingDiv"
+		style="position: fixed; display: none; z-index: 2000; top: 0px; left: 0px; width: 100%; height: 100%; background-color: #333; opacity: 0.8"></div>
 	
 </body>
 

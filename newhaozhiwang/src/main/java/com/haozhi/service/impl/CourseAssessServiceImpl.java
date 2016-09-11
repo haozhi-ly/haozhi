@@ -20,14 +20,28 @@ public class CourseAssessServiceImpl implements CourseAssessService {
 	@Override
 	
 	public List<CourseAssess> getAssessbypageDescTime(Map<String, Object> hashmap) {
-		// TODO Auto-generated method stub
 		return courseAssessMapper.getAssessbypageDescTime(hashmap);
 	}
 
 	@Override
 	public List<CourseAssess> CMcountbycourseid(String courseid) {
-		// TODO Auto-generated method stub
 		return courseAssessMapper.CMcountbycourseid(Integer.parseInt(courseid));
+	}
+
+	@Override
+
+	public List<CourseAssess> getAssesstopfour(int courseid) {
+		// TODO Auto-generated method stub
+		return courseAssessMapper.getAssesstopfour(courseid);
+	}
+	public List<CourseAssess> getAssessByCmidByPage(Map<String,Object> hashmap) {
+		return courseAssessMapper.getAssessByCmidByPage(hashmap);
+	}
+
+	@Override
+	public List<CourseAssess> getAssessCountByCmid(Integer cmid) {
+		return courseAssessMapper.getAssessCountByCmid(cmid);
+
 	}
 
 }

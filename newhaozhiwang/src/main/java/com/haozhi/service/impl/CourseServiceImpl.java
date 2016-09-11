@@ -61,8 +61,7 @@ public class CourseServiceImpl implements CourseService {
 		Map<String,Object> map=new HashMap<String,Object>();
 		map.put("pagenumber",page);
 		map.put("pagesize", rows);
-		List<Course> list=courseMapper.getCoursebypageDescTime(map);
-		
+		List<Course> list=courseMapper.getCoursebypageDescTime(map);		
 		return list;
 	}
 
@@ -93,6 +92,10 @@ public class CourseServiceImpl implements CourseService {
 	@Override
 	public int createcourse(Course course) {
 		return courseMapper.createcourse(course);
+	}
+	@Override
+	public List<Course> recommedCourseByCmid(Integer cmid) {
+		return courseMapper.recommedCourseByCmid(cmid);
 	}
 
 	

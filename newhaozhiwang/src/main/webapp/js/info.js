@@ -21,8 +21,7 @@ $(function() {
 					}else{
 						$("#imgPrc").attr('src',"/touxiangPic/"+data.photo);
 					}
-					
-					
+								
 				}
 			});
 			
@@ -82,7 +81,6 @@ $(function() {
 	$('#profile-save-btn3').bind("click", function(){
 		var oldpwd = $('oldpwd').val();
 		var newpwd = $('newold').val();
-		alert("dgagih");
 	});
 	
 	

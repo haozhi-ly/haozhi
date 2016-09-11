@@ -6,9 +6,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
@@ -46,6 +44,7 @@ public class CourseHandler {
 	
 	@Autowired
 	private CourseService courseService;
+	
 	@Autowired 
 	private CourseTypeService courseTypeService;
 	
@@ -290,6 +289,17 @@ public class CourseHandler {
 		}
 		out.flush();
 		out.close();
+}
+	/**
+	 * 推荐课程
+	 * @param cmid
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value="/recommedCourseByCmid",method=RequestMethod.POST)
+	public List<Course> recommedCourseByCmid(Integer cmid){
+		List<Course> courselist = courseService.recommedCourseByCmid(cmid);
+		return courselist;
 	}
 	
 	@RequestMapping("/savepicture")

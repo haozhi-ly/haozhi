@@ -105,10 +105,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from userinfo where userid = #{userid}
 	</select>
 	
-	<!-- 分页查询课程按创建时间排序 -->
-	
-	<resultMap type="Course" id="CourseMap6">
-		
+	<!-- 分页查询课程按创建时间排序 -->	
+	<resultMap type="Course" id="CourseMap6">		
 		<id column="userId" property="userId"/>
 		<id column="ctid" property="ctid"/>
 		<collection property="user" column="userId" ofType="UserInfo" select="getUserByUsid5" />
@@ -169,19 +167,35 @@ select * from(select a.*,rownum rn from
 	</select>
 	<select id="getUserInfobyId" parameterType="int" resultType="UserInfo">
 		select * from UserInfo where userid=#{studyid}
-	</select> 
-	
+	</select> 	
 	<select id="getAllStudents" parameterType="int" resultType="StudyCourse">
 		select sc.userid,sc.courseid
     		from course c
-    		left outer join studycourse  sc on c.courseid=sc.courseid
-        	
+    		left outer join studycourse  sc on c.courseid=sc.courseid   	
           		where c.courseid=#{courseid} order by sc.begintime
 	</select>
 	
+
 	<insert id="createcourse" parameterType="Course">
 		insert into course values(seq_courseid.nextval,#{ctitle},#{cintrodution},#{ctid},#{courseting},#{coursephoto}
 		,#{userId},0,sysdate,null,null)
 	</insert>
+
+	
+	<resultMap type="Course" id="CourseMap7">
+		<id column="courseid" property="courseid"/>
+		<id column="userId" property="userId"/>
+		<collection property="user" column="userId" ofType="UserInfo" select="getUserByUsid7" />
+	</resultMap>
+	<select id="recommedCourseByCmid" resultMap="CourseMap7" parameterType="Integer" >
+		select rownum, s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount,
+		(select avg(assess) from studyCourse where courseid = s.courseid) assessAvg
+		 from course s where ctid in(select ctid from course where courseid in
+		 (select courseid from courseManage where cmid=1)) and 4>rownum
+	</select>
+	<select id="getUserByUsid7" resultType="UserInfo" parameterType="int">
+		select * from userinfo where userid = #{userid}
+	</select>
+	
 	
 </mapper>

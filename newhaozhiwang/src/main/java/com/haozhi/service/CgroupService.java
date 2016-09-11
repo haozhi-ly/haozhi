@@ -19,4 +19,12 @@ public interface CgroupService {
 
 	List<Cgroup> searchGroups(String keyWord,Integer ctid);
 
+	Cgroup showGroups(String groupname);
+
+	int joinGroups(String groupnumber,String groupname);
+
+	String getGroupnumber(String groupname);
+
+	boolean exitGroup(String groupnumber,String groupname);
+
 }

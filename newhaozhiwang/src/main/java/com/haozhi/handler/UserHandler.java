@@ -12,6 +12,7 @@ import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -42,25 +43,27 @@ public class UserHandler {
 	@Autowired
 	private UserInfoService userInfoService;
 
-	/*@ModelAttribute
+	@ModelAttribute
 	public void getModel(ModelMap map){
 		map.put("users",new UserInfo());
-	}*/
+	}
 	//不要再用modelAttribute了要存入session直接用Model 
 	//登录
 	@RequestMapping(value="/login",method=RequestMethod.POST)
-	public String login(UserInfo userInfo,Model model,ModelMap map){
+	public String login(@ModelAttribute("users")UserInfo userInfo,Model model,ModelMap map){
 		String name=userInfo.getUname();
 
 		name=new UsuallyUtil().decode(name);
 		if(userInfo!=null && name.contains("@")){
 			userInfo=userInfoService.loginByEamil(userInfo);
-			model.addAttribute("users", userInfo);
+			map.put("users", userInfo);
+			//model.addAttribute("users", userInfo);
 		}else if(userInfo!=null && !name.contains("@")){
 			userInfo.setUname(name);
 			userInfo.toString();
 			userInfo=userInfoService.loginByUname(userInfo);
-			model.addAttribute("users", userInfo);
+			map.put("users", userInfo);
+			//model.addAttribute("users", userInfo);
 		}
 		//登录页面跳转
 		if(userInfo==null){
@@ -73,10 +76,11 @@ public class UserHandler {
 
 	//注销
 	@RequestMapping(value="/loginOut")
-	public String loginOut(Model model){
-		System.out.println("yes");
-		model.addAttribute("users",null);
-		return "redirect:../page/login.jsp";
+	public String loginOut(@ModelAttribute("loginOut")ModelMap map,HttpSession session,HttpServletRequest request){
+		String path=request.getParameter("url").substring(14);
+		session.removeAttribute("users");
+		map.put("loginOut", true);
+		return "redirect:"+path;
 	}
 
 

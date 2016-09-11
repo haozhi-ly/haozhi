@@ -14,17 +14,23 @@
 <link  rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="css/course.css">
 <link rel="stylesheet" type="text/css" href="css/swiper.css" >
+<link href="css/main.css" rel="stylesheet">
 <script src="js/jquery.js"></script> 
 <script src="js/swiper-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script> 
 <script src="js/top.js"></script>
 <script type="text/javascript" src="js/course.js"></script>
-
+<style type="text/css">
+		.form-group{
+			margin-top:14px;
+			margin-left:30px;
+		}
+	</style>
 </head>
 <body class="hzco-classify">
 <!-- 头部 -------------------------------------------------------------------  -->			
 <c:set value="${users}" var="us"/>
-<c:if test="${us==null }">
+<c:if test="${empty us }">
 	<jsp:include page="topf.jsp"></jsp:include>
 </c:if>
 <c:if test="${us!=null }">

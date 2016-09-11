@@ -42,7 +42,7 @@
 	<body class="group-page">
 		<!-------------------------我是头部------------------------------------------->
 		<c:set value="${users}" var="us"/>
-			<c:if test="${us==null }">
+			<c:if test="${empty us }">
 				<jsp:include page="topf.jsp"></jsp:include>
 			</c:if>
 			<c:if test="${us!=null }">
@@ -101,14 +101,14 @@
 	            			<!--关键字查询，有相关小组信息时-->
 	            			
 			            		<c:forEach items="${searchgroups}" var="item">
-			            			<div class="col-md-3">
+			            			<div class="col-md-3" >
 										<div class="media group-media group-media-sm">
-											<a href="http://www.howzhi.com/group/349/" title="${item.groupname }" class="pull-left">
+											<a href="groups/showsearch?groupname=${item.groupname }&userid=${users.userid}" title="${item.groupname }" class="pull-left">
 												<img src="images/105050a0ca1c653470.jpg" alt="${item.groupname }" class="media-object">
 											</a>
 											<div class="media-body">
 												<p>
-													<a href="http://www.howzhi.com/group/349/" title="${item.groupname }">${item.groupname }</a>
+													<a href="groups/showsearch?groupname=${item.groupname }&userid=${users.userid}" title="${item.groupname }">${item.groupname }</a>
 												</p>
 												<div class="text-muted text-normal">
 													${item.peoplecount }&nbsp; 1362个话题
