@@ -51,6 +51,6 @@ public class CgroupMapperTest {
 	
 	@Test
 	public void testJoinGroupsMember() {
-		System.out.println(groupMapper.joinGroups("2,1,4,3", "java开发"));
+		System.out.println(groupMapper.updateGroups("2,1,4,3", "java开发"));
 	}
 }

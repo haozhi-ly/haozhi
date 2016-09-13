@@ -12,5 +12,7 @@ public interface CourseQuestionMapper {
 
 
 	List<CourseQuestion> getAllQuestionbycmid(Map<String, Object> hashmap);
+	
+	List<CourseQuestion> getQuestionbycmid(Integer cmid);
 
 }

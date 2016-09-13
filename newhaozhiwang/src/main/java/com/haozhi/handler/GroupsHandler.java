@@ -1,5 +1,7 @@
 package com.haozhi.handler;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +12,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.haozhi.entity.Cgroup;
+import com.haozhi.entity.UserInfo;
 import com.haozhi.service.CgroupService;
+import com.haozhi.service.UserInfoService;
 import com.haozhi.util.UsuallyUtil;
 
 @Controller
@@ -20,6 +24,8 @@ public class GroupsHandler {
 	
 	@Autowired
 	private CgroupService groupService;
+	@Autowired
+	private UserInfoService userInfoService;
 	
 	@ResponseBody
 	@RequestMapping("/hostgroups")
@@ -69,17 +75,20 @@ public class GroupsHandler {
 	public String showGroups(Model model,String groupname,String userid){
 		System.out.println("userid==>"+userid);
 		boolean flag=false;
+		List<UserInfo> list=new ArrayList<UserInfo>();
 		groupname=new UsuallyUtil().decode(groupname);
 		Cgroup groups= groupService.showGroups(groupname);
 		String groupnumber=groups.getGroupnumber();
 		String[] sourceStrArray = groupnumber.split(",");
 		for (int i = 0; i < sourceStrArray.length; i++) {
-		    System.out.println(sourceStrArray[i]);
+			UserInfo userInfo= userInfoService.getInfoByUserid(Integer.parseInt(sourceStrArray[i]));
+			list.add(userInfo);
 		    if(sourceStrArray[i].equals(userid)){
 		    	System.out.println("userid==>"+userid);
 		    	flag=true;
 		    }
 		}
+		model.addAttribute("groupUser", list);
 		if(flag==true){
 	    	model.addAttribute("flag", true);
 		}
@@ -100,5 +109,28 @@ public class GroupsHandler {
 		int groups= groupService.joinGroups(groupnumber,groupname);
 		model.addAttribute("joingroups", groups);
 		return "redirect:../page/groupIntroduce.jsp";
+	}
+	
+	//退出小组
+	@RequestMapping(value="/exitgroup")
+	public String exitGroup(Model model,String groupname,String userid){
+		groupname=new UsuallyUtil().decode(groupname);
+		Cgroup groups= groupService.showGroups(groupname);
+		String groupnumber=groups.getGroupnumber();
+		String[] sourceStrArray = groupnumber.split(",");
+		List<String> userList = new ArrayList<String>();
+		Collections.addAll(userList, sourceStrArray);
+		for(int i=0;i<userList.size();i++){
+			if(userList.get(i).equals(userid)){
+				userList.remove(userList.get(i));
+			}
+		}
+		groupnumber=userList.toString();
+		System.out.println(groupnumber);
+		if(groupService.exitGroup(groupnumber,groupname)==true){
+			return "redirect:../page/groupIntroduce.jsp";
+		}
+		return "";
+		
 	}
 }

@@ -4,6 +4,7 @@ $(function() {
 	$.post("courseManage/getPlayByCmid", {"_method" : "POST",cmid :cmid},function(data){		
 		if(data){
 			$('#currentCourseName').html(data.title);  //加入课程时的课程名
+			$('#breadcrumb').html(data.title);
 			if(data.type==1){
 				$('#lesson-unpublished-content').css('display','none'); 
 				$('#lesson-iframe-content').css('display','none');
@@ -29,28 +30,13 @@ $(function() {
 		}
 	},"json");
 	
-	//回复	
-/*	$("#comment-btn").bind("click",function(){
-		var content = $("#comment").val();
-
-		str= '<li id="item92627"><div class="userimg"><a class=" js-user-card" href="javaScript:void(0)" data-card-url="/user/2358982/card/show" data-user-id="2358982">'+
-		'<img class="img-responsive" src="images/avatar.png" alt="珘珘"></a></div><div class="userInfo"><p class="head"><a href="javaScript:void(0)">珘珘</a><span>1天前</span></p>'+
-		'<div class="body">'+content+'</div>'+
-		'<div class="pull-right  "><a class="con" href="javascript:;">回复</a>'+
-		'<a class="con" href="javascript:;"e">删除</a></div></div></li>';
-										
-		//$("#commentList").append(str);											
-	    $("#comment").val(" ");		
-	    $(str).insertBefore("#item92627");
-	   // str.insertBefore("#foo");
-	   
-	});*/
 	
 	//查出授课老师相关信息
 	$.post("courseManage/selectTeachInfo", {"_method" : "POST",cmid :cmid},function(data){
 		if(data){
 			$('.link-light ').html(data.user.uname);
-			$('#teachImg').attr("src",data.user.photo);
+			//$('#teachImg').attr("src",data.user.photo);
+			$('#teachImg').attr("src","images/avatar.png");		
 			$('#teachImg').attr("alt",data.user.uname);
 			$('#teach').html(data.teachCount);
 			$('#fans').html(data.fansCount);
@@ -169,7 +155,7 @@ $(function() {
 			});
 			//解析表情  $('#Zones').replaceface($('#Zones').html());
 	
-			
+		 var cmid=window.location.href.split('=')[1];
 	  //判断是否有用户登录 没有就不能进行评论
 		$('#Smohan_FaceBox').bind("click",function(){
 			 if(flag=="false"){
@@ -178,12 +164,12 @@ $(function() {
 			 }
 		 }); 
 		//点击关闭登录框
-		$('.close').bind("click",function(){
+		$('#close').bind("click",function(){
 			$('#login-modal').css('display','none');
 			$('#loadingDiv').css('display','none');
 		});
 		//点击关闭加入框
-		$('.close2').bind("click",function(){
+		$('#close2').bind("click",function(){
 			$('#studyCurrentCourse').css('display','none');
 			$('#loadingDiv').css('display','none');
 		});
@@ -274,9 +260,143 @@ $(function() {
 		   });
 		}); 
 	  
-		$('#Smohan_text').bind("change",function(){
-			alert("fkwh");
-		})
+		
+		//右侧  课时 笔记 问答的切换
+		count=0;
+		$('#clearfix li').bind(
+				"click",
+				function() {	
+					count+=1;
+					/*if($(this).attr('class')=="active"){
+						if(count%2==0){
+							alert("进来了");
+							$(this).removeClass("active");
+							$('.learn-dashboard .dashboard-content .dashboard-body').css("width", "100%;");
+							$('.learn-dashboard .toolbarhide .dashboard-toolbar').css("cssText", "right:-342px !important;");
+						}
+					}*/
+					$(this).parent().children().removeClass("active");
+					$(this).addClass("active"); //样式改变	
+					$('.learn-dashboard .dashboard-content .dashboard-body')
+							.css("width", "80%;");
+					$('.learn-dashboard.toolbarhide .dashboard-toolbar').css(
+							"cssText", "right:0px !important;");
+					
+					var str = this.innerHTML;
+					if (str.indexOf("课时") >= 0) {
+						$('#toolbar-1').css("display", "block");
+						$('#toolbar-2').css("display", "none");
+						$('#toolbar-3').css("display", "none");
+						$.get("courseManage/getCourseManageByCmid/",{"_method":"GET","cmid":cmid},function(data){
+							var courseManageStr = "";
+							if(data){
+								$.each(data,function(index,item){
+									courseManageStr+='<li class="period lesson-item lesson-item-33117  item-active"><a'
+													 +' href="page/play.jsp?cmid='+item.cmid+'" title="'+item.title+'"> <i'
+													 +' class="es-icon es-icon-undone status-icon"></i> <span class="title">'
+													 +' L'+item.courseseq+'：'+item.title+'</span>' 
+													 +'<span class="course-type"> <i class="hz-icon icon-play-nobg"' 
+													 +' title="" data-original-title="视频课程"></i>'
+													 +'</span><span class="learning">学习中</span></a></li>';
+									$('#course-item-list').html('').append( $(courseManageStr) );
+								});
+							}
+						});
+					} else if (str.indexOf("笔记") >= 0) {
+						$('#toolbar-1').css("display", "none");
+						$('#toolbar-2').css("display", "block");
+						$('#toolbar-3').css("display", "none");
+						 $.get("courseNote/getCourseNoteByCmid/",{"_method":"GET","cmid":cmid},function(data){
+							 var noteStr="";
+							 if(data){
+								 $.each(data,function(index,item){ 
+									 noteStr+='<li><div class="notes-img"><a class=" js-user-card"  href="javascript:void(0);"  title="">'
+											+'<img class="avatar-mm" alt="'+item.user.uname+'" src="'+item.user.photo+'"></a></div>'
+											+'<div class="notes-content"><span class="name"><a href="javascript:void(0);">'+item.user.uname+'</a>'
+											+'</span><div class="content"><div class="short-content" style="display: block;">'+item.noteContent+'</div>'
+											+'<div class="full-content" style="display: none;"><p>'+item.noteContent+'</p></div></div>'
+											+'<div class="actions"><a class="show-full-btn" href="javascript:;" style="display: inline;">[展开全文]</a>'
+											+'<a class="show-short-btn" style="display: none;" href="javascript:;">[收起全文]</a></div>'
+											+'</div></li>';		
+									$('#tab-notes-2').html("").append( $(noteStr) );
+							 	});
+							 }
+						 });
+					} else {
+						$('#toolbar-1').css("display", "none");
+						$('#toolbar-2').css("display", "none");
+						$('#toolbar-3').css("display", "block");
+						 $.get("courseQuestion/getQuestionbycmid/",{"_method":"GET","cmid":cmid},function(data){
+							 var questionStr="";
+							 if(data){
+								 $.each(data,function(index,item){ 
+									 questionStr+='<li><span>'+item.answercount+'回答</span><a href="javascript:void(0);"'
+										 +'target="_black">'+item.cqcontent+'</a></li>';
+									 $('#questionList').html("").append( $(questionStr) );
+								 });
+							 }
+						 });
+					}
+					
+					
+				});
+		//文本编辑器
+		$('#editControls a')
+				.click(
+						function(e) {
+							switch ($(this).data('role')) {
+							case 'h1':
+							case 'h2':
+							case 'p':
+								document.execCommand('formatBlock', false, '<'
+										+ $(this).data('role') + '>');
+								break;
+							default:
+								document.execCommand($(this).data('role'),
+										false, null);
+								break;
+							}
+					});
+		
+		//我的笔记 和同学笔记的切换
+		$("#notes-options li").bind("click",function(){
+			$(this).parent().children().removeClass("active");
+			$(this).addClass("active"); //样式改变
+			var str= this.innerHTML;
+			if (str.indexOf("我的笔记") >= 0) {
+				$('#tab-notes-1').css("display","block");
+				$('#tab-notes-2').css("display","none");
+			}else if(str.indexOf("同学笔记") >= 0){
+				$('#tab-notes-1').css("display","none");
+				$('#tab-notes-2').css("display","block");
+			}
+		});
+	//
+	$('#editor').bind("click",function(){
+		if(flag=="false"){
+			 $('#login-modal').css('display','block');
+			 $('#loadingDiv').css('display','block');
+		 }
+	});
+	//笔记保存
+	$('#course_lesson-note-form-btn').bind("click",function(){
+		var str=$('#editor').text();
+		 $.post("studyCourse/countStudyCourseByUseridCmid/",{"userid":userid,"cmid":cmid},function(data){
+			   if(data>0){
+				   $.post("courseNote/addCourseNote",{"userid":userid,"cmid":cmid,"noteContent":str},function(data){
+					   if(data==1){
+						   alert("保存成功！！！");
+						   $('#editor').html("");
+					   }else{
+						   alert("保存失败！请重新尝试");
+					   }
+				   });
+			   }else{
+				   $('#studyCurrentCourse').css('display','block');
+				   $('#loadingDiv').css('display','block');
+			   }
+		 });
+	});	
 	
 });
 

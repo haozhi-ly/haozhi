@@ -58,9 +58,10 @@ delete from userinfo where email='542933376@qq.com';
 
 commit;
 
+
 select * from UserInfo where uname='超超' and upassword=123456
 create sequence seq_userid start with 1;
-update userinfo set email='123456@qq.com' where userid=4
+update userinfo set upassword='6f9b0a55df8ac28564cb9f63a10be8af6ab3f7c2'  where uname='ly'
 commit
 insert into userinfo values(seq_userid.nextval,'ly','123456@qq.com','123456','男',null,'我就是我，颜色不一样是烟火','一只会飞的鱼',1,0,null,null,null);
 insert into userinfo values(seq_userid.nextval,'超超','23456@qq.com','123456','女',null,'我就是我，颜色不一样是烟火','我很傻很天真',1,0,null,null,null);
@@ -177,6 +178,7 @@ insert into courseType values(seq_ctid.nextval,'公开课',null);
 drop table courseManage;
 drop sequence seq_cmid ;
 
+select * from courseManage where courseid in (select courseid from courseManage where cmid=1)
 select * from courseManage;
 select count(*) from courseManage where courseid=6;
 --------------5.课时管理表
@@ -188,7 +190,7 @@ create table courseManage(
        title varchar2(50),--课时标题
        courseseq int ,--课时序号
        pathOrContetn varchar2(2000),--课时内容（路径或者内容）
-       temp01 varchar2(200),--备用字段
+       cmintroduction varchar2(200),--备用字段
        temp02 varchar2(200),--备用字段
        temp03 varchar2(200)--备用字段  
 );
@@ -247,6 +249,8 @@ insert into courseAssess values(seq_csid.nextval,5,1,'没想到做冷萃咖啡�
 insert into courseAssess values(seq_csid.nextval,4,1,'再次来学习学习一下',sysdate,0,null,null,null);
 insert into courseAssess values(seq_csid.nextval,2,1,'哎 自己动手总会出差错！',sysdate,0,null,null,null);
 commit
+
+select c.*,(select count(*) from courseAnswer a where a.cqid=c.cqid) answercount from courseQuestion c where c.cmid=1
 --------------------7.课程提问表
 create table courseQuestion(
        cqid int primary key,
@@ -385,6 +389,7 @@ create table cgroup(
             constraint FK_course_Type_ctid references courseType(ctid)--类型
 );
 drop table cgroup;
+delete sequence seq_gid 
 create sequence seq_gid start with 1;
 delete from cgroup where groupname='名校公开课';
 insert into cgroup values(seq_gid.nextval,'摄影公社',3,sysdate,'3,1,2',100,null,null,1);

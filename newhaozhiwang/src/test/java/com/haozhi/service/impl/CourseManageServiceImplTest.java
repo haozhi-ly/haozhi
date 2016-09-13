@@ -38,5 +38,12 @@ public class CourseManageServiceImplTest {
 		CourseManage course = courseManageService.selectTeachInfo(1);
 		System.out.println(course);
 	}
+	
+	@Test
+	public void testgetCourseManageByCmid() {
+		List<CourseManage> course = courseManageService.getCourseManagebyCmid(1);
+		System.out.println(course);
+		assertNotNull(course);
+	}
 
 }

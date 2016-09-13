@@ -294,7 +294,7 @@ $(function(){
 									 +'<a title="'+item.title+'" href="page/play.jsp?cmid='+item.cmid+'">'
 								 	 +'<i class="es-icon es-icon-undone status-icon"></i>'
 								 	 +'<span class="title">L'+item.courseseq+'：'+item.title+'</span>'
-								 	 +'<span class="date" title="视频时长75:10">(75:10)</span>'
+								 	 +'<span class="date" title=""></span>'
 								 	 +'<span class="course-type">'
 								 	 +'<i class="glyphicon glyphicon-play" title="" data-placement="top" data-toggle="tooltip" data-original-title="视频课程"></i>'
 								 	 +'</span></a></li>'	

@@ -58,4 +58,17 @@ public class CourseManageHandler {
 		return courseManage;
 	}
 	
+	/**
+	 * 根据cmid
+	 * @param courseid
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value="/getCourseManageByCmid",method=RequestMethod.GET)
+	public List<CourseManage> getCourseManageByCmid(Integer cmid){
+		LogManager.getLogger().debug("getCourseManageByCmid 到达...");
+		List<CourseManage> courseManage = courseManageService.getCourseManagebyCmid(cmid);
+		return courseManage;
+	}
+	
 }

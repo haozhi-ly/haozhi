@@ -23,5 +23,11 @@ public class CourseNoteServiceImplTest {
 		List<CourseNote> courseNote =courseNoteService.getCourseNoteById(6);
 		System.out.println(courseNote);
 	}
+	
+	@Test
+	public void testgetCourseNoteByCmid() {
+		List<CourseNote> courseNote =courseNoteService.getCourseNoteByCmid(1);
+		System.out.println(courseNote);
+	}
 
 }

@@ -11,5 +11,7 @@ public interface CourseQuestionService {
 
 
 	List<CourseQuestion> getAllQuestionbycmid(Map<String, Object> hashmap);
+	
+	List<CourseQuestion> getQuestionbycmid(Integer cmid);
 
 }

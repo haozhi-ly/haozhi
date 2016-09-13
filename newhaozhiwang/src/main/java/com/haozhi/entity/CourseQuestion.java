@@ -22,14 +22,6 @@ public class CourseQuestion {
 	public CourseQuestion() {
 	}
 
-	
-
-	
-	
-
-	
-
-
 	public CourseQuestion(int cqid, int userid, int cmid, String cqcontent, String cqtime, int cqview, int qreadstatus,
 			UserInfo user, CourseManage courseManage, int answercount) {
 		super();
@@ -44,13 +36,6 @@ public class CourseQuestion {
 		this.courseManage = courseManage;
 		this.answercount = answercount;
 	}
-
-
-
-
-
-
-
 
 
 	public CourseManage getCourseManage() {

@@ -2,6 +2,7 @@
 package com.haozhi.mapper;
 
 import java.util.List;
+
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
@@ -23,7 +24,8 @@ public interface CgroupMapper {
 
 	Cgroup showGroups(String groupname);
 
-	int joinGroups(@Param("groupnumber")String groupnumber,@Param("groupname")String groupname);
+	int updateGroups(@Param("groupnumber")String groupnumber,@Param("groupname")String groupname);
 
 	String getGroupnumber(String groupname);
+
 }
