@@ -75,12 +75,14 @@ public class UserHandler {
 	}
 
 	//注销
+	@ResponseBody
 	@RequestMapping(value="/loginOut")
-	public String loginOut(@ModelAttribute("loginOut")ModelMap map,HttpSession session,HttpServletRequest request){
-		String path=request.getParameter("url").substring(14);
+	public boolean loginOut(HttpSession session,HttpServletRequest request){
+		//String path=request.getParameter("url").substring(14);
 		session.removeAttribute("users");
-		map.put("loginOut", true);
-		return "redirect:"+path;
+		System.out.println(session.getAttribute("users"));
+		//map.put("loginOut", true);
+		return true;
 	}
 
 

@@ -32,6 +32,7 @@
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/top.js"></script>
+<script type="text/javascript" src="js/groupsIntroduce.js"></script>
 <style>
 	.navbar-form{
 		margin-top: 25px;
@@ -59,24 +60,24 @@
 		<ol class="breadcrumb breadcrumb-o" style="margin-top: -18px">
 			<li><a href="page/index.jsp">首页</a></li>
 			<li><a href="page/groups.jsp">小组频道</a></li>
-			<li><a href="groups/showsearch?groupname=${showgroups.groupname }&userid=${users.userid}">${showgroups.groupname }</a></li>
+			<li><a href="page/groupIntroduce.jsp" id="groupname"></a></li>
 		</ol>
 		<div class="group-header"
 			style="background: url(http://f1.howzhi.com/group-icon/2013/02-17/2114262b3815751219.jpg); background-repeat: no-repeat; background-size: 100% 100%;">
 			<div class="media">
 				<div class="media-left">
-					<a href="groups/showsearch?groupname=${showgroups.groupname }&userid=${users.userid}"> <img src="images/111938a63532860008.jpg"
-						alt="${showgroups.groupname }" class="avatar-square-md">
+					<a href="page/groupIntroduce.jsp"> <img src="images/111938a63532860008.jpg"
+						alt="" class="avatar-square-md" id="img-groupname">
 					</a>
 				</div>
 				<div class="media-body">
-					<h2 class="media-heading">${showgroups.groupname }
-						<c:if test="${flag==true or joingroups!=null}">
+					<h2 class="media-heading" id="gname">
+						<%-- <c:if test="${flag==true}">
 							<a id="exit-btn" class="btn btn-default btn-sm mlm" href="groups/exitgroup?userid=${users.userid}&groupname=${showgroups.groupname }">退出小组</a>
 						</c:if>
 						<c:if test="${empty joingroups}">
 							<a id="add-btn" class="btn btn-success btn-sm mlm" href="groups/joingroup?groupMember=${users.userid}&groupname=${showgroups.groupname }">加入小组</a>
-						</c:if>
+						</c:if> --%>
 						<%-- <c:choose>
 							<c:when test="${flag==true or joingroups!=null}">
 								<a id="exit-btn" class="btn btn-default btn-sm mlm" href="groups/exitgroup?userid=${users.userid}&groupname=${showgroups.groupname }">退出小组</a>
@@ -86,8 +87,7 @@
 							</c:otherwise>
 						</c:choose> --%>
 					</h2>
-					<div class="media-metas">${showgroups.peoplecount }个成员 <span class="mlm">4608个话题</span> <span class="fsn mlm">创建时间：${showgroups.createtime }</span>
-					</div>
+					<div class="media-metas" id="peoplecount"></div>
 				</div>
 			</div>
 			<div class="image-overlay image-overlay-o"></div>
@@ -112,23 +112,18 @@
 							<p>&nbsp;</p>
 							<hr>
 							<div class="">
-								<c:choose>
-									<c:when test="${flag==true or joingroups!=null}">
-									</c:when>
-									<c:otherwise>
-										<a id="add-btn" class="btn btn-info btn-sm pull-right" href="groups/joingroup?groupMember=${users.userid}&groupname=${showgroups.groupname }">加入小组</a>
-									</c:otherwise>
-								</c:choose>
-									<span class="text-muted fsn mrm">创建时间：${showgroups.createtime }</span>
-									<span class="text-muted fsn mrm">组长： 
-									<a class="link-light link-muted " href="http://www.howzhi.com/u/187/">${showgroups.userinfo.uname }</a></span>
-									<c:set value="${joingroups}" var="join"/>
+								<div  id="status"></div>
+								<span class="text-muted fsn mrm" id="createtime01"></span>
+								<span class="text-muted fsn mrm" id="leader"> 
+								<a class="link-light link-muted " href="http://www.howzhi.com/u/187/"></a></span>
+								<span id="gexit"></span>
+									<%-- <c:set value="${joingroups}" var="join"/>
 									<c:if test="${empty join}">
 										
 									</c:if>
 									<c:if test="${join!=null or flag==true }">
 										<span class="text-muted fsn ">你已经是小组成员，<a id="exit-btn" class="text-muted" href="groups/exitgroup?userid=${users.userid}&groupname=${showgroups.groupname }"> » 退出小组</a></span>
-									</c:if>
+									</c:if> --%>
 							</div>
 						</div>
 
@@ -160,11 +155,9 @@
 									</ul></li>
 							</ul>
 							<!-- 加入小组后可以发帖子 -->
-							<c:if test="${flag==true or join!=null}">
-								<div class="pull-right">
-									<a class="btn btn-primary btn-sm" role="button" href="/group/211/thread/create">发话题</a>
-								</div>
-							</c:if>
+							<div class="pull-right" id="write">
+									<!-- <a class="btn btn-primary btn-sm" role="button" href="/group/211/thread/create">发话题</a> -->
+							</div>
 						</div>
 
 						<!--小组热帖-->
@@ -292,8 +285,9 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">最近加入</div>
 					<!--最近加入成员，从数据库获取-->
-					<div class="panel-body" id="addMemberNow">
-						<ul class="user-avatar-list clearfix">
+					<div class="panel-body" >
+					<ul class="user-avatar-list clearfix" id="addMemberNow">
+					<%-- 	
 							<c:forEach items="${groupUser}" var="item">
 								<li><a title="" data-original-title="" class=" js-user-card"
 									href="http://www.howzhi.com/u/2364063/"
@@ -304,7 +298,8 @@
 									</div>
 								</li>
 							</c:forEach>
-						</ul>
+						 --%>
+						 </ul>
 					</div>
 				</div>
 
