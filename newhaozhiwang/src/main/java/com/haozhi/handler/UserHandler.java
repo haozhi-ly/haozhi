@@ -356,4 +356,11 @@ public class UserHandler {
 		out.flush();
 		out.close();
 	}
+	@ResponseBody
+	@RequestMapping("/getContactMsgbyUserid")
+	public UserInfo getContactMsgbyUserid(int userid){
+		UserInfo userinfo=userInfoService.getContactMsgbyUserid(userid);
+		System.out.println(userinfo+"我进来了");
+		return userinfo;
+	}
 }

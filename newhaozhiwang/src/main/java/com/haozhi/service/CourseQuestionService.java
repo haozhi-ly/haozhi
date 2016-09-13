@@ -12,4 +12,7 @@ public interface CourseQuestionService {
 
 	List<CourseQuestion> getAllQuestionbycmid(Map<String, Object> hashmap);
 
+
+	List<CourseQuestion> newQuestionTopAtFour(int courseid);
+
 }

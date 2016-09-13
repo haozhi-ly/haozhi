@@ -19,4 +19,10 @@ public class StudyCourseServiceImpl implements StudyCourseService {
 		return studyCourseMapper.getStudyCourseByCmid(cmid);
 	}
 
+	@Override
+	public List<StudyCourse> persentdynamicStudentsbycourseid(int courseid) {
+		// TODO Auto-generated method stub
+		return studyCourseMapper.persentdynamicStudentsbycourseid(courseid);
+	}
+
 }

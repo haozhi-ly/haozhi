@@ -24,7 +24,7 @@
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/tcdPageCode.css">
 
-<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap.css" type="text/css" rel="stylesheet">
 <!-- 		<link rel="stylesheet" type="text/css" href="css/iconfont.css">
  -->
  
@@ -32,6 +32,8 @@
 <script type="text/javascript" src="js/top.js"></script>
 <script type="text/javascript" src="js/joinproject.js"></script>
 <script  type="text/javascript" src="js/jquery.page.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
 <style>
 .form-group {
 	margin-top: 14px;
@@ -519,11 +521,10 @@
 
 				<div class="flat sidebar-teach media">
 					<h3>课程教师</h3>
-					<div class="media-left">
-						<a class=" js-user-card" href="http://www.howzhi.com/u/1687444/"
+					<div class="media-left"   >
+						<a class="js-user-card"  href="http://www.howzhi.com/u/1687444/"
 							data-card-url="/user/1687444/card/show" data-user-id="1687444">
-							<img class=" avatar-sm " src="images/125522a1b6f0301474.jpg"
-							　alt="${course.user.uname}">
+							<img class=" avatar-sm "   src="images/125522a1b6f0301474.jpg" alt="${course.user.uname}">
 						</a>
 
 					</div>
@@ -593,10 +594,18 @@
 						</h3>
 					</div>
 
-					<div class="panel-body">
+					<div class="panel-body" id="studentsdynamic">
 
 
-						<div class="media media-number-o">
+						<div class="media media-number-o" >
+							<div class="media-body">
+								<a class="link-light " href="http://www.howzhi.com/u/2355584/">白城阿3</a>
+								开始学习课时 <a class="link-dark"
+									href="http://www.howzhi.com/course/9573/" title="来自《人像摄影高级教程》">人像器材的选择</a>
+
+							</div>
+						</div>
+						<div class="media media-number-o" >
 							<div class="media-body">
 								<a class="link-light " href="http://www.howzhi.com/u/2355584/">白城阿3</a>
 								开始学习课时 <a class="link-dark"
@@ -629,9 +638,10 @@
 
 				<div class="flat sidebar-question">
 					<h3>课程最新问题</h3>
-					<ul>
+					<ul id="topquestion">
 
-						<li><span class="class="glyphiconglyphicon-question-sign""></span><a
+						<li><span ></span>
+						  <span class="glyphicon glyphicon-question-sign" style="color: rgb(4, 188, 131);"></span><a
 							href="http://www.howzhi.com/question/57542">后期修图问题</a></li>
 
 
@@ -738,9 +748,131 @@
 			</div>
 		</div>
 	</div>
-
+	
 	<div id="loadingDiv"
 		style="position: fixed; display: none; z-index: 2000; top: 0px; left: 0px; width: 100%; height: 100%; background-color: #333; opacity: 0.8"></div>
-</body>
+		
+		<script type="text/javascript">
+		var mouseXPosition=0;
+		var mouseYPosition=0;
+		
+		function getElementPos(el) {
+			var ua = navigator.userAgent.toLowerCase();
+			var isOpera = (ua.indexOf('opera') != -1);
+			var isIE = (ua.indexOf('msie') != -1 && !isOpera); // not opera spoof 
+			
+			if (el.parentNode === null || el.style.display == 'none') {
+				return false;
+			}
+			var parent = null;
+			var pos = [];
+			var box;
+			if (el.getBoundingClientRect) //IE 
+			{
+				box = el.getBoundingClientRect();
+				var scrollTop = Math.max(
+						document.documentElement.scrollTop,
+						document.body.scrollTop);
+				var scrollLeft = Math.max(
+						document.documentElement.scrollLeft,
+						document.body.scrollLeft);
+				return {
+					x : box.left + scrollLeft,
+					y : box.top + scrollTop
+				};
+			} else if (document.getBoxObjectFor) // gecko 
+			{
+				box = document.getBoxObjectFor(el);
+				var borderLeft = (el.style.borderLeftWidth) ? parseInt(el.style.borderLeftWidth)
+						: 0;
+				var borderTop = (el.style.borderTopWidth) ? parseInt(el.style.borderTopWidth)
+						: 0;
+				pos = [ box.x - borderLeft, box.y - borderTop ];
+			} else // safari & opera 
+			{
+				pos = [ el.offsetLeft, el.offsetTop ];
+				parent = el.offsetParent;
+				if (parent != el) {
+					while (parent) {
+						pos[0] += parent.offsetLeft;
+						pos[1] += parent.offsetTop;
+						parent = parent.offsetParent;
+					}
+				}
+				if (ua.indexOf('opera') != -1
+						|| (ua.indexOf('safari') != -1 && el.style.position == 'absolute'))
 
+				{
+					pos[0] -= document.body.offsetLeft;
+					pos[1] -= document.body.offsetTop;
+				}
+			}
+			if (el.parentNode) {
+				parent = el.parentNode;
+			} else {
+				parent = null;
+			}
+			while (parent && parent.tagName != 'BODY'
+					&& parent.tagName != 'HTML') { // account for any scrolled 
+
+				ancestors
+				pos[0] -= parent.scrollLeft;
+				pos[1] -= parent.scrollTop;
+				if (parent.parentNode) {
+					parent = parent.parentNode;
+				} else {
+					parent = null;
+				}
+			}
+			return {
+				x : pos[0],
+				y : pos[1]
+			};
+		}
+		
+			function messagedetail(obj){
+				var position=getElementPos(obj);
+				var left = position.x;
+				var top = position.y;
+				console.info(left);
+				console.info(top);
+				console.info("我进来了");
+				$("#user-card-store").css({
+					"left" : left -70 + "px",
+					"top" : top + 80 + "px"
+				});
+				$("#user-card-store").css("display", "block");
+				$("#user-card-store").css("position", "absolute");
+			}
+			function hiddenMsg() {
+				console.info('我出发了');
+				$("#user-card-store").css("display", "none");
+			}
+			
+			//悬停显示学员的基本信息
+			/* $(".js-user-card").hover(
+					  function () { 
+						  console.info("yes");
+					    var position=getElementPos(this);
+						var left = position.x;
+						var top = position.y;
+						console.info(left);
+						console.info(top);
+						console.info("我进来了");
+						$("#user-card-store-2358982").css({
+							"left" : left -70 + "px",
+							"top" : top + 80 + "px"
+						});
+						$("#user-card-store-2358982").css("display", "block");
+						$("#user-card-store-2358982").css("position", "absolute");
+					  },
+					  function () {
+					    $("#user-card-store-2358982").css("display", "none");
+					  }
+					); */
+					
+		</script>
+
+</body>
+	
 </html>

@@ -13,4 +13,7 @@ public interface CourseQuestionMapper {
 
 	List<CourseQuestion> getAllQuestionbycmid(Map<String, Object> hashmap);
 
+
+	List<CourseQuestion> newQuestionTopAtFour(int courseid);
+
 }

@@ -43,4 +43,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </select>
 
 
+
+<select id="newQuestionTopAtFour" parameterType="int" resultType="CourseQuestion">
+	select * from (select * from coursequestion cq left join coursemanage cm on cq.cmid=cm.cmid
+  where cm.courseid=#{courseid} order by cq.cqtime desc)a where 5>rownum
+</select>
+
+
 </mapper>

@@ -16,6 +16,7 @@ public class StudyCourse {
 	private String temp03;// --备用字段
 	private int memberCount;
 	private UserInfo user;
+	private Course course;
 
 	public StudyCourse() {
 	}
@@ -32,6 +33,15 @@ public class StudyCourse {
 		this.temp01 = temp01;
 		this.temp02 = temp02;
 		this.temp03 = temp03;
+	}
+
+	
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 
 	public int getScid() {
@@ -126,9 +136,11 @@ public class StudyCourse {
 
 	@Override
 	public String toString() {
-		return "StudyCourse [scid=" + scid + ", userid=" + userid + ", courseid=" + courseid + ", begintime="
-				+ begintime + ", assess=" + assess + ", studyPeriod=" + studyPeriod + ", memberCount=" + memberCount
-				+ ", user=" + user + "]";
+		return "\nStudyCourse [scid=" + scid + ", userid=" + userid + ", courseid=" + courseid + ", begintime="
+				+ begintime + ", assess=" + assess + ", memberCount=" + memberCount + ", user=" + user + ", course="
+				+ course + "]";
 	}
+
+	
 
 }
