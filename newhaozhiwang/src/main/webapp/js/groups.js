@@ -11,7 +11,7 @@ $(function(){
 			listStr+='<a href="'+url+'" title="'+data[i].groupname+'">';
 			listStr+='<img src="images/120652c07d78265998.jpg" alt="'+data[i].groupname+'" class="group-avatar-sm"></a>';
 			listStr+='<p>';
-			listStr+='<p class="title"><a class="link-light" href="page/groupIntroduce.jsp?groupname='+data[i].groupname+'&userid='+userid+'" title="'+data[i].groupname+'">'+data[i].groupname+'</a></p>';
+			listStr+='<p class="title"><a class="link-light" href="'+url+'" title="'+data[i].groupname+'">'+data[i].groupname+'</a></p>';
 			listStr+='</div>';
 			}
 		$("#hostGroups").html(listStr);
@@ -20,16 +20,17 @@ $(function(){
 	//新晋小组
 	$.get("groups/newgroups",function(data){
 		var listStr="";
-		for(var i=0;i<data.length;i++){		
+		for(var i=0;i<data.length;i++){	
+			url = encodeURI('page/groupIntroduce.jsp?groupname='+data[i].groupname+'&userid='+userid+'');
 			listStr+='<div class="media media-group">';
 			listStr+='<div class="media-left">';
-			listStr+='<a href="groups/showsearch?groupname='+data[i].groupname+'&userid='+userid+'" title="'+data[i].groupname+'">';
+			listStr+='<a href="'+url+'" title="'+data[i].groupname+'">';
 			listStr+='<img src="images/120652c07d78265998.jpg" alt="'+data[i].groupname+'" class="avatar-square-md"></a>';
 			listStr+='</div>';
 			
 			listStr+='<div class="media-body">';
 			listStr+='<div class="title">';
-			listStr+='<a class="gray-darker" href="groups/showsearch?groupname='+data[i].groupname+'&userid='+userid+'" title="'+data[i].groupname+'">'+data[i].groupname+'</a>';
+			listStr+='<a class="gray-darker" href="'+url+'" title="'+data[i].groupname+'">'+data[i].groupname+'</a>';
 			listStr+='</div>';
 			listStr+='<div class="metas">';
 			listStr+='<span><i class="glyphicon glyphicon-user"></i>'+data[i].peoplecount+'</span>';
@@ -44,19 +45,19 @@ $(function(){
 		$(this).parent().parent().children().children().removeClass("active");
 		$(this).addClass("active");
 		var ctid=this.id;
-		
+		url = encodeURI('page/groupIntroduce.jsp?groupname='+data[i].groupname+'&userid='+userid+'');
 		$.get("groups/navSearch",{"ctid":ctid},function(data){
 			var listStr="";
 			if(data){
 				for(var i=0;i<data.length;i++){		
 					listStr+='<div class="col-md-3" id="showGroup">';
 					listStr+='<div class="media groavascript:vup-media group-media-sm">';
-					listStr+='<a href="groups/showsearch?groupname='+data[i].groupname+'&userid='+userid+'" title='+data[i].groupname+'" class="pull-left">';
+					listStr+='<a href="'+url+'" title='+data[i].groupname+'" class="pull-left">';
 					listStr+='<img src="images/105050a0ca1c653470.jpg" alt="'+data[i].groupname+'" class="media-object">';
 					listStr+='</a>';
 					listStr+='<div class="media-body">';
 					listStr+='<p>';
-					listStr+='<a href="groups/showsearch?groupname='+data[i].groupname+'&userid='+userid+'" title="'+data[i].groupname+'">'+data[i].groupname+'</a>';
+					listStr+='<a href="'+url+'" title="'+data[i].groupname+'">'+data[i].groupname+'</a>';
 					listStr+='</p>';
 					listStr+='<div class="text-muted text-normal">';
 					listStr+=''+data[i].peoplecount+'&nbsp; 1362个话题';
