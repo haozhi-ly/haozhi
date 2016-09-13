@@ -21,8 +21,7 @@ $(function() {
 					}else{
 						$("#imgPrc").attr('src',"/touxiangPic/"+data.photo);
 					}
-					
-					
+								
 				}
 			});
 			

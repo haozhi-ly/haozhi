@@ -7,40 +7,51 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 
-<resultMap type="CourseQuestion" id="CQMap">
-	<id column="cqid" property="cqid"/>
-	<result column="answercount" property="answercount"/>
-	<result column="cqview" property="cqview"/>
-	<result column="cqcontent" property="cqcontent"/>
+	<resultMap type="CourseQuestion" id="CQMap">
+		<id column="cqid" property="cqid" />
+		<result column="answercount" property="answercount" />
+		<result column="cqview" property="cqview" />
+		<result column="cqcontent" property="cqcontent" />
+
+		<association property="courseManage" column="cmid"
+			javaType="CourseManage">
+			<id column="coursemid" property="cmid" />
+			<result column="courseseq" property="courseseq" />
+			<result column="title" property="title" />
+
+		</association>
+		<association property="user" column="userid" javaType="UserInfo">
+			<id column="usid" property="userid" />
+			<result column="usname" property="uname" />
+		</association>
+	</resultMap>
+	<select id="getAllQuestionbycmid" parameterType="java.util.Map"
+		resultMap="CQMap">
+
+		select * from(select a.*,rownum rn from
+		(select cq.cqcontent,cm.cmid coursemid,cm.courseseq,cm.title,u.userid
+		usid,u.uname usname,cq.cqid,
+		(select count(*)from courseanswer ca where ca.cqid=cq.cqid group by cq.cqid)
+		answercount,
+		cq.cqview
+		from coursequestion cq
+		left outer join courseManage cm on cm.cmid=cq.cmid
+		left outer join userinfo u on u.userid=cq.userid
+		where cm.courseid=#{courseid} order by cq.cqtime desc)a
+		where #{pagesize}*#{pagenumber}>=rownum)
+		where rn>#{pagesize}*(#{pagenumber}-1)
+	</select>
+
+	<select id="getAllcourseQuestionbycourseid" parameterType="int"
+		resultType="CourseQuestion">
+		select * from coursequestion cq left join coursemanage cm on cq.cmid=cm.cmid
+		where cm.courseid=#{courseid}
+	</select>
 	
-	<association property="courseManage" column="cmid" javaType="CourseManage">
-		<id column="coursemid" property="cmid"/>
-		<result column="courseseq" property="courseseq"/>
-		<result column="title" property="title"/>
-		
-	</association>
-	<association property="user" column="userid" javaType="UserInfo">
-		<id column="usid" property="userid"/>
-		<result column="usname" property="uname"/>
-	</association>
-</resultMap>
-<select id="getAllQuestionbycmid" parameterType="java.util.Map" resultMap="CQMap">
-
-	select * from(select a.*,rownum rn from 
-	(select cq.cqcontent,cm.cmid coursemid,cm.courseseq,cm.title,u.userid usid,u.uname usname,cq.cqid,
-  (select count(*)from courseanswer ca where ca.cqid=cq.cqid group by cq.cqid) answercount,
-    cq.cqview
-    		from coursequestion cq 
-					left outer join courseManage cm on cm.cmid=cq.cmid
-          left outer join userinfo u   on u.userid=cq.userid
-          where cm.courseid=#{courseid} order by cq.cqtime desc)a  
-						where #{pagesize}*#{pagenumber}>=rownum)
-			 				where rn>#{pagesize}*(#{pagenumber}-1)
-</select>
-
-<select id="getAllcourseQuestionbycourseid" parameterType="int" resultType="CourseQuestion">
-	 select * from coursequestion cq left join coursemanage cm on cq.cmid=cm.cmid where cm.courseid=#{courseid}
-</select>
+	<select id="getQuestionbycmid" parameterType="int" resultType="CourseQuestion">
+		select c.*,(select count(*) from courseAnswer a where a.cqid=c.cqid) answercount from courseQuestion c 
+		where c.cmid=#{cmid,jdbcType=VARCHAR}
+	</select>
 
 
 

@@ -58,9 +58,11 @@ delete from userinfo where email='542933376@qq.com';
 
 commit;
 
+
 select * from UserInfo where uname='超超' and upassword=123456
 create sequence seq_userid start with 1;
-
+update userinfo set upassword='6f9b0a55df8ac28564cb9f63a10be8af6ab3f7c2'  where uname='ly'
+commit
 insert into userinfo values(seq_userid.nextval,'ly','123456@qq.com','123456','男',null,'我就是我，颜色不一样是烟火','一只会飞的鱼',1,0,null,null,null);
 insert into userinfo values(seq_userid.nextval,'超超','23456@qq.com','123456','女',null,'我就是我，颜色不一样是烟火','我很傻很天真',1,0,null,null,null);
 insert into userinfo values(seq_userid.nextval,'仗剑画江湖','345678@qq.com','123456','男',null,'我就是我，颜色不一样是烟火','我很傻很天真',1,0,null,null,null);
@@ -176,6 +178,7 @@ insert into courseType values(seq_ctid.nextval,'公开课',null);
 drop table courseManage;
 drop sequence seq_cmid ;
 
+select * from courseManage where courseid in (select courseid from courseManage where cmid=1)
 select * from courseManage;
 select count(*) from courseManage where courseid=6;
 --------------5.课时管理表
@@ -187,7 +190,7 @@ create table courseManage(
        title varchar2(50),--课时标题
        courseseq int ,--课时序号
        pathOrContetn varchar2(2000),--课时内容（路径或者内容）
-       temp01 varchar2(200),--备用字段
+       cmintroduction varchar2(200),--备用字段
        temp02 varchar2(200),--备用字段
        temp03 varchar2(200)--备用字段  
 );
@@ -222,8 +225,7 @@ commit;
 
 
 
-
-select * from courseAssess where cmid=1
+select * from courseAssess where cmid=1 order by time desc
 -----------------6.课程评价表
 create table courseAssess(
        csid int primary key ,
@@ -247,6 +249,8 @@ insert into courseAssess values(seq_csid.nextval,5,1,'没想到做冷萃咖啡�
 insert into courseAssess values(seq_csid.nextval,4,1,'再次来学习学习一下',sysdate,0,null,null,null);
 insert into courseAssess values(seq_csid.nextval,2,1,'哎 自己动手总会出差错！',sysdate,0,null,null,null);
 commit
+
+select c.*,(select count(*) from courseAnswer a where a.cqid=c.cqid) answercount from courseQuestion c where c.cmid=1
 --------------------7.课程提问表
 create table courseQuestion(
        cqid int primary key,
@@ -325,8 +329,8 @@ select * from (select s.*,(select count(1) from studyCourse where courseid = s.c
 (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s order by memberCount desc) where rownum<=3 ;
 
 select * from studyCourse
-select  count(userid) from studyCourse  where courseid=5 order by begintime desc;
-select 
+select  count(*) from studyCourse where userid =21 and courseid in 
+		(select courseid from courseManage where cmid=1)
 ---------------------11.学习课程表
 create table studyCourse(
        scid int primary key,
@@ -346,6 +350,8 @@ select * from userinfo
 insert into studyCourse values(seq_scid.nextval,5,5,to_date('2016-8-1','yyyy-mm-dd'),2,null,null,null,null);
 insert into studyCourse values(seq_scid.nextval,107,6,to_date('2016-8-10','yyyy-mm-dd'),4,null,null,null,null);
 insert into studyCourse values(seq_scid.nextval,2,5,to_date('2016-8-1','yyyy-mm-dd'),4,null,null,null,null);
+insert into studyCourse values(seq_scid.nextval,21,6,to_date('2016-8-1','yyyy-mm-dd'),4,null,null,null,null);
+
 commit;
 update studyCourse set userid=5 where scid=3;
 -------------12.私信表  or   留言表
@@ -382,7 +388,14 @@ create table cgroup(
        ctid int
             constraint FK_course_Type_ctid references courseType(ctid)--类型
 );
+update cgroup set  groupnumber='2' where groupname='摄影基础交流';
+update cgroup set  groupnumber='2,3' where groupname='Ubuntu';
+
+update cgroup set  groupnumber='2,21' where groupname='工笔画'
+
 drop table cgroup;
+delete sequence seq_gid 
+select * from cgroup;
 create sequence seq_gid start with 1;
 delete from cgroup where groupname='名校公开课';
 insert into cgroup values(seq_gid.nextval,'摄影公社',3,sysdate,'3,1,2',100,null,null,1);

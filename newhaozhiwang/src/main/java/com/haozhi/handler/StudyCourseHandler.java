@@ -30,6 +30,7 @@ public class StudyCourseHandler {
 		return studyCourse;
 	}
 	
+
 	@RequestMapping("/persentdynamicStudentsbycourseid")
 	public void persentdynamicStudentsbycourseid(int courseid,HttpServletResponse response){
 		
@@ -50,6 +51,14 @@ public class StudyCourseHandler {
 		
 	}
 	
+
+	@ResponseBody
+	@RequestMapping("/countStudyCourseByUseridCmid")
+	public int countStudyCourseByUseridCmid(Integer userid,Integer cmid){
+		int count=studyCourseService.countStudyCourseByUseridCmid(userid, cmid);
+		return count;
+	}
+
 	
 
 }

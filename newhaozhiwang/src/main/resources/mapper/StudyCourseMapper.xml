@@ -21,6 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	
+
 	<resultMap type="StudyCourse" id="dynamicMap">
 		<id column="scid" property="scid"/>
 		<association property="user" column="userid" javaType="UserInfo">
@@ -40,4 +41,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  where exists(select * from studycourse sc where sc.userid=u.userid and sc.courseid=#{courseid} )
 		  order by st.begintime desc)a where 5>rownum 
 	</select>
+
+	<select id="countStudyCourseByUseridCmid" resultType="int">
+		select  count(*) from studyCourse where userid =#{userid} and courseid in 
+		(select courseid from courseManage where cmid=#{cmid})
+		
+	</select>
+	
+
 </mapper>

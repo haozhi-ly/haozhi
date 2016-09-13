@@ -24,11 +24,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 course where userId in (select userid from course where courseid in(select 
 		 courseid from courseManage where cmid=#{cmid}))) t,(select count(*) fansCount from attention
 		  where attention in (select userid from course where courseid in(select courseid from 
-		  courseManage where cmid=#{cmid}))) a,(select * from courseManage where cmid=#{cmid}) c
-		 
+		  courseManage where cmid=#{cmid}))) a,(select * from courseManage where cmid=#{cmid}) c		 
 	</select>	
 	<select id="getUserByCmid" resultType="UserInfo" parameterType="int">
 		select * from userinfo where userid in (select userid from course where courseid=#{coueseid})
+	</select>
+	
+	<select id="getCourseManagebyCmid" resultType="CourseManage" parameterType="int">
+		select * from courseManage where courseid in (select courseid from courseManage where cmid=#{cmid,jdbcType=VARCHAR})
 	</select>
 	
 </mapper>

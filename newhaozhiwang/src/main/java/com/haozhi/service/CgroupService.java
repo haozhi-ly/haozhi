@@ -1,7 +1,6 @@
 package com.haozhi.service;
 
 import java.util.List;
-import java.util.Map;
 
 import com.haozhi.entity.Cgroup;
 
@@ -25,5 +24,7 @@ public interface CgroupService {
 	int joinGroups(String groupnumber,String groupname);
 
 	String getGroupnumber(String groupname);
+
+	boolean exitGroup(String groupnumber,String groupname);
 
 }

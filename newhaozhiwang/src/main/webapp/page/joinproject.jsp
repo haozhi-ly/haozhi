@@ -24,15 +24,18 @@
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/tcdPageCode.css">
 
-<link href="css/bootstrap.css" type="text/css" rel="stylesheet">
-<!-- 		<link rel="stylesheet" type="text/css" href="css/iconfont.css">
- -->
+<link href="css/bootstrap.css" rel="stylesheet">
+
  
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="js/top.js"></script>
 <script type="text/javascript" src="js/joinproject.js"></script>
 <script  type="text/javascript" src="js/jquery.page.js"></script>
+
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+
+<script type="text/javascript" src="js/smohan.face.js" charset="utf-8"></script>
 
 <style>
 .form-group {
@@ -45,7 +48,11 @@
 	width: 261px;
 	background-size: cover;
 }
-
+.modal-dialog{
+	margin-left:28%;
+	margin-top:6%;
+	position:fixed;
+}
 .login-box .form-group .form-control {
 	border-radius: 5px;
 	height: 45px;
@@ -78,7 +85,7 @@
 <body class="course-dashboard-page">
 
 	<c:set value="${users}" var="us" />
-	<c:if test="${us==null }">
+	<c:if test="${empty us }">
 		<jsp:include page="topf.jsp"></jsp:include>
 	</c:if>
 	<c:if test="${us!=null }">
@@ -635,7 +642,7 @@
 							class="glyphicon glyphicon-chevron-right"></i>查看更多</a>
 					</div>
 				</div>
-
+ 
 				<div class="flat sidebar-question">
 					<h3>课程最新问题</h3>
 					<ul id="topquestion">

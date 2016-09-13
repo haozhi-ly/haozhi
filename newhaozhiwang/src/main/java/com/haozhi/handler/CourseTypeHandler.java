@@ -32,7 +32,6 @@ public class CourseTypeHandler {
 			response.setContentType("charset=utf-8");
 			out = response.getWriter();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		List<CourseType> typelist=courseTypeService.findAlltypebypage(Integer.parseInt(page),Integer.parseInt(rows));
@@ -54,7 +53,6 @@ public class CourseTypeHandler {
 			response.setContentType("charset=utf-8");
 			out = response.getWriter();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		String str="";
@@ -80,7 +78,6 @@ public class CourseTypeHandler {
 			response.setContentType("charset=utf-8");
 			out = response.getWriter();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		boolean result =courseTypeService.addCourseType(typename);
@@ -98,7 +95,6 @@ public class CourseTypeHandler {
 			response.setContentType("charset=utf-8");
 			out = response.getWriter();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -117,7 +113,6 @@ public class CourseTypeHandler {
 			response.setContentType("charset=utf-8");
 			out = response.getWriter();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

@@ -29,47 +29,47 @@
         <div class="colse" id="hz-head-update" data-dismiss="alert">×</div>
         <i class="left"></i> <i class="right"></i> </div>
     </nav>
-    <div class="pull-right user-nav clearfix">
-      <ul class="nav pull-right">
+    <div class="pull-right user-nav clearfix" id="topf">
+    	<ul class="nav pull-right">
+	        <li class="hidden-xs hidden-sm"> <a class="btn btn-primary radius" href="javaScript:void(0);"><i style="color: rgb(255, 247, 255);" class="glyphicon glyphicon-plus"></i> 创建课程</a> </li>
+	        <li class="dropdown user-nav-dropdown user-img"> <a href="#" class="dropdown-toggle" id="toggle"> <img src="images/avatar.png" class="user-avatar" alt="${users.uname }" id="${users.userid}"> </a>
+          		<ul class="dropdown-menu" role="menu" id="dropdown-menu">
+		            <li> <a href="page/learnCenter.jsp" ><i style="color:#666;" class="glyphicon glyphicon-home" ></i>学习中心</a> </li>
+		            <li><a href="page/person.jsp"><i style="color:#666;" class="glyphicon glyphicon-user" ></i>个人主页</a></li>
+		            <li><a href="page/info.jsp"><i style="color:#666;" class="glyphicon glyphicon-cog" ></i>个人设置</a></li>
+		            <li><a href="javaScript:void(0);"><i style="color:#666;" class="glyphicon glyphicon-credit-card" ></i>账户中心</a></li>
+		            <li id="loginOut"><a href="javaScript:void(0);"><i style="color:#666;" class="glyphicon glyphicon-log-out" ></i>退出登录</a></li>
+		        </ul>
+        	</li>
+	        <li class="user-msg user-nav-dropdown hidden-xs "> <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <i style="font-size:16px;" class="glyphicon glyphicon-bell"></i> </a>
+	          <ul class="dropdown-menu text-center" role="menu" id="dropdown-menu">
+	            <li><a href="javaScript:void(0);"><i style="color:#666;" class="glyphicon glyphicon-bullhorn"></i>通知</a></li>
+	            <li><a href="javaScript:void(0);"><i style="color:#666;" class=" glyphicon glyphicon-envelope"></i>私信</a></li>
+	            <li><a href="javaScript:void(0);"><i style="color:#666;" class="glyphicon glyphicon-comment"></i>回复</a></li>
+	            <li><a href="javaScript:void(0);"><i style="color:#666;" class="glyphicon glyphicon-question-sign"></i>问答</a></li>
+	          </ul>
+	        </li>
+        	<li class="hidden-xs hzapp hidden-sm"> <a href="javaScript:void(0);"> <small class="badge"> </small> <i style="font-size:16px;" class="glyphicon glyphicon-phone"></i> 好知APP </a> </li>
+      	</ul>
+	    <form class="navbar-form pull-right hz-search hidden-xs" role="search" action="/search">
+	        <div class="form-group">
+	          <div id="search-left" class="pull-left search-left">
+	            <div class="search-type pull-left">
+	              <div class="choose" style="color:#666;font-size:14px;margin-top:3px;">课程<i style="color:#999;font-size:11px;margin-left:5px" class="glyphicon glyphicon-chevron-down"></i></div>
+	              <ul class="text-center" id="text-center" style="color:#999;">
+	                <li data-type="course">课程</li>
+	                <li data-type="discussion">话题</li>
+	                <li data-type="user">用户</li>
+	                <li data-type="group">小组</li>
+	              </ul>
+	            </div>
+	            <input class="form-control js-search" name="q" placeholder="输入要查找的内容" autocomplete="off">
+	          </div>
+	          <input name="t" value="course" type="hidden">
+	          <button style="color: #15C288; font-size:20px;margin-top:7px; border:none;background:#fff;width:50px;" class="glyphicon glyphicon-search" type="submit"></button>
+	        </div>
+	    </form>
 
-        <li class="hidden-xs hidden-sm"> <a class="btn btn-primary radius" href="javaScript:void(0);"><i style="color: rgb(255, 247, 255);" class="glyphicon glyphicon-plus"></i> 创建课程</a> </li>
-        <li class="dropdown user-nav-dropdown user-img"> <a href="#" class="dropdown-toggle" id="toggle"> <img src="images/avatar.png" class="user-avatar" alt="${users.uname }" id="${users.userid}"> </a>
-          <ul class="dropdown-menu" role="menu" id="dropdown-menu">
-            <li> <a href="page/learnCenter.jsp" ><i style="color:#666;" class="glyphicon glyphicon-home" ></i>学习中心</a> </li>
-            <li><a href="page/person.jsp"><i style="color:#666;" class="glyphicon glyphicon-user" ></i>个人主页</a></li>
-            <li><a href="page/info.jsp"><i style="color:#666;" class="glyphicon glyphicon-cog" ></i>个人设置</a></li>
-            <li><a href="javaScript:void(0);"><i style="color:#666;" class="glyphicon glyphicon-credit-card" ></i>账户中心</a></li>
-            <li><a href="userinfo/loginOut"><i style="color:#666;" class="glyphicon glyphicon-log-out" ></i>退出登录</a></li>
-          </ul>
-        </li>
-        <li class="user-msg user-nav-dropdown hidden-xs "> <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <i style="font-size:16px;" class="glyphicon glyphicon-bell"></i> </a>
-          <ul class="dropdown-menu text-center" role="menu" id="dropdown-menu">
-            <li><a href="javaScript:void(0);"><i style="color:#666;" class="glyphicon glyphicon-bullhorn"></i>通知</a></li>
-            <li><a href="javaScript:void(0);"><i style="color:#666;" class=" glyphicon glyphicon-envelope"></i>私信</a></li>
-            <li><a href="javaScript:void(0);"><i style="color:#666;" class="glyphicon glyphicon-comment"></i>回复</a></li>
-            <li><a href="javaScript:void(0);"><i style="color:#666;" class="glyphicon glyphicon-question-sign"></i>问答</a></li>
-          </ul>
-        </li>
-        <li class="hidden-xs hzapp hidden-sm"> <a href="javaScript:void(0);"> <small class="badge"> </small> <i style="font-size:16px;" class="glyphicon glyphicon-phone"></i> 好知APP </a> </li>
-      </ul>
-      <form class="navbar-form pull-right hz-search hidden-xs" role="search" action="/search">
-        <div class="form-group">
-          <div id="search-left" class="pull-left search-left">
-            <div class="search-type pull-left">
-              <div class="choose" style="color:#666;font-size:14px;margin-top:3px;">课程<i style="color:#999;font-size:11px;margin-left:5px" class="glyphicon glyphicon-chevron-down"></i></div>
-              <ul class="text-center" id="text-center" style="color:#999;">
-                <li data-type="course">课程</li>
-                <li data-type="discussion">话题</li>
-                <li data-type="user">用户</li>
-                <li data-type="group">小组</li>
-              </ul>
-            </div>
-            <input class="form-control js-search" name="q" placeholder="输入要查找的内容" autocomplete="off">
-          </div>
-          <input name="t" value="course" type="hidden">
-          <button style="color: #15C288; font-size:20px;margin-top:7px; border:none;background:#fff;width:50px;" class="glyphicon glyphicon-search" type="submit"></button>
-        </div>
-      </form>
     </div>
   </div>
 </header>

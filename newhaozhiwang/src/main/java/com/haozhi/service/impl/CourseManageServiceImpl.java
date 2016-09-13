@@ -32,4 +32,10 @@ public class CourseManageServiceImpl implements CourseManageService {
 		return courseManageMapper.selectTeachInfo(cmid);
 	}
 
+
+	@Override
+	public List<CourseManage> getCourseManagebyCmid(Integer cmid) {
+		return courseManageMapper.getCourseManagebyCmid(cmid);
+	}
+
 }

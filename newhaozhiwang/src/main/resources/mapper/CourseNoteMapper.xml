@@ -17,10 +17,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getCourseNoteById" resultMap="CourseNoteMap">
 		select n.*,title from courseNote n inner join courseManage m on n.cmid=m.cmid and  n.cmid in
 		 (select cmid from courseManage where courseid= #{courseid,jdbcType=VARCHAR} ) order by ntime desc
-	</select>
-	
+	</select>	
 	<select id="getUserByUsid" resultType="UserInfo" parameterType="int">
 		select * from userinfo where userid = #{userid}
 	</select>
+	
+	<resultMap type="CourseNote" id="CourseNoteMap2">
+		<id column="courseid" property="courseid"/>
+		<id column="userid" property="userid"/>
+		<collection property="user" column="userid" ofType="UserInfo" select="getUserByUsid2" />
+	</resultMap>
+	<select id="getCourseNoteByCmid" resultMap="CourseNoteMap2">
+		select * from courseNote where cmid = #{cmid,jdbcType=VARCHAR}  order by ntime desc
+	</select>	
+	<select id="getUserByUsid2" resultType="UserInfo" parameterType="int">
+		select * from userinfo where userid = #{userid}
+	</select>
+	
 	
 </mapper>

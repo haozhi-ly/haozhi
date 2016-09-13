@@ -26,16 +26,19 @@ public class CourseQuestionServiceImpl implements CourseQuestionService {
 
 	@Override
 	public List<CourseQuestion> getAllQuestionbycmid(Map<String, Object> hashmap) {
-		// TODO Auto-generated method stub
 		return courseQuestionMapper.getAllQuestionbycmid(hashmap);
 	}
 
 
 
-	@Override
+
 	public List<CourseQuestion> newQuestionTopAtFour(int courseid) {
 		// TODO Auto-generated method stub
 		return courseQuestionMapper.newQuestionTopAtFour(courseid);
+	}
+	public List<CourseQuestion> getQuestionbycmid(Integer cmid) {
+		return courseQuestionMapper.getQuestionbycmid(cmid);
+
 	}
 	
 }

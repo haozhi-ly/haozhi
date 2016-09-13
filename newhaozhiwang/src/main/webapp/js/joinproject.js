@@ -1,8 +1,6 @@
 		
 $(function(){
 	//显示页面所有信息
-	//console.info();
-	//var courseid=window.location.href.split('=')[1];
 	var courseid=window.location.href.split('=')[1];
 	$.post("course/getCourseById/",{"_method":"POST",courseid:courseid},function(data){	
 		$('.breadcrumb a')[0].innerHTML = data.typename;
@@ -37,9 +35,10 @@ $(function(){
 			"</div><div class='content'>"+data[i].content+"</div></div></li>";
 			
 		}
-		
-		document.getElementById("mediacomment").innerHTML=contentstr;
-		
+
+		document.getElementById("mediacomment").innerHTML=contentstr
+		$('#mediacomment').replaceface($('#mediacomment').html());//替换表情
+
 	},"json");
 	//根据courseid查询前五条学员动态
 	$.post("studyCourse/persentdynamicStudentsbycourseid/",{courseid:courseid},function(data){
@@ -100,25 +99,24 @@ $(function(){
 		 });
 		}
 	},"json");
+
+/*	//显示学员分页初始化
+	$.post("course/getAllStudentNumber/",{"_method":"POST",courseid:courseid},function(data){
 	
 	//显示问答界面分页根据couresid初始化
-	var courseid=window.location.href.split('=')[1];
+	var courseid=window.location.href.split('=')[1];*/
 
 	$.post("courseQuestion/getAllcourseQuestionbycourseid/",{"_method":"POST",courseid:courseid},function(data){
-		console.info(data);
 		$("#questionnumber").html("("+data+")");
 		$("#questionnumbertwo").html(data);
-		questionnumbertwo
 		var page;
 		var count=parseInt(data);
-		console.info(count);
 		if(count%20==0){
 			page=count/20;
 		}else{
 			page=Math.floor((count/20)+1);
 		}
 		
-		console.info(page);
 		$("#qatcpage").createPage({
 	        pageCount:page,
 	        current:1,
@@ -131,8 +129,7 @@ $(function(){
 	             		"href='javascript:showquestiondetail("+data[i].cqid+")'>"+data[i].cqcontent+
 	             		"><span class='from'>来自L"+data[i].courseManage.courseseq+data[i].courseManage.title+
 	             		"</span></a></h4><p> by <a class='link-light link-muted' href='page/person.jsp?userid="+data[i].user.userid+"'>"+
-	             		data[i].user.uname+"</a> •"+data[i].answercount+"回答 • "+data[i].cqview+"游览</p></li>";
-	             		
+	             		data[i].user.uname+"</a> •"+data[i].answercount+"回答 • "+data[i].cqview+"游览</p></li>";             		
 	             	}
 	             	$("#questionAndAnswer").html($(contentstr))
 	             },"json");
@@ -155,7 +152,6 @@ $(function(){
 	
 	//显示学员分页初始化
 	$.post("course/getAllStudentNumber/",{"_method":"POST",courseid:courseid},function(data){
-		console.info(data);
 		$("#Allstudent").html("("+data+")");
 		var page;
 		var count=parseInt(data);
@@ -165,13 +161,10 @@ $(function(){
 		}else{
 			page=Math.floor((count/24)+1);
 		}
-		
-		console.info(page);
 		$("#stcpage").createPage({
 	        pageCount:page,
 	        current:1,
 	        backFn:function(p){
-	            console.log(p);
 	            $.post("course/getStudentsbypageDescTime/",{"p":p,"courseid":courseid},function(data){
 	            	var contentstr="";
 	             	for(var i=0;i<data.length;i++){
@@ -185,14 +178,13 @@ $(function(){
 	             		}else{
 	             			contentstr+="'"+data[i].student.photo+"' alt='"+data[i].student.uname+"'>";
 	             		}
-	             		contentstr+="</a><p><a href='page/person.jsp?userid="+data[i].student.userid+"'>"+data[i].student.uname+"</a></p></li>"
-	             		
-	             		
+	             		contentstr+="</a><p><a href='page/person.jsp?userid="+data[i].student.userid+"'>"+data[i].student.uname+"</a></p></li>"     		
 	             	}
 	             	var teacherphoto=data[0].user.photo!=null?data[0].user.photo:"images/avatar.png";
 	             	$("#teacher").attr("href","page/person.jsp?userid="+data[0].user.userid);
 	             	$("#teacherimg").attr("src",teacherphoto);
 	             	$("#teachername").html(data[0].user.uname);
+
 	             	document.getElementById("studentlist").innerHTML=contentstr;
 	             	//悬停显示个人信息
 	            	$(".js-user-card").hover(
@@ -257,18 +249,21 @@ $(function(){
 	  					    $("#user-card-store-"+userid).css("display", "none");
 	  					  }
 	  					);
+
 	             },"json");
 	        }
 	    });
 	});
 		var courseid=window.location.href.split('=')[1];
 		 $.post("course/getStudentsbypageDescTime/",{"p":1,"courseid":courseid},function(data){
+
          	var contentstr="";
          	
          	for(var i=0;i<data.length;i++){
          		
          		contentstr+="<li><a class='js-user-card' href='page/person.jsp?userid="+data[i].student.userid+"'"+
          		"data-card-url='/user/2364232/card/show' data-id='"+data[i].student.userid+"'>"+
+
          		"<img class='avatar-ll' src=";
          		if(data[i].student.photo==null){
          			contentstr+="'images/avatar.png' alt='"+data[i].student.uname+"'>";
@@ -277,13 +272,13 @@ $(function(){
          			contentstr+="'"+data[i].student.photo+"' alt='"+data[i].student.uname+"'>";
          		}
          		contentstr+="</a><p><a href='page/person.jsp?userid="+data[i].student.userid+"'>"+data[i].student.uname+"</a></p></li>"
-         		
-         		
+      		
          	}
          	var teacherphoto=data[0].user.photo!=null?data[0].user.photo:"images/avatar.png";
          	$("#teacher").attr("href","page/person.jsp?userid="+data[0].user.userid);
          	$("#teacherimg").attr("src",teacherphoto);
          	$("#teachername").html(data[0].user.uname);
+
          	document.getElementById("studentlist").innerHTML=contentstr;
          	//悬停显示个人信息框
          	$(".js-user-card").hover(
@@ -349,29 +344,26 @@ $(function(){
 					  }
 					);
          	
+
          },"json");
 		
 		
 		
 	//评论分页初始化
 	$.post("courseAssess/CMcountbycourseid/",{"_method":"POST",courseid:courseid},function(data){
-		console.info(data);
 		$("#Allcomment").html("("+data+")");
 		var page;
 		var count=parseInt(data);
-		console.info(count);
 		if(count%20==0){
 			page=count/20;
 		}else{
 			page=Math.floor((count/20)+1);
 		}
 		
-		console.info(page);
 		$("#commenttcpage").createPage({
 	        pageCount:page,
 	        current:1,
 	        backFn:function(p){
-	            console.log(p);
 	            $.post("courseAssess/getAssessbypageDescTime/",{"p":p,"courseid":courseid},function(data){
 	            	var contentstr="";
 	            	for(var i=0;i<data.length;i++){
@@ -391,6 +383,7 @@ $(function(){
 	            	
 	            	}
 	            	$("#commentcontent").html($(contentstr));
+
 	            	//悬停显示个人信息
 	            	$(".js-user-card").hover(
 	  					  function (){ 
@@ -454,6 +447,7 @@ $(function(){
 	  					    $("#user-card-store-"+userid).css("display", "none");
 	  					  }
 	  					);
+
 	            },"json");
 	        }
 	    });
@@ -461,9 +455,11 @@ $(function(){
 		var courseid=window.location.href.split('=')[1];
 		$.post("courseAssess/getAssessbypageDescTime/",{"p":1,"courseid":courseid},function(data){
         	var contentstr="";
+
         	for(var i=0;i<data.length;i++){
         		
         		contentstr+="<li><div class='notes-img'> <a class='js-user-card' data-id='"+data[i].user.userid+"' href='page/person.jsp?userid="+data[i].user.userid+"'>" +
+
         				" <img class='avatar-sm' ";
         		console.info(data[i].user.photo);
         			if(data[i].user.photo!=null){
@@ -477,6 +473,7 @@ $(function(){
         			"<span class='time'>"+data[i].time+"</span></div></div></li>"
         	}
         	$("#commentcontent").html($(contentstr));
+
         	//悬停显示个人信息
         	$(".js-user-card").hover(
 					  function (){ 
@@ -537,6 +534,7 @@ $(function(){
 					    $("#user-card-store-"+userid).css("display", "none");
 					  }
 					);
+
         },"json");
 	
 	
@@ -586,7 +584,7 @@ $(function(){
 									 +'<a title="'+item.title+'" href="page/play.jsp?cmid='+item.cmid+'">'
 								 	 +'<i class="es-icon es-icon-undone status-icon"></i>'
 								 	 +'<span class="title">L'+item.courseseq+'：'+item.title+'</span>'
-								 	 +'<span class="date" title="视频时长75:10">(75:10)</span>'
+								 	 +'<span class="date" title=""></span>'
 								 	 +'<span class="course-type">'
 								 	 +'<i class="glyphicon glyphicon-play" title="" data-placement="top" data-toggle="tooltip" data-original-title="视频课程"></i>'
 								 	 +'</span></a></li>'	
@@ -689,9 +687,8 @@ $(function(){
 	 }); 
 		
 	
+	});
 });
-});
-	
 
 
 function join(){	

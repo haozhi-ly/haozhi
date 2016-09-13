@@ -11,6 +11,7 @@ import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.google.gson.Gson;
 import com.haozhi.entity.Course;
+import com.haozhi.entity.CourseType;
 import com.haozhi.entity.StudyCourse;
+import com.haozhi.entity.UserInfo;
 import com.haozhi.service.CourseService;
+import com.haozhi.service.CourseTypeService;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -40,6 +44,9 @@ public class CourseHandler {
 	
 	@Autowired
 	private CourseService courseService;
+	
+	@Autowired 
+	private CourseTypeService courseTypeService;
 	
 	@ModelAttribute
 	public void getModel(ModelMap map){
@@ -148,7 +155,6 @@ public class CourseHandler {
 			response.setContentType("charset=utf-8");
 			out = response.getWriter();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		List<Course> typelist=courseService.getAllCourseBypage(Integer.parseInt(rows),Integer.parseInt(page));
@@ -168,16 +174,12 @@ public class CourseHandler {
 	public void addCourse(String coursephoto,String ctid,String ctitle,String courseting,String userId,String createTime,String ctintrodution,HttpServletResponse response,HttpServletRequest request){
 		System.out.println("我进来了");
 		System.out.println();
-		
-		
-
 		PrintWriter out=null;
 		try {
 			response.setCharacterEncoding("utf-8");
 			response.setContentType("charset=utf-8");
 			out = response.getWriter();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		BASE64Decoder decoder = new BASE64Decoder();  
@@ -190,7 +192,6 @@ public class CourseHandler {
 		try {
 			b = decoder.decodeBuffer(coursephoto);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}  
         for (int i = 0; i < b.length; ++i) {  
@@ -263,6 +264,32 @@ public class CourseHandler {
 		out.close();
 	}
 	
+	@RequestMapping("/basic")
+	public void savebasic(CourseType courseType,PrintWriter out,String ctitle,String cintroduction,int ctid,String courseting,HttpSession session){
+		System.out.println(ctitle);
+		System.out.println(cintroduction);
+		System.out.println(ctid);
+		System.out.println(courseting);
+		courseType.setCtid(ctid);
+		CourseType courseTypes=courseTypeService.findByctid(courseType);
+		session.setAttribute("ctitle", ctitle);
+		session.setAttribute("cintroduction", cintroduction);
+		session.setAttribute("ctid", ctid);
+		session.setAttribute("courseting", courseting);
+		session.setAttribute("basicstatus", "1");
+		session.setAttribute("courseType", courseTypes);
+		if(cintroduction ==null){
+			out.print(1);
+		}else if(ctid<0){
+			out.print(2);
+		}else if(courseting==null){
+			out.print(3);
+		}else{
+			out.print(4);
+		}
+		out.flush();
+		out.close();
+}
 	/**
 	 * 推荐课程
 	 * @param cmid
@@ -275,7 +302,66 @@ public class CourseHandler {
 		return courselist;
 	}
 	
-	
-	
+	@RequestMapping("/savepicture")
+	public void savepicture(Course course,PrintWriter out,String coursephoto,HttpSession session){
+		System.out.println(coursephoto);
+		BASE64Decoder decoder = new BASE64Decoder();  
+		coursephoto = coursephoto.replaceAll("data:image/png;base64,", "");  
+		// Base64解码  
+		byte[] b=null;
+		try {
+			b = decoder.decodeBuffer(coursephoto);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}  
 
+		for (int i = 0; i < b.length; ++i) {  
+			if (b[i] < 0) {// 调整异常数据  
+				b[i] += 256;  
+			}  
+		}
+		// 生成jpeg图片  
+		long temp=System.currentTimeMillis()+new Random().nextInt(100000);
+		String filename=temp+".png";
+		System.out.println(filename);
+		String photopath="../coursePic/"+filename;
+		FileOutputStream fos;
+		try {
+			fos = new FileOutputStream("D:\\apache-tomcat-7.0.30\\webapps\\coursePic\\"+filename);
+			fos.write(b);  
+			fos.flush();  
+			fos.close(); 
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		session.setAttribute("coursephoto", filename);
+		session.setAttribute("picturestatus", 1);
+		if(filename!= null){
+			out.print(filename);
+			String ctitle=(String) session.getAttribute("ctitle");
+			String cintroduction=(String) session.getAttribute("cintroduction");
+			int ctid=(int) session.getAttribute("ctid");
+			String courseting=(String) session.getAttribute("courseting");
+			UserInfo user=(UserInfo) session.getAttribute("users");
+			course.setCtitle(ctitle);
+			course.setCintrodution(cintroduction);
+			course.setCtid(ctid);
+			course.setCourseting(courseting);
+			course.setCoursephoto(filename);
+			course.setUserId(user.getUserid());
+			System.out.println(user.getUserid());
+			int courses=courseService.createcourse(course);
+		}
+		out.flush();
+		out.close();
+	}
+	
+	@RequestMapping("/sendtitle")
+	public void sendtitle(PrintWriter out,String coursename,HttpSession session){
+		System.out.println(coursename);
+		session.setAttribute("ctitle",coursename);
+		out.print(1);
+		out.flush();
+		out.close();
+	}
 }

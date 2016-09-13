@@ -4,6 +4,7 @@
 <title>好知网后台管理登录</title> 
 <base href="/newhaozhiwang/">
 <meta charset="utf-8">
+<link href="http://f1.howzhi.com/system/2016/03-31/113613d6a857327741.ico" rel="shortcut icon">
 <script type="text/javascript" src="back/js/jquery-1.9.0.min.js"></script>
 <script type="text/javascript" src="back/js/login.js"></script>
 <link href="back/css/login2.css" rel="stylesheet" type="text/css" />
@@ -15,6 +16,13 @@
 </style>
 <script>
 
+//加载验证码
+function loadimage() {
+	document.getElementById("randImage").src = "back/manager/img.jsp?" + Math.random();
+}
+function shuaxin(){
+	loadimage();
+}
 //验证码校验
 var flag=false;
 function InputYZcode(){
@@ -26,6 +34,7 @@ function InputYZcode(){
 		}else{
 			flag=false;
 			alert("温馨提示：验证码输入错误");
+			loadimage();
 		}
 	});
 	}
@@ -50,11 +59,6 @@ function InputYZcode(){
 		}
 	}
 	
-	//加载验证码
-	function loadimage() {
-		document.getElementById("randImage").src = "back/manager/img.jsp?" + Math.random();
-	}
-	
 	function register(){
 		var aname=$("#user").val();
 		var apassword=$("#passwd").val();
@@ -72,6 +76,10 @@ function InputYZcode(){
 			$.post("admin/register",{aname:aname,apassword:apassword,email:email},function(data){
 				if(data){
 					alert("温馨提示：恭喜！成功注册管理员");
+					$("#user").val("");
+					$("#passwd").val("");
+					$("#qq").val("");
+					$("#passwd2").val("");
 				}else{
 					alert("温馨提示：注册失败！");
 				}
@@ -120,7 +128,7 @@ function InputYZcode(){
                <div style="width:310px;">
                 <label style="font-size:16px;margin-top:20px;float:left;">验证码：</label>
                	<input  class="Captcha" name="YZcodeInput" style="height:25px;width:80px;float:left;margin-top:20px;" placeholder="请输入验证码！" onblur="InputYZcode()" id="YZcodeInput" />
-				<img alt="加载失败" name="randImage" id="randImage" src="back/manager/img.jsp" style="margin-left:10px;float:left; width:80px; height:40px; margin-top:10px;" border="1">
+				<img alt="加载失败" name="randImage" id="randImage" src="back/manager/img.jsp" style="margin-left:10px;float:left; width:80px; height:40px; margin-top:10px;" border="1" onclick="shuaxin()">
 				<a href="javascript:loadimage();" style="margin-left:5px;margin-top:35px;float:left;">点击刷新</a>
                </div>
                 <div id="clear" style="padding-left:50px;margin-top:100px;"><input type="button" value="登 录" style="width:150px;" class="button_blue" onclick="loginadmin()"/></div>

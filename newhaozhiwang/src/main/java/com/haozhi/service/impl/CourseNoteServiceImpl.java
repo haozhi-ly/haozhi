@@ -19,4 +19,14 @@ public class CourseNoteServiceImpl implements CourseNoteService{
 		return courseNoteMapper.getCourseNoteById(courseid);
 	}
 
+	@Override
+	public List<CourseNote> getCourseNoteByCmid(Integer cmid) {
+		return courseNoteMapper.getCourseNoteByCmid(cmid);
+	}
+
+	@Override
+	public int addCourseNote(Integer userid, Integer cmid, String noteContent) {
+		return courseNoteMapper.addCourseNote(userid, cmid, noteContent);
+	}
+
 }

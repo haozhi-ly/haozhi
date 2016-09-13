@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.haozhi.entity.CourseAssess;
 import com.haozhi.service.CourseAssessService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -35,6 +36,14 @@ public class CourseAssessServiceImplTest {
 	@Test
 	public void getAssessCountByCmid() {
 		System.out.println(courseAssessService.getAssessCountByCmid(1));
+	}
+	
+	@Test
+	public void getAddAssess() {
+		CourseAssess ca = new CourseAssess();
+		ca.setUserid(21);ca.setCmid(1);ca.setContent("终于可以自己做咖啡了，老师棒棒哒！！");
+		int result=courseAssessService.addAssess(ca.getUserid(),ca.getCmid(),ca.getContent());
+		System.out.println(result);
 	}
 	
 }
