@@ -45,11 +45,11 @@ $(function(){
 		$(this).parent().parent().children().children().removeClass("active");
 		$(this).addClass("active");
 		var ctid=this.id;
-		url = encodeURI('page/groupIntroduce.jsp?groupname='+data[i].groupname+'&userid='+userid+'');
 		$.get("groups/navSearch",{"ctid":ctid},function(data){
 			var listStr="";
 			if(data){
-				for(var i=0;i<data.length;i++){		
+				for(var i=0;i<data.length;i++){	
+					url = encodeURI('page/groupIntroduce.jsp?groupname='+data[i].groupname+'&userid='+userid+'');
 					listStr+='<div class="col-md-3" id="showGroup">';
 					listStr+='<div class="media groavascript:vup-media group-media-sm">';
 					listStr+='<a href="'+url+'" title='+data[i].groupname+'" class="pull-left">';
@@ -70,7 +70,7 @@ $(function(){
 		},"json");
 	});
 	
-	$("#status a").bind("click",function(){
+	/*$("#status a").bind("click",function(){
 		var flagid=this.id;
 		var listStr="";
 		alert(flagid);
@@ -95,6 +95,6 @@ $(function(){
 			});
 		}
 		
-	});
+	});*/
 	
 });

@@ -92,18 +92,17 @@
 			</div>
 			<div class="image-overlay image-overlay-o"></div>
 		</div>
-
 		<div class="row">
 			<div class="col-md-8 group-main">
 				<div class="panel panel-default">
 					<div class="panel-body">
 
-						<ul class="nav nav-tabs">
-							<li class="active"><a href="http://www.howzhi.com/group/2/">小组首页</a></li>
-							<li><a href="http://www.howzhi.com/group/member/2">小组成员</a></li>
+						<ul class="nav nav-tabs" id="ul">
+							<%-- <li class="active"><a href="page/groupIntroduce.jsp?groupname=${showgroups.groupname }&userid=${users.userid }">小组首页</a></li>
+							<li><a href="page/groupMember.jsp?groupname=${showgroups.groupname }&userid=${users.userid }">小组成员</a></li>
 							<li style="left: 0px; width: 104px; overflow: hidden;"
 								class="highlight"></li>
-						</ul>
+ --%>						</ul>
 						<!-- 小组简介 -->
 						<div class="alert alert-info clearfix">
 							<p>摄影公社（原称爱摄公社），集结好知网喜欢摄影的同学。欢迎大家在小组里发表作品、提问和分享信息。</p>

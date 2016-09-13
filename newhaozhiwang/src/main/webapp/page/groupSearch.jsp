@@ -77,19 +77,19 @@
 				<div class="panel-body">
 					<div class="nav inline" id="navid">
 						<a class="active" href="groups/moresearch" id="0">全部</a>
-						<a href="javascript:;" data-target="photography" data-id="1" id="1">摄影课堂</a>
-						<a href="javascript:;" data-target="creative-design" data-id="204" id="2">创意设计</a>
-						<a href="javascript:;" data-target="music-school" data-id="205" id="3">声乐器乐</a>
-						<a href="javascript:;" data-target="exercise-fitness" data-id="206" id="4">运动健身</a>
-						<a href="javascript:;" data-target="IT-internet" data-id="222" id="5">IT互联网</a>
+						<a href="javascript:void(0);" data-target="photography" data-id="1" id="1">摄影课堂</a>
+						<a href="javascript:void(0);" data-target="creative-design" data-id="204" id="2">创意设计</a>
+						<a href="javascript:void(0);" data-target="music-school" data-id="205" id="3">声乐器乐</a>
+						<a href="javascript:void(0);" data-target="exercise-fitness" data-id="206" id="4">运动健身</a>
+						<a href="javascript:void(0);" data-target="IT-internet" data-id="222" id="5">IT互联网</a>
 						<!-- <a href="javascript:;" data-target="programme" data-id="151" id="6">编程</a> -->
-						<a href="javascript:;" data-target="interest" data-id="9" id="6">兴趣爱好</a>
+						<a href="javascript:void(0);" data-target="interest" data-id="9" id="6">兴趣爱好</a>
 						<!-- <a href="javascript:;" data-target="computer" data-id="155" id="8">电脑</a> -->
-						<a href="javascript:;" data-target="language" data-id="10" id="7">语言学习</a>
+						<a href="javascript:void(0);" data-target="language" data-id="10" id="7">语言学习</a>
 						<!-- <a href="javascript:;" data-target="life" data-id="8" id="10">生活</a> -->
-						<a href="javascript:;" data-target="career" data-id="178" id="8">职场技能</a>
+						<a href="javascript:void(0);" data-target="career" data-id="178" id="8">职场技能</a>
 						<!-- <a href="javascript:;" data-target="culture" data-id="173" id="12">文化</a> -->
-						<a href="javascript:;" data-target="openclass" data-id="4" id="9">公开课</a>
+						<a href="javascript:void(0);" data-target="openclass" data-id="4" id="9">公开课</a>
 					</div>
 					<div class="row" id="add">
 						<c:set value="${searchgroups}" var="search"/>
