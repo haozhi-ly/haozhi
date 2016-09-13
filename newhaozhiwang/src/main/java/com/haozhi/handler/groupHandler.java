@@ -50,7 +50,6 @@ public class groupHandler {
 			response.setContentType("charset=utf-8");
 			out = response.getWriter();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		List<Cgroup> typelist=cgroupService.getAllgroupBypage(Integer.parseInt(page),Integer.parseInt(rows));
@@ -75,7 +74,6 @@ public class groupHandler {
 			response.setContentType("charset=utf-8");
 			out = response.getWriter();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		BASE64Decoder decoder = new BASE64Decoder();  
@@ -88,7 +86,6 @@ public class groupHandler {
 		try {
 			b = decoder.decodeBuffer(groupphoto);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}  
         for (int i = 0; i < b.length; ++i) {  
@@ -108,7 +105,6 @@ public class groupHandler {
         fos.flush();  
         fos.close(); 
 	} catch (Exception e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}  
         Cgroup group=new Cgroup();

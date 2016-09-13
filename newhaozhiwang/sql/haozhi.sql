@@ -388,8 +388,14 @@ create table cgroup(
        ctid int
             constraint FK_course_Type_ctid references courseType(ctid)--类型
 );
+update cgroup set  groupnumber='2' where groupname='摄影基础交流';
+update cgroup set  groupnumber='2,3' where groupname='Ubuntu';
+
+update cgroup set  groupnumber='2,21' where groupname='工笔画'
+
 drop table cgroup;
 delete sequence seq_gid 
+select * from cgroup;
 create sequence seq_gid start with 1;
 delete from cgroup where groupname='名校公开课';
 insert into cgroup values(seq_gid.nextval,'摄影公社',3,sysdate,'3,1,2',100,null,null,1);

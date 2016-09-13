@@ -78,7 +78,7 @@
 <body class="course-dashboard-page">
 
 	<c:set value="${users}" var="us" />
-	<c:if test="${us==null }">
+	<c:if test="${empty us }">
 		<jsp:include page="topf.jsp"></jsp:include>
 	</c:if>
 	<c:if test="${us!=null }">

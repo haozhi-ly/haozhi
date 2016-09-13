@@ -33,4 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			#{ctids}
 		</foreach>
 	</delete>
+	<select id="findByctid" parameterType="CourseType" resultType="CourseType">
+		select * from courseType where ctid=#{ctid}
+	</select>
 </mapper>

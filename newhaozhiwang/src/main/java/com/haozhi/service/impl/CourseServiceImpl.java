@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.haozhi.entity.Course;
-import com.haozhi.entity.CourseType;
 import com.haozhi.entity.StudyCourse;
 import com.haozhi.mapper.CourseMapper;
 import com.haozhi.service.CourseService;
@@ -90,6 +89,10 @@ public class CourseServiceImpl implements CourseService {
 		return courseMapper.getStudentsbypageDescTime(hashmap);
 	}
 
+	@Override
+	public int createcourse(Course course) {
+		return courseMapper.createcourse(course);
+	}
 	@Override
 	public List<Course> recommedCourseByCmid(Integer cmid) {
 		return courseMapper.recommedCourseByCmid(cmid);

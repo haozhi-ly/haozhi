@@ -1,5 +1,5 @@
-<%@ page contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html class="">
 <style type="text/css" id="30192272684"></style>
@@ -19,13 +19,12 @@
   <meta content="1" name="is-open"> 
   <link href="http://f1.howzhi.com/system/2016/03-31/113613d6a857327741.ico" rel="shortcut icon">
   <link href="css/bootstrap.css" rel="stylesheet">
-  <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <link href="css/main.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/howzhi.css">
  <style>.cke{visibility:hidden;}</style>
  <link rel="stylesheet" type="text/css" href="css/editor.css">
- <link rel="stylesheet" type="text/css" href="css/style.css">
+ <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+ <script type="text/javascript" src="js/bootstrap.min.js"></script>
  <script type="text/javascript" src="js/addlesson.js"></script>
  <script type="text/javascript" src="js/top.js"></script>
  <script type="text/javascript" src="ckeditor/ckeditor.js"></script>  
@@ -217,9 +216,19 @@
         
     <div class="course-managehead media manage">
     <div class="pic media-left">
-      <a href="http://www.howzhi.com/course/14061/">
-        <img src="images/course.png">
-      </a>
+      <c:choose>
+         <c:when test="${picturestatus==1}">
+         	<% String picname=(String)session.getAttribute("coursephoto"); %>
+        	 <a href="http://www.howzhi.com/course/14023/">
+        	  <img src="<%="../../coursePic/"+picname%>">
+      		</a>
+        	</c:when>
+        	<c:otherwise>
+        	<a href="http://www.howzhi.com/course/14023/">
+        		<img src="images/course.png">
+     		 </a>
+        	</c:otherwise>
+		 </c:choose>       
     </div>
     <div class="info media-body">
         <h1 class="title"><a href="http://www.howzhi.com/course/14061/">we</a></h1>
@@ -230,8 +239,8 @@
                        
     </div>
      <div class="action"> 
-      <a class="btn com radius mts" href="http://www.howzhi.com/course/14061/?previewAs=member" target="_blank">返回课程</a>
-                          <a data-step="4" data-intro="完善所有信息后，点击&#39;申请发布&#39;，向管理员提交发布请求" data-position="left" class="radius btn disable mtl">申请发布</a>
+      <a class="btn com radius mts" href="http://www.howzhi.com/course/14061/?previewAs=member" target="_blank" style="width:83px;">返回课程</a>
+                          <a data-step="4" data-intro="完善所有信息后，点击&#39;申请发布&#39;，向管理员提交发布请求" data-position="left" class="radius btn disable mtl" style="width:83px;">申请发布</a>
                 
      </div>
   </div>
@@ -242,20 +251,31 @@
     <div class="col-md-3">
       <ul class="list-group affix-top" data-spy="affix" data-offset-top="300">
         <li data-step="1" data-intro="点击&#39;基本信息&#39;，填写完整课程信息，并保存。打绿色勾表示该项完成" data-position="right">
-                          <span>
-                1
-              </span>
-                        <a title="请输入标题" href="http://www.howzhi.com/ugc/course/14061/manage">
-            基本信息
-          </a>
+         <c:choose>
+         	<c:when test="${picturestatus==1}">
+         		<span id="istyle"><img src='images/2016-09-10_184215.png'></span>
+        	</c:when>
+        	<c:otherwise>
+        		<span id="istyle">1</span>
+        	</c:otherwise>
+		 </c:choose>           
+         <a title="请输入标题" href="page/manage.jsp">基本信息</a>
         </li>
         <li data-step="2" data-intro="上传课程图片" data-position="right">
-          <span>2</span>          <a class="" href="http://www.howzhi.com/ugc/course/14061/manage/picture">课程图片</a>
+          <c:choose>
+         	<c:when test="${picturestatus==1}">
+         		<span id="tstyle"><img src='images/2016-09-10_184215.png'></span>
+        	</c:when>
+        	<c:otherwise>
+        		<span id="tstyle">1</span>
+        	</c:otherwise>
+		 </c:choose>           
+          <a class="" href="page/picture.jsp">课程图片</a>
         </li>
         
         <li class="active" data-step="3" data-intro="添加课时，完成最后信息的填写" data-position="right">
           <span>3</span>
-                    <a class="" href="./page/Howzhi.html">课时管理</a>
+                    <a class="" href="page/lession.jsp">课时管理</a>
         </li>
       </ul>     
     </div>
@@ -292,63 +312,6 @@
 <input type="hidden" value="draft" id="course_status">    
       </div>
     
-          <footer class="footer">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4 ">
-      <a href="http://www.howzhi.com/"><img src="images/foot-logo.png" alt="好知，知识分享新社区"></a>
-      </div>
-      <div class="col-md-4 about">
-        <span><a href="http://www.howzhi.com/info/about">关于我们</a></span>|
-        <span><a href="http://www.howzhi.com/join/us" target="_blank">加入我们</a></span>|
-        <span><a href="http://www.howzhi.com/daren/" target="_blank">合作申请</a></span>|
-        <span><a href="http://www.howzhi.com/group/feedback">意见反馈</a></span><br>
-                  <a class="con" href="http://www.miibeian.gov.cn/" target="_blank">
-             浙ICP备13006852号-3
-          </a>
-              </div>
-      <div class="col-md-4">
-        关注我们：
-        <a href="http://weibo.com/howzhicom"><i class="hz-icon icon-weibo"></i></a>
-        <a class="icon-sns"><i class="hz-icon icon-weixin"></i>
-          <div class="sns-popover" style="background:url(&quot;/assets/img/howzhi/weichat.png?2.6.17.2.3&quot;)">
-            
-          </div>
-        </a>
-        <a href="http://user.qzone.qq.com/2485597828/"><i class="hz-icon icon-qq"></i></a>
-        
-        <a href="http://site.douban.com/124522/"><i class="hz-icon icon-gongnengyedouban"></i></a>
-      </div>      
-    </div>
-  </div>
-</footer>
-<div class="friendlinks">
-  <div class="container">
-      <div class="content">
-        <font>友情链接:</font>
-        <a href="http://www.edusoho.com/" target="_blank" class="white">EduSoho开源网络课堂</a> 
-        <span>|</span>
-        <a href="http://www.qiqiuyu.com/" target="_blank" class="white">气球鱼学院</a>
-        <span>|</span>
-        <a href="http://hao.360.cn/" target="_blank" class="white">360安全网址导航</a>
-        <span>|</span>
-        <a href="http://www.hao123.com/" target="_blank" class="white">hao123</a>
-        <span>|</span>
-        <a href="http://www.lvse.com/" target="_blank" class="white">绿色网</a>
-        <span>|</span>
-        <a href="http://www.chinaz.com/" target="_blank" class="white">站长之家</a>
-        <span>|</span>
-        <a href="http://www.xker.com/" target="_blank" class="white">新客网</a> 
-        <span>|</span>
-        <a href="http://www.talang100.com/" target="_blank" class="white">踏浪100</a> 
-        <span>|</span>
-        <a href="http://www.maiziedu.com/" target="_blank" class="white">麦子学院</a> 
-        <br>        
-      </div>
-        Powered by <a href="http://www.edusoho.com/" target="_blank">EduSoho v6.17.2</a>
-  ©2014-2016 <a class="mlm" href="http://www.howzhi.com/" target="_blank">好知网</a>               
-  </div>
-</div>
 <!-- Piwik -->
 <noscript>&lt;p&gt;&lt;img src="//piwik.edusoho.cn/piwik.php?idsite=3" style="border:0;" alt="" /&gt;&lt;/p&gt;</noscript>
 <!-- End Piwik Code -->
@@ -384,9 +347,9 @@
           <input id="lesson-title-field" class="form-control" type="text" name="title" value="" data-widget-cid="widget-98" data-explain="">
         </div>
         <div class="col-md-2">
-          <div class="checkbox">
+         <!--  <div class="checkbox">
             <label><input type="checkbox" name="free" value="1"> 免费课时</label>
-          </div>
+          </div> -->
         </div>
       </div>
     <div class="help-block" style="display:none;"></div></div>
@@ -400,9 +363,9 @@
           <input id="lesson-title-field" class="form-control" type="text" name="title" value="" data-widget-cid="widget-98" data-explain="">
         </div>
         <div class="col-md-2">
-          <div class="checkbox">
+          <!-- <div class="checkbox">
             <label><input type="checkbox" name="free" value="1"> 免费课时</label>
-          </div>
+          </div> -->
         </div>
       </div>
     <div class="help-block" style="display:none;"></div></div>
@@ -794,7 +757,8 @@
     </div>
   </div>
  -->
-  <div class="form-group for-video-type for-audio-type" id="lesson-length-form-group">
+ <!-- ---------------------------视频时长--------------------------- -->
+<!--   <div class="form-group for-video-type for-audio-type" id="lesson-length-form-group">
       <div id="shipin03" class="col-md-2 control-label for-video-type"><label>视频时长</label></div>
       <div class="hide"><label for="lesson-length-field">视频时长或</label></div>
       <div class="col-md-2 control-label for-audio-type"><label for="lesson-length-field">音频时长</label></div>
@@ -803,11 +767,11 @@
       <input class="form-control width-input width-input-small" id="lesson-second-field" type="text" name="second" value="" data-widget-cid="widget-101" data-explain="时长必须为整数。">秒
       <div class="help-block">时长必须为整数。</div>
     </div>
-  </div>
+  </div> -->
 
   
-
-  <div class="form-group">
+<!-- ------------------------建议学习时长---------------------- -->
+  <!-- <div class="form-group">
     <div class="col-md-2 control-label"><label>建议学习时长</label></div>
     <div class="col-md-9 controls">
       <input class="form-control width-input width-input-small" id="lesson-suggest-period-field" type="text" name="suggestHours" value="1.0" data-widget-cid="widget-102" data-explain="">小时
@@ -816,7 +780,7 @@
       <span id="texttime" class="for-flash-type for-text-type for-ppt-type for-document-type">（如未设置，则默认学习时长1小时。）</span>
       <div class="help-block"></div>
     </div>
-  </div>
+  </div> -->
 
   <input type="hidden" name="_csrf_token" value="38555264a5afeb76b541fe43d1a271cbd6337c60">
 
@@ -830,38 +794,6 @@
           </div>
 </div>
 </div>
-    <div id="upload-image-modal" class="modal" tabindex="-1" aria-hidden="true" style="display: none;"></div>
-         <ul class="fixed-bar">
-  <li class="hz-app">
-    <a class="active btn btn-primary" target="_blank" href="http://www.edusoho.com/download/mobile?client=android&code=howzhi">
-      APP
-    </a>         
-  </li>
-  <li class="hz-weixin">
-    <a class="fixed-bar-icon" href="javascript:;">
-      <i class="hz-icon icon-erweima "></i>
-    </a> 
-    <div class="weixin">
-    	<p class="text-center mvs t-primary hidden-xs hidden-sm">扫一扫 关注好知微信</p>
-    	<img src="images/wenxin-qrcode.jpg" class="img-responsive" alt="好知网微信">
-    </div>        
-  </li>
-  <li class="hz-feedback">
-    <a class="fixed-bar-icon" href="http://www.howzhi.com/feedback/user/list">
-      <i class="hz-icon icon-question "></i>
-    </a> 
-    <a href="http://www.howzhi.com/feedback/user/list?feedurl=http://www.howzhi.com/ugc/course/14061/manage/lesson" target="_blank" class="js-feedback fixed-bar-text">
-      问题反馈
-    </a>        
-  </li>
-  <li class="go-top" style="display: none;">
-    <a class="fixed-bar-icon" href="javascript:;">
-      <i class="hz-icon icon-keyboardarrowup"></i>
-    </a>
-    <a class="fixed-bar-text" href="javascript:;">
-      回到顶部
-    </a>        
-  </li>
-</ul>    
+  <jsp:include page="footer.jsp"></jsp:include>   
 </body>
 </html>
