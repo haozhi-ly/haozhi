@@ -69,6 +69,7 @@
 	          <button style="color: #15C288; font-size:20px;margin-top:7px; border:none;background:#fff;width:50px;" class="glyphicon glyphicon-search" type="submit"></button>
 	        </div>
 	    </form>
+
     </div>
   </div>
 </header>

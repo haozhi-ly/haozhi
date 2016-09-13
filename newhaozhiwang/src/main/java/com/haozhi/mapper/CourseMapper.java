@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.haozhi.entity.Course;
-import com.haozhi.entity.CourseManage;
 import com.haozhi.entity.StudyCourse;
 
 public interface CourseMapper {
@@ -37,6 +36,8 @@ public interface CourseMapper {
 	
 	List<Course> recommedCourseByCmid(Integer cmid);  //通过cmid来查推荐课程的前三门
 	
+
+	int createcourse(Course course);
 
 }
 

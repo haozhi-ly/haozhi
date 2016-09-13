@@ -22,4 +22,6 @@ public interface CourseTypeService {
 
 	List<CourseType> findAllCourseType();
 
+	CourseType findByctid(CourseType courseType);
+
 }

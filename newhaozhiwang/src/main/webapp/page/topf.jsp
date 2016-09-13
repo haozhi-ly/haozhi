@@ -51,17 +51,18 @@
         </div>
       </nav>
     <div class="pull-right user-nav clearfix">
-         <ul class="nav nav-login">
+                <ul class="nav nav-login">
             <li><a class="color-gray-one" href="page/login.jsp">登录</a></li>
             <li><a href="page/login.jsp">注册</a></li>
-            <li class="hidden-xs hzapp hidden-sm">
-                 <a href="page/manage.jsp">
-	                 <small class="badge"> </small>
-	                 <i class="hz-icon icon-smartphone"></i>好知APP
-                 </a>
-             </li>
-         </ul> 
-         <form class="navbar-form pull-right hz-search hidden-xs" role="search" action="">
+                            <li class="hidden-xs hzapp hidden-sm">
+                  <a href="page/manage.jsp">
+                    <small class="badge"> </small>
+                    <i class="hz-icon icon-smartphone"></i>
+                    好知APP
+                  </a>
+                </li>
+                    </ul> 
+              <form class="navbar-form pull-right hz-search hidden-xs" role="search" action="">
         <div class="form-group">
           <div id="search-left" class="pull-left search-left">
             <div class="search-type pull-left">
