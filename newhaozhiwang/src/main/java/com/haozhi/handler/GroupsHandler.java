@@ -87,7 +87,7 @@ public class GroupsHandler {
 	//判断该用户是否已经加入小组
 	@ResponseBody
 	@RequestMapping("/user")
-	public String check(String groupname,String userid){
+	public UserInfo check(String groupname,String userid){
 		System.out.println("userid==>"+userid);
 		Cgroup groups= groupService.showGroups(groupname);
 		String groupnumber=groups.getGroupnumber();
@@ -96,7 +96,8 @@ public class GroupsHandler {
 		for (int i = 0; i < sourceStrArray.length; i++) {
 		    if(sourceStrArray[i].equals(userid)){
 		    	System.out.println("userid==>"+userid);
-		    	return userid;
+				UserInfo userInfo= userInfoService.getInfoByUserid(Integer.parseInt(userid));
+		    	return userInfo;
 		    }
 		}
 		return null;

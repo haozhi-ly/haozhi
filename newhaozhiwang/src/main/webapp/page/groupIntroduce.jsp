@@ -15,9 +15,7 @@
 	content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <meta name="renderer" content="webkit">
 <meta name="baidu-site-verification" content="XN2OVFQdUg">
-<title>
-${showgroups.groupname}小组 - 好知网
-</title>
+<title>${showgroups.groupname}小组 - 好知网</title>
 <meta name="keywords" content="摄影公社小组 好知网">
 <meta name="description"
 	content="摄影公社（原称爱摄公社），集结好知网喜欢摄影的同学。欢迎大家在小组里发表作品、提问和分享信息。PS：大家传图片记得先处理一下，控制在1M以下哦。本组Q群：113410968本组微信：photo-tips新浪微博：@howzhifoto常见摄影问答：摄影知识之你问我答摄影基础概念：光圈、景深、对焦，连...">
@@ -26,7 +24,9 @@ ${showgroups.groupname}小组 - 好知网
 <meta content="1" name="is-login">
 <meta content="1" name="is-open">
 
-<link href="http://f1.howzhi.com/system/2016/03-31/113613d6a857327741.ico" rel="shortcut icon">
+<link
+	href="http://f1.howzhi.com/system/2016/03-31/113613d6a857327741.ico"
+	rel="shortcut icon">
 
 <link href="css/bootstrap.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/howzhi.css">
@@ -38,21 +38,21 @@ ${showgroups.groupname}小组 - 好知网
 <script type="text/javascript" src="js/groupsIntroduce.js"></script>
 
 <style>
-	.navbar-form{
-		margin-top: 25px;
-	}
+.navbar-form {
+	margin-top: 25px;
+}
 </style>
 <style>
-	.cke {
-		visibility: hidden;
-	}
+.cke {
+	visibility: hidden;
+}
 </style>
 </head>
 
 <body class="group-page">
 
 	<!--下面是头部-->
-	<c:set value="${users}" var="us"/>
+	<c:set value="${users}" var="us" />
 	<c:if test="${empty us}">
 		<jsp:include page="topf.jsp"></jsp:include>
 	</c:if>
@@ -70,8 +70,9 @@ ${showgroups.groupname}小组 - 好知网
 			style="background: url(http://f1.howzhi.com/group-icon/2013/02-17/2114262b3815751219.jpg); background-repeat: no-repeat; background-size: 100% 100%;">
 			<div class="media">
 				<div class="media-left">
-					<a href="page/groupIntroduce.jsp"> <img src="images/111938a63532860008.jpg"
-						alt="" class="avatar-square-md" id="img-groupname">
+					<a href="page/groupIntroduce.jsp"> <img
+						src="images/111938a63532860008.jpg" alt=""
+						class="avatar-square-md" id="img-groupname">
 					</a>
 				</div>
 				<div class="media-body">
@@ -106,7 +107,8 @@ ${showgroups.groupname}小组 - 好知网
 							<li><a href="page/groupMember.jsp?groupname=${showgroups.groupname }&userid=${users.userid }">小组成员</a></li>
 							<li style="left: 0px; width: 104px; overflow: hidden;"
 								class="highlight"></li>
- --%>						</ul>
+ --%>
+						</ul>
 						<!-- 小组简介 -->
 						<div class="alert alert-info clearfix">
 							<p>摄影公社（原称爱摄公社），集结好知网喜欢摄影的同学。欢迎大家在小组里发表作品、提问和分享信息。</p>
@@ -115,12 +117,12 @@ ${showgroups.groupname}小组 - 好知网
 							<p>&nbsp;</p>
 							<hr>
 							<div class="">
-								<div  id="status"></div>
-								<span class="text-muted fsn mrm" id="createtime01"></span>
-								<span class="text-muted fsn mrm" id="leader"> 
-								<a class="link-light link-muted " href="http://www.howzhi.com/u/187/"></a></span>
-								<span id="gexit"></span>
-									<%-- <c:set value="${joingroups}" var="join"/>
+								<div id="status"></div>
+								<span class="text-muted fsn mrm" id="createtime01"></span> <span
+									class="text-muted fsn mrm" id="leader"> <a
+									class="link-light link-muted "
+									href="http://www.howzhi.com/u/187/"></a></span> <span id="gexit"></span>
+								<%-- <c:set value="${joingroups}" var="join"/>
 									<c:if test="${empty join}">
 										
 									</c:if>
@@ -159,7 +161,7 @@ ${showgroups.groupname}小组 - 好知网
 							</ul>
 							<!-- 加入小组后可以发帖子 -->
 							<div class="pull-right" id="write">
-									<!-- <a class="btn btn-primary btn-sm" role="button" href="/group/211/thread/create">发话题</a> -->
+								<!-- <a class="btn btn-primary btn-sm" role="button" href="/group/211/thread/create">发话题</a> -->
 							</div>
 						</div>
 
@@ -268,8 +270,13 @@ ${showgroups.groupname}小组 - 好知网
 					</div>
 				</div>
 			</div>
-
+			
 			<div class="col-md-4 group-side">
+				<div class="panel panel-default" id="mygroup">
+					
+				</div>
+				
+				
 				<!--组内搜索，用来搜索话题-->
 				<form action="/group/2/serach" method="get">
 					<div class="input-group group-search">
@@ -286,11 +293,12 @@ ${showgroups.groupname}小组 - 好知网
 
 				<!--最近加入的成员，按加入时间排序-->
 				<div class="panel panel-default">
+				
 					<div class="panel-heading">最近加入</div>
 					<!--最近加入成员，从数据库获取-->
-					<div class="panel-body" >
-					<ul class="user-avatar-list clearfix" id="addMemberNow">
-					<%-- 	
+					<div class="panel-body">
+						<ul class="user-avatar-list clearfix" id="addMemberNow">
+							<%-- 	
 							<c:forEach items="${groupUser}" var="item">
 								<li><a title="" data-original-title="" class=" js-user-card"
 									href="http://www.howzhi.com/u/2364063/"
@@ -302,7 +310,7 @@ ${showgroups.groupname}小组 - 好知网
 								</li>
 							</c:forEach>
 						 --%>
-						 </ul>
+						</ul>
 					</div>
 				</div>
 
