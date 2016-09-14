@@ -1,3 +1,4 @@
+<%@page import="com.haozhi.entity.Cgroup"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -14,7 +15,9 @@
 	content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <meta name="renderer" content="webkit">
 <meta name="baidu-site-verification" content="XN2OVFQdUg">
-<title>摄影公社小组 - 好知网</title>
+<title>
+${showgroups.groupname}小组 - 好知网
+</title>
 <meta name="keywords" content="摄影公社小组 好知网">
 <meta name="description"
 	content="摄影公社（原称爱摄公社），集结好知网喜欢摄影的同学。欢迎大家在小组里发表作品、提问和分享信息。PS：大家传图片记得先处理一下，控制在1M以下哦。本组Q群：113410968本组微信：photo-tips新浪微博：@howzhifoto常见摄影问答：摄影知识之你问我答摄影基础概念：光圈、景深、对焦，连...">
@@ -33,6 +36,7 @@
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/top.js"></script>
 <script type="text/javascript" src="js/groupsIntroduce.js"></script>
+
 <style>
 	.navbar-form{
 		margin-top: 25px;

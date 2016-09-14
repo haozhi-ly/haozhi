@@ -3,6 +3,10 @@ package com.haozhi.handler;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -73,8 +77,10 @@ public class GroupsHandler {
 	//点击小组名称，跳转到详细页面
 	@ResponseBody
 	@RequestMapping(value="/showsearch")
-	public Cgroup showGroups(String groupname){
+	public Cgroup showGroups(String groupname,HttpServletRequest request){
+		HttpSession session=request.getSession();
 		Cgroup groups= groupService.showGroups(groupname);
+		session.setAttribute("showgroups", groups);
 		return groups;
 	}
 	
@@ -127,6 +133,7 @@ public class GroupsHandler {
 		System.out.println("成员信息为："+user);
 		return user;
 	}
+	
 	//加入小组
 	@RequestMapping(value="/joingroup")
 	public String joinGroups(ModelMap map,String userid,String groupname){
@@ -145,32 +152,33 @@ public class GroupsHandler {
 	}
 	
 	//退出小组
-	@RequestMapping(value="/exitgroup")
-	public String exitGroup(String groupname,String userid){
-		groupname=new UsuallyUtil().decode(groupname);
-		System.out.println("groupname"+groupname);
-		System.out.println("userid"+userid);
-		Cgroup groups= groupService.showGroups(groupname);
-		System.out.println("****"+groups);
-		String groupnumber=groups.getGroupnumber();
-		String[] sourceStrArray = groupnumber.split(",");
-		List<String> userList = new ArrayList<String>();
-		Collections.addAll(userList, sourceStrArray);
-		for(int i=0;i<userList.size();i++){
-			if(userList.get(i).equals(userid)){
-				userList.remove(userList.get(i));
+		@RequestMapping(value="/exitgroup")
+		public String exitGroup(String groupname,String userid){
+			groupname=new UsuallyUtil().decode(groupname);
+			System.out.println("groupname"+groupname);
+			System.out.println("userid"+userid);
+			Cgroup groups= groupService.showGroups(groupname);
+			System.out.println("****"+groups);
+			String groupnumber=groups.getGroupnumber();
+			String[] sourceStrArray = groupnumber.split(",");
+			List<String> userList = new ArrayList<String>();
+			Collections.addAll(userList, sourceStrArray);
+			for(int i=0;i<userList.size();i++){
+				if(userList.get(i).equals(userid)){
+					userList.remove(userList.get(i));
+				}
 			}
-		}
-		groupnumber="";
-		for(int j=0;j<userList.size();j++){
-			if(j==userList.size()-1){
-				groupnumber+=userList.get(j);
-			}else{
-				groupnumber+=userList.get(j)+",";
+			groupnumber="";
+			for(int j=0;j<userList.size();j++){
+				if(j==userList.size()-1){
+					groupnumber+=userList.get(j);
+				}else{
+					groupnumber+=userList.get(j)+",";
+				}
 			}
+			System.out.println("退出小组==>"+groupnumber);
+			groupService.exitGroup(groupnumber,groupname);
+			return "groupIntroduce";
 		}
-		System.out.println("退出小组==>"+groupnumber);
-		groupService.exitGroup(groupnumber,groupname);
-		return "groupIntroduce";
-	}
+
 }

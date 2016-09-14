@@ -4,15 +4,20 @@ $(function(){
 	groupname=decodeURI(groupname);
 	$.post("groups/showsearch",{"_method":"POST","groupname":groupname},function(gdata){
 		var listStr="";
-		listStr='<a class=" js-user-card" href="http://www.howzhi.com/u/187/" data-card-url="/user/187/card/show" data-user-id="187">';
-		listStr='<img class="avatar-sm" src="images/person03.jpg" alt="'+gdata.userinfo.uname+'">';
-		listStr='<span class="daren-icon" title="达人"></span>';
-		listStr='</a>';
-		listStr='<p class="text-center">';
-		listStr='<a class="link-light link-light" href="http://www.howzhi.com/u/187/">'+gdata.userinfo.uname+'</a>';
-		listStr='</p>';
+		listStr+='<div class="grouplist" style="width: 108px;">';
+		listStr+='<a class=" js-user-card" href="http://www.howzhi.com/u/187/" data-card-url="/user/187/card/show" data-user-id="187">';
+		listStr+='<img class="avatar-sm" src="images/person03.jpg" alt="'+gdata.userinfo.uname+'">';
+		listStr+='<span class="daren-icon" title="达人"></span>';
+		listStr+='</a>';
+		listStr+='<p class="text-center">';
+		listStr+='<a class="link-light link-light" href="http://www.howzhi.com/u/187/">'+gdata.userinfo.uname+'</a>';
+		listStr+='</p></div>';
+		$("#getgroupleader").html($(listStr));
+		var ul="";
+		ul+='<li><a href="page/groupIntroduce.jsp?groupname='+gdata.groupname+'&userid='+userid+'">小组首页</a></li>';
+		ul+='<li class="active"><a href="page/groupMember.jsp?groupname='+gdata.groupname+'&userid='+userid+'">小组成员</a></li>';
+		$("#ul01").html($(ul));
 		
-		$("#getgroupleader").html(listStr);
 		
 	},"json");
 	

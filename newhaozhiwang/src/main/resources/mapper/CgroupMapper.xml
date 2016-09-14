@@ -69,7 +69,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select groupnumber from cgroup where groupname=#{groupname}
 	</select>
 	<!-- 加人新成员或者退出小组 -->
-	<update id="updateGroups">
+	<!-- <update id="updateGroups">
+		update cgroup set groupnumber=#{groupnumber} where groupname=#{groupname}
+	</update> -->
+	
+	<update id="updateGroups" parameterType="java.util.Map">
 		update cgroup set groupnumber=#{groupnumber} where groupname=#{groupname}
 	</update>
 	

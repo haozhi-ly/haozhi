@@ -1,4 +1,5 @@
 $(function(){
+	
 	var groupname=window.location.href.split('=')[1].split('&')[0];
 	var userid=window.location.href.split('=')[2];
 	groupname=decodeURI(groupname);
@@ -22,6 +23,7 @@ $(function(){
 			if(data>0){
 				listStr+=gdata.groupname+'<a id="exit-btn" class="btn btn-default btn-sm mlm" href="groups/exitgroup?groupname='+groupname+'&userid='+userid+'">退出小组</a>';
 				$("#gname").html(listStr);
+				$("#gname").attr("data-gid",gdata.gid);
 				var gexit='<span class="text-muted fsn ">你已经是小组成员，<a id="exit-btn" class="text-muted" href="groups/exitgroup?groupname='+groupname+'&userid='+userid+'"> » 退出小组</a></span>';
 				$("#gexit").html(gexit);
 				var write='<a class="btn btn-primary btn-sm" role="button" href="/group/211/thread/create">发话题</a>';
@@ -39,16 +41,18 @@ $(function(){
 
 	$.post("groups/groupMember",{"_method":"POST","groupname":groupname},function(data){
 		var listStr="";
+		
 		if(data){
 			for(var i=0;i<data.length;i++){
-				listStr+='<li><a title="" data-original-title="" class=" js-user-card" href="javaScript:void(0);"';
+				listStr+='<li><a title="" data-original-title="" class=" js-user-card" href="javascript:void(0);"';
 				listStr+='data-card-url="/user/2364063/card/show" data-user-id="2364063">';
 				listStr+='<img class="avatar-sm" src="images/person02.jpg" alt="'+data[i].uname+'"></a>';
 				listStr+='<div class="name">';
-				listStr+='<a class="link-light " href="javaScript:void(0);">'+data[i].uname+'</a>';
+				listStr+='<a class="link-light " href="javascript:void(0);">'+data[i].uname+'</a>';
 				listStr+='</div></li>';
 			}
 			$("#addMemberNow").html(listStr);
 		}
 	},"json");
+	
 });

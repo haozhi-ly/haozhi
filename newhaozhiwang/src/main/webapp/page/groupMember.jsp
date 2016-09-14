@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 
 <html class="">
-
+	
 	<head>
 		<base href="/newhaozhiwang/" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -31,11 +31,12 @@
 		<script type="text/javascript" src="js/top.js"></script>
 		<script type="text/javascript" src="js/groupsIntroduce.js"></script>
 		<script type="text/javascript" src="js/groupsMember.js"></script>
-
+	
 	</head>
 
 	<body class="group-page">
 		<!--下面是头部-->
+		
 		<c:set value="${users}" var="us"/>
 		<c:if test="${empty us}">
 			<jsp:include page="topf.jsp"></jsp:include>
@@ -70,27 +71,27 @@
 
 			<div class="panel panel-default">
 				<div class="panel-body">
-					<ul class="nav nav-tabs">
-						<li>
+					<ul class="nav nav-tabs" id="ul01">
+						<!-- <li>
 							<a href="http://www.howzhi.com/group/211/">小组首页</a>
 						</li>
 						<li class="active">
 							<a href="http://www.howzhi.com/group/member/211">小组成员</a>
 						</li>
-						<li style="left: 104px; width: 104px; overflow: hidden;" class="highlight"></li>
+						<li style="left: 104px; width: 104px; overflow: hidden;" class="highlight"></li> -->
 					</ul>
 					<h4 class="mtl">组长</h4>
-					<div class="clearfix">
-						<div class="grouplist" style="width: 108px;" id="getgroupleader">
-						<!-- 	<a class=" js-user-card" href="http://www.howzhi.com/u/187/" data-card-url="/user/187/card/show" data-user-id="187">
+					<div class="clearfix" id="getgroupleader">
+						<!-- <div class="grouplist" style="width: 108px;" >
+							<a class=" js-user-card" href="http://www.howzhi.com/u/187/" data-card-url="/user/187/card/show" data-user-id="187">
 								<img class="avatar-sm" src="images/person03.jpg" alt="乱流">
 								<span class="daren-icon" title="达人"></span>
 							</a>
 							<p class="text-center">
 								<a class="link-light link-light" href="http://www.howzhi.com/u/187/">乱流</a>
 
-							</p> -->
-						</div>
+							</p></div> -->
+						
 					</div>
 					
 					<form action="/group/member/delete/211" method="post" id="member-form" class="clearfix">
@@ -109,17 +110,7 @@
 							<br>
 						</div>
 						
-						<div class="grouplist" style="width: 108px;">
-							<p>
-								<a class=" js-user-card" href="http://www.howzhi.com/u/2364511/" data-card-url="/user/2364511/card/show" data-user-id="2364511">
-									<img class="avatar-sm" src="images/person02.jpg" alt="静土">
-								</a>
-							</p>
-							<p class="text-center">
-								<a class="link-light link-light" href="">静土</a>
-							</p>
-							<br>
-						</div> -->
+						 -->
 					</form>
 					<nav class="text-center">
 						<ul class="pagination ">
