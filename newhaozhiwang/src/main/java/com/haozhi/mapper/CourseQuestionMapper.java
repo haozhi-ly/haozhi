@@ -15,4 +15,7 @@ public interface CourseQuestionMapper {
 	
 	List<CourseQuestion> getQuestionbycmid(Integer cmid);
 
+
+	List<CourseQuestion> newQuestionTopAtFour(int courseid);
+
 }

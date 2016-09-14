@@ -29,7 +29,7 @@ public class UserInfoServiceImplTest extends UserInfoServiceImpl {
 	
 	@Test
 	public void testRegister() {
-		boolean user=userInfoService.register(new UserInfo(6,"a","a","a","女",null,null,null,1,0,null,null,null));
+		boolean user=userInfoService.register(new UserInfo(6,"a","a","a","女",null,null,null,1,0,null));
 		System.out.println(user);
 		assertEquals(user, true);
 	}

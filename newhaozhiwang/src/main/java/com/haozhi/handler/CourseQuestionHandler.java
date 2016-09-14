@@ -36,12 +36,20 @@ public class CourseQuestionHandler {
 		return courseQuestionService.getAllQuestionbycmid(hashmap);
 	}
 	
-	
+
+	@ResponseBody
+	@RequestMapping("/newQuestionTopAtFour")
+	public List<CourseQuestion> newQuestionTopAtFour(int courseid){
+		
+		return courseQuestionService.newQuestionTopAtFour(courseid);
+
+	}
 	@ResponseBody
 	@RequestMapping("/getQuestionbycmid")
 	public List<CourseQuestion> getQuestionbycmid(int cmid){
 		List<CourseQuestion> courseQuestion = courseQuestionService.getQuestionbycmid(cmid);
 		return courseQuestion;
+
 	}
 }
 

@@ -20,8 +20,9 @@ public class UserInfo implements Serializable {
 	private int status;
 	private int score;
 	private String signDate;// --签到
-	private String temp02; // --备用字段
-	private String temp03;// --备用字段
+	private int studynumber;//学习的所有课程数
+	private int attentionnumber;//关注的人数
+	private int beattentionnumber;//被关注的人数
 	private int code;//从前台拿到的验证码
 	private int sendCode;//从后台发送过去的验证码
 	
@@ -36,7 +37,7 @@ public class UserInfo implements Serializable {
 
 	public UserInfo(int userid, String uname, String email, String upassword,
 			String gender, String photo, String usign, String introdution,
-			int status, int score, String signDate, String temp02, String temp03) {
+			int status, int score, String signDate) {
 		this.userid = userid;
 		this.uname = uname;
 		this.email = email;
@@ -48,8 +49,7 @@ public class UserInfo implements Serializable {
 		this.status = status;
 		this.score = score;
 		this.signDate = signDate;
-		this.temp02 = temp02;
-		this.temp03 = temp03;
+		
 	}
 
 	public int getUserid() {
@@ -140,22 +140,7 @@ public class UserInfo implements Serializable {
 		this.signDate = signDate;
 	}
 
-	public String getTemp02() {
-		return temp02;
-	}
-
-	public void setTemp02(String temp02) {
-		this.temp02 = temp02;
-	}
-
-	public String getTemp03() {
-		return temp03;
-	}
-
-	public void setTemp03(String temp03) {
-		this.temp03 = temp03;
-	}
-
+	
 	public int getCode() {
 		return code;
 	}
@@ -168,14 +153,40 @@ public class UserInfo implements Serializable {
 		this.sendCode = sendCode;
 	}
 
+	public int getStudynumber() {
+		return studynumber;
+	}
+
+	public void setStudynumber(int studynumber) {
+		this.studynumber = studynumber;
+	}
+
+	public int getAttentionnumber() {
+		return attentionnumber;
+	}
+
+	public void setAttentionnumber(int attentionnumber) {
+		this.attentionnumber = attentionnumber;
+	}
+
+	public int getBeattentionnumber() {
+		return beattentionnumber;
+	}
+
+	public void setBeattentionnumber(int beattentionnumber) {
+		this.beattentionnumber = beattentionnumber;
+	}
+
 	@Override
 	public String toString() {
-		return "UserInfo [userid=" + userid + ", uname=" + uname + ", email="
-				+ email + ", upassword=" + upassword + ", gender=" + gender
-				+ ", photo=" + photo + ", usign=" + usign + ", introdution="
-				+ introdution + ", status=" + status + ", score=" + score
-				+ ", signDate=" + signDate + ", temp02=" + temp02 + ", temp03="
-				+ temp03 + "]";
+		return "UserInfo [userid=" + userid + ", uname=" + uname + ", email=" + email + ", upassword=" + upassword
+				+ ", gender=" + gender + ", photo=" + photo + ", usign=" + usign + ", introdution=" + introdution
+				+ ", status=" + status + ", score=" + score + ", signDate=" + signDate + ", studynumber=" + studynumber
+				+ ", attentionnumber=" + attentionnumber + ", beattentionnumber=" + beattentionnumber + ", code=" + code
+				+ ", sendCode=" + sendCode + "]";
 	}
+	
+	
+	
 
 }
