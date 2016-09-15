@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<resultMap type="CourseQuestion" id="CQMap">
 		<id column="cqid" property="cqid" />
-		<result column="answercount" property="answercount" />
+		<result column="answercontent" property="answercontent" />
 		<result column="cqview" property="cqview" />
 		<result column="cqcontent" property="cqcontent" />
 
@@ -58,6 +58,44 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <select id="newQuestionTopAtFour" parameterType="int" resultType="CourseQuestion">
 	select * from (select * from coursequestion cq left join coursemanage cm on cq.cmid=cm.cmid
   where cm.courseid=#{courseid} order by cq.cqtime desc)a where 5>rownum
+</select>
+
+<!-- 根据cqid显示所有的回答 -->
+<resultMap type="CourseQuestion" id="detailQuestionMap">
+	<id column="cqid" property="cqid"/>
+	<result column="cqcontent" property="cqcontent"/>
+	<association property="courseManage" column="cmid" javaType="CourseManage">
+		<id column="cmid" property="cmid"/>
+		<result column="title" property="title"/>
+		<result column="cmcourseid" property="courseid"/>
+		<association property="course" column="cmcourseid" javaType="Course">
+			<id column="courseid" property="courseid"/>
+			<result column="ctitle" property="ctitle"/>
+		</association>
+	</association>
+	<collection property="courseAnswer" column="caid" ofType="CourseAnswer">
+		<id column="caid" property="caid"/>
+		<result column="answercontent" property="answerContent"/>
+		<result column="answertime" property="answertime"/>
+		<association property="userinfo" column="causerid" javaType="UserInfo">
+			<id column="causerid" property="userid"/>
+			<result column="uname" property="uname"/>
+			<result column="photo" property="photo"/>
+		</association> 
+	</collection>
+	</resultMap>
+	
+<select id="detailAnswerbycqid" parameterType="int" resultMap="detailQuestionMap">
+	select cq.cqid cqid,cq.cqcontent cqcontent,cm.title title,
+    cm.cmid cmid,cm.courseid cmcourse,ca.userid causerid,
+    ca.answercontent,ca.answertime,ca.caid,(select uname from userinfo ui where ui.userid=ca.userid)uname,
+    (select ctitle from course ce where ce.courseid=cm.courseid)ctitle,
+     (select photo from userinfo ui where ui.userid=ca.userid)photo
+		from coursequestion cq
+		left outer join courseManage cm on cm.cmid=cq.cmid
+		left outer join userinfo u on u.userid=cq.userid
+    left outer join courseanswer ca on cq.cqid=ca.cqid
+		where cq.cqid=#{cqid} order by cq.cqtime desc
 </select>
 
 

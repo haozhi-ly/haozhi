@@ -40,5 +40,13 @@ public class CourseQuestionServiceImpl implements CourseQuestionService {
 		return courseQuestionMapper.getQuestionbycmid(cmid);
 
 	}
+
+
+
+	@Override
+	public CourseQuestion detailAnswerbycqid(int cqid) {
+		// TODO Auto-generated method stub
+		return courseQuestionMapper.detailAnswerbycqid(cqid);
+	}
 	
 }

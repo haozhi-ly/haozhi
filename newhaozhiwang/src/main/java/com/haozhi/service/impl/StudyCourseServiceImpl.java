@@ -30,4 +30,10 @@ public class StudyCourseServiceImpl implements StudyCourseService {
 
 	}
 
+	@Override
+	public List<StudyCourse> newjoinStudentbycourseid(int courseid) {
+		// TODO Auto-generated method stub
+		return studyCourseMapper.newjoinStudentbycourseid(courseid);
+	}
+
 }

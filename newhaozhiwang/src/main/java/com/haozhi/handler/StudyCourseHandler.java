@@ -60,5 +60,11 @@ public class StudyCourseHandler {
 	}
 
 	
+	@ResponseBody
+	@RequestMapping("/newjoinStudentbycourseid")
+	public List<StudyCourse> newjoinStudentbycourseid(int courseid){
+		List<StudyCourse> list=studyCourseService.newjoinStudentbycourseid(courseid);
+		return list;
+	}
 
 }

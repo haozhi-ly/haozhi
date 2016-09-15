@@ -17,4 +17,7 @@ public interface CourseQuestionService {
 
 	List<CourseQuestion> newQuestionTopAtFour(int courseid);
 
+
+	CourseQuestion detailAnswerbycqid(int cqid);
+
 }

@@ -20,15 +20,28 @@ public class UserInfo implements Serializable {
 	private int status;
 	private int score;
 	private String signDate;// --签到
+	private int teachnumber;
 	private int studynumber;//学习的所有课程数
 	private int attentionnumber;//关注的人数
 	private int beattentionnumber;//被关注的人数
 	private int code;//从前台拿到的验证码
 	private int sendCode;//从后台发送过去的验证码
 	
+	
 
 	public UserInfo() {
 	}
+
+	
+	public int getTeachnumber() {
+		return teachnumber;
+	}
+
+
+	public void setTeachnumber(int teachnumber) {
+		this.teachnumber = teachnumber;
+	}
+
 
 	public UserInfo(String uname, String upassword) {
 		this.uname = uname;
@@ -177,14 +190,17 @@ public class UserInfo implements Serializable {
 		this.beattentionnumber = beattentionnumber;
 	}
 
+
 	@Override
 	public String toString() {
 		return "UserInfo [userid=" + userid + ", uname=" + uname + ", email=" + email + ", upassword=" + upassword
 				+ ", gender=" + gender + ", photo=" + photo + ", usign=" + usign + ", introdution=" + introdution
-				+ ", status=" + status + ", score=" + score + ", signDate=" + signDate + ", studynumber=" + studynumber
-				+ ", attentionnumber=" + attentionnumber + ", beattentionnumber=" + beattentionnumber + ", code=" + code
-				+ ", sendCode=" + sendCode + "]";
+				+ ", status=" + status + ", score=" + score + ", signDate=" + signDate + ", teachnumber=" + teachnumber
+				+ ", studynumber=" + studynumber + ", attentionnumber=" + attentionnumber + ", beattentionnumber="
+				+ beattentionnumber + ", code=" + code + "]";
 	}
+
+	
 	
 	
 	

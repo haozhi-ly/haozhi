@@ -4,4 +4,45 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
 <mapper namespace="com.haozhi.mapper.CourseAnswerMapper">
+
+	<resultMap type="CourseAnswer" id="detailQuestionMap">
+	<id column="caid" property="caid"/>
+	<result column="answercontent" property="answerContent"/>
+	<result column="answertime" property="answertime"/>
+	<association property="userinfo" column="causerid" javaType="UserInfo" select="getUserbyuserid"/>
+	<association property="courseManager" column="cmid" javaType="CourseManage">
+		<id column="cmid" property="cmid"/>
+		<result column="title" property="title"/>
+		<result column="cmcourseid" property="courseid"/>
+		<association property="course" column="cmcourseid" javaType="Course" select="getCoursebycourseid"/>
+		
+	</association>
+	<association property="courseQuestion" column="cqid" javaType="CourseQuestion">
+		<id column="cqid" property="cqid"/>
+		<result column="cqcontent" property="cqcontent"/>
+	</association>
+	</resultMap>
+	
+<select id="detailAnswerbycqid" parameterType="int" resultMap="detailQuestionMap">
+	select ca.caid caid,cq.cqid cqid,ca.userid causerid,cq.cqcontent cqcontent,cm.title title,
+    cm.cmid cmid,cm.courseid cmcourseid,u.uname,
+    ca.answercontent,ca.answertime
+		from coursequestion cq
+		left outer join courseManage cm on cm.cmid=cq.cmid
+		left outer join userinfo u on u.userid=cq.userid
+    left outer join courseanswer ca on cq.cqid=ca.cqid
+		where cq.cqid=#{cqid} order by cq.cqtime desc
+</select>
+<select id="getUserbyuserid" parameterType="int" resultType="UserInfo">
+	select * from userinfo  where userid=#{causerid}
+</select>
+<select id="getCoursebycourseid" parameterType="int" resultType="Course">
+		select * from course  where courseid=#{cmcourseid}
+	
+</select>
+
+<insert id="addAnswer" parameterType="CourseAnswer">
+	insert into courseAnswer values(seq_caid.nextval,#{cqid},#{userid},#{answerContent},to_date(#{answertime},'yyyy-mm-dd hh24:mi:ss'),null,null,null)
+</insert>
+	
 </mapper>

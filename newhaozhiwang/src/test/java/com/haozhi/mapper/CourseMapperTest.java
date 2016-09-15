@@ -37,7 +37,7 @@ public class CourseMapperTest {
 	@Test
 	public void testgetAllCount() {
 		
-		System.out.println(courseMapper.getAllStudents(6).toString());
+		System.out.println(courseMapper.getCourseById(6));
 	}
 
 }

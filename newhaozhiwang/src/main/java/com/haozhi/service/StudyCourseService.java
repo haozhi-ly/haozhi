@@ -14,4 +14,7 @@ public interface StudyCourseService {
 	
 	int countStudyCourseByUseridCmid(Integer userid,Integer cmid); //在添加评论的时候应该先查询用户是否已经学习此课程了
 
+
+	List<StudyCourse> newjoinStudentbycourseid(int courseid);
+
 }

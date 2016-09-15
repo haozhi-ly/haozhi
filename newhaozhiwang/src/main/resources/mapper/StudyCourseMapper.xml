@@ -48,5 +48,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		
 	</select>
 	
+	<resultMap type="StudyCourse" id="newJoinStudentMap">
+		<association property="user" column="userid" javaType="UserInfo">
+			<id column="userid" property="userid"/>
+			<result column="uname" property="uname"/>
+		</association>
+	</resultMap>
+	<select id="newjoinStudentbycourseid" parameterType="int" resultMap="newJoinStudentMap">
+		select a.*,rownum rn from (select st.*,u.uname
+	    		from  studycourse st left join userinfo u on st.userid=u.userid
+          			where st.courseid=#{courseid} order by st.begintime desc)a  
+							where 12>=rownum
+	</select>
+	
 
 </mapper>
