@@ -26,6 +26,7 @@ $(function(){
 		var listStr="";
 		if(data){
 			for(var i=0;i<data.length;i++){
+				console.info(data[i]);
 				listStr+='<div class="grouplist" style="width: 108px;">';
 				listStr+='<p>';
 				listStr+='<a class=" js-user-card" href="http://www.howzhi.com/u/2358985/" data-card-url="/user/2358985/card/show" data-user-id="'+data[i].userid+'">';
