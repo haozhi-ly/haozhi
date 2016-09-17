@@ -29,6 +29,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import sun.misc.BASE64Decoder;
 
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.haozhi.entity.UserInfo;
 import com.haozhi.service.UserInfoService;
 import com.haozhi.util.RandomNumUtil;
@@ -43,27 +44,27 @@ public class UserHandler {
 	@Autowired
 	private UserInfoService userInfoService;
 
-	@ModelAttribute
+	/*@ModelAttribute
 	public void getModel(ModelMap map){
 		map.put("users",new UserInfo());
-	}
+	}*/
 	//不要再用modelAttribute了要存入session直接用Model 
 	//登录
 	@RequestMapping(value="/login",method=RequestMethod.POST)
-	public String login(@ModelAttribute("users")UserInfo userInfo,Model model,ModelMap map){
+	public String login(UserInfo userInfo,Model model,ModelMap map){
 		String name=userInfo.getUname();
 
 		name=new UsuallyUtil().decode(name);
 		if(userInfo!=null && name.contains("@")){
 			userInfo=userInfoService.loginByEamil(userInfo);
 			map.put("users", userInfo);
-			//model.addAttribute("users", userInfo);
+			model.addAttribute("users", userInfo);
 		}else if(userInfo!=null && !name.contains("@")){
 			userInfo.setUname(name);
 			userInfo.toString();
 			userInfo=userInfoService.loginByUname(userInfo);
 			map.put("users", userInfo);
-			//model.addAttribute("users", userInfo);
+			model.addAttribute("users", userInfo);
 		}
 		//登录页面跳转
 		if(userInfo==null){
@@ -77,8 +78,10 @@ public class UserHandler {
 	//注销
 	@ResponseBody
 	@RequestMapping(value="/loginOut")
-	public boolean loginOut(HttpSession session,HttpServletRequest request){
+	public boolean loginOut(HttpSession session,HttpServletRequest request,Model model){
 		//String path=request.getParameter("url").substring(14);
+		System.out.println("我进来了");
+		model.addAttribute("users",null);
 		session.removeAttribute("users");
 		System.out.println(session.getAttribute("users"));
 		//map.put("loginOut", true);
@@ -359,5 +362,12 @@ public class UserHandler {
 		out.print(result);
 		out.flush();
 		out.close();
+	}
+	@ResponseBody
+	@RequestMapping("/getContactMsgbyUserid")
+	public UserInfo getContactMsgbyUserid(int userid){
+		UserInfo userinfo=userInfoService.getContactMsgbyUserid(userid);
+		System.out.println(userinfo+"我进来了");
+		return userinfo;
 	}
 }

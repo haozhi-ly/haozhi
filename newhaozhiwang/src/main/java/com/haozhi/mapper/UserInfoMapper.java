@@ -42,4 +42,6 @@ public interface UserInfoMapper {
 	int updateuserinfo(UserInfo userInfo);
 
 	int deluserinfo(Integer[] intarr);
+	
+	UserInfo getContactMsgbyUserid(int userid);
 }

@@ -1,24 +1,17 @@
 package com.haozhi.handler;
 
 import java.io.PrintWriter;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.haozhi.entity.Admin;
+import com.google.gson.Gson;
 import com.haozhi.entity.StudyCourse;
-import com.haozhi.service.AdminService;
 import com.haozhi.service.StudyCourseService;
 
 
@@ -37,18 +30,47 @@ public class StudyCourseHandler {
 		return studyCourse;
 	}
 	
+
+	@RequestMapping("/persentdynamicStudentsbycourseid")
+	public void persentdynamicStudentsbycourseid(int courseid,HttpServletResponse response){
+		
+		try {
+			response.setCharacterEncoding("utf-8");
+			response.setContentType("charset=utf-8");
+			PrintWriter out=response.getWriter();
+			List<StudyCourse> studysCourse=studyCourseService.persentdynamicStudentsbycourseid(courseid);
+			Gson gson=new Gson();
+			String gsonstr=gson.toJson(studysCourse);
+			out.print(gsonstr);
+			out.flush();
+			out.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+
 	@ResponseBody
 	@RequestMapping("/countStudyCourseByUseridCmid")
 	public int countStudyCourseByUseridCmid(Integer userid,Integer cmid){
 		int count=studyCourseService.countStudyCourseByUseridCmid(userid, cmid);
 		return count;
 	}
+
 	
 	@ResponseBody
 	@RequestMapping("/joinStudyCourse")
 	public int joinStudyCourse(Integer userid,Integer courseid){
 		int result=studyCourseService.joinStudyCourse(userid, courseid);
 		return result;
+	}
+	
+	@RequestMapping("/newjoinStudentbycourseid")
+	public List<StudyCourse> newjoinStudentbycourseid(int courseid){
+		List<StudyCourse> list=studyCourseService.newjoinStudentbycourseid(courseid);
+		return list;
 	}
 
 }

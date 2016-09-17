@@ -19,4 +19,10 @@ public interface CourseQuestionService {
 	int addCourseQuestion(Integer userid,Integer cmid,String cqcontent);
 
 
+
+	List<CourseQuestion> newQuestionTopAtFour(int courseid);
+
+
+	CourseQuestion detailAnswerbycqid(int cqid);
+
 }

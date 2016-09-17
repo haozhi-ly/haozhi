@@ -1084,6 +1084,19 @@ DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 21(Integer), 1(
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: insert into courseAssess values(seq_csid.nextval,?,?,?, sysdate,0,null,null,null) 
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 21(Integer), 1(Integer), 终于可以自己做咖啡了，老师棒棒哒！！(String)
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==    Updates: 1
+<<<<<<< HEAD
+
+>>>>>>> branch 'master' of ssh://git@github.com/haozhi-ly/haozhi
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from (select st.*,u.uname,c.ctitle from studycourse st left join userinfo u on st.userid=u.userid left join course c on st.courseid=c.courseid where exists(select * from studycourse sc where sc.userid=u.userid and sc.courseid=? ) order by st.begintime desc)a where 5>rownum 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 4
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from coursequestion cq left join coursemanage cm on cq.cmid=cm.cmid where cm.courseid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 6(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 2
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from (select st.*,u.uname,c.ctitle from studycourse st left join userinfo u on st.userid=u.userid left join course c on st.courseid=c.courseid where exists(select * from studycourse sc where sc.userid=u.userid and sc.courseid=? ) order by st.begintime desc)a where 5>rownum 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 4
+=======
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select count(*) from studyCourse where userid =? and courseid in (select courseid from courseManage where cmid=?) 
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 2(Integer), 1(Integer)
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
@@ -1189,6 +1202,7 @@ DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 2
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from courseManage where cmid = ? 
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 21(Integer)
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+<<<<<<< HEAD
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from courseManage where cmid = ? 
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 21(Integer)
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
@@ -1426,3 +1440,163 @@ DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 3
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from courseAssess ca join courseManage cm on ca.cmid=cm.cmid where cm.courseid=? 
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 6(Integer)
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 16
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select ca.caid caid,cq.cqid cqid,cq.cqcontent cqcontent,cm.title title, cm.cmid cmid,cm.courseid,u.userid,u.uname,ca.userid causerid, ca.answercontent,ca.answertime from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select ca.caid caid,cq.cqid cqid,cq.cqcontent cqcontent,cm.title title, cm.cmid cmid,cm.courseid,u.userid,u.uname,ca.userid causerid, ca.answercontent,ca.answertime from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select ca.caid caid,cq.cqid cqid,cq.cqcontent cqcontent,cm.title title, cm.cmid cmid,cm.courseid,u.userid,u.uname,ca.userid causerid, ca.answercontent,ca.answertime from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select ca.caid caid,cq.cqid cqid,cq.cqcontent cqcontent,cm.title title, cm.cmid cmid,cm.courseid,u.userid,u.uname,ca.userid causerid, ca.answercontent,ca.answertime from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select ca.caid caid,cq.cqid cqid,cq.cqcontent cqcontent,cm.title title, cm.cmid cmid,cm.courseid,u.uname,ca.userid, ca.answercontent,ca.answertime from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select ca.caid caid,cq.cqid cqid,cq.cqcontent cqcontent,cm.title title, cm.cmid cmid,cm.courseid,u.uname,ca.userid, ca.answercontent,ca.answertime from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select ca.caid caid,cq.cqid cqid,cq.cqcontent cqcontent,cm.title title, cm.cmid cmid,cm.courseid,u.uname,ca.userid, ca.answercontent,ca.answertime from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select ca.caid caid,cq.cqid cqid,cq.cqcontent cqcontent,cm.title title, cm.cmid cmid,cm.courseid,u.uname,ca.userid, ca.answercontent,ca.answertime from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 2
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select ca.caid caid,cq.cqid cqid,cq.cqcontent cqcontent,cm.title title, cm.cmid cmid,cm.courseid,u.uname,ca.userid, ca.answercontent,ca.answertime from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select ca.caid caid,cq.cqid cqid,cq.cqcontent cqcontent,cm.ctitle ctitle, cm.cmid cmid,cm.courseid,u.uname,ca.userid, ca.answercontent,ca.answertime from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select ca.caid caid,cq.cqid cqid,cq.cqcontent cqcontent,cm.ctitle ctitle, cm.cmid cmid,cm.courseid,u.uname,ca.userid, ca.answercontent,ca.answertime from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select ca.caid caid,cq.cqid cqid,cq.cqcontent cqcontent,cm.title title, cm.cmid cmid,cm.courseid,u.uname,ca.userid, ca.answercontent,ca.answertime from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select ca.caid caid,cq.cqid cqid,cq.cqcontent cqcontent,cm.title title, cm.cmid cmid,cm.courseid,u.uname,ca.userid, ca.answercontent,ca.answertime from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from course where courseid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select ca.caid caid,cq.cqid cqid,cq.cqcontent cqcontent,cm.title title, cm.cmid cmid,cm.courseid,u.uname,ca.userid, ca.answercontent,ca.answertime from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from course where courseid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 6(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select ca.caid caid,cq.cqid cqid,cq.cqcontent cqcontent,cm.title title, cm.cmid cmid,cm.courseid,u.uname,ca.userid, ca.answercontent,ca.answertime from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from course where courseid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 6(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select ca.caid caid,cq.cqid cqid,cq.cqcontent cqcontent,cm.title title, cm.cmid cmid,cm.courseid cmcourseid,u.uname,ca.userid, ca.answercontent,ca.answertime from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from course where courseid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 6(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select ca.caid caid,cq.cqid cqid,cq.cqcontent cqcontent,cm.title title, cm.cmid cmid,cm.courseid cmcourseid,u.uname,ca.userid, ca.answercontent,ca.answertime from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select ca.caid caid,cq.cqid cqid,cq.cqcontent cqcontent,cm.title title, cm.cmid cmid,cm.courseid cmcourseid,u.uname,ca.userid, ca.answercontent,ca.answertime from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select ca.caid caid,cq.cqid cqid,cq.cqcontent cqcontent,cm.title title, cm.cmid cmid,cm.courseid cmcourseid,u.uname,ca.userid, ca.answercontent,ca.answertime from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 2
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select ca.caid caid,cq.cqid cqid,cq.cqcontent cqcontent,cm.title title, cm.cmid cmid,cm.courseid cmcourseid,u.uname,ca.userid, ca.answercontent,ca.answertime from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from course where courseid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 6(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 2
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select ca.caid caid,cq.cqid cqid,cq.cqcontent cqcontent,cm.title title, cm.cmid cmid,cm.courseid cmcourseid,u.uname,ca.userid, ca.answercontent,ca.answertime from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from course where courseid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 6(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 3(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 2
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select ca.caid caid,cq.cqid cqid,cq.cqcontent cqcontent,cm.title title, cm.cmid cmid,cm.courseid cmcourseid,u.uname,ca.userid causerid, ca.answercontent,ca.answertime from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from course where courseid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 6(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 3(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 2
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select ca.caid caid,cq.cqid cqid,cq.cqcontent cqcontent,cm.title title, cm.cmid cmid,cm.courseid cmcourseid,u.uname,ca.userid causerid, ca.answercontent,ca.answertime from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from course where courseid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 6(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 2
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select ca.caid caid,cq.cqid cqid,ca.userid causerid,cq.cqcontent cqcontent,cm.title title, cm.cmid cmid,cm.courseid cmcourseid,u.uname, ca.answercontent,ca.answertime from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from course where courseid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 6(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 2
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select ca.caid caid,cq.cqid cqid,ca.userid causerid,cq.cqcontent cqcontent,cm.title title, cm.cmid cmid,cm.courseid cmcourseid,u.uname, ca.answercontent,ca.answertime from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from course where courseid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 6(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 3(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 2
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select cq.cqid cqid,cq.cqcontent cqcontent,cm.title title, cm.cmid cmid,cm.courseid cmcourse,u.userid,u.uname,ca.userid causerid, ca.answercontent,ca.answertime,ca.caid,(select uname from userinfo ui where ui.userid=ca.userid)uname, (select ctitle from course ce where ce.courseid=cm.courseid)ctitle from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select cq.cqid cqid,cq.cqcontent cqcontent,cm.title title, cm.cmid cmid,cm.courseid cmcourse,u.userid,u.uname,ca.userid causerid, ca.answercontent,ca.answertime,ca.caid,(select uname from userinfo ui where ui.userid=ca.userid)uname, (select ctitle from course ce where ce.courseid=cm.courseid)ctitle from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from coursequestion cq left join coursemanage cm on cq.cmid=cm.cmid where cm.courseid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 6(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 3
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select cq.cqid cqid,cq.cqcontent cqcontent,cm.title title, cm.cmid cmid,cm.courseid cmcourse,u.userid,u.uname,ca.userid causerid, ca.answercontent,ca.answertime,ca.caid,(select uname from userinfo ui where ui.userid=ca.userid)uname, (select ctitle from course ce where ce.courseid=cm.courseid)ctitle from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select * from coursequestion cq left join coursemanage cm on cq.cmid=cm.cmid where cm.courseid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 6(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 3
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select cq.cqid cqid,cq.cqcontent cqcontent,cm.title title, cm.cmid cmid,cm.courseid cmcourse,u.userid,u.uname,ca.userid causerid, ca.answercontent,ca.answertime,ca.caid,(select uname from userinfo ui where ui.userid=ca.userid)uname, (select ctitle from course ce where ce.courseid=cm.courseid)ctitle from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select cq.cqid cqid,cq.cqcontent cqcontent,cm.title title, cm.cmid cmid,cm.courseid cmcourse,u.userid,u.uname,ca.userid causerid, ca.answercontent,ca.answertime,ca.caid,(select uname from userinfo ui where ui.userid=ca.userid)uname, (select ctitle from course ce where ce.courseid=cm.courseid)ctitle from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select cq.cqid cqid,cq.cqcontent cqcontent,cm.title title, cm.cmid cmid,cm.courseid cmcourse,u.userid,u.uname,ca.userid causerid, ca.answercontent,ca.answertime,ca.caid,(select uname from userinfo ui where ui.userid=ca.userid)uname, (select ctitle from course ce where ce.courseid=cm.courseid)ctitle from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select cq.cqid cqid,cq.cqcontent cqcontent,cm.title title, cm.cmid cmid,cm.courseid cmcourse,u.userid,u.uname,ca.userid causerid, ca.answercontent,ca.answertime,ca.caid,(select uname from userinfo ui where ui.userid=ca.userid)uname, (select ctitle from course ce where ce.courseid=cm.courseid)ctitle from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select cq.cqid cqid,cq.cqcontent cqcontent,cm.title title, cm.cmid cmid,cm.courseid cmcourse,u.userid,u.uname,ca.userid causerid, ca.answercontent,ca.answertime,ca.caid,(select uname from userinfo ui where ui.userid=ca.userid)uname, (select ctitle from course ce where ce.courseid=cm.courseid)ctitle from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 2
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select cq.cqid cqid,cq.cqcontent cqcontent,cm.title title, cm.cmid cmid,cm.courseid cmcourse,u.userid,u.uname,ca.userid causerid, ca.answercontent,ca.answertime,ca.caid,(select uname from userinfo ui where ui.userid=ca.userid)uname, (select ctitle from course ce where ce.courseid=cm.courseid)ctitle from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 2
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select cq.cqid cqid,cq.cqcontent cqcontent,cm.title title, cm.cmid cmid,cm.courseid cmcourse,u.userid,u.uname,ca.userid causerid, ca.answercontent,ca.answertime,ca.caid,(select uname from userinfo ui where ui.userid=ca.userid)uname, (select ctitle from course ce where ce.courseid=cm.courseid)ctitle from coursequestion cq left outer join courseManage cm on cm.cmid=cq.cmid left outer join userinfo u on u.userid=cq.userid left outer join courseanswer ca on cq.cqid=ca.cqid where cq.cqid=? order by cq.cqtime desc 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 21(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg, typename,(select count(*) from courseManage where courseid=s.courseid) courseCount,( select count(courseid) from studyCourse where courseid=s.courseid ) userCount, (select count(*) from courseAssess where cmid in (select cmid from courseManage where courseid=s.courseid) ) assessCount,u.userid uid,u.uname uname,u.photo photo,u.usign usign, (select count(*) from attention a where a.attention=u.userid group by a.userid) beattentionnumber, (select count(*) from course co where co.userid=u.userid group by u.userid) teachnumber from course s,courseType t,userinfo u where s.ctid=t.ctid and u.userid=s.userid and s.courseid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 6(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg, typename,(select count(*) from courseManage where courseid=s.courseid) courseCount,( select count(courseid) from studyCourse where courseid=s.courseid ) userCount, (select count(*) from courseAssess where cmid in (select cmid from courseManage where courseid=s.courseid) ) assessCount,u.userid usid,u.uname uname,u.photo photo,u.usign usign, (select count(*) from attention a where a.attention=u.userid group by a.userid) beattentionnumber, (select count(*) from course co where co.userid=u.userid group by u.userid) teachnumber from course s,courseType t,userinfo u where s.ctid=t.ctid and u.userid=s.userid and s.courseid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 6(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg, typename,(select count(*) from courseManage where courseid=s.courseid) courseCount,( select count(courseid) from studyCourse where courseid=s.courseid ) userCount, (select count(*) from courseAssess where cmid in (select cmid from courseManage where courseid=s.courseid) ) assessCount from course s,courseType t where s.ctid=t.ctid and s.courseid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 6(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 3(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg, typename,(select count(*) from courseManage where courseid=s.courseid) courseCount,( select count(courseid) from studyCourse where courseid=s.courseid ) userCount, (select count(*) from attention a where a.attention=s.userid group by a.userid) beattentionnumber, (select count(*) from course co where co.userid=s.userid group by u.userid) teachnumber, (select count(*) from studycourse st where st.userid=s.userid group by st.userid)studynumber, (select count(*) from attention a where a.userid=s.userid group by a.userid) attentionnumber, (select count(*) from courseAssess where cmid in (select cmid from courseManage where courseid=s.courseid) ) assessCount from course s,courseType t where s.ctid=t.ctid and s.courseid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 6(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg, typename,(select count(*) from courseManage where courseid=s.courseid) courseCount,( select count(courseid) from studyCourse where courseid=s.courseid ) userCount, (select count(*) from attention a where a.attention=s.userid group by a.userid) beattentionnumber, (select count(*) from course co where co.userid=s.userid group by s.userid) teachnumber, (select count(*) from studycourse st where st.userid=s.userid group by st.userid)studynumber, (select count(*) from attention a where a.userid=s.userid group by a.userid) attentionnumber, (select count(*) from courseAssess where cmid in (select cmid from courseManage where courseid=s.courseid) ) assessCount from course s,courseType t where s.ctid=t.ctid and s.courseid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 6(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 3(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1

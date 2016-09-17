@@ -8,8 +8,15 @@ import com.haozhi.entity.StudyCourse;
 
 public interface StudyCourseService {
 	List<StudyCourse> getStudyCourseByCmid(Integer cmid);  //通过cmid查学院学习课程的时间 按时间递减排序 
+
+
+	List<StudyCourse> persentdynamicStudentsbycourseid(int courseid);
+
 	
 	int countStudyCourseByUseridCmid(Integer userid,Integer cmid); //在添加评论的时候应该先查询用户是否已经学习此课程了
 
 	int joinStudyCourse(Integer userid,Integer courseid);
+
+	List<StudyCourse> newjoinStudentbycourseid(int courseid);
+
 }

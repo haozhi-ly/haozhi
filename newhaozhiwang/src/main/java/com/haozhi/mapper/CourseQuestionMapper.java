@@ -18,4 +18,8 @@ public interface CourseQuestionMapper {
 	
 	int addCourseQuestion(@Param("userid")Integer userid,@Param("cmid")Integer cmid,@Param("cqcontent")String cqcontent);
 
+
+	List<CourseQuestion> newQuestionTopAtFour(int courseid);
+	CourseQuestion detailAnswerbycqid(int cqid);
+
 }

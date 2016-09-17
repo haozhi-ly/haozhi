@@ -14,6 +14,10 @@ import java.util.Map;
 
 
 
+
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +30,8 @@ public class CgroupServiceImpl implements CgroupService{
 	
 	@Autowired
 	private CgroupMapper groupMapper;
+	@Autowired
+	private SqlSessionFactory sqlSessionFactory;
 	@Override
 	public List<Cgroup> getHostGroups() {
 		List<Cgroup> groups=groupMapper.getHostGroups();
@@ -86,6 +92,9 @@ public class CgroupServiceImpl implements CgroupService{
 	//退出小组
 	@Override
 	public boolean exitGroup(String groupnumber,String groupname) {
+		SqlSession session=sqlSessionFactory.openSession();
+		session.clearCache();
+		System.out.println(" "+groupnumber);
 		if(groupMapper.updateGroups(groupnumber,groupname)>0){
 			return true;
 		}

@@ -28,6 +28,10 @@ public class Course implements Serializable{
 	private int userCount; //课程的用户人数
 	private int assessCount; //评价人数
 	private String typename; //课程类型名
+	private int teachnumber;
+	private int studynumber;//学习的所有课程数
+	private int attentionnumber;//关注的人数
+	private int beattentionnumber;//被关注的人数
 	private UserInfo student;//学习本课程的学生
 	public Course() {
 	}
@@ -241,17 +245,69 @@ public class Course implements Serializable{
 		this.student = student;
 	}
 
+	
 
+
+	public int getTeachnumber() {
+		return teachnumber;
+	}
+
+
+
+	public void setTeachnumber(int teachnumber) {
+		this.teachnumber = teachnumber;
+	}
+
+
+
+	public int getStudynumber() {
+		return studynumber;
+	}
+
+
+
+	public void setStudynumber(int studynumber) {
+		this.studynumber = studynumber;
+	}
+
+
+
+	public int getAttentionnumber() {
+		return attentionnumber;
+	}
+
+
+
+	public void setAttentionnumber(int attentionnumber) {
+		this.attentionnumber = attentionnumber;
+	}
+
+
+
+	public int getBeattentionnumber() {
+		return beattentionnumber;
+	}
+
+
+
+	public void setBeattentionnumber(int beattentionnumber) {
+		this.beattentionnumber = beattentionnumber;
+	}
 
 	@Override
 	public String toString() {
-		return "\nCourse [courseid=" + courseid + ", ctitle=" + ctitle + ", cintrodution=" + cintrodution + ", ctid="
+		return "Course [courseid=" + courseid + ", ctitle=" + ctitle + ", cintrodution=" + cintrodution + ", ctid="
 				+ ctid + ", courseType=" + courseType + ", courseting=" + courseting + ", coursephoto=" + coursephoto
 				+ ", userId=" + userId + ", cview=" + cview + ", createTime=" + createTime + ", memberCount="
 				+ memberCount + ", assessAvg=" + assessAvg + ", user=" + user + ", courseCount=" + courseCount
-				+ ", userCount=" + userCount + ", assessCount=" + assessCount + ", typename=" + typename + ", student="
-				+ student + "]";
+				+ ", userCount=" + userCount + ", assessCount=" + assessCount + ", typename=" + typename
+				+ ", teachnumber=" + teachnumber + ", studynumber=" + studynumber + ", attentionnumber="
+				+ attentionnumber + ", beattentionnumber=" + beattentionnumber + ", student=" + student + "]";
 	}
+
+
+
+	
 
 
 

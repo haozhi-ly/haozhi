@@ -20,6 +20,9 @@ public class CourseManage {
 	private int fansCount;// --备用字段
 	private UserInfo user;
 
+	
+	
+	
 	public CourseManage() {
 	}
 
