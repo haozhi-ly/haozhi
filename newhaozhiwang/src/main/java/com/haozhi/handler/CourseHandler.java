@@ -41,7 +41,6 @@ import sun.misc.BASE64Decoder;
 @SessionAttributes(value={"courses","hostcourse"})
 public class CourseHandler {
 	
-	
 	@Autowired
 	private CourseService courseService;
 	
@@ -54,6 +53,22 @@ public class CourseHandler {
 		map.put("hostcourse", new ArrayList<Course>());
 	}
 	
+	
+	
+	/**
+	 * 查所有的课程总数
+	 * @param map
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value="/countCourseByCtid",method=RequestMethod.GET)
+	public int countCourseByCtid(Integer ctid){
+		LogManager.getLogger().debug("countCourseByCtid 到达...");
+		int count = courseService.countCourseByCtid(ctid);
+		return count;
+	}
+	
+	
 	/**
 	 * 查所有的课程 以及
 	 * @param map
@@ -61,9 +76,12 @@ public class CourseHandler {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/getAll",method=RequestMethod.POST)
-	public List<Course> getAllCourse(ModelMap map){
+	public List<Course> getAllCourse(String p,ModelMap map){
+		System.out.println("p为:"+p);
 		LogManager.getLogger().debug("getAllCourse 到达...");
-		List<Course> courses = courseService.getAllCourse();
+		int  pagesize =18;
+		int pagenumber=Integer.parseInt(p);
+		List<Course> courses = courseService.getAllCourse( pagesize, pagenumber);
 		map.put("courses", courses);
 		return courses;
 	}
@@ -89,14 +107,15 @@ public class CourseHandler {
 	 * @param out
 	 */
 	@ResponseBody
-	@RequestMapping(value="/getCourseByCtid/{id}",method=RequestMethod.POST)
-	public List<Course> getCourseByCtid(@PathVariable("id")Integer id,ModelMap map){
-		LogManager.getLogger().debug("getCourseByCtid 到达..."+id);
+	@RequestMapping(value="/getCourseByCtid",method=RequestMethod.POST)
+	public List<Course> getCourseByCtid(String p,Integer ctid){
+		LogManager.getLogger().debug("getCourseByCtid 到达..."+ctid);
 		List<Course> courses =null;
-		if(id!=0){
-			 courses = courseService.getCourseByCtid(id);
+		int  pagesize =18;int pagenumber=Integer.parseInt(p);
+		if(ctid!=0){			
+			 courses = courseService.getCourseByCtid(ctid, pagesize, pagenumber);
 		}else{
-			courses = courseService.getAllCourse();
+			courses = courseService.getAllCourse(pagesize, pagenumber);
 		}
 		return courses;
 	}
@@ -128,22 +147,20 @@ public class CourseHandler {
 	 * @return
 	 */
 	@ResponseBody
-	@RequestMapping(value="/selectCourseBy/{id}",method=RequestMethod.POST)
-	public List<Course> selectCourseBy(Integer tid,@PathVariable("id")String iid,Integer id,ModelMap map){
+	@RequestMapping(value="/selectCourseBy",method=RequestMethod.POST)
+	public List<Course> selectCourseBy(String p1,Integer ctid,Integer id){
 		LogManager.getLogger().debug("selectCourseBy 到达...");
 		List<Course> courses;
-		String ttid= String.valueOf(iid).substring(0,1);
-		iid = String.valueOf(iid).substring(1,2);
-		tid = Integer.parseInt(ttid); id = Integer.parseInt(iid);
+		p1="1";
+		int  pagesize =18;int pagenumber=Integer.parseInt(p1);
 		if(id==0){
-			courses =  courseService.getAllCourse(); //为0代表为综合排序
+			courses =  courseService.getAllCourse(pagesize,pagenumber); //为0代表为综合排序
 		}else if(id==1){
-			courses = courseService.getCourseDescTime(tid);  //为1代表为按时间排序
+			courses = courseService.getCourseDescTime(ctid,pagesize,pagenumber);  //为1代表为按时间排序
 		}else{
-			courses = courseService.getHostByCtid(tid);  //为2代表为按热门排序
+			courses = courseService.getHostCourseByPage(ctid, pagesize, pagenumber);  //为2代表为按热门排序
 		}
-		System.out.println( tid+"呵呵哒"+id);
-		map.put("courses", courses);		
+		System.out.println( ctid+"呵呵哒"+id);
 		return courses;
 	}
 	

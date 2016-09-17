@@ -103,5 +103,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into courseAssess values(seq_csid.nextval,#{userid},#{cmid},#{content},
 		sysdate,0,null,null,null)
 	</insert>
+	
+	<delete id="delcourseAssess">
+		delete from courseAssess where csid=#{csid}
+	</delete>
+	
 
 </mapper>

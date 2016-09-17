@@ -10,11 +10,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
 <title>人像摄影高级教程 - 好知网-重拾学习乐趣</title>
 
-<link
-	href="http://f1.howzh
-	
-	i.com/system/2016/03-31/113613d6a857327741.ico"
-	rel="shortcut icon">
+<link href="http://f1.howzhi.com/system/2016/03-31/113613d6a857327741.ico" rel="shortcut icon">
 
 <!--		<link rel="stylesheet" media="screen" href="css/common.css">
 		<link rel="stylesheet" media="screen" href="css/font-awesome.min.css">
@@ -72,7 +68,11 @@
 	width: 300px;
 }
 </style>
-
+<script type="text/javascript">
+	var flag = "${(empty users)? false : true}";
+	var uname = '${users.uname}';
+	var userid = '${users.userid}';
+</script>
 </head>
 
 <body class="course-dashboard-page">
@@ -158,7 +158,7 @@
 							<p id="c3"></p></li>
 						<li class="join"><a class="btn btn-primary"
 							data-toggle="modal" href="javascript:void(0);"
-							data-url="/course/9573/buy?targetType=course" onclick="join()">加入课程</a>
+							data-url="/course/9573/buy?targetType=course" id="joinCourse">加入课程</a>
 						</li>
 
 					</ul>
@@ -501,7 +501,7 @@
 												href="http://www.howzhi.com/u/1304328/"
 												data-card-url="/user/1304328/card/show"
 												data-user-id="1304328"> <img class="avatar-ss "
-												src="images/165229dcc0b7462331.jpg" 　alt="维纳斯学院">
+												src="images/165229dcc0b7462331.jpg" alt="维纳斯学院">
 												维纳斯学院
 											</a>
 
@@ -525,7 +525,7 @@
 						<a class=" js-user-card" href="http://www.howzhi.com/u/1687444/"
 							data-card-url="/user/1687444/card/show" data-user-id="1687444">
 							<img class=" avatar-sm " src="images/125522a1b6f0301474.jpg"
-							　alt="${course.user.uname}">
+							　alt="">
 						</a>
 
 					</div>

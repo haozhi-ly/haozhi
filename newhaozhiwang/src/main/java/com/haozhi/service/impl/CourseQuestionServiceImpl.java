@@ -35,5 +35,12 @@ public class CourseQuestionServiceImpl implements CourseQuestionService {
 	public List<CourseQuestion> getQuestionbycmid(Integer cmid) {
 		return courseQuestionMapper.getQuestionbycmid(cmid);
 	}
+
+
+
+	@Override
+	public int addCourseQuestion(Integer userid, Integer cmid, String cqcontent) {
+		return courseQuestionMapper.addCourseQuestion(userid, cmid, cqcontent);
+	}
 	
 }

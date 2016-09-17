@@ -8,7 +8,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<resultMap type="StudyCourse" id="StudyCourseMap">
 		<id column="courseid" property="courseid"/>
 		<id column="cmid" property="cmid"/>
-		<collection property="user" column="courseid" ofType="UserInfo" select="getUserByCmid" />
+		<id column="userid" property="userid"/>
+		<collection property="user" column="userid" ofType="UserInfo" select="getUserByCmid" />
 	</resultMap>
 	<select id="getStudyCourseByCmid" resultMap="StudyCourseMap" >
 		 select s.*,m.memberCount from (select count(userid) memberCount from studyCourse  where courseid in
@@ -17,14 +18,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  where 10>rownum  order by begintime desc 
 	</select>	
 	<select id="getUserByCmid" resultType="UserInfo" parameterType="int">
-		select * from userinfo where userid in (select userid from course where courseid=#{coueseid})
+		select * from userinfo where userid=#{userid} 
 	</select>
 	
 	
 	<select id="countStudyCourseByUseridCmid" resultType="int">
 		select  count(*) from studyCourse where userid =#{userid} and courseid in 
-		(select courseid from courseManage where cmid=#{cmid})
-		
+		(select courseid from courseManage where cmid=#{cmid})	
 	</select>
+	
+	<insert id="joinStudyCourse">
+		insert into studyCourse values(seq_scid.nextval,#{userid},#{courseid},sysdate,0,null,null,null,null)
+	</insert>
+	
 	
 </mapper>

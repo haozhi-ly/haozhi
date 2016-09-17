@@ -36,6 +36,15 @@
 	box-shadow: inset 0 0 10px silver;
 	padding: 1em;
 }
+#editor2 {
+	resize: vertical;
+	overflow: auto;
+	border: 1px solid silver;
+	border-radius: 5px;
+	min-height: 200px;
+	box-shadow: inset 0 0 10px silver;
+	padding: 1em;
+}
 
 #editparent .btn {
 	width: 40px;
@@ -60,7 +69,16 @@
 	var userid = '${users.userid}';
 
 	$(function() {
-
+		$('.con').bind("click",function(){
+			alert("difahwihg");
+			var uname=this.firstChild.firstChild.firstChild.text();
+			alert(uname);
+			$('#Smohan_text').val();
+		});
+		
+		
+	
+		
 	});
 </script>
 </head>
@@ -78,7 +96,7 @@
 		data-hzsource="UGC" data-lesson-type="video" style="height: 563px;"
 		data-widget-cid="widget-7">
 		<div class="dashboard-content">
-			<div class="dashboard-body">
+			<div class="dashboard-body" id="dashboard-body">
 				<div class="hz-noflash" style="display: none;">
 					<span>您的浏览器Flash插件被禁用，或没有安装，<a class="active"
 						href="https://get.adobe.com/cn/flashplayer/" target="_blank">点击下载</a></span>
@@ -291,10 +309,11 @@
 						action="" novalidate="novalidate" data-widget-cid="widget-4">
 						<div class="form-group">
 							<div class="controls">
-								<textarea id="question_title"
+								<!-- textarea id="question_title"
 									class="form-control question_title"
 									data-url="/sensitive/check/course-question" placeholder="问题标题"
-									name="title" data-widget-cid="widget-5" data-explain=""></textarea>
+									name="title" data-widget-cid="widget-5" data-explain=""></textarea> -->
+								<div style="margin-top:-20px;"><h4>问题内容</h4></div>
 								<div class="help-block" style="display: none;"></div>
 							</div>
 						</div>
@@ -321,7 +340,7 @@
 												</div>
 
 											</div>
-											<div id='editor' class='span9'
+											<div id='editor2' class='span9'
 												style='width: 250px; height: 250px; color: #000; font-size: 13px; margin-left: 20px;'
 												contenteditable></div>
 										</div>
@@ -518,9 +537,9 @@
 							data-url="/user/8441/follow" id="attion"> <i
 							class="fa fa-plus"></i> 关注TA
 						</a> <a class="act first unfollow-btn" href="javascript:;"
-							data-url="/user/8441/unfollow" style="display: none"> <i
-							class="fa fa-check"></i> 已关注
-						</a> <a class="act" href="javaScript:void(0);" data-toggle="modal"
+							data-url="/user/8441/unfollow" style="display: none"
+							 id="attion2"> <i class="fa fa-check" ></i> 已关注
+						</a> <a id="mes" class="act" href="javaScript:void(0);" data-toggle="modal"
 							data-target="#modal" data-url="/message/create/8441"> <i
 							class="fa fa-envelope"></i> 私信
 						</a>
@@ -568,7 +587,7 @@
 
 						<form data-widget-cid="widget-5" novalidate="novalidate"
 							id="login-ajax-form" class="form-vertical form-vertical-small"
-							method="post" action="/login_check">
+							method="post" action="">
 
 							<div class="alert alert-danger" style="display: none;"></div>
 
@@ -579,7 +598,7 @@
 									</label> <input data-explain="" data-widget-cid="widget-6"
 										class="form-control" id="ajax-username" name="_username"
 										placeholder="邮箱/手机/昵称" data-display="请输入邮箱/手机/昵称" type="text">
-									<div class="help-block" style="display: none;"></div>
+									<div class="help-block" style="display: none; color: red;width:200px;margin-left:110px;">请输入用户名</div>
 								</div>
 							</div>
 
@@ -589,18 +608,18 @@
 									</label> <input data-explain="" data-widget-cid="widget-7"
 										class="form-control" id="ajax-password" name="_password"
 										placeholder="密码" data-display="密码" type="password">
-									<div class="help-block" style="display: none;"></div>
+									<div class="help-block" style="display: none; color: red;margin-left:110px;">请输入密码</div>
 								</div>
 							</div>
 							<div class="form-group" id="log">
 								<div class="controls">
 									<span class="checkbox mtm "> <a
 										class="pull-right active"
-										href="http://www.howzhi.com/password/reset">忘记密码</a>
+										href="">忘记密码</a>
 									</span>
 								</div>
-								<input class="login-btn btn btn-primary" value="登录"
-									type="submit">
+								<input class="login-btn btn btn-primary" id="login" value="登录"
+									type="button">
 
 
 							</div>
@@ -632,7 +651,6 @@
 				</div>
 				<div class="modal-body">
 					<div class="login-box reset">
-
 						<form data-widget-cid="widget-5" novalidate="novalidate"
 							id="login-ajax-form" class="form-vertical form-vertical-small"
 							method="post">
@@ -641,6 +659,7 @@
 								<div class="col-sm-3 control-label"
 									style="margin-top: 5px; padding-left: 40px;">课程名称:</div>
 								<div class="col-sm-9 controls">
+									<span id="joincourseid" style="display:none;"></span>
 									<span class="control-text text-muted" id="currentCourseName">《【已结束】室外人像用光指南》</span>
 									<input type="hidden" value="" name="lessonId">
 								</div>
@@ -659,11 +678,48 @@
 				<div class="modal-footer">
 					<button id="join-course-btn" class="btn btn-primary"
 						data-target="#course-buy-form" data-toggle="form-submit"
-						type="submit" data-submiting-text="正在加入..."
+						type="button" data-submiting-text="正在加入..."
 						data-loading-text="正在加入...">加入学习</button>
 				</div>
 			</div>
 		</div>
+	</div>
+	
+	<div id="message" class="modal in" style="display: none; position: absolute; z-index: 20000;">
+	    <div class="modal-dialog">
+		<div class="modal-content">
+		<div class="modal-header">
+		<button class="close" id="close3" aria-hidden="true" data-dismiss="modal" type="button">×</button>
+		<h4 class="modal-title">发送私信</h4>
+		</div>
+		<div class="modal-body">
+		<form id="message-create-form" class="form-horizontal" action="" method="post" novalidate="novalidate" data-widget-cid="widget-12">
+		<div class="form-group">
+		<div class="col-md-2 control-label">
+		<label class="required" for="message_receiver">收件人</label>
+		</div>
+		<div class="col-md-8 controls">
+		<input id="message_receiver" class="form-control" type="text" value="" data-url="/message/check/receiver" rows="1" required="required" name="message[receiver]" data-widget-cid="widget-13" data-explain="">
+		<div class="help-block" style="display:none;"></div>
+		</div>
+		</div>
+		<div class="form-group">
+		<div class="col-md-2 control-label">
+		<label class="required" for="message_content">内容</label>
+		</div>
+		<div class="col-md-8 controls">
+		<textarea id="messageContent" class="form-control" rows="5" required="required" name="message[content]" data-widget-cid="widget-14" data-explain=""></textarea>
+		<div class="help-block" style="display:none;"></div>
+		</div>
+		</div>
+		<input type="hidden" value="" name="_csrf_token">
+		</form>
+		</div>
+		<div class="modal-footer">
+		<button id="message-create-form-btn" class="btn btn-primary" data-target="#message-create-form" data-toggle="form-submit" data-loading-text="发送中...">发送</button>
+		</div>
+		</div>
+	</div>
 	</div>
 
 	<div id="loadingDiv"

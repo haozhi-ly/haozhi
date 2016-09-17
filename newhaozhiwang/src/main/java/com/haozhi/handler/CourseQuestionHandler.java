@@ -4,9 +4,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.haozhi.entity.CourseQuestion;
@@ -43,5 +45,15 @@ public class CourseQuestionHandler {
 		List<CourseQuestion> courseQuestion = courseQuestionService.getQuestionbycmid(cmid);
 		return courseQuestion;
 	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value="/addCourseQuestion",method=RequestMethod.POST)
+	public int addCourseNote(Integer userid,Integer cmid,String cqcontent){
+		LogManager.getLogger().debug("addCourseQuestion 到达...");
+		int result = courseQuestionService.addCourseQuestion(userid, cmid, cqcontent);
+		return result;
+	}
+	
 }
 

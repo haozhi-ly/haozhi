@@ -50,8 +50,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="getQuestionbycmid" parameterType="int" resultType="CourseQuestion">
 		select c.*,(select count(*) from courseAnswer a where a.cqid=c.cqid) answercount from courseQuestion c 
-		where c.cmid=#{cmid,jdbcType=VARCHAR}
+		where c.cmid=#{cmid,jdbcType=VARCHAR} order by cqtime desc
 	</select>
-
+	
+	<insert id="addCourseQuestion">
+		insert into courseQuestion values(seq_cqid.nextval,#{userid},#{cmid},#{cqcontent},sysdate,1,0,null,null,null)
+	</insert>
 
 </mapper>

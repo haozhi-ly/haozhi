@@ -375,18 +375,24 @@ $(function(){
 				});					
 			}
 	 }); 
-		
-	
 	});
+	
+	
+	$('joinCourse').bind("click",function(){
+		if(flag=="false"){
+			$('#login-modal').css('display','block');
+			$('#loadingDiv').css('display','block');
+		}else{
+/*			 $.post("studyCourse/countStudyCourseByUseridCmid/",{"userid":userid,"cmid":cmid},function(data){
+				   if(data>0){
+					   var con=$('#Smohan_text').val();
+				   }
+			 })*/
+		}
+	});
+	
 });
 
 
-function join(){	
-	var st = $('.color-gray-one').val();
-	if(st == ""){
-		$('#login-modal').css('display','block');
-		$('#loadingDiv').css('display','block');
-	}
-}
 
 

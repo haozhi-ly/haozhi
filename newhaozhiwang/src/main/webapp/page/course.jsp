@@ -14,12 +14,15 @@
 <link  rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="css/course.css">
 <link rel="stylesheet" type="text/css" href="css/swiper.css" >
-<link href="css/main.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/tcdPageCode.css">
 <script src="js/jquery.js"></script> 
+<script  type="text/javascript" src="js/jquery.page.js"></script>
 <script src="js/swiper-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script> 
 <script src="js/top.js"></script>
 <script type="text/javascript" src="js/course.js"></script>
+
 <style type="text/css">
 		.form-group{
 			margin-top:14px;
@@ -102,15 +105,7 @@
              
       </div>   
       <!--  分页 ----------------------------------------------- -->
-        <ul class="pagination ">
-          <li class="active"><a href="javaScript:void(0)">1</a></li>
-          <li><a href="javaScript:void(0)">2</a></li>
-          <li><a href="javaScript:void(0)">3</a></li>
-          <li><a href="javaScript:void(0)">4</a></li>
-          <li><a href="javaScript:void(0)">5</a></li>
-          <li><a href="javaScript:void(0)"><i style="font-size: 10px;" class="glyphicon glyphicon-chevron-right"></i></a></li>
-          <li><a href="javaScript:void(0)">尾</a></li>
-        </ul>
+        <div class="tcdPageCode" id="commenttcpage"></div>	
        <!--  分页  ----------------------------------------------- -->
     </div>
     <div class="col-md-3 classify-right">

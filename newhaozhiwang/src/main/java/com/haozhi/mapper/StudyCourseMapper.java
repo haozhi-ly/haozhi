@@ -12,5 +12,5 @@ public interface StudyCourseMapper {
 	
 	int countStudyCourseByUseridCmid(@Param("userid")Integer userid,@Param("cmid")Integer cmid); //在添加评论的时候应该先查询用户是否已经学习此课程了
 	
-	
+	int joinStudyCourse(@Param("userid")Integer userid,@Param("courseid")Integer courseid);
 }
