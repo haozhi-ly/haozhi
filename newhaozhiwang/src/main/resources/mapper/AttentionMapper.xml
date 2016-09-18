@@ -4,4 +4,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
 <mapper namespace="com.haozhi.mapper.AttentionMapper">
+
+	<select id="judgeAttion" resultType="int">
+		select count(*) from attention  where attention=#{attention} and userid=#{userid}
+	</select>
+	
+	<insert id="insertAttion">
+		insert into attention values(seq_atid.nextval,#{attention},#{userid},null,null,null)
+	</insert>
+	<delete id="delAttion">
+		delete from attention  where attention=#{attention} and userid=#{userid}
+	</delete>
 </mapper>

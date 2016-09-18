@@ -39,14 +39,15 @@ public class StudyCourseServiceImpl implements StudyCourseService {
 
 	@Override
 	public List<Course> getPersonCourse(String userid) {
-		// TODO Auto-generated method stub
 		return studyCourseMapper.getPersonCourse(userid);
 	}
 
-	@Override
 	public List<Course> getCourseByUsid(String userid) {
-		// TODO Auto-generated method stub
 		return studyCourseMapper.getCourseByUsid(userid);
+	}
+	
+	public int joinStudyCourse(Integer userid, Integer courseid) {
+		return studyCourseMapper.joinStudyCourse(userid, courseid);
 	}
 
 }

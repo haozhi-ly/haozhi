@@ -19,5 +19,7 @@ public interface CourseAssessService {
 	List<CourseAssess> getAssessCountByCmid(Integer cmid); //根据cmid来查总数
 	
 	int addAssess(Integer userid,Integer cmid,String content); //添加评论
+	
+	int delcourseAssess(Integer csid);  //删除评论
 
 }

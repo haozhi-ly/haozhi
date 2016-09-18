@@ -48,4 +48,9 @@ public class CourseAssessServiceImpl implements CourseAssessService {
 		return courseAssessMapper.addAssess(userid, cmid, content);
 	}
 
+	@Override
+	public int delcourseAssess(Integer csid) {
+		return courseAssessMapper.delcourseAssess(csid);
+	}
+
 }

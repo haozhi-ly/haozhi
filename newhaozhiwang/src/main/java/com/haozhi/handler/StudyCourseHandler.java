@@ -80,6 +80,12 @@ public class StudyCourseHandler {
 
 	
 	@ResponseBody
+	@RequestMapping("/joinStudyCourse")
+	public int joinStudyCourse(Integer userid,Integer courseid){
+		int result=studyCourseService.joinStudyCourse(userid, courseid);
+		return result;
+	}
+	
 	@RequestMapping("/newjoinStudentbycourseid")
 	public List<StudyCourse> newjoinStudentbycourseid(int courseid){
 		List<StudyCourse> list=studyCourseService.newjoinStudentbycourseid(courseid);

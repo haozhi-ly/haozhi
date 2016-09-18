@@ -12,6 +12,10 @@ select * from studyCourse;
 select * from selfMessage;
 select * from cgroup;
 
+select rownum,a.* from (select rownum,s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount,
+		(select avg(assess) from studyCourse where courseid = s.courseid) assessAvg
+		 from course s where rownum>=0)a where rownum<=5
+
 select t.*, rownum rn from (select a.*,rownum rn from courseAssess a where cmid=1
 and 5>=rownum order by a.time desc ) t where rn>0
 
@@ -155,8 +159,8 @@ insert into course values(seq_courseid.nextval,'腾飞五千年之《塞北三�
 commit;
 
 select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount,
-		(select avg(assess) from studyCourse where courseid = s.courseid) assessAvg,
-		(select * from userinfo where userid = s.userid ) users from course s 
+		(select avg(assess) from studyCourse where courseid = s.courseid)  assessAvg,
+ from course s 
 
 select * from courseType;
 -------4.课程类别表
@@ -314,6 +318,7 @@ create table courseAnswer(
 create sequence seq_caid start with 1;
 insert into courseAnswer values(seq_caid.nextval,1,3,'多多联系一下就好了，相信自己！',sysdate,null,null,null);
 
+select * from attention
 --------------------------10.关注表（保留意见）
 create table attention(
        atid  int  primary key,  
@@ -333,8 +338,11 @@ select * from (select s.*,(select count(1) from studyCourse where courseid = s.c
 (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s order by memberCount desc) where rownum<=3 ;
 
 select * from studyCourse
-select  count(*) from studyCourse where userid =21 and courseid in 
-		(select courseid from courseManage where cmid=1)
+
+select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount,
+		(select avg(assess) from studyCourse where courseid = s.courseid) assessAvg
+		 from course s where s.courseid in(select courseid from studyCourse where userid =4)
+
 ---------------------11.学习课程表
 drop table studyCourse
 drop sequence seq_scid
@@ -367,7 +375,11 @@ insert into studyCourse values(seq_scid.nextval,5,5,to_date('2016-8-1','yyyy-mm-
 insert into studyCourse values(seq_scid.nextval,21,8,to_date('2016-8-1','yyyy-mm-dd'),4,null,null,null,null);
 select * from studyCourse
 commit;
+
+select * from selfMessage where sendType=1 and receiveman=3
 update studyCourse set userid=5 where scid=3;
+delete from selfMessage
+drop sequence seq_smid
 -------------12.私信表  or   留言表
 create table selfMessage(
        smid int primary key ,

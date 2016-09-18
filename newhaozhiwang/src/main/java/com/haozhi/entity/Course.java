@@ -182,6 +182,7 @@ public class Course implements Serializable{
 	}
 
 	public double getAssessAvg() {
+		assessAvg=((int)(assessAvg*100))/100; 
 		return assessAvg;
 	}
 

@@ -48,5 +48,12 @@ public class CourseQuestionServiceImpl implements CourseQuestionService {
 		// TODO Auto-generated method stub
 		return courseQuestionMapper.detailAnswerbycqid(cqid);
 	}
+
+
+
+	@Override
+	public int addCourseQuestion(Integer userid, Integer cmid, String cqcontent) {
+		return courseQuestionMapper.addCourseQuestion(userid, cmid, cqcontent);
+	}
 	
 }

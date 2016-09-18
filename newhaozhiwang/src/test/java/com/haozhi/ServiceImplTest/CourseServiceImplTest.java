@@ -18,10 +18,17 @@ import com.haozhi.service.CourseService;
 public class CourseServiceImplTest {
 	@Autowired
 	private CourseService courseService;
+	
+	@Test
+	public void testCountCourse() {
+		int course = courseService.countCourseByCtid(2);
+		System.out.println(course);
+		assertNotNull(course);
+	}
 
 	@Test
 	public void testGetAllCourse() {
-		List<Course> course = courseService.getAllCourse();
+		List<Course> course = courseService.getAllCourse( 18, 1);
 		System.out.println(course);
 		assertNotNull(course);
 	}
@@ -29,6 +36,13 @@ public class CourseServiceImplTest {
 	@Test
 	public void testGetHostCourse() {
 		List<Course> course = courseService.getHostCourse();
+		System.out.println(course);
+		assertNotNull(course);
+	}
+	
+	@Test
+	public void testGetHostCourseByPage() {
+		List<Course> course = courseService.getHostCourseByPage(0, 18, 1);
 		System.out.println(course);
 		assertNotNull(course);
 	}
@@ -44,7 +58,7 @@ public class CourseServiceImplTest {
 
 	@Test
 	public void testGetCourseByCtid() {
-		List<Course> course = courseService.getCourseByCtid(1);
+		List<Course> course = courseService.getCourseByCtid(0, 18, 1);
 		System.out.println(course);
 		assertNotNull(course);
 	}
@@ -58,7 +72,7 @@ public class CourseServiceImplTest {
 	
 	@Test
 	public void getCourseDescTime() {
-		List<Course> course = courseService.getCourseDescTime(2);
+		List<Course> course = courseService.getCourseDescTime(2, 18, 1);
 		System.out.println(course);
 		assertNotNull(course);
 	}
@@ -69,6 +83,13 @@ public class CourseServiceImplTest {
 		System.out.println(course);
 		assertNotNull(course);
 	}
+	
+/*	@Test
+	public void seletCourse() {
+		List<Course> course = courseService;
+		System.out.println(course);
+		assertNotNull(course);
+	}*/
 	
 	
 	@Test

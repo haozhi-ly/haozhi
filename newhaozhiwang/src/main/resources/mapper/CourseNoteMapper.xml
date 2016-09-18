@@ -44,4 +44,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getNoteByUsid" parameterType="string" resultType="courseManage">
 		select title from  courseManage  where cmid=#{cmid}
 	</select>
+	
+	<insert id="addCourseNote">
+		insert into courseNote values(seq_courseNoteId.nextval,#{userid},#{cmid},null,#{noteContent},sysdate,null,null,null)
+	</insert>
+	
 </mapper>

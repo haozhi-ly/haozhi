@@ -18,4 +18,7 @@ public interface CourseAssessMapper {
 	List<CourseAssess>  getAssessCountByCmid(Integer cmid); //根据cmid来查总数
 	
 	int addAssess(@Param("userid")Integer userid,@Param("cmid")Integer cmid,@Param("content")String content); //添加评论
+	
+	int delcourseAssess(@Param("csid")Integer csid);  //删除评论
+
 }

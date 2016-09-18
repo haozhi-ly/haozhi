@@ -2,6 +2,7 @@ package com.haozhi.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 
 
 import com.haozhi.entity.Course;
@@ -16,6 +17,7 @@ public interface StudyCourseService {
 	
 	int countStudyCourseByUseridCmid(Integer userid,Integer cmid); //在添加评论的时候应该先查询用户是否已经学习此课程了
 
+	int joinStudyCourse(Integer userid,Integer courseid);
 
 	List<StudyCourse> newjoinStudentbycourseid(int courseid);
 

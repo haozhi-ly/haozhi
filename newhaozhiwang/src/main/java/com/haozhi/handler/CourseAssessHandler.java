@@ -103,5 +103,16 @@ public class CourseAssessHandler {
 		int result = courseAssessService.addAssess(userid, cmid, content);	
 		return result;
 	}
+	
+	
+	/**
+	 * 删除评论
+	 */
+	@ResponseBody
+	@RequestMapping(value="/delcourseAssess",method=RequestMethod.POST)
+	public int delcourseAssess(Integer csid){	
+		int result = courseAssessService.delcourseAssess(csid);	
+		return result;
+	}
 
 }

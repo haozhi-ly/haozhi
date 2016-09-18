@@ -35,7 +35,7 @@ public class CourseNoteHandler {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/addCourseNote",method=RequestMethod.GET)
+	@RequestMapping(value="/addCourseNote",method=RequestMethod.POST)
 	public int addCourseNote(Integer userid,Integer cmid,String noteContent){
 		LogManager.getLogger().debug("addCourseNote 到达...");
 		int result = courseNoteService.addCourseNote(userid, cmid, noteContent);
