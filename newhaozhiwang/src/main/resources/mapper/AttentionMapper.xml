@@ -32,4 +32,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getAttentionCount" parameterType="string" resultType="string">
 		select count(1) count from attention where userid=#{userid}
 	</select>
+	
+	
+	<resultMap type="Attention" id="AttentionMap02">
+		<id column="userid" property="userid"/>
+		<collection property="user" column="userid" ofType="UserInfo" select="getUserByUsid02" />
+	</resultMap>
+	<select id="getFansInfo" resultMap="AttentionMap02">
+		select userid from  attention where attention=#{userid}
+	</select>
+	<select id="getUserByUsid02" parameterType="string" resultType="UserInfo">
+		select * from userinfo where userid=#{userid}
+	</select>
+	
+	
+	<select id="getFansCount" parameterType="string" resultType="string">
+		select count(1) from  attention where attention=#{userid}
+	</select>
 </mapper>

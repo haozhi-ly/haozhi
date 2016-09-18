@@ -40,4 +40,14 @@ public class AttentionServiceImpl implements AttentionService {
 		return attentionMapper.getAttentionCount(userid);
 	}
 
+	@Override
+	public List<Attention> getFansInfo(String userid) {
+		return attentionMapper.getFansInfo(userid);
+	}
+
+	@Override
+	public String getFansCount(String userid) {
+		return attentionMapper.getFansCount(userid);
+	}
+
 }

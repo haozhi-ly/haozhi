@@ -48,7 +48,6 @@ $(function(){
 		for(var i=0;i<data.length;i++){
 			listStr+='<li><a class=" js-user-card" href="http://www.howzhi.com/u/5759/" data-card-url="/user/5759/card/show" data-user-id="'+data[i].user.userid+'">';
 			listStr+='<img class="avatar-sm" src="images/1453371e5503236335.jpg" alt="'+data[i].user.uname+'">';
-			listStr+='<span style="color: rgb(255, 140, 60);" class="glyphicon glyphicon-info-sign" title="达人"></span>';
 			listStr+='</a> <a href="http://www.howzhi.com/u/5759/" class="name">'+data[i].user.uname+'</a></li>';
 		}
 		$("#home-attent").html(listStr);
@@ -65,6 +64,42 @@ $(function(){
 	$.post("attention/attentionCount",{"_method":"POST","userid":userid},function(data){
 		$("#attentionCount").html("关注（"+data+"）");
 	},"json");
+	
+	$.post("attention/fansCount",{"_method":"POST","userid":userid},function(data){
+		$("#fansCount").html("粉丝（"+data+"）");
+	},"json");
+	
+	$("#fansCount").bind("mouseover",function(){
+		$("#attentionCount").removeClass("first active");
+		$("#attentionCount").addClass("first");
+		$(this).addClass("pull-right active");
+		$.post("attention/fansInfo",{"_method":"POST","userid":userid},function(data){
+			var listStr="";
+			for(var i=0;i<data.length;i++){
+				listStr+='<li><a class=" js-user-card" href="http://www.howzhi.com/u/5759/" data-card-url="/user/5759/card/show" data-user-id="'+data[i].user.userid+'">';
+				listStr+='<img class="avatar-sm" src="images/1453371e5503236335.jpg" alt="'+data[i].user.uname+'">';
+				listStr+='</a> <a href="http://www.howzhi.com/u/5759/" class="name">'+data[i].user.uname+'</a></li>';
+			}
+			$("#home-attent").html(listStr);
+		},"json");
+	});
+	
+	
+	$("#attentionCount").bind("mouseover",function(){
+		$("#fansCount").removeClass("pull-right active");
+		$("#fansCount").addClass("pull-right");
+		$(this).removeClass("first");
+		$(this).addClass("first active");
+		$.post("attention/attentionInfo",{"_method":"POST","userid":userid},function(data){
+			var listStr="";
+			for(var i=0;i<data.length;i++){
+				listStr+='<li><a class=" js-user-card" href="http://www.howzhi.com/u/5759/" data-card-url="/user/5759/card/show" data-user-id="'+data[i].user.userid+'">';
+				listStr+='<img class="avatar-sm" src="images/1453371e5503236335.jpg" alt="'+data[i].user.uname+'">';
+				listStr+='</a> <a href="http://www.howzhi.com/u/5759/" class="name">'+data[i].user.uname+'</a></li>';
+			}
+			$("#home-attent").html(listStr);
+		},"json");
+	});
 });
 	
 

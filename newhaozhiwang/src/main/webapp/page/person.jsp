@@ -71,7 +71,7 @@
 					<c:choose>
 						<c:when test="${users.usign==null}">
 							<p>
-								“TA还未设置签名哦” <a href="hjavaScript:void(0)" class="tool"
+								“TA还未设置签名哦” <a href="page/info.jsp" class="tool"
 									style="display: block;"> <i style="color: #666;"
 									class="glyphicon glyphicon-edit" title="" data-toggle="tooltip"
 									data-placement="top" data-original-title="编辑"></i>
@@ -79,7 +79,7 @@
 						</c:when>
 						<c:otherwise>
 							<p>
-								“${users.usign}” <a href="hjavaScript:void(0)" class="tool"
+								“${users.usign}” <a href="page/info.jsp" class="tool"
 									style="display: block;"> <i style="color: #666;"
 									class="glyphicon glyphicon-edit" title="" data-toggle="tooltip"
 									data-placement="top" data-original-title="编辑"></i>
@@ -341,7 +341,7 @@
 						好友<span class="count"></span>
 					</h3>
 					<a class="first active" href="javaScript:void(0)" id="attentionCount"></a><a
-						href="javaScript:void(0)" class="pull-right">粉丝（1）</a>
+						href="javaScript:void(0)" class="pull-right" id="fansCount">粉丝（1）</a>
 					<div class="person-student">
 						<ul class="clearfix" id="home-attent" style="display: block;">
 						<!-- 显示关注的人的信息 -->

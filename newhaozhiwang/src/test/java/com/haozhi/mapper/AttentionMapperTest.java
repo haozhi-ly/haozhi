@@ -21,5 +21,16 @@ public class AttentionMapperTest {
 	public void testGetAttentionCount() {
 		System.out.println(attentionMapper.getAttentionCount("41"));
 	}
+	
+	@Test
+	public void testFans() {
+		System.out.println(attentionMapper.getFansInfo("41"));
+	}
+	
+	@Test
+	public void testgetFansCount() {
+		System.out.println(attentionMapper.getFansCount("41"));
+	}
+	
 
 }

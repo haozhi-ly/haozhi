@@ -334,7 +334,12 @@ select * from attention;
 create sequence seq_atid start with 1;
 insert into attention values(seq_atid.nextval,3,41,null,null,null);
 insert into attention values(seq_atid.nextval,1,41,null,null,null);
-
+insert into attention values(seq_atid.nextval,41,3,null,null,null);
+insert into attention values(seq_atid.nextval,41,1,null,null,null);
+insert into attention values(seq_atid.nextval,41,21,null,null,null);
+insert into attention values(seq_atid.nextval,21,41,null,null,null);
+insert into attention values(seq_atid.nextval,41,5,null,null,null);
+insert into attention values(seq_atid.nextval,41,4,null,null,null);
 select * from (select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount,
 (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s order by memberCount desc) where rownum<=3 ;
 

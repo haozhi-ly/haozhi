@@ -55,11 +55,9 @@ public class AttentionHandler {
 	
 	@ResponseBody
 	@RequestMapping("attentionInfo")
-	public List<Attention> getAttentionInfo(String userid,ModelMap map){
+	public List<Attention> getAttentionInfo(String userid){
 		System.out.println("attentionInfo==>"+userid);
 		List<Attention> attentionInfo =attentionService.getAttentionInfo(userid);
-		String count=attentionService.getAttentionCount(userid);
-		map.put("count", count);
 		return attentionInfo;
 	}
 	
@@ -69,5 +67,19 @@ public class AttentionHandler {
 	public String getAttentionCount(String userid){
 		String attentionCount=attentionService.getAttentionCount(userid);
 		return attentionCount;
+	}
+	
+	@RequestMapping("/fansInfo")
+	@ResponseBody
+	public List<Attention> getFans(String userid){
+		List<Attention> fans=attentionService.getFansInfo(userid);
+		return fans;
+	}
+	
+	@RequestMapping("/fansCount")
+	@ResponseBody
+	public String getFansCount(String userid){
+		String fansCount=attentionService.getFansCount(userid);
+		return fansCount;
 	}
 }

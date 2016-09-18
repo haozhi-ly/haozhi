@@ -16,4 +16,8 @@ public interface AttentionService {
 	List<Attention> getAttentionInfo(String userid);//通过userID得到他关注的人的信息
 
 	String getAttentionCount(String userid);
+
+	List<Attention> getFansInfo(String userid);
+
+	String getFansCount(String userid);
 }
