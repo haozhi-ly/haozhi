@@ -65,10 +65,47 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
           			where st.courseid=#{courseid} order by st.begintime desc)a  
 							where 12>=rownum
 	</select>
-	
 	<select id="judgeStudyCourse" resultType="int">
 		select count(*) from studycourse where userid=#{userid} and courseid=#{courseid}
 	</select>
 	
-
+	
+	<resultMap type="StudyCourse" id="StudyCourseMap02">
+		<id column="courseid" property="courseid"/>
+		<id column="userid" property="userid"/>
+		<id column="count" property="courseid"/>
+		<association property="course" column="courseid" javaType="Course" select="getCourseByUsid" />
+		<association property="user" column="userid" javaType="UserInfo" select="getUserInfoByUsid" />
+		<association property="count" column="count" javaType="int" select="getCountByCid" />
+	</resultMap>
+	<select id="getPersonCourse" resultMap="StudyCourseMap02">
+		select * from studyCourse where userid = #{userid} 
+	</select>
+	<select id="getCourseByCid" parameterType="int" resultType="Course">
+		select * from course where courseid=#{courseid}
+	</select>
+	<select id="getUserInfoByUsid" parameterType="int" resultType="UserInfo">
+		select * from userinfo where userid = #{userid}
+	</select>
+	
+	<!-- //通过userid查课程信息 -->
+	<resultMap type="Course" id="CourseByUsidMap">
+		<id column="courseid" property="courseid"/>
+		<id column="userId" property="userId"/>
+		<id column="ctid" property="ctid"/>
+		<collection property="user" column="userId" ofType="UserInfo" select="getUserByUsid" />
+		<collection property="typename" column="ctid" ofType="string" select="getCourseTypeName" />
+	</resultMap>
+	<select id="getCourseByUsid" resultMap="CourseByUsidMap"  >
+		select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount,
+		(select avg(assess) from studyCourse where courseid = s.courseid) assessAvg
+		 from course s where s.courseid in(select courseid from studyCourse  where userid =#{userid})
+	</select>
+	<select id="getUserByUsid" resultType="UserInfo" parameterType="int">
+		select * from userinfo where userid = #{userid}
+	</select>
+	<select id="getCourseTypeName" resultType="string" parameterType="int">
+		select typename from courseType where ctid=#{ctid}
+	</select>
+	
 </mapper>

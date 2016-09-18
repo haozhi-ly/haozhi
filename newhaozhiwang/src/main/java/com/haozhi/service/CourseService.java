@@ -26,7 +26,6 @@ public interface CourseService {
 	
 	List<Course> getAllHostCourse();  //查询所有热门课程
 
-
 	List<Course> getAllCourseBypage(int rows, int page);
 
 	int findAlltype();

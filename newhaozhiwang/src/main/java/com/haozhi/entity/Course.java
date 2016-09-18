@@ -296,7 +296,7 @@ public class Course implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Course [courseid=" + courseid + ", ctitle=" + ctitle + ", cintrodution=" + cintrodution + ", ctid="
+		return "\nCourse [courseid=" + courseid + ", ctitle=" + ctitle + ", cintrodution=" + cintrodution + ", ctid="
 				+ ctid + ", courseType=" + courseType + ", courseting=" + courseting + ", coursephoto=" + coursephoto
 				+ ", userId=" + userId + ", cview=" + cview + ", createTime=" + createTime + ", memberCount="
 				+ memberCount + ", assessAvg=" + assessAvg + ", user=" + user + ", courseCount=" + courseCount

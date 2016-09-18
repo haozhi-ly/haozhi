@@ -109,9 +109,4 @@ public class CourseServiceImpl implements CourseService {
 	public List<Course> getHostCourseByPage(Integer ctid, Integer pagesize, Integer pagenumber) {
 		return courseMapper.getHostCourseByPage(ctid, pagesize, pagenumber);
 	}
-
-	
-
-	
-
 }

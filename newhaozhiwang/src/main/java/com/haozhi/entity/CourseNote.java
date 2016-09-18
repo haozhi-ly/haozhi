@@ -17,6 +17,7 @@ public class CourseNote {
 	private String temp02;// --备用字段
 	private String temp03;// --备用字段
 	private UserInfo user;
+	private CourseManage courseManage;
 
 	public CourseNote() {
 	}
@@ -33,6 +34,14 @@ public class CourseNote {
 		this.title = title;
 		this.temp02 = temp02;
 		this.temp03 = temp03;
+	}
+
+	public CourseManage getCourseManage() {
+		return courseManage;
+	}
+
+	public void setCourseManage(CourseManage courseManage) {
+		this.courseManage = courseManage;
 	}
 
 	public int getCourseNoteId() {
@@ -119,9 +128,9 @@ public class CourseNote {
 
 	@Override
 	public String toString() {
-		return "CourseNote [courseNoteId=" + courseNoteId + ", userid=" + userid + ", cmid=" + cmid + ", praiseNumber="
+		return "\nCourseNote [courseNoteId=" + courseNoteId + ", userid=" + userid + ", cmid=" + cmid + ", praiseNumber="
 				+ praiseNumber + ", noteContent=" + noteContent + ", ntime=" + ntime + ", title=" + title + ", user="
-				+ user + "]";
+				+ user + ",courseManage="+courseManage+"]";
 	}
 
 	

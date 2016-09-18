@@ -51,6 +51,7 @@ public class CourseHandler {
 	public void getModel(ModelMap map){
 		map.put("courses", new ArrayList<Course>());
 		map.put("hostcourse", new ArrayList<Course>());
+		map.put("personCourse", new ArrayList<Course>());
 	}
 	
 	
@@ -381,4 +382,5 @@ public class CourseHandler {
 		out.flush();
 		out.close();
 	}
+	
 }

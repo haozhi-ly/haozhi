@@ -34,6 +34,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from userinfo where userid = #{userid}
 	</select>
 	
+	<resultMap type="CourseNote" id="CourseNoteMap3">
+		<id column="cmid" property="cmid"/>
+		<collection property="courseManage" column="cmid" ofType="courseManage" select="getNoteByUsid" />
+	</resultMap>
+	<select id="getPersonNote" resultMap="CourseNoteMap3">
+		select * from courseNote where userid=#{userid}
+	</select>
+	<select id="getNoteByUsid" parameterType="string" resultType="courseManage">
+		select title from  courseManage  where cmid=#{cmid}
+	</select>
+	
 	<insert id="addCourseNote">
 		insert into courseNote values(seq_courseNoteId.nextval,#{userid},#{cmid},null,#{noteContent},sysdate,null,null,null)
 	</insert>

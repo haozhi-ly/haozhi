@@ -156,7 +156,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from course
 	</select>
 	
-		<resultMap type="Course" id="Course">
+	<resultMap type="Course" id="Course">
 		<id column="courseid" property="courseid"/>
 		<id column="userId" property="userId"/>
 		<collection property="user" column="userId" ofType="UserInfo" select="getUserByUsid6" />
@@ -191,7 +191,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		
 	</resultMap>
 	<select id="getStudentsbypageDescTime" resultMap="SCMap" parameterType="java.util.Map" >
-select * from(select a.*,rownum rn from 
+	select * from(select a.*,rownum rn from 
 	(select u.userid,u.uname,u.photo,sc.userid studyid
 			
     		from course c
@@ -232,7 +232,5 @@ select * from(select a.*,rownum rn from
 	<select id="getUserByUsid7" resultType="UserInfo" parameterType="int">
 		select * from userinfo where userid = #{userid}
 	</select>
-	
-	
 	
 </mapper>
