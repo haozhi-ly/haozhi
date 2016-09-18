@@ -25,7 +25,7 @@ import com.haozhi.service.StudyCourseService;
 
 @Controller
 @RequestMapping("/studyCourse")
-@SessionAttributes(value={"personCourse","courseNote"})
+@SessionAttributes(value={"personCourse","courseNote","courseCount","noteCount"})
 public class StudyCourseHandler {
 	
 	@Autowired
@@ -41,6 +41,8 @@ public class StudyCourseHandler {
 	public void getModel(ModelMap map){
 		map.put("personCourse", new ArrayList<Course>());
 		map.put("courseNote", new ArrayList<CourseNote>());
+		map.put("courseCount", new String());
+		map.put("noteCount", new String());
 	}
 	
 	@ResponseBody
@@ -99,15 +101,31 @@ public class StudyCourseHandler {
 		System.out.println("userid ==>"+userid);
 		List<Course> course=studyCourseService.getCourseByUsid(userid);
 		map.put("personCourse", course);
+		
 		return course;
+	}
+	
+	@RequestMapping("/courseCount")
+	@ResponseBody
+	public String getCourseCount(String userid){
+		String courseCount=studyCourseService.getCourseCount(userid);
+		return courseCount;
 	}
 	
 	//查询用户的笔记
 	@RequestMapping("/personNote")
 	@ResponseBody
-	public List<CourseNote> personNote(String userid){
+	public List<CourseNote> personNote(String userid,ModelMap map){
 		List<CourseNote> courseNote=courseNoteService.getPersonNote(userid);
+		String noteCount=courseNoteService.getNoteCount(userid);
+		map.put("noteCount", noteCount);
 		return courseNote;
 	}
 	
+	@RequestMapping("/noteCount")
+	@ResponseBody
+	public String getNoteCount(String userid){
+		String noteCount=courseNoteService.getNoteCount(userid);
+		return noteCount;
+	}
 }

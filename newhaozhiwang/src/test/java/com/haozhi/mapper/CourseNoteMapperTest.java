@@ -15,5 +15,9 @@ public class CourseNoteMapperTest {
 	public void testGetPersonNote() {
 		System.out.println(courseNoteMapper.getPersonNote("41"));
 	}
-
+	
+	@Test
+	public void testgetNoteCount() {
+		System.out.println(courseNoteMapper.getNoteCount("41"));
+	}
 }

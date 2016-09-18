@@ -18,4 +18,5 @@ public interface StudyCourseMapper {
 	
 	List<Course> getCourseByUsid(String userid);
 	int joinStudyCourse(@Param("userid")Integer userid,@Param("courseid")Integer courseid);
+	String getCourseCount(String userid);
 }

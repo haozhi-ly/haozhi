@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 
+
 import com.haozhi.entity.Course;
 import com.haozhi.entity.StudyCourse;
 
@@ -24,4 +25,7 @@ public interface StudyCourseService {
 
 	List<Course> getPersonCourse(String userid);//通过userid查询该用户学习的所有课程
 	List<Course> getCourseByUsid(String userid);//通过userid查询该用户学习的所有课程
+
+
+	String getCourseCount(String userid);
 }

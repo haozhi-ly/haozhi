@@ -50,4 +50,9 @@ public class StudyCourseServiceImpl implements StudyCourseService {
 		return studyCourseMapper.joinStudyCourse(userid, courseid);
 	}
 
+	@Override
+	public String getCourseCount(String userid) {
+		return studyCourseMapper.getCourseCount(userid);
+	}
+
 }

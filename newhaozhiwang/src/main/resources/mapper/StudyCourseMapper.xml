@@ -105,4 +105,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select typename from courseType where ctid=#{ctid}
 	</select>
 	
+	<select id="getCourseCount" parameterType="string" resultType="string">
+		select count(1) from  studyCourse where userid = #{userid}
+	</select>
 </mapper>

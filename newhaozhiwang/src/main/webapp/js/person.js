@@ -41,6 +41,30 @@ $(function(){
 		}
 		$("#personNote").html(listStr);
 	},"json");
+	
+	
+	$.post("attention/attentionInfo",{"_method":"POST","userid":userid},function(data){
+		var listStr="";
+		for(var i=0;i<data.length;i++){
+			listStr+='<li><a class=" js-user-card" href="http://www.howzhi.com/u/5759/" data-card-url="/user/5759/card/show" data-user-id="'+data[i].user.userid+'">';
+			listStr+='<img class="avatar-sm" src="images/1453371e5503236335.jpg" alt="'+data[i].user.uname+'">';
+			listStr+='<span style="color: rgb(255, 140, 60);" class="glyphicon glyphicon-info-sign" title="达人"></span>';
+			listStr+='</a> <a href="http://www.howzhi.com/u/5759/" class="name">'+data[i].user.uname+'</a></li>';
+		}
+		$("#home-attent").html(listStr);
+	},"json");
+	
+	$.post("studyCourse/courseCount",{"_method":"POST","userid":userid},function(data){
+		$("#courseCount").html(data);
+	},"json");
+	
+	$.post("studyCourse/noteCount",{"_method":"POST","userid":userid},function(data){
+		$("#noteCount").html(data);
+	},"json");
+	
+	$.post("attention/attentionCount",{"_method":"POST","userid":userid},function(data){
+		$("#attentionCount").html("关注（"+data+"）");
+	},"json");
 });
 	
 

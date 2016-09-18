@@ -330,9 +330,10 @@ create table attention(
        temp02 varchar2(200),--备用字段
        temp03 varchar2(200)--备用字段 
 );
+select * from attention;
 create sequence seq_atid start with 1;
-insert into attention values(seq_atid.nextval,3,1,null,null,null);
-insert into attention values(seq_atid.nextval,1,3,null,null,null);
+insert into attention values(seq_atid.nextval,3,41,null,null,null);
+insert into attention values(seq_atid.nextval,1,41,null,null,null);
 
 select * from (select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount,
 (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s order by memberCount desc) where rownum<=3 ;

@@ -12,7 +12,8 @@ public class Attention {
 	private String temp01;// --备用字段
 	private String temp02;// --备用字段
 	private String temp03;// --备用字段
-
+	private UserInfo user;
+	
 	public Attention() {
 	}
 
@@ -74,11 +75,21 @@ public class Attention {
 		this.temp03 = temp03;
 	}
 
+	
+	public UserInfo getUser() {
+		return user;
+	}
+
+	public void setUser(UserInfo user) {
+		this.user = user;
+	}
+
 	@Override
 	public String toString() {
-		return "Attention [atid=" + atid + ", attention=" + attention
+		return "\nAttention [atid=" + atid + ", attention=" + attention
 				+ ", userid=" + userid + ", temp01=" + temp01 + ", temp02="
-				+ temp02 + ", temp03=" + temp03 + "]";
+				+ temp02 + ", temp03=" + temp03 +
+				",user="+user+"]";
 	}
 
 }
