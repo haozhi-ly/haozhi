@@ -16,11 +16,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					where #{pagesize}*#{pagenumber}>=rownum)
 			 				where rn>#{pagesize}*(#{pagenumber}-1) 	
 	</select>
-	
-	
 	<select id="getUserByUsid" resultType="UserInfo" parameterType="int">
 		select * from userinfo where userid = #{userid}
 	</select>
+	
 	
 	<select id="findAll" resultType="int">
 		select count(*) from cgroup

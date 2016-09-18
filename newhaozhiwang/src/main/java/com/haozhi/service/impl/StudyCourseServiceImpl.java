@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.haozhi.entity.Course;
 import com.haozhi.entity.StudyCourse;
 import com.haozhi.mapper.StudyCourseMapper;
 import com.haozhi.service.StudyCourseService;
@@ -34,6 +35,18 @@ public class StudyCourseServiceImpl implements StudyCourseService {
 	public List<StudyCourse> newjoinStudentbycourseid(int courseid) {
 		// TODO Auto-generated method stub
 		return studyCourseMapper.newjoinStudentbycourseid(courseid);
+	}
+
+	@Override
+	public List<Course> getPersonCourse(String userid) {
+		// TODO Auto-generated method stub
+		return studyCourseMapper.getPersonCourse(userid);
+	}
+
+	@Override
+	public List<Course> getCourseByUsid(String userid) {
+		// TODO Auto-generated method stub
+		return studyCourseMapper.getCourseByUsid(userid);
 	}
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.haozhi.entity.Course;
 import com.haozhi.entity.StudyCourse;
 
 public interface StudyCourseMapper {
@@ -13,6 +14,7 @@ public interface StudyCourseMapper {
 
 	int countStudyCourseByUseridCmid(@Param("userid")Integer userid,@Param("cmid")Integer cmid); //在添加评论的时候应该先查询用户是否已经学习此课程了
 	List<StudyCourse> newjoinStudentbycourseid(int courseid);
+	List<Course> getPersonCourse(String userid);
 	
-	
+	List<Course> getCourseByUsid(String userid);
 }

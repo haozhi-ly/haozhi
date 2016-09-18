@@ -98,6 +98,4 @@ public class CourseServiceImpl implements CourseService {
 		return courseMapper.recommedCourseByCmid(cmid);
 	}
 
-	
-
 }

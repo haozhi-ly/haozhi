@@ -3,6 +3,8 @@ package com.haozhi.service;
 import java.util.List;
 
 
+
+import com.haozhi.entity.Course;
 import com.haozhi.entity.StudyCourse;
 
 public interface StudyCourseService {
@@ -17,4 +19,7 @@ public interface StudyCourseService {
 
 	List<StudyCourse> newjoinStudentbycourseid(int courseid);
 
+
+	List<Course> getPersonCourse(String userid);//通过userid查询该用户学习的所有课程
+	List<Course> getCourseByUsid(String userid);//通过userid查询该用户学习的所有课程
 }

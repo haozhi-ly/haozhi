@@ -2,7 +2,6 @@ package com.haozhi.service.impl;
 
 import static org.junit.Assert.*;
 
-
 import java.util.List;
 
 import org.junit.Test;
@@ -32,5 +31,11 @@ public class StudyCourseServiceImplTest {
 		int count = studyCourseService.countStudyCourseByUseridCmid(21,1);
 		System.out.println(count);
 	}
+	
+	@Test
+	public void testgetPersonCourse02() {
+		System.out.println(studyCourseService.getCourseByUsid("41"));
+	}
+
 
 }

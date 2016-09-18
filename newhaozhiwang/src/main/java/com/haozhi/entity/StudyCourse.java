@@ -17,7 +17,8 @@ public class StudyCourse {
 	private int memberCount;
 	private UserInfo user;
 	private Course course;
-
+	private int count;
+	private String typename;
 	public StudyCourse() {
 	}
 
@@ -36,6 +37,22 @@ public class StudyCourse {
 	}
 
 	
+	public String getTypename() {
+		return typename;
+	}
+
+	public void setTypename(String typename) {
+		this.typename = typename;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
 	public Course getCourse() {
 		return course;
 	}
@@ -136,11 +153,11 @@ public class StudyCourse {
 
 	@Override
 	public String toString() {
-		return "\nStudyCourse [scid=" + scid + ", userid=" + userid + ", courseid=" + courseid + ", begintime="
-				+ begintime + ", assess=" + assess + ", memberCount=" + memberCount + ", user=" + user + ", course="
-				+ course + "]";
+		return "\nStudyCourse [scid=" + scid + ", userid=" + userid
+				+ ", courseid=" + courseid + ", begintime=" + begintime
+				+ ", assess=" + assess + ", studyPeriod=" + studyPeriod
+				+ ", memberCount=" + memberCount + ", user=" + user
+				+ ", course=" + course + ", count=" + count +",typename="+typename+ "]";
 	}
-
-	
 
 }
