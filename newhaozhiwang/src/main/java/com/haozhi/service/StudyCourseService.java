@@ -21,6 +21,9 @@ public interface StudyCourseService {
 	int joinStudyCourse(Integer userid,Integer courseid);
 
 	List<StudyCourse> newjoinStudentbycourseid(int courseid);
+	
+	int judgeStudyCourse(Integer userid,Integer courseid);//判断是否加入了课程
+
 
 
 	List<Course> getPersonCourse(String userid);//通过userid查询该用户学习的所有课程

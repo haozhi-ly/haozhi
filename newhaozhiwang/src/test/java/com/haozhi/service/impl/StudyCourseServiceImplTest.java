@@ -33,6 +33,19 @@ public class StudyCourseServiceImplTest {
 	}
 	
 	@Test
+	public void testNewJoin() {
+		List<StudyCourse> studyCourse = studyCourseService.newjoinStudentbycourseid(6);
+		System.out.println(studyCourse);
+	}
+	
+	@Test
+	public void testJudge() {
+		int count = studyCourseService.judgeStudyCourse(21, 10);
+		System.out.println(count);
+	}
+	
+	
+	@Test
 	public void testgetPersonCourse02() {
 		System.out.println(studyCourseService.getCourseByUsid("41"));
 	}

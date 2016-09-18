@@ -12,9 +12,7 @@
 <meta name="renderer" content="webkit">
 <meta name="baidu-site-verification" content="XN2OVFQdUg">
 <title>好知网 播放</title>
-<link
-	href="http://f1.howzhi.com/system/2016/03-31/113613d6a857327741.ico"
-	rel="shortcut icon">
+<link href="http://f1.howzhi.com/system/2016/03-31/113613d6a857327741.ico" rel="shortcut icon">
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/main.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/tcdPageCode.css">

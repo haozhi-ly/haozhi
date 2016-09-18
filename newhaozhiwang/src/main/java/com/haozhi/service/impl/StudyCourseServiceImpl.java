@@ -21,19 +21,18 @@ public class StudyCourseServiceImpl implements StudyCourseService {
 	}
 
 	@Override
-
 	public List<StudyCourse> persentdynamicStudentsbycourseid(int courseid) {
 		// TODO Auto-generated method stub
 		return studyCourseMapper.persentdynamicStudentsbycourseid(courseid);
 	}
+	
+	@Override
 	public int countStudyCourseByUseridCmid(Integer userid, Integer cmid) {
 		return studyCourseMapper.countStudyCourseByUseridCmid(userid, cmid);
-
 	}
 
 	@Override
 	public List<StudyCourse> newjoinStudentbycourseid(int courseid) {
-		// TODO Auto-generated method stub
 		return studyCourseMapper.newjoinStudentbycourseid(courseid);
 	}
 
@@ -53,6 +52,10 @@ public class StudyCourseServiceImpl implements StudyCourseService {
 	@Override
 	public String getCourseCount(String userid) {
 		return studyCourseMapper.getCourseCount(userid);
+	}
+	
+	public int judgeStudyCourse(Integer userid, Integer courseid) {
+		return studyCourseMapper.judgeStudyCourse(userid, courseid);
 	}
 
 }

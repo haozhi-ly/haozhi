@@ -19,4 +19,6 @@ public interface StudyCourseMapper {
 	List<Course> getCourseByUsid(String userid);
 	int joinStudyCourse(@Param("userid")Integer userid,@Param("courseid")Integer courseid);
 	String getCourseCount(String userid);
+	
+	int judgeStudyCourse(@Param("userid")Integer userid,@Param("courseid")Integer courseid);//判断是否加入了课程
 }

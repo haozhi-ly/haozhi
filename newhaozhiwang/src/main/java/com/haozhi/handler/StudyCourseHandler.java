@@ -88,12 +88,21 @@ public class StudyCourseHandler {
 		return result;
 	}
 	
+	@ResponseBody
 	@RequestMapping("/newjoinStudentbycourseid")
 	public List<StudyCourse> newjoinStudentbycourseid(int courseid){
 		List<StudyCourse> list=studyCourseService.newjoinStudentbycourseid(courseid);
 		return list;
 	}
 	
+	
+	@ResponseBody
+	@RequestMapping("/judgeStudyCourse")
+	public int judgeStudyCourse(Integer userid,Integer courseid){
+		int result=studyCourseService.judgeStudyCourse(userid, courseid);
+		return result;
+	}
+
 	//查询用户学习的课程
 	@RequestMapping("/personCourse")
 	@ResponseBody
@@ -128,4 +137,5 @@ public class StudyCourseHandler {
 		String noteCount=courseNoteService.getNoteCount(userid);
 		return noteCount;
 	}
+	
 }
