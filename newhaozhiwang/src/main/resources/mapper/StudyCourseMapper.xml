@@ -66,5 +66,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 							where 12>=rownum
 	</select>
 	
+	<select id="judgeStudyCourse" resultType="int">
+		select count(*) from studycourse where userid=#{userid} and courseid=#{courseid}
+	</select>
+	
 
 </mapper>

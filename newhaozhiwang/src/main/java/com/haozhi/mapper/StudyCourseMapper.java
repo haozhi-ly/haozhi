@@ -15,4 +15,6 @@ public interface StudyCourseMapper {
 	List<StudyCourse> newjoinStudentbycourseid(int courseid);
 	
 	int joinStudyCourse(@Param("userid")Integer userid,@Param("courseid")Integer courseid);
+	
+	int judgeStudyCourse(@Param("userid")Integer userid,@Param("courseid")Integer courseid);//判断是否加入了课程
 }
