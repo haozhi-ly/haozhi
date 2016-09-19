@@ -8,4 +8,6 @@ public interface AttentionService {
 	int insertAttion(Integer attention,Integer userid);
 	
 	int delAttion(Integer attention,Integer userid);
+
+	int getInformation(int userid);
 }

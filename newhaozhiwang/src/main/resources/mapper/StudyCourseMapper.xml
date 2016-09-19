@@ -66,5 +66,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 							where 12>=rownum
 	</select>
 	
+<!-- 	主页显示学员加入课程
+ -->	<resultMap type="StudyCourse" id="dynamicStudyMap">
+		<id column="scid" property="scid"/>
+		<result column="begintime" property="begintime"/>
+		<association property="course" column="courseid" javaType="Course">
+			<id column="courseid" property="courseid"/>
+			<result column="ctitle" property="ctitle"/>
+		</association>
+		<association property="user" column="userid" javaType="UserInfo">
+			<id column="userid" property="userid"/>
+			<result column="uname" property="uname"/>
+			<result column="photo" property="photo"/>
+		</association>
+	</resultMap>
+	<select id="dynamicStudy" resultMap="dynamicStudyMap">
+		select * from studycourse st 
+		left join userinfo u on st.userid=u.userid
+		left join course c on st.courseid=c.courseid  order by st.begintime desc
+	</select>
+	
+	<select id="judgeStudyCourse" parameterType="java.util.Map" resultType="int">
+		select count(*) from studycourse where courseid=#{courseid} and userid=#{userid}
+	</select>
+	
 
 </mapper>

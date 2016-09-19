@@ -43,5 +43,12 @@ public interface CourseService {
 
 	
 	List<Course> recommedCourseByCmid(Integer cmid);  //通过cmid来查推荐课程的前三门
+	
+	List<Course> mainHotCourse();
+
+	List<Course> goodCourse();
+
+	List<Course> getmainCourseByCtid(int ctid);
+
 
 }

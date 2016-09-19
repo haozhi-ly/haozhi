@@ -199,7 +199,7 @@
 										<c:when test=""></c:when>
 									</c:choose>
 									<c:if test="${users.photo!=null}">
-										<img id="imgPrc" src="/touxiangPic/${users.photo}"
+										<img id="imgPrc" src="../img/headimg/${users.photo}"
 											style="width: 200px; height: 180px;">
 									</c:if>
 								</div>

@@ -15,4 +15,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="delAttion">
 		delete from attention  where attention=#{attention} and userid=#{userid}
 	</delete>
+	
+	<select id="getInformation" parameterType="int" resultType="int">
+		select count(*) from attention a where a.attention=#{userid} and a.sreadstatus=0 group by a.attention
+	</select>
 </mapper>

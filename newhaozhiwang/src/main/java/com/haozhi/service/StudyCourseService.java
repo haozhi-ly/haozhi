@@ -19,4 +19,10 @@ public interface StudyCourseService {
 
 	List<StudyCourse> newjoinStudentbycourseid(int courseid);
 
+
+	List<StudyCourse> dynamicStudy();
+
+
+	int judgeStudyCourse(int userid, int courseid);
+
 }

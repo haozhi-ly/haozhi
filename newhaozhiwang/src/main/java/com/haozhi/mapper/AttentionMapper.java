@@ -9,4 +9,6 @@ public interface AttentionMapper {
 	int insertAttion(@Param("attention")Integer attention,@Param("userid")Integer userid);
 	
 	int delAttion(@Param("attention")Integer attention,@Param("userid")Integer userid);
+
+	int getInformation(int userid);
 }

@@ -2,6 +2,7 @@
 package com.haozhi.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -15,4 +16,6 @@ public interface StudyCourseMapper {
 	List<StudyCourse> newjoinStudentbycourseid(int courseid);
 	
 	int joinStudyCourse(@Param("userid")Integer userid,@Param("courseid")Integer courseid);
+	List<StudyCourse> dynamicStudy();
+	int judgeStudyCourse(Map<String,Object> map);
 }

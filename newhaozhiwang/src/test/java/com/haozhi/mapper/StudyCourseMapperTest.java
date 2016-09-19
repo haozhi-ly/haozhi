@@ -17,5 +17,6 @@ public class StudyCourseMapperTest {
 	public void testPersentdynamicStudentsbycourseid() {
 		System.out.println(studyCourseMapper.persentdynamicStudentsbycourseid(1));
 	}
+	
 
 }

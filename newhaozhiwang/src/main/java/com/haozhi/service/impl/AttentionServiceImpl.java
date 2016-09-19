@@ -26,4 +26,10 @@ public class AttentionServiceImpl implements AttentionService {
 		return attentionMapper.delAttion(attention, userid);
 	}
 
+	@Override
+	public int getInformation(int userid) {
+		// TODO Auto-generated method stub
+		return attentionMapper.getInformation(userid);
+	}
+
 }

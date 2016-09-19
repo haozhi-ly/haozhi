@@ -16,19 +16,17 @@
 <link rel="stylesheet" type="text/css" href="css/howzhi.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/tcdPageCode.css">
-
 <link href="css/bootstrap.css" rel="stylesheet">
-
+<link href="js/assets/css/font-awesome.css" rel="stylesheet">
 
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="js/top.js"></script>
 <script type="text/javascript" src="js/joinproject.js"></script>
+<script type="text/javascript" src="js/smohan.face.js" charset="utf-8"></script>
 <script type="text/javascript" src="js/jquery.page.js"></script>
-
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 
 
-<script type="text/javascript" src="js/smohan.face.js" charset="utf-8"></script>
 
 
 <style>
@@ -168,7 +166,15 @@
 						</a>
 					</div>
 					<div class="score">
-						<span class="stars-5"> </span> <span id="ass"></span> <span
+						<span class="rating-btn mls fsm" data-rating="3" id="xinxin"
+									data-img-path="/assets/img/raty"
+									style="cursor: pointer; width: 100px;"><img 
+									src="images/star-off.png" alt="1" title="很差">&nbsp;<img
+									src="images/star-off.png" alt="2" title="较差">&nbsp;<img
+									src="images/star-off.png" alt="3" title="还行">&nbsp;<img
+									src="images/star-off.png" alt="4" title="推荐">&nbsp;<img
+									src="images/star-off.png" alt="5" title="力荐"><input
+									type="hidden" name="score" value="3"></span> <span id="ass"></span> <span
 							id="asscount">（人评价）</span>
 					</div>
 
@@ -185,6 +191,11 @@
 						<li class="join"><a class="btn btn-primary"
 							data-toggle="modal" href="javascript:void(0);"
 							data-url="/course/9573/buy?targetType=course" id="joinCourse">加入课程</a>
+							
+							<a class="btn btn-primary"
+							data-toggle="modal" href="javascript:void(0);"
+							 id="joinedCourse" style="display:none">已加入课程</a>
+						
 						</li>
 
 					</ul>
@@ -319,36 +330,7 @@
 						</form> -->
 
 						<ul class="course-in-ul" id="questionAndAnswer">
-							<li>
-								<h4>
-									<span class="glyphicon glyphicon-question-sign"
-										style="color: rgb(4, 188, 131);"></span><a class="js-nav"
-										href="http://www.howzhi.com/question/57595">老师好 麻烦老师解释下</a> <a
-										class="link-muted"
-										href="http://www.howzhi.com/course/9573/lesson/67389"
-										title="风光摄影后期"> <span class="from">来自L7-风光摄影后期</span></a>
-
-								</h4>
-								<p>
-									by <a class="link-light link-muted"
-										href="http://www.howzhi.com/u/2362511/">自选角度</a> • 0 回答 • 14浏览
-								</p>
-							</li>
-							<li>
-								<h4>
-									<span class="glyphicon glyphicon-question-sign"
-										style="color: rgb(4, 188, 131);"></span><a class="js-nav"
-										href="http://www.howzhi.com/question/57542">后期修图问题</a> <a
-										class="link-muted"
-										href="http://www.howzhi.com/course/9573/lesson/67383"
-										title="人像器材的选择"> <span class="from">来自L1-人像器材的选择</span></a>
-
-								</h4>
-								<p>
-									by <a class="link-light link-muted"
-										href="http://www.howzhi.com/u/2334840/">王福刚</a> • 0 回答 • 62浏览
-								</p>
-							</li>
+							
 
 						</ul>
 						<div class="detail flat" id="detailquestion" style="display:none;">
@@ -643,17 +625,10 @@
 				<div class="flat sidebar-teach media">
 					<h3>课程教师</h3>
 					<div class="media-left">
-<<<<<<< HEAD
-						<a class=" js-user-card" href="http://www.howzhi.com/u/1687444/"
-							data-card-url="/user/1687444/card/show" data-user-id="1687444">
-							<img class=" avatar-sm " src="images/125522a1b6f0301474.jpg"
-							　alt="">
-=======
 						<a class="js-user-card" id="Tmsg" href="page/person.jsp?userid="
 							data-card-url="/user/1687444/card/show" data-id="1687444">
 							<img class=" avatar-sm " id="tphoto" src="images/avatar.png"
-							alt="${course.user.uname}">
->>>>>>> branch 'master' of ssh://git@github.com/haozhi-ly/haozhi.git
+							alt="">
 						</a>
 
 					</div>
@@ -668,16 +643,14 @@
 					</div>
 					<div class="ta clearfix" data-role="followUser">
 						<a class="act first follow-btn" href="javascript:;"
-							data-url="/user/1687444/follow"> <i
-							class="glyphicon glyphicon-plus""></i> 关注TA
+							data-url="/user/8441/follow" id="attion"> <i
+							class="fa fa-plus"></i> 关注TA
 						</a> <a class="act first unfollow-btn" href="javascript:;"
-							data-url="/user/1687444/unfollow" style="display: none"> <i
-							class="glyphicon glyphicon-ok" style="color: rgb(255, 0, 0);"></i>
-							已关注
-						</a> <a class="act" href="http://www.howzhi.com/course/9573/"
-							data-toggle="modal" data-target="#modal"
-							data-url="/message/create/1687444"> <i
-							class="glyphicon glyphicon-envelope""></i> 私信
+							data-url="/user/8441/unfollow" style="display: none"
+							 id="attion2"> <i class="fa fa-check" ></i> 已关注
+						</a> <a id="mes" class="act" href="javaScript:void(0);" data-toggle="modal"
+							data-target="#modal" data-url="/message/create/8441"> <i
+							class="fa fa-envelope"></i> 私信
 						</a>
 					</div>
 				</div>
@@ -817,7 +790,7 @@
 		<div class="modal-dialog ">
 			<div class="modal-content login-modal-reset">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
+					<button type="button" class="close" id="close" data-dismiss="modal"
 						aria-hidden="true">×</button>
 					<h4 class="modal-title text-center">登录好知</h4>
 					<img class="img-responsive" src="images/login-model.png">
@@ -875,6 +848,90 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	
+	<div id="studyCurrentCourse" class="modal in"
+		style="display: none; position: absolute; z-index: 20000;">
+		<div class="modal-dialog ">
+			<div class="modal-content login-modal-reset">
+				<div class="modal-header">
+					<button type="button" class="close" id="close2" data-dismiss="modal"
+						aria-hidden="true">×</button>
+					<h4 class="modal-title text-center" style="color: #333;">您还未加入学习此课程，请加入课程后再评论!</h4>
+					<img class="img-responsive" src="images/login-model.png"
+						style="margin-left: 120px; margin-top: 10px">
+				</div>
+				<div class="modal-body">
+					<div class="login-box reset">
+						<form data-widget-cid="widget-5" novalidate="novalidate"
+							id="login-ajax-form" class="form-vertical form-vertical-small"
+							method="post">
+							<div class="alert alert-danger" style="display: none;"></div>
+							<div class="form-group">
+								<div class="col-sm-3 control-label"
+									style="margin-top: 5px; padding-left: 40px;">课程名称:</div>
+								<div class="col-sm-9 controls">
+									<span id="joincourseid" style="display:none;"></span>
+									<span class="control-text text-muted" id="currentCourseName">《【已结束】室外人像用光指南》</span>
+									<input type="hidden" value="" name="lessonId">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-3 control-label"
+									style="margin-top: 5px; padding-left: 40px;">用户名称:</div>
+								<div class="col-sm-9 controls">
+									<span class="control-text text-muted" id="currentUname">珘珘</span>
+									<input type="hidden" value="" name="lessonId">
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button id="join-course-btn" class="btn btn-primary"
+						data-target="#course-buy-form" data-toggle="form-submit"
+						type="button" data-submiting-text="正在加入..."
+						data-loading-text="正在加入...">加入学习</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="message" class="modal in" style="display: none; position: absolute; z-index: 20000;">
+	    <div class="modal-dialog">
+		<div class="modal-content">
+		<div class="modal-header">
+		<button class="close" id="close3" aria-hidden="true" data-dismiss="modal" type="button">×</button>
+		<h4 class="modal-title">发送私信</h4>
+		</div>
+		<div class="modal-body">
+		<form id="message-create-form" class="form-horizontal" action="" method="post" novalidate="novalidate" data-widget-cid="widget-12">
+		<div class="form-group">
+		<div class="col-md-2 control-label">
+		<label class="required" for="message_receiver">收件人</label>
+		</div>
+		<div class="col-md-8 controls">
+		<input id="message_receiver" class="form-control" type="text" value="" data-url="/message/check/receiver" rows="1" required="required" name="message[receiver]" data-widget-cid="widget-13" data-explain="">
+		<div class="help-block" style="display:none;"></div>
+		</div>
+		</div>
+		<div class="form-group">
+		<div class="col-md-2 control-label">
+		<label class="required" for="message_content">内容</label>
+		</div>
+		<div class="col-md-8 controls">
+		<textarea id="messageContent" class="form-control" rows="5" required="required" name="message[content]" data-widget-cid="widget-14" data-explain=""></textarea>
+		<div class="help-block" style="display:none;"></div>
+		</div>
+		</div>
+		<input type="hidden" value="" name="_csrf_token">
+		</form>
+		</div>
+		<div class="modal-footer">
+		<button id="message-create-form-btn" class="btn btn-primary" data-target="#message-create-form" data-toggle="form-submit" data-loading-text="发送中...">发送</button>
+		</div>
+		</div>
+	</div>
 	</div>
 
 	<div id="loadingDiv"

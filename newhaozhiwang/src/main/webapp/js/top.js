@@ -4,8 +4,8 @@ $(function(){
 		$(".dropdown-menu")[0].style.display = "block";
 		});
 	$(".nav-hover").bind("mouseout",function(){
-		$(".dropdown-menu")[0].style.display = "none";
-		});
+		$("#menu").css("display","none");
+  		});
 	$(".choose").bind("mouseover",function(){
 		$("#text-center")[0].style.display = "block";
 		});

@@ -74,8 +74,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="beattentionnumber" property="beattentionnumber"/>
 	</resultMap>
 	<select id="getContactMsgbyUserid" parameterType="int" resultMap="ContactMap">
-		select u.*,(select count(*) from studycourse st where st.userid=u.userid group by st.userid)studynumber, (select count(*) from attention a where a.userid=u.userid group by a.userid) attentionnumber,
-		(select count(*) from attention a where a.attention=u.userid group by a.userid) beattentionnumber 
+		select u.*,(select count(*) from studycourse st where st.userid=u.userid group by st.userid)studynumber, (select count(*) from attention a where a.userid=u.userid ) attentionnumber,
+		(select count(*) from attention a where a.attention=u.userid ) beattentionnumber 
 		from userinfo u where u.userid=#{userid}
 	</select>
 </mapper>

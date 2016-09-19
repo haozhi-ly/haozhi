@@ -43,6 +43,13 @@ public interface CourseMapper {
 	
 
 	int createcourse(Course course);
+	
+	List<Course> mainHotCourse();
+
+	List<Course> goodCourse();
+
+	List<Course> getmainCourseByCtid(int ctid);
+
 
 }
 
