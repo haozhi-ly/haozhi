@@ -200,6 +200,9 @@ create table courseManage(
        temp02 varchar2(200),--备用字段
        temp03 varchar2(200)--备用字段  
 );
+
+select courseseq,cs.courseid from courseManage cm,course cs where cm.courseid=cs.courseid and cs.courseid=cm.courseid;
+
 select * from courseManage
 ALTER TABLE haozhi.courseManage RENAME COLUMN temp01 TO cmintroduction --修改表列名 
 create sequence seq_cmid start with 1;
@@ -228,6 +231,11 @@ sid/XNDY2NTYwMjI4/isAutoPlay/false/partnerid/0edbfd2e4fc91b72/v.swf',null,null,n
 insert into courseManage values(seq_cmid.nextval,5,0,'老电影画面',3,'http://player.youku.com/player.php/
 sid/XNDY2NTYwMjI4/isAutoPlay/false/partnerid/0edbfd2e4fc91b72/v.swf',null,null,null);
 commit;
+
+
+delete from courseManage where courseid=50;
+
+select * from courseAssess where cmid=1
 
 
 

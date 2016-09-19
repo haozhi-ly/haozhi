@@ -101,10 +101,11 @@
 </head>
 <body class="easyui-layout">
 	<div data-options="region:'north',border:false" style="height:60px;background:#B3DFDA;padding:10px">
-	<span id="Date"></span>
+	<span id="Date" style="margin-left:10px;width:215px;"></span>
 	<span id="titlespan" style="font-size:30px;letter-spacing:14px;margin-left:300px;position:fixed;">好知网后台管理</span>
 	<div id="toplogo">
-		<span style="float:left;font-size:14px;">当前管理员:${myself.aname}</span><a href="javascript:exit()" style="float:left;font-size:14px;margin-left:20px;text-decoration:none;" id="tuichu">[安全退出]</a>
+		<span style="float:left;font-size:14px;">当前管理员:${myself.aname}</span>
+		<a href="javascript:exit()" style="float:left;font-size:14px;margin-left:20px;text-decoration:none;" id="tuichu">[安全退出]</a>
 	</div>
 	</div>
 	<div data-options="region:'west',split:true,title:'菜单'" style="width:150px;padding:10px;">
