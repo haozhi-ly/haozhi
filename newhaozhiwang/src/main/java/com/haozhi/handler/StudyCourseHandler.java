@@ -138,4 +138,19 @@ public class StudyCourseHandler {
 		return noteCount;
 	}
 	
+	//学习进度
+	/*public void getStudyPlan(String userid){
+		
+	}*/
+	
+	//获取用户的在教课程
+	@RequestMapping("/teachingCourse")
+	@ResponseBody
+	public List<Course> teachCourse(String userid){
+		System.out.println("userid ==>"+userid);
+		List<Course> teachcourse=studyCourseService.getTeachByUsid(userid);
+		System.out.println("我在教的是："+teachcourse);
+		return teachcourse;
+	}
+	
 }

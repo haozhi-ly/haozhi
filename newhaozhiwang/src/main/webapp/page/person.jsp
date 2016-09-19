@@ -94,14 +94,14 @@
 
 	<nav class="home-nav">
 		<div class="container">
-			<ul class="nav nav-mian">
-				<li class=" active "><a href="javaScript:void(0);">首页</a></li>
-				<li class=""><a href="javaScript:void(0);">在学</a></li>
-				<li class=""><a href="javaScript:void(0);">在教</a></li>
-				<li class=""><a href="javaScript:void(0);">小组</a></li>
+			<ul class="nav nav-mian" id="nav-mian">
+				<li class=" active "><a href="page/person.jsp">首页</a></li>
+				<li class=""><a href="javaScript:void(0);" id="studying">在学</a></li>
+				<li class=""><a href="javaScript:void(0);" id="teaching">在教</a></li>
+				<li class=""><a href="javaScript:void(0);" id="group">小组</a></li>
 				<li class=""><a href="javaScript:void(0);">动态</a></li>
 				<li class=""><a href="javaScript:void(0);">问答</a></li>
-				<li class=""><a href="javaScript:void(0);">笔记</a></li>
+				<li class=""><a href="javaScript:void(0);" id="notes">笔记</a></li>
 				<li class=""><a href="javaScript:void(0);">留言</a></li>
 			</ul>
 		</div>
@@ -109,7 +109,7 @@
 
 	<section class="container home">
 		<div class="row">
-			<div class="col-md-9">
+			<div class="col-md-9" id="replaceable">
 				<!-- 课程信息 -->
 				<div class="course flat nopad">
 					<div class="section-header">

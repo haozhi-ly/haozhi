@@ -21,4 +21,5 @@ public interface StudyCourseMapper {
 	String getCourseCount(String userid);
 	
 	int judgeStudyCourse(@Param("userid")Integer userid,@Param("courseid")Integer courseid);//判断是否加入了课程
+	List<Course> getTeachByUsid(String userid);
 }
