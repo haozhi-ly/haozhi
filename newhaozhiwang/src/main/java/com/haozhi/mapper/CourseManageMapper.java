@@ -17,5 +17,7 @@ public interface CourseManageMapper {
 	String findcourseseq(int courseid);
 
 	int addlession(CourseManage courseManage);
+	
+	List<CourseManage> getCourseManagebyCmid(Integer cmid);//通过cmid来查课时
 
 }

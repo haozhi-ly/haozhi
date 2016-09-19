@@ -29,7 +29,7 @@ public class UserMapperTest{
 	public void testRegister() {
 		SqlSession session =MybatisUtil.getSession();
 		UserInfoMapper ftm=session.getMapper(UserInfoMapper.class);
-		int userInfo=ftm.insertUser(new UserInfo(7,"a","a","a","女",null,null,null,1,0,null,null,null));
+		int userInfo=ftm.insertUser(new UserInfo(7,"a","a","a","女",null,null,null,1,0,null));
 		
 		System.out.println(userInfo);
 		assertNotNull(userInfo);	

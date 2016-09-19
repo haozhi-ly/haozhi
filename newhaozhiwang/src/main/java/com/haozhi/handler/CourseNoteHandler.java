@@ -20,9 +20,26 @@ public class CourseNoteHandler {
 	
 	@ResponseBody
 	@RequestMapping(value="/getCourseNoteById",method=RequestMethod.POST)
-	public List<CourseNote> getAllCourse(Integer courseid){
+	public List<CourseNote> getCourseNoteById(Integer courseid){
 		LogManager.getLogger().debug("getCourseNoteById 到达...");
 		List<CourseNote> courseNote = courseNoteService.getCourseNoteById(courseid);
 		return courseNote;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/getCourseNoteByCmid",method=RequestMethod.GET)
+	public List<CourseNote> getCourseNoteByCmid(Integer cmid){
+		LogManager.getLogger().debug("getCourseNoteByCmid 到达...");
+		List<CourseNote> courseNote = courseNoteService.getCourseNoteByCmid(cmid);
+		return courseNote;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/addCourseNote",method=RequestMethod.POST)
+	public int addCourseNote(Integer userid,Integer cmid,String noteContent){
+		LogManager.getLogger().debug("addCourseNote 到达...");
+		int result = courseNoteService.addCourseNote(userid, cmid, noteContent);
+		return result;
+	}
+	
 }

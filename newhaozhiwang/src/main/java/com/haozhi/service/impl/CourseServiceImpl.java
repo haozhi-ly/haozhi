@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,8 +19,8 @@ public class CourseServiceImpl implements CourseService {
 	private  CourseMapper courseMapper;
 	
 	@Override
-	public List<Course> getAllCourse() {
-		return courseMapper.getAllCourse();
+	public List<Course> getAllCourse(Integer pagesize,Integer pagenumber) {
+		return courseMapper.getAllCourse(pagesize,pagenumber);
 	}
 	
 	@Override
@@ -36,8 +37,8 @@ public class CourseServiceImpl implements CourseService {
 	}
 
 	@Override
-	public List<Course> getCourseByCtid(Integer ctid) {
-		return courseMapper.getCourseByCtid(ctid);
+	public List<Course> getCourseByCtid(Integer ctid,Integer pagesize,Integer pagenumber) {
+		return courseMapper.getCourseByCtid(ctid,pagesize,pagenumber);
 	}
 
 	@Override
@@ -46,8 +47,8 @@ public class CourseServiceImpl implements CourseService {
 	}
 
 	@Override
-	public List<Course> getCourseDescTime(Integer ctid) {
-		return courseMapper.getCourseDescTime(ctid);
+	public List<Course> getCourseDescTime(Integer ctid,Integer pagesize,Integer pagenumber) {
+		return courseMapper.getCourseDescTime( ctid, pagesize, pagenumber);
 	}
 
 	@Override
@@ -98,6 +99,14 @@ public class CourseServiceImpl implements CourseService {
 		return courseMapper.recommedCourseByCmid(cmid);
 	}
 
-	
+	@Override
+	public int countCourseByCtid(Integer ctid) {
+		return courseMapper.countCourseByCtid(ctid);
+	}
 
+
+	@Override
+	public List<Course> getHostCourseByPage(Integer ctid, Integer pagesize, Integer pagenumber) {
+		return courseMapper.getHostCourseByPage(ctid, pagesize, pagenumber);
+	}
 }

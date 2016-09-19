@@ -17,4 +17,6 @@ public interface CourseManageService {
 
 	int addlession(CourseManage courseManage);
 
+	List<CourseManage> getCourseManagebyCmid(Integer cmid);//通过cmid来查课时
+
 }

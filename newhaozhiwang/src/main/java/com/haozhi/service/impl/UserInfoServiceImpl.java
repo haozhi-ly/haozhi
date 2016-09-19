@@ -101,6 +101,12 @@ public class UserInfoServiceImpl implements UserInfoService {
 		return userInfoMapper.deluserinfo(intarr);
 	}
 
+	@Override
+	public UserInfo getContactMsgbyUserid(int courseid) {
+		// TODO Auto-generated method stub
+		return userInfoMapper.getContactMsgbyUserid(courseid);
+	}
+
 
 
 }

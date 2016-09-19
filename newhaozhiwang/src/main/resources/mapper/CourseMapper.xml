@@ -17,6 +17,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		(select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s 
 	</sql>
 	
+	<select id="countCourseByCtid" parameterType="int" resultType="int">
+		select count(*) from course 
+		<if test="ctid==null"></if>
+		<if test="ctid!=null">where ctid=#{ctid}</if>
+	</select>
 	
 	<!-- 查所有课程  -->
 	<resultMap type="Course" id="CourseMap">
@@ -25,7 +30,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<collection property="user" column="userId" ofType="UserInfo" select="getUserByUsid" />
 	</resultMap>
 	<select id="getAllCourse" resultMap="CourseMap" >
-		 <include refid="selectCourse"/>
+		 select rownum,a.* from (select rownum,s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount,
+		(select avg(assess) from studyCourse where courseid = s.courseid) assessAvg
+		 from course s where rownum>=#{pagesize}*(#{pagenumber}-1))a where #{pagesize}*#{pagenumber}>=rownum
 	</select>
 	
 	<select id="getUserByUsid" resultType="UserInfo" parameterType="int">
@@ -65,8 +72,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<id column="userId" property="userId"/>
 		<collection property="user" column="userId" ofType="UserInfo" select="getUserByUsid3" />
 	</resultMap>
-	<select id="getCourseByCtid" resultMap="CourseMap3" parameterType="Integer" >
-		<include refid="selectCourse"/> where s.ctid=#{ctid}
+	<select id="getCourseByCtid" resultMap="CourseMap3"  >
+			select rownum,a.* from (select rownum,s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount,
+		(select avg(assess) from studyCourse where courseid = s.courseid) assessAvg
+		 from course s where s.ctid=#{ctid} and rownum>=#{pagesize}*(#{pagenumber}-1))a where #{pagesize}*#{pagenumber}>=rownum
+	
 	</select>
 	<select id="getUserByUsid3" resultType="UserInfo" parameterType="int">
 		select * from userinfo where userid = #{userid}
@@ -88,18 +98,39 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from userinfo where userid = #{userid}
 	</select>
 	
+	
+	<resultMap type="Course" id="CourseMaps">
+		<id column="courseid" property="courseid"/>
+		<id column="userId" property="userId"/>
+		<id column="memberCount" property="memberCount"/>
+		<id column="assessAvg" property="assessAvg"/>
+		<collection property="user" column="userId" ofType="UserInfo" select="getUserByUsids" />
+	</resultMap>
+	<select id="getHostCourseByPage" resultMap="CourseMaps" >
+		select * from (select rownum, s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount,
+		(select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s 
+		where rownum>=#{pagesize}*(#{pagenumber}-1)
+		<if test="ctid==0"></if>
+		<if test="ctid!=0"> and s.ctid=#{ctid}</if>
+		 order by memberCount desc) where #{pagesize}*#{pagenumber}>=rownum
+	</select>
+	<select id="getUserByUsids" resultType="UserInfo" parameterType="int">
+		select * from userinfo where userid = #{userid}
+	</select>
+	
 	<!-- 查询课程按创建时间排序 -->
 	<resultMap type="Course" id="CourseMap5">
 		<id column="courseid" property="courseid"/>
 		<id column="userId" property="userId"/>
 		<collection property="user" column="userId" ofType="UserInfo" select="getUserByUsid5" />
 	</resultMap>
-	<select id="getCourseDescTime" resultMap="CourseMap5" parameterType="Integer" >
-		 <include refid="selectCourse"/>
-		 <if test="_parameter==0"></if>
-		 <if test="_parameter!=0">
-			 where s.ctid=#{_parameter}
-		 </if> order by createTime desc
+	<select id="getCourseDescTime" resultMap="CourseMap5" >
+		select * from (select rownum, s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount,
+		(select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s 
+		where rownum>=#{pagesize}*(#{pagenumber}-1)
+		 <if test="ctid==0"></if>
+		 <if test="ctid!=0">and s.ctid=#{ctid}</if>
+		order by createTime desc ) where #{pagesize}*#{pagenumber}>=rownum 
 	</select>
 	<select id="getUserByUsid5" resultType="UserInfo" parameterType="int">
 		select * from userinfo where userid = #{userid}
@@ -125,7 +156,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from course
 	</select>
 	
-		   <resultMap type="Course" id="Course">
+	<resultMap type="Course" id="Course">
 		<id column="courseid" property="courseid"/>
 		<id column="userId" property="userId"/>
 		<collection property="user" column="userId" ofType="UserInfo" select="getUserByUsid6" />
@@ -135,8 +166,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg,
 		typename,(select count(*) from courseManage where courseid=s.courseid) courseCount,(
 		select count(courseid) from studyCourse where courseid=s.courseid ) userCount,
+		(select count(*) from attention a where a.attention=s.userid group by a.userid) beattentionnumber,
+		(select count(*) from course co where co.userid=s.userid group by s.userid) teachnumber,
+		(select count(*) from studycourse st where st.userid=s.userid group by st.userid)studynumber,
+		 (select count(*) from attention a where a.userid=s.userid group by a.userid) attentionnumber,
 		(select count(*) from courseAssess where cmid in (select cmid from courseManage where courseid=s.courseid)
-		) assessCount from course s,courseType t where s.ctid=t.ctid and  s.courseid=#{_parameter}
+		) assessCount 
+		from course s,courseType t where s.ctid=t.ctid and  s.courseid=#{_parameter}
 	</select>
 	<select id="getUserByUsid6" resultType="UserInfo" parameterType="int">
 		select * from userinfo where userid = #{userid}
@@ -155,7 +191,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		
 	</resultMap>
 	<select id="getStudentsbypageDescTime" resultMap="SCMap" parameterType="java.util.Map" >
-select * from(select a.*,rownum rn from 
+	select * from(select a.*,rownum rn from 
 	(select u.userid,u.uname,u.photo,sc.userid studyid
 			
     		from course c
@@ -196,6 +232,5 @@ select * from(select a.*,rownum rn from
 	<select id="getUserByUsid7" resultType="UserInfo" parameterType="int">
 		select * from userinfo where userid = #{userid}
 	</select>
-	
 	
 </mapper>

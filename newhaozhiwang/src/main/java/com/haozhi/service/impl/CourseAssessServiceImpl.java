@@ -31,7 +31,6 @@ public class CourseAssessServiceImpl implements CourseAssessService {
 	@Override
 
 	public List<CourseAssess> getAssesstopfour(int courseid) {
-		// TODO Auto-generated method stub
 		return courseAssessMapper.getAssesstopfour(courseid);
 	}
 	public List<CourseAssess> getAssessByCmidByPage(Map<String,Object> hashmap) {
@@ -42,6 +41,16 @@ public class CourseAssessServiceImpl implements CourseAssessService {
 	public List<CourseAssess> getAssessCountByCmid(Integer cmid) {
 		return courseAssessMapper.getAssessCountByCmid(cmid);
 
+	}
+
+	@Override
+	public int addAssess(Integer userid, Integer cmid, String content) {
+		return courseAssessMapper.addAssess(userid, cmid, content);
+	}
+
+	@Override
+	public int delcourseAssess(Integer csid) {
+		return courseAssessMapper.delcourseAssess(csid);
 	}
 
 }

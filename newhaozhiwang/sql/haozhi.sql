@@ -12,6 +12,10 @@ select * from studyCourse;
 select * from selfMessage;
 select * from cgroup;
 
+select rownum,a.* from (select rownum,s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount,
+		(select avg(assess) from studyCourse where courseid = s.courseid) assessAvg
+		 from course s where rownum>=0)a where rownum<=5
+
 select t.*, rownum rn from (select a.*,rownum rn from courseAssess a where cmid=1
 and 5>=rownum order by a.time desc ) t where rn>0
 
@@ -58,9 +62,11 @@ delete from userinfo where email='542933376@qq.com';
 
 commit;
 
+
 select * from UserInfo where uname='超超' and upassword=123456
 create sequence seq_userid start with 1;
-
+update userinfo set upassword='6f9b0a55df8ac28564cb9f63a10be8af6ab3f7c2'  where uname='ly'
+commit
 insert into userinfo values(seq_userid.nextval,'ly','123456@qq.com','123456','男',null,'我就是我，颜色不一样是烟火','一只会飞的鱼',1,0,null,null,null);
 insert into userinfo values(seq_userid.nextval,'超超','23456@qq.com','123456','女',null,'我就是我，颜色不一样是烟火','我很傻很天真',1,0,null,null,null);
 insert into userinfo values(seq_userid.nextval,'仗剑画江湖','345678@qq.com','123456','男',null,'我就是我，颜色不一样是烟火','我很傻很天真',1,0,null,null,null);
@@ -102,16 +108,17 @@ select c.*, t.teachCount,a.fansCount from
 )) a,(select * from courseManage where cmid=1) c,;
 
 -----------------3.课程表
+drop table course
 create table course(
        courseid int primary key,
        ctitle varchar2(100),--标题
-       cintrodution varchar2(500),--课程简介
+       cintrodution varchar2(1000),--课程简介
        ctid int 
             constraint FK_courseType_ctid references courseType(ctid),--课程类别（外键）
        courseting varchar2(100),--应用于课程关键字搜索
        coursephoto varchar2(100),--课程图片
        userId int 
-              constraint FK_userinfo_userid references userinfo(userid),--外键 课程的创建者
+              constraint FK_userinfo_userid01 references userinfo(userid),--外键 课程的创建者
        cview int ,--浏览量
        createTime date,--创建时间
        temp02 varchar2(200),--备用字段
@@ -131,29 +138,29 @@ select * from course;
 create sequence seq_courseid start with 1;
 
 insert into course values(seq_courseid.nextval,'人像摄影高级教程','由摄影师杨最醉主讲的人像摄影高级教程，从人像摄影器材到主题策划、光线捕捉、后期调色、磨皮等各个角度讲解。',
-1,'人像 摄影',null,3,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
+1,'人像 摄影',null,41,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
 insert into course values(seq_courseid.nextval,'AI之全程揭秘美图秀秀UI设计','以 ios系统手机app为例，全程揭秘美图秀秀UI设计。从图标到启动界面，再到功能界面，一步一步重现美图秀秀的绘制过程。从临摹开始，零基础也可以快速掌握手机app的UI设计方法。',
-2,'创意 设计 UI',null,5,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
+2,'创意 设计 UI',null,41,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
 insert into course values(seq_courseid.nextval,'吉他自学入门 ','本课程通俗易懂，按照由浅入深、循序渐进的学习规律，把乐理基础、乐感训练和弹奏技巧三者有机结合起来，为吉他初学者提供一条科学规范合理的学习途径',
-3,'声乐 吉他',null,3,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
+3,'声乐 吉他',null,3,41,to_date('2016-7-20','yyyy-mm-dd'),null,null);
 insert into course values(seq_courseid.nextval,'跆拳道品势教学 ','跆拳道品势教学，跆拳道品势与跆拳道竞技腿法同为跆拳道运动的重要组成部分，品势动作包含跆拳道各类技法的精髓，长期练习可以很好的训练个人的协调性和发力，加深对跆拳道精神的理解。',
-4,'运动 跆拳道',null,2,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
+4,'运动 跆拳道',null,21,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
 insert into course values(seq_courseid.nextval,'html,div+css视频教程(2014最新,带多个企业级项目实战) ','本课程讲解细腻，加入了作者很多付出，希望能够对大家的学习产生很大帮助',
 5,'IT html',null,4,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
 insert into course values(seq_courseid.nextval,'如何自制冷萃咖啡/冰滴咖啡  ','炎炎夏日，很多人喜欢在咖啡里加冰块以图凉爽。然而近期由于星巴克的推广，让冷萃咖啡走进了大家的视线。冷萃咖啡和普通的冰咖啡有什么不同？
 冰镇咖啡或冰咖啡是指用热水快速萃取、然后加冰块或急速降温后的冷饮咖啡。冷萃咖啡是指用低于摄氏5度的水长时间低温浸泡萃取的咖啡饮料。',
-6,'兴趣 咖啡',null,3,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
+6,'兴趣 咖啡',null,21,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
 insert into course values(seq_courseid.nextval,'韩语零基础入门','标准韩国语第一册(修订版) 1-13课',
-7,'语言 韩语',null,5,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
+7,'语言 韩语',null,21,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
 insert into course values(seq_courseid.nextval,'15分钟与陌生人成为朋友 ','什么？你还是单身？那快快点击这个课程，纯干货方法，观看后立即成为交际达人。',
-8,'职场 朋友',null,2,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
+8,'职场 朋友',null,41,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
 insert into course values(seq_courseid.nextval,'腾飞五千年之《塞北三朝之金》全22集 ','　公元1125年，曾经幅员万里的大辽帝国，被原本附属于自己的女真人消灭了。那么女真是一个什么样的民族？他们起源于何方？又是怎样从一个原始部落逐渐发展壮大，如何创造了仅用12年就灭辽平宋的奇迹？',
-9,'公开课 五千年',null,4,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
+9,'公开课 五千年',null,41,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
 commit;
 
 select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount,
-		(select avg(assess) from studyCourse where courseid = s.courseid) assessAvg,
-		(select * from userinfo where userid = s.userid ) users from course s 
+		(select avg(assess) from studyCourse where courseid = s.courseid)  assessAvg,
+ from course s 
 
 select * from courseType;
 -------4.课程类别表
@@ -162,6 +169,7 @@ create table courseType(
        typename varchar2(20),
        temp01 varchar2(200)  --备用字段
 );
+select * from courseType;
 create sequence seq_ctid start with 1;
 insert into courseType values(seq_ctid.nextval,'摄影课堂',null);
 insert into courseType values(seq_ctid.nextval,'创意设计',null);
@@ -176,6 +184,7 @@ insert into courseType values(seq_ctid.nextval,'公开课',null);
 drop table courseManage;
 drop sequence seq_cmid ;
 
+select * from courseManage where courseid in (select courseid from courseManage where cmid=1)
 select * from courseManage;
 select count(*) from courseManage where courseid=6;
 --------------5.课时管理表
@@ -187,11 +196,14 @@ create table courseManage(
        title varchar2(50),--课时标题
        courseseq int ,--课时序号
        pathOrContetn varchar2(2000),--课时内容（路径或者内容）
-       cmintroduction varchar2(200),--简介
+       cmintroduction varchar2(200),--备用字段
        temp02 varchar2(200),--备用字段
        temp03 varchar2(200)--备用字段  
 );
+
 select courseseq,cs.courseid from courseManage cm,course cs where cm.courseid=cs.courseid and cs.courseid=cm.courseid;
+
+select * from courseManage
 ALTER TABLE haozhi.courseManage RENAME COLUMN temp01 TO cmintroduction --修改表列名 
 create sequence seq_cmid start with 1;
 insert into courseManage values(seq_cmid.nextval,6,1,'超级简单的冷萃咖啡制作方... ',1,'<p>冷萃咖啡听起来高大上，但实际上制作非常简单。</p><p><strong>你需要准备的材料有：</strong>
@@ -220,9 +232,15 @@ insert into courseManage values(seq_cmid.nextval,5,0,'老电影画面',3,'http:/
 sid/XNDY2NTYwMjI4/isAutoPlay/false/partnerid/0edbfd2e4fc91b72/v.swf',null,null,null);
 commit;
 
+
 delete from courseManage where courseid=50;
 
 select * from courseAssess where cmid=1
+
+
+
+
+select * from courseAssess where cmid=1 order by time desc
 -----------------6.课程评价表
 create table courseAssess(
        csid int primary key ,
@@ -246,6 +264,8 @@ insert into courseAssess values(seq_csid.nextval,5,1,'没想到做冷萃咖啡�
 insert into courseAssess values(seq_csid.nextval,4,1,'再次来学习学习一下',sysdate,0,null,null,null);
 insert into courseAssess values(seq_csid.nextval,2,1,'哎 自己动手总会出差错！',sysdate,0,null,null,null);
 commit
+
+select c.*,(select count(*) from courseAnswer a where a.cqid=c.cqid) answercount from courseQuestion c where c.cmid=1
 --------------------7.课程提问表
 create table courseQuestion(
        cqid int primary key,
@@ -281,11 +301,12 @@ create table courseNote(
        temp02 varchar2(200),--备用字段
        temp03 varchar2(200)--备用字段 
 );
+select * from courseNote
 create sequence seq_courseNoteId start with 1;
-insert into courseNote values(seq_courseNoteId.nextval,2,1,null,'冷萃咖啡，最重要的是把握好水的分量以及咖啡的量',sysdate,null,null,null);
-insert into courseNote values(seq_courseNoteId.nextval,4,2,null,'人像氛围确实是很重要，很容易被人忽视的，每个摄影师拍的之所以不一样，可能就是摄影师营造的氛围不一样，',sysdate,null,null,null);
-insert into courseNote values(seq_courseNoteId.nextval,5,1,null,'风光摄影后期：一般下拍天空曝光准确的，再拍地面曝光准确的，然后合成。PS中，复制图层，创建副本，擦出天空',sysdate,null,null,null);
-insert into courseNote values(seq_courseNoteId.nextval,2,2,null,'全幅的虚化还是比半幅高的，老师说的。半幅视角小，要拍同样的大小必须后退，后退跟离大了虚化就小的',sysdate,null,null,null);
+insert into courseNote values(seq_courseNoteId.nextval,41,1,null,'冷萃咖啡，最重要的是把握好水的分量以及咖啡的量',sysdate,null,null,null);
+insert into courseNote values(seq_courseNoteId.nextval,41,3,null,'人像氛围确实是很重要，很容易被人忽视的，每个摄影师拍的之所以不一样，可能就是摄影师营造的氛围不一样，',sysdate,null,null,null);
+insert into courseNote values(seq_courseNoteId.nextval,21,4,null,'风光摄影后期：一般下拍天空曝光准确的，再拍地面曝光准确的，然后合成。PS中，复制图层，创建副本，擦出天空',sysdate,null,null,null);
+insert into courseNote values(seq_courseNoteId.nextval,21,2,null,'全幅的虚化还是比半幅高的，老师说的。半幅视角小，要拍同样的大小必须后退，后退跟离大了虚化就小的',sysdate,null,null,null);
 
 select c.*,u.* from courseNote c inner join userinfo u  on  c.userid=u.userid and cmid in (select cmid from courseManage where courseid=6) order by ntime desc;
 
@@ -305,6 +326,7 @@ create table courseAnswer(
 create sequence seq_caid start with 1;
 insert into courseAnswer values(seq_caid.nextval,1,3,'多多联系一下就好了，相信自己！',sysdate,null,null,null);
 
+select * from attention
 --------------------------10.关注表（保留意见）
 create table attention(
        atid  int  primary key,  
@@ -316,18 +338,28 @@ create table attention(
        temp02 varchar2(200),--备用字段
        temp03 varchar2(200)--备用字段 
 );
+select * from attention;
 create sequence seq_atid start with 1;
-insert into attention values(seq_atid.nextval,3,1,null,null,null);
-insert into attention values(seq_atid.nextval,1,3,null,null,null);
-
+insert into attention values(seq_atid.nextval,3,41,null,null,null);
+insert into attention values(seq_atid.nextval,1,41,null,null,null);
+insert into attention values(seq_atid.nextval,41,3,null,null,null);
+insert into attention values(seq_atid.nextval,41,1,null,null,null);
+insert into attention values(seq_atid.nextval,41,21,null,null,null);
+insert into attention values(seq_atid.nextval,21,41,null,null,null);
+insert into attention values(seq_atid.nextval,41,5,null,null,null);
+insert into attention values(seq_atid.nextval,41,4,null,null,null);
 select * from (select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount,
 (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s order by memberCount desc) where rownum<=3 ;
 
 select * from studyCourse
-select  count(userid) from studyCourse  where courseid=5 order by begintime desc;
-select  count(*) from studyCourse where userid = 2 and courseid in (select courseid from courseManage where cmid=1)
-select courseid from courseManage where cmid=1;
+
+select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount,
+		(select avg(assess) from studyCourse where courseid = s.courseid) assessAvg
+		 from course s where s.courseid in(select courseid from studyCourse where userid =4)
+
 ---------------------11.学习课程表
+drop table studyCourse
+drop sequence seq_scid
 create table studyCourse(
        scid int primary key,
        userid int 
@@ -343,11 +375,25 @@ create table studyCourse(
 );
 create sequence seq_scid start with 1;
 select * from userinfo
-insert into studyCourse values(seq_scid.nextval,5,5,to_date('2016-8-1','yyyy-mm-dd'),2,null,null,null,null);
-insert into studyCourse values(seq_scid.nextval,107,6,to_date('2016-8-10','yyyy-mm-dd'),4,null,null,null,null);
-insert into studyCourse values(seq_scid.nextval,2,5,to_date('2016-8-1','yyyy-mm-dd'),4,null,null,null,null);
+insert into studyCourse values(seq_scid.nextval,41,5,to_date('2016-8-1','yyyy-mm-dd'),2,null,null,null,null);
+insert into studyCourse values(seq_scid.nextval,41,6,to_date('2016-8-10','yyyy-mm-dd'),4,null,null,null,null);
+insert into studyCourse values(seq_scid.nextval,41,5,to_date('2016-8-1','yyyy-mm-dd'),4,null,null,null,null);
+insert into studyCourse values(seq_scid.nextval,21,6,to_date('2016-8-1','yyyy-mm-dd'),4,null,null,null,null);
+insert into studyCourse values(seq_scid.nextval,1,1,to_date('2016-8-1','yyyy-mm-dd'),2,null,null,null,null);
+insert into studyCourse values(seq_scid.nextval,2,2,to_date('2016-8-10','yyyy-mm-dd'),4,null,null,null,null);
+insert into studyCourse values(seq_scid.nextval,3,9,to_date('2016-8-1','yyyy-mm-dd'),4,null,null,null,null);
+insert into studyCourse values(seq_scid.nextval,4,8,to_date('2016-8-1','yyyy-mm-dd'),4,null,null,null,null);
+insert into studyCourse values(seq_scid.nextval,41,8,to_date('2016-8-1','yyyy-mm-dd'),2,null,null,null,null);
+insert into studyCourse values(seq_scid.nextval,41,1,to_date('2016-8-10','yyyy-mm-dd'),4,null,null,null,null);
+insert into studyCourse values(seq_scid.nextval,5,5,to_date('2016-8-1','yyyy-mm-dd'),4,null,null,null,null);
+insert into studyCourse values(seq_scid.nextval,21,8,to_date('2016-8-1','yyyy-mm-dd'),4,null,null,null,null);
+select * from studyCourse
 commit;
+
+select * from selfMessage where sendType=1 and receiveman=3
 update studyCourse set userid=5 where scid=3;
+delete from selfMessage
+drop sequence seq_smid
 -------------12.私信表  or   留言表
 create table selfMessage(
        smid int primary key ,
@@ -388,6 +434,7 @@ update cgroup set  groupnumber='2,3' where groupname='Ubuntu';
 update cgroup set  groupnumber='2,21' where groupname='工笔画'
 
 drop table cgroup;
+delete sequence seq_gid 
 select * from cgroup;
 create sequence seq_gid start with 1;
 delete from cgroup where groupname='名校公开课';

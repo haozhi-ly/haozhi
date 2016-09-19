@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.haozhi.entity.StudyCourse;
 import com.haozhi.service.StudyCourseService;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring.xml")
 public class StudyCourseServiceImplTest {
@@ -24,5 +25,30 @@ public class StudyCourseServiceImplTest {
 		List<StudyCourse> studyCourse = studyCourseService.getStudyCourseByCmid(1);
 		System.out.println(studyCourse);
 	}
+	
+	@Test
+	public void testcountStudyCourseByUseridCmid() {
+		int count = studyCourseService.countStudyCourseByUseridCmid(21,1);
+		System.out.println(count);
+	}
+	
+	@Test
+	public void testNewJoin() {
+		List<StudyCourse> studyCourse = studyCourseService.newjoinStudentbycourseid(6);
+		System.out.println(studyCourse);
+	}
+	
+	@Test
+	public void testJudge() {
+		int count = studyCourseService.judgeStudyCourse(21, 10);
+		System.out.println(count);
+	}
+	
+	
+	@Test
+	public void testgetPersonCourse02() {
+		System.out.println(studyCourseService.getCourseByUsid("41"));
+	}
+
 
 }

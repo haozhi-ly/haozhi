@@ -17,5 +17,10 @@ public class CourseQuestionMapperTest {
 	public void testGetAllcourseQuestionbycourseid() {
 		System.out.println(courseQuestionMapper.getAllcourseQuestionbycourseid(6));
 	}
+	
+	@Test
+	public void testGetAllcoursedetailquestion() {
+		System.out.println(courseQuestionMapper.detailAnswerbycqid(1));
+	}
 
 }

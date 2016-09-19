@@ -10,6 +10,9 @@
 </head>
 <body>
 
+
+
+	${users}
 	<form id="itemForm"
 		action="${pageContext.request.contextPath}/items/editItemsSubmit.action"
 		method="post" enctype="multipart/form-data">

@@ -11,15 +11,15 @@
         <li class=""> <a href="page/learnCenter.jsp">学习中心 </a> </li>
         <li class="nav-hover" > <a href="page/course.jsp">课程 <b class="caret"></b></a>
           <ul class="dropdown-menu"  role="menu" id="dropdown-menu">
-            <li class="change" ><a href="page/course.jsp">摄影课堂</a></li>
-            <li><a href="page/course.jsp">创意设计</a></li>
-            <li><a href="page/course.jsp">声乐器乐</a></li>
-            <li><a href="page/course.jsp">运动健身</a></li>
-            <li><a href="page/course.jsp">IT互联网</a></li>
-            <li><a href="page/course.jsp">兴趣爱好</a></li>
-            <li><a href="page/course.jsp">语言学习</a></li>
-            <li><a href="page/course.jsp">职场技能</a></li>
-            <li><a href="page/course.jsp">公开课</a></li>
+            <li class="change" ><a href="page/course.jsp?ctid=1">摄影课堂</a></li>
+            <li><a href="page/course.jsp?ctid=2">创意设计</a></li>
+            <li><a href="page/course.jsp?ctid=3">声乐器乐</a></li>
+            <li><a href="page/course.jsp?ctid=4">运动健身</a></li>
+            <li><a href="page/course.jsp?ctid=5">IT互联网</a></li>
+            <li><a href="page/course.jsp?ctid=6">兴趣爱好</a></li>
+            <li><a href="page/course.jsp?ctid=7">语言学习</a></li>
+            <li><a href="page/course.jsp?ctid=8">职场技能</a></li>
+            <li><a href="page/course.jsp?ctid=9">公开课</a></li>
           </ul>
         </li>
         <li class=""> <a href="javaScript:void(0);">班级 </a> </li>
@@ -29,9 +29,8 @@
         <div class="colse" id="hz-head-update" data-dismiss="alert">×</div>
         <i class="left"></i> <i class="right"></i> </div>
     </nav>
-    <div class="pull-right user-nav clearfix">
-      <ul class="nav pull-right">
-
+    <div class="pull-right user-nav clearfix" id="topf">
+    	<ul class="nav pull-right">
         <li class="hidden-xs hidden-sm"> <a class="btn btn-primary radius" href="page/createcourse.jsp"><i style="color: rgb(255, 247, 255);" class="glyphicon glyphicon-plus"></i> 创建课程</a> </li>
         <li class="dropdown user-nav-dropdown user-img"> <a href="#" class="dropdown-toggle" id="toggle"> <img src="images/avatar.png" class="user-avatar" alt="${users.uname }" id="${users.userid}"> </a>
           <ul class="dropdown-menu" role="menu" id="dropdown-menu">

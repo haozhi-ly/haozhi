@@ -1,5 +1,7 @@
 package com.haozhi.entity;
 
+import java.util.List;
+
 /**
  * 课程提问
  * @author admin
@@ -18,17 +20,10 @@ public class CourseQuestion {
 	private String temp01;// --备用字段
 	private String temp02;// --备用字段
 	private String temp03;// --备用字段
+	private List<CourseAnswer> courseAnswer;
 
 	public CourseQuestion() {
 	}
-
-	
-
-	
-	
-
-	
-
 
 	public CourseQuestion(int cqid, int userid, int cmid, String cqcontent, String cqtime, int cqview, int qreadstatus,
 			UserInfo user, CourseManage courseManage, int answercount) {
@@ -46,12 +41,8 @@ public class CourseQuestion {
 	}
 
 
-
-
-
-
-
-
+	
+	
 
 	public CourseManage getCourseManage() {
 		return courseManage;
@@ -168,20 +159,34 @@ public class CourseQuestion {
 		this.answercount = answercount;
 	}
 
+	public List<CourseAnswer> getCourseAnswer() {
+		return courseAnswer;
+	}
 
-
-
-
-
-
-
+	public void setCourseAnswer(List<CourseAnswer> courseAnswer) {
+		this.courseAnswer = courseAnswer;
+	}
 
 	@Override
 	public String toString() {
 		return "CourseQuestion [cqid=" + cqid + ", userid=" + userid + ", cmid=" + cmid + ", cqcontent=" + cqcontent
 				+ ", cqtime=" + cqtime + ", cqview=" + cqview + ", qreadstatus=" + qreadstatus + ", user=" + user
-				+ ", courseManage=" + courseManage + ", answercount=" + answercount + "]";
+				+ ", courseManage=" + courseManage + ", answercount=" + answercount + ", courseAnswer=" + courseAnswer
+				+ "]";
 	}
+
+	
+
+	
+
+
+
+
+
+
+
+
+	
 
 
 
