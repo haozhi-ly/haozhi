@@ -33,7 +33,10 @@ public class Course implements Serializable{
 	private int attentionnumber;//关注的人数
 	private int beattentionnumber;//被关注的人数
 	private UserInfo student;//学习本课程的学生
+	private CourseManage courseManage;
+	private String begintime;//开始课程的时间
 	private List<UserInfo> studentlist;
+
 	public Course() {
 	}
 
@@ -295,6 +298,28 @@ public class Course implements Serializable{
 		this.beattentionnumber = beattentionnumber;
 	}
 
+
+	public CourseManage getCourseManage() {
+		return courseManage;
+	}
+
+
+
+	public void setCourseManage(CourseManage courseManage) {
+		this.courseManage = courseManage;
+	}
+
+
+
+	public String getBegintime() {
+		return begintime;
+	}
+
+
+
+	public void setBegintime(String begintime) {
+		this.begintime = begintime;
+	}
 	
 	
 	public List<UserInfo> getStudentlist() {
@@ -311,13 +336,14 @@ public class Course implements Serializable{
 
 	@Override
 	public String toString() {
-		return "\nCourse [courseid=" + courseid + ", ctitle=" + ctitle + ", cintrodution=" + cintrodution + ", ctid="
+		return "Course [courseid=" + courseid + ", ctitle=" + ctitle + ", cintrodution=" + cintrodution + ", ctid="
 				+ ctid + ", courseType=" + courseType + ", courseting=" + courseting + ", coursephoto=" + coursephoto
 				+ ", userId=" + userId + ", cview=" + cview + ", createTime=" + createTime + ", memberCount="
 				+ memberCount + ", assessAvg=" + assessAvg + ", user=" + user + ", courseCount=" + courseCount
 				+ ", userCount=" + userCount + ", assessCount=" + assessCount + ", typename=" + typename
 				+ ", teachnumber=" + teachnumber + ", studynumber=" + studynumber + ", attentionnumber="
 				+ attentionnumber + ", beattentionnumber=" + beattentionnumber + ", student=" + student
+				+ ", courseManage=" + courseManage + ", begintime=" + begintime + "]"
 				+ ", studentlist=" + studentlist + "]";
 	}
 
@@ -325,15 +351,6 @@ public class Course implements Serializable{
 
 	
 
-
-
-	
-
-
-
-	
-
-	
 
 
 

@@ -2,6 +2,8 @@ package com.haozhi.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.haozhi.entity.UserInfo;
 
 public interface UserInfoService {
@@ -37,6 +39,15 @@ public interface UserInfoService {
 
 	int deluserinfo(Integer[] intarr);
 
+	UserInfo getContactMsgbyUserid(int courseid);
+	
+	List<UserInfo> attentionByUserid(Integer userid);
+	
+	List<UserInfo> fansByUserid(@Param("attention")Integer attention);  //通过useid来查粉丝信息
+	
+	int judgeAttention(Integer userid,Integer attention);
+
 	UserInfo getContactMsgbyUserid(int courseid,int presentid);
+
 
 }

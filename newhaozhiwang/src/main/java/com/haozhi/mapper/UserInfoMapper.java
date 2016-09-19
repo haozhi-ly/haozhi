@@ -45,5 +45,14 @@ public interface UserInfoMapper {
 
 	int deluserinfo(Integer[] intarr);
 	
+	UserInfo getContactMsgbyUserid(int userid);
+	
+	List<UserInfo> attentionByUserid(@Param("userid")Integer userid);  //通过useid来查关注好友的信息
+	
+	List<UserInfo> fansByUserid(@Param("attention")Integer attention);  //通过useid来查粉丝信息
+	
+	int judgeAttention(@Param("userid")Integer userid,@Param("attention")Integer attention);
+
 	UserInfo getContactMsgbyUserid(@Param("userid")Integer userid,@Param("presentid")Integer presentid);
+
 }

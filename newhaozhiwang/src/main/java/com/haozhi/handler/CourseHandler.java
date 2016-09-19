@@ -159,11 +159,10 @@ public class CourseHandler {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/selectCourseBy",method=RequestMethod.POST)
-	public List<Course> selectCourseBy(String p1,Integer ctid,Integer id){
+	public List<Course> selectCourseBy(String p,Integer ctid,Integer id){
 		LogManager.getLogger().debug("selectCourseBy 到达...");
 		List<Course> courses;
-		p1="1";
-		int  pagesize =18;int pagenumber=Integer.parseInt(p1);
+		int  pagesize =18;int pagenumber=Integer.parseInt(p);
 		if(id==0){
 			courses =  courseService.getAllCourse(pagesize,pagenumber); //为0代表为综合排序
 		}else if(id==1){
@@ -174,6 +173,44 @@ public class CourseHandler {
 		System.out.println( ctid+"呵呵哒"+id);
 		return courses;
 	}
+	
+	/**
+	 * 通过
+	 * @param tid  课程类型
+	 * @param id   按什么排序
+	 * @param map
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value="/selectCourseByTime",method=RequestMethod.POST)
+	public List<Course> selectCourseByTime(String p,Integer ctid){
+		LogManager.getLogger().debug("selectCourseByTime 到达...");
+		List<Course> courses;
+		int  pagesize =18;int pagenumber=Integer.parseInt(p);
+		courses = courseService.getCourseDescTime(ctid,pagesize,pagenumber);  //为1代表为按时间排序
+		return courses;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/selectCourseByHost",method=RequestMethod.POST)
+	public List<Course> selectCourseByHost(String p,Integer ctid){
+		LogManager.getLogger().debug("selectCourseByHost 到达...");
+		List<Course> courses;
+		int  pagesize =18;int pagenumber=Integer.parseInt(p);
+		courses = courseService.getHostCourseByPage(ctid, pagesize, pagenumber);  //为1代表为按时间排序
+		return courses;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/selectCourseByZH",method=RequestMethod.POST)
+	public List<Course> selectCourseByZH(String p,Integer ctid){
+		LogManager.getLogger().debug("selectCourseByZH 到达...");
+		List<Course> courses;
+		int  pagesize =18;int pagenumber=Integer.parseInt(p);
+		courses = courseService.getAllCourse(pagesize,pagenumber);  //为1代表为按时间排序
+		return courses;
+	}
+	
 	
 	@RequestMapping("/getAllcoursebypage")
 	public void getAllcoursebypage(String page,String rows,String sort,String order,HttpServletResponse response){
@@ -294,10 +331,10 @@ public class CourseHandler {
 	
 	@RequestMapping("/basic")
 	public void savebasic(CourseType courseType,PrintWriter out,String ctitle,String cintroduction,int ctid,String courseting,HttpSession session){
-		System.out.println(ctitle);
+/*		System.out.println(ctitle);
 		System.out.println(cintroduction);
 		System.out.println(ctid);
-		System.out.println(courseting);
+		System.out.println(courseting);*/
 		courseType.setCtid(ctid);
 		CourseType courseTypes=courseTypeService.findByctid(courseType);
 		session.setAttribute("ctitle", ctitle);
@@ -393,6 +430,17 @@ public class CourseHandler {
 		out.close();
 	}
 	
+	
+	@ResponseBody
+	@RequestMapping(value="/studyingByUserid",method=RequestMethod.POST)
+	public List<Course> studyingByUserid(Integer userid,String p){
+		int  pagesize =2;
+		int pagenumber=Integer.parseInt(p);
+		List<Course> courselist = courseService.studyingByUserid(pagesize, pagenumber, userid);
+		return courselist;
+	}
+	
+	
 
 	
 /*	热门课程
@@ -408,8 +456,7 @@ public class CourseHandler {
 
 	@ResponseBody
 	@RequestMapping("/goodCourse")
-	public List<Course> goodCourse(HttpServletResponse response){
-		
+	public List<Course> goodCourse(HttpServletResponse response){		
 		GoEasy g=new GoEasy("4ea18126-cec1-4cce-8569-ad314901d30d");
 		System.out.println(g);
 		//g.publish("eb367e1f-1b28-4ce2-a32d-cd5347de7816","Hello, GoEasy!");
@@ -421,7 +468,6 @@ public class CourseHandler {
 	@ResponseBody
 	@RequestMapping(value="/getMainCoruseByctid",method=RequestMethod.POST)
 	public List<Course> getMainCoruseByctid(int ctid){
-		
 		List<Course> courses =null;
 		if(ctid!=0){
 			 courses =courseService.getmainCourseByCtid(ctid);

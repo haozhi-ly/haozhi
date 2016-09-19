@@ -41,9 +41,10 @@ public interface CourseMapper {
 	
 	List<Course> recommedCourseByCmid(Integer cmid);  //通过cmid来查推荐课程的前三门
 	
-
 	int createcourse(Course course);
 	
+	List<Course> studyingByUserid(@Param("pagesize")Integer pagesize,@Param("pagenumber")Integer pagenumber,@Param("userid")Integer userid);   // 通过userid来查学习的课程
+
 	List<Course> mainHotCourse();
 
 	List<Course> goodCourse();
