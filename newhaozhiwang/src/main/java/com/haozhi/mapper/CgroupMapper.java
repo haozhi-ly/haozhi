@@ -28,4 +28,6 @@ public interface CgroupMapper {
 
 	String getGroupnumber(String groupname);
 
+	List<Cgroup> getAllGroupInfo();
+
 }

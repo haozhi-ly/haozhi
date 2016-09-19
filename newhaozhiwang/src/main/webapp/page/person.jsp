@@ -313,7 +313,7 @@
 			<aside class="col-md-3">
 				<div class="person-count">
 					<ul class="clearfix">
-						<li><a class="count" href="javaScript:void(0)">0</a><span>在教</span></li>
+						<li><a class="count" href="javaScript:void(0)" id="teachCount">0</a><span>在教</span></li>
 						<li class="line"></li>
 						<li><a class="count" href="javaScript:void(0)" id="courseCount"></a><span>课程</span></li>
 						<li class="line"></li>
