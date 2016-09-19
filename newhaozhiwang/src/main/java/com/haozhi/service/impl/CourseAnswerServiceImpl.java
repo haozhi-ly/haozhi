@@ -33,4 +33,10 @@ public class CourseAnswerServiceImpl implements CourseAnswerService {
 			return true;
 	}
 
+	@Override
+	public List<CourseAnswer> getMyAnswerByUsid(String userid) {
+		// TODO Auto-generated method stub
+		return courseAnswerMapper.getMyAnswerByUsid(userid);
+	}
+
 }

@@ -135,7 +135,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	
-	<!-- //通过userid查课程信息 -->
+	<!-- //通过userid查在教的课程信息 -->
 	<resultMap type="Course" id="TeachCourseByUsidMap">
 		<id column="courseid" property="courseid"/>
 		<id column="userId" property="userId"/>
@@ -146,7 +146,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getTeachByUsid" resultMap="TeachCourseByUsidMap"  >
 		select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount,
 		(select avg(assess) from studyCourse where courseid = s.courseid) assessAvg
-		 from course s where s.courseid in(select courseid from course where userid =#{userid})
+		 from course s where userid =#{userid}
 	</select>
 	<select id="getUserByUsid01" resultType="UserInfo" parameterType="int">
 		select * from userinfo where userid = #{userid}

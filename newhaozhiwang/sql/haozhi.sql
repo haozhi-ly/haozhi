@@ -283,7 +283,9 @@ create table courseQuestion(
 );
 create sequence seq_cqid start with 1;
 insert into courseQuestion values(seq_cqid.nextval,1,1,'虽然讲的很仔细，但还是不太会！',sysdate,1,0,null,null,null);
-insert into courseQuestion values(seq_cqid.nextval,4,1,'水的分量还是把握不好，老师教教技巧吧！',sysdate,1,0,null,null,null);
+insert into courseQuestion values(seq_cqid.nextval,41,1,'你好，能交个朋友吗！',sysdate,1,0,null,null,null);
+insert into courseQuestion values(seq_cqid.nextval,41,2,'我有好吃的，你要吗！',sysdate,1,0,null,null,null);
+insert into courseQuestion values(seq_cqid.nextval,21,1,'为什么天使有翅膀 ！',sysdate,1,0,null,null,null);
 
 drop table courseNote;
 drop sequence seq_coursenoteId ;
@@ -314,7 +316,7 @@ select c.*,u.* from courseNote c inner join userinfo u  on  c.userid=u.userid an
 create table courseAnswer(
        caid int primary key ,
        cqid int 
-            constraint FK_courseQuestion_cqid references courseQuestion(cqid),-- 用户id(外键)
+            constraint FK_courseQuestion_cqid references courseQuestion(cqid),
        userid int 
               constraint FK_userinfo_userid04 references userinfo(userid),-- 回答问题的人 用户id(外键)
        answerContent varchar2(100),
@@ -325,6 +327,8 @@ create table courseAnswer(
 );
 create sequence seq_caid start with 1;
 insert into courseAnswer values(seq_caid.nextval,1,3,'多多联系一下就好了，相信自己！',sysdate,null,null,null);
+insert into courseAnswer values(seq_caid.nextval,3,3,'叔叔，我们不约！',sysdate,null,null,null);
+insert into courseAnswer values(seq_caid.nextval,5,41,'因为它要飞得更高！',sysdate,null,null,null);
 
 select * from attention
 --------------------------10.关注表（保留意见）

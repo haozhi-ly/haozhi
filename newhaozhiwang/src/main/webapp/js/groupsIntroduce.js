@@ -11,6 +11,15 @@ $(function(){
 		$("#img-groupname").attr("alt",gdata.groupname);
 		var str=gdata.peoplecount+'个成员<span class="mlm">4608个话题</span> <span class="fsn mlm">创建时间：'+gdata.createtime+'</span>';
 		$("#peoplecount").html(str);
+		
+		var introduce="";
+		if(gdata.introduction!=null){
+			introduce='<p>'+gdata.introduction+'</p>';
+		}else{
+			introduce='<p>暂无小组简介</p>';
+		}
+		$("#introduce").html(introduce);
+		
 		$("#createtime01").html("创建时间："+gdata.createtime);
 		var listStr='<a class="link-light link-muted " href="http://www.howzhi.com/u/187/">'+gdata.userinfo.uname+'</a>';
 		$("#leader").html("组长："+listStr);

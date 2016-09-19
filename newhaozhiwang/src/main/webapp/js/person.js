@@ -9,29 +9,34 @@ $(function(){
 	
 	$.post("studyCourse/personCourse",{"_method":"POST","userid":userid},function(data){
 		var listStr="";
-		for(var i=0;i<data.length;i++){
-			listStr+='<div class="col-md-4 col-sm-6 " >';
-			listStr+='<div class="course-item">';
-			listStr+='<div class="course-img">';
-			listStr+='<img src="images/160148ccf620140008.jpg" alt="'+data[i].ctitle+'" class="">';
-			listStr+='<div class="mask"><a href="page/joinproject.jsp?courseid='+data[i].courseid+'"> <span class="btn btn-primary">开始学习</span></a></div></div>';
-			listStr+='<div class="course-info">';
-			listStr+='<div class="title">';
-			listStr+='<span class="label label-p">'+data[i].typename+'</span> <a class="transition" href="page/joinproject.jsp?courseid='+data[i].courseid+'">'+data[i].ctitle+'</a></div>';
-			listStr+='<div class="metas"><span>'+data[i].cview+'浏览</span>/ <span>'+data[i].memberCount+'学员</span>/ <span>'+data[i].assessAvg+'评分</span></div>';
-			listStr+='<div class="teacher text-o-show">';
-			listStr+='<a class=" js-user-card" href="javaScript:void(0);"';
-			listStr+='data-card-url="/user/1931873/card/show" data-user-id="'+data[i].user.userid+'">';
-			listStr+='<img class="avatar-ss " src="images/105454e6cdc9246475.jpg" alt="'+data[i].user.uname+'"> '+data[i].user.uname+'</a>';
-			listStr+='<div class="price free pull-right"><span>免费</span></div></div></div></div></div>';
+		if(data.length!=0){
+			for(var i=0;i<data.length;i++){
+				listStr+='<div class="col-md-4 col-sm-6 " >';
+				listStr+='<div class="course-item">';
+				listStr+='<div class="course-img">';
+				listStr+='<img src="images/160148ccf620140008.jpg" alt="'+data[i].ctitle+'" class="">';
+				listStr+='<div class="mask"><a href="page/joinproject.jsp?courseid='+data[i].courseid+'"> <span class="btn btn-primary">开始学习</span></a></div></div>';
+				listStr+='<div class="course-info">';
+				listStr+='<div class="title">';
+				listStr+='<span class="label label-p">'+data[i].typename+'</span> <a class="transition" href="page/joinproject.jsp?courseid='+data[i].courseid+'">'+data[i].ctitle+'</a></div>';
+				listStr+='<div class="metas"><span>'+data[i].cview+'浏览</span>/ <span>'+data[i].memberCount+'学员</span>/ <span>'+data[i].assessAvg+'评分</span></div>';
+				listStr+='<div class="teacher text-o-show">';
+				listStr+='<a class=" js-user-card" href="javaScript:void(0);"';
+				listStr+='data-card-url="/user/1931873/card/show" data-user-id="'+data[i].user.userid+'">';
+				listStr+='<img class="avatar-ss " src="images/105454e6cdc9246475.jpg" alt="'+data[i].user.uname+'"> '+data[i].user.uname+'</a>';
+				listStr+='<div class="price free pull-right"><span>免费</span></div></div></div></div></div>';
+			}
+		}else{
+			listStr+='<div class="empty"><i class="es-icon es-icon-locallibrary"></i>ta还没有参加任何课程</div>';
 		}
+		
 		$("#course-item").html(listStr);
 	},"json");
 	
 	
 	$.post("studyCourse/personNote",{"_method":"POST","userid":userid},function(data){
 		var listStr="";
-		if(data){
+		if(data.length!=0){
 			listStr+='<div class="classroom-item row">';
 			for(var i=0;i<data.length;i++){
 				
@@ -155,6 +160,7 @@ $(function(){
 			listStr+='<div class="flat myhz-course">'; 
 			listStr+='<h3>我的在学课程';
 			listStr+='<a href="javaScript:void(0);" class="active">学习中 </a>';
+			listStr+='<a href="javaScript:void(0);">已学完 </a></h3>';
 			listStr+='<div class="course phPublic-course">';
 			listStr+='<div class="section-body">';
 			listStr+='<div class="row">';
@@ -163,8 +169,7 @@ $(function(){
 					listStr+='<div class="col-md-4 col-sm-6">';
 					listStr+='<div class="course-item">';
 					listStr+='<div class="course-img">';
-					listStr+='<a href="page/joinproject.jsp?courseid='+data[i].courseid+'">';
-					listStr+='<img src="images/160148ccf620140008.jpg" class="img-responsive" alt="'+data[i].ctitle+'">';
+					listStr+='<a href="page/joinproject.jsp?courseid='+data[i].courseid+'">';					listStr+='<img src="images/160148ccf620140008.jpg" class="img-responsive" alt="'+data[i].ctitle+'">';
 					listStr+='<span class="load" style="width:0%"></span>';
 					listStr+='<div class="image-overlay"></div></a>';
 					listStr+='<span class="pere">0%</span></div>';
@@ -187,8 +192,8 @@ $(function(){
 	$("#group").bind("click",function(){
 		$("#nav-mian").children().removeClass("active");
 		$(this).addClass("active");
+		var userid=$('#toggle img').attr("id");
 		$.post("groups/getAllGroup",{"_method":"POST"},function(data){
-			
 			var listStr="";
 			listStr+='<div class="myhz-group flat">'; 
 			listStr+='<h3>参加的小组</h3>';
@@ -202,8 +207,8 @@ $(function(){
 					for(var j=0;j<strs.length;j++){
 						if(strs[j]==userid){
 							listStr+='<li>';
-							listStr+='<a href="http://www.howzhi.com/group/221/"><img src=""></a>';
-							listStr+='<p><a href="http://www.howzhi.com/group/31/">'+data[i].groupname+'</a></p></li>';
+							listStr+='<a href="page/groupIntroduce.jsp?groupname='+data[i].groupname+'&userid='+userid+'"><img src=""></a>';
+							listStr+='<p><a href="page/groupIntroduce.jsp?groupname='+data[i].groupname+'&userid='+userid+'">'+data[i].groupname+'</a></p></li>';
 						}
 					}
 					
@@ -243,6 +248,63 @@ $(function(){
 		$("#replaceable").html(listStr);
 	},"json");
 	});
+	
+	//我的问题
+	$("#question").bind("click",function(){
+		$("#nav-mian").children().removeClass("active");
+		$(this).addClass("active");
+		$.post("courseQuestion/myQuestion",{"_method":"POST","userid":userid},function(data){
+			var listStr="";
+			listStr+='<div class="flat myhz-question"> ';
+			listStr+='<h3>The_free的提问';
+			listStr+='<a href="javaScript:void(0);" class="active">提问</a></h3>';
+			listStr+='<ul class="course-in-ul">';
+			if(data.length!=0){
+				for(var i=0;i<data.length;i++){
+					listStr+='<li><div class="user-Img">';
+					listStr+='<a class=" js-user-card" href="javaScript:void(0);" data-card-url="/user/2358985/card/show" data-user-id="'+data[i].user.userid+'">';
+					listStr+='<img class="avatar-mm" src="images/1453371e5503236335.jpg" alt="'+data[i].user.uname+'"></a></div>';
+					listStr+='<div class="user-content"><h4><a href="http://www.howzhi.com/question/57627">'+data[i].cqcontent+'</a>';
+					listStr+='<span class="from">来自<a href="http://www.howzhi.com/course/1442/"></a></span>';
+					listStr+='</h4><p>by '+data[i].cqcontent+' • 0问题</p> </div> </li>';
+				}
+			}else{
+				listStr+=' <li class="empty"><i class="es-icon es-icon-forum"></i>TA还没有提出任何疑问！</li>';
+			}
+			listStr+='</ul></div></div>';
+		$("#replaceable").html(listStr);
+	},"json");
+	});
+	
+	//我的回答
+	$("#answer").bind("click",function(){
+		$("#nav-mian").children().children().removeClass("active");
+		$(this).addClass("active");
+		$.post("courseAnswer/myAnswer",{"_method":"POST","userid":userid},function(data){
+			var listStr="";
+			listStr+='<div class="flat myhz-question">';
+			listStr+='<h3>The_free答过的问题';
+			listStr+='<a href="javaScript:void(0);" class="active">答过的问题</a></h3>';
+			listStr+='<ul class="course-in-ul" id="quesOranswer">';
+			if(data.length!=0){
+				for(var i=0;i<data.length;i++){
+					listStr+='<li><div class="user-Img">';
+					listStr+='<a class=" js-user-card" href="javaScript:void(0);" data-card-url="/user/2358985/card/show" data-user-id="'+data[i].user.userid+'">';
+					listStr+='<img class="avatar-mm" src="" alt="'+data[i].user.uname+'"></a></div>';
+					listStr+='<div class="user-content"><h4><a href="http://www.howzhi.com/question/57627">'+data[i].cqcontent+'</a>';
+					listStr+='<span class="from">来自<a href="http://www.howzhi.com/course/1442/"></a></span>';
+					listStr+='</h4><p>by '+data[i].user.uname+' • 0回答</p> </div> </li>';
+				}
+			}else{
+				listStr+=' <li class="empty"><i class="es-icon es-icon-forum"></i>TA还没有回答任何问题！</li>';
+			}
+			listStr+='</ul></div></div>';
+		$("#replaceable").html(listStr);
+	},"json");
+	});
+	
+	
+	
 });
 	
 

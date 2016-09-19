@@ -23,4 +23,10 @@ public class CourseQuestionMapperTest {
 		System.out.println(courseQuestionMapper.detailAnswerbycqid(1));
 	}
 
+	@Test
+	public void testGetquestion() {
+		System.out.println(courseQuestionMapper.getMyQuestionByUsid("1"));
+	}
+	
+
 }
