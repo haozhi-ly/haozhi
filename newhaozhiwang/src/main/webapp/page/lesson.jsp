@@ -314,28 +314,7 @@
 	<div class="panel-body">
 		<ul class="lesson-list sortable-list" id="course-item-list" data-sort-url="/course/14061/manage/lesson/sort">
 	<!-------------------------------------课时要拼接的内容 ---------------------------------- -->
-		    <c:choose>
-         	<c:when test="${empty cManage}">
-         		
-        	</c:when>
-        	<c:otherwise>
-        		<li class="item-lesson clearfix" id="lesson-89862" data-file-id="0" data-lesson-type="text" style="word-break: break-all;" >
-				<div class="item-line"></div>
-				<div class="item-content">
-	  <i class="fa fa-file-photo-o text-success"></i>课时 <span class="number">${cManage.courseseq }</span>： ${cManage.title }						
-			</div>
-
-	<div class="item-actions">
-  	<a class="btn btn-link" data-toggle="modal" data-target="#modal" data-backdrop="static" data-keyboard="false"
-			 data-url="/course/14687/manage/lesson/89862/edit">
-			 <span class="glyphicon glyphicon-edit prs"></span>编辑</a>
-			<a class="btn btn-link" href="/course/14687/lesson/89862" target="_blank"><span class="glyphicon glyphicon-eye-open prs"></span>预览</a>
-			<span class="dropdown"><a href="javascript:;" class="delete-lesson-btn btn-danger btn" data-url="/course/14687/manage/lesson/89862/delete"><span class="glyphicon glyphicon-trash prs"></span>删除</a>
-			</span>
-		</div>
-	</li> 
-        	</c:otherwise>
-		 </c:choose>          
+		  
 		    <!-- <li class="item-lesson clearfix" id="lesson-89862" data-file-id="0" data-lesson-type="text" style="word-break: break-all;" >
 				<div class="item-line"></div>
 				<div class="item-content">

@@ -92,7 +92,7 @@
          case 5:str='五';break;
          case 6:str='六';break;
         }
-        $("#Date").append("   "+"星期"+str); 
+        $("#Date").append(""+"星期"+str); 
     } 
 	$(function(){
 		window.setInterval("CurentTime()", 1000);

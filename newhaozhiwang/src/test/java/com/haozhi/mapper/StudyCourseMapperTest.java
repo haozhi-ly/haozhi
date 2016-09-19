@@ -31,7 +31,7 @@ public class StudyCourseMapperTest {
 	
 	@Test
 	public void testgetCourseCount() {
-		System.out.println(studyCourseMapper.getCourseCount("21"));
+		System.out.println(studyCourseMapper.getCourseByUsid("122"));
 	}
 	
 

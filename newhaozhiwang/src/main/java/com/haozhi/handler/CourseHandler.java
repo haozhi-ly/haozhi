@@ -1,21 +1,23 @@
 package com.haozhi.handler;
 
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-
+import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,10 +26,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
-
-import sun.misc.BASE64Decoder;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
 import com.haozhi.entity.Communiacte;
@@ -37,7 +39,6 @@ import com.haozhi.entity.StudyCourse;
 import com.haozhi.entity.UserInfo;
 import com.haozhi.service.CourseService;
 import com.haozhi.service.CourseTypeService;
-
 import com.haozhi.util.HaozhiProtocol;
 
 import io.goeasy.GoEasy;
@@ -234,7 +235,7 @@ public class CourseHandler {
         String photopath="../img/headimg/"+filename;
         FileOutputStream fos;
 	try {
-		fos = new FileOutputStream("G:\\yc\\apache-tomcat-7.0.30\\webapps\\img\\headimg\\"+filename);
+		fos = new FileOutputStream(request.getServletContext().getRealPath("../img/headimg/")+"/"+filename);
 		//System.out.println(servletcontext.getRealPath("../img/headimg/"));
 		//fos = new FileOutputStream(request.getServletContext().getRealPath("../img/headimg/")+filename);
 
@@ -330,9 +331,88 @@ public class CourseHandler {
 		return courselist;
 	}
 	
+	
+	@ResponseBody
+	@RequestMapping("/editor")
+	public Object uploadApk( @RequestParam(value = "upload-file") MultipartFile apkFile,
+			HttpServletRequest request, HttpServletResponse response) {
+		
+		Map<String,Object> resMap = new HashMap<String,Object>();
+		String str="";
+		if (apkFile != null) {
+			//获取保存的路径，
+			String realPath = request.getServletContext().getRealPath("../coursePic");
+			if (apkFile.isEmpty()) {
+				System.out.println("yes");
+				// 未选择文件
+			} else{
+				System.out.println("yes");
+
+				// 文件原名称
+				String originFileName = apkFile.getOriginalFilename();
+				 long temp=System.currentTimeMillis()+new Random().nextInt(100000);
+				  str=temp+originFileName.substring(originFileName.indexOf("."));
+				System.out.println(originFileName);
+				try {
+					//这里使用Apache的FileUtils方法来进行保存
+					FileUtils.copyInputStreamToFile(apkFile.getInputStream(),
+							new File(realPath, str));
+					
+				} catch (IOException e) {
+					System.out.println("文件上传失败");
+					
+					e.printStackTrace();
+				}
+			}
+
+		}
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		HttpSession session=request.getSession();
+		session.setAttribute("coursephoto", str);
+		session.setAttribute("picturestatus", 1);
+		if(str!= null){
+			Course course=new Course();
+			String ctitle=(String) session.getAttribute("ctitle");
+			String cintroduction=(String) session.getAttribute("cintroduction");
+			int ctid=(int) session.getAttribute("ctid");
+			String courseting=(String) session.getAttribute("courseting");
+			UserInfo user=(UserInfo) session.getAttribute("users");
+			course.setCtitle(ctitle);
+			course.setCintrodution(cintroduction);
+			course.setCtid(ctid);
+			course.setCourseting(courseting);
+			course.setCoursephoto(str);
+			course.setUserId(user.getUserid());
+			System.out.println(user.getUserid());
+			int courses=courseService.createcourse(course);
+			resMap.put("filename", str);
+		}
+		
+		System.out.println("yes");
+		return resMap;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping("/savepicture")
-	public void savepicture(Course course,PrintWriter out,String coursephoto,HttpSession session){
-		System.out.println(coursephoto);
+	public void savepicture(Course course,PrintWriter out,String coursephoto,HttpSession session,HttpServletRequest request){
+		
+		
+		
+	
+		
+		
 		BASE64Decoder decoder = new BASE64Decoder();  
 		coursephoto = coursephoto.replaceAll("data:image/png;base64,", "");  
 		// Base64解码  
@@ -355,7 +435,7 @@ public class CourseHandler {
 		String photopath="../coursePic/"+filename;
 		FileOutputStream fos;
 		try {
-			fos = new FileOutputStream("D:\\apache-tomcat-7.0.30\\webapps\\coursePic\\"+filename);
+			fos = new FileOutputStream(request.getServletContext().getRealPath("../coursePic/")+"/"+filename);
 			fos.write(b);  
 			fos.flush();  
 			fos.close(); 

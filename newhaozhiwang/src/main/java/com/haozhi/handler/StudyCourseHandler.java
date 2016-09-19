@@ -141,6 +141,12 @@ public class StudyCourseHandler {
 	public List<Course> personCourse(String userid,ModelMap map){
 		System.out.println("userid ==>"+userid);
 		List<Course> course=studyCourseService.getCourseByUsid(userid);
+		
+		for(Course c:course){
+			if(c.getStudyPeriod()!=null){
+				c.setStudyPeriodcount(c.getStudyPeriod().split(",").length);
+			}
+		}
 		map.put("personCourse", course);
 		
 		return course;

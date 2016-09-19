@@ -2061,3 +2061,39 @@ DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s where s.courseid in(select courseid from course where userid =?) 
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 41(String)
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 0
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg, (select count(*) from coursemanage cm where cm.courseid=s.courseid )totalCm, (select studyPeriod from studyCourse sc where sc.userid=? and sc.courseid=s.courseid)studyPeriod from course s where s.courseid in(select courseid from studyCourse where userid =?) 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 122(String), 122(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 3(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select typename from courseType where ctid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 4(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select typename from courseType where ctid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 5(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select typename from courseType where ctid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 6(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 3
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg, (select count(*) from coursemanage cm where cm.courseid=s.courseid )totalCm, (select studyPeriod from studyCourse sc where sc.userid=? and sc.courseid=s.courseid)studyPeriod from course s where s.courseid in(select courseid from studyCourse where userid =?) 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 122(String), 122(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 3(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select typename from courseType where ctid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 1(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select * from userinfo where userid = ? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 4(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select typename from courseType where ctid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 5(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select typename from courseType where ctid=? 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 6(Integer)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 3

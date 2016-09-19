@@ -16,6 +16,7 @@
 <script type="text/javascript" src="jquery-1.11.1.min.js"></script> 
 <script type="text/javascript" src="js/cropbox.js"></script>
 <script type="text/javascript"src="js/top.js"></script>
+<script type="text/javascript"src="js/ajaxfileupload.js"></script>
 <link href="css/main.css" rel="stylesheet">
 <style type="text/css">
 		.form-group{
@@ -176,7 +177,7 @@ $(window).load(function() {
 		imgSrc: 'images/avatar.jpg'
 	}
 	/* var cropper = $('.imageBox').cropbox(options); */
-	
+	  
 	$('#upload-file').on('change', function(){
 		var reader = new FileReader();
 		reader.onload = function(e) {
@@ -204,7 +205,28 @@ $(window).load(function() {
 function savepicture(){
 	var coursephoto=document.getElementById("headphoto").src;
 	
-	$.post("course/savepicture",{coursephoto:coursephoto},function(data){
+	
+	$.ajaxFileUpload({
+		url:"course/editor",
+		secureuri:false,
+		fileElementId:"upload-file",
+		dataType:"json",
+		success:function(data,status){
+			console.info(data.filename);
+			$("#tolession").show();
+			$("#coursepic").html("");
+			$("#coursepic").html("<img src='../../coursePic/"+data.filename+"' style='width='248px' height='140px'/>");
+			$("#tstyle").html("");
+			$("#tstyle").html("<img src='images/2016-09-10_184215.png'/>");
+			alert("温馨提示：添加课程已成功，添加课时进入学习吧")
+		},
+		error:function(data,status,e){
+			alert("温馨提示：头像上传失败！");
+		}	
+	});	
+	
+	
+	/* $.post("course/savepicture",{coursephoto:coursephoto},function(data){
 		alert(data)
 		if(data){
 			$("#tolession").show();
@@ -216,7 +238,7 @@ function savepicture(){
 		}else{
 			alert("温馨提示：头像上传失败！")
 		}
-	});
+	}); */
 }
 </script> 
 <jsp:include page="footer.jsp"></jsp:include>       
