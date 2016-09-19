@@ -3,6 +3,8 @@ package com.haozhi.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.haozhi.entity.UserInfo;
 
 public interface UserInfoMapper {
@@ -43,5 +45,5 @@ public interface UserInfoMapper {
 
 	int deluserinfo(Integer[] intarr);
 	
-	UserInfo getContactMsgbyUserid(int userid);
+	UserInfo getContactMsgbyUserid(@Param("userid")Integer userid,@Param("presentid")Integer presentid);
 }

@@ -2,6 +2,7 @@
 package com.haozhi.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -18,8 +19,13 @@ public interface StudyCourseMapper {
 	
 	List<Course> getCourseByUsid(String userid);
 	int joinStudyCourse(@Param("userid")Integer userid,@Param("courseid")Integer courseid);
+
+	List<StudyCourse> dynamicStudy();
+
 	String getCourseCount(String userid);
 	
 	int judgeStudyCourse(@Param("userid")Integer userid,@Param("courseid")Integer courseid);//判断是否加入了课程
+
 	List<Course> getTeachByUsid(String userid);
+
 }

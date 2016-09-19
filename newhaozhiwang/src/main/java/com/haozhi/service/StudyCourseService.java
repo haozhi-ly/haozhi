@@ -21,9 +21,15 @@ public interface StudyCourseService {
 
 	int joinStudyCourse(Integer userid,Integer courseid);
 
+
+
+	List<StudyCourse> dynamicStudy();
+
+
 	List<StudyCourse> newjoinStudentbycourseid(int courseid);
 	
 	int judgeStudyCourse(Integer userid,Integer courseid);//判断是否加入了课程
+
 
 
 

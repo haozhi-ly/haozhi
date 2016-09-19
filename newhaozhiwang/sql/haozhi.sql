@@ -334,11 +334,18 @@ create table attention(
                  constraint FK_userinfo_userid05 references userinfo(userid),-- 被关注的人 用户id(外键)
        userid int 
               constraint FK_userinfo_userid06 references userinfo(userid),-- 关注发起者 用户id(外键)
-       temp01 varchar2(200),--备用字段
+       sreadstatus int,--备用字段
        temp02 varchar2(200),--备用字段
        temp03 varchar2(200)--备用字段 
 );
+<<<<<<< HEAD
+
+alter table attention rename column temp01 to sreadstatus
+alter table attention modify(sreadstatus int)
+--动态消息提示
+=======
 select * from attention;
+>>>>>>> branch 'master' of ssh://git@github.com/haozhi-ly/haozhi.git
 create sequence seq_atid start with 1;
 insert into attention values(seq_atid.nextval,3,41,null,null,null);
 insert into attention values(seq_atid.nextval,1,41,null,null,null);

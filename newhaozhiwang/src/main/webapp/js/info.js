@@ -115,7 +115,7 @@ function preImg(sourceId, targetId) {
     }  
     var reader = new FileReader();  
   
-    reader.onload = function(e) {  
+    reader.onload = function(e){  
         var img = document.getElementById("imgPrc");  
         img.src = this.result;  
     }  

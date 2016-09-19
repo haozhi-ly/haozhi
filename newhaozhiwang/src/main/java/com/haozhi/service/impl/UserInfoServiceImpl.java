@@ -102,9 +102,9 @@ public class UserInfoServiceImpl implements UserInfoService {
 	}
 
 	@Override
-	public UserInfo getContactMsgbyUserid(int courseid) {
+	public UserInfo getContactMsgbyUserid(int courseid,int presentid) {
 		// TODO Auto-generated method stub
-		return userInfoMapper.getContactMsgbyUserid(courseid);
+		return userInfoMapper.getContactMsgbyUserid(courseid,presentid);
 	}
 
 

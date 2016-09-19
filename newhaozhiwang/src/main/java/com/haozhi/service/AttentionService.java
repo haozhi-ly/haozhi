@@ -13,6 +13,9 @@ public interface AttentionService {
 	
 	int delAttion(Integer attention,Integer userid);
 
+
+	int getInformation(int userid);
+
 	List<Attention> getAttentionInfo(String userid);//通过userID得到他关注的人的信息
 
 	String getAttentionCount(String userid);
@@ -20,4 +23,5 @@ public interface AttentionService {
 	List<Attention> getFansInfo(String userid);
 
 	String getFansCount(String userid);
+
 }

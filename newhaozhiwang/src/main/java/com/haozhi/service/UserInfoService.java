@@ -37,6 +37,6 @@ public interface UserInfoService {
 
 	int deluserinfo(Integer[] intarr);
 
-	UserInfo getContactMsgbyUserid(int courseid);
+	UserInfo getContactMsgbyUserid(int courseid,int presentid);
 
 }
