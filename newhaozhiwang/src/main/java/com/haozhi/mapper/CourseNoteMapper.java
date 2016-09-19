@@ -13,4 +13,8 @@ public interface CourseNoteMapper {
 	List<CourseNote> getCourseNoteByCmid(Integer cmid);  //通过cmid查笔记
 	
 	int addCourseNote(@Param("userid")Integer userid,@Param("cmid")Integer cmid,@Param("noteContent")String noteContent);// 添加笔记
+
+	List<CourseNote> getPersonNote(String userid);//通过userid查笔记
+
+	String getNoteCount(String userid);
 }

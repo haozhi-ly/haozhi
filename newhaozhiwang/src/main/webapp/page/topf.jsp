@@ -74,10 +74,10 @@
                 <li data-type="group">小组</li>
               </ul>
             </div>
-            <input class="form-control js-search" name="q" placeholder="输入要查找的内容" autocomplete="off">
-          </div>
-           <input name="t" value="course" type="hidden">
-          <button style="color: #15C288; font-size:20px;margin-top:7px; border:none;background:#fff;width:50px;" class="glyphicon glyphicon-search" type="submit"></button>
+           <input  id="searchcontent" class="form-control js-search" name="q" placeholder="输入要查找的内容" autocomplete="off">
+	          </div>
+	          <input name="t" value="course" type="hidden">
+	          <button style="color: #15C288; font-size:20px;margin-top:7px; border:none;background:#fff;width:50px;" class="glyphicon glyphicon-search" type="button" onclick="search()"></button>
         </div>
       </form>
     </div>

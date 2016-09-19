@@ -77,16 +77,21 @@
 	            <div class="search-type pull-left">
 	              <div class="choose" style="color:#666;font-size:14px;margin-top:3px;">课程<i style="color:#999;font-size:11px;margin-left:5px" class="glyphicon glyphicon-chevron-down"></i></div>
 	              <ul class="text-center" id="text-center" style="color:#999;">
-	                <li data-type="course">课程</li>
-	                <li data-type="discussion">话题</li>
-	                <li data-type="user">用户</li>
-	                <li data-type="group">小组</li>
+	                <li data-type="1">课程</li>
+	                <li data-type="2">话题</li>
+	                <li data-type="3">用户</li>
+	                <li data-type="4">小组</li>
 	              </ul>
 	            </div>
 	            <input class="form-control js-search" name="q" placeholder="输入要查找的内容" autocomplete="off">
 	          </div>
-	          <input name="t" value="course" type="hidden">
-	          <button style="color: #15C288; font-size:20px;margin-top:7px; border:none;background:#fff;width:50px;" class="glyphicon glyphicon-search" type="submit"></button>
+	          <input name="t" value="course" type="hidden"/>
+	          <button style="color: #15C288; font-size:20px;margin-top:7px; border:none;background:#fff;width:50px;" class="glyphicon glyphicon-search" type="button" onclick="search()"></button>
+	          <script type="text/javascript">
+	          	 function search(){
+	          		 
+	          	 }
+	          </script>
 	        </div>
 	    </form>
 

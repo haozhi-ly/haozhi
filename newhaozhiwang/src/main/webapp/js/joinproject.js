@@ -1,9 +1,10 @@
 $(function(){
 	//显示页面所有信息
-	var attention;
+	
+	
 	var courseid=window.location.href.split('=')[1];
 	$.post("course/getCourseById/",{"_method":"POST",courseid:courseid},function(data){	
-		
+		document.title=data.ctitle;
 		$('#joincourseid').html(data.courseid);
 		$('.breadcrumb a')[0].innerHTML = data.typename;
 		$('.breadcrumb a')[1].innerHTML = data.ctitle;
@@ -13,7 +14,6 @@ $(function(){
 		for(var i=0;i<Math.floor(data.assessAvg);i++){
 			$("#xinxin img")[i].src="images/star-on.png";
 		}
-		
 		if(data.user.photo!=null){
 			$("#tphoto").attr("src",data.user.photo);
 			$("#teacherimg").attr("src",data.user.photo);
@@ -193,8 +193,6 @@ $(function(){
          		"</span></a></h4><p> by <a class='link-light link-muted' href='page/person.jsp?userid="+data[i].user.userid+"'>"+
          		data[i].user.uname+"</a> •"+data[i].answercount+"回答 • "+data[i].cqview+"游览</p></li>";
          	}
-         	alert(contentstr);
-         	document.getElementById("questionAndAnswer").innerHTML="";
          	$("#questionAndAnswer").html($(contentstr))
          },"json");
 		
@@ -331,7 +329,7 @@ $(function(){
          	$("#teachername").html(data[0].user.uname);
 
          	document.getElementById("studentlist").innerHTML=contentstr;
-         	//悬停显示个人信息框
+         	//悬停显示个人信息框--ly
          	$(".js-user-card").hover(
 					  function (){ 
 						 
@@ -346,7 +344,9 @@ $(function(){
 						if(obj==null){
 							console.info("yes");
 							var courseid=window.location.href.split('=')[1];
-							$.post("userinfo/getContactMsgbyUserid/",{userid:userid},function(data){
+							
+							
+							$.post("userinfo/getContactMsgbyUserid/",{userid:userid,presentid:presentid},function(data){
 								var contentstr="";
 								contentstr+="<div id='user-card-store-"+userid+"' style='display:none;border: 1px solid;background-color: white;width: 200px;'>"+
 								"<div class='js-card-content'> <div class='card-header media-middle'>"+
@@ -357,8 +357,21 @@ $(function(){
 										contentstr+="images/avatar.png' alt='"+data.uname;
 									}
 									contentstr+="' id='card-photo-"+data.userid+"'>"+
-									"</a></div><div class='media-body'><a class='link-light'>"+data.uname+"</a></div>"+
-									"<div class='content'></div></div></div></div>" +
+									"</a></div><div class='media-body'><a class='link-light'>"+data.uname+"</a><a  style='float:right;'class='btn btn-primary btn-high btn-xs follow-btn' href='javascript:;' data-loggedin='0'>" ;
+											
+									if(presentid!=0){
+										if(presentid==data.userid){
+											contentstr+="关注</a>";
+										}else if(data.orattention>0){
+											contentstr+="已关注";
+										}else{
+											contentstr+="未关注";
+										}
+									}else{
+										contentstr+="未关注";
+									}
+									contentstr+="</div>"+
+									"<div class='content' style='margin-top:30px;'></div></div></div></div>" +
 									"<div class='card-body' style='height: 100px;'>";
 									if(data.usign!=null){
 										contentstr+=data.usign;
@@ -445,76 +458,7 @@ $(function(){
 	            	$('#commentcontent').replaceface($('#commentcontent').html());//替换表情
 
 	            	//悬停显示个人信息
-	            	$(".js-user-card").hover(
-	  					  function (){ 
-	  						 
-	  					    var position=getElementPos(this);
-	  						var left = position.x;
-	  						var top = position.y;
-	  						
-	  						var userid=$(this).attr("data-id");
-	  						
-	  						console.info(document.getElementById("user-card-store-"+userid));
-	  						var obj=document.getElementById("user-card-store-"+userid);
-	  						if(obj==null){
-	  							console.info("yes");
-	  							var courseid=window.location.href.split('=')[1];
-	  							$.post("userinfo/getContactMsgbyUserid/",{userid:userid},function(data){
-	  								var contentstr="";
-	  								contentstr+="<div id='user-card-store-"+userid+"' style='display:none;border: 1px solid;background-color: white;width: 200px;'>"+
-	  								"<div class='js-card-content'> <div class='card-header media-middle'>"+
-	  								"<div class='media'><div class='media-left'><a><img class='avatar-md' src='";
-	  									if(data.photo!=null){
-	  										contentstr+=data.photo+"'alt='"+data.uname;
-	  									}else{
-	  										contentstr+="images/avatar.png' alt='"+data.uname;
-	  									}
-	  									contentstr+="' id='card-photo-"+data.userid+"'>"+
-	  									"</a></div><div class='media-body'><a class='link-light'>"+data.uname+"</a></div>"+
-	  									"<div class='content'></div></div></div></div>" +
-	  									"<div class='card-body' style='height: 100px;'>";
-	  									if(data.usign!=null){
-	  										contentstr+=data.usign;
-	  									}else{
-	  										contentstr+="还没有签名";
-	  									}
-	  									contentstr+="</div>";
-	  										
-	  									contentstr+= "<div class='card-footer clearfix'> <span ><a class='link-light'>"+data.studynumber+"在学</a></span><span style='margin-left: 30px;'><a class='link-light'>"+
-	  									data.attentionnumber+"关注</a></span><span style='margin-left: 30px;'><a class='link-light'>"+data.beattentionnumber+"粉丝</a></span></div></div></div>";
-	  									
-	  									
-	  									$("body").append($(contentstr));
-	  									$("#user-card-store-"+userid).css({
-	  										"left" : left -70 + "px",
-	  										"top" : top + 80 + "px"
-	  									});			
-	  									$("#user-card-store-"+userid).css("position", "absolute");
-	  									$("#user-card-store-"+userid).css("display", "block");
-	  									
-	  							},"json");
-	  								
-	  							
-	  						}else{
-	  							var userid=$(this).attr("data-id");
-	  							var position=getElementPos(this);
-	  							var left = position.x;
-	  							var top = position.y;
-	  							$("#user-card-store-"+userid).css({
-	  								"left" : left -70 + "px",
-	  								"top" : top + 80 + "px"
-	  							});
-	  							
-	  							$("#user-card-store-"+userid).css("display", "block");
-	  						}
-	  					
-	  						
-	  					  },
-	  					  function () {
-	  						var userid=$(this).attr("data-id");
-	  					    $("#user-card-store-"+userid).css("display", "none");
-	  					  }
-	  					);
+	            	
 
 	            },"json");
 	        }
@@ -544,77 +488,7 @@ $(function(){
         	$('#commentcontent').replaceface($('#commentcontent').html());//替换表情
 
         	//悬停显示个人信息
-        	$(".js-user-card").hover(
-					  function (){ 
-						 
-					    var position=getElementPos(this);
-						var left = position.x;
-						var top = position.y;
-						
-						var userid=$(this).attr("data-id");
-						
-						console.info(document.getElementById("user-card-store-"+userid));
-						var obj=document.getElementById("user-card-store-"+userid);
-						if(obj==null){
-							console.info("yes");
-							var courseid=window.location.href.split('=')[1];
-							$.post("userinfo/getContactMsgbyUserid/",{userid:userid},function(data){
-								var contentstr="";
-								contentstr+="<div id='user-card-store-"+userid+"' style='display:none;border: 1px solid;background-color: white;width: 200px;'>"+
-								"<div class='js-card-content'> <div class='card-header media-middle'>"+
-								"<div class='media'><div class='media-left'><a><img class='avatar-md' src='";
-									if(data.photo!=null){
-										contentstr+=data.photo+"'alt='"+data.uname;
-									}else{
-										contentstr+="images/avatar.png' alt='"+data.uname;
-									}
-									contentstr+="' id='card-photo-"+data.userid+"'>"+
-									"</a></div><div class='media-body'><a class='link-light'>"+data.uname+"</a></div>"+
-									"<div class='content'></div></div></div></div>" +
-									"<div class='card-body' style='height: 100px;'>";
-									if(data.usign!=null){
-										contentstr+=data.usign;
-									}else{
-										contentstr+="还没有签名";
-									}
-									contentstr+="</div>";
-										
-									contentstr+= "<div class='card-footer clearfix'> <span ><a class='link-light'>"+data.studynumber+"在学</a></span><span style='margin-left: 30px;'><a class='link-light'>"+
-									data.attentionnumber+"关注</a></span><span style='margin-left: 30px;'><a class='link-light'>"+data.beattentionnumber+"粉丝</a></span></div></div></div>";
-									
-									
-									$("body").append($(contentstr));
-									$("#user-card-store-"+userid).css({
-										"left" : left -70 + "px",
-										"top" : top + 80 + "px"
-									});			
-									$("#user-card-store-"+userid).css("position", "absolute");
-									$("#user-card-store-"+userid).css("display", "block");
-									
-							},"json");
-								
-							
-						}else{
-							var userid=$(this).attr("data-id");
-							var position=getElementPos(this);
-							var left = position.x;
-							var top = position.y;
-							$("#user-card-store-"+userid).css({
-								"left" : left -70 + "px",
-								"top" : top + 80 + "px"
-							});
-							
-							$("#user-card-store-"+userid).css("display", "block");
-						}
-					
-						
-					  },
-					  function () {
-						var userid=$(this).attr("data-id");
-					    $("#user-card-store-"+userid).css("display", "none");
-					  }
-					);
-
+        	
         },"json");
 	
 	
@@ -795,6 +669,7 @@ $(function(){
 			}
 		},"json");
 		
+		alert(attention);
 		$.get("attention/judgeAttion",{"attention":attention,"userid":userid},function(data){
 			if(data==0){
 				$("#attion").css("display","block");
@@ -887,7 +762,7 @@ function join(){
 		$('#loadingDiv').css('display','block');
 		return false;
 	}
-	return "${user.userid}"
+	
 }
 $("#thread_title").bind("click", function(){
 	join();
@@ -939,75 +814,7 @@ function showquestiondetail(cqid){
 		$("#showanswer").html($(contentstr));
 	},"json");
 	
-	$(".js-user-card").hover(
-			  function (){ 	 
-			    var position=getElementPos(this);
-				var left = position.x;
-				var top = position.y;
-				
-				var userid=$(this).attr("data-id");
-				
-				console.info(document.getElementById("user-card-store-"+userid));
-				var obj=document.getElementById("user-card-store-"+userid);
-				if(obj==null){
-					console.info("yes");
-					var courseid=window.location.href.split('=')[1];
-					$.post("userinfo/getContactMsgbyUserid/",{userid:userid},function(data){
-						var contentstr="";
-						contentstr+="<div id='user-card-store-"+userid+"' style='display:none;border: 1px solid;background-color: white;width: 200px;'>"+
-						"<div class='js-card-content'> <div class='card-header media-middle'>"+
-						"<div class='media'><div class='media-left'><a><img class='avatar-md' src='";
-							if(data.photo!=null){
-								contentstr+=data.photo+"'alt='"+data.uname;
-							}else{
-								contentstr+="images/avatar.png' alt='"+data.uname;
-							}
-							contentstr+="' id='card-photo-"+data.userid+"'>"+
-							"</a></div><div class='media-body'><a class='link-light'>"+data.uname+"</a></div>"+
-							"<div class='content'></div></div></div></div>" +
-							"<div class='card-body' style='height: 100px;'>";
-							if(data.usign!=null){
-								contentstr+=data.usign;
-							}else{
-								contentstr+="还没有签名";
-							}
-							contentstr+="</div>";
-								
-							contentstr+= "<div class='card-footer clearfix'> <span ><a class='link-light'>"+data.studynumber+"在学</a></span><span style='margin-left: 30px;'><a class='link-light'>"+
-							data.attentionnumber+"关注</a></span><span style='margin-left: 30px;'><a class='link-light'>"+data.beattentionnumber+"粉丝</a></span></div></div></div>";
-							
-							
-							$("body").append($(contentstr));
-							$("#user-card-store-"+userid).css({
-								"left" : left -70 + "px",
-								"top" : top + 80 + "px"
-							});			
-							$("#user-card-store-"+userid).css("position", "absolute");
-							$("#user-card-store-"+userid).css("display", "block");
-							
-					},"json");
-						
-					
-				}else{
-					var userid=$(this).attr("data-id");
-					var position=getElementPos(this);
-					var left = position.x;
-					var top = position.y;
-					$("#user-card-store-"+userid).css({
-						"left" : left -70 + "px",
-						"top" : top + 80 + "px"
-					});
-					
-					$("#user-card-store-"+userid).css("display", "block");
-				}
-			
-				
-			  },
-			  function () {
-				var userid=$(this).attr("data-id");
-			    $("#user-card-store-"+userid).css("display", "none");
-			  }
-			);
+	
 }
 
 

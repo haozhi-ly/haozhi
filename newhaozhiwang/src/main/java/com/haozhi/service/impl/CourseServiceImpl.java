@@ -121,12 +121,10 @@ public class CourseServiceImpl implements CourseService {
 		return courseMapper.goodCourse();
 	
 	}
-
 	@Override
 	public List<Course> getmainCourseByCtid(int ctid) {
 		// TODO Auto-generated method stub
 		return courseMapper.getmainCourseByCtid(ctid);
-	}
-	
+	}	
 
 }

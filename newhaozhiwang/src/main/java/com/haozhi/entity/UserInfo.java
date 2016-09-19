@@ -26,7 +26,7 @@ public class UserInfo implements Serializable {
 	private int beattentionnumber;//被关注的人数
 	private int code;//从前台拿到的验证码
 	private int sendCode;//从后台发送过去的验证码
-	
+	private int orattention;
 	
 
 	public UserInfo() {
@@ -190,6 +190,17 @@ public class UserInfo implements Serializable {
 		this.beattentionnumber = beattentionnumber;
 	}
 
+	
+
+	public int getOrattention() {
+		return orattention;
+	}
+
+
+	public void setOrattention(int orattention) {
+		this.orattention = orattention;
+	}
+
 
 	@Override
 	public String toString() {
@@ -197,8 +208,12 @@ public class UserInfo implements Serializable {
 				+ ", gender=" + gender + ", photo=" + photo + ", usign=" + usign + ", introdution=" + introdution
 				+ ", status=" + status + ", score=" + score + ", signDate=" + signDate + ", teachnumber=" + teachnumber
 				+ ", studynumber=" + studynumber + ", attentionnumber=" + attentionnumber + ", beattentionnumber="
-				+ beattentionnumber + ", code=" + code + "]";
+				+ beattentionnumber + ", code=" + code + ", sendCode=" + sendCode + ", orattention=" + orattention
+				+ "]";
 	}
+
+
+	
 
 	
 	

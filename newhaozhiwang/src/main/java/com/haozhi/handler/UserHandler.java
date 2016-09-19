@@ -166,7 +166,7 @@ public class UserHandler {
 		userInfoService.saveInfo(user);
 		if(userInfoService.saveInfo(user)==1){
 			flag = "1";
-			user.setUname("lytest");
+			
 			model.addAttribute("users",user);
 			//session.setAttribute("users",userinfo);
 		}else{
@@ -372,8 +372,8 @@ public class UserHandler {
 	}
 	@ResponseBody
 	@RequestMapping("/getContactMsgbyUserid")
-	public UserInfo getContactMsgbyUserid(int userid){
-		UserInfo userinfo=userInfoService.getContactMsgbyUserid(userid);
+	public UserInfo getContactMsgbyUserid(int userid,int presentid){
+		UserInfo userinfo=userInfoService.getContactMsgbyUserid(userid,presentid);
 		System.out.println(userinfo+"我进来了");
 		return userinfo;
 	}

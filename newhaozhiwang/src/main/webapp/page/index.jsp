@@ -700,7 +700,6 @@
     Powered by <a href="http://www.edusoho.com/" target="_blank">EduSoho v6.17.2</a> ©2014-2016 <a class="mlm" href="http://www.howzhi.com/" target="_blank">好知网</a> </div>
 </div>
 
-
 <section class="serch-enginne-course visible-lg" role="alert"> </section>
 <div id="login-modal" class="modal " data-url="/login/ajax"></div>
 <div id="modal" class="modal" tabindex="-1"></div>

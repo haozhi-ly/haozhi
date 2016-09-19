@@ -18,16 +18,12 @@
 <link rel="stylesheet" type="text/css" href="css/tcdPageCode.css">
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="js/assets/css/font-awesome.css" rel="stylesheet">
-
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="js/top.js"></script>
 <script type="text/javascript" src="js/joinproject.js"></script>
 <script type="text/javascript" src="js/smohan.face.js" charset="utf-8"></script>
 <script type="text/javascript" src="js/jquery.page.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
-
-
-
 
 <style>
 .form-group {
@@ -78,10 +74,16 @@
 }
 </style>
 <script type="text/javascript">
+	var attention;
 	var flag = "${(empty users)? false : true}";
 	var uname = '${users.uname}';
 	var userid = '${users.userid}';
-	
+	var presentid='${users.userid}';
+	console.info(presentid);
+	if("${users}"==""){
+		console.info("yes");
+		presentid=0;
+	}
 	function addAnswer(){
 		console.info($("#add").val());
 		if($("#add").val().trim()==""){
@@ -1034,6 +1036,8 @@
 
 		
 	</script>
+	
+	
 
 </body>
 

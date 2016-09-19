@@ -1,5 +1,9 @@
 package com.haozhi.service;
 
+import java.util.List;
+
+import com.haozhi.entity.Attention;
+
 
 public interface AttentionService {
 
@@ -9,5 +13,15 @@ public interface AttentionService {
 	
 	int delAttion(Integer attention,Integer userid);
 
+
 	int getInformation(int userid);
+
+	List<Attention> getAttentionInfo(String userid);//通过userID得到他关注的人的信息
+
+	String getAttentionCount(String userid);
+
+	List<Attention> getFansInfo(String userid);
+
+	String getFansCount(String userid);
+
 }

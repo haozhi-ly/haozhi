@@ -72,10 +72,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="studynumber" property="studynumber"/>
 		<result column="attentionnumber" property="attentionnumber"/> 
 		<result column="beattentionnumber" property="beattentionnumber"/>
+		<result column="orattention" property="orattention"/>
 	</resultMap>
-	<select id="getContactMsgbyUserid" parameterType="int" resultMap="ContactMap">
+	<select id="getContactMsgbyUserid" resultMap="ContactMap">
 		select u.*,(select count(*) from studycourse st where st.userid=u.userid group by st.userid)studynumber, (select count(*) from attention a where a.userid=u.userid ) attentionnumber,
-		(select count(*) from attention a where a.attention=u.userid ) beattentionnumber 
+		(select count(*) from attention a where a.attention=u.userid ) beattentionnumber,(select count(*) from attention a where a.userid=#{presentid} and a.attention=#{userid}) orattention 
 		from userinfo u where u.userid=#{userid}
 	</select>
 </mapper>

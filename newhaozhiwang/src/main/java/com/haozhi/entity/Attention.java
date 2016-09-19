@@ -10,7 +10,9 @@ public class Attention {
 	private int attention;// -- 被关注的人 用户id(外键)
 	private int userid;// -- 关注发起者 用户id(外键)
 	private int sreadstatus;
-
+	
+	private UserInfo user;
+	
 
 	public Attention() {
 	}
@@ -66,11 +68,25 @@ public class Attention {
 		this.sreadstatus = sreadstatus;
 	}
 
+	
+	public UserInfo getUser() {
+		return user;
+	}
+
+	public void setUser(UserInfo user) {
+		this.user = user;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "Attention [atid=" + atid + ", attention=" + attention + ", userid=" + userid + ", sreadstatus="
-				+ sreadstatus + "]";
+				+ sreadstatus + ", user=" + user + "]";
 	}
+
+	
+	
 	
 	
 

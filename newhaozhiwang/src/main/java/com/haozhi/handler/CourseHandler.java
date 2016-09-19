@@ -54,6 +54,7 @@ public class CourseHandler {
 	public void getModel(ModelMap map){
 		map.put("courses", new ArrayList<Course>());
 		map.put("hostcourse", new ArrayList<Course>());
+		map.put("personCourse", new ArrayList<Course>());
 	}
 	
 	
@@ -385,17 +386,20 @@ public class CourseHandler {
 		out.close();
 	}
 	
+
 	
 /*	热门课程
-*/	@ResponseBody
+*/	
+	@ResponseBody
 	@RequestMapping("/mainHotCourse")
 	public List<Course> mainHotCourse(HttpServletResponse response){
 		
 		return courseService.mainHotCourse();
 	}
+
 	/*精品课程*/
 
-	/*@ResponseBody
+	@ResponseBody
 	@RequestMapping("/goodCourse")
 	public List<Course> goodCourse(HttpServletResponse response){
 		
@@ -404,23 +408,6 @@ public class CourseHandler {
 		//g.publish("eb367e1f-1b28-4ce2-a32d-cd5347de7816","Hello, GoEasy!");
 		g.publish("eb367e1f-1b28-4ce2-a32d-cd5347de7816", "Hello, GoEasy!");
 		return courseService.goodCourse();
-		
-	}*/
-	
-	@RequestMapping("/goodCourse")
-	public void goodCourse(HttpServletResponse response){
-		PrintWriter out=null;
-		response.setCharacterEncoding("utf-8");
-		response.setContentType("charset=utf-8");
-		try {
-			out = response.getWriter();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		out.println(courseService.goodCourse());
-		out.flush();
-		out.close();
 		
 	}
 	
@@ -445,4 +432,5 @@ public class CourseHandler {
 		g.publish("eb367e1f-1b28-4ce2-a32d-cd5347de7816",content.toString());
 		return courses;
 	}
+
 }
