@@ -2058,3 +2058,6 @@ DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select count(1)
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 41(String)
 >>>>>>> branch 'master' of ssh://git@github.com/haozhi-ly/haozhi.git
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 1
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==>  Preparing: select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s where s.courseid in(select courseid from course where userid =?) 
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ==> Parameters: 41(String)
+DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 0

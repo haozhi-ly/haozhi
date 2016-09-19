@@ -22,7 +22,7 @@
 <link href="css/main.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/howzhi.css">
  <style>.cke{visibility:hidden;}</style>
- <link rel="stylesheet" type="text/css" href="css/editor.css">
+ <!-- <link rel="stylesheet" type="text/css" href="css/editor.css"> -->
  <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
  <script type="text/javascript" src="js/bootstrap.min.js"></script>
  <script type="text/javascript" src="js/addlesson.js"></script>
@@ -209,8 +209,14 @@
 </style>
 
  </head>
-  <body class="index">
-    <jsp:include page="topb.jsp"></jsp:include>  
+  <body id="index" class="index">
+    <c:set value="${users}" var="us"/>
+	<c:if test="${empty us }">
+	<jsp:include page="topf.jsp"></jsp:include>
+	</c:if>
+	<c:if test="${us!=null }">
+	<jsp:include page="topb.jsp"></jsp:include>
+	</c:if>
     
    <div class="container" id="content-container"> 
         
@@ -240,7 +246,7 @@
     </div>
      <div class="action"> 
       <a class="btn com radius mts" href="http://www.howzhi.com/course/14061/?previewAs=member" target="_blank" style="width:83px;">返回课程</a>
-                          <a data-step="4" data-intro="完善所有信息后，点击&#39;申请发布&#39;，向管理员提交发布请求" data-position="left" class="radius btn disable mtl" style="width:83px;">申请发布</a>
+      <a data-step="4" data-intro="完善所有信息后，点击&#39;申请发布&#39;，向管理员提交发布请求" data-position="left" class="radius btn disable mtl" style="width:83px;" onclick="clicktrue()">申请发布</a>
                 
      </div>
   </div>
@@ -267,15 +273,22 @@
          		<span id="tstyle"><img src='images/2016-09-10_184215.png'></span>
         	</c:when>
         	<c:otherwise>
-        		<span id="tstyle">1</span>
+        		<span id="tstyle">2</span>
         	</c:otherwise>
 		 </c:choose>           
           <a class="" href="page/picture.jsp">课程图片</a>
         </li>
         
         <li class="active" data-step="3" data-intro="添加课时，完成最后信息的填写" data-position="right">
-          <span>3</span>
-                    <a class="" href="page/lession.jsp">课时管理</a>
+          <c:choose>
+         	<c:when test="${addlessions==1}">
+         		<span id="sstyle"><img src='images/2016-09-10_184215.png'></span>
+        	</c:when>
+        	<c:otherwise>
+        		<span id="sstyle">3</span>
+        	</c:otherwise>
+		 </c:choose>          
+          <a class="" href="page/lession.jsp">课时管理</a>
         </li>
       </ul>     
     </div>
@@ -295,13 +308,50 @@
 	</h1>
 
 	
-	 <div class="empty">当前没有课时,不能发布！</div>
+	 <div id="emptylession" class="empty">当前没有课时,不能发布！</div>
 
 	 
 	<div class="panel-body">
 		<ul class="lesson-list sortable-list" id="course-item-list" data-sort-url="/course/14061/manage/lesson/sort">
+	<!-------------------------------------课时要拼接的内容 ---------------------------------- -->
+		    <c:choose>
+         	<c:when test="${empty cManage}">
+         		
+        	</c:when>
+        	<c:otherwise>
+        		<li class="item-lesson clearfix" id="lesson-89862" data-file-id="0" data-lesson-type="text" style="word-break: break-all;" >
+				<div class="item-line"></div>
+				<div class="item-content">
+	  <i class="fa fa-file-photo-o text-success"></i>课时 <span class="number">${cManage.courseseq }</span>： ${cManage.title }						
+			</div>
 
-						
+	<div class="item-actions">
+  	<a class="btn btn-link" data-toggle="modal" data-target="#modal" data-backdrop="static" data-keyboard="false"
+			 data-url="/course/14687/manage/lesson/89862/edit">
+			 <span class="glyphicon glyphicon-edit prs"></span>编辑</a>
+			<a class="btn btn-link" href="/course/14687/lesson/89862" target="_blank"><span class="glyphicon glyphicon-eye-open prs"></span>预览</a>
+			<span class="dropdown"><a href="javascript:;" class="delete-lesson-btn btn-danger btn" data-url="/course/14687/manage/lesson/89862/delete"><span class="glyphicon glyphicon-trash prs"></span>删除</a>
+			</span>
+		</div>
+	</li> 
+        	</c:otherwise>
+		 </c:choose>          
+		    <!-- <li class="item-lesson clearfix" id="lesson-89862" data-file-id="0" data-lesson-type="text" style="word-break: break-all;" >
+				<div class="item-line"></div>
+				<div class="item-content">
+	  <i class="fa fa-file-photo-o text-success"></i>课时 <span class="number">1</span>：	www					
+			</div>
+
+	<div class="item-actions">
+  	<a class="btn btn-link" data-toggle="modal" data-target="#modal" data-backdrop="static" data-keyboard="false"
+			 data-url="/course/14687/manage/lesson/89862/edit">
+			 <span class="glyphicon glyphicon-edit prs"></span>编辑</a>
+			<a class="btn btn-link" href="/course/14687/lesson/89862" target="_blank"><span class="glyphicon glyphicon-eye-open prs"></span>预览</a>
+			<span class="dropdown"><a href="javascript:;" class="delete-lesson-btn btn-danger btn" data-url="/course/14687/manage/lesson/89862/delete"><span class="glyphicon glyphicon-trash prs"></span>删除</a>
+			</span>
+		</div>
+	</li> -->
+<!-------------------------------------课时要拼接的内容 ---------------------------------- -->				
 		</ul>
 	</div>
 </div>
@@ -321,7 +371,7 @@
       </section>
         <div id="login-modal" class="modal is-login" data-url="/login/ajax"></div>
     <div id="modal" class="modal" tabindex="-1" aria-hidden="true" style="display: none;"><div class="modal-dialog  modal-lg">
-  <div class="modal-content">
+  <div id="lessioncontent" class="modal-content">
     <div class="modal-header">
                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <h4 class="modal-title">  添加课时</h4>
@@ -333,8 +383,8 @@
     <div class="col-md-2 control-label"><label>类型</label></div>
     <div class="col-md-9 controls">
       <div class="radios">
-                    <label><input id="addvideo"type="radio" name="type" value="video" checked="checked"> 视频</label>
-                    <label><input id="addtext" type="radio" name="type" value="text" > 图文</label>
+                    <label><input id="addvideo"type="radio" name="type" value="0" checked="checked"> 视频</label>
+                    <label><input id="addtext" type="radio" name="type" value="1" > 图文</label>
               </div>
     </div>
   </div>
@@ -344,7 +394,7 @@
     <div class="col-md-9 controls">
       <div class="row">
         <div class="col-md-10">
-          <input id="lesson-title-field" class="form-control" type="text" name="title" value="" data-widget-cid="widget-98" data-explain="">
+          <input id="lesson-title-field0" class="form-control" type="text" name="title" value="" data-widget-cid="widget-98" data-explain="">
         </div>
         <div class="col-md-2">
          <!--  <div class="checkbox">
@@ -360,7 +410,7 @@
     <div class="col-md-9 controls">
       <div class="row">
         <div class="col-md-10">
-          <input id="lesson-title-field" class="form-control" type="text" name="title" value="" data-widget-cid="widget-98" data-explain="">
+          <input id="lesson-title-field1" class="form-control" type="text" name="title" value="" data-widget-cid="widget-98" data-explain="">
         </div>
         <div class="col-md-2">
           <!-- <div class="checkbox">
@@ -373,7 +423,7 @@
   
  	<div id="jieshao01">
     <div class="col-md-2 control-label"><label for="lesson-summary-field" style="margin-top:30px;">简介</label></div>
-    <div class="col-md-9 controls" style="margin-top:30px;"><textarea class="form-control" id="lesson-summary-field" name="summary"></textarea>
+    <div class="col-md-9 controls" style="margin-top:30px;"><textarea class="form-control" id="lesson-summary-field1" name="summary"></textarea>
     </div>
   </div>
 <!-- ---------------图文------------------------>
@@ -382,7 +432,7 @@
 
   <div class="form-group for-text-type for-video-type for-audio-type for-ppt-type for-document-type for-flash-type">
     <div class="col-md-2 control-label"><label for="lesson-summary-field">简介</label></div>
-    <div class="col-md-9 controls"><textarea class="form-control" id="lesson-summary-field" name="summary"></textarea>
+    <div class="col-md-9 controls"><textarea class="form-control" id="lesson-summary-field0" name="summary"></textarea>
 
     </div>
   </div>
@@ -398,8 +448,8 @@
 
   <div class="form-group for-video-type for-audio-type for-ppt-type for-document-type for-flash-type ">
     <div id="shipin02" class="col-md-2 control-label for-video-type"><label>视频</label></div>&nbsp;&nbsp;
-    <input id="clickradio01" type="radio" name="radio" checked="checked">&nbsp;<label>网络视频</label>&nbsp;&nbsp;
-    <input id="clickradio02" type="radio" name="radio">&nbsp;<label>本地视频</label>
+    <!-- <input id="clickradio01" type="radio" name="radio" checked="checked">&nbsp;<label>网络视频</label>&nbsp;&nbsp;
+    <input id="clickradio02" type="radio" name="radio">&nbsp;<label>本地视频</label> -->
     <div class="col-md-2 control-label for-audio-type"><label>音频</label></div>
     <div class="col-md-2 control-label for-ppt-type"><label>PPT</label></div>
     <div class="col-md-2 control-label for-document-type"><label>文档</label></div>
@@ -495,9 +545,11 @@
 		<span></span>
         <div class="tab-pane active" id="video-chooser-import-pane">
           <div class="input-group">
-            <input class="form-control" type="text" placeholder="支持优酷、土豆、腾讯、网易公开课的视频页面地址导入" data-role="import-url">
+            <div id="pathOrContetn01" title="错误提示:" style="height:34px;"
+            data-container="body" data-toggle="popover" data-placement="bottom" data-content="该视频网络地址不可用!"><input id="pathOrContetn" class="form-control" type="text" placeholder="支持优酷、土豆、腾讯、网易公开课的视频页面地址导入" data-role="import-url" class="btn btn-success" title="温馨提示:"
+            data-container="body" data-toggle="popover" data-placement="bottom" data-content="该视频网络地址可用!"></div>
             <span class="input-group-btn">
-              <button type="button" class="btn btn-default" data-role="import" data-url="/course/14061/manage/media/import" data-loading-text="正在导入，请稍等">导入</button>
+              <button type="button" class="btn btn-default" data-role="import" data-url="/course/14061/manage/media/import" data-loading-text="正在导入，请稍等" onclick="inport()">导入</button>
             </span>
           </div>
         </div>
@@ -789,11 +841,92 @@
 
 </div>
           <div class="modal-footer">    <button type="button" class="btn btn-link" data-dismiss="modal" id="cancel-btn">取消</button>
-    <button id="course-lesson-btn" data-submiting-text="正在提交" type="submit" class="btn btn-primary" data-toggle="form-submit" data-target="#course-lesson-form">添加</button>
+    <button id="course-lesson-btn" data-submiting-text="正在提交" type="submit" class="btn btn-primary" data-toggle="form-submit" data-target="#course-lesson-form" onclick="addlession()">添加</button>
 </div>
           </div>
 </div>
 </div>
-  <jsp:include page="footer.jsp"></jsp:include>   
+  <jsp:include page="footer.jsp"></jsp:include>  
+  <script type="text/javascript">
+  /* 	$(function(){
+  		$("#lesson-create-btn").click(function(){
+  			$("#emptylession").show();
+  			$('#modal').modal('show');
+  			$('#modal').show();
+  		});
+  	}); */
+  		function addlession(){
+  			var type=$("input[name='type']:checked").val();
+  			alert(type)
+  			if(type==0){
+  				var title=$("#lesson-title-field0").val();
+  				var cmintroduction=$("#lesson-summary-field0").val();
+  				var pathOrContetn=$("#pathOrContetn").val();
+  				
+  			}else if(type==1){
+  				var title=$("#lesson-title-field1").val();
+  				var cmintroduction=$("#lesson-summary-field1").val();
+  				var pathOrContetn=myckeditor.document.getBody().getHtml();
+  			}
+  			if(title==null){
+  				alert("温馨提示：标题不能为空！");
+  			}else if(cmintroduction==null){
+  				alert("温馨提示：简介不能为空！");
+  			}
+  			$.post("courseManage/addlession",{type:type,title:title,pathOrContetn:pathOrContetn,cmintroduction:cmintroduction},
+  					function(data){
+  					alert(data);
+  					if(data!=null){
+  						$("#sstyle").html("");
+  						$("#sstyle").html("<img src='images/2016-09-10_184215.png'/>");
+  						$("#emptylession").hide();
+  						$('#modal').modal('hide');
+  						alert(data.courseseq)
+  						alert(data.title)
+  						var str="";
+  						str+="<li class='item-lesson clearfix' id='lesson-89862' data-file-id='0' data-lesson-type='text' style='word-break: break-all;' >";
+  						str+="<div class='item-line'></div>";
+  						str+="<div class='item-content'>";
+  			  			str+="<i "+(type==1 ? 'class="glyphicon glyphicon-file" style="color: rgb(56, 193, 60);"':'class="glyphicon glyphicon-film" style="color: rgb(56, 193, 60);"')+"></i>课时 <span class='number'>"+data.courseseq+"</span>：	"+data.title+"";				
+  						str+="</div>";
+
+  						str+="<div class='item-actions'>";
+  		  				str+="<a class='btn btn-link' data-toggle='modal' data-target='#modal' data-backdrop='static' data-keyboard='false' data-url='/course/14687/manage/lesson/89862/edit'>";
+  					 	str+="<span class='glyphicon glyphicon-edit prs'></span>编辑</a>";
+  						str+="<a class='btn btn-link' href='/course/14687/lesson/89862' target='_blank'><span class='glyphicon glyphicon-eye-open prs'></span>预览</a>";
+  						str+="<span class='dropdown'><a href='javascript:;' class='delete-lesson-btn btn-danger btn' data-url='/course/14687/manage/lesson/89862/delete'><span class='glyphicon glyphicon-trash prs'></span>删除</a>";
+  						str+="</span>";
+  						str+="</div>";
+  						str+="</li>";
+  						$("#course-item-list").append(str);
+  						alert("温馨提示：添加课时成功！点击确定发布就可以创建成功了");
+  						$("#pathOrContetn").popover('hide');
+  						$("#pathOrContetn01").popover('hide');
+  					}else{
+  						alert("添加课时失败！")
+  					}
+  			},"json");
+  		}
+  	function inport(){
+  		var netaddress=$("#pathOrContetn").val();
+  		var RegUrl = new RegExp();
+  	    RegUrl.compile("^[A-Za-z]+://[A-Za-z0-9-_]+\\.[A-Za-z0-9-_%&\?\/.=]+$");
+  		if(RegUrl.test(netaddress)){
+  			$("#pathOrContetn").popover('show');
+  			$("#pathOrContetn01").popover('hide');
+  			$(function () { $('#pathOrContetn').on('show.bs.popover', function () {
+  				$("#pathOrContetn").popover("delay:{hide: 5000 }");
+  		    });
+  		});
+  		}else{
+  			$("#pathOrContetn01").popover('show');
+  			$("#pathOrContetn").popover('hide');
+  			$(function () { $('#pathOrContetn01').on('show.bs.popover', function () {
+  				$("#pathOrContetn01").popover("delay:{hide: 5000 }");
+  		    });
+  		});
+  		}
+  	}
+  </script>
 </body>
 </html>

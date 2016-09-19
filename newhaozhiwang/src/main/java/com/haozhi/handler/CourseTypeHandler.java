@@ -6,17 +6,16 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.google.gson.Gson;
-import com.haozhi.entity.Admin;
 import com.haozhi.entity.CourseType;
 import com.haozhi.service.CourseTypeService;
-
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 
 @Controller
 @RequestMapping("/courseType")

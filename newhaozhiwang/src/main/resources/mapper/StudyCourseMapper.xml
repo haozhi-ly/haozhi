@@ -134,7 +134,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(1) from  studyCourse where userid = #{userid}
 	</select>
 
-
+	
+	<!-- //通过userid查课程信息 -->
+	<resultMap type="Course" id="TeachCourseByUsidMap">
+		<id column="courseid" property="courseid"/>
+		<id column="userId" property="userId"/>
+		<id column="ctid" property="ctid"/>
+		<collection property="user" column="userId" ofType="UserInfo" select="getUserByUsid01" />
+		<collection property="typename" column="ctid" ofType="string" select="getCourseTypeName01" />
+	</resultMap>
+	<select id="getTeachByUsid" resultMap="TeachCourseByUsidMap"  >
+		select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount,
+		(select avg(assess) from studyCourse where courseid = s.courseid) assessAvg
+		 from course s where s.courseid in(select courseid from course where userid =#{userid})
+	</select>
+	<select id="getUserByUsid01" resultType="UserInfo" parameterType="int">
+		select * from userinfo where userid = #{userid}
+	</select>
+	<select id="getCourseTypeName01" resultType="string" parameterType="int">
+		select typename from courseType where ctid=#{ctid}
+	</select>
+	
+	
 	
 </mapper>
 

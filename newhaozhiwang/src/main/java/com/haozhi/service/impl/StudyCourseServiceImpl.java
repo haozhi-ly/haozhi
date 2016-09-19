@@ -70,4 +70,9 @@ public class StudyCourseServiceImpl implements StudyCourseService {
 
 	}
 
+	@Override
+	public List<Course> getTeachByUsid(String userid) {
+		return studyCourseMapper.getTeachByUsid(userid);
+	}
+
 }

@@ -22,19 +22,13 @@
 	</script>  
 <style>.cke{visibility:hidden;}</style>
 <script type="text/javascript" src="js/top.js"></script>
-<script type="text/javascript">
-	/* $(function(){
-		var coursename=window.location.href.split('=')[1];
-		alert(coursename)
-		$("#cnameid").html("");
-		$("#cnameid").html(coursename);
-		$("#course_title").val(coursename);
-	}); */
-</script>
 </head>
 
 <body class="index">   
+   <%  String coursename=(String)session.getAttribute("ctitle");
+		   
    
+   %>
     <jsp:include page="topb.jsp"></jsp:include>
     <div class="container" id="content-container"> 
     <div class="course-managehead media manage">
@@ -108,7 +102,14 @@
         </li>
         
         <li data-step="3" data-intro="添加课时，完成最后信息的填写" data-position="right">
-          <span id="sstyle">3</span>
+           <c:choose>
+         	<c:when test="${addlessions==1}">
+         		<span id="sstyle"><img src='images/2016-09-10_184215.png'></span>
+        	</c:when>
+        	<c:otherwise>
+        		<span id="sstyle">3</span>
+        	</c:otherwise>
+		 </c:choose>          
                     <a class="" href="page/lesson.jsp">课时管理</a>
         </li>
       </ul>     
