@@ -88,7 +88,14 @@
 		 <a class="" href="page/picture.jsp">课程图片</a>
         </li>
         <li data-step="3" data-intro="添加课时，完成最后信息的填写" data-position="right">
-          <span id="sstyle">3</span>
+           <c:choose>
+         	<c:when test="${addlessions==1}">
+         		<span id="sstyle"><img src='images/2016-09-10_184215.png'></span>
+        	</c:when>
+        	<c:otherwise>
+        		<span id="sstyle">3</span>
+        	</c:otherwise>
+		 </c:choose>          
                     <a class="" href="page/lesson.jsp">课时管理</a>
         </li>
       </ul>     
@@ -205,6 +212,7 @@ function savepicture(){
 			$("#coursepic").html("<img src='../../coursePic/"+data+"' style='width='248px' height='140px'/>");
 			$("#tstyle").html("");
 			$("#tstyle").html("<img src='images/2016-09-10_184215.png'/>");
+			alert("温馨提示：添加课程已成功，添加课时进入学习吧")
 		}else{
 			alert("温馨提示：头像上传失败！")
 		}

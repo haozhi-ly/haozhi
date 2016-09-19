@@ -1,7 +1,6 @@
 package com.haozhi.entity;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * 课程信息

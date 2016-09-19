@@ -1,6 +1,5 @@
 package com.haozhi.entity;
 
-import java.util.List;
 
 /**
  * 课时管理

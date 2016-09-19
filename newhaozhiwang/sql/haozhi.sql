@@ -187,10 +187,11 @@ create table courseManage(
        title varchar2(50),--课时标题
        courseseq int ,--课时序号
        pathOrContetn varchar2(2000),--课时内容（路径或者内容）
-       temp01 varchar2(200),--备用字段
+       cmintroduction varchar2(200),--简介
        temp02 varchar2(200),--备用字段
        temp03 varchar2(200)--备用字段  
 );
+select courseseq,cs.courseid from courseManage cm,course cs where cm.courseid=cs.courseid and cs.courseid=cm.courseid;
 ALTER TABLE haozhi.courseManage RENAME COLUMN temp01 TO cmintroduction --修改表列名 
 create sequence seq_cmid start with 1;
 insert into courseManage values(seq_cmid.nextval,6,1,'超级简单的冷萃咖啡制作方... ',1,'<p>冷萃咖啡听起来高大上，但实际上制作非常简单。</p><p><strong>你需要准备的材料有：</strong>
@@ -219,9 +220,7 @@ insert into courseManage values(seq_cmid.nextval,5,0,'老电影画面',3,'http:/
 sid/XNDY2NTYwMjI4/isAutoPlay/false/partnerid/0edbfd2e4fc91b72/v.swf',null,null,null);
 commit;
 
-
-
-
+delete from courseManage where courseid=50;
 
 select * from courseAssess where cmid=1
 -----------------6.课程评价表

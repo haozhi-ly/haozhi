@@ -1,35 +1,26 @@
 package com.haozhi.handler;
 
-
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.jsp.PageContext;
 
-import org.apache.logging.log4j.LogManager;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
+
+import sun.misc.BASE64Decoder;
 
 import com.haozhi.entity.Cgroup;
 import com.haozhi.service.CgroupService;
-
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-import sun.misc.BASE64Decoder;
 
 @Controller
 @RequestMapping("/group")
