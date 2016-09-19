@@ -88,9 +88,9 @@ $(function() {
 	            				contentstr+='alt="'+item.user.uname+'"></a></div><div class="userInfo">'
 											+'<p class="head"><a href="#">'+item.user.uname+'</a><span>'+item.time+'</span></p>'
 											+'<div class="body">'+item.content+'</div><div class="pull-right">'
-											+'<a class="con" id="revert" href="javascript:;">回复</a>';
+											+'<a class="con" onclick="revert()" data-revert="'+item.user.uname+'" href="javascript:;">回复</a>';
 	            			if(uname.indexOf(item.user.uname) >= 0){
-	            				contentstr+='<a class="con" id="delete" href="javascript:void(0);" style="display:block">删除</a>';
+	            				contentstr+='<a class="con"  href="javascript:void(0);" style="display:block">删除</a>';
 	            			}
 	            				contentstr+'</div></div></li>';	
 	            			$("#commentList").html("").append($(contentstr));
@@ -101,7 +101,7 @@ $(function() {
 	        }
 	    });
 	 });
-	
+	//显示第一页的评论
 	var cmid=window.location.href.split('=')[1];
 	 $.post("courseAssess/getAssessByCmidByPage/",{"p":1,"cmid":cmid},function(data){
      	var contentstr="";
@@ -116,9 +116,9 @@ $(function() {
 	     			contentstr+='alt="'+item.user.uname+'"></a></div><div class="userInfo">'
 								+'<p class="head"><a href="#">'+item.user.uname+'</a><span>'+item.time+'</span></p>'
 								+'<div class="body">'+item.content+'</div><div class="pull-right">'
-								+'<a class="con" id="revert" href="javascript:;">回复</a>';
+								+'<a class="con"  href="javascript:;" onclick="revert()" data-revert="'+item.user.uname+'">回复</a>';
 					if(uname.indexOf(item.user.uname) >= 0){
-						contentstr+='<a class="con" id="delete" href="javascript:void(0);"  style="display:block">删除</a>';
+						contentstr+='<a class="con"  href="javascript:void(0);"  style="display:block">删除</a>';
 					}	
 						contentstr+'</div></div></li>';	
 						
@@ -226,9 +226,9 @@ $(function() {
 							            			contentstr+='alt="'+item.user.uname+'"></a></div><div class="userInfo">'
 															+'<p class="head"><a href="#">'+item.user.uname+'</a><span>'+item.time+'</span></p>'
 															+'<div class="body">'+item.content+'</div><div class="pull-right">'
-															+'<a class="con" id="revert" href="javascript:;">回复</a>';
+															+'<a class="con"  href="javascript:;" onclick="revert()" data-revert="'+item.user.uname+'">回复</a>';
 							            			if(uname.indexOf(item.user.uname) >= 0){
-							            				contentstr+='<a class="con" id="delete" href="javascript:void(0);"  style="display:block">删除</a>';
+							            				contentstr+='<a class="con"  href="javascript:void(0);"  style="display:block">删除</a>';
 							            			}	
 							            				contentstr+'</div></div></li>';		
 							            			$("#commentList").html("").append($(contentstr));
@@ -254,9 +254,9 @@ $(function() {
 							     			contentstr+='alt="'+item.user.uname+'"></a></div><div class="userInfo">'
 													+'<p class="head"><a href="#">'+item.user.uname+'</a><span>'+item.time+'</span></p>'
 													+'<div class="body">'+item.content+'</div><div class="pull-right">'
-													+'<a class="con" id="revert" href="javascript:;">回复</a>';
+													+'<a class="con"  href="javascript:;" onclick="revert()" data-revert="'+item.user.uname+'">回复</a>';
 					            			if(uname.indexOf(item.user.uname) >= 0){
-					            				contentstr+='<a class="con" id="delete" href="javascript:void(0);"  style="display:block">删除</a>';
+					            				contentstr+='<a class="con"  href="javascript:void(0);"  style="display:block">删除</a>';
 					            			}	
 					            				contentstr+'</div></div></li>';	
 							     			$("#commentList").html("").append($(contentstr));
@@ -279,27 +279,27 @@ $(function() {
 	  
 		
 		//右侧  课时 笔记 问答的切换
-		count=0;
+		var count=0;
+		var count1=0;
+		var count2=0;
 		$('#clearfix li').bind(
 				"click",
 				function() {	
-					//count+=1;
 					$(this).parent().children().removeClass("active");
 					$(this).addClass("active"); //样式改变	
 					$('#dashboard-body').css("width", "80%");
 					$('.learn-dashboard.toolbarhide .dashboard-toolbar').css("cssText", "right:0px !important;");
 					
-					/*if($(this).attr('class')=="active"){
-						if(count%2==0){
-							alert("进来了");
-							$(this).removeClass("active");
-							$('.learn-dashboard .dashboard-content .dashboard-body').css("width", "100%;");
-							$('.learn-dashboard .toolbarhide .dashboard-toolbar').css("cssText", "right:-342px !important;");
-						}
-					}*/
-					
 					var str = this.innerHTML;
 					if (str.indexOf("课时") >= 0) {
+						count+=1;
+						if(count==1){
+							
+						}else{
+						if($('#toolbar-1').css("display")=="block"){
+							$('#dashboard-body').css("width", "100%");
+							$('.learn-dashboard.toolbarhide .dashboard-toolbar').css("cssText", "right:-342px !important;");	
+						}else{
 						$('#toolbar-1').css("display", "block");
 						$('#toolbar-2').css("display", "none");
 						$('#toolbar-3').css("display", "none");
@@ -329,12 +329,26 @@ $(function() {
 								});
 							}
 						});
+						}
+						}
+						
 					} else if (str.indexOf("笔记") >= 0) {
+						/*count1+=1;
+						if(count1==1){}*/
+						if($('#toolbar-2').css("display")=="block"){
+							$('#dashboard-body').css("width", "100%");
+							$('.learn-dashboard.toolbarhide .dashboard-toolbar').css("cssText", "right:-342px !important;");	
+						}else{
 						$('#toolbar-1').css("display", "none");
 						$('#toolbar-2').css("display", "block");
 						$('#toolbar-3').css("display", "none");
+						}
 						
 					} else {
+						if($('#toolbar-3').css("display")=="block"){
+							$('#dashboard-body').css("width", "100%");
+							$('.learn-dashboard.toolbarhide .dashboard-toolbar').css("cssText", "right:-342px !important;");	
+						}else{
 						$('#toolbar-1').css("display", "none");
 						$('#toolbar-2').css("display", "none");
 						$('#toolbar-3').css("display", "block");
@@ -349,7 +363,7 @@ $(function() {
 							 }
 						 });
 					}
-					
+					}
 					
 				});
 		//文本编辑器
@@ -579,5 +593,12 @@ $(function() {
 		$('#loadingDiv').css('display','none');
 	});
 	
+/*	$('.pull-right .con').bind("click",function(){
+		alert("kgajrktjg");
+	});*/
+	
 });
 
+function revert(){
+	alert("efakhek");
+}

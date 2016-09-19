@@ -78,4 +78,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		(select count(*) from attention a where a.attention=u.userid group by a.userid) beattentionnumber 
 		from userinfo u where u.userid=#{userid}
 	</select>
+	
+	
+	<select id="attentionByUserid" resultType="UserInfo">
+		select * from userInfo where userid in (select attention from attention where userid=#{userid})
+	</select>
+	
+	
+	<select id="judgeAttention" resultType="int">
+		select count(*) from attention where  userid=#{userid} and attention=#{attention}
+	</select>
+	
+	
+	<select id="fansByUserid" resultType="UserInfo">
+		select * from userInfo where userid in (select userid from attention where attention=#{attention})
+	</select>
+	
 </mapper>

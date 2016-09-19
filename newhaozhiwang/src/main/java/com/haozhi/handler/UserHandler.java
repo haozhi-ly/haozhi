@@ -151,20 +151,22 @@ public class UserHandler {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/save",method=RequestMethod.POST)
-	public String saveInfo(UserInfo user,int userid,String gender,String usign,String introdution,ModelMap map,HttpServletRequest request,Model model){
+	public String saveInfo(int userid,String gender,String usign,String introdution,ModelMap map,HttpServletRequest request,Model model){
 		System.out.println("save进来了");
 		String flag="";
+		UserInfo users = userInfoService.getInfoByUserid(userid);
+		String uname=users.getUname();
+		System.out.println(uname);
+		UserInfo user=new UserInfo();
+		user.setUname(uname);
 		user.setUserid(userid);user.setGender(gender);user.setUsign(usign);user.setIntrodution(introdution);
-
 		userInfoService.saveInfo(user);
 		if(userInfoService.saveInfo(user)==1){
 			flag = "1";
-			user.setUname("lytest");
+		//	user.setUname("lytest");
 			model.addAttribute("users",user);
 			//session.setAttribute("users",userinfo);
 		}else{
-
-
 		}
 		return flag;
 	}
@@ -363,6 +365,7 @@ public class UserHandler {
 		out.flush();
 		out.close();
 	}
+	
 	@ResponseBody
 	@RequestMapping("/getContactMsgbyUserid")
 	public UserInfo getContactMsgbyUserid(int userid){
@@ -370,4 +373,34 @@ public class UserHandler {
 		System.out.println(userinfo+"我进来了");
 		return userinfo;
 	}
+	
+	@ResponseBody
+	@RequestMapping("/attentionByUserid")
+	public List<UserInfo> attentionByUserid(int userid){
+		List<UserInfo> userinfo=userInfoService.attentionByUserid(userid);
+		return userinfo;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/judgeAttention")
+	public int judgeAttention(int userid,int attention){
+		int result=userInfoService.judgeAttention(userid, attention);
+		return result;
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping("/getInfoByUserid")
+	public UserInfo getInfoByUserid(int userid){
+		UserInfo userinfo=userInfoService.getInfoByUserid(userid);
+		return userinfo;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/fansByUserid")
+	public List<UserInfo> fansByUserid(int attention){
+		List<UserInfo> userinfo=userInfoService.fansByUserid(attention);
+		return userinfo;
+	}
+	
 }

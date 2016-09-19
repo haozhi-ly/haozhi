@@ -430,7 +430,7 @@
 
 					<!--  评论 --------------------------------- -->
 					<ul class=" comment-item-list" id="commentList">
-						<li id="item92627">
+						<!-- <li id="item92627">
 							<div class="userimg">
 								<a class=" js-user-card" href="#"
 									data-card-url="/user/2357277/card/show" data-user-id="2357277">
@@ -449,7 +449,7 @@
 										data-revertto="楚嫣然" onclick="revert()">回复</a>
 								</div>
 							</div>
-						</li>
+						</li> -->
 					</ul>
 					<!-- 分页 ---------------------------------------------------------------------------------  -->
 					<div class="tcdPageCode" id="commenttcpage"></div>

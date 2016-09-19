@@ -3,6 +3,7 @@ $(function(){
 	
 	 var ctid=window.location.href.split('=')[1];
 	 if(ctid!=null){
+		 
 		// -------------------------------参考评论分割线-----------------------
 		$.get("course/countCourseByCtid/",{"_method":"GET","ctid":ctid},function(data){
 				var page;
@@ -12,7 +13,9 @@ $(function(){
 				}else{
 					page=Math.floor((count/18)+1);
 				}
-					
+				$("#commenttcpage").css("display","block");
+				$("#timecpage").css("display","none");
+				$("#hostcpage").css("display","none");	
 				$("#commenttcpage").createPage({
 				    pageCount:page,
 				    current:1,
@@ -64,7 +67,7 @@ $(function(){
 			  }
 			},'json');	
 	 }else{
-		$.get("course/countCourseByCtid/",{"_method":"GET","ctid":null},function(data){
+		$.get("course/countCourseByCtid/",{"_method":"GET","ctid":0},function(data){
 			var page;
 			var count=parseInt(data);
 			if(count%18==0){
@@ -72,7 +75,9 @@ $(function(){
 			}else{
 				page=Math.floor((count/18)+1);
 			}
-				
+			$("#commenttcpage").css("display","block");
+			$("#timecpage").css("display","none");
+			$("#hostcpage").css("display","none");		
 			$("#commenttcpage").createPage({
 			    pageCount:page,
 			    current:1,
@@ -142,7 +147,9 @@ $(function(){
 				}else{
 					page=Math.floor((count/18)+1);
 				}
-					
+				$("#commenttcpage").css("display","block");
+				$("#timecpage").css("display","none");
+				$("#hostcpage").css("display","none");	
 				$("#commenttcpage").createPage({
 				    pageCount:page,
 				    current:1,
@@ -194,9 +201,8 @@ $(function(){
 			  }
 			},'json');		
 	});
-//	 var ctid=window.location.href.split('=')[1];
+	 var ctid=window.location.href.split('=')[1];
 	$('#sortNav a').bind("click",function(){
-		alert("dakgrj");
 		 $(this).parent().parent().children().children().removeClass("act");  
 		 $(this).addClass("act"); 	  //样式改变
 		 var id = this.id;
@@ -214,15 +220,16 @@ $(function(){
 				}else{
 					page=Math.floor((count/18)+1);
 				}
-				$("#commenttcpage").createPage({
+				if(id==1){
+				$("#commenttcpage").css("display","none");
+				$("#hostcpage").css("display","none");
+				$("#timecpage").css("display","block");
+				$("#timecpage").createPage({
 				    pageCount:page,
 				    current:1,
 				    backFn:function(p){
-				    	alert("iwt");
-				    	alert(p);
-				        $.post("course/selectCourseBy/",{"_method":"POST","p1":p,"ctid":tid,"id":id},function(data){
+				        $.post("course/selectCourseByTime/",{"_method":"POST","p":p,"ctid":tid},function(data){
 				        	var str="";
-				        	alert(data);
 					   		 if(data){
 					   		 $.each(data,function(index,item){
 					   			  str+='<div class="col-md-4 col-xs-6"><div class="course-item "><div class="course-img" id="cimg"> <a href="page/joinproject.jsp?id='+item.courseid+'"> <img src="images/160148ccf620140008.jpg" alt="'+item.ctitle+'" class="">' 
@@ -238,8 +245,34 @@ $(function(){
 					   		 },"json");
 				        }
 				    });
-				 });
-		 $.post("course/selectCourseBy/",{"_method":"POST","p1":1,"ctid":tid,"id":id},function(data){	
+				}else if(id==2){
+					$("#commenttcpage").css("display","none");
+					$("#timecpage").css("display","none");
+					$("#hostcpage").css("display","block");
+					$("#hostcpage").createPage({
+					    pageCount:page,
+					    current:1,
+					    backFn:function(p){
+					        $.post("course/selectCourseByHost/",{"_method":"POST","p":p,"ctid":tid},function(data){
+					        	var str="";
+						   		 if(data){
+						   		 $.each(data,function(index,item){
+						   			  str+='<div class="col-md-4 col-xs-6"><div class="course-item "><div class="course-img" id="cimg"> <a href="page/joinproject.jsp?id='+item.courseid+'"> <img src="images/160148ccf620140008.jpg" alt="'+item.ctitle+'" class="">' 
+						   				 +'</a> </div><div class="course-info"><div class="title text-o-show"> <a href="page/joinproject.jsp?id='+item.courseid+'">'+item.ctitle+'</a> </div>'
+						   		       +'<div class="metas"  style="color:#666"><span>浏览量:'+item.cview+'</span>/ <span>'+item.memberCount+'学员</span>/ <span>'+item.assessAvg+'.0评分</span> </div>'
+						   		       +'<div class="teacher text-o-show"> <a class=" js-user-card" href="javaScript:void(0);" data-card-url="/user/1282433/card/show" data-user-id="1282433">' 
+						   		       +'<img class="avatar-ss " src=" images/2001255a2bbc776915.jpg" alt="'+item.user.uname+'" >'+item.user.uname+'</a>'
+						   		       +'<div class="price free pull-right"><span>免费</span></div></div></div></div></div>';
+						   			
+						   			$('#findCourse').html("").append( $(str) );
+						   		 	});
+						   		 	} 
+						   		 },"json");
+					        }
+					    });
+				}
+			});
+		 $.post("course/selectCourseBy/",{"_method":"POST","p":1,"ctid":tid,"id":id},function(data){	
 			 var str="";
 		   		 if(data){
 		   		 $.each(data,function(index,item){
@@ -253,9 +286,9 @@ $(function(){
 		   			$('#findCourse').html("").append( $(str) );
 		   		 	});
 		   		 	} 
-		 },'json');
+		 },"json");
+		 
 	});
-	
 	
 	
 });

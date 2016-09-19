@@ -41,19 +41,9 @@
 }
 </style>
 <script type="text/javascript">
-/* 	$('#oldpwd').bind("blur", function() {
-		alert("");
-	}); */
-
-	/* function savePhoto(id){
-		alert(id);
-		$.post("${pageContext.request.contextPath}/userinfo/editPhoto", {"_method" : "POST",userid : id},function(data){
-			
-		}); */
-	$(function() {
-		
-		
-	});
+var flag = "${(empty users)? false : true}";
+var uname = '${users.uname}';
+var userid = '${users.userid}';
 </script>
 
 </head>
@@ -158,7 +148,7 @@
 								<div class="col-md-7 col-md-offset-2">
 									<button id="profile-save-btn" data-submiting-text="正在保存"
 										type="button" class="btn btn-primary"
-										onclick="save('${users.userid}')">保存</button>
+										 onclick="save('${users.userid}')">保存</button>
 								</div>
 							</div>
 

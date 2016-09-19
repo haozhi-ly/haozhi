@@ -13,26 +13,43 @@
 		<link href="http://f1.howzhi.com/system/2016/03-31/113613d6a857327741.ico" rel="shortcut icon">
 		<link href="css/bootstrap.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="css/howzhi.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css"> 
 
 		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.js"></script>
 		<script type="text/javascript" src="js/show.js"></script>
 		<script type="text/javascript" src="js/top.js"></script>
+		<script type="text/javascript" src="js/learnCenter.js"></script>
 		
 
 		
 
-		<style>
-			.cke {
-				visibility: hidden;
-			}
-		</style>
+<style>
+	.cke {
+		visibility: hidden;
+	}
+	.page-message-panel {
+    	border: 1px solid #eee;
+    	margin-left:100px;
+    	
+	}
+</style>
+<script type="text/javascript">
+		var flag = "${(empty users)? false : true}";
+		var uname = '${users.uname}';
+		var userid = '${users.userid}';
+		
+		
+	
+</script>
 
 	</head>
 
 <body class="hzme">
 	<!-------------------------我是头部------------------------------------------->
-
+	
+<!-- 		<div style="width:100%;height: 100px;background-color: red" >我是测试</div> -->
+	
 	<c:if test="${empty users }">
 		<jsp:include page="topf.jsp" />
 	</c:if>
@@ -43,9 +60,9 @@
 		<jsp:include page="topf.jsp"/>
 		</div>	 --%>
 	<!---------------------------------我是头部分隔线--------------------------------------------->
-
+	<div id="centerContent">
 	<section class="p-home">
-		<div class="container">
+	<div class="container">
 			<div class="personImg">
 				<a class=" js-user-card" href="http://www.howzhi.com/u/2358987/"
 					data-card-url="/user/2358987/card/show" data-user-id="2358987">
@@ -59,7 +76,7 @@
 				</div>
 			</div>
 			<ul class="clearfix">
-				<li><span>学分</span><a class="count" href="javascript:void(0)">20</a></li>
+				<li><span >学分</span><a class="count" id="score" href="javascript:void(0)">20</a></li>
 				<li class="line"></li>
 				<li><span>等级</span><a class="count" title="1级(20学分), 升级还需10学分!"
 					href="javascript:void(0)">1</a></li>
@@ -67,6 +84,7 @@
 				<li><span>金币</span><a class="count" href="javascript:void(0)">0</a></li>
 			</ul>
 		</div>
+		
 	</section>
 
 	<nav class="home-nav">
@@ -76,7 +94,7 @@
 				<li class=" "><a href="page/studying.jsp">在学</a></li>
 				<li class=" "><a href="page/teaching.jsp"> 在教</a></li>
 				<li class=""><a href="page/mygroups.jsp">小组</a></li>
-				<li class=" "><a href="javascript:void(0)">好友</a></li>
+				<li class=" "><a href="page/friends.jsp">好友</a></li>
 				<li class=" "><a href="javascript:void(0)">笔记</a></li>
 				<li class=" "><a href="javascript:void(0)">任务</a></li>
 				<!--<li class="more dropdown" id="more-dropdown"> <a href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">更多<b class="caret"></b></a>
@@ -90,6 +108,8 @@
 			</ul>
 		</div>
 	</nav>
+	
+	
 	<section class="container home">
 		<div class="row">
 			<!-----------------首页------------------>
@@ -101,11 +121,11 @@
 						<!--<div class="empty"><i class="es-icon es-icon-locallibrary"></i>数千门有趣的课程正在等你发现，<a href="http://www.howzhi.com/courses">快去看看吧 &gt;&gt;</a></div>-->
 
 						<!--有正在学习的课程时的样式-->
-						<div class="clearfix studing-item ">
+						<!-- <div class="clearfix studing-item ">
 							<div class="study-img">
 								<a href="http://www.howzhi.com/course/13339/"> <img
 									class="img-responsive" src="images/course01.jpg"
-									　alt="【古风人像】牛牛很忙教你打造穿越千年古风美人"> <!--学习进度百分比--> <span
+									　alt="【古风人像】牛牛很忙教你打造穿越千年古风美人"> 学习进度百分比 <span
 									class="load" style="width: 0%"></span> <span
 									class="pere text-center">0%</span>
 								</a>
@@ -124,8 +144,10 @@
 							<div class="study inter">
 								<a href="http://www.howzhi.com/course/13339/">继续学习</a>
 							</div>
-						</div>
+						</div> -->
+						
 					</div>
+					<div class="more center"><a href="javascript:;" id="get_more">加载更多</a></div>
 				</div>
 
 				<div class="f-movement">
@@ -563,9 +585,35 @@
 		</div>
 	</section>
 
+	
 
 	<!----------------------------------------我是底部分割线------------------------------------------------>
 	<jsp:include page="footer.jsp"></jsp:include>
+	</div>
+	
+	<div id="content-container" class="container" style="display:none; position: absolute; z-index: 20000;">
+		<div id="page-message-container" class="page-message-container" data-duration="3000" data-goto="/login">
+		<div class="page-message-panel">
+		<div class="page-message-heading">
+		<h2 class="page-message-title ">提示信息</h2>
+		</div>
+		<div class="page-message-body">
+		<p class="t-infowarn" style="font-size: 18px;">你好像忘了登录哦？ </p>
+		<p class="mtl t-gray">
+		正在返回
+		<span id="backtime" class="t-infowarn">1s</span>
+		,若自动返回失败,请手动
+		<a class="active" href="http://www.howzhi.com/login">点击返回上一步</a>
+		</p>
+		</div>
+		</div>
+		</div>
+	</div>
+
+	<div id="loadingDiv"
+		style="position: fixed; display: none; z-index: 2000; top: 80px; left: 0px; width: 100%; height: 100%; background-color: #F4F6F8; "></div>
+	
+	
 
 </body>
 
