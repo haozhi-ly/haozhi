@@ -27,4 +27,6 @@ public interface CgroupService {
 
 	boolean exitGroup(String groupnumber,String groupname);
 
+	List<Cgroup> getAllGroupInfo();
+
 }

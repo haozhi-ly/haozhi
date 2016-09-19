@@ -18,16 +18,12 @@
 <link rel="stylesheet" type="text/css" href="css/tcdPageCode.css">
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="js/assets/css/font-awesome.css" rel="stylesheet">
-
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="js/top.js"></script>
 <script type="text/javascript" src="js/joinproject.js"></script>
 <script type="text/javascript" src="js/smohan.face.js" charset="utf-8"></script>
 <script type="text/javascript" src="js/jquery.page.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
-
-
-
 
 <style>
 .form-group {
@@ -78,10 +74,16 @@
 }
 </style>
 <script type="text/javascript">
+	var attention;
 	var flag = "${(empty users)? false : true}";
 	var uname = '${users.uname}';
 	var userid = '${users.userid}';
-	
+	var presentid='${users.userid}';
+	console.info(presentid);
+	if("${users}"==""){
+		console.info("yes");
+		presentid=0;
+	}
 	function addAnswer(){
 		console.info($("#add").val());
 		if($("#add").val().trim()==""){
@@ -166,7 +168,15 @@
 						</a>
 					</div>
 					<div class="score">
-						<span class="stars-5"> </span> <span id="ass"></span> <span
+						<span class="rating-btn mls fsm" data-rating="3" id="xinxin"
+									data-img-path="/assets/img/raty"
+									style="cursor: pointer; width: 100px;"><img 
+									src="images/star-off.png" alt="1" title="很差">&nbsp;<img
+									src="images/star-off.png" alt="2" title="较差">&nbsp;<img
+									src="images/star-off.png" alt="3" title="还行">&nbsp;<img
+									src="images/star-off.png" alt="4" title="推荐">&nbsp;<img
+									src="images/star-off.png" alt="5" title="力荐"><input
+									type="hidden" name="score" value="3"></span> <span id="ass"></span> <span
 							id="asscount">（人评价）</span>
 					</div>
 
@@ -322,36 +332,7 @@
 						</form> -->
 
 						<ul class="course-in-ul" id="questionAndAnswer">
-							<li>
-								<h4>
-									<span class="glyphicon glyphicon-question-sign"
-										style="color: rgb(4, 188, 131);"></span><a class="js-nav"
-										href="http://www.howzhi.com/question/57595">老师好 麻烦老师解释下</a> <a
-										class="link-muted"
-										href="http://www.howzhi.com/course/9573/lesson/67389"
-										title="风光摄影后期"> <span class="from">来自L7-风光摄影后期</span></a>
-
-								</h4>
-								<p>
-									by <a class="link-light link-muted"
-										href="http://www.howzhi.com/u/2362511/">自选角度</a> • 0 回答 • 14浏览
-								</p>
-							</li>
-							<li>
-								<h4>
-									<span class="glyphicon glyphicon-question-sign"
-										style="color: rgb(4, 188, 131);"></span><a class="js-nav"
-										href="http://www.howzhi.com/question/57542">后期修图问题</a> <a
-										class="link-muted"
-										href="http://www.howzhi.com/course/9573/lesson/67383"
-										title="人像器材的选择"> <span class="from">来自L1-人像器材的选择</span></a>
-
-								</h4>
-								<p>
-									by <a class="link-light link-muted"
-										href="http://www.howzhi.com/u/2334840/">王福刚</a> • 0 回答 • 62浏览
-								</p>
-							</li>
+							
 
 						</ul>
 						<div class="detail flat" id="detailquestion" style="display:none;">
@@ -1055,6 +1036,8 @@
 
 		
 	</script>
+	
+	
 
 </body>
 

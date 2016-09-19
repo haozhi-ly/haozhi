@@ -18,6 +18,7 @@ public class StudyCourseMapperTest {
 		System.out.println(studyCourseMapper.persentdynamicStudentsbycourseid(1));
 	}
 	
+
 	@Test
 	public void testgetPersonCourse() {
 		System.out.println(studyCourseMapper.getPersonCourse("41"));
@@ -25,7 +26,13 @@ public class StudyCourseMapperTest {
 	
 	@Test
 	public void testgetPersonCourse02() {
-		System.out.println(studyCourseMapper.getCourseByUsid("41"));
+		System.out.println(studyCourseMapper.getCourseByUsid("21"));
 	}
+	
+	@Test
+	public void testgetCourseCount() {
+		System.out.println(studyCourseMapper.getCourseCount("21"));
+	}
+	
 
 }

@@ -34,8 +34,27 @@ public class CourseManageServiceImpl implements CourseManageService {
 
 
 	@Override
+	public int findcourseid() {
+		return courseManageMapper.findcourseid();
+	}
+
+
+	@Override
+	public String findcourseseq(int courseid) {
+		return courseManageMapper.findcourseseq(courseid);
+	}
+
+
+	@Override
+	public int addlession(CourseManage courseManage) {
+		return courseManageMapper.addlession(courseManage);
+	}
+
+
+	@Override
 	public List<CourseManage> getCourseManagebyCmid(Integer cmid) {
 		return courseManageMapper.getCourseManagebyCmid(cmid);
 	}
+
 
 }

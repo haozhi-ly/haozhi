@@ -14,7 +14,7 @@ public class Course implements Serializable{
 	private int courseid;
 	private String ctitle;// --标题
 	private String cintrodution;// --课程简介
-	private Integer ctid; // --课程类别（外键）
+	private int ctid; // --课程类别（外键）
 	private CourseType courseType;//ly--添加的字段目的是为了，在后台获得课程的类型
 	private String courseting;// --应用于课程关键字搜索
 	private String coursephoto;// --课程图片
@@ -35,7 +35,8 @@ public class Course implements Serializable{
 	private UserInfo student;//学习本课程的学生
 	private CourseManage courseManage;
 	private String begintime;//开始课程的时间
-	
+	private List<UserInfo> studentlist;
+
 	public Course() {
 	}
 
@@ -297,6 +298,7 @@ public class Course implements Serializable{
 		this.beattentionnumber = beattentionnumber;
 	}
 
+
 	public CourseManage getCourseManage() {
 		return courseManage;
 	}
@@ -318,6 +320,17 @@ public class Course implements Serializable{
 	public void setBegintime(String begintime) {
 		this.begintime = begintime;
 	}
+	
+	
+	public List<UserInfo> getStudentlist() {
+		return studentlist;
+	}
+
+
+
+	public void setStudentlist(List<UserInfo> studentlist) {
+		this.studentlist = studentlist;
+	}
 
 
 
@@ -330,8 +343,14 @@ public class Course implements Serializable{
 				+ ", userCount=" + userCount + ", assessCount=" + assessCount + ", typename=" + typename
 				+ ", teachnumber=" + teachnumber + ", studynumber=" + studynumber + ", attentionnumber="
 				+ attentionnumber + ", beattentionnumber=" + beattentionnumber + ", student=" + student
-				+ ", courseManage=" + courseManage + ", begintime=" + begintime + "]";
+				+ ", courseManage=" + courseManage + ", begintime=" + begintime + "]"
+				+ ", studentlist=" + studentlist + "]";
 	}
+
+
+
+	
+
 
 
 

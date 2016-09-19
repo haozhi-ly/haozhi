@@ -8,7 +8,7 @@
 <base href="/newhaozhiwang/" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
-<title>首页 - 珘珘的个人主页 - 好知网-重拾学习乐趣-Powered By Howzhi</title>
+<title>首页 - ${users.uname}的个人主页 - 好知网</title>
 <link
 	href="http://f1.howzhi.com/system/2016/03-31/113613d6a857327741.ico"
 	rel="shortcut icon">
@@ -71,7 +71,7 @@
 					<c:choose>
 						<c:when test="${users.usign==null}">
 							<p>
-								“TA还未设置签名哦” <a href="hjavaScript:void(0)" class="tool"
+								“TA还未设置签名哦” <a href="page/info.jsp" class="tool"
 									style="display: block;"> <i style="color: #666;"
 									class="glyphicon glyphicon-edit" title="" data-toggle="tooltip"
 									data-placement="top" data-original-title="编辑"></i>
@@ -79,7 +79,7 @@
 						</c:when>
 						<c:otherwise>
 							<p>
-								“${users.usign}” <a href="hjavaScript:void(0)" class="tool"
+								“${users.usign}” <a href="page/info.jsp" class="tool"
 									style="display: block;"> <i style="color: #666;"
 									class="glyphicon glyphicon-edit" title="" data-toggle="tooltip"
 									data-placement="top" data-original-title="编辑"></i>
@@ -94,14 +94,14 @@
 
 	<nav class="home-nav">
 		<div class="container">
-			<ul class="nav nav-mian">
-				<li class=" active "><a href="javaScript:void(0);">首页</a></li>
-				<li class=""><a href="javaScript:void(0);">在学</a></li>
-				<li class=""><a href="javaScript:void(0);">在教</a></li>
-				<li class=""><a href="javaScript:void(0);">小组</a></li>
+			<ul class="nav nav-mian" id="nav-mian">
+				<li class=" active "><a href="page/person.jsp">首页</a></li>
+				<li class=""><a href="javaScript:void(0);" id="studying">在学</a></li>
+				<li class=""><a href="javaScript:void(0);" id="teaching">在教</a></li>
+				<li class=""><a href="javaScript:void(0);" id="group">小组</a></li>
 				<li class=""><a href="javaScript:void(0);">动态</a></li>
 				<li class=""><a href="javaScript:void(0);">问答</a></li>
-				<li class=""><a href="javaScript:void(0);">笔记</a></li>
+				<li class=""><a href="javaScript:void(0);" id="notes">笔记</a></li>
 				<li class=""><a href="javaScript:void(0);">留言</a></li>
 			</ul>
 		</div>
@@ -109,53 +109,8 @@
 
 	<section class="container home">
 		<div class="row">
-			<div class="col-md-9">
-				<div class="class flat">
-					<div class="section-header">
-						<h2>
-							班级<a href="javaScript:void(0);" class="pull-right last-icon"><i
-								class="fa fa-ellipsis-h"></i></a>
-						</h2>
-					</div>
-					<!--  -------------如果添加或体验了班級就显示出来---------------------------------------------------------   -->
-					<!--<div class="empty">TA还未加入任何班级</div>-->
-					<!--  -------------如果添加或体验了班級就显示出来---------------------------------------------------------   -->
-					<div class="section-body">
-						<div class="classroom-item row">
-							<div class="col-sm-6">
-								<a class="course-img" href="javaScript:void(0);"> <img
-									src="images/1151026a63ab285157.jpg" class="img-responsive"
-									alt="">
-								</a>
-							</div>
-							<div class="col-sm-6 class-body">
-								<h3 class="title">
-									<a href="javaScript:void(0);">零基础摄影入门班</a>
-								</h3>
-								<div class="content">
-									好知摄影入门班，最有趣的单反摄影入门教程！零基础学习摄影入门技巧，专业摄影师为你量身定做的初级摄影教程！一起来愉快的摄影入门知识和摄影构图方法吧！...
-								</div>
-								<ul class="metas clearfix">
-									<li class="course-num"><a href="javaScript:void(0);">
-											<i class="fa fa-book"></i><br> <span>1</span>课程
-									</a></li>
-									<li class="student-num"><a href="javaScript:void(0);">
-											<i class="fa fa-user"></i><br> <span>721</span>学员
-									</a></li>
-									<li class="topic-num"><a href="javaScript:void(0);"> <i
-											class="fa fa-comment"></i><br> <span>128</span>话题
-									</a></li>
-									<li class="evaluate-num"><a href="javaScript:void(0);">
-											<i class="fa fa-star-o"></i><br> <span>3</span>评价
-									</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<!-- --------------------------------------------------------------------------------->
-
-				</div>
-
+			<div class="col-md-9" id="replaceable">
+				<!-- 课程信息 -->
 				<div class="course flat nopad">
 					<div class="section-header">
 						<h2>
@@ -168,39 +123,6 @@
 						<div class="row" id="course-item">
 							<!--   根据用户id去查用户的课程------------------------------------------------------------------->
 							
-								<%-- <c:forEach items="${personCourse }" var="item">
-									<div class="col-md-4 col-sm-6 " >
-									<div class="course-item">
-										<div class="course-img">
-											<img src="images/160148ccf620140008.jpg" alt="${item.ctitle }" class="">
-											<div class="mask">
-												<a href="javaScript:void(0);"> <span class="btn btn-primary">开始学习</span></a>
-											</div>
-										</div>
-										<div class="course-info">
-											<div class="title">
-												<span class="label label-p">${item.ctid }</span> <a class="transition"
-													href="javaScript:void(0);">${item.ctitle }</a>
-											</div>
-											<div class="metas">
-												<span>${item.cview }浏览</span>/ <span>${item.memberCount }学员</span>/ <span>${item.assessAvg }评分</span>
-											</div>
-											<div class="teacher text-o-show">
-												<a class=" js-user-card" href="javaScript:void(0);"
-													data-card-url="/user/1931873/card/show"
-													data-user-id="${item.user.userid }"> <img class="avatar-ss "
-													src="images/105454e6cdc9246475.jpg" alt="${item.user.uname }"> ${item.user.uname }
-												</a>
-												<div class="price free pull-right">
-													<span>免费</span>
-												</div>
-											</div>
-										</div>
-									</div>
-									</div>
-								</c:forEach> --%>
-							
-							<!--  ------------------------------------------------------------------------------------  -->
 						</div>
 					</div>
 				</div>
@@ -212,26 +134,11 @@
 								class="fa fa-ellipsis-h"></i></a>
 						</h2>
 					</div>
+					
 					<div id="personNote">
-					
+					<!--  笔记的具体信息-->
 					</div>
-					<!-- <div class="empty">ta没有公开的笔记</div>
 					
-					<div class="classroom-item row">
-						<div class="col-md-6">
-							<div class=" home-out under-line">
-								<h4>
-									<i class="fa fa-pencil"></i> 来自 <a class="first"
-										href="/note/43180">肥胖的主要原因</a> <a class="pull-right last"
-										href="javascript:;"> <i class="fa fa-heart-o"></i> (0)
-									</a>
-								</h4>
-								<div class="f-content notes-style">
-									人体中时时刻刻在进行着脂肪的合成代谢和分解代谢。在正常的人体中，二者达到动态平衡，这样人在某段时间内，体重会很稳定。但是，如果人体内脂肪的合成代谢大于降解代谢，也就是合成的脂肪数量高于分解的数量，就会导致多余的脂肪大量聚集在人体内，从而形成了肥胖。
-								</div>
-							</div>
-						</div>
-					</div> -->
 				</div>
 
 				<div class="course-question flat">
@@ -406,11 +313,11 @@
 			<aside class="col-md-3">
 				<div class="person-count">
 					<ul class="clearfix">
-						<li><a class="count" href="javaScript:void(0)">0</a><span>在教</span></li>
+						<li><a class="count" href="javaScript:void(0)" id="teachCount">0</a><span>在教</span></li>
 						<li class="line"></li>
-						<li><a class="count" href="javaScript:void(0)">1</a><span>课程</span></li>
+						<li><a class="count" href="javaScript:void(0)" id="courseCount"></a><span>课程</span></li>
 						<li class="line"></li>
-						<li><a class="count" href="javaScript:void(0)">0</a><span>笔记</span></li>
+						<li><a class="count" href="javaScript:void(0)" id="noteCount"></a><span>笔记</span></li>
 						<li class="line"></li>
 						<li><a class="count" href="javaScript:void(0)">0</a><span>回答</span></li>
 					</ul>
@@ -421,7 +328,6 @@
 						<li><span class="first">昵称：</span><span>${users.uname}</span></li>
 						<li><span class="first">等级：</span><a
 							href="javaScript:void(0)">1</a></li>
-						<li><span class="first">来自：</span><span></span></li>
 						<li><span class="first">简介：</span><span class="content">${users.introdution}</span></li>
 					</ul>
 					<div class="more">
@@ -434,40 +340,22 @@
 					<h3>
 						好友<span class="count"></span>
 					</h3>
-					<a class="first active" href="javaScript:void(0)">关注（1）</a><a
-						href="javaScript:void(0)" class="pull-right">粉丝（1）</a>
+					<a class="first active" href="javaScript:void(0)" id="attentionCount"></a><a
+						href="javaScript:void(0)" class="pull-right" id="fansCount">粉丝（1）</a>
 					<div class="person-student">
 						<ul class="clearfix" id="home-attent" style="display: block;">
-
-							<li><a class=" js-user-card"
-								href="http://www.howzhi.com/u/5759/"
-								data-card-url="/user/5759/card/show" data-user-id="5759"> <img
-									class="avatar-sm" src="images/1453371e5503236335.jpg" alt="知了">
-									<span style="color: rgb(255, 140, 60);"
-									class="glyphicon glyphicon-info-sign" title="达人"></span>
-							</a> <a href="http://www.howzhi.com/u/5759/" class="name">知了</a></li>
-
+						<!-- 显示关注的人的信息 -->
 						</ul>
-						<ul class="clearfix" id="home-fans" style="display: none;">
-
-							<li><a class=" js-user-card"
-								href="http://www.howzhi.com/u/5759/"
-								data-card-url="/user/5759/card/show" data-user-id="5759"> <img
-									class="avatar-sm" src="images/1453371e5503236335.jpg" alt="知了">
-									<span style="color: rgb(255, 140, 60);"
-									class="glyphicon glyphicon-info-sign" title="达人"></span>
-							</a> <a href="http://www.howzhi.com/u/5759/" class="name">知了</a></li>
-
-						</ul>
+						
 					</div>
 				</div>
 
-				<div class="flat person-visitor">
+				<!-- <div class="flat person-visitor">
 					<h3>
 						最新来访<span class="count"></span>
 					</h3>
 					<div class="empty">暂无访客！</div>
-				</div>
+				</div> -->
 
 			</aside>
 		</div>
@@ -513,11 +401,12 @@
 
 		</div>
 	</div>
+	
 	<div class="popover es-card fade bottom in"
 		style="top: 237px; left: 509px; display: block;">
 		<!--<div class="arrow"></div>-->
 
-		<div class="popover-content" style="display: block">
+		<div class="popover-content" style="display: none">
 			<div id="user-card-2358982" class="js-card-content"
 				data-user-id="${users.userid}">
 				<div class="card-header media-middle">
@@ -532,8 +421,7 @@
 						</div>
 						<div class="media-body">
 							<div class="title">
-								<a class="link-light " href="http://www.howzhi.com/u/2358982/"></a>
-
+								<a class="link-light " href="http://www.howzhi.com/u/2358982/">${users.uname}</a>
 							</div>
 							<div class="content"></div>
 						</div>
@@ -546,7 +434,7 @@
 					<span><a class="link-light"
 						href="http://www.howzhi.com/u/2358982/library">1<br>在学
 					</a></span> <span><a class="link-light"
-						href="http://www.howzhi.com/u/2358982/following">1<br>关注
+						href="http://www.howzhi.com/u/2358982/following">${count }<br>关注
 					</a></span> <span><a class="link-light"
 						href="http://www.howzhi.com/u/2358982/fans">1<br>粉丝
 					</a></span>

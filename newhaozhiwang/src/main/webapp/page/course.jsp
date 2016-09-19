@@ -22,6 +22,8 @@
 <script src="js/bootstrap.min.js"></script> 
 <script src="js/top.js"></script>
 <script type="text/javascript" src="js/course.js"></script>
+<script src="js/goeasy.js"></script>
+
 
 <style type="text/css">
 		.form-group{
@@ -31,6 +33,80 @@
 	</style>
 </head>
 <body class="hzco-classify">
+
+
+<script type="text/javascript">
+ 	
+/*精品课程*/
+ 
+	
+	if("${users}"!=""){
+		
+		$.post("attention/getInformation/",{userid: "${users.userid}"},function(data){
+			if(parseInt(data)!=0){
+				$("#SendMsg").css("display","block");
+				$("#inform").css("display","block");
+				$("#inform").html(data);
+			}
+		},"json");
+		
+		
+		
+		
+		
+		
+			var userid="${users.userid}";
+		    var goEasy = new GoEasy({
+			appkey: "4ea18126-cec1-4cce-8569-ad314901d30d"});
+			
+			    goEasy.subscribe({
+			             channel: "eb367e1f-1b28-4ce2-a32d-cd5347de7816",
+			             onMessage: function (message) {
+				alert(message.content);
+				var reg=/&quot;/g;
+				//console.info();
+				content=message.content.replace(reg,"\"");
+				content=eval('(' + content + ')');
+				alert(content.data.list);
+				//alert(message.content);
+				for(var i=0;i<content.data.list.length;i++){
+					if(userid==content.data.list[i]){
+						alert("yes");
+						$("#SendMsg").css("display","block");
+						if(content.code==1){
+							if($("#inform").html()!=""){
+								$("#inform").html(parseInt($("#inform"))+1);
+							}else{
+								$("#inform").html(1);
+							}
+							
+						}else if(content.code==2){
+							if($("#letter").html()!=""){
+								$("#letter").html(parseInt($("#letter"))+1);
+							}else{
+								$("#letter").html(1);
+							}
+						}else if(content.code==3){
+							if($("#answer").html()!=""){
+								$("#answer").html(parseInt($("#answer"))+1);
+							}else{
+								$("#answer").html(1);
+							}
+						}else if(content.code==4){
+							if($("#questionAndAnswer").html()!=""){
+								$("#questionAndAnswer").html(parseInt($("#questionAndAnswer"))+1);
+							}else{
+								$("#questionAndAnswer").html(1);
+							}
+						}
+					}
+				}
+			             }})
+	}
+	
+		
+	
+</script>
 <!-- 头部 -------------------------------------------------------------------  -->			
 <c:set value="${users}" var="us"/>
 <c:if test="${empty us }">

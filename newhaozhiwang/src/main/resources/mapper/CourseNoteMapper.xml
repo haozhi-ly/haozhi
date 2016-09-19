@@ -42,11 +42,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from courseNote where userid=#{userid}
 	</select>
 	<select id="getNoteByUsid" parameterType="string" resultType="courseManage">
-		select title from  courseManage  where cmid=#{cmid}
+		select * from  courseManage  where cmid=#{cmid}
 	</select>
 	
 	<insert id="addCourseNote">
 		insert into courseNote values(seq_courseNoteId.nextval,#{userid},#{cmid},null,#{noteContent},sysdate,null,null,null)
 	</insert>
 	
+	<select id="getNoteCount" parameterType="string" resultType="string">
+		select count(1) from courseNote where userid=#{userid}
+	</select>
 </mapper>

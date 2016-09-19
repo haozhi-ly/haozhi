@@ -45,5 +45,12 @@ public interface CourseMapper {
 	
 	List<Course> studyingByUserid(@Param("pagesize")Integer pagesize,@Param("pagenumber")Integer pagenumber,@Param("userid")Integer userid);   // 通过userid来查学习的课程
 
+	List<Course> mainHotCourse();
+
+	List<Course> goodCourse();
+
+	List<Course> getmainCourseByCtid(int ctid);
+
+
 }
 

@@ -252,4 +252,75 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from courseManage where courseid = #{courseid} and 2>rownum
 	</select>
 	
+
+	
+	<!-- 主页的热门课程查询 -->
+	
+	<resultMap type="Course" id="mainHotCourseMap">
+		<id column="courseid" property="courseid"/>
+		<result column="ctitle" property="ctitle"/>
+		<result column="cintrodution" property="cintrodution"/>
+		<result column="coursephoto" property="coursephoto"/>
+		<association column="ctid" property="courseType" javaType="CourseType">
+			<result column="ctid" property="ctid"/>
+		</association>
+		<association property="user" column="userid" javaType="UserInfo" select="getUserByUsid7"/>
+		<collection property="studentlist" column="usid" ofType="UserInfo">
+			<id column="usid" property="userid"/>
+			<result column="sname" property="uname"/>
+			<result column="photo" property="photo"/>
+		</collection>
+	</resultMap>
+	<select id="mainHotCourse" resultMap="mainHotCourseMap">
+		select c.*,u.userid usid,u.uname sname,u.photo,st.begintime,
+		(select count(*) students from studycourse sc where sc.courseid=c.courseid group by c.courseid)studentnumber
+		 from course c,studycourse st,userinfo u where st.courseid=c.courseid and u.userid=st.userid 
+		 order by studentnumber desc,st.begintime desc
+	</select>
+	
+	
+	<!--精品课程  -->
+	<resultMap type="Course" id="goodCourseMap">
+		<id column="courseid" property="courseid"/>
+		<result column="ctitle" property="ctitle"/>
+		<result column="cintrodution" property="cintrodution"/>
+		<result column="coursephoto" property="coursephoto"/>
+		<association property="user" column="userid" javaType="UserInfo">
+			<id column="userid" property="userid"/>
+			<result column="uname" property="uname"/>
+			<result column="photo" property="photo"/>
+		</association>
+	</resultMap>
+	<select id="goodCourse" resultMap="goodCourseMap">
+		select * from course c,userinfo u where c.userid=u.userid and c.courseid=(select courseid from (select count(*)nums,c.courseid from course c 
+		left join studycourse st on c.courseid=st.courseid where c.ctid=1 group by c.courseid)a where 2>rownum)union
+		select * from course c,userinfo u where c.userid=u.userid and c.courseid=(select courseid from (select count(*)nums,c.courseid from course c 
+		left join studycourse st on c.courseid=st.courseid where c.ctid=2 group by c.courseid)a where 2>rownum)
+		union
+		select * from course c,userinfo u where c.userid=u.userid and c.courseid=(select courseid from (select count(*)nums,c.courseid from course c 
+		left join studycourse st on c.courseid=st.courseid where c.ctid=3 group by c.courseid)a where 2>rownum)union
+		select * from course c,userinfo u where c.userid=u.userid and c.courseid=(select courseid from (select count(*)nums,c.courseid from course c 
+		left join studycourse st on c.courseid=st.courseid where c.ctid=4 group by c.courseid)a where 2>rownum)
+		union
+		select * from course c,userinfo u where c.userid=u.userid and c.courseid=(select courseid from (select count(*)nums,c.courseid from course c 
+		left join studycourse st on c.courseid=st.courseid where c.ctid=5 group by c.courseid)a where 2>rownum)union
+		select * from course c,userinfo u where c.userid=u.userid and c.courseid=(select courseid from (select count(*)nums,c.courseid from course c 
+		left join studycourse st on c.courseid=st.courseid where c.ctid=6 group by c.courseid)a where 2>rownum)
+		union
+		select * from course c,userinfo u where c.userid=u.userid and c.courseid=(select courseid from (select count(*)nums,c.courseid from course c 
+		left join studycourse st on c.courseid=st.courseid where c.ctid=7 group by c.courseid)a where 2>rownum)union
+		select * from course c,userinfo u where c.userid=u.userid and c.courseid=(select courseid from (select count(*)nums,c.courseid from course c 
+		left join studycourse st on c.courseid=st.courseid where c.ctid=8 group by c.courseid)a where 2>rownum)
+	</select>
+
+	<resultMap type="Course" id="MainCoursebyCtidMap">
+		<id column="courseid" property="courseid"/>
+		<id column="userId" property="userId"/>
+		<collection property="user" column="userId" ofType="UserInfo" select="getUserByUsid3" />
+	</resultMap>
+	<select id="getmainCourseByCtid" parameterType="int" resultMap="MainCoursebyCtidMap">
+		<include refid="selectCourse"/> where s.ctid=#{ctid}
+	</select>
+	
+
 </mapper>

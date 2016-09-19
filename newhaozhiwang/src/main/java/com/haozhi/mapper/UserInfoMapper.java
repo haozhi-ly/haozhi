@@ -52,4 +52,7 @@ public interface UserInfoMapper {
 	List<UserInfo> fansByUserid(@Param("attention")Integer attention);  //通过useid来查粉丝信息
 	
 	int judgeAttention(@Param("userid")Integer userid,@Param("attention")Integer attention);
+
+	UserInfo getContactMsgbyUserid(@Param("userid")Integer userid,@Param("presentid")Integer presentid);
+
 }

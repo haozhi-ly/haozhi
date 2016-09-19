@@ -181,5 +181,13 @@ public class GroupsHandler {
 			groupService.exitGroup(groupnumber,groupname);
 			return "groupIntroduce";
 		}
+		
+		//得到全部小组的信息
+		@ResponseBody
+		@RequestMapping(value="/getAllGroup")
+		public List<Cgroup> GetAllGroup(){
+			List<Cgroup> allGroups= groupService.getAllGroupInfo();
+			return allGroups;
+		}
 
 }

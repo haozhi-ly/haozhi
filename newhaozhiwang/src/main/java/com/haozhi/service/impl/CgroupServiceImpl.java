@@ -100,5 +100,9 @@ public class CgroupServiceImpl implements CgroupService{
 		}
 		return false;
 	}
+	@Override
+	public List<Cgroup> getAllGroupInfo() {
+		return groupMapper.getAllGroupInfo();
+	}
 	
 }

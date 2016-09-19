@@ -34,4 +34,9 @@ public class CourseNoteServiceImpl implements CourseNoteService{
 		return courseNoteMapper.getPersonNote(userid);
 	}
 
+	@Override
+	public String getNoteCount(String userid) {
+		return courseNoteMapper.getNoteCount(userid);
+	}
+
 }

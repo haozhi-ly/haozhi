@@ -1,6 +1,9 @@
 package com.haozhi.handler;
 
+import java.io.PrintWriter;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
 import com.haozhi.entity.CourseManage;
 import com.haozhi.service.CourseManageService;
 
@@ -58,6 +62,41 @@ public class CourseManageHandler {
 		return courseManage;
 	}
 	
+	@RequestMapping("/addlession")
+	public void addlession(CourseManage courseManage,int type,String title,String pathOrContetn,String cmintroduction,PrintWriter out,HttpSession session){
+		int courseid=courseManageService.findcourseid();
+		System.out.println(courseid);
+		String courseseqs=courseManageService.findcourseseq(courseid);
+		System.out.println(courseseqs);
+		if(courseseqs==null){
+			int courseseq=1;
+			System.out.println(courseseq);
+			courseManage.setCourseseq(courseseq);
+			session.setAttribute("courseseq", courseseq);
+		}else{
+			int courseseq=Integer.parseInt(courseseqs)+1;
+			
+			System.out.println(courseseq);
+			courseManage.setCourseseq(courseseq);
+			session.setAttribute("courseseq", courseseq);
+		}
+		courseManage.setTitle(title);
+		courseManage.setType(type);
+		courseManage.setPathOrContetn(pathOrContetn);
+		courseManage.setCmintroduction(cmintroduction);
+		courseManage.setCourseid(courseid);
+		System.out.println(courseManage);
+		int result=courseManageService.addlession(courseManage);
+		Gson gson = new Gson();
+		String cs = gson.toJson(courseManage);
+		if(result>0){
+			out.print(cs);
+			session.setAttribute("addlessions", 1);
+			session.setAttribute("cManage", courseManage);
+		}
+		out.flush();
+		out.close();
+	}
 	/**
 	 * 根据cmid
 	 * @param courseid

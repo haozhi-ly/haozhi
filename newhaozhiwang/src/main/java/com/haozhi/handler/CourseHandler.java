@@ -13,6 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,7 +27,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import sun.misc.BASE64Decoder;
+
 import com.google.gson.Gson;
+import com.haozhi.entity.Communiacte;
 import com.haozhi.entity.Course;
 import com.haozhi.entity.CourseType;
 import com.haozhi.entity.StudyCourse;
@@ -32,9 +38,13 @@ import com.haozhi.entity.UserInfo;
 import com.haozhi.service.CourseService;
 import com.haozhi.service.CourseTypeService;
 
+import com.haozhi.util.HaozhiProtocol;
+
+import io.goeasy.GoEasy;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import sun.misc.BASE64Decoder;
+
 
 @Controller
 @RequestMapping("/course")
@@ -431,4 +441,49 @@ public class CourseHandler {
 	}
 	
 	
+
+	
+/*	热门课程
+*/	
+	@ResponseBody
+	@RequestMapping("/mainHotCourse")
+	public List<Course> mainHotCourse(HttpServletResponse response){
+		
+		return courseService.mainHotCourse();
+	}
+
+	/*精品课程*/
+
+	@ResponseBody
+	@RequestMapping("/goodCourse")
+	public List<Course> goodCourse(HttpServletResponse response){		
+		GoEasy g=new GoEasy("4ea18126-cec1-4cce-8569-ad314901d30d");
+		System.out.println(g);
+		//g.publish("eb367e1f-1b28-4ce2-a32d-cd5347de7816","Hello, GoEasy!");
+		g.publish("eb367e1f-1b28-4ce2-a32d-cd5347de7816", "Hello, GoEasy!");
+		return courseService.goodCourse();
+		
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/getMainCoruseByctid",method=RequestMethod.POST)
+	public List<Course> getMainCoruseByctid(int ctid){
+		List<Course> courses =null;
+		if(ctid!=0){
+			 courses =courseService.getmainCourseByCtid(ctid);
+		}else{
+			courses =courseService.goodCourse();
+		}
+		List<Integer> list=new ArrayList<Integer>();
+		list.add(122);
+		list.add(1);
+		Communiacte communiacte=new Communiacte(list);
+		HaozhiProtocol<Communiacte> content=new HaozhiProtocol<Communiacte>(HaozhiProtocol.Inform, communiacte);
+		System.out.println(content.toString());
+		GoEasy g=new GoEasy("4ea18126-cec1-4cce-8569-ad314901d30d");
+		//g.publish("eb367e1f-1b28-4ce2-a32d-cd5347de7816","Hello, GoEasy!");
+		g.publish("eb367e1f-1b28-4ce2-a32d-cd5347de7816",content.toString());
+		return courses;
+	}
+
 }

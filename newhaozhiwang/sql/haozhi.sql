@@ -12,39 +12,6 @@ select * from studyCourse;
 select * from selfMessage;
 select * from cgroup;
 
-select rownum,a.* from (select rownum,s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount,
-		(select avg(assess) from studyCourse where courseid = s.courseid) assessAvg
-		 from course s where rownum>=0)a where rownum<=5
-
-select t.*, rownum rn from (select a.*,rownum rn from courseAssess a where cmid=1
-and 5>=rownum order by a.time desc ) t where rn>0
-
-select c.*,u.* from courseNote c inner join userinfo u  on  c.userid=u.userid and cmid in
-		 (select cmid from courseManage where courseid= 6 ) order by ntime desc
-
-select * from (select s.*,(select count(1) from studyCourse where courseid = s.courseid )
-memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg 
-from course s where s.ctid=2 order by memberCount desc) where 3>=rownum 
-
-select s.*,(select count(1) from studyCourse where courseid = s.courseid )
-memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg,
-typename,(select count(*) from courseManage where courseid=s.courseid) courseCount,(
-select count(courseid) from studyCourse where courseid=s.courseid ) userCount,
-(select count(*) from courseAssess where cmid in (select cmid from courseManage where courseid=s.courseid)
-) assessCount from course s,courseType t where s.ctid=t.ctid and  s.courseid=6 
-
-select count(*) from courseManage
-select count(*) from courseManage where courseid=2;
-select count(userid) from studyCourse where courseid=5;
-
-select * from (select a.*,rownum rn  from(select rownum,s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount,
-(select avg(assess) from studyCourse where courseid = s.courseid) assessAvg
-from course s )a where #{pagesize}*#{pagenumber}>=rownum) where rn>=#{pagesize}*(#{pagenumber}-1)
-	
-
-select * from(select a.*, rownum rn from (select rownum,s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount,
-(select avg(assess) from studyCourse where courseid = s.courseid) assessAvg
-		 from course s where s.ctid=6)a where 3>=rownum) where rn>=2
 
 drop table userinfo;
 drop sequence seq_userid cascade constraints;
@@ -241,6 +208,9 @@ create table courseManage(
        temp02 varchar2(200),--备用字段
        temp03 varchar2(200)--备用字段  
 );
+
+select courseseq,cs.courseid from courseManage cm,course cs where cm.courseid=cs.courseid and cs.courseid=cm.courseid;
+
 select * from courseManage
 ALTER TABLE haozhi.courseManage RENAME COLUMN temp01 TO cmintroduction --修改表列名 
 create sequence seq_cmid start with 1;
@@ -271,9 +241,11 @@ sid/XNDY2NTYwMjI4/isAutoPlay/false/partnerid/0edbfd2e4fc91b72/v.swf',null,null,n
 commit;
 
 
-select * from (select rownum rn, v.* from (select rownum, s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount,
-(select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s 	
-where s.ctid=6 order by createTime desc )v  where 3>=rownum ) where  rn>=2
+
+delete from courseManage where courseid=50;
+
+select * from courseAssess where cmid=1
+
 
 
 
@@ -371,14 +343,25 @@ create table attention(
                  constraint FK_userinfo_userid05 references userinfo(userid),-- 被关注的人 用户id(外键)
        userid int 
               constraint FK_userinfo_userid06 references userinfo(userid),-- 关注发起者 用户id(外键)
-       temp01 varchar2(200),--备用字段
+       sreadstatus int,--备用字段
        temp02 varchar2(200),--备用字段
        temp03 varchar2(200)--备用字段 
 );
-create sequence seq_atid start with 1;
-insert into attention values(seq_atid.nextval,3,1,null,null,null);
-insert into attention values(seq_atid.nextval,1,3,null,null,null);
 
+alter table attention rename column temp01 to sreadstatus
+alter table attention modify(sreadstatus int)
+--动态消息提示
+=======
+select * from attention;
+create sequence seq_atid start with 1;
+insert into attention values(seq_atid.nextval,3,41,null,null,null);
+insert into attention values(seq_atid.nextval,1,41,null,null,null);
+insert into attention values(seq_atid.nextval,41,3,null,null,null);
+insert into attention values(seq_atid.nextval,41,1,null,null,null);
+insert into attention values(seq_atid.nextval,41,21,null,null,null);
+insert into attention values(seq_atid.nextval,21,41,null,null,null);
+insert into attention values(seq_atid.nextval,41,5,null,null,null);
+insert into attention values(seq_atid.nextval,41,4,null,null,null);
 select * from (select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount,
 (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg from course s order by memberCount desc) where rownum<=3 ;
 

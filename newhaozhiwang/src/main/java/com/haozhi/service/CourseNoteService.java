@@ -4,6 +4,7 @@ import java.util.List;
 
 
 
+
 import com.haozhi.entity.CourseNote;
 
 public interface CourseNoteService {
@@ -14,5 +15,7 @@ public interface CourseNoteService {
 	int addCourseNote(Integer userid,Integer cmid,String noteContent);// 添加笔记
 
 	List<CourseNote> getPersonNote(String userid);
+
+	String getNoteCount(String userid);
 
 }

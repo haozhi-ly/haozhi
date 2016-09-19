@@ -109,11 +109,27 @@ public class CourseServiceImpl implements CourseService {
 	public List<Course> getHostCourseByPage(Integer ctid, Integer pagesize, Integer pagenumber) {
 		return courseMapper.getHostCourseByPage(ctid, pagesize, pagenumber);
 	}
+	@Override
+	public List<Course> mainHotCourse() {
+		// TODO Auto-generated method stub
+		return courseMapper.mainHotCourse();
+	}
 
 	@Override
 	public List<Course> studyingByUserid(Integer pagesize, Integer pagenumber, Integer userid) {
 		return courseMapper.studyingByUserid(pagesize, pagenumber, userid);
 	}
 
+
+	public List<Course> goodCourse() {
+		// TODO Auto-generated method stub
+		return courseMapper.goodCourse();
 	
+	}
+	@Override
+	public List<Course> getmainCourseByCtid(int ctid) {
+		// TODO Auto-generated method stub
+		return courseMapper.getmainCourseByCtid(ctid);
+	}	
+
 }

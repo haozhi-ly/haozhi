@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.haozhi.mapper.AttentionMapper">
 
 	<select id="judgeAttion" resultType="int">
-		select count(*) from attention  where attention=#{attention} and userid=#{userid}
+		select count(*) from attention  where attention=#{attention,jdbcType=VARCHAR} and userid=#{userid,jdbcType=VARCHAR}
 	</select>
 	
 	<insert id="insertAttion">
@@ -15,4 +15,43 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="delAttion">
 		delete from attention  where attention=#{attention} and userid=#{userid}
 	</delete>
+	
+
+	<select id="getInformation" parameterType="int" resultType="int">
+		select count(*) from attention a where a.attention=#{userid} and a.sreadstatus=0 group by a.attention
+	</select>
+	<!-- 查询用户关注的人的具体信息 -->
+	<resultMap type="Attention" id="AttentionMap">
+		<id column="userid" property="userid"/>
+		<id column="attention" property="attention"/>
+		<collection property="user" column="attention" ofType="UserInfo" select="getUserByUsid" />
+	</resultMap>
+	<select id="getAttentionInfo" resultMap="AttentionMap">
+		select * from attention where userid=#{userid}
+	</select>
+	<select id="getUserByUsid" parameterType="int" resultType="UserInfo">
+		select * from userinfo where userid=#{attention}
+	</select>
+	
+	<select id="getAttentionCount" parameterType="string" resultType="string">
+		select count(1) count from attention where userid=#{userid}
+	</select>
+	
+	
+	<resultMap type="Attention" id="AttentionMap02">
+		<id column="userid" property="userid"/>
+		<collection property="user" column="userid" ofType="UserInfo" select="getUserByUsid02" />
+	</resultMap>
+	<select id="getFansInfo" resultMap="AttentionMap02">
+		select userid from  attention where attention=#{userid}
+	</select>
+	<select id="getUserByUsid02" parameterType="string" resultType="UserInfo">
+		select * from userinfo where userid=#{userid}
+	</select>
+	
+	
+	<select id="getFansCount" parameterType="string" resultType="string">
+		select count(1) from  attention where attention=#{userid}
+
+	</select>
 </mapper>

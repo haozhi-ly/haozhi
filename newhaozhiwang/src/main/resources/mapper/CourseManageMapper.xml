@@ -29,6 +29,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getUserByCmid" resultType="UserInfo" parameterType="int">
 		select * from userinfo where userid in (select userid from course where courseid=#{coueseid})
 	</select>
+
+	<select id="findcourseid" resultType="int">
+		select max(courseid) from course  order by courseid desc
+	</select>
+	<select id="findcourseseq" resultType="String">
+		select max(courseseq) from courseManage cm,course cs where cm.courseid=cs.courseid and cm.courseid=#{courseid} order by courseseq desc
+	</select>
+	<insert id="addlession" parameterType="CourseManage">
+		insert into courseManage values(seq_cmid.nextval,#{courseid},#{type},#{title},#{courseseq},#{pathOrContetn},#{cmintroduction},null,null)
+	</insert>
+
 	
 	<select id="getCourseManagebyCmid" resultType="CourseManage" parameterType="int">
 		select * from courseManage where courseid in (select courseid from courseManage where cmid=#{cmid,jdbcType=VARCHAR})

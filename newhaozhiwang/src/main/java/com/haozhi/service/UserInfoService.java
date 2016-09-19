@@ -47,4 +47,7 @@ public interface UserInfoService {
 	
 	int judgeAttention(Integer userid,Integer attention);
 
+	UserInfo getContactMsgbyUserid(int courseid,int presentid);
+
+
 }
