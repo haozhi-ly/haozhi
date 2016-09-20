@@ -25,11 +25,11 @@ $(function() {
 			$.each(data,function(index,item){
 			str+='<div class="clearfix studing-item "><div class="study-img">'
 				+'<a href="page/joinproject.jsp?id="'+item.courseid+'> <img class="img-responsive" '
-				+' src="images/160148ccf620140008.jpg" alt="'+item.ctitle+'"> '
+				+' src="'+item.coursephoto+'" alt="'+item.ctitle+'"> '
 				+'<span class="load" style="width: 1%"></span> <span class="pere text-center">0%</span>'
 				+'</a></div><div class="study-content"><h4><a href="page/joinproject.jsp?id="'+item.courseid+'>'
-				+''+item.ctitle+'</a></h4><p>'+item.begintime+'学习至 <a href="page/play.jsp?cmid="'
-				+'class="plm active">L1：简易天空交换</a></p></div>'
+				+''+item.ctitle+'</a></h4><p>'+item.begintime+'学习至 <a href="page/play.jsp?cmid='+item.courseManage.cmid+'"'
+				+'class="plm active">L'+item.courseManage.courseseq+'：'+item.courseManage.title+'</a></p></div>'
 				+'<div class="study inter"><a href="page/joinproject.jsp?id="'+item.courseid+'>继续学习</a></div></div>';
 			});
 			/*'+item.courseManage.courseseq+''+item.courseManage.title+'   '+item.courseManage.cmid+'*/
@@ -57,8 +57,8 @@ $(function() {
          				+' src="images/160148ccf620140008.jpg" alt="'+item.ctitle+'"> '
          				+'<span class="load" style="width: 1%"></span> <span class="pere text-center">0%</span>'
          				+'</a></div><div class="study-content"><h4><a href="page/joinproject.jsp?id="'+item.courseid+'>'
-         				+''+item.ctitle+'</a></h4><p>'+item.begintime+'学习至 <a href="page/play.jsp?cmid="'
-         				+'class="plm active">L1：简易天空交换</a></p></div>'
+         				+''+item.ctitle+'</a></h4><p>'+item.begintime+'学习至 <a href="page/play.jsp?cmid='+item.courseManage.cmid+'"'
+         				+'class="plm active">L'+item.courseManage.courseseq+'：'+item.courseManage.title+'</a></p></div>'
          				+'<div class="study inter"><a href="page/joinproject.jsp?id="'+item.courseid+'>继续学习</a></div></div>';
          			});
          			/*'+item.courseManage.courseseq+''+item.courseManage.title+'   '+item.courseManage.cmid+'*/

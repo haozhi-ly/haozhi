@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="insertUser" parameterType="UserInfo">
-		insert into UserInfo values(seq_userid.nextval,#{uname},#{email},#{upassword},'女',null,null,null,1,0,null,null,null)
+		insert into UserInfo values(seq_userid.nextval,#{uname},#{email},#{upassword},'女','images/avatar.png',null,null,1,0,null,null,null)
 	</insert>
 	
 	<select id="getUname" parameterType="string" resultType="string">
