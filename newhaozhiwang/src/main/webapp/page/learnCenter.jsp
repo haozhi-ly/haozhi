@@ -28,6 +28,10 @@
 	.cke {
 		visibility: hidden;
 	}
+	.form-group{
+			margin-top:14px;
+			margin-left:30px;
+		}
 	.page-message-panel {
     	border: 1px solid #eee;
     	margin-left:100px;
@@ -480,7 +484,7 @@
 						</div>
 						<div class="has-sign" style="display: none;">
 							<p>
-								已连续拾到 <font id="keep-num"></font>天
+								已连续拾到 <font id="keep-num">1</font>天
 							</p>
 							<p class="sentence"></p>
 						</div>
@@ -523,7 +527,7 @@
 						</div>
 						<div class="has-sign" style="">
 							<p>
-								已连续拾到 <font id="keep-num">2</font>天
+								已连续拾到 <font id="keep-num">1</font>天
 							</p>
 							<p class="sentence">
 								生活只有在平淡无味的人看来才是空虚而平淡无味的。<br>---车尔尼雪夫斯基

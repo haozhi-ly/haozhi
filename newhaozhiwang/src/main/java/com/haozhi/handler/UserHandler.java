@@ -81,6 +81,40 @@ public class UserHandler {
 		
 		return "redirect:../page/index.jsp";
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/loginDiv",method=RequestMethod.POST)
+	public String loginDiv(String uname,String pwd,Model model,ModelMap map){
+		System.out.println("我进来了");
+		String flag="true";
+		System.out.println("uname为："+uname);
+		UserInfo userInfo = new UserInfo();
+		UserInfo user = new UserInfo();
+		userInfo.setUname(uname);
+		userInfo.setUpassword(pwd);
+//		uname=new UsuallyUtil().decode(uname);
+		if(uname.contains("@")){
+			user=userInfoService.loginByEamil(userInfo);
+//			map.put("users", userInfo);
+			model.addAttribute("users", user);
+		}else if(!uname.contains("@")){
+			userInfo.setUname(uname);
+			userInfo.toString();
+			userInfo=userInfoService.loginByUname(userInfo);
+//			map.put("users", user);
+			model.addAttribute("users", user);
+		}
+		System.out.println(user);
+		//登录页面跳转
+		if(user==null){
+			map.put("Message", "block");
+			map.put("users", "");
+			flag="false";
+		}
+		return flag;
+	}
+	
+	
 
 	//注销
 	@ResponseBody
@@ -409,5 +443,7 @@ public class UserHandler {
 		List<UserInfo> userinfo=userInfoService.fansByUserid(attention);
 		return userinfo;
 	}
+	
+	
 	
 }
