@@ -17,5 +17,9 @@ public class CourseAnswerMapperTest {
 	public void testDetailAnswerbycqid() {
 		System.out.println(courseAnswerMapper.detailAnswerbycqid(1));
 	}
-
+	
+	@Test
+	public void testGetAnwsert() {
+		System.out.println(courseAnswerMapper.getMyAnswerByUsid("3"));
+	}
 }

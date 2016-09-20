@@ -37,6 +37,10 @@ public class Course implements Serializable{
 	private String begintime;//开始课程的时间
 	private List<UserInfo> studentlist;
 
+	private int totalCm;//课程课时数
+	private String studyPeriod;//个人学习进度
+	private int studyPeriodcount;
+
 	public Course() {
 	}
 
@@ -84,6 +88,25 @@ public class Course implements Serializable{
 		this.userId = userId;
 		this.createTime = createTime;
 	}
+
+	
+	public int getTotalCm() {
+		return totalCm;
+	}
+
+
+
+	public void setTotalCm(int totalCm) {
+		this.totalCm = totalCm;
+	}
+
+
+
+	public void setCtid(int ctid) {
+		this.ctid = ctid;
+	}
+
+
 
 	public CourseType getCourseType() {
 		return courseType;
@@ -332,6 +355,31 @@ public class Course implements Serializable{
 		this.studentlist = studentlist;
 	}
 
+	
+
+
+	public String getStudyPeriod() {
+		return studyPeriod;
+	}
+
+
+
+	public void setStudyPeriod(String studyPeriod) {
+		this.studyPeriod = studyPeriod;
+	}
+
+
+
+	public int getStudyPeriodcount() {
+		return studyPeriodcount;
+	}
+
+
+
+	public void setStudyPeriodcount(int studyPeriodcount) {
+		this.studyPeriodcount = studyPeriodcount;
+	}
+
 
 
 	@Override
@@ -342,10 +390,18 @@ public class Course implements Serializable{
 				+ memberCount + ", assessAvg=" + assessAvg + ", user=" + user + ", courseCount=" + courseCount
 				+ ", userCount=" + userCount + ", assessCount=" + assessCount + ", typename=" + typename
 				+ ", teachnumber=" + teachnumber + ", studynumber=" + studynumber + ", attentionnumber="
+
 				+ attentionnumber + ", beattentionnumber=" + beattentionnumber + ", student=" + student
-				+ ", courseManage=" + courseManage + ", begintime=" + begintime + "]"
-				+ ", studentlist=" + studentlist + "]";
+				+ ", studentlist=" + studentlist + ", totalCm=" + totalCm + ", studyPeriod=" + studyPeriod
+				+ ", studyPeriodcount=" + studyPeriodcount + "]";
 	}
+
+
+	
+
+
+
+	
 
 
 

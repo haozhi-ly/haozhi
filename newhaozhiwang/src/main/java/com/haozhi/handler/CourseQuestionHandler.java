@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
+import com.haozhi.entity.CourseAnswer;
 import com.haozhi.entity.CourseQuestion;
 import com.haozhi.service.CourseQuestionService;
 
@@ -85,6 +86,15 @@ public class CourseQuestionHandler {
 		}
 
 	}
+	
+	@ResponseBody
+	@RequestMapping("/myQuestion")
+	public List<CourseQuestion> getMyQuestion(String userid){
+		List<CourseQuestion> question=courseQuestionService.getMyQuestionByUsid(userid);
+		return question;
+	}
+	
+	
 	
 	
 }

@@ -41,6 +41,11 @@ public class CourseAnswerHandler {
 		
 	}
 	
-	
+	@ResponseBody
+	@RequestMapping("/myAnswer")
+	public List<CourseAnswer> getMyAnswer(String userid){
+		List<CourseAnswer> question=courseAnswerService.getMyAnswerByUsid(userid);
+		return question;
+	}
 
 }

@@ -13,6 +13,7 @@ public class CourseAnswer {
 	private String answerContent;// 回答的内容
 	private String answertime;// --回答时间
 	private CourseQuestion courseQuestion;
+	private String cqcontent;
 	private UserInfo userinfo;
 	private CourseManage courseManager;
 	public CourseAnswer() {
@@ -77,11 +78,18 @@ public class CourseAnswer {
 	public void setCourseManager(CourseManage courseManager) {
 		this.courseManager = courseManager;
 	}
+	
+	public String getCqcontent() {
+		return cqcontent;
+	}
+	public void setCqcontent(String cqcontent) {
+		this.cqcontent = cqcontent;
+	}
 	@Override
 	public String toString() {
 		return "\nCourseAnswer [caid=" + caid + ", cqid=" + cqid + ", userid=" + userid + ", answerContent="
 				+ answerContent + ", answertime=" + answertime + ", courseQuestion=" + courseQuestion + ", userinfo="
-				+ userinfo + ", courseManager=" + courseManager + "]";
+				+ userinfo + ", courseManager=" + courseManager +",cqcontent="+cqcontent+ "]";
 	}
 
 	
