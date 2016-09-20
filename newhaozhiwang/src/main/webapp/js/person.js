@@ -160,7 +160,7 @@ $(function(){
 			listStr+='<div class="flat myhz-course">'; 
 			listStr+='<h3>我的在学课程';
 			listStr+='<a href="javaScript:void(0);" class="active">学习中 </a>';
-			listStr+='<a href="javaScript:void(0);">已学完 </a></h3>';
+			listStr+='</h3>';
 			listStr+='<div class="course phPublic-course">';
 			listStr+='<div class="section-body">';
 			listStr+='<div class="row">';
@@ -234,7 +234,7 @@ $(function(){
 		$.post("studyCourse/personNote",{"_method":"POST","userid":userid},function(data){
 			var listStr="";
 			listStr+='<div class="notes flat">'; 
-			listStr+='<div class="section-header"><h2>The_free的笔记</h2></div>';
+			listStr+='<div class="section-header"><h2>我的笔记</h2></div>';
 			listStr+='<div class="section-body">';
 			listStr+='<div class="classroom-item row">';
 			if(data.length!=0){
@@ -293,7 +293,7 @@ function showanswer(){
 	$.post("courseAnswer/myAnswer",{"_method":"POST","userid":userid},function(data){
 		var listStr="";
 		listStr+='<div class="flat myhz-question">';
-		listStr+='<h3>The_free答过的问题';
+		listStr+='<h3>我答过的问题';
 		listStr+='<a href="javaScript:void(0);" class="active">答过的问题</a></h3>';
 		listStr+='<ul class="course-in-ul" id="quesOranswer">';
 		if(data.length!=0){
@@ -321,7 +321,7 @@ function showquestion(){
 		$.post("courseQuestion/myQuestion",{"_method":"POST","userid":userid},function(data){
 			var listStr="";
 			listStr+='<div class="flat myhz-question"> ';
-			listStr+='<h3>The_free的提问';
+			listStr+='<h3>我的提问';
 			listStr+='<a href="javaScript:void(0);" class="active">提问</a></h3>';
 			listStr+='<ul class="course-in-ul">';
 			if(data.length!=0){

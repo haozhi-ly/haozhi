@@ -8,6 +8,7 @@ $(function(){
 		$('#joincourseid').html(data.courseid);
 		$('.breadcrumb a')[0].innerHTML = data.typename;
 		$('.breadcrumb a')[1].innerHTML = data.ctitle;
+		$("#img-responsive").attr("src",data.coursephoto);
 		$('.img-responsive').attr("alt",data.ctitle);
 		$('#title').html(data.ctitle);
 		$('#ass').html(Math.floor(data.assessAvg));
@@ -816,7 +817,7 @@ $(function(){
 			}
 		},"json");
 		
-		alert(attention);
+		
 		$.get("attention/judgeAttion",{"attention":attention,"userid":userid},function(data){
 			if(data==0){
 				$("#attion").css("display","block");

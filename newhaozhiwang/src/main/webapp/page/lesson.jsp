@@ -922,7 +922,7 @@
   	}
   	function clicktrue(){
   		 if(confirm("您确定发布课程？")){
-  	        location.href="page/learnCenter.jsp";
+  	        location.href="page/person.jsp";
   	     }
   	}
   </script>

@@ -298,7 +298,7 @@ public class UserHandler {
 	      String originalFilename = items_pic.getOriginalFilename();
 	      // 上传图片
 	      if (items_pic!= null&&originalFilename!=null&&originalFilename.length()>0) {// 存储图片的物理路径
-	        String pic_path = request.getServletContext().getRealPath("../img/headimg/");
+	        String pic_path = request.getServletContext().getRealPath("../img/headimg/")+"/";
 	        // 新的图片名称
 	        String newFilename = new Date().getTime()+""+new Random().nextInt(100000)
 	        		 +originalFilename.substring(originalFilename.lastIndexOf("."));
@@ -306,7 +306,7 @@ public class UserHandler {
 	        File newfile=new java.io.File(pic_path+newFilename);
 	        //将内存的数据写入磁盘
 	        items_pic.transferTo(newfile);   	
-	        user.setUserid(userid);user.setPhoto(newFilename);
+	        user.setUserid(userid);user.setPhoto("../img/headimg/"+newFilename);
 	        userInfoService.editPhoto(user);
 	   }
 	      return "forward:/page/info.jsp";
