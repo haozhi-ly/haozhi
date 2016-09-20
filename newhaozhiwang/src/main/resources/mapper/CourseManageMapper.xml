@@ -45,4 +45,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from courseManage where courseid in (select courseid from courseManage where cmid=#{cmid,jdbcType=VARCHAR})
 	</select>
 	
+	<select id="findAllcourseseq" resultType="CourseManage" parameterType="int">
+		select * from courseManage where courseid=#{courseid}
+	</select>
+	
 </mapper>

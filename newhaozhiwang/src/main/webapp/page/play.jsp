@@ -67,13 +67,6 @@
 	var userid = '${users.userid}';
 
 	$(function() {
-		$('.con').bind("click",function(){
-			alert("difahwihg");
-			var uname=this.firstChild.firstChild.firstChild.text();
-			alert(uname);
-			$('#Smohan_text').val();
-		});
-		
 		
 	
 		

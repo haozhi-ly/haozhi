@@ -110,4 +110,24 @@ public class CourseManageHandler {
 		return courseManage;
 	}
 	
+	@RequestMapping("/findAllcourseseq")
+	public void findAllcourseseq(PrintWriter out,HttpSession session){
+		CourseManage nowcourseManage=(CourseManage) session.getAttribute("cManage");
+		if(nowcourseManage!=null){
+		String courseids=String.valueOf(nowcourseManage.getCourseid());
+		System.out.println(courseids);
+			int courseid=Integer.parseInt(courseids);
+			List<CourseManage> courseManage = courseManageService.findAllcourseseq(courseid);
+			System.out.println(courseManage);
+			if(courseManage!=null){
+				Gson gson = new Gson();
+				String  courseManages= gson.toJson(courseManage);
+				out.print(courseManages);
+			}
+			out.flush();
+			out.close();
+		}else{
+			out.print(0);
+		}
+	}
 }

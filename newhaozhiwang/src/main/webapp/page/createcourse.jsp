@@ -38,6 +38,22 @@
 		});
 	}
 </script>
+<%  String coursename=(String)session.getAttribute("ctitle");
+		 if(coursename!=null){
+			 session.removeAttribute("ctitle");
+			 session.removeAttribute("cintroduction");
+			 session.removeAttribute("ctid");
+			 session.removeAttribute("courseting");
+			 session.removeAttribute("basicstatus");
+			 session.removeAttribute("courseType");
+			 session.removeAttribute("coursephoto");
+			session.removeAttribute("picturestatus");
+			session.removeAttribute("courseseq");
+			session.removeAttribute("addlessions");
+			session.removeAttribute("cManage");
+		 }
+   
+   %>
 </head>
 <body class="index">
 	<jsp:include page="topb.jsp"></jsp:include>
