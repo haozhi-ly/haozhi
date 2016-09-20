@@ -172,7 +172,11 @@ $(function(){
 					listStr+='<a href="page/joinproject.jsp?courseid='+data[i].courseid+'">';					listStr+='<img src="images/160148ccf620140008.jpg" class="img-responsive" alt="'+data[i].ctitle+'">';
 					listStr+='<span class="load" style="width:0%"></span>';
 					listStr+='<div class="image-overlay"></div></a>';
-					listStr+='<span class="pere">0%</span></div>';
+					//console.info(data[i].studyPeriodcount/data[i].totalCm);
+					if(data[i].totalCm==0){
+						data[i].totalCm=1;
+					}
+					listStr+='<span class="pere">'+(data[i].studyPeriodcount/data[i].totalCm).toFixed(2)*100+'%</span></div>';
 					listStr+='<div class="course-info">';
 					listStr+='<div class="title"><span class="label label-p">'+data[i].typename+'</span>';
 					listStr+='<a class="transition" href="page/joinproject.jsp?courseid='+data[i].courseid+'">'+data[i].ctitle+'</a></div>';
