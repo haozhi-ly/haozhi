@@ -45,4 +45,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	insert into courseAnswer values(seq_caid.nextval,#{cqid},#{userid},#{answerContent},to_date(#{answertime},'yyyy-mm-dd hh24:mi:ss'),null,null,null)
 </insert>
 	
+<!-- 根据用户id获取到用户回答过的问题 -->
+<resultMap type="CourseAnswer" id="AnswerMap">
+	<id property="userid" column="userid"/>
+	<collection property="userinfo" column="userid" ofType="UserInfo" select="getUserByUsid01"/>
+</resultMap>
+<select id="getMyAnswerByUsid" resultMap="AnswerMap">
+	select a.*,cqcontent from courseQuestion q,courseAnswer a where a.cqid=q.cqid and a.cqid in (select cqid from courseAnswer where userid=#{userid})
+</select>
+<select id="getUserByUsid01" parameterType="string" resultType="UserInfo">
+	select * from userinfo where userid=#{userid} 
+</select>
 </mapper>

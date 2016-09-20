@@ -101,5 +101,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where cq.cqid=#{cqid} order by cq.cqtime desc
 </select>
 
+<!--根据用户id获取到用户提出的问题  -->
+<resultMap type="CourseQuestion" id="QuestionMap">
+	<id property="userid" column="userid"/>
+	<collection property="user" column="userid" ofType="UserInfo" select="getUserByUsid"/>
+</resultMap>
+<select id="getMyQuestionByUsid" resultMap="QuestionMap">
+	select * from courseQuestion where userid=#{userid}
+</select>
+<select id="getUserByUsid" parameterType="string" resultType="UserInfo">
+	select * from userinfo where userid=#{userid} 
+</select>
+
 
 </mapper>

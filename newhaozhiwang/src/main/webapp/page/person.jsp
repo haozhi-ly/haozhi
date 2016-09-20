@@ -99,8 +99,8 @@
 				<li class=""><a href="javaScript:void(0);" id="studying">在学</a></li>
 				<li class=""><a href="javaScript:void(0);" id="teaching">在教</a></li>
 				<li class=""><a href="javaScript:void(0);" id="group">小组</a></li>
-				<li class=""><a href="javaScript:void(0);">动态</a></li>
-				<li class=""><a href="javaScript:void(0);">问答</a></li>
+				<li class=""><a href="javaScript:void(0);" id="answer">回答</a></li>
+				<li class=""><a href="javaScript:void(0);" id="question">问题</a></li>
 				<li class=""><a href="javaScript:void(0);" id="notes">笔记</a></li>
 				<li class=""><a href="javaScript:void(0);">留言</a></li>
 			</ul>
@@ -313,13 +313,13 @@
 			<aside class="col-md-3">
 				<div class="person-count">
 					<ul class="clearfix">
-						<li><a class="count" href="javaScript:void(0)">0</a><span>在教</span></li>
+						<li><a class="count" href="javaScript:void(0)" id="teachCount">0</a><span>在教</span></li>
 						<li class="line"></li>
 						<li><a class="count" href="javaScript:void(0)" id="courseCount"></a><span>课程</span></li>
 						<li class="line"></li>
 						<li><a class="count" href="javaScript:void(0)" id="noteCount"></a><span>笔记</span></li>
 						<li class="line"></li>
-						<li><a class="count" href="javaScript:void(0)">0</a><span>回答</span></li>
+						<li><a class="count" href="javaScript:void(0)" id="">0</a><span>回答</span></li>
 					</ul>
 				</div>
 				<!-- ---------------从数据库里面查出来的用户信息-------------------------------------------------------------------  -->

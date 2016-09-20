@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.haozhi.entity.CourseAnswer;
 import com.haozhi.entity.CourseQuestion;
 
 public interface CourseQuestionService {
@@ -24,5 +25,9 @@ public interface CourseQuestionService {
 
 
 	CourseQuestion detailAnswerbycqid(int cqid);
+
+
+	List<CourseQuestion> getMyQuestionByUsid(String userid);
+
 
 }

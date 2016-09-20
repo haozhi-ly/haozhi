@@ -9,4 +9,6 @@ public interface CourseAnswerMapper {
 	List<CourseAnswer> detailAnswerbycqid(int cqid);
 
 	int addAnswer(CourseAnswer courseAnswer);
+
+	List<CourseAnswer> getMyAnswerByUsid(String userid);
 }

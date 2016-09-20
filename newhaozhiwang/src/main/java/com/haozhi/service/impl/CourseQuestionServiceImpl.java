@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.haozhi.entity.CourseAnswer;
 import com.haozhi.entity.CourseQuestion;
 import com.haozhi.mapper.CourseQuestionMapper;
 import com.haozhi.service.CourseQuestionService;
@@ -55,5 +56,12 @@ public class CourseQuestionServiceImpl implements CourseQuestionService {
 	public int addCourseQuestion(Integer userid, Integer cmid, String cqcontent) {
 		return courseQuestionMapper.addCourseQuestion(userid, cmid, cqcontent);
 	}
-	
+
+
+
+	@Override
+	public List<CourseQuestion> getMyQuestionByUsid(String userid) {
+		return courseQuestionMapper.getMyQuestionByUsid(userid);
+	}
+
 }

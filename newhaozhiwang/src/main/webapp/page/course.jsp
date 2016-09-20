@@ -182,6 +182,8 @@
       </div>   
       <!--  分页 ----------------------------------------------- -->
         <div class="tcdPageCode" id="commenttcpage"></div>	
+        <div class="tcdPageCode" id="hostcpage" style="display:none"></div>
+         <div class="tcdPageCode" id="timecpage" style="display:none"></div>
        <!--  分页  ----------------------------------------------- -->
     </div>
     <div class="col-md-3 classify-right">

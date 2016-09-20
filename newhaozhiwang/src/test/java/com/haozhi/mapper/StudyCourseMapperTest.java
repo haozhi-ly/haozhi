@@ -34,5 +34,10 @@ public class StudyCourseMapperTest {
 		System.out.println(studyCourseMapper.getCourseByUsid("122"));
 	}
 	
+	@Test
+	public void testgetTeachCount() {
+		System.out.println(studyCourseMapper.getTeachByUsid("41"));
+	}
+	
 
 }

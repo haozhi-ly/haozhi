@@ -76,4 +76,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update cgroup set groupnumber=#{groupnumber} where groupname=#{groupname}
 	</update>
 	
+	<!-- 获取到全部小组的信息 -->
+	<select id="getAllGroupInfo" resultType="Cgroup">
+		select * from cgroup
+	</select>
+	
 </mapper>

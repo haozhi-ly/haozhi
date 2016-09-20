@@ -116,6 +116,11 @@ public class CourseServiceImpl implements CourseService {
 	}
 
 	@Override
+	public List<Course> studyingByUserid(Integer pagesize, Integer pagenumber, Integer userid) {
+		return courseMapper.studyingByUserid(pagesize, pagenumber, userid);
+	}
+
+
 	public List<Course> goodCourse() {
 		// TODO Auto-generated method stub
 		return courseMapper.goodCourse();

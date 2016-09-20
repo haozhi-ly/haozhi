@@ -1,7 +1,7 @@
 $(function(){
+	// 显示页面所有信息
+	var attention;
 	//显示页面所有信息
-	
-	
 	var courseid=window.location.href.split('=')[1];
 	$.post("course/getCourseById/",{"_method":"POST",courseid:courseid},function(data){	
 		document.title=data.ctitle;
@@ -39,7 +39,7 @@ $(function(){
 		$('#courseinfo').html(data.cintrodution);
 		$('#courseing').html(data.courseting);	
 	},"json");
-	//根据courseid查询最新的前4条评论
+	// 根据courseid查询最新的前4条评论
 	$.post("courseAssess/getAssesstopfour/",{"_method":"POST",courseid:courseid},function(data){
 		var contentstr="";
 		for(var i=0;i<data.length;i++){
@@ -60,11 +60,11 @@ $(function(){
 		}
 
 		document.getElementById("mediacomment").innerHTML=contentstr;
-		$('#mediacomment').replaceface($('#mediacomment').html());//替换表情
+		$('#mediacomment').replaceface($('#mediacomment').html());// 替换表情
 		
 
 	},"json");
-	//根据courseid查询前五条学员动态
+	// 根据courseid查询前五条学员动态
 	$.post("studyCourse/persentdynamicStudentsbycourseid/",{courseid:courseid},function(data){
 		
 		var contentstr="";
@@ -79,7 +79,7 @@ $(function(){
 		$("#studentsdynamic").html($(contentstr));
 		
 	},"json");
-	//根据courseid查询前4条问题
+	// 根据courseid查询前4条问题
 	$.post("courseQuestion/newQuestionTopAtFour/",{courseid:courseid},function(data){
 		var contentstr="";
 		for(var i=0;i<data.length;i++){
@@ -90,7 +90,7 @@ $(function(){
 		}
 		$("#topquestion").html($(contentstr));
 	},"json")
-	//根据courseid查询,最新加入课程的12个学生
+	// 根据courseid查询,最新加入课程的12个学生
 	$.post("studyCourse/newjoinStudentbycourseid/",{courseid:courseid},function(data){
 		var contentstr="";
 		for(var i=0;i<data.length;i++){
@@ -104,21 +104,22 @@ $(function(){
      			contentstr+="'"+data[i].user.photo+"' alt='"+data[i].user.uname+"'>";
      		}
      		contentstr+="</a><a class='name' href='page/person.jsp?userid="+data[i].user.userid+"'>"+data[i].user.uname+"</a></li>";
-			/*<li><a class=" js-user-card"
-				href="http://www.howzhi.com/u/2359828/"
-				data-card-url="/user/2359828/card/show" data-user-id="2359828">
-					<img class="avatar-sm" src="images/avatar.png"
-					alt="红日211">
-			</a> <a href="http://www.howzhi.com/u/2359828/" title="红日211"
-				class="name">红日211</a></li>*/
+			/*
+			 * <li><a class=" js-user-card"
+			 * href="http://www.howzhi.com/u/2359828/"
+			 * data-card-url="/user/2359828/card/show" data-user-id="2359828">
+			 * <img class="avatar-sm" src="images/avatar.png" alt="红日211"> </a>
+			 * <a href="http://www.howzhi.com/u/2359828/" title="红日211"
+			 * class="name">红日211</a></li>
+			 */
 		}
 		$("#top12").html($(contentstr));
 	},"json");
-	//根据courseid查笔记   显示笔记数目
+	// 根据courseid查笔记 显示笔记数目
 	 $.post("courseNote/getCourseNoteById/",{"_method":"POST",courseid:courseid},function(data){	
 			$('#bj').html("("+data.length+")"); });
 	
-	//根据courseid查课时
+	// 根据courseid查课时
 	$.post("courseManage/getCourseManageById/",{"_method":"POST",courseid:courseid},function(data){	
 		var str = "";
 		$('#cm').html("("+data.length+")");
@@ -145,6 +146,13 @@ $(function(){
 		 });
 		}
 	},"json");
+
+/*
+ * //显示学员分页初始化
+ * $.post("course/getAllStudentNumber/",{"_method":"POST",courseid:courseid},function(data){
+ * 
+ * //显示问答界面分页根据couresid初始化 var courseid=window.location.href.split('=')[1];
+ */
 
 /*	//显示学员分页初始化
 	$.post("course/getAllStudentNumber/",{"_method":"POST",courseid:courseid},function(data){
@@ -197,7 +205,7 @@ $(function(){
          },"json");
 		
 	
-	//显示学员分页初始化
+	// 显示学员分页初始化
 	$.post("course/getAllStudentNumber/",{"_method":"POST",courseid:courseid},function(data){
 		$("#Allstudent").html("("+data+")");
 		var page;
@@ -233,7 +241,7 @@ $(function(){
 	             	$("#teachername").html(data[0].user.uname);
 
 	             	document.getElementById("studentlist").innerHTML=contentstr;
-	             	//悬停显示个人信息
+	             	// 悬停显示个人信息
 	             	$(".js-user-card").hover(
 	  					  function (){ 
 	  						 
@@ -329,6 +337,7 @@ $(function(){
          	$("#teachername").html(data[0].user.uname);
 
          	document.getElementById("studentlist").innerHTML=contentstr;
+         	// 悬停显示个人信息框
          	//悬停显示个人信息框--ly
          	$(".js-user-card").hover(
 					  function (){ 
@@ -421,7 +430,7 @@ $(function(){
 		
 		
 		
-	//评论分页初始化
+	// 评论分页初始化
 	$.post("courseAssess/CMcountbycourseid/",{"_method":"POST",courseid:courseid},function(data){
 		$("#Allcomment").html("("+data+")");
 		var page;
@@ -455,11 +464,84 @@ $(function(){
 	            	
 	            	}
 	            	$("#commentcontent").html($(contentstr));
+	            	$('#commentcontent').replaceface($('#commentcontent').html());// 替换表情
+
+	            	// 悬停显示个人信息
+	            	$(".js-user-card").hover(
+	  					  function (){ 
+	  						 
+	  					    var position=getElementPos(this);
+	  						var left = position.x;
+	  						var top = position.y;
+	  						
+	  						var userid=$(this).attr("data-id");
+	  						
+	  						console.info(document.getElementById("user-card-store-"+userid));
+	  						var obj=document.getElementById("user-card-store-"+userid);
+	  						if(obj==null){
+	  							console.info("yes");
+	  							var courseid=window.location.href.split('=')[1];
+	  							$.post("userinfo/getContactMsgbyUserid/",{userid:userid},function(data){
+	  								var contentstr="";
+	  								contentstr+="<div id='user-card-store-"+userid+"' style='display:none;border: 1px solid;background-color: white;width: 200px;'>"+
+	  								"<div class='js-card-content'> <div class='card-header media-middle'>"+
+	  								"<div class='media'><div class='media-left'><a><img class='avatar-md' src='";
+	  									if(data.photo!=null){
+	  										contentstr+=data.photo+"'alt='"+data.uname;
+	  									}else{
+	  										contentstr+="images/avatar.png' alt='"+data.uname;
+	  									}
+	  									contentstr+="' id='card-photo-"+data.userid+"'>"+
+	  									"</a></div><div class='media-body'><a class='link-light'>"+data.uname+"</a></div>"+
+	  									"<div class='content'></div></div></div></div>" +
+	  									"<div class='card-body' style='height: 100px;'>";
+	  									if(data.usign!=null){
+	  										contentstr+=data.usign;
+	  									}else{
+	  										contentstr+="还没有签名";
+	  									}
+	  									contentstr+="</div>";
+	  										
+	  									contentstr+= "<div class='card-footer clearfix'> <span ><a class='link-light'>"+data.studynumber+"在学</a></span><span style='margin-left: 30px;'><a class='link-light'>"+
+	  									data.attentionnumber+"关注</a></span><span style='margin-left: 30px;'><a class='link-light'>"+data.beattentionnumber+"粉丝</a></span></div></div></div>";
+	  									
+	  									
+	  									$("body").append($(contentstr));
+	  									$("#user-card-store-"+userid).css({
+	  										"left" : left -70 + "px",
+	  										"top" : top + 80 + "px"
+	  									});			
+	  									$("#user-card-store-"+userid).css("position", "absolute");
+	  									$("#user-card-store-"+userid).css("display", "block");
+	  									
+	  							},"json");
+	  								
+	  							
+	  						}else{
+	  							var userid=$(this).attr("data-id");
+	  							var position=getElementPos(this);
+	  							var left = position.x;
+	  							var top = position.y;
+	  							$("#user-card-store-"+userid).css({
+	  								"left" : left -70 + "px",
+	  								"top" : top + 80 + "px"
+	  							});
+	  							
+	  							$("#user-card-store-"+userid).css("display", "block");
+	  						}
+	  					
+	  						
+	  					  },
+	  					  function () {
+	  						var userid=$(this).attr("data-id");
+	  					    $("#user-card-store-"+userid).css("display", "none");
+	  					  }
+	  					);
+
 	            	$('#commentcontent').replaceface($('#commentcontent').html());//替换表情
 
 	            	//悬停显示个人信息
 	            	
-
 	            },"json");
 	        }
 	    });
@@ -485,6 +567,79 @@ $(function(){
         			"<span class='time'>"+data[i].time+"</span></div></div></li>"
         	}
         	$("#commentcontent").html($(contentstr));
+        	$('#commentcontent').replaceface($('#commentcontent').html());// 替换表情
+
+        	// 悬停显示个人信息
+        	$(".js-user-card").hover(
+					  function (){ 
+						 
+					    var position=getElementPos(this);
+						var left = position.x;
+						var top = position.y;
+						
+						var userid=$(this).attr("data-id");
+						
+						console.info(document.getElementById("user-card-store-"+userid));
+						var obj=document.getElementById("user-card-store-"+userid);
+						if(obj==null){
+							console.info("yes");
+							var courseid=window.location.href.split('=')[1];
+							$.post("userinfo/getContactMsgbyUserid/",{userid:userid},function(data){
+								var contentstr="";
+								contentstr+="<div id='user-card-store-"+userid+"' style='display:none;border: 1px solid;background-color: white;width: 200px;'>"+
+								"<div class='js-card-content'> <div class='card-header media-middle'>"+
+								"<div class='media'><div class='media-left'><a><img class='avatar-md' src='";
+									if(data.photo!=null){
+										contentstr+=data.photo+"'alt='"+data.uname;
+									}else{
+										contentstr+="images/avatar.png' alt='"+data.uname;
+									}
+									contentstr+="' id='card-photo-"+data.userid+"'>"+
+									"</a></div><div class='media-body'><a class='link-light'>"+data.uname+"</a></div>"+
+									"<div class='content'></div></div></div></div>" +
+									"<div class='card-body' style='height: 100px;'>";
+									if(data.usign!=null){
+										contentstr+=data.usign;
+									}else{
+										contentstr+="还没有签名";
+									}
+									contentstr+="</div>";
+										
+									contentstr+= "<div class='card-footer clearfix'> <span ><a class='link-light'>"+data.studynumber+"在学</a></span><span style='margin-left: 30px;'><a class='link-light'>"+
+									data.attentionnumber+"关注</a></span><span style='margin-left: 30px;'><a class='link-light'>"+data.beattentionnumber+"粉丝</a></span></div></div></div>";
+									
+									
+									$("body").append($(contentstr));
+									$("#user-card-store-"+userid).css({
+										"left" : left -70 + "px",
+										"top" : top + 80 + "px"
+									});			
+									$("#user-card-store-"+userid).css("position", "absolute");
+									$("#user-card-store-"+userid).css("display", "block");
+									
+							},"json");
+								
+							
+						}else{
+							var userid=$(this).attr("data-id");
+							var position=getElementPos(this);
+							var left = position.x;
+							var top = position.y;
+							$("#user-card-store-"+userid).css({
+								"left" : left -70 + "px",
+								"top" : top + 80 + "px"
+							});
+							
+							$("#user-card-store-"+userid).css("display", "block");
+						}
+					
+						
+					  },
+					  function () {
+						var userid=$(this).attr("data-id");
+					    $("#user-card-store-"+userid).css("display", "none");
+					  }
+					);
         	$('#commentcontent').replaceface($('#commentcontent').html());//替换表情
 
         	//悬停显示个人信息
@@ -493,21 +648,21 @@ $(function(){
 	
 	
 	
-	//点击关闭
+	// 点击关闭
 	$('#close').bind("click",function(){
 		$('#login-modal').css('display','none');
 		$('#loadingDiv').css('display','none');
 	});
-	//点击关闭
+	// 点击关闭
 	$('#close2').bind("click",function(){
 		$('#studyCurrentCourse').css('display','none');
 		$('#loadingDiv').css('display','none');
 	});
 	
-	//切换块  
+	// 切换块
 	$('#nav li').bind("click",function(){
 		 $(this).parent().children().removeClass("active");  
-		 $(this).addClass("active"); 	  //样式改变	 
+		 $(this).addClass("active"); 	  // 样式改变
 		 var str = this.innerText;
 		 if(str.indexOf("简介")>=0){
 			 $('#courseInfo').css('display', 'block'); 
@@ -525,7 +680,7 @@ $(function(){
 			 $('#courseAssess').css('display', 'none');
 			 
 			 var courseid=window.location.href.split('=')[1];
-			//根据courseid查课时
+			// 根据courseid查课时
 			 var courseid=window.location.href.split('=')[1];
 				$.post("courseManage/getCourseManageById/",{"_method":"POST",courseid:courseid},function(data){	
 					var str = "";
@@ -561,7 +716,7 @@ $(function(){
 			 $('#courseAssess').css('display', 'none');
 			 
 			 var courseid=window.location.href.split('=')[1];
-			 //根据courseid查笔记  
+			 // 根据courseid查笔记
 			 $.post("courseNote/getCourseNoteById/",{"_method":"POST",courseid:courseid},function(data){	
 					var str = "";
 					if(data){
@@ -579,26 +734,18 @@ $(function(){
 							$('#noteslist').html("").append( $(str) );
 						});					
 					}
-					/*$(".js-user-card").hover(
-							  function () { 
-								  console.info("yes");
-							    var position=getElementPos(this);
-								var left = position.x;
-								var top = position.y;
-								console.info(left);
-								console.info(top);
-								console.info("我进来了");
-								$("#user-card-store").css({
-									"left" : left -70 + "px",
-									"top" : top + 80 + "px"
-								});
-								$("#user-card-store").css("display", "block");
-								$("#user-card-store").css("position", "absolute");
-							  },
-							  function () {
-							    $("#user-card-store").css("display", "none");
-							  }
-							);*/
+					/*
+					 * $(".js-user-card").hover( function () {
+					 * console.info("yes"); var position=getElementPos(this);
+					 * var left = position.x; var top = position.y;
+					 * console.info(left); console.info(top);
+					 * console.info("我进来了"); $("#user-card-store").css({ "left" :
+					 * left -70 + "px", "top" : top + 80 + "px" });
+					 * $("#user-card-store").css("display", "block");
+					 * $("#user-card-store").css("position", "absolute"); },
+					 * function () { $("#user-card-store").css("display",
+					 * "none"); } );
+					 */
 			 });
 		 }else if(str.indexOf("问答")>=0){
 			 $('#courselist').css('display', 'none'); 
@@ -632,7 +779,7 @@ $(function(){
 	});
 	
 	var courseid=window.location.href.split('=')[1];
-	//根据courseid查笔记   右侧显示最新两条
+	// 根据courseid查笔记 右侧显示最新两条
 	 $.post("courseNote/getCourseNoteById/",{"_method":"POST",courseid:courseid},function(data){	
 			var str = "";
 			var count =0;
@@ -649,7 +796,7 @@ $(function(){
 	 }); 
 	});
 	
-	//判断是否加入课程
+	// 判断是否加入课程
 	var courseid=window.location.href.split('=')[1];
 	if(flag=="false"){
 		$("#joinCourse").css("display","block");
@@ -687,10 +834,17 @@ $(function(){
 			$('#loadingDiv').css('display','block');
 		}else{
 			$('#currentUname').html(uname);
-			$('#currentCourseName').html( $('#title').html());  //加入课程时的课程名
+			$('#currentCourseName').html( $('#title').html());  // 加入课程时的课程名
 			$('#studyCurrentCourse').css('display','block');
 			$('#loadingDiv').css('display','block');
 		}
+	});
+	
+	$('#add').bind("click",function(){
+		if(flag=="false"){
+			 $('#login-modal').css('display','block');
+			 $('#loadingDiv').css('display','block');
+		 }
 	});
 	
 	$('#join-course-btn').bind("click",function(){
@@ -744,78 +898,88 @@ $(function(){
 			}
 		},"json");
 	});
-	//点击关闭加入框
+	// 点击关闭加入框
 	$('#close3').bind("click",function(){
 		$('#message').css('display','none');
 		$('#loadingDiv').css('display','none');
 	});
 	
 	
-
 });
 
 
-function join(){	
-	var st = $('.color-gray-one').val();
-	if(st == ""){
-		$('#login-modal').css('display','block');
-		$('#loadingDiv').css('display','block');
-		return false;
-	}
-	
-}
-$("#thread_title").bind("click", function(){
-	join();
-});
+/*
+ * function join(){ var st = $('.color-gray-one').val(); if(st == ""){
+ * $('#login-modal').css('display','block');
+ * $('#loadingDiv').css('display','block'); return false; } return
+ * "${user.userid}" } $("#thread_title").bind("click", function(){ join(); });
+ * 
+ * function justif(){ var userid=join();
+ *  }
+ */
 
-function justif(){
-	var userid=join();
-	
-	
-}
 
-function showquestiondetail(cqid){
-	$("#detailquestion").css("display","block");
-	$("#questionAndAnswer").css("display","none");
-	$("#qatcpage").css("display","none");
-	$.post("courseQuestion/detailQuestion/",{cqid:cqid},function(data){
-		console.info(data.cqcontent);
-		$("#questionContent").html(data.cqcontent);
-		$("#cqid").val(data.cqid);
-		$("#questionCourse").html(data.courseManage.course.ctitle);
-		console.info(data.courseManage);
-		$("#questionCourse").attr("href","page/joinproject.jsp?id="+data.courseManage.courseid);
-		$("#questionCm").html(data.courseManage.title);
-		$("#questionCm").attr("href","page/play.jsp?cmid="+data.courseManage.cmid);
-		$("#answernumber").html(data.courseAnswer.length+"个回答");
-		
-		var contentstr="";
-		for(var i=0;i<data.courseAnswer.length;i++){
-			console.info("yes");
-			if(data.courseAnswer[i]==null){
-				continue;
-			}
-			contentstr+="<li class='media'><div class='media-left'><a class='js-user-card' "+
-			"href='page/person.jsp?userid='"+data.courseAnswer[i].userinfo.userid+"><img class='avatar-sm' src='";
-			if(data.courseAnswer[i].userinfo.photo!=null){
-					contentstr+=data.courseAnswer[i].userinfo.photo+"'alt='"+data.courseAnswer[i].userinfo.uname;
-				}else{
-					contentstr+="images/avatar.png' alt='"+data.courseAnswer[i].userinfo.uname;
-				}
-			contentstr+="'></a></div><div class='question-contents media-body'><div class='name'>"+
-			"<a class='link-light ' href='page/person.jsp?userid='"+data.courseAnswer[i].userinfo.userid+">"+
-			data.courseAnswer[i].userinfo.uname+"</a><span class='day text-right'>"+data.courseAnswer[i].answertime+"</span></div>"+
-			"<div class='content'>"+data.courseAnswer[i].answerContent+"</div>"+
-			"<div class='answer-actions pull-right'><a href='#'><i class='glyphicon glyphicon-edit'></i>"+"编辑"+
-			"</a></div></div></li>" ;
-			
+	function join(){	
+		var st = $('.color-gray-one').val();
+		if(st == ""){
+			$('#login-modal').css('display','block');
+			$('#loadingDiv').css('display','block');
+			return false;
 		}
 		
-		$("#showanswer").html($(contentstr));
-	},"json");
-	
-	
-}
+	}
+	$("#thread_title").bind("click", function(){
+		join();
+	});
+
+	function justif(){
+		var userid=join();
+		
+		
+	}
+
+	function showquestiondetail(cqid){
+		$("#detailquestion").css("display","block");
+		$("#questionAndAnswer").css("display","none");
+		$("#qatcpage").css("display","none");
+		$.post("courseQuestion/detailQuestion/",{cqid:cqid},function(data){
+			console.info(data.cqcontent);
+			$("#questionContent").html(data.cqcontent);
+			$("#cqid").val(data.cqid);
+			$("#questionCourse").html(data.courseManage.course.ctitle);
+			console.info(data.courseManage);
+			$("#questionCourse").attr("href","page/joinproject.jsp?id="+data.courseManage.courseid);
+			$("#questionCm").html(data.courseManage.title);
+			$("#questionCm").attr("href","page/play.jsp?cmid="+data.courseManage.cmid);
+			$("#answernumber").html(data.courseAnswer.length+"个回答");
+			
+			var contentstr="";
+			for(var i=0;i<data.courseAnswer.length;i++){
+				console.info("yes");
+				if(data.courseAnswer[i]==null){
+					continue;
+				}
+				contentstr+="<li class='media'><div class='media-left'><a class='js-user-card' "+
+				"href='page/person.jsp?userid='"+data.courseAnswer[i].userinfo.userid+"><img class='avatar-sm' src='";
+				if(data.courseAnswer[i].userinfo.photo!=null){
+						contentstr+=data.courseAnswer[i].userinfo.photo+"'alt='"+data.courseAnswer[i].userinfo.uname;
+					}else{
+						contentstr+="images/avatar.png' alt='"+data.courseAnswer[i].userinfo.uname;
+					}
+				contentstr+="'></a></div><div class='question-contents media-body'><div class='name'>"+
+				"<a class='link-light ' href='page/person.jsp?userid='"+data.courseAnswer[i].userinfo.userid+">"+
+				data.courseAnswer[i].userinfo.uname+"</a><span class='day text-right'>"+data.courseAnswer[i].answertime+"</span></div>"+
+				"<div class='content'>"+data.courseAnswer[i].answerContent+"</div>"+
+				"<div class='answer-actions pull-right'><a href='#'><i class='glyphicon glyphicon-edit'></i>"+"编辑"+
+				"</a></div></div></li>" ;
+				
+			}
+			
+			$("#showanswer").html($(contentstr));
+		},"json");
+		
+		
+	}
 
 
 
