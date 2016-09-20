@@ -226,7 +226,7 @@
          <c:when test="${picturestatus==1}">
          	<% String picname=(String)session.getAttribute("coursephoto"); %>
         	 <a href="http://www.howzhi.com/course/14023/">
-        	  <img src="<%="../../coursePic/"+picname%>">
+        	  <img src="<%="../img/headimg/"+picname%>">
       		</a>
         	</c:when>
         	<c:otherwise>
@@ -868,7 +868,6 @@
   	});  
   		function addlession(){
   			var type=$("input[name='type']:checked").val();
-  			alert(type)
   			if(type==0){
   				var title=$("#lesson-title-field0").val();
   				var cmintroduction=$("#lesson-summary-field0").val();
@@ -886,7 +885,6 @@
   			}
   			$.post("courseManage/addlession",{type:type,title:title,pathOrContetn:pathOrContetn,cmintroduction:cmintroduction},
   					function(data){
-  					alert(data);
   					if(data!=null){
   						$("#sstyle").html("");
   						$("#sstyle").html("<img src='images/2016-09-10_184215.png'/>");

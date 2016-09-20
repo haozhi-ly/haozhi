@@ -29,7 +29,6 @@
 <script type="text/javascript">
 	function createcourse(){
 		var coursename=$("#course_title").val();
-		alert(coursename);
 		/* location.href="page/manage.jsp?coursename="+coursename+""; */
 		$.post("course/sendtitle",{coursename:coursename},function(data){
 			if(data==1){
