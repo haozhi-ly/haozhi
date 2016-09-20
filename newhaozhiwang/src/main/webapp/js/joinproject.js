@@ -137,7 +137,7 @@ $(function(){
 						 +'<a title="'+item.title+'" href="page/play.jsp?cmid='+item.cmid+'">'
 					 	 +'<i class="es-icon es-icon-undone status-icon"></i>'
 					 	 +'<span class="title">L'+item.courseseq+'：'+item.title+'</span>'
-					 	 +'<span class="date" title="视频时长75:10">(75:10)</span>'
+					 	 +'<span class="date" title="视频时长25:10">(75:10)</span>'
 					 	 +'<span class="course-type">'
 					 	 +'<i class="glyphicon glyphicon-play" title="" data-placement="top" data-toggle="tooltip" data-original-title="视频课程"></i>'
 					 	 +'</span></a></li>'	
@@ -723,7 +723,7 @@ $(function(){
 						$.each(data,function(index,item){
 							str+='<li class="clearfix"><div class="notes-img"><a class=" js-user-card"'
 								+'href="javascript:void(0);" data-card-url="/user/2362180/card/show" data-user-id="2362180">'
-								+'<img class="avatar-sm" src="images/avatar.png" alt="'+item.user.uname+'"></a></div>'
+								+'<img class="avatar-sm" src="'+item.user.photo+'" alt="'+item.user.uname+'"></a></div>'
 								+'<div class="notes-content"><h4><a href="javascript:void(0);" class="title">'+item.title+' </a></h4><p>'+item.noteContent+'</p>'
 								+'<div class="metas"><span class="name">by <a href="javascrit:;">'+item.user.uname+'</a></span> <span'
 								+'class="count pull-right"> <a href="javascript:;"data-role="like" data-like-url="/course/note/43065/like">'
@@ -902,6 +902,26 @@ $(function(){
 	$('#close3').bind("click",function(){
 		$('#message').css('display','none');
 		$('#loadingDiv').css('display','none');
+	});
+	
+	//登录
+	$('#login').bind("click",function(){
+		var uname = $('#ajax-username').val();
+		var pwd = $('#ajax-password').val();
+		if(uname!=null&& pwd!=null){
+			$.post("userinfo/loginDiv",{"uname":uname,"pwd":pwd},function(data){
+				if(data=="true"){
+					$('#ajax-username').val("");
+					$('#ajax-password').val("");
+					 $('#login-modal').css('display','none');
+					$('#loadingDiv').css('display','none');
+				}else{
+					alert("用户或密码错误，请重新输入!!");
+				}
+			});
+		}else{
+			$('#login').setAttribute("disabled","disabled");
+		}
 	});
 	
 	

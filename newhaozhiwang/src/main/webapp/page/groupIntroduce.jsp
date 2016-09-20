@@ -71,7 +71,7 @@
 			<div class="media">
 				<div class="media-left">
 					<a href="page/groupIntroduce.jsp"> <img
-						src="images/111938a63532860008.jpg" alt=""
+						src="" alt=""
 						class="avatar-square-md" id="img-groupname">
 					</a>
 				</div>
@@ -256,20 +256,7 @@
 									</div>
 								</div></li>
 						</ul>
-						<!--分页-->
-						<ul class="pagination ">
-							<li class="active"><a
-								href="http://www.howzhi.com/group/2/?page=1">1</a></li>
-							<li><a href="http://www.howzhi.com/group/2/?page=2">2</a></li>
-							<li><a href="http://www.howzhi.com/group/2/?page=3">3</a></li>
-							<li><a href="http://www.howzhi.com/group/2/?page=4">4</a></li>
-							<li><a href="http://www.howzhi.com/group/2/?page=5">5</a></li>
-
-							<li><a href="http://www.howzhi.com/group/2/?page=2"><i
-									class="es-icon es-icon-chevronright"></i></a></li>
-							<li><a href="http://www.howzhi.com/group/2/?page=54">尾</a></li>
-						</ul>
-
+						
 					</div>
 				</div>
 			</div>
@@ -281,7 +268,7 @@
 				
 				
 				<!--组内搜索，用来搜索话题-->
-				<form action="/group/2/serach" method="get">
+				<!-- <form action="/group/2/serach" method="get">
 					<div class="input-group group-search">
 						<input name="_csrf_token"
 							value="783d2780243a713e381a2657201ae9fc7f4e4f78" type="hidden">
@@ -292,7 +279,7 @@
 							</button>
 						</span>
 					</div>
-				</form>
+				</form> -->
 
 				<!--最近加入的成员，按加入时间排序-->
 				<div class="panel panel-default">

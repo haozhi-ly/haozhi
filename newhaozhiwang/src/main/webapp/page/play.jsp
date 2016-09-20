@@ -79,6 +79,8 @@
 	<div class="learn-dashboard-header breadcrumb ">
 		<a data-step="1" data-intro="点此回到课程首页" data-position="right"
 			href="javascript:void(0);" class="" id="breadcrumb"></a><span class="phm"> &gt; </span>
+		<a data-step="1" data-intro="点此回到课程首页" data-position="right"
+			href="javascript:void(0);" style="float:right;" class=""  id="returnJoin">点击返回课程详细页面</a>			
 	</div>
 	<div class="learn-dashboard toolbarhide" id="lesson-dashboard"
 		data-course-id="2155" data-course-uri="/course/2155/"

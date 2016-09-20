@@ -131,7 +131,7 @@
 							</li>
 
 							<li>
-								<a href="http://www.howzhi.com/group/member/211?page=2"><i class="es-icon es-icon-chevronright"></i></a>
+								<a href="http://www.howzhi.com/group/member/211?page=2">>></a>
 							</li>
 							<li>
 								<a href="http://www.howzhi.com/group/member/211?page=61">尾</a>

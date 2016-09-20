@@ -9,7 +9,7 @@ $(function(){
 			listStr+='<div class="col-lg2 col-md-2 col-sm-2 col-xs-4 grid">';
 			listStr+='<p>';
 			listStr+='<a href="'+url+'" title="'+data[i].groupname+'">';
-			listStr+='<img src="images/120652c07d78265998.jpg" alt="'+data[i].groupname+'" class="group-avatar-sm"></a>';
+			listStr+='<img src="'+data[i].pic+'" alt="'+data[i].groupname+'" class="group-avatar-sm"></a>';
 			listStr+='<p>';
 			listStr+='<p class="title"><a class="link-light" href="'+url+'" title="'+data[i].groupname+'">'+data[i].groupname+'</a></p>';
 			listStr+='</div>';
@@ -25,7 +25,7 @@ $(function(){
 			listStr+='<div class="media media-group">';
 			listStr+='<div class="media-left">';
 			listStr+='<a href="'+url+'" title="'+data[i].groupname+'">';
-			listStr+='<img src="images/120652c07d78265998.jpg" alt="'+data[i].groupname+'" class="avatar-square-md"></a>';
+			listStr+='<img src="'+data[i].pic+'" alt="'+data[i].groupname+'" class="avatar-square-md"></a>';
 			listStr+='</div>';
 			
 			listStr+='<div class="media-body">';
@@ -53,7 +53,7 @@ $(function(){
 					listStr+='<div class="col-md-3" id="showGroup">';
 					listStr+='<div class="media groavascript:vup-media group-media-sm">';
 					listStr+='<a href="'+url+'" title='+data[i].groupname+'" class="pull-left">';
-					listStr+='<img src="images/105050a0ca1c653470.jpg" alt="'+data[i].groupname+'" class="media-object">';
+					listStr+='<img src="'+data[i].pic+'" alt="'+data[i].groupname+'" class="media-object">';
 					listStr+='</a>';
 					listStr+='<div class="media-body">';
 					listStr+='<p>';
@@ -69,32 +69,5 @@ $(function(){
 			$("#add").html(listStr);
 		},"json");
 	});
-	
-	/*$("#status a").bind("click",function(){
-		var flagid=this.id;
-		var listStr="";
-		alert(flagid);
-		if(flagid==exit-btn){
-			$.post("groups/exitgroup",{"userid":userid,"groupname":groupname},function(data){
-				if(data==1){
-					$("#status").html("");
-					listStr+='<a id="add-btn" class="btn btn-success btn-sm mlm" href="javaScript:void(0);">加入小组</a>';
-					$("#status").html(listStr);
-				}
-				
-			});
-		}
-		if(flagid==add-btn){
-			$.post("groups/joingroup",{"userid":userid,"groupname":groupname},function(data){
-				if(data==1){
-					$("#status").html("");
-					listStr+='<a id="exit-btn" class="btn btn-default btn-sm mlm" href="javaScript:void(0);">退出小组</a>';
-					$("#status").html(listStr);
-				}
-				
-			});
-		}
-		
-	});*/
 	
 });
