@@ -103,8 +103,28 @@ public class UserInfoServiceImpl implements UserInfoService {
 
 	@Override
 	public UserInfo getContactMsgbyUserid(int courseid) {
-		// TODO Auto-generated method stub
 		return userInfoMapper.getContactMsgbyUserid(courseid);
+	}
+	
+	@Override
+	public UserInfo getContactMsgbyUserid(int courseid,int presentid) {
+		// TODO Auto-generated method stub
+		return userInfoMapper.getContactMsgbyUserid(courseid,presentid);
+	}
+
+	@Override
+	public List<UserInfo> attentionByUserid(Integer userid) {
+		return userInfoMapper.attentionByUserid(userid);
+	}
+
+	@Override
+	public int judgeAttention(Integer userid, Integer attention) {
+		return userInfoMapper.judgeAttention(userid, attention);
+	}
+
+	@Override
+	public List<UserInfo> fansByUserid(Integer attention) {
+		return userInfoMapper.fansByUserid(attention);
 	}
 
 

@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 
 
+
 import com.haozhi.entity.Course;
 import com.haozhi.entity.StudyCourse;
 
@@ -20,9 +21,15 @@ public interface StudyCourseService {
 
 	int joinStudyCourse(Integer userid,Integer courseid);
 
+
+
+	List<StudyCourse> dynamicStudy();
+
+
 	List<StudyCourse> newjoinStudentbycourseid(int courseid);
 	
 	int judgeStudyCourse(Integer userid,Integer courseid);//判断是否加入了课程
+
 
 
 
@@ -31,4 +38,7 @@ public interface StudyCourseService {
 
 
 	String getCourseCount(String userid);
+
+
+	List<Course> getTeachByUsid(String userid);//通过userid查询该用户在教的所有课程
 }

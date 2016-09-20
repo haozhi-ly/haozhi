@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+
 import org.springframework.web.bind.annotation.ModelAttribute;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -91,6 +93,39 @@ public class StudyCourseHandler {
 		List<StudyCourse> list=studyCourseService.newjoinStudentbycourseid(courseid);
 		return list;
 	}
+
+	
+	@ResponseBody
+	@RequestMapping("/dynamicStudy")
+	public List<StudyCourse> dynamicStudy(){
+		List<StudyCourse> list=studyCourseService.dynamicStudy();
+		return list;
+	}
+
+	
+	
+	
+
+	/*//查询用户学习的课程
+	@RequestMapping("/personCourse")
+	@ResponseBody
+	public List<Course> personCourse(String userid,ModelMap map){
+		System.out.println("userid ==>"+userid);
+		List<Course> course=studyCourseService.getCourseByUsid(userid);
+		map.put("personCourse", course);
+		return course;
+	}
+	
+	//查询用户的笔记
+	@RequestMapping("/personNote")
+	@ResponseBody
+	public List<CourseNote> personNote(String userid){
+		List<CourseNote> courseNote=courseNoteService.getPersonNote(userid);
+		return courseNote;
+	}
+	*/
+
+
 	
 	
 	@ResponseBody
@@ -106,6 +141,12 @@ public class StudyCourseHandler {
 	public List<Course> personCourse(String userid,ModelMap map){
 		System.out.println("userid ==>"+userid);
 		List<Course> course=studyCourseService.getCourseByUsid(userid);
+		
+		for(Course c:course){
+			if(c.getStudyPeriod()!=null){
+				c.setStudyPeriodcount(c.getStudyPeriod().split(",").length);
+			}
+		}
 		map.put("personCourse", course);
 		
 		return course;
@@ -135,4 +176,20 @@ public class StudyCourseHandler {
 		return noteCount;
 	}
 	
+	//学习进度
+	/*public void getStudyPlan(String userid){
+		
+	}*/
+	
+	//获取用户的在教课程
+	@RequestMapping("/teachingCourse")
+	@ResponseBody
+	public List<Course> teachCourse(String userid){
+		System.out.println("userid ==>"+userid);
+		List<Course> teachcourse=studyCourseService.getTeachByUsid(userid);
+		System.out.println("我在教的是："+teachcourse);
+		return teachcourse;
+	}
+	
+
 }

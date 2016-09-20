@@ -83,6 +83,29 @@ $(function() {
 		var newpwd = $('newold').val();
 	});
 	
+	/*$('#profile-save-btn').bind("click", function(){
+		var usign = $("#profile_signature").val();
+		var introdution = $("#profile_about").val();
+		var gender = $("input[name='gender']:checked").val();
+		var uname = $("#nicheng").val();
+		alert(uname);
+		$.post("userinfo/save", {
+			"_method" : "POST",
+			uname : uname,
+			userid : id,
+			gender : gender,
+			usign : usign,
+			introdution : introdution
+		}, function(data) {
+			var str = "";
+			if (data == 1) {
+				str = '<div class="alert alert-success">基础信息保存成功。</div>';
+				alert("修改成功!!!");
+			}
+			$('#info').append($(str));
+		}, 'json');
+		
+	});*/
 	
 	
 });
@@ -91,14 +114,10 @@ function save(id) {
 	var usign = $("#profile_signature").val();
 	var introdution = $("#profile_about").val();
 	var gender = $("input[name='gender']:checked").val();
-
-	$.post("userinfo/save", {
-		"_method" : "POST",
-		userid : id,
-		gender : gender,
-		usign : usign,
-		introdution : introdution
-	}, function(data) {
+/*	var uname = $(".control-text span").html();
+	alert(uname);*/
+	$.post("userinfo/save", {"_method" : "POST",userid : id,
+		gender : gender,usign : usign,introdution : introdution}, function(data) {
 		var str = "";
 		if (data == 1) {
 			str = '<div class="alert alert-success">基础信息保存成功。</div>';
@@ -115,7 +134,7 @@ function preImg(sourceId, targetId) {
     }  
     var reader = new FileReader();  
   
-    reader.onload = function(e) {  
+    reader.onload = function(e){  
         var img = document.getElementById("imgPrc");  
         img.src = this.result;  
     }  

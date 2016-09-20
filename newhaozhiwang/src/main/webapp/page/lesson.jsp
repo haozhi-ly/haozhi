@@ -329,7 +329,6 @@
 	<div class="panel-body">
 		<ul class="lesson-list sortable-list" id="course-item-list" data-sort-url="/course/14061/manage/lesson/sort">
 	<!-------------------------------------课时要拼接的内容 ---------------------------------- -->
-		   
 		    <!-- <li class="item-lesson clearfix" id="lesson-89862" data-file-id="0" data-lesson-type="text" style="word-break: break-all;" >
 				<div class="item-line"></div>
 				<div class="item-content">

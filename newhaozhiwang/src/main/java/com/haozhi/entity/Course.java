@@ -1,6 +1,7 @@
 package com.haozhi.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * 课程信息
@@ -13,7 +14,7 @@ public class Course implements Serializable{
 	private int courseid;
 	private String ctitle;// --标题
 	private String cintrodution;// --课程简介
-	private Integer ctid; // --课程类别（外键）
+	private int ctid; // --课程类别（外键）
 	private CourseType courseType;//ly--添加的字段目的是为了，在后台获得课程的类型
 	private String courseting;// --应用于课程关键字搜索
 	private String coursephoto;// --课程图片
@@ -32,6 +33,14 @@ public class Course implements Serializable{
 	private int attentionnumber;//关注的人数
 	private int beattentionnumber;//被关注的人数
 	private UserInfo student;//学习本课程的学生
+	private CourseManage courseManage;
+	private String begintime;//开始课程的时间
+	private List<UserInfo> studentlist;
+
+	private int totalCm;//课程课时数
+	private String studyPeriod;//个人学习进度
+	private int studyPeriodcount;
+
 	public Course() {
 	}
 
@@ -79,6 +88,25 @@ public class Course implements Serializable{
 		this.userId = userId;
 		this.createTime = createTime;
 	}
+
+	
+	public int getTotalCm() {
+		return totalCm;
+	}
+
+
+
+	public void setTotalCm(int totalCm) {
+		this.totalCm = totalCm;
+	}
+
+
+
+	public void setCtid(int ctid) {
+		this.ctid = ctid;
+	}
+
+
 
 	public CourseType getCourseType() {
 		return courseType;
@@ -293,26 +321,92 @@ public class Course implements Serializable{
 		this.beattentionnumber = beattentionnumber;
 	}
 
+
+	public CourseManage getCourseManage() {
+		return courseManage;
+	}
+
+
+
+	public void setCourseManage(CourseManage courseManage) {
+		this.courseManage = courseManage;
+	}
+
+
+
+	public String getBegintime() {
+		return begintime;
+	}
+
+
+
+	public void setBegintime(String begintime) {
+		this.begintime = begintime;
+	}
+	
+	
+	public List<UserInfo> getStudentlist() {
+		return studentlist;
+	}
+
+
+
+	public void setStudentlist(List<UserInfo> studentlist) {
+		this.studentlist = studentlist;
+	}
+
+	
+
+
+	public String getStudyPeriod() {
+		return studyPeriod;
+	}
+
+
+
+	public void setStudyPeriod(String studyPeriod) {
+		this.studyPeriod = studyPeriod;
+	}
+
+
+
+	public int getStudyPeriodcount() {
+		return studyPeriodcount;
+	}
+
+
+
+	public void setStudyPeriodcount(int studyPeriodcount) {
+		this.studyPeriodcount = studyPeriodcount;
+	}
+
+
+
 	@Override
 	public String toString() {
-		return "\nCourse [courseid=" + courseid + ", ctitle=" + ctitle + ", cintrodution=" + cintrodution + ", ctid="
+		return "Course [courseid=" + courseid + ", ctitle=" + ctitle + ", cintrodution=" + cintrodution + ", ctid="
 				+ ctid + ", courseType=" + courseType + ", courseting=" + courseting + ", coursephoto=" + coursephoto
 				+ ", userId=" + userId + ", cview=" + cview + ", createTime=" + createTime + ", memberCount="
 				+ memberCount + ", assessAvg=" + assessAvg + ", user=" + user + ", courseCount=" + courseCount
 				+ ", userCount=" + userCount + ", assessCount=" + assessCount + ", typename=" + typename
 				+ ", teachnumber=" + teachnumber + ", studynumber=" + studynumber + ", attentionnumber="
-				+ attentionnumber + ", beattentionnumber=" + beattentionnumber + ", student=" + student + "]";
+
+				+ attentionnumber + ", beattentionnumber=" + beattentionnumber + ", student=" + student
+				+ ", studentlist=" + studentlist + ", totalCm=" + totalCm + ", studyPeriod=" + studyPeriod
+				+ ", studyPeriodcount=" + studyPeriodcount + "]";
 	}
 
 
-
 	
 
 
 
 	
 
+
+
 	
+
 
 
 

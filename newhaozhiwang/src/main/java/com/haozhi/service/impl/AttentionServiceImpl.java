@@ -29,6 +29,12 @@ public class AttentionServiceImpl implements AttentionService {
 		return attentionMapper.delAttion(attention, userid);
 	}
 
+
+	@Override
+	public int getInformation(int userid) {
+		// TODO Auto-generated method stub
+		return attentionMapper.getInformation(userid);
+	}
 	//通过userID得到他关注的人的信息
 	@Override
 	public List<Attention> getAttentionInfo(String userid) {
@@ -48,6 +54,7 @@ public class AttentionServiceImpl implements AttentionService {
 	@Override
 	public String getFansCount(String userid) {
 		return attentionMapper.getFansCount(userid);
+
 	}
 
 }

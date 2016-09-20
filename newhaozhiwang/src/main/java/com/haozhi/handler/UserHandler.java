@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -32,8 +33,11 @@ import sun.misc.BASE64Decoder;
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.haozhi.entity.UserInfo;
 import com.haozhi.service.UserInfoService;
+import com.haozhi.util.HaozhiProtocol;
 import com.haozhi.util.RandomNumUtil;
 import com.haozhi.util.UsuallyUtil;
+
+import io.goeasy.GoEasy;
 
 
 
@@ -52,6 +56,7 @@ public class UserHandler {
 	//登录
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public String login(UserInfo userInfo,Model model,ModelMap map){
+		System.out.println("我进来了");
 		String name=userInfo.getUname();
 
 		name=new UsuallyUtil().decode(name);
@@ -72,6 +77,8 @@ public class UserHandler {
 			map.put("users", "");
 			return "login";
 		}
+		
+		
 		return "redirect:../page/index.jsp";
 	}
 
@@ -151,20 +158,22 @@ public class UserHandler {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/save",method=RequestMethod.POST)
-	public String saveInfo(UserInfo user,int userid,String gender,String usign,String introdution,ModelMap map,HttpServletRequest request,Model model){
+	public String saveInfo(int userid,String gender,String usign,String introdution,ModelMap map,HttpServletRequest request,Model model){
 		System.out.println("save进来了");
 		String flag="";
+		UserInfo users = userInfoService.getInfoByUserid(userid);
+		String uname=users.getUname();
+		System.out.println(uname);
+		UserInfo user=new UserInfo();
+		user.setUname(uname);
 		user.setUserid(userid);user.setGender(gender);user.setUsign(usign);user.setIntrodution(introdution);
-
 		userInfoService.saveInfo(user);
 		if(userInfoService.saveInfo(user)==1){
 			flag = "1";
-			user.setUname("lytest");
+		//	user.setUname("lytest");
 			model.addAttribute("users",user);
 			//session.setAttribute("users",userinfo);
 		}else{
-
-
 		}
 		return flag;
 	}
@@ -248,7 +257,7 @@ public class UserHandler {
 		out.close();
 	}
 
-
+	@RequestMapping("/editPhoto")
 	 public String editItemsSubmit( Model model,HttpServletRequest request,Integer userid,
 			  MultipartFile items_pic,UserInfo user)throws Exception {
 		
@@ -256,14 +265,14 @@ public class UserHandler {
 	      String originalFilename = items_pic.getOriginalFilename();
 	      // 上传图片
 	      if (items_pic!= null&&originalFilename!=null&&originalFilename.length()>0) {// 存储图片的物理路径
-	        String pic_path = request.getServletContext().getRealPath("../img/headimg");
+	        String pic_path = request.getServletContext().getRealPath("../img/headimg/");
 	        // 新的图片名称
 	        String newFilename = new Date().getTime()+""+new Random().nextInt(100000)
 	        		 +originalFilename.substring(originalFilename.lastIndexOf("."));
 	        //新的图片
 	        File newfile=new java.io.File(pic_path+newFilename);
 	        //将内存的数据写入磁盘
-	        items_pic.transferTo(newfile);	
+	        items_pic.transferTo(newfile);   	
 	        user.setUserid(userid);user.setPhoto(newFilename);
 	        userInfoService.editPhoto(user);
 	   }
@@ -293,7 +302,7 @@ public class UserHandler {
 	}
 
 	@RequestMapping("/updateuserinfo")
-	private void updateuserinfo(UserInfo userInfo,int userid,String uname,String upassword,String email,String gender,String photo,String usign,String introdution,int status,PrintWriter out){
+	private void updateuserinfo(UserInfo userInfo,int userid,String uname,String upassword,String email,String gender,String photo,String usign,String introdution,int status,PrintWriter out,HttpServletRequest request){
 		BASE64Decoder decoder = new BASE64Decoder();  
 		System.out.println(photo);
 		String word="data";
@@ -363,11 +372,42 @@ public class UserHandler {
 		out.flush();
 		out.close();
 	}
+	
 	@ResponseBody
 	@RequestMapping("/getContactMsgbyUserid")
-	public UserInfo getContactMsgbyUserid(int userid){
-		UserInfo userinfo=userInfoService.getContactMsgbyUserid(userid);
+	public UserInfo getContactMsgbyUserid(int userid,int presentid){
+		UserInfo userinfo=userInfoService.getContactMsgbyUserid(userid,presentid);
 		System.out.println(userinfo+"我进来了");
 		return userinfo;
 	}
+	
+	@ResponseBody
+	@RequestMapping("/attentionByUserid")
+	public List<UserInfo> attentionByUserid(int userid){
+		List<UserInfo> userinfo=userInfoService.attentionByUserid(userid);
+		return userinfo;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/judgeAttention")
+	public int judgeAttention(int userid,int attention){
+		int result=userInfoService.judgeAttention(userid, attention);
+		return result;
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping("/getInfoByUserid")
+	public UserInfo getInfoByUserid(int userid){
+		UserInfo userinfo=userInfoService.getInfoByUserid(userid);
+		return userinfo;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/fansByUserid")
+	public List<UserInfo> fansByUserid(int attention){
+		List<UserInfo> userinfo=userInfoService.fansByUserid(attention);
+		return userinfo;
+	}
+	
 }

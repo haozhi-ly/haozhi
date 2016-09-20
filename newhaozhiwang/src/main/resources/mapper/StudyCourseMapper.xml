@@ -88,6 +88,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from userinfo where userid = #{userid}
 	</select>
 	
+
+<!-- 	主页显示学员加入课程
+ -->
+ <resultMap type="StudyCourse" id="dynamicStudyMap">
+		<id column="scid" property="scid"/>
+		<result column="begintime" property="begintime"/>
+		<association property="course" column="courseid" javaType="Course">
+			<id column="courseid" property="courseid"/>
+			<result column="ctitle" property="ctitle"/>
+		</association>
+		<association property="user" column="userid" javaType="UserInfo">
+			<id column="userid" property="userid"/>
+			<result column="uname" property="uname"/>
+			<result column="photo" property="photo"/>
+		</association>
+	</resultMap>
+	<select id="dynamicStudy" resultMap="dynamicStudyMap">
+		select * from studycourse st 
+		left join userinfo u on st.userid=u.userid
+		left join course c on st.courseid=c.courseid  order by st.begintime desc
+	</select>
+	
+	
 	<!-- //通过userid查课程信息 -->
 	<resultMap type="Course" id="CourseByUsidMap">
 		<id column="courseid" property="courseid"/>
@@ -96,9 +119,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<collection property="user" column="userId" ofType="UserInfo" select="getUserByUsid" />
 		<collection property="typename" column="ctid" ofType="string" select="getCourseTypeName" />
 	</resultMap>
-	<select id="getCourseByUsid" resultMap="CourseByUsidMap"  >
-		select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount,
-		(select avg(assess) from studyCourse where courseid = s.courseid) assessAvg
+	<select id="getCourseByUsid" resultMap="CourseByUsidMap">
+		 select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount,
+		(select avg(assess) from studyCourse where courseid = s.courseid) assessAvg,
+		(select count(*) from coursemanage cm where cm.courseid=s.courseid )totalCm,
+		(select studyPeriod from studyCourse sc where sc.userid=#{userid} and sc.courseid=s.courseid)studyPeriod
 		 from course s where s.courseid in(select courseid from studyCourse  where userid =#{userid})
 	</select>
 	<select id="getUserByUsid" resultType="UserInfo" parameterType="int">
@@ -111,4 +136,38 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getCourseCount" parameterType="string" resultType="string">
 		select count(1) from  studyCourse where userid = #{userid}
 	</select>
+
+	
+	<!-- //通过userid查在教的课程信息 -->
+	<resultMap type="Course" id="TeachCourseByUsidMap">
+		<id column="courseid" property="courseid"/>
+		<id column="userId" property="userId"/>
+		<id column="ctid" property="ctid"/>
+		<collection property="user" column="userId" ofType="UserInfo" select="getUserByUsid01" />
+		<collection property="typename" column="ctid" ofType="string" select="getCourseTypeName01" />
+	</resultMap>
+	<select id="getTeachByUsid" resultMap="TeachCourseByUsidMap"  >
+		select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount,
+
+		(select avg(assess) from studyCourse where courseid = s.courseid) assessAvg
+		 from course s where userid =#{userid}
+
+	</select>
+	<select id="getUserByUsid01" resultType="UserInfo" parameterType="int">
+		select * from userinfo where userid = #{userid}
+	</select>
+	<select id="getCourseTypeName01" resultType="string" parameterType="int">
+		select typename from courseType where ctid=#{ctid}
+	</select>
+	
+	
+	<resultMap type="StudyCourse" id="CourseProgressbyCtidMap">
+		
+	</resultMap>  
+	<select id="CourseProgressbyCtid" parameterType="int" resultMap="CourseProgressbyCtidMap">
+		select st.*,c.ctitle,(select count(*) from coursemanage cm where cm.courseid=st.courseid )totalCm from
+ 		studycourse st left join course c on st.courseid=c.courseid where st.userid=#{userid}
+	</select>
+	
 </mapper>
+

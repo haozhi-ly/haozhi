@@ -9,70 +9,63 @@ public class Attention {
 	private int atid;
 	private int attention;// -- 被关注的人 用户id(外键)
 	private int userid;// -- 关注发起者 用户id(外键)
-	private String temp01;// --备用字段
-	private String temp02;// --备用字段
-	private String temp03;// --备用字段
+	private int sreadstatus;
+	
 	private UserInfo user;
 	
+
 	public Attention() {
 	}
 
-	public Attention(int atid, int attention, int userid, String temp01,
-			String temp02, String temp03) {
+	
+
+	public Attention(int atid, int attention, int userid, int sreadstatus) {
+		super();
 		this.atid = atid;
 		this.attention = attention;
 		this.userid = userid;
-		this.temp01 = temp01;
-		this.temp02 = temp02;
-		this.temp03 = temp03;
+		this.sreadstatus = sreadstatus;
 	}
+
+
 
 	public int getAtid() {
 		return atid;
 	}
 
+
 	public void setAtid(int atid) {
 		this.atid = atid;
 	}
+
 
 	public int getAttention() {
 		return attention;
 	}
 
+
 	public void setAttention(int attention) {
 		this.attention = attention;
 	}
+
 
 	public int getUserid() {
 		return userid;
 	}
 
+
 	public void setUserid(int userid) {
 		this.userid = userid;
 	}
 
-	public String getTemp01() {
-		return temp01;
+
+	public int getSreadstatus() {
+		return sreadstatus;
 	}
 
-	public void setTemp01(String temp01) {
-		this.temp01 = temp01;
-	}
 
-	public String getTemp02() {
-		return temp02;
-	}
-
-	public void setTemp02(String temp02) {
-		this.temp02 = temp02;
-	}
-
-	public String getTemp03() {
-		return temp03;
-	}
-
-	public void setTemp03(String temp03) {
-		this.temp03 = temp03;
+	public void setSreadstatus(int sreadstatus) {
+		this.sreadstatus = sreadstatus;
 	}
 
 	
@@ -84,12 +77,18 @@ public class Attention {
 		this.user = user;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "\nAttention [atid=" + atid + ", attention=" + attention
-				+ ", userid=" + userid + ", temp01=" + temp01 + ", temp02="
-				+ temp02 + ", temp03=" + temp03 +
-				",user="+user+"]";
+		return "Attention [atid=" + atid + ", attention=" + attention + ", userid=" + userid + ", sreadstatus="
+				+ sreadstatus + ", user=" + user + "]";
 	}
 
+	
+	
+	
+	
+
+	
 }

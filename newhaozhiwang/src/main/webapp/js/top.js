@@ -1,11 +1,12 @@
 	
 $(function(){
+	var typeid=1;
 	$(".nav-hover").bind("mouseover",function(){
 		$(".dropdown-menu")[0].style.display = "block";
 		});
 	$(".nav-hover").bind("mouseout",function(){
-		$(".dropdown-menu")[0].style.display = "none";
-		});
+		$("#menu").css("display","none");
+  		});
 	$(".choose").bind("mouseover",function(){
 		$("#text-center")[0].style.display = "block";
 		});
@@ -21,6 +22,15 @@ $(function(){
 		
 	$("#text-center li").bind("click",function(){
 		var str = this.innerHTML;
+		if(str=="课程"){
+			typeid=1;
+		}else if(str=="话题"){
+			typeid=2;
+		}else if(str=="小组"){
+			typeid=3
+		}else if(str=="用户"){
+			typeid=4;
+		}
 		var st = str + '<i style="color:#999;font-size:11px;margin-left:5px" class="glyphicon glyphicon-chevron-down"></i>';
 		$(".choose").text("");
 		$(".choose").append(st);
@@ -63,3 +73,8 @@ $(function(){
 
 	
 });
+
+	function search(){
+		 var key=encodeURI($("#searchcontent").val());
+		 window.location.href="page/search.jsp?typeid="+typeid+"&key="+key;
+	 }

@@ -1,21 +1,23 @@
 package com.haozhi.handler;
 
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-
+import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,18 +26,26 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
-
-import sun.misc.BASE64Decoder;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
+import com.haozhi.entity.Communiacte;
 import com.haozhi.entity.Course;
 import com.haozhi.entity.CourseType;
 import com.haozhi.entity.StudyCourse;
 import com.haozhi.entity.UserInfo;
 import com.haozhi.service.CourseService;
 import com.haozhi.service.CourseTypeService;
+import com.haozhi.util.HaozhiProtocol;
+
+import io.goeasy.GoEasy;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+import sun.misc.BASE64Decoder;
+
 
 @Controller
 @RequestMapping("/course")
@@ -150,11 +160,10 @@ public class CourseHandler {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/selectCourseBy",method=RequestMethod.POST)
-	public List<Course> selectCourseBy(String p1,Integer ctid,Integer id){
+	public List<Course> selectCourseBy(String p,Integer ctid,Integer id){
 		LogManager.getLogger().debug("selectCourseBy 到达...");
 		List<Course> courses;
-		p1="1";
-		int  pagesize =18;int pagenumber=Integer.parseInt(p1);
+		int  pagesize =18;int pagenumber=Integer.parseInt(p);
 		if(id==0){
 			courses =  courseService.getAllCourse(pagesize,pagenumber); //为0代表为综合排序
 		}else if(id==1){
@@ -165,6 +174,44 @@ public class CourseHandler {
 		System.out.println( ctid+"呵呵哒"+id);
 		return courses;
 	}
+	
+	/**
+	 * 通过
+	 * @param tid  课程类型
+	 * @param id   按什么排序
+	 * @param map
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value="/selectCourseByTime",method=RequestMethod.POST)
+	public List<Course> selectCourseByTime(String p,Integer ctid){
+		LogManager.getLogger().debug("selectCourseByTime 到达...");
+		List<Course> courses;
+		int  pagesize =18;int pagenumber=Integer.parseInt(p);
+		courses = courseService.getCourseDescTime(ctid,pagesize,pagenumber);  //为1代表为按时间排序
+		return courses;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/selectCourseByHost",method=RequestMethod.POST)
+	public List<Course> selectCourseByHost(String p,Integer ctid){
+		LogManager.getLogger().debug("selectCourseByHost 到达...");
+		List<Course> courses;
+		int  pagesize =18;int pagenumber=Integer.parseInt(p);
+		courses = courseService.getHostCourseByPage(ctid, pagesize, pagenumber);  //为1代表为按时间排序
+		return courses;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/selectCourseByZH",method=RequestMethod.POST)
+	public List<Course> selectCourseByZH(String p,Integer ctid){
+		LogManager.getLogger().debug("selectCourseByZH 到达...");
+		List<Course> courses;
+		int  pagesize =18;int pagenumber=Integer.parseInt(p);
+		courses = courseService.getAllCourse(pagesize,pagenumber);  //为1代表为按时间排序
+		return courses;
+	}
+	
 	
 	@RequestMapping("/getAllcoursebypage")
 	public void getAllcoursebypage(String page,String rows,String sort,String order,HttpServletResponse response){
@@ -225,7 +272,7 @@ public class CourseHandler {
         String photopath="../img/headimg/"+filename;
         FileOutputStream fos;
 	try {
-		fos = new FileOutputStream("G:\\yc\\apache-tomcat-7.0.30\\webapps\\img\\headimg\\"+filename);
+		fos = new FileOutputStream(request.getServletContext().getRealPath("../img/headimg/")+"/"+filename);
 		//System.out.println(servletcontext.getRealPath("../img/headimg/"));
 		//fos = new FileOutputStream(request.getServletContext().getRealPath("../img/headimg/")+filename);
 
@@ -285,10 +332,10 @@ public class CourseHandler {
 	
 	@RequestMapping("/basic")
 	public void savebasic(CourseType courseType,PrintWriter out,String ctitle,String cintroduction,int ctid,String courseting,HttpSession session){
-		System.out.println(ctitle);
+/*		System.out.println(ctitle);
 		System.out.println(cintroduction);
 		System.out.println(ctid);
-		System.out.println(courseting);
+		System.out.println(courseting);*/
 		courseType.setCtid(ctid);
 		CourseType courseTypes=courseTypeService.findByctid(courseType);
 		session.setAttribute("ctitle", ctitle);
@@ -321,9 +368,88 @@ public class CourseHandler {
 		return courselist;
 	}
 	
+	
+	@ResponseBody
+	@RequestMapping("/editor")
+	public Object uploadApk( @RequestParam(value = "upload-file") MultipartFile apkFile,
+			HttpServletRequest request, HttpServletResponse response) {
+		
+		Map<String,Object> resMap = new HashMap<String,Object>();
+		String str="";
+		if (apkFile != null) {
+			//获取保存的路径，
+			String realPath = request.getServletContext().getRealPath("../coursePic");
+			if (apkFile.isEmpty()) {
+				System.out.println("yes");
+				// 未选择文件
+			} else{
+				System.out.println("yes");
+
+				// 文件原名称
+				String originFileName = apkFile.getOriginalFilename();
+				 long temp=System.currentTimeMillis()+new Random().nextInt(100000);
+				  str=temp+originFileName.substring(originFileName.indexOf("."));
+				System.out.println(originFileName);
+				try {
+					//这里使用Apache的FileUtils方法来进行保存
+					FileUtils.copyInputStreamToFile(apkFile.getInputStream(),
+							new File(realPath, str));
+					
+				} catch (IOException e) {
+					System.out.println("文件上传失败");
+					
+					e.printStackTrace();
+				}
+			}
+
+		}
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		HttpSession session=request.getSession();
+		session.setAttribute("coursephoto", str);
+		session.setAttribute("picturestatus", 1);
+		if(str!= null){
+			Course course=new Course();
+			String ctitle=(String) session.getAttribute("ctitle");
+			String cintroduction=(String) session.getAttribute("cintroduction");
+			int ctid=(int) session.getAttribute("ctid");
+			String courseting=(String) session.getAttribute("courseting");
+			UserInfo user=(UserInfo) session.getAttribute("users");
+			course.setCtitle(ctitle);
+			course.setCintrodution(cintroduction);
+			course.setCtid(ctid);
+			course.setCourseting(courseting);
+			course.setCoursephoto(str);
+			course.setUserId(user.getUserid());
+			System.out.println(user.getUserid());
+			int courses=courseService.createcourse(course);
+			resMap.put("filename", str);
+		}
+		
+		System.out.println("yes");
+		return resMap;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping("/savepicture")
-	public void savepicture(Course course,PrintWriter out,String coursephoto,HttpSession session){
-		System.out.println(coursephoto);
+	public void savepicture(Course course,PrintWriter out,String coursephoto,HttpSession session,HttpServletRequest request){
+		
+		
+		
+	
+		
+		
 		BASE64Decoder decoder = new BASE64Decoder();  
 		coursephoto = coursephoto.replaceAll("data:image/png;base64,", "");  
 		// Base64解码  
@@ -346,7 +472,7 @@ public class CourseHandler {
 		String photopath="../coursePic/"+filename;
 		FileOutputStream fos;
 		try {
-			fos = new FileOutputStream("D:\\apache-tomcat-7.0.30\\webapps\\coursePic\\"+filename);
+			fos = new FileOutputStream(request.getServletContext().getRealPath("../coursePic/")+"/"+filename);
 			fos.write(b);  
 			fos.flush();  
 			fos.close(); 
@@ -384,4 +510,60 @@ public class CourseHandler {
 		out.close();
 	}
 	
+	
+	@ResponseBody
+	@RequestMapping(value="/studyingByUserid",method=RequestMethod.POST)
+	public List<Course> studyingByUserid(Integer userid,String p){
+		int  pagesize =2;
+		int pagenumber=Integer.parseInt(p);
+		List<Course> courselist = courseService.studyingByUserid(pagesize, pagenumber, userid);
+		return courselist;
+	}
+	
+	
+
+	
+/*	热门课程
+*/	
+	@ResponseBody
+	@RequestMapping("/mainHotCourse")
+	public List<Course> mainHotCourse(HttpServletResponse response){
+		
+		return courseService.mainHotCourse();
+	}
+
+	/*精品课程*/
+
+	@ResponseBody
+	@RequestMapping("/goodCourse")
+	public List<Course> goodCourse(HttpServletResponse response){		
+		GoEasy g=new GoEasy("4ea18126-cec1-4cce-8569-ad314901d30d");
+		System.out.println(g);
+		//g.publish("eb367e1f-1b28-4ce2-a32d-cd5347de7816","Hello, GoEasy!");
+		g.publish("eb367e1f-1b28-4ce2-a32d-cd5347de7816", "Hello, GoEasy!");
+		return courseService.goodCourse();
+		
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/getMainCoruseByctid",method=RequestMethod.POST)
+	public List<Course> getMainCoruseByctid(int ctid){
+		List<Course> courses =null;
+		if(ctid!=0){
+			 courses =courseService.getmainCourseByCtid(ctid);
+		}else{
+			courses =courseService.goodCourse();
+		}
+		List<Integer> list=new ArrayList<Integer>();
+		list.add(122);
+		list.add(1);
+		Communiacte communiacte=new Communiacte(list);
+		HaozhiProtocol<Communiacte> content=new HaozhiProtocol<Communiacte>(HaozhiProtocol.Inform, communiacte);
+		System.out.println(content.toString());
+		GoEasy g=new GoEasy("4ea18126-cec1-4cce-8569-ad314901d30d");
+		//g.publish("eb367e1f-1b28-4ce2-a32d-cd5347de7816","Hello, GoEasy!");
+		g.publish("eb367e1f-1b28-4ce2-a32d-cd5347de7816",content.toString());
+		return courses;
+	}
+
 }

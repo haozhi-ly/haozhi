@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.haozhi.mapper.AttentionMapper">
 
 	<select id="judgeAttion" resultType="int">
-		select count(*) from attention  where attention=#{attention} and userid=#{userid}
+		select count(*) from attention  where attention=#{attention,jdbcType=VARCHAR} and userid=#{userid,jdbcType=VARCHAR}
 	</select>
 	
 	<insert id="insertAttion">
@@ -16,6 +16,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from attention  where attention=#{attention} and userid=#{userid}
 	</delete>
 	
+
+	<select id="getInformation" parameterType="int" resultType="int">
+		select count(*) from attention a where a.attention=#{userid} and a.sreadstatus=0 group by a.attention
+	</select>
 	<!-- 查询用户关注的人的具体信息 -->
 	<resultMap type="Attention" id="AttentionMap">
 		<id column="userid" property="userid"/>
@@ -48,5 +52,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="getFansCount" parameterType="string" resultType="string">
 		select count(1) from  attention where attention=#{userid}
+
 	</select>
 </mapper>

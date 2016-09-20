@@ -25,15 +25,15 @@
       <li class="nav-hover">
   <a href="page/course.jsp">课程  <b class="caret"></b></a>
       <ul class="dropdown-menu" role="menu" id="menu">
-              <li id="1"><a href="page/course.jsp?ctid=1">摄影课堂</a></li>
-              <li id="2"><a href="page/course.jsp?ctid=2">创意设计</a></li>
-              <li id="3"><a href="page/course.jsp?ctid=3">声乐器乐</a></li>
-              <li id="4"><a href="page/course.jsp?ctid=4">运动健身</a></li>
-              <li id="5"><a href="page/course.jsp?ctid=5">IT互联网</a></li>
-              <li id="6"><a href="page/course.jsp?ctid=6">兴趣爱好</a></li>
-              <li id="7"><a href="page/course.jsp?ctid=7">语言学习</a></li>
-              <li id="8"><a href="page/course.jsp?ctid=8">职场技能</a></li>
-              <li id="9"><a href="page/course.jsp?ctid=9">公开课</a></li>
+              <li id="1"><a href="page/course.jsp">摄影课堂</a></li>
+              <li id="2"><a href="page/course.jsp">创意设计</a></li>
+              <li id="3"><a href="page/course.jsp">声乐器乐</a></li>
+              <li id="4"><a href="page/course.jsp">运动健身</a></li>
+              <li id="5"><a href="page/course.jsp">IT互联网</a></li>
+              <li id="6"><a href="page/course.jsp">兴趣爱好</a></li>
+              <li id="7"><a href="page/course.jsp">语言学习</a></li>
+              <li id="8"><a href="page/course.jsp">职场技能</a></li>
+              <li id="9"><a href="page/course.jsp">公开课</a></li>
           </ul>
   </li>      
       <li class="">
@@ -74,10 +74,10 @@
                 <li data-type="group">小组</li>
               </ul>
             </div>
-            <input class="form-control js-search" name="q" placeholder="输入要查找的内容" autocomplete="off">
-          </div>
-           <input name="t" value="course" type="hidden">
-          <button style="color: #15C288; font-size:20px;margin-top:7px; border:none;background:#fff;width:50px;" class="glyphicon glyphicon-search" type="submit"></button>
+           <input  id="searchcontent" class="form-control js-search" name="q" placeholder="输入要查找的内容" autocomplete="off">
+	          </div>
+	          <input name="t" value="course" type="hidden">
+	          <button style="color: #15C288; font-size:20px;margin-top:7px; border:none;background:#fff;width:50px;" class="glyphicon glyphicon-search" type="button" onclick="search()"></button>
         </div>
       </form>
     </div>

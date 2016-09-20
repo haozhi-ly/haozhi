@@ -12,31 +12,6 @@ select * from studyCourse;
 select * from selfMessage;
 select * from cgroup;
 
-select rownum,a.* from (select rownum,s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount,
-		(select avg(assess) from studyCourse where courseid = s.courseid) assessAvg
-		 from course s where rownum>=0)a where rownum<=5
-
-select t.*, rownum rn from (select a.*,rownum rn from courseAssess a where cmid=1
-and 5>=rownum order by a.time desc ) t where rn>0
-
-select c.*,u.* from courseNote c inner join userinfo u  on  c.userid=u.userid and cmid in
-		 (select cmid from courseManage where courseid= 6 ) order by ntime desc
-
-select * from (select s.*,(select count(1) from studyCourse where courseid = s.courseid )
-memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg 
-from course s where s.ctid=2 order by memberCount desc) where 3>=rownum 
-
-select s.*,(select count(1) from studyCourse where courseid = s.courseid )
-memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg,
-typename,(select count(*) from courseManage where courseid=s.courseid) courseCount,(
-select count(courseid) from studyCourse where courseid=s.courseid ) userCount,
-(select count(*) from courseAssess where cmid in (select cmid from courseManage where courseid=s.courseid)
-) assessCount from course s,courseType t where s.ctid=t.ctid and  s.courseid=6 
-
-select count(*) from courseManage
-select count(*) from courseManage where courseid=2;
-select count(userid) from studyCourse where courseid=5;
-
 
 drop table userinfo;
 drop sequence seq_userid cascade constraints;
@@ -107,6 +82,19 @@ select c.*, t.teachCount,a.fansCount from
 (select count(*) fansCount from attention where attention in (select userid from course where courseid in(select courseid from courseManage where cmid=1)
 )) a,(select * from courseManage where cmid=1) c,;
 
+
+select s.*,(select count(1) from studyCourse where courseid = s.courseid )
+		memberCount, (select avg(assess) from studyCourse where courseid = s.courseid) assessAvg,
+		typename,(select count(*) from courseManage where courseid=s.courseid) courseCount,(
+		select count(courseid) from studyCourse where courseid=s.courseid ) userCount,
+		(select count(*) from attention a where a.attention=s.userid group by a.userid) beattentionnumber,
+		(select count(*) from course co where co.userid=s.userid group by s.userid) teachnumber,
+		(select count(*) from studycourse st where st.userid=s.userid group by st.userid)studynumber,
+		 (select count(*) from attention a where a.userid=s.userid group by a.userid) attentionnumber,
+		(select count(*) from courseAssess where cmid in (select cmid from courseManage where courseid=s.courseid)
+		) assessCount 
+		from course s,courseType t where s.ctid=t.ctid and  s.courseid=1
+
 -----------------3.课程表
 drop table course
 create table course(
@@ -156,6 +144,25 @@ insert into course values(seq_courseid.nextval,'15分钟与陌生人成为朋友
 8,'职场 朋友',null,41,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
 insert into course values(seq_courseid.nextval,'腾飞五千年之《塞北三朝之金》全22集 ','　公元1125年，曾经幅员万里的大辽帝国，被原本附属于自己的女真人消灭了。那么女真是一个什么样的民族？他们起源于何方？又是怎样从一个原始部落逐渐发展壮大，如何创造了仅用12年就灭辽平宋的奇迹？',
 9,'公开课 五千年',null,41,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
+insert into course values(seq_courseid.nextval,'花式咖啡的制作  ','炎炎夏日，很多人喜欢在咖啡里加冰块以图凉爽。然而近期由于星巴克的推广，让冷萃咖啡走进了大家的视线。冷萃咖啡和普通的冰咖啡有什么不同？
+冰镇咖啡或冰咖啡是指用热水快速萃取、然后加冰块或急速降温后的冷饮咖啡。冷萃咖啡是指用低于摄氏5度的水长时间低温浸泡萃取的咖啡饮料。',
+6,'兴趣 咖啡',null,21,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
+insert into course values(seq_courseid.nextval,'日语的学习','标准日语第一册(修订版) 1-13课',
+7,'语言 韩语',null,21,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
+insert into course values(seq_courseid.nextval,'与人交友','什么？你还是单身？那快快点击这个课程，纯干货方法，观看后立即成为交际达人。',
+8,'职场 朋友',null,41,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
+insert into course values(seq_courseid.nextval,'中国历史','　公元1125年，曾经幅员万里的大辽帝国，被原本附属于自己的女真人消灭了。那么女真是一个什么样的民族？他们起源于何方？又是怎样从一个原始部落逐渐发展壮大，如何创造了仅用12年就灭辽平宋的奇迹？',
+9,'公开课 千年',null,41,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
+
+insert into course values(seq_courseid.nextval,'制作咖啡  ','炎炎夏日，很多人喜欢在咖啡里加冰块以图凉爽。然而近期由于星巴克的推广，让冷萃咖啡走进了大家的视线。冷萃咖啡和普通的冰咖啡有什么不同？
+冰镇咖啡或冰咖啡是指用热水快速萃取、然后加冰块或急速降温后的冷饮咖啡。冷萃咖啡是指用低于摄氏5度的水长时间低温浸泡萃取的咖啡饮料。',
+6,'兴趣 咖啡',null,21,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
+insert into course values(seq_courseid.nextval,'法语的学习','标准日语第一册(修订版) 1-13课',
+7,'语言 韩语',null,21,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
+insert into course values(seq_courseid.nextval,'交友守则','什么？你还是单身？那快快点击这个课程，纯干货方法，观看后立即成为交际达人。',
+8,'职场 朋友',null,41,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
+insert into course values(seq_courseid.nextval,'中国历史的探究','　公元1125年，曾经幅员万里的大辽帝国，被原本附属于自己的女真人消灭了。那么女真是一个什么样的民族？他们起源于何方？又是怎样从一个原始部落逐渐发展壮大，如何创造了仅用12年就灭辽平宋的奇迹？',
+9,'公开课 千年',null,41,0,to_date('2016-7-20','yyyy-mm-dd'),null,null);
 commit;
 
 select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount,
@@ -187,6 +194,7 @@ drop sequence seq_cmid ;
 select * from courseManage where courseid in (select courseid from courseManage where cmid=1)
 select * from courseManage;
 select count(*) from courseManage where courseid=6;
+select * from courseManage where courseid =6 and 2>rownum
 --------------5.课时管理表
 create table courseManage(
        cmid int primary key ,
@@ -231,6 +239,7 @@ sid/XNDY2NTYwMjI4/isAutoPlay/false/partnerid/0edbfd2e4fc91b72/v.swf',null,null,n
 insert into courseManage values(seq_cmid.nextval,5,0,'老电影画面',3,'http://player.youku.com/player.php/
 sid/XNDY2NTYwMjI4/isAutoPlay/false/partnerid/0edbfd2e4fc91b72/v.swf',null,null,null);
 commit;
+
 
 
 delete from courseManage where courseid=50;
@@ -283,7 +292,9 @@ create table courseQuestion(
 );
 create sequence seq_cqid start with 1;
 insert into courseQuestion values(seq_cqid.nextval,1,1,'虽然讲的很仔细，但还是不太会！',sysdate,1,0,null,null,null);
-insert into courseQuestion values(seq_cqid.nextval,4,1,'水的分量还是把握不好，老师教教技巧吧！',sysdate,1,0,null,null,null);
+insert into courseQuestion values(seq_cqid.nextval,41,1,'你好，能交个朋友吗！',sysdate,1,0,null,null,null);
+insert into courseQuestion values(seq_cqid.nextval,41,2,'我有好吃的，你要吗！',sysdate,1,0,null,null,null);
+insert into courseQuestion values(seq_cqid.nextval,21,1,'为什么天使有翅膀 ！',sysdate,1,0,null,null,null);
 
 drop table courseNote;
 drop sequence seq_coursenoteId ;
@@ -314,7 +325,7 @@ select c.*,u.* from courseNote c inner join userinfo u  on  c.userid=u.userid an
 create table courseAnswer(
        caid int primary key ,
        cqid int 
-            constraint FK_courseQuestion_cqid references courseQuestion(cqid),-- 用户id(外键)
+            constraint FK_courseQuestion_cqid references courseQuestion(cqid),
        userid int 
               constraint FK_userinfo_userid04 references userinfo(userid),-- 回答问题的人 用户id(外键)
        answerContent varchar2(100),
@@ -325,8 +336,10 @@ create table courseAnswer(
 );
 create sequence seq_caid start with 1;
 insert into courseAnswer values(seq_caid.nextval,1,3,'多多联系一下就好了，相信自己！',sysdate,null,null,null);
+insert into courseAnswer values(seq_caid.nextval,3,3,'叔叔，我们不约！',sysdate,null,null,null);
+insert into courseAnswer values(seq_caid.nextval,5,41,'因为它要飞得更高！',sysdate,null,null,null);
 
-select * from attention
+select * from attention where userid=3
 --------------------------10.关注表（保留意见）
 create table attention(
        atid  int  primary key,  
@@ -334,10 +347,15 @@ create table attention(
                  constraint FK_userinfo_userid05 references userinfo(userid),-- 被关注的人 用户id(外键)
        userid int 
               constraint FK_userinfo_userid06 references userinfo(userid),-- 关注发起者 用户id(外键)
-       temp01 varchar2(200),--备用字段
+       sreadstatus int,--备用字段
        temp02 varchar2(200),--备用字段
        temp03 varchar2(200)--备用字段 
 );
+
+alter table attention rename column temp01 to sreadstatus
+alter table attention modify(sreadstatus int)
+--动态消息提示
+=======
 select * from attention;
 create sequence seq_atid start with 1;
 insert into attention values(seq_atid.nextval,3,41,null,null,null);
@@ -353,10 +371,15 @@ select * from (select s.*,(select count(1) from studyCourse where courseid = s.c
 
 select * from studyCourse
 
-select s.*,(select count(1) from studyCourse where courseid = s.courseid ) memberCount,
-		(select avg(assess) from studyCourse where courseid = s.courseid) assessAvg
-		 from course s where s.courseid in(select courseid from studyCourse where userid =4)
+select * from(select * from (select c.*,begintime,rownum rn from course c,studyCourse s where c.courseid=s.courseid 
+and c.courseid in (select courseid from studyCourse where userid=41) 
+order by begintime desc) where rn>2) where 5>rn
 
+select * from(select c.*,rownum rn from (select * from course)c 
+					where #{pagesize}*#{pagenumber}>=rownum)
+			 				where rn>#{pagesize}*(#{pagenumber}-1) 	
+
+select c.*,begintime from course c,studyCourse s where c.courseid=s.courseid and  c.courseid in (select courseid  from studyCourse where userid=41) order by begintime desc	
 ---------------------11.学习课程表
 drop table studyCourse
 drop sequence seq_scid
@@ -374,7 +397,6 @@ create table studyCourse(
        temp03 varchar2(200)--备用字段
 );
 create sequence seq_scid start with 1;
-select * from userinfo
 insert into studyCourse values(seq_scid.nextval,41,5,to_date('2016-8-1','yyyy-mm-dd'),2,null,null,null,null);
 insert into studyCourse values(seq_scid.nextval,41,6,to_date('2016-8-10','yyyy-mm-dd'),4,null,null,null,null);
 insert into studyCourse values(seq_scid.nextval,41,5,to_date('2016-8-1','yyyy-mm-dd'),4,null,null,null,null);

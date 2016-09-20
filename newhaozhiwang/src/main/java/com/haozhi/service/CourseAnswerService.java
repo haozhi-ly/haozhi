@@ -10,6 +10,8 @@ public interface CourseAnswerService {
 
 	boolean addAnswerbyCqid(CourseAnswer courseAnswer);
 
+	List<CourseAnswer> getMyAnswerByUsid(String userid);
+
 	
 
 }

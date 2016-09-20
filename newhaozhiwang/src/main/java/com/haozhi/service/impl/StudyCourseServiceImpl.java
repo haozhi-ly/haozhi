@@ -1,6 +1,8 @@
 package com.haozhi.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,13 +51,28 @@ public class StudyCourseServiceImpl implements StudyCourseService {
 		return studyCourseMapper.joinStudyCourse(userid, courseid);
 	}
 
-	@Override
+
+	public List<StudyCourse> dynamicStudy() {
+		// TODO Auto-generated method stub
+		return studyCourseMapper.dynamicStudy();
+	}
+
+	
+
+	
+	
 	public String getCourseCount(String userid) {
 		return studyCourseMapper.getCourseCount(userid);
 	}
 	
 	public int judgeStudyCourse(Integer userid, Integer courseid) {
 		return studyCourseMapper.judgeStudyCourse(userid, courseid);
+
+	}
+
+	@Override
+	public List<Course> getTeachByUsid(String userid) {
+		return studyCourseMapper.getTeachByUsid(userid);
 	}
 
 }

@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.haozhi.entity.CourseAnswer;
 import com.haozhi.entity.CourseQuestion;
 
 public interface CourseQuestionMapper {
@@ -22,4 +23,5 @@ public interface CourseQuestionMapper {
 	List<CourseQuestion> newQuestionTopAtFour(int courseid);
 	CourseQuestion detailAnswerbycqid(int cqid);
 
+	List<CourseQuestion> getMyQuestionByUsid(String userid);
 }

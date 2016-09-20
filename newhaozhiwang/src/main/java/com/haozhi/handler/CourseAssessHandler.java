@@ -69,7 +69,6 @@ public class CourseAssessHandler {
 		hashmap.put("pagenumber", Integer.parseInt(p));
 		hashmap.put("cmid", cmid);
 		List<CourseAssess> coursesassess = courseAssessService.getAssessByCmidByPage(hashmap);
-//		map.put("coursesassess", coursesassess);
 		return coursesassess;
 	}
 	
