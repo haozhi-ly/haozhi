@@ -237,8 +237,17 @@
 		 </c:choose>       
     </div>
     <div class="info media-body">
-        <h1 class="title"><a href="http://www.howzhi.com/course/14061/">we</a></h1>
-                            <p class="tipinfo t-gray fsn">
+        <h1 class="title">
+         <c:choose>
+         	<c:when test="${empty ctitle}">
+         		<a href="page/joinproject.jsp" id="cnameid"></a>
+        	</c:when>
+        	<c:otherwise>
+        		<a href="page/joinproject.jsp" id="cnameid">${ctitle}</a>
+        	</c:otherwise>
+		 </c:choose>
+        </h1>
+  		<p class="tipinfo t-gray fsn">
             <i class="hz-icon icon-info t-infowarn"></i>
             请完善基本信息、课程图片和课时后，再<font class="t-infowarn">申请发布</font>课程。<a href="javascript:;" class="active" id="js-info">新手引导</a>
           </p>
@@ -246,8 +255,14 @@
     </div>
      <div class="action"> 
       <a class="btn com radius mts" href="http://www.howzhi.com/course/14061/?previewAs=member" target="_blank" style="width:83px;">返回课程</a>
-      <a data-step="4" data-intro="完善所有信息后，点击&#39;申请发布&#39;，向管理员提交发布请求" data-position="left" class="radius btn disable mtl" style="width:83px;" onclick="clicktrue()">申请发布</a>
-                
+      <c:choose>
+         <c:when test="${empty cManage}">
+         <a id="radius btn disable mtl" data-step="4" data-intro="完善所有信息后，点击&#39;申请发布&#39;，向管理员提交发布请求" data-position="left" class="radius btn disable mtl" style="width:83px;">确定发布</a>
+        	</c:when>
+        	<c:otherwise>
+     	<a data-step="4" data-intro="点击'申请发布'，向管理员提交发布请求" data-position="left" class="radius btn btn-primary mtl" href="javascript:void(0);" id="publish-now" onclick="clicktrue()">确定发布</a>          
+        	</c:otherwise>
+		 </c:choose>       
      </div>
   </div>
 
@@ -314,28 +329,7 @@
 	<div class="panel-body">
 		<ul class="lesson-list sortable-list" id="course-item-list" data-sort-url="/course/14061/manage/lesson/sort">
 	<!-------------------------------------课时要拼接的内容 ---------------------------------- -->
-		    <c:choose>
-         	<c:when test="${empty cManage}">
-         		
-        	</c:when>
-        	<c:otherwise>
-        		<li class="item-lesson clearfix" id="lesson-89862" data-file-id="0" data-lesson-type="text" style="word-break: break-all;" >
-				<div class="item-line"></div>
-				<div class="item-content">
-	  <i class="fa fa-file-photo-o text-success"></i>课时 <span class="number">${cManage.courseseq }</span>： ${cManage.title }						
-			</div>
-
-	<div class="item-actions">
-  	<a class="btn btn-link" data-toggle="modal" data-target="#modal" data-backdrop="static" data-keyboard="false"
-			 data-url="/course/14687/manage/lesson/89862/edit">
-			 <span class="glyphicon glyphicon-edit prs"></span>编辑</a>
-			<a class="btn btn-link" href="/course/14687/lesson/89862" target="_blank"><span class="glyphicon glyphicon-eye-open prs"></span>预览</a>
-			<span class="dropdown"><a href="javascript:;" class="delete-lesson-btn btn-danger btn" data-url="/course/14687/manage/lesson/89862/delete"><span class="glyphicon glyphicon-trash prs"></span>删除</a>
-			</span>
-		</div>
-	</li> 
-        	</c:otherwise>
-		 </c:choose>          
+		   
 		    <!-- <li class="item-lesson clearfix" id="lesson-89862" data-file-id="0" data-lesson-type="text" style="word-break: break-all;" >
 				<div class="item-line"></div>
 				<div class="item-content">
@@ -848,13 +842,31 @@
 </div>
   <jsp:include page="footer.jsp"></jsp:include>  
   <script type="text/javascript">
-  /* 	$(function(){
-  		$("#lesson-create-btn").click(function(){
-  			$("#emptylession").show();
-  			$('#modal').modal('show');
-  			$('#modal').show();
-  		});
-  	}); */
+  $(function(){
+  		$.post("courseManage/findAllcourseseq",function(data){
+  			var str="";
+  			if(data!=0){
+  				for(var i=0;i<data.length;i++){
+  					str+="<li class='item-lesson clearfix' id='lesson-89862' data-file-id='0' data-lesson-type='text' style='word-break: break-all;' >";
+						str+="<div class='item-line'></div>";
+						str+="<div class='item-content'>";
+			  			str+="<i "+(data[i].type==1 ? 'class="glyphicon glyphicon-file" style="color: rgb(56, 193, 60);"':'class="glyphicon glyphicon-film" style="color: rgb(56, 193, 60);"')+"></i>课时 <span class='number'>"+data[i].courseseq+"</span>：	"+data[i].title+"";				
+						str+="</div>";
+
+						str+="<div class='item-actions'>";
+		  				str+="<a class='btn btn-link' data-toggle='modal' data-target='#modal' data-backdrop='static' data-keyboard='false' data-url='/course/14687/manage/lesson/89862/edit'>";
+					 	str+="<span class='glyphicon glyphicon-edit prs'></span>编辑</a>";
+						str+="<a class='btn btn-link' href='/course/14687/lesson/89862' target='_blank'><span class='glyphicon glyphicon-eye-open prs'></span>预览</a>";
+						str+="<span class='dropdown'><a href='javascript:;' class='delete-lesson-btn btn-danger btn' data-url='/course/14687/manage/lesson/89862/delete'><span class='glyphicon glyphicon-trash prs'></span>删除</a>";
+						str+="</span>";
+						str+="</div>";
+						str+="</li>";
+  				}
+  				$("#course-item-list").html(str);
+				$("#emptylession").hide();
+  			}
+  		},"json");
+  	});  
   		function addlession(){
   			var type=$("input[name='type']:checked").val();
   			alert(type)
@@ -883,25 +895,9 @@
   						$('#modal').modal('hide');
   						alert(data.courseseq)
   						alert(data.title)
-  						var str="";
-  						str+="<li class='item-lesson clearfix' id='lesson-89862' data-file-id='0' data-lesson-type='text' style='word-break: break-all;' >";
-  						str+="<div class='item-line'></div>";
-  						str+="<div class='item-content'>";
-  			  			str+="<i "+(type==1 ? 'class="glyphicon glyphicon-file" style="color: rgb(56, 193, 60);"':'class="glyphicon glyphicon-film" style="color: rgb(56, 193, 60);"')+"></i>课时 <span class='number'>"+data.courseseq+"</span>：	"+data.title+"";				
-  						str+="</div>";
-
-  						str+="<div class='item-actions'>";
-  		  				str+="<a class='btn btn-link' data-toggle='modal' data-target='#modal' data-backdrop='static' data-keyboard='false' data-url='/course/14687/manage/lesson/89862/edit'>";
-  					 	str+="<span class='glyphicon glyphicon-edit prs'></span>编辑</a>";
-  						str+="<a class='btn btn-link' href='/course/14687/lesson/89862' target='_blank'><span class='glyphicon glyphicon-eye-open prs'></span>预览</a>";
-  						str+="<span class='dropdown'><a href='javascript:;' class='delete-lesson-btn btn-danger btn' data-url='/course/14687/manage/lesson/89862/delete'><span class='glyphicon glyphicon-trash prs'></span>删除</a>";
-  						str+="</span>";
-  						str+="</div>";
-  						str+="</li>";
-  						$("#course-item-list").append(str);
-  						alert("温馨提示：添加课时成功！点击确定发布就可以创建成功了");
   						$("#pathOrContetn").popover('hide');
   						$("#pathOrContetn01").popover('hide');
+  						window.location.reload();
   					}else{
   						alert("添加课时失败！")
   					}
@@ -926,6 +922,11 @@
   		    });
   		});
   		}
+  	}
+  	function clicktrue(){
+  		 if(confirm("您确定发布课程？")){
+  	        location.href="page/learnCenter.jsp";
+  	     }
   	}
   </script>
 </body>

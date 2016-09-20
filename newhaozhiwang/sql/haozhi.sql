@@ -201,7 +201,7 @@ create table courseManage(
        temp03 varchar2(200)--备用字段  
 );
 
-select courseseq,cs.courseid from courseManage cm,course cs where cm.courseid=cs.courseid and cs.courseid=cm.courseid;
+select * from courseManage where courseid=71;
 
 select * from courseManage
 ALTER TABLE haozhi.courseManage RENAME COLUMN temp01 TO cmintroduction --修改表列名 

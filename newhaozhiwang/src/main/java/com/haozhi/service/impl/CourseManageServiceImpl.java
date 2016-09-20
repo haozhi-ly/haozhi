@@ -57,4 +57,10 @@ public class CourseManageServiceImpl implements CourseManageService {
 	}
 
 
+	@Override
+	public List<CourseManage> findAllcourseseq(int courseid) {
+		return courseManageMapper.findAllcourseseq(courseid);
+	}
+
+
 }
