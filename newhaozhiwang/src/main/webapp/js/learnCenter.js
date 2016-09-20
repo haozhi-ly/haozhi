@@ -175,9 +175,9 @@ $(function() {
 				$('#attentionM').css("display","none");
 				$('#fans').css("display","block");
 			}
-     });
+     })
      
-	}
+     
 });
 
 //设定倒数秒数  

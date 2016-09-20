@@ -833,8 +833,8 @@
 										href="http://www.howzhi.com/password/reset">忘记密码</a>
 									</span>
 								</div>
-								<input class="login-btn btn btn-primary" value="登录"
-									type="submit">
+								<input class="login-btn btn btn-primary" id="login" value="登录"
+									type="button">
 
 
 							</div>
