@@ -25,10 +25,7 @@
 </head>
 
 <body class="index">   
-   <%  String coursename=(String)session.getAttribute("ctitle");
-		   
-   
-   %>
+  
     <jsp:include page="topb.jsp"></jsp:include>
     <div class="container" id="content-container"> 
     <div class="course-managehead media manage">
@@ -66,8 +63,15 @@
     </div>
      <div class="action"> 
       <a class="btn com radius mts" href="http://www.howzhi.com/course/14023/?previewAs=member" target="_blank" style="width:83px;">返回课程</a>
-                          <a data-step="4" data-intro="完善所有信息后，点击&#39;申请发布&#39;，向管理员提交发布请求" data-position="left" class="radius btn disable mtl" style="width:83px;">申请发布</a>      
-     </div>
+		<c:choose>
+         <c:when test="${empty cManage}">
+         <a id="radius btn disable mtl" data-step="4" data-intro="完善所有信息后，点击&#39;申请发布&#39;，向管理员提交发布请求" data-position="left" class="radius btn disable mtl" style="width:83px;">确定发布</a>
+        	</c:when>
+        	<c:otherwise>
+     	<a data-step="4" data-intro="点击'申请发布'，向管理员提交发布请求" data-position="left" class="radius btn btn-primary mtl" href="javascript:void(0);" id="publish-now" onclick="clicktrue()">确定发布</a>          
+        	</c:otherwise>
+		 </c:choose>            
+		 </div>
   </div>
 
 <section class="create-course course-more">

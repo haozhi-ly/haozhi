@@ -13,7 +13,7 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
  <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="jquery-1.11.1.min.js"></script> 
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script> 
 <script type="text/javascript" src="js/cropbox.js"></script>
 <script type="text/javascript"src="js/top.js"></script>
 <script type="text/javascript"src="js/ajaxfileupload.js"></script>
@@ -48,8 +48,17 @@
 		 </c:choose>
     </div>
     <div class="info media-body">
-        <h1 class="title"><a href="http://www.howzhi.com/course/14023/">asd</a></h1>
-                            <p class="tipinfo t-gray fsn">
+        <h1 class="title">
+         <c:choose>
+         	<c:when test="${empty ctitle}">
+         		<a href="page/joinproject.jsp" id="cnameid"></a>
+        	</c:when>
+        	<c:otherwise>
+        		<a href="page/joinproject.jsp" id="cnameid">${ctitle}</a>
+        	</c:otherwise>
+		 </c:choose>
+        </h1>
+        <p class="tipinfo t-gray fsn">
             <i class="glyphicon glyphicon-info-sign" style="color: rgb(255, 140, 60); font-size: 14px;"></i>
             请完善基本信息、课程图片和课时后，再<font class="t-infowarn">申请发布</font>课程。<a href="javascript:;" class="active" id="js-info">新手引导</a>
           </p>
@@ -57,8 +66,15 @@
     </div>
      <div class="action"> 
       <a class="btn com radius mts" href="http://www.howzhi.com/course/14023/?previewAs=member" target="_blank" style="width:83px;margin-left:280px;margin-top:40px;">返回课程</a>
-      <a data-step="4" data-intro="完善所有信息后，点击&#39;申请发布&#39;，向管理员提交发布请求" data-position="left" class="radius btn disable mtl" style="width:83px;margin-left:280px;">申请发布</a>
-     </div>
+		<c:choose>
+         <c:when test="${empty cManage}">
+         <a id="radius btn disable mtl" data-step="4" data-intro="完善所有信息后，点击&#39;申请发布&#39;，向管理员提交发布请求" data-position="left" class="radius btn disable mtl" style="width:83px;">确定发布</a>
+        	</c:when>
+        	<c:otherwise>
+     	<a data-step="4" data-intro="点击'申请发布'，向管理员提交发布请求" data-position="left" class="radius btn btn-primary mtl" href="javascript:void(0);" id="publish-now" style="width:83px;margin-left:280px;margin-top:40px;" onclick="clicktrue()">确定发布</a>          
+        	</c:otherwise>
+		 </c:choose>          
+		 </div>
   </div>
 
 <section class="create-course course-more">
@@ -125,7 +141,7 @@
          <c:choose>
          	<c:when test="${picturestatus==1}">
          		 <% String picname=(String)session.getAttribute("coursephoto"); %>
-        		<img src="<%="../../coursePic/"+picname%>" style='width='248px' height='140px'/>"/>
+        		<img src="<%="../../coursePic/"+picname%>" style="width=210px;height:140px;"/>
         	</c:when>
         	<c:otherwise>
         		<img  id="headphoto" src="./images/course.png" class="headphoto"/>
