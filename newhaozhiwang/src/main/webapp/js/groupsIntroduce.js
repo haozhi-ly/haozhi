@@ -8,6 +8,7 @@ $(function(){
 		$("#groupname").html(gdata.groupname);
 		var href='page/groupIntroduce.jsp?groupname='+gdata.groupname+'&userid='+userid+'';
 		$("#groupname").attr("href",href);
+		$("#img-groupname").attr("src",gdata.pic);
 		$("#img-groupname").attr("alt",gdata.groupname);
 		var str=gdata.peoplecount+'个成员<span class="mlm">4608个话题</span> <span class="fsn mlm">创建时间：'+gdata.createtime+'</span>';
 		$("#peoplecount").html(str);
@@ -44,7 +45,7 @@ $(function(){
 				mygroup+='<div class="media group-item">';
 				mygroup+='<a class="pull-left media-object media-object-small js-user-card" data-user-id="'+data.userid+'" data-card-url="/user/2358985/card/show"';
 				mygroup+='href="/u/2358985/" data-original-title="" title=""> <img class="avatar-sm " 　alt="'+data.uname+'"';
-				mygroup+='src="http://f1.howzhi.com/user/2016/08-23/1930571f2ad8727984.jpg"></a>';
+				mygroup+='src="'+data.photo+'"></a>';
 				mygroup+='<div class="media-body"><p>';
 				mygroup+='<a class="link-light link-muted" href="/u/2358985/">'+data.uname+'</a>';
 				mygroup+='<p class="text-muted fsn">';
@@ -69,7 +70,7 @@ $(function(){
 			for(var i=0;i<data.length;i++){
 				listStr+='<li><a title="" data-original-title="" class=" js-user-card" href="javascript:void(0);"';
 				listStr+='data-card-url="/user/2364063/card/show" data-user-id="2364063">';
-				listStr+='<img class="avatar-sm" src="images/person02.jpg" alt="'+data[i].uname+'"></a>';
+				listStr+='<img class="avatar-sm" src="'+data[i].photo+'" alt="'+data[i].uname+'"></a>';
 				listStr+='<div class="name">';
 				listStr+='<a class="link-light " href="javascript:void(0);">'+data[i].uname+'</a>';
 				listStr+='</div></li>';

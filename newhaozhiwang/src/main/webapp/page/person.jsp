@@ -99,8 +99,8 @@
 				<li class=""><a href="javaScript:void(0);" id="studying">在学</a></li>
 				<li class=""><a href="javaScript:void(0);" id="teaching">在教</a></li>
 				<li class=""><a href="javaScript:void(0);" id="group">小组</a></li>
-				<li class=""><a href="javaScript:void(0);" id="answer">回答</a></li>
-				<li class=""><a href="javaScript:void(0);" id="question">问题</a></li>
+				<li class=""><a href="javaScript:showanswer()" id="answer">回答</a></li>
+				<li class=""><a href="javaScript:showquestion()" id="question">问题</a></li>
 				<li class=""><a href="javaScript:void(0);" id="notes">笔记</a></li>
 				<li class=""><a href="javaScript:void(0);">留言</a></li>
 			</ul>
