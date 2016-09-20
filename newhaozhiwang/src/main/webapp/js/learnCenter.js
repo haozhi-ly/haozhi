@@ -1,5 +1,12 @@
 //学习中心的js
 $(function() {
+
+	if(flag=="false"){	
+		$("#centerContent").css("display","none");
+		$("#content-container").css("display","block");
+		$("#loadingDiv").css("display","block");
+		showTime();
+	}else{
 	$.post("userinfo/getInfoByUserid", {"_method" : "POST","userid" :userid},function(data){
 		if(data){
 			$('.user-info span').html( data.uname );
@@ -11,12 +18,6 @@ $(function() {
 	});
 	
 	
-	if(flag=="false"){	
-		$("#centerContent").css("display","none");
-		$("#content-container").css("display","block");
-		$("#loadingDiv").css("display","block");
-		showTime();
-	}
 	
 	$.post("course/studyingByUserid", {"_method" : "POST","p":2,"userid" :userid},function(data){
 		var str="";
@@ -174,9 +175,9 @@ $(function() {
 				$('#attentionM').css("display","none");
 				$('#fans').css("display","block");
 			}
-     })
+     });
      
-     
+	}
 });
 
 //设定倒数秒数  

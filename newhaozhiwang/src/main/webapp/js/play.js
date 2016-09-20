@@ -286,9 +286,9 @@ $(function() {
 				"click",
 				function() {	
 					$(this).parent().children().removeClass("active");
-					$(this).addClass("active"); //样式改变	
-					$('#dashboard-body').css("width", "80%");
+					$(this).addClass("active"); //样式改变						
 					$('.learn-dashboard.toolbarhide .dashboard-toolbar').css("cssText", "right:0px !important;");
+					$('#dashboard-body').css("width", "80%");
 					
 					var str = this.innerHTML;
 					if (str.indexOf("课时") >= 0) {
@@ -296,9 +296,9 @@ $(function() {
 						if(count==1){
 							
 						}else{
-						if($('#toolbar-1').css("display")=="block"){
-							$('#dashboard-body').css("width", "100%");
+						if($('#toolbar-1').css("display")=="block"){						
 							$('.learn-dashboard.toolbarhide .dashboard-toolbar').css("cssText", "right:-342px !important;");	
+							$('#dashboard-body').css("width", "100%");
 						}else{
 						$('#toolbar-1').css("display", "block");
 						$('#toolbar-2').css("display", "none");
@@ -335,9 +335,9 @@ $(function() {
 					} else if (str.indexOf("笔记") >= 0) {
 						/*count1+=1;
 						if(count1==1){}*/
-						if($('#toolbar-2').css("display")=="block"){
-							$('#dashboard-body').css("width", "100%");
+						if($('#toolbar-2').css("display")=="block"){						
 							$('.learn-dashboard.toolbarhide .dashboard-toolbar').css("cssText", "right:-342px !important;");	
+							$('#dashboard-body').css("width", "100%");
 						}else{
 						$('#toolbar-1').css("display", "none");
 						$('#toolbar-2').css("display", "block");
@@ -346,8 +346,8 @@ $(function() {
 						
 					} else {
 						if($('#toolbar-3').css("display")=="block"){
-							$('#dashboard-body').css("width", "100%");
 							$('.learn-dashboard.toolbarhide .dashboard-toolbar').css("cssText", "right:-342px !important;");	
+							$('#dashboard-body').css("width", "100%");
 						}else{
 						$('#toolbar-1').css("display", "none");
 						$('#toolbar-2').css("display", "none");
@@ -502,7 +502,16 @@ $(function() {
 		var uname = $('#ajax-username').val();
 		var pwd = $('#ajax-password').val();
 		if(uname!=null&& pwd!=null){
-			
+			$.post("userinfo/loginDiv",{"uname":uname,"pwd":pwd},function(data){
+				if(data=="true"){
+					$('#ajax-username').val("");
+					$('#ajax-password').val("");
+					 $('#login-modal').css('display','none');
+					$('#loadingDiv').css('display','none');
+				}else{
+					alert("用户或密码错误，请重新输入!!");
+				}
+			});
 		}else{
 			$('#login').setAttribute("disabled","disabled");
 		}
@@ -601,4 +610,7 @@ $(function() {
 
 function revert(){
 	alert("efakhek");
+	alert("gark");
+	var rename = $(this).attr("data-revert");
+	alert(rename);
 }
