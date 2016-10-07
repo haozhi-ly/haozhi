@@ -2,11 +2,6 @@ package com.haozhi.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-
-
-
-
 import com.haozhi.entity.Course;
 import com.haozhi.entity.StudyCourse;
 

@@ -14,9 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.google.gson.Gson;
-import com.haozhi.entity.CourseAnswer;
 import com.haozhi.entity.CourseQuestion;
 import com.haozhi.service.CourseQuestionService;
 

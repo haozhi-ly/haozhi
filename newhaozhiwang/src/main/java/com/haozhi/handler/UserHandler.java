@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -30,14 +29,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import sun.misc.BASE64Decoder;
 
-import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.haozhi.entity.UserInfo;
 import com.haozhi.service.UserInfoService;
-import com.haozhi.util.HaozhiProtocol;
 import com.haozhi.util.RandomNumUtil;
 import com.haozhi.util.UsuallyUtil;
-
-import io.goeasy.GoEasy;
 
 
 

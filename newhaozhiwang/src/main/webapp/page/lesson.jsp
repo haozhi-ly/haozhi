@@ -868,7 +868,6 @@
   	});  
   		function addlession(){
   			var type=$("input[name='type']:checked").val();
-  			alert(type)
   			if(type==0){
   				var title=$("#lesson-title-field0").val();
   				var cmintroduction=$("#lesson-summary-field0").val();
@@ -886,7 +885,6 @@
   			}
   			$.post("courseManage/addlession",{type:type,title:title,pathOrContetn:pathOrContetn,cmintroduction:cmintroduction},
   					function(data){
-  					alert(data);
   					if(data!=null){
   						$("#sstyle").html("");
   						$("#sstyle").html("<img src='images/2016-09-10_184215.png'/>");

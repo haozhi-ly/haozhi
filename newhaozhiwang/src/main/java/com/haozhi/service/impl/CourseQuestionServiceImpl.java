@@ -6,7 +6,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.haozhi.entity.CourseAnswer;
 import com.haozhi.entity.CourseQuestion;
 import com.haozhi.mapper.CourseQuestionMapper;
 import com.haozhi.service.CourseQuestionService;

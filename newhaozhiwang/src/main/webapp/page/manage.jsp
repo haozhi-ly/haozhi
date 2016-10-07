@@ -208,12 +208,7 @@
 		var cintroduction=myckeditor.document.getBody().getHtml();
 		var ctid=$("#course_categoryId").val();
 		var courseting=$("#howzhi_tags").val();
-		alert(ctitle)
-		alert(cintroduction)
-		alert(ctid)
-		alert(courseting)
 		$.post("course/basic",{ctitle:ctitle,cintroduction:cintroduction,ctid:ctid,courseting:courseting},function(data){
-			alert(data)
 			if(data==1){
 				alert("温馨提示：课程简介不能为空！");
 			}else if(data==2){

@@ -2564,4 +2564,4 @@ DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====>  Preparing: select typena
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - ====> Parameters: 7(Integer)
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <====      Total: 1
 DEBUG BaseJdbcLogger (BaseJdbcLogger.java:145) - <==      Total: 2
->>>>>>> branch 'master' of ssh://git@github.com/haozhi-ly/haozhi.git
+

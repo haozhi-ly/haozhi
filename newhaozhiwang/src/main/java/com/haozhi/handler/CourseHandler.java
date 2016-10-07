@@ -332,10 +332,6 @@ public class CourseHandler {
 	
 	@RequestMapping("/basic")
 	public void savebasic(CourseType courseType,PrintWriter out,String ctitle,String cintroduction,int ctid,String courseting,HttpSession session){
-/*		System.out.println(ctitle);
-		System.out.println(cintroduction);
-		System.out.println(ctid);
-		System.out.println(courseting);*/
 		courseType.setCtid(ctid);
 		CourseType courseTypes=courseTypeService.findByctid(courseType);
 		session.setAttribute("ctitle", ctitle);
@@ -406,7 +402,6 @@ public class CourseHandler {
 		try {
 			request.setCharacterEncoding("utf-8");
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		HttpSession session=request.getSession();
