@@ -126,7 +126,7 @@
 
 			<div class="row hz-course-before clearfix">
 				<div class="pic col-md-5 col-xs-12">
-					<img class="img-responsive" src="images/160148ccf620140008.jpg"
+					<img class="img-responsive" id="img-responsive" src="images/160148ccf620140008.jpg"
 						alt="">
 				</div>
 				<div class="info col-md-7 col-xs-12 pull-right">
@@ -833,8 +833,8 @@
 										href="http://www.howzhi.com/password/reset">忘记密码</a>
 									</span>
 								</div>
-								<input class="login-btn btn btn-primary" value="登录"
-									type="submit">
+								<input class="login-btn btn btn-primary" id="login" value="登录"
+									type="button">
 
 
 							</div>

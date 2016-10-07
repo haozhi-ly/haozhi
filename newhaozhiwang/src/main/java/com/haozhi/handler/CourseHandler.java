@@ -370,11 +370,12 @@ public class CourseHandler {
 	public Object uploadApk( @RequestParam(value = "upload-file") MultipartFile apkFile,
 			HttpServletRequest request, HttpServletResponse response) {
 		
+		System.out.println("yesyse");
 		Map<String,Object> resMap = new HashMap<String,Object>();
 		String str="";
 		if (apkFile != null) {
 			//获取保存的路径，
-			String realPath = request.getServletContext().getRealPath("../coursePic");
+			String realPath = request.getServletContext().getRealPath("../img/headimg");
 			if (apkFile.isEmpty()) {
 				System.out.println("yes");
 				// 未选择文件
@@ -418,7 +419,7 @@ public class CourseHandler {
 			course.setCintrodution(cintroduction);
 			course.setCtid(ctid);
 			course.setCourseting(courseting);
-			course.setCoursephoto(str);
+			course.setCoursephoto("../img/headimg/"+str);
 			course.setUserId(user.getUserid());
 			System.out.println(user.getUserid());
 			int courses=courseService.createcourse(course);
@@ -441,9 +442,7 @@ public class CourseHandler {
 	public void savepicture(Course course,PrintWriter out,String coursephoto,HttpSession session,HttpServletRequest request){
 		
 		
-		
 	
-		
 		
 		BASE64Decoder decoder = new BASE64Decoder();  
 		coursephoto = coursephoto.replaceAll("data:image/png;base64,", "");  
@@ -489,7 +488,7 @@ public class CourseHandler {
 			course.setCourseting(courseting);
 			course.setCoursephoto(filename);
 			course.setUserId(user.getUserid());
-			System.out.println(user.getUserid());
+			System.out.println(course.toString());
 			int courses=courseService.createcourse(course);
 		}
 		out.flush();

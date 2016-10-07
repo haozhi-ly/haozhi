@@ -5,6 +5,7 @@ $(function() {
 		if(data){
 			$('#currentCourseName').html(data.title);  //加入课程时的课程名
 			$('#joincourseid').html(data.courseid);
+			$('#returnJoin').attr("href","page/joinproject.jsp?id="+data.courseid);
 			$('#breadcrumb').html(data.title);
 			if(data.type==1){
 				$('#lesson-unpublished-content').css('display','none'); 
@@ -37,7 +38,7 @@ $(function() {
 		if(data){
 			$('.link-light').html(data.user.uname);
 			//$('#teachImg').attr("src",data.user.photo);
-			$('#teachImg').attr("src","images/avatar.png");		
+			$('#teachImg').attr("src",data.user.photo);		
 			$('#teachImg').attr("alt",data.user.uname);
 			$('#teach').html(data.teachCount);
 			$('#fans').html(data.fansCount);
@@ -88,9 +89,9 @@ $(function() {
 	            				contentstr+='alt="'+item.user.uname+'"></a></div><div class="userInfo">'
 											+'<p class="head"><a href="#">'+item.user.uname+'</a><span>'+item.time+'</span></p>'
 											+'<div class="body">'+item.content+'</div><div class="pull-right">'
-											+'<a class="con" onclick="revert()" data-revert="'+item.user.uname+'" href="javascript:;">回复</a>';
+											+'<a class="con" onclick="revert(this)" data-revert="'+item.user.uname+'" href="javascript:;">回复</a>';
 	            			if(uname.indexOf(item.user.uname) >= 0){
-	            				contentstr+='<a class="con"  href="javascript:void(0);" style="display:block">删除</a>';
+	            				contentstr+='<a class="con" onclick="del(this)" data-del="'+item.csid+'" href="javascript:void(0);" style="display:block">删除</a>';
 	            			}
 	            				contentstr+'</div></div></li>';	
 	            			$("#commentList").html("").append($(contentstr));
@@ -116,9 +117,9 @@ $(function() {
 	     			contentstr+='alt="'+item.user.uname+'"></a></div><div class="userInfo">'
 								+'<p class="head"><a href="#">'+item.user.uname+'</a><span>'+item.time+'</span></p>'
 								+'<div class="body">'+item.content+'</div><div class="pull-right">'
-								+'<a class="con"  href="javascript:;" onclick="revert()" data-revert="'+item.user.uname+'">回复</a>';
+								+'<a class="con"  href="javascript:;" onclick="revert(this)" data-revert="'+item.user.uname+'">回复</a>';
 					if(uname.indexOf(item.user.uname) >= 0){
-						contentstr+='<a class="con"  href="javascript:void(0);"  style="display:block">删除</a>';
+						contentstr+='<a class="con" onclick="del(this)" data-del="'+item.csid+'"  href="javascript:void(0);"  style="display:block">删除</a>';
 					}	
 						contentstr+'</div></div></li>';	
 						
@@ -140,7 +141,7 @@ $(function() {
 					}else{
 					   str+='src="'+item.coursephoto+'"';
 					}
-					  str+='alt="sai基础教程" class=""><a href="page/joinproject.jsp?courseid='+item.courseid+'">'
+					  str+='alt="'+item.ctitle+'" class=""><a href="page/joinproject.jsp?courseid='+item.courseid+'">'
 						   +'<div class="mask"><span class="btn btn-primary">开始学习</span></div></a></div>'
 						   +'<div class="course-info"><div class="title"><span class="label label-p">'+item.courseting+'</span>'
 						   +'<a class="transition" href="page/joinproject.jsp?courseid='+item.courseid+'">'+item.ctitle+'</a>'
@@ -226,9 +227,9 @@ $(function() {
 							            			contentstr+='alt="'+item.user.uname+'"></a></div><div class="userInfo">'
 															+'<p class="head"><a href="#">'+item.user.uname+'</a><span>'+item.time+'</span></p>'
 															+'<div class="body">'+item.content+'</div><div class="pull-right">'
-															+'<a class="con"  href="javascript:;" onclick="revert()" data-revert="'+item.user.uname+'">回复</a>';
+															+'<a class="con"  href="javascript:;" onclick="revert(this)" data-revert="'+item.user.uname+'">回复</a>';
 							            			if(uname.indexOf(item.user.uname) >= 0){
-							            				contentstr+='<a class="con"  href="javascript:void(0);"  style="display:block">删除</a>';
+							            				contentstr+='<a class="con" onclick="del(this)" data-del="'+item.csid+'"   href="javascript:void(0);"  style="display:block">删除</a>';
 							            			}	
 							            				contentstr+'</div></div></li>';		
 							            			$("#commentList").html("").append($(contentstr));
@@ -254,9 +255,9 @@ $(function() {
 							     			contentstr+='alt="'+item.user.uname+'"></a></div><div class="userInfo">'
 													+'<p class="head"><a href="#">'+item.user.uname+'</a><span>'+item.time+'</span></p>'
 													+'<div class="body">'+item.content+'</div><div class="pull-right">'
-													+'<a class="con"  href="javascript:;" onclick="revert()" data-revert="'+item.user.uname+'">回复</a>';
+													+'<a class="con"  href="javascript:;" onclick="revert(this)" data-revert="'+item.user.uname+'">回复</a>';
 					            			if(uname.indexOf(item.user.uname) >= 0){
-					            				contentstr+='<a class="con"  href="javascript:void(0);"  style="display:block">删除</a>';
+					            				contentstr+='<a class="con" onclick="del(this)" data-del="'+item.csid+'"  href="javascript:void(0);"  style="display:block">删除</a>';
 					            			}	
 					            				contentstr+'</div></div></li>';	
 							     			$("#commentList").html("").append($(contentstr));
@@ -531,17 +532,6 @@ $(function() {
 		})
 	});
 	
-	//删除评论
-	$('#delete').bind("click",function(){
-		var cmid = this.id;
-		alert("确认删除吗？");
-		$.post("courseAssess/delcourseAssess",{"cmid":cmid},function(data){
-			if(data==1){
-			}else{
-				alert("删除失败!!!");
-			}
-		});
-	});
 	if(flag=="false"){
 		$("#attion").css("display","none");
 		$("#attion2").css("display","none");
@@ -586,7 +576,6 @@ $(function() {
 	
 	$('#message-create-form-btn').bind("click",function(){
 		scontent=$('#messageContent').val();
-		alert(scontent);
 		$.post("selfMessage/insertMessage",{"sendman":userid,"receiveman":attention,"scontent":scontent},function(data){
 			if(data==1){
 				$('#message').css('display','none');
@@ -602,15 +591,27 @@ $(function() {
 		$('#loadingDiv').css('display','none');
 	});
 	
-/*	$('.pull-right .con').bind("click",function(){
-		alert("kgajrktjg");
-	});*/
 	
 });
 
-function revert(){
-	alert("efakhek");
-	alert("gark");
-	var rename = $(this).attr("data-revert");
-	alert(rename);
+function revert(obj){
+	var rename = $(obj).attr("data-revert");
+	$("#Smohan_text").val("@"+rename);
+}
+
+function del(obj){
+	var recsid = $(obj).attr("data-del");
+	alert("确认删除吗？");
+	$.post("courseAssess/delcourseAssess",{"csid":recsid},function(data){
+		if(data==1){
+			 myrefresh();
+		}else{
+			alert("删除失败!!!");
+		}
+	});
+}
+
+function myrefresh()
+{
+       window.location.reload();
 }

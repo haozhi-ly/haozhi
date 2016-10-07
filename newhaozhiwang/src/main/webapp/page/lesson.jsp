@@ -226,7 +226,7 @@
          <c:when test="${picturestatus==1}">
          	<% String picname=(String)session.getAttribute("coursephoto"); %>
         	 <a href="http://www.howzhi.com/course/14023/">
-        	  <img src="<%="../../coursePic/"+picname%>">
+        	  <img src="<%="../img/headimg/"+picname%>">
       		</a>
         	</c:when>
         	<c:otherwise>
@@ -922,7 +922,7 @@
   	}
   	function clicktrue(){
   		 if(confirm("您确定发布课程？")){
-  	        location.href="page/learnCenter.jsp";
+  	        location.href="page/person.jsp";
   	     }
   	}
   </script>

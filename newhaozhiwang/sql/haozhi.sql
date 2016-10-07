@@ -352,8 +352,10 @@ create table attention(
        temp03 varchar2(200)--备用字段 
 );
 
-alter table attention rename column temp01 to sreadstatus
-alter table attention modify(sreadstatus int)
+
+alter table attention rename column temp01 to sreadstatus;
+alter table attention modify(sreadstatus int);
+
 --动态消息提示
 =======
 select * from attention;

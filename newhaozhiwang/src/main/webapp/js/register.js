@@ -86,7 +86,7 @@
 			$.messager.alert('错误提示','您还没有输入邮箱!!!','error');
 		}else{
 			if(emailBox.match(reg)){
-				time=20;
+				time=60;
 				$.post("userinfo/sendMail",{"email":emailBox},function(data){
 					//alert(data);
 					var yzmBox=$("#captcha_num").val();

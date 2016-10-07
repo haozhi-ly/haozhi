@@ -37,7 +37,7 @@
          	<c:when test="${picturestatus==1}">
          		 <a id="coursepic" href="http://www.howzhi.com/course/14023/">
          		 <% String picname=(String)session.getAttribute("coursephoto"); %>
-        		<img src="<%="../../coursePic/"+picname%>"/>
+        			<img src="<%="../img/headimg/"+picname%>"/>
      	 		</a>
         	</c:when>
         	<c:otherwise>
@@ -141,7 +141,7 @@
          <c:choose>
          	<c:when test="${picturestatus==1}">
          		 <% String picname=(String)session.getAttribute("coursephoto"); %>
-        		<img src="<%="../../coursePic/"+picname%>" style="width=210px;height:140px;"/>
+        		<img src="<%="../img/headimg/"+picname%>" style="width=210px;height:140px;"/>
         	</c:when>
         	<c:otherwise>
         		<img  id="headphoto" src="./images/course.png" class="headphoto"/>
@@ -231,7 +231,7 @@ function savepicture(){
 			console.info(data.filename);
 			$("#tolession").show();
 			$("#coursepic").html("");
-			$("#coursepic").html("<img src='../../coursePic/"+data.filename+"' style='width='248px' height='140px'/>");
+			$("#coursepic").html("<img src='../img/headimg/"+data.filename+"' style='width='248px' height='140px'/>");
 			$("#tstyle").html("");
 			$("#tstyle").html("<img src='images/2016-09-10_184215.png'/>");
 			alert("温馨提示：添加课程已成功，添加课时进入学习吧")

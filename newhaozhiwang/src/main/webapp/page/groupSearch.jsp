@@ -104,7 +104,7 @@
 			            			<div class="col-md-3" >
 										<div class="media group-media group-media-sm">
 											<a href="page/groupIntroduce.jsp?groupname=${item.groupname }&userid=${users.userid}" title="${item.groupname }" class="pull-left">
-												<img src="images/105050a0ca1c653470.jpg" alt="${item.groupname }" class="media-object">
+												<img src="${item.pic }" alt="${item.groupname }" class="media-object">
 											</a>
 											<div class="media-body">
 												<p>

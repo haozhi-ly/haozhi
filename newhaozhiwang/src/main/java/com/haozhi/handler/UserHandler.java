@@ -84,24 +84,23 @@ public class UserHandler {
 		String flag="true";
 		System.out.println("uname为："+uname);
 		UserInfo userInfo = new UserInfo();
-		UserInfo user = new UserInfo();
 		userInfo.setUname(uname);
 		userInfo.setUpassword(pwd);
 //		uname=new UsuallyUtil().decode(uname);
 		if(uname.contains("@")){
-			user=userInfoService.loginByEamil(userInfo);
+			userInfo=userInfoService.loginByEamil(userInfo);
 //			map.put("users", userInfo);
-			model.addAttribute("users", user);
+			model.addAttribute("users", userInfo);
 		}else if(!uname.contains("@")){
 			userInfo.setUname(uname);
 			userInfo.toString();
 			userInfo=userInfoService.loginByUname(userInfo);
 //			map.put("users", user);
-			model.addAttribute("users", user);
+			model.addAttribute("users", userInfo);
 		}
-		System.out.println(user);
+		System.out.println(userInfo);
 		//登录页面跳转
-		if(user==null){
+		if(userInfo==null){
 			map.put("Message", "block");
 			map.put("users", "");
 			flag="false";
@@ -294,7 +293,7 @@ public class UserHandler {
 	      String originalFilename = items_pic.getOriginalFilename();
 	      // 上传图片
 	      if (items_pic!= null&&originalFilename!=null&&originalFilename.length()>0) {// 存储图片的物理路径
-	        String pic_path = request.getServletContext().getRealPath("../img/headimg/");
+	        String pic_path = request.getServletContext().getRealPath("../img/headimg/")+"/";
 	        // 新的图片名称
 	        String newFilename = new Date().getTime()+""+new Random().nextInt(100000)
 	        		 +originalFilename.substring(originalFilename.lastIndexOf("."));
@@ -302,7 +301,7 @@ public class UserHandler {
 	        File newfile=new java.io.File(pic_path+newFilename);
 	        //将内存的数据写入磁盘
 	        items_pic.transferTo(newfile);   	
-	        user.setUserid(userid);user.setPhoto(newFilename);
+	        user.setUserid(userid);user.setPhoto("../img/headimg/"+newFilename);
 	        userInfoService.editPhoto(user);
 	   }
 	      return "forward:/page/info.jsp";

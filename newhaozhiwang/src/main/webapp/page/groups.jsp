@@ -66,7 +66,7 @@
 							<ul class="media-list thread-list">
 								<li class="media">
 									<a class="pull-left js-user-card" id="introduce" href="javascript:void(0)" data-card-url="/user/1321903/card/show" data-user-id="1321903">
-										<img class="avatar-md " src="images/touxiang.jpg" 　alt="曹佳佳的熊猫眼">
+										<img class="avatar-md " src="images/touxiang.jpg" alt="曹佳佳的熊猫眼">
 									</a>
 
 									<div class="media-body">
@@ -88,7 +88,7 @@
 								<!---------------------------------------------------->
 								<li class="media">
 									<a class="pull-left js-user-card" href="http://www.howzhi.com/u/187/" data-card-url="/user/187/card/show" data-user-id="187">
-										<img class="avatar-md " src="images/user-images.jpg" 　alt="乱流">
+										<img class="avatar-md " src="images/touxiang.jpg" alt="乱流">
 									</a>
 
 									<div class="media-body">
@@ -111,7 +111,7 @@
 								<!---------------------------------------------------->
 								<li class="media">
 									<a class="pull-left js-user-card" href="http://www.howzhi.com/u/1321903/" data-card-url="/user/1321903/card/show" data-user-id="1321903">
-										<img class="avatar-md " src="images/touxiang.jpg" 　alt="曹佳佳的熊猫眼">
+										<img class="avatar-md " src="images/touxiang.jpg" alt="曹佳佳的熊猫眼">
 									</a>
 
 									<div class="media-body">
@@ -133,7 +133,7 @@
 								<!---------------------------------------------------->
 								<li class="media">
 									<a class="pull-left js-user-card" href="http://www.howzhi.com/u/1321903/" data-card-url="/user/1321903/card/show" data-user-id="1321903">
-										<img class="avatar-md " src="images/user-images.jpg" 　alt="曹佳佳的熊猫眼">
+										<img class="avatar-md " src="images/touxiang.jpg" alt="曹佳佳的熊猫眼">
 									</a>
 
 									<div class="media-body">
@@ -156,7 +156,7 @@
 								<!---------------------------------------------------->
 								<li class="media">
 									<a class="pull-left js-user-card" id="card01" href="http://www.howzhi.com/u/187/" data-card-url="/user/187/card/show" data-user-id="187">
-										<img class="avatar-md " src="images/user-images.jpg" 　alt="乱流">
+										<img class="avatar-md " src="images/touxiang.jpg" alt="乱流">
 									</a>
 
 									<div class="media-body">
@@ -202,36 +202,6 @@
 						</div>
 					</div>
 
-					<!--<div id="user-card-2358982" class="js-card-content" data-user-id="2358982" style="display: none; top: 185px;left: 758px; z-index: 1;">
-						<div class="card-header media-middle">
-							<div class="media">
-								<div class="media-left">
-									<a class=" " href="http://www.howzhi.com/u/2358982/" data-card-url="/user/2358982/card/show" data-user-id="2358982">
-										<img class="avatar-md" src="images/avatar.png" alt="珘珘">
-									</a>
-								</div>
-								<div class="media-body">
-									<div class="title">
-										<a class="link-light " href="http://www.howzhi.com/u/2358982/">珘珘</a>
-
-									</div>
-									<div class="content">
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="card-body">
-							还没有签名
-						</div>
-
-						<div class="card-footer clearfix ">
-
-							<span><a class="link-light" href="http://www.howzhi.com/u/2358982/library">1<br>在学</a></span>
-							<span><a class="link-light" href="http://www.howzhi.com/u/2358982/following">1<br>关注</a></span>
-							<span><a class="link-light" href="http://www.howzhi.com/u/2358982/fans">1<br>粉丝</a></span>
-						</div>
-
-					</div>-->
 
 					<!-----------------------小组搜索-------------------->
 					<form class="mbl" action="groups/search" method="get">
@@ -262,110 +232,6 @@
 
 		<!---------------------------------------我是底部分割线------------------------------------------------------>
 		<jsp:include page="footer.jsp"></jsp:include>
-
-
-		<!--<div id="user-card-store" class="hidden">
-				<div id="user-card-2358982" class="js-card-content" data-user-id="2358982">
-					<div class="card-header media-middle">
-						<div class="media">
-							<div class="media-left">
-								<a class=" " data-user-id="2358982" data-card-url="/user/2358982/card/show" href="/u/2358982/">
-									<img class="avatar-md" alt="珘珘" src="/assets/img/default/avatar.png?2.6.17.2.3">
-								</a>
-							</div>
-							<div class="media-body">
-								<div class="title">
-									<a class="link-light " href="/u/2358982/">珘珘</a>
-								</div>
-								<div class="content"> </div>
-							</div>
-						</div>
-					</div>
-					<div class="card-body"> 还没有签名 </div>
-					<div class="card-footer clearfix ">
-						<span><a class="link-light" href="/u/2358982/library">1<br>在学</a></span>
-						<span><a class="link-light" href="/u/2358982/following">1<br>关注</a></span>
-						<span><a class="link-light" href="/u/2358982/fans">1<br>粉丝</a></span>
-					</div>
-				</div>
-				
-				<div id="user-card-1321903" class="js-card-content" data-user-id="1321903" style="display: none;">
-				<div class="card-header media-middle">
-					<div class="media">
-						<div class="media-left">
-							<a class=" " href="http://www.howzhi.com/u/1321903/" data-card-url="/user/1321903/card/show" data-user-id="1321903">
-								<img class="avatar-md" src="%E5%B0%8F%E7%BB%84%20-%20%E5%A5%BD%E7%9F%A5%E7%BD%91-%E9%87%8D%E6%8B%BE%E5%AD%A6%E4%B9%A0%E4%B9%90%E8%B6%A3-Powered%20By%20Howzhi_files/1359131e28a9803288.jpg" alt="曹佳佳的熊猫眼">
-							</a>
-
-						</div>
-						<div class="media-body">
-							<div class="title">
-								<a class="link-light " href="http://www.howzhi.com/u/1321903/">曹佳佳的熊猫眼</a>
-
-							</div>
-							<div class="content">
-								助教
-							</div>
-						</div>
-					</div>
-					<div class="metas">
-						<a class="btn btn-primary btn-high btn-xs follow-btn" href="javascript:;" data-url="/user/1321903/follow" data-loggedin="1">关注</a>
-						<a class="btn btn-default btn-high btn-xs unfollow-btn" href="javascript:;" data-url="/user/1321903/unfollow" style="display:none;">已关注</a>
-						<a class="btn btn-default btn-xs direct-message-btn" herf="javascript:;" data-toggle="modal" data-target="#modal" data-url="/message/create/1321903">私信</a>
-					</div>
-				</div>
-				<div class="card-body">
-					兴趣分享搬运工，微博@曹佳佳的熊猫眼...
-				</div>
-
-				<div class="card-footer clearfix card-footers">
-
-					<span><a class="link-light" href="http://www.howzhi.com/u/1321903/course/created">16<br>在教</a></span>
-					<span><a class="link-light" href="http://www.howzhi.com/u/1321903/library">84<br>在学</a></span>
-					<span><a class="link-light" href="http://www.howzhi.com/u/1321903/following">53<br>关注</a></span>
-					<span><a class="link-light" href="http://www.howzhi.com/u/1321903/fans">129<br>粉丝</a></span>
-				</div>
-
-			</div>
-			</div>-->
-		
-		<!--<div class="popover es-card fade bottom in" style="top: 185px;left: 758px;display: block;">
-			<div class="arrow"></div>
-			<div class="popover-content" style="display:none">
-				<div id="user-card-2358982" class="js-card-content" data-user-id="2358982">
-					<div class="card-header media-middle">
-						<div class="media">
-							<div class="media-left">
-								<a class=" " href="http://www.howzhi.com/u/2358982/" data-card-url="/user/2358982/card/show" data-user-id="2358982">
-									<img class="avatar-md" src="images/avatar.png" alt="珘珘">
-								</a>
-
-							</div>
-							<div class="media-body">
-								<div class="title">
-									<a class="link-light " href="http://www.howzhi.com/u/2358982/">珘珘</a>
-
-								</div>
-								<div class="content">
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="card-body">
-						还没有签名
-					</div>
-
-					<div class="card-footer clearfix ">
-
-						<span><a class="link-light" href="http://www.howzhi.com/u/2358982/library">1<br>在学</a></span>
-						<span><a class="link-light" href="http://www.howzhi.com/u/2358982/following">1<br>关注</a></span>
-						<span><a class="link-light" href="http://www.howzhi.com/u/2358982/fans">1<br>粉丝</a></span>
-					</div>
-
-				</div>
-			</div>
-
-		</div>-->
 	</body>
 
 </html>
